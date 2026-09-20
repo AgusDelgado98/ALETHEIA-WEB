@@ -1,0 +1,31 @@
+# Matriz de cobertura de limitaciones (WEB-0 Editorial Contract §5, gate G-LIM-02).
+# Toda limitación canónica de la pregunta y del claim tiene clase y disposición.
+schema: aletheia-web/editorial-limits/1
+canonical_ref: labor/LAB-Q-0005
+revision: 1
+dispositions:
+  - limitation: "labor/LAB-CLM-0006#limitation:1"
+    class: INDEPENDENCE
+    disposition: SHOWN
+    public_refs:
+      - "can_say:cs-5"
+  - limitation: "labor/LAB-CLM-0006#limitation:2"
+    class: PERIOD
+    disposition: SHOWN
+    public_refs:
+      - "can_say:cs-3"
+  - limitation: "labor/LAB-CLM-0006#limitation:3"
+    class: COMPARABILITY
+    disposition: SHOWN
+    public_refs:
+      - "does_not_mean:dnm-2"
+  - limitation: "labor/LAB-CLM-0006#limitation:4"
+    class: CAUSAL
+    disposition: SHOWN
+    public_refs:
+      - "does_not_mean:dnm-1"
+  - limitation: "labor/LAB-Q-0005#limitation:1"
+    class: COMPARABILITY
+    disposition: SHOWN
+    public_refs:
+      - "does_not_mean:dnm-12"

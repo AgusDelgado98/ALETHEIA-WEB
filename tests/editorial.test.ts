@@ -209,7 +209,7 @@ describe("páginas mínimas de las 18 preguntas LABOR", () => {
       expect(v.trail, id).toBeNull();
     }
   });
-  it("Q-0013 y Q-0011 conservan la ficha editorial", () => {
+  it("Q-0013, Q-0011 y Q-0005 conservan la ficha editorial", () => {
     const a = loadQuestionView(ROOT, "LAB-Q-0013");
     expect(a.hasEditorial).toBe(true);
     expect(a.claim?.id).toBe("LAB-CLM-0011");
@@ -217,6 +217,54 @@ describe("páginas mínimas de las 18 preguntas LABOR", () => {
     const b = loadQuestionView(ROOT, "LAB-Q-0011");
     expect(b.hasEditorial).toBe(true);
     expect(b.state.question).toBe("NOT_IDENTIFIABLE");
+    const c = loadQuestionView(ROOT, "LAB-Q-0005");
+    expect(c.hasEditorial).toBe(true);
+    expect(c.claim?.id).toBe("LAB-CLM-0006");
+    expect(c.trail).not.toBeNull();
+  });
+});
+
+describe("capa editorial de Q-0005", () => {
+  const bundle = loadEditorial(ROOT, "LAB-Q-0005");
+  it("no fabrica cifras y la auditoría está vigente", () => {
+    expect(bundle.finding.claim_ref).toBe("labor/LAB-CLM-0006");
+    expect(bundle.finding.trail).toBeDefined();
+    expect(bundle.finding.blockers_at_cut).toEqual([]);
+    expect(bundle.finding.disclosure).toBeDefined();
+    expect(bundle.units.some((u) => u.string_id.startsWith("site#"))).toBe(false);
+    expect(verifyAudit(bundle, corpus)).toEqual([]);
+    const approved = bundle.audit!.records.filter((r) => r.verdict === "APPROVED");
+    expect(approved.map((r) => r.string_id)).toEqual(["labor/LAB-Q-0005#public_question"]);
+  });
+  it("public_question es la aprobada y no hay literales numéricos", () => {
+    expect(bundle.question.public_question).toBe(
+      "¿Cómo evolucionó el ingreso laboral, nominal y real (descontada la inflación), dentro de tramos de tiempo comparables, sin cruzar los quiebres registrados en las series?",
+    );
+    for (const u of bundle.units) {
+      const errors = lintText(u.string_id, u.text).filter((i) => i.severity === "error");
+      expect(errors, u.string_id).toEqual([]);
+    }
+  });
+});
+
+describe("vista de Q-0005", () => {
+  it("carga el claim observado, el Rastro sin corte y la divulgación", () => {
+    const v = loadQuestionView(ROOT, "LAB-Q-0005");
+    expect(v.hasEditorial).toBe(true);
+    expect(v.claim?.id).toBe("LAB-CLM-0006");
+    expect(v.state.question).toBe("OBSERVED_IN_SOURCE");
+    expect(v.state.claim).toBe("OBSERVED_IN_SOURCE");
+    expect(v.state.questionLabel).toBe("Observado en la fuente");
+    expect(v.state.claimLabel).toBe("Observado en la fuente");
+    expect(v.trail).not.toBeNull();
+    expect(v.trail!.reasons).toEqual([]);
+    expect(v.trail!.objects.map((o) => o.id)).toEqual(["LAB-OBJ-0009", "LAB-OBJ-0025"]);
+    expect(v.trail!.ids.roots).toEqual(["LAB-ROOT-0005", "LAB-ROOT-0006"]);
+    expect(v.provenance.disclosureRequired).toBe(true);
+    expect(plainText(v.provenance.disclosure ?? [])).toMatch(/indirecta/);
+    expect(plainText(v.title)).not.toMatch(/[0-9]/);
+    expect(plainText(v.intro)).not.toMatch(/[0-9]/);
+    expect(plainText(v.scope)).not.toMatch(/[0-9]/);
   });
 });
 

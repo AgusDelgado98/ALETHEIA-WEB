@@ -1,0 +1,178 @@
+# Capa editorial · Q-0005 (WEB-0 Editorial Contract §3, §5, §6).
+# Cada texto es lenguaje público y NO es fuente de hechos. Reglas:
+#  - `maps_to` lista el contenido canónico del que deriva cada frase (ref = global_id#campo).
+#  - Ningún literal numérico ni estado: las fechas y conteos son directivas resueltas desde generated/.
+#  - Directivas permitidas: {{id:<ID>}}, {{anchor:<ID de ancla>}}, {{count:<ID de claim>.blockers|words}}.
+#  - Solo se citan Relation PROHIBITED/GOVERNANCE_REQUIRED por su `prohibited_inference`, y solo en «no significa».
+schema: aletheia-web/editorial-finding/1
+canonical_ref: labor/LAB-Q-0005
+claim_ref: labor/LAB-CLM-0006
+revision: 1
+
+title:
+  id: title
+  text: "Ingreso laboral nominal y real: observado en la fuente, en una ventana comparable"
+  maps_to:
+    - labor/LAB-CLM-0006#scope_statement
+
+intro:
+  id: intro
+  text: "Esta pregunta busca cómo evolucionó el ingreso laboral, nominal y real, dentro de tramos comparables, sin cruzar los quiebres registrados. El corpus ejecutó la métrica preinscripta sobre la ventana de trimestres de EPH admitidos: el ingreso laboral informado creció en términos nominales y, descontado con el deflactor admitido, creció en términos reales de forma distinta. La observación esperada de la hipótesis se cumple en esa ventana. No se afirma una atribución causal de la brecha."
+  maps_to:
+    - labor/LAB-Q-0005#canonical_text
+    - labor/LAB-CLM-0006#canonical_text
+    - labor/LAB-HYP-0004#expected_observation
+    - "labor/LAB-CLM-0006#limitation:4"
+
+scope:
+  id: scope
+  text: "Solo describe el crecimiento nominal y el real del ingreso laboral informado por la EPH en la ventana de trimestres admitidos, deflactado con el IPC nacional admitido. No dice nada sobre otros períodos, sobre ingresos no laborales ni sobre una atribución causal de la brecha."
+  maps_to:
+    - labor/LAB-CLM-0006#scope_statement
+    - labor/LAB-CLM-0006#scope_coverage_adequacy
+
+can_say:
+  - id: cs-1
+    text: "El ingreso laboral informado por la EPH creció en términos nominales y, una vez descontado con el deflactor admitido, creció en términos reales de forma distinta."
+    maps_to:
+      - labor/LAB-CLM-0006#canonical_text
+      - labor/LAB-HYP-0004#metric
+  - id: cs-2
+    text: "Esa diferencia cumple la observación esperada de la hipótesis en la ventana de trimestres de EPH admitidos."
+    maps_to:
+      - labor/LAB-HYP-0004#expected_observation
+      - labor/LAB-CLM-0006#canonical_text
+  - id: cs-3
+    text: "El período cubierto es esa ventana de trimestres admitidos; el corpus no tiene otros trimestres de EPH."
+    maps_to:
+      - "labor/LAB-CLM-0006#limitation:2"
+      - labor/LAB-CLM-0006#scope_statement
+  - id: cs-4
+    text: "La población es la de personas ocupadas observadas por la EPH con ingreso laboral informado, en el dominio de aglomerados urbanos de esa encuesta."
+    maps_to:
+      - labor/LAB-HYP-0004#population
+      - labor/LAB-CLM-0006#scope_coverage_adequacy
+  - id: cs-5
+    text: "El IPC se usa como deflactor. No cuenta como raíz de corroboración del ingreso laboral."
+    maps_to:
+      - "labor/LAB-CLM-0006#limitation:1"
+      - labor/LAB-CLM-0006#lineage_independence
+  - id: cs-6
+    text: "La pregunta cubre la evolución en ventanas comparables dados los quiebres registrados. El claim cubre solo la ventana de trimestres de EPH admitidos en este corte."
+    maps_to:
+      - labor/LAB-Q-0005#canonical_text
+      - labor/LAB-CLM-0006#scope_statement
+      - labor/LAB-HYP-0004#period
+
+does_not_mean:
+  - id: dnm-1
+    text: "No significa una atribución causal de la brecha ni una atribución a la inflación."
+    maps_to:
+      - "labor/LAB-CLM-0006#limitation:4"
+      - labor/LAB-CLM-0006#scope_statement
+  - id: dnm-2
+    text: "No significa una comparación de magnitud con el hallazgo de masa salarial de CGI: son objetos distintos y no se afirma equivalencia."
+    maps_to:
+      - "labor/LAB-CLM-0006#limitation:3"
+  - id: dnm-3
+    text: "No significa una comparación entre medidas de la EPH y claims de empleo registrado de SIPA o ARCA."
+    maps_to:
+      - labor/REL-GR-002#prohibited_inference
+  - id: dnm-4
+    text: "No significa responder la pregunta {{id:LAB-Q-0006}} comparando claims ya existentes."
+    maps_to:
+      - labor/REL-PR-004#prohibited_inference
+  - id: dnm-5
+    text: "No significa elevar el estado de la afirmación por agregación."
+    maps_to:
+      - labor/REL-PR-001#prohibited_inference
+  - id: dnm-6
+    text: "No significa un compuesto entre claims ni entre regímenes, ni una votación de fuerza global."
+    maps_to:
+      - labor/REL-PR-010#prohibited_inference
+  - id: dnm-7
+    text: "No significa que la inscripción previa de la hipótesis sea evidencia de que no se eligió el resultado, ni que se omita la divulgación."
+    maps_to:
+      - labor/REL-PR-011#prohibited_inference
+  - id: dnm-8
+    text: "No significa que se puedan mezclar valores nominales y reales entre claims, ni comparar cifras entre ventanas o productos sin una ventana de comparabilidad gobernada."
+    maps_to:
+      - labor/REL-PR-012#prohibited_inference
+  - id: dnm-9
+    text: "No significa que esta fuente o este claim cubran el mercado laboral argentino en su conjunto."
+    maps_to:
+      - labor/REL-PR-013#prohibited_inference
+  - id: dnm-10
+    text: "No significa una comparación de períodos o de magnitudes entre claims con ventanas o productos distintos."
+    maps_to:
+      - labor/REL-GR-006#prohibited_inference
+  - id: dnm-11
+    text: "No significa nada sobre ingresos no laborales ni sobre períodos fuera de la ventana admitida."
+    maps_to:
+      - labor/LAB-CLM-0006#scope_statement
+      - labor/LAB-CLM-0006#scope_coverage_adequacy
+  - id: dnm-12
+    text: "No significa que se empalmen ventanas de IPC que el proyecto registró como no homogéneas."
+    maps_to:
+      - "labor/LAB-Q-0005#limitation:1"
+
+would_need:
+  - id: wn-1
+    text: "Una demostración de error en la recuperación o el hash de EPH o de IPC de esta sesión."
+    maps_to:
+      - labor/LAB-CLM-0006#what_would_unseat
+  - id: wn-2
+    text: "Una demostración de error en el cálculo ponderado."
+    maps_to:
+      - labor/LAB-CLM-0006#what_would_unseat
+  - id: wn-3
+    text: "Evidencia de que el ingreso laboral informado no lleva el significado documentado por el productor de la fuente."
+    maps_to:
+      - labor/LAB-CLM-0006#what_would_unseat
+
+disclosure:
+  id: disclosure
+  text: "La hipótesis quedó inscrita antes de que este repositorio tuviera datos de EPH o de IPC. La exposición previa registrada es indirecta."
+  maps_to:
+    - labor/LAB-HYP-0004#operational_definition
+    - labor/LAB-HYP-0004#prior_data_exposure
+
+# Nodos del Rastro (Charter §11.3): afirmación → hipótesis → evidencia → objeto → fuente.
+# Sin corte: no hay bloqueos; la cadena se sostiene.
+trail:
+  claim:
+    id: trail-claim
+    text: "El ingreso laboral informado por la EPH creció en términos nominales y, descontado con el deflactor admitido, creció en términos reales de forma distinta, en la ventana de trimestres admitidos."
+    maps_to:
+      - labor/LAB-CLM-0006#canonical_text
+      - labor/LAB-CLM-0006#scope_statement
+  hypothesis:
+    id: trail-hypothesis
+    text: "Se esperaba que el crecimiento real del ingreso laboral difiriera de forma material del crecimiento nominal, dentro de al menos una ventana comparable."
+    maps_to:
+      - labor/LAB-HYP-0004#expected_observation
+      - labor/LAB-HYP-0004#metric
+  evidence:
+    id: trail-evidence
+    text: "El registro de evidencia ejecutó la métrica preinscripta sobre la ventana de trimestres admitidos. El IPC entra como deflactor, no como raíz de corroboración del ingreso laboral."
+    maps_to:
+      - labor/LAB-EVD-0010#method
+      - labor/LAB-EVD-0010#metric
+  object_employment:
+    id: trail-object-employment
+    text: "Ingreso laboral"
+    maps_to:
+      - labor/LAB-OBJ-0009#name
+  object_registration:
+    id: trail-object-registration
+    text: "Deflactor de precios al consumidor (IPC)"
+    maps_to:
+      - labor/LAB-OBJ-0025#name
+      - labor/LAB-OBJ-0025#is
+  source:
+    id: trail-source
+    text: "Publicación de microdatos de la Encuesta Permanente de Hogares (EPH) de INDEC."
+    maps_to:
+      - labor/LAB-ROOT-0005#publication
+
+blockers_at_cut: []

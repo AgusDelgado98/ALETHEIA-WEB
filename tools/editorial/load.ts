@@ -107,8 +107,12 @@ export function loadEditorialFromTexts(
   for (const u of finding.can_say) add(`can_say.${u.id}`, u, "can_say");
   for (const u of finding.does_not_mean) add(`does_not_mean.${u.id}`, u, "does_not_mean");
   for (const u of finding.would_need) add(`would_need.${u.id}`, u, "would_need");
+  if (finding.disclosure !== undefined) add("disclosure", finding.disclosure, "disclosure");
   if (finding.trail !== undefined) {
-    for (const [k, u] of Object.entries(finding.trail)) add(`trail.${k}`, u, "trail");
+    for (const [k, u] of Object.entries(finding.trail)) {
+      if (u === undefined) continue;
+      add(`trail.${k}`, u, "trail");
+    }
   }
   // Razones de las limitaciones AUDIT_ONLY: se muestran en el nivel Auditoría, así que son texto público auditado.
   for (const d of limits.dispositions) {

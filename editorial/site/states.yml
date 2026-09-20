@@ -7,6 +7,9 @@ claim_state_labels:
   INSUFFICIENT_EVIDENCE:
     id: claim-insufficient-evidence
     text: "Evidencia insuficiente"
+  OBSERVED_IN_SOURCE:
+    id: claim-observed-in-source
+    text: "Observado en la fuente"
 question_resolution_labels:
   INSUFFICIENT_EVIDENCE:
     id: question-insufficient-evidence
@@ -14,6 +17,9 @@ question_resolution_labels:
   NOT_IDENTIFIABLE:
     id: question-not-identifiable
     text: "No identificable con las fuentes conocidas"
+  OBSERVED_IN_SOURCE:
+    id: question-observed-in-source
+    text: "Observado en la fuente"
 fixed:
   absence_not_negative:
     id: fixed-absence-not-negative

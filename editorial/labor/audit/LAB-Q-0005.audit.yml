@@ -1,0 +1,674 @@
+schema: aletheia-web/editorial-audit/1
+canonical_ref: labor/LAB-Q-0005
+append_only: true
+records:
+  - string_id: labor/LAB-Q-0005#finding.can_say.cs-1
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#canonical_text
+      - labor/LAB-HYP-0004#metric
+    canonical_hash: b686bb2f4115b676ac11781413c9b6f9a7810c10117e260315ab19e4f9fb60fa
+    text_hash: 5be0ab3a949252a1fc5253c780241ff9402cbb4a7b3e5dc79ab344bc4d4a2a78
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - Nominal vs real sin magnitudes; sale del texto canónico del claim y de la métrica de la hipótesis.
+  - string_id: labor/LAB-Q-0005#finding.can_say.cs-2
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#canonical_text
+      - labor/LAB-HYP-0004#expected_observation
+    canonical_hash: 016241596e9cc1ed5e2d344565ad23d4516e3aca2bb85ffe9465a16ad6c03cae
+    text_hash: 15b909e4b267fbf6e11a6a1e819974b80b99f8db226658e7af3dbb6ac08ba302
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.can_say.cs-3
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#limitation:2
+      - labor/LAB-CLM-0006#scope_statement
+    canonical_hash: 7fb1aaec724c0c2ebc00fc822c38e3a349583920b6764f5773df096c8665b7f4
+    text_hash: 500180d9943cf7bcacb333e5765e7c3add8baedb7f640b0caaf9a812c60e6837
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - "Cubre la limitación de período: una ventana de trimestres admitidos; no se escriben los códigos de trimestre."
+  - string_id: labor/LAB-Q-0005#finding.can_say.cs-4
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#scope_coverage_adequacy
+      - labor/LAB-HYP-0004#population
+    canonical_hash: 737ad21533c21614692c9b8711ad336da86aec8d2aa1c0e5adb8774d7deafe09
+    text_hash: 8f70b46275456896eee5a5cb457ff9bb6076acfff1e2a9e1d1b7e3adab1fac78
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - Población del claim y de la hipótesis, sin el conteo de aglomerados ni códigos de variable.
+  - string_id: labor/LAB-Q-0005#finding.can_say.cs-5
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#limitation:1
+      - labor/LAB-CLM-0006#lineage_independence
+    canonical_hash: 47603fd1b8642b5ee8a02d21e4f08424b9cd0acc9cb7f07cf68adfc4facc4970
+    text_hash: d9547415bbd786216eec84fe70f99c97ab0de038ed19bb2a49921bb6f00239e8
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - IPC deflactor, no raíz de corroboración (limitación 1 y lineage_independence).
+  - string_id: labor/LAB-Q-0005#finding.can_say.cs-6
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#scope_statement
+      - labor/LAB-HYP-0004#period
+      - labor/LAB-Q-0005#canonical_text
+    canonical_hash: 435980cfbc493457da25d5890f6a8f2c882add6904e7851b446102255966e475
+    text_hash: a428fd61e7b6db4a77dd75519409c2630952155575713f46862b75679c6f11c9
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.disclosure
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-HYP-0004#operational_definition
+      - labor/LAB-HYP-0004#prior_data_exposure
+    canonical_hash: aa0a7107d86e5c0acb07ce5d8c17dd1b3d51235ad27ce0ed379f7b7ab0b2a34c
+    text_hash: 633bad6f35513a8246bad8109880363589022ed636703f2a376da195240ae539
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - Traduce operational_definition (antes de EPH o IPC en el repositorio) y prior_data_exposure INDIRECT.
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-1
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#limitation:4
+      - labor/LAB-CLM-0006#scope_statement
+    canonical_hash: f4b12cfea7e34eba778dc57774eb4f50c263a5fa17e8328c95a944b90695a7c5
+    text_hash: 8c686a647cf7810466bc1fbab718880119c7f6f60a00c1efc7ed9c00dbc60ffb
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - "Limitación 4: no hay atribución causal ni a la inflación."
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-10
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-GR-006#prohibited_inference
+    canonical_hash: d64c1a8b4bbfbab62cd1e08d584fbb8c4ad4a43dcacaccdd2f6ba2ff4771c4ed
+    text_hash: 516ed05de49f7f4c846f2a51197953ca5d73b800b61293a0ea2194de263ac009
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-11
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#scope_coverage_adequacy
+      - labor/LAB-CLM-0006#scope_statement
+    canonical_hash: f8d4da0e81e57f624e5562523491f8a75252baf66fb9c02e35875d6f9bb2e351
+    text_hash: ad08946cd51fdb0b4c1ac5b1a036405b454a43d1f3044bc81e77fb68575013f1
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-12
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-Q-0005#limitation:1
+    canonical_hash: a4392a95faabecdb697aa04e519f66d2552faef575157bd72d66287f0d17aa86
+    text_hash: 8a6bfe76014c285a33ab8c8eb21e2173bfdebf59bc887cac8a9c79cb3bf0c46c
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-2
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#limitation:3
+    canonical_hash: 890e62a50e3e381f57de58074de1d627d5aa9aec46bddcd70361a1d631bc0b3f
+    text_hash: 75c58663b23cc33d9ef44d82d7a336d0ba83010745610dea57cf33ce7d6db291
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-3
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-GR-002#prohibited_inference
+    canonical_hash: 81343deb77893f87dd87302bf40ddc7cc67110e260b048aad7907d70474db995
+    text_hash: b4a1926f27cd9997cfbccd5cf0158de3b556092d6415df4cd22289fcb7304e37
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-4
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-PR-004#prohibited_inference
+    canonical_hash: 7423ffba57568047294cf0e349fffe7972a6a061facf471db01542153446449d
+    text_hash: 0aa66dc9f8dbb29c82e7f4336582c580ae6d05ac292e546c685236d4684ab9fa
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-5
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-PR-001#prohibited_inference
+    canonical_hash: 077c672af259e3e5cf96ef8c519dd69c1fa31754ee6792a30bc5950235372e44
+    text_hash: 583d1bd35d6df2ca024b7407b0279ce76d0201929d8181f2217cac31dab67522
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-6
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-PR-010#prohibited_inference
+    canonical_hash: 855f46d5bdcfd16acb39fc2c117bc4daab8898f7d8fce4aaecba04b98785afb1
+    text_hash: 6a37d08921f22d02a271355346c504257dc5c921d6c6d664bfb16c69f15f960f
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-7
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-PR-011#prohibited_inference
+    canonical_hash: 7660b364756d08866dda67a082b3ffc7c25378c39d3ccc7eac29ec8d0c995c1f
+    text_hash: 84348311b3fd97905cff00daae4555101d115a63dd93e7ec04d270bef4d62635
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - Cita REL-PR-011 como lo que NO se afirma. La divulgación vive en procedencia.
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-8
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-PR-012#prohibited_inference
+    canonical_hash: 493a8cefb832a660d4715b6cc163499ca027fc40eb5955d4728ae0741cd63c40
+    text_hash: 80641b822ebbd4f167426f2caa563949bc35138a75a9e1c4e5fbe5dc601ff214
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.does_not_mean.dnm-9
+    kind: finding_text
+    canonical_refs:
+      - labor/REL-PR-013#prohibited_inference
+    canonical_hash: 5a3ee8cca9fdbc27c88a59620b300c9ac0fe6d8e91aec1cc7b98273af49f539a
+    text_hash: f2b20ac389b02fea8bbfa0c618de3ab1d2c4c82353a11026f1fc6f2f1ce867c9
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.intro
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#canonical_text
+      - labor/LAB-CLM-0006#limitation:4
+      - labor/LAB-HYP-0004#expected_observation
+      - labor/LAB-Q-0005#canonical_text
+    canonical_hash: 3f710cd72f25cfc7a8c5f2a94dab6a6f1fbb64d924940cc51598be946b5749fd
+    text_hash: 32a1c84197733221d7b5293f77a0c93c687eb5e2b35b91e07d8fe60308cf667a
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - Enlaza la pregunta canónica, el claim ejecutado y la observación esperada; declara que no hay atribución causal.
+  - string_id: labor/LAB-Q-0005#finding.scope
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#scope_coverage_adequacy
+      - labor/LAB-CLM-0006#scope_statement
+    canonical_hash: f8d4da0e81e57f624e5562523491f8a75252baf66fb9c02e35875d6f9bb2e351
+    text_hash: 79231261ab9921b33c992baced73f183dde1227ce0a11f8674f32b9b7ad46405
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.title
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#scope_statement
+    canonical_hash: 07cdb29b923d7df237345ba63b5e701d99b3423dc50de1852be7d789062aabea
+    text_hash: b89c06d2f6de27cdc020aff44c3248a5c6bbc3ddc9771e6bf995aa327aaa34e0
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - "Traduce el alcance del claim: observación en una ventana comparable; no reproduce cifras."
+  - string_id: labor/LAB-Q-0005#finding.trail.claim
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#canonical_text
+      - labor/LAB-CLM-0006#scope_statement
+    canonical_hash: e46e712f6f71c8d236518788f427329ded46d95f031f2fdbcdced98bac36cb61
+    text_hash: f29583cca508759b64b4d1f47c77742cf122935cfd3308426151bd0b16b2bce6
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.trail.evidence
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-EVD-0010#method
+      - labor/LAB-EVD-0010#metric
+    canonical_hash: da5f1cfc74d67fc1589550d4db2c849ed38d99a368fdd93f4eb355ce69da0f4d
+    text_hash: 3eb9e6773bf329f3054e6c00b4abe3ab971ad6844cc0c02e73894a1e02442669
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.trail.hypothesis
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-HYP-0004#expected_observation
+      - labor/LAB-HYP-0004#metric
+    canonical_hash: f382f8b0c1592297345e51933b8e44b6dab03bef73b1967ab85a8ed26b3d9143
+    text_hash: 255e69c37016774fe0d33db9cea4809cb5276ff3d84d835a3a110544897f86bc
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.trail.object_employment
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-OBJ-0009#name
+    canonical_hash: c6f8680f401ddcf6f952b38d7f764acb77b31e6bc3eaef41bc0680f4b172d671
+    text_hash: 27dec6af3081e5e42d311bc18f06d35340b6598dad5b3b4a10b5c56952272e11
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.trail.object_registration
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-OBJ-0025#is
+      - labor/LAB-OBJ-0025#name
+    canonical_hash: 3ab9a46bc614fb45afc245de13a92f724aa4cd8cf92127f5c40df623424e00da
+    text_hash: 46b15bf79c7d250ec20adc3ba272dade2639a27ec93104da6f7e21aa5ea9551d
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.trail.source
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-ROOT-0005#publication
+    canonical_hash: 21e94b6993cd1a9e50100208166bb6103e4873956c7fc610a071a39adc5ff58e
+    text_hash: 0071e1e0d06d76c947004133c9cc00247439f8d7579a6a65da93e865f95ae67f
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes:
+      - Traduce LAB-ROOT-0005#publication sin el nombre de archivo ni el trimestre numerado (G-FIG-03).
+  - string_id: labor/LAB-Q-0005#finding.would_need.wn-1
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#what_would_unseat
+    canonical_hash: 2855a019391661480921072bdbbbed564f461b87c8e45882fd1e3c2eff017117
+    text_hash: 22d3003bad78b512915701e9c825c9253a0ec01c4146efe1129af0a0a338cb4c
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.would_need.wn-2
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#what_would_unseat
+    canonical_hash: 2855a019391661480921072bdbbbed564f461b87c8e45882fd1e3c2eff017117
+    text_hash: 3a9dd01ae4853b5d24593a53e409f167e50f1161e1e33f36dba81fde93a4f2ca
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#finding.would_need.wn-3
+    kind: finding_text
+    canonical_refs:
+      - labor/LAB-CLM-0006#what_would_unseat
+    canonical_hash: 2855a019391661480921072bdbbbed564f461b87c8e45882fd1e3c2eff017117
+    text_hash: eb5888d1cc2c2428b9ece71092b5597befba7e7640c6011d75dcedb1af1b8187
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-20
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: labor/LAB-Q-0005#public_question
+    kind: public_question
+    canonical_refs:
+      - labor/LAB-Q-0005#canonical_text
+    canonical_hash: bbd0828a2ad07bc9fd1fd5b32a403a6144b5696abec300a39dc4f9480ec1cd94
+    text_hash: c2ae13a019b4f040745e63506c6dae9a575c3b37c6055a7eb8b3477ad01255ce
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: author (Design Charter v1.2, Enmienda 1.2, §20.7)
+    date: 2026-09-20
+    verdict: APPROVED
+    notes:
+      - Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó.
+      - "Auditoría de origen: reconciliation/public-question-editorial-audit.json, fila LAB-Q-0005, dimensiones FINAL_* todas en PASS/YES."

@@ -69,7 +69,15 @@ const ids = p.entityIds;
           </div>
           <div>
             <dt>{ui("prov_disclosure")}</dt>
-            <dd>{p.disclosureRequired ? "" : ui("prov_disclosure_none")}</dd>
+            <dd>
+              {p.disclosure !== null ? (
+                <SegmentText parts={p.disclosure} />
+              ) : p.disclosureRequired ? (
+                ""
+              ) : (
+                ui("prov_disclosure_none")
+              )}
+            </dd>
           </div>
           <div>
             <dt>{ui("prov_cite")}</dt>

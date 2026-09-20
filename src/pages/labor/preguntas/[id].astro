@@ -12,7 +12,7 @@ import Base from "../../../layouts/Base.astro";
 import { plainText } from "../../../lib/render.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
-/** Una ruta por cada pregunta del corpus. Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
+/** Una ruta por cada pregunta del corpus. Q-0005, Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
 export function getStaticPaths() {
   return availableQuestionIds(process.cwd()).map((id) => ({
     params: { id: questionSlug(id) },
@@ -26,9 +26,11 @@ const hatch = new Set(["NOT_IDENTIFIABLE", "BLOCKED_BY_DESIGN", "OUTSIDE_LAB_A"]
 const shapeOf = (state: string): string =>
   state === "INSUFFICIENT_EVIDENCE"
     ? ui("shape_insufficient")
-    : hatch.has(state)
-      ? ui("shape_not_identifiable")
-      : ui("layer_question");
+    : state === "OBSERVED_IN_SOURCE"
+      ? ui("shape_observed")
+      : hatch.has(state)
+        ? ui("shape_not_identifiable")
+        : ui("layer_question");
 ---
 
 <Base
@@ -70,22 +72,14 @@ const shapeOf = (state: string): string =>
               <div>
                 <dt>{ui("layer_question")}</dt>
                 <dd>
-                  {v.claim !== null ? (
-                    <EvidenceState
-                      state="INSUFFICIENT_EVIDENCE"
-                      label={v.state.questionLabel}
-                      description={ui("shape_insufficient")}
-                    />
-                  ) : (
-                    <EvidenceState
-                      state="NOT_IDENTIFIABLE"
-                      label={v.state.questionLabel}
-                      description={ui("shape_not_identifiable")}
-                    />
-                  )}
+                  <EvidenceState
+                    state={v.state.question}
+                    label={v.state.questionLabel}
+                    description={shapeOf(v.state.question)}
+                  />
                 </dd>
               </div>
-              {v.claim !== null && v.state.claimLabel !== null && (
+              {v.claim !== null && v.state.claimLabel !== null && v.state.claim !== null && (
                 <div>
                   <dt>
                     {ui("layer_claim")}{" "}
@@ -95,9 +89,9 @@ const shapeOf = (state: string): string =>
                   </dt>
                   <dd>
                     <EvidenceState
-                      state="INSUFFICIENT_EVIDENCE"
+                      state={v.state.claim}
                       label={v.state.claimLabel}
-                      description={ui("shape_insufficient")}
+                      description={shapeOf(v.state.claim)}
                     />
                   </dd>
                 </div>

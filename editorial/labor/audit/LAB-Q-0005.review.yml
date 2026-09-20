@@ -1,0 +1,60 @@
+# Entrada humana/adversarial de la auditoría (Editorial Contract §4). De aquí salen los veredictos y las notas;
+# los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
+schema: aletheia-web/editorial-review/1
+canonical_ref: labor/LAB-Q-0005
+revision: 1
+reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
+date: "2026-09-20"
+independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
+adversarial_review:
+  - "Cifras del claim (crecimiento nominal, real y brecha): el corpus las registra y no hay anclas; ningún texto editorial las reproduce. El resultado se enuncia en cualitativo: nominal y real difieren; la observación esperada se cumple."
+  - "Período: ningún texto escribe trimestres ni años; se dice «ventana de trimestres de EPH admitidos» y que el corpus no tiene otros trimestres de esa encuesta (limitación 2)."
+  - "Población: se traduce el universo del claim y de la hipótesis (ocupadas de EPH con ingreso laboral informado, dominio de aglomerados urbanos) sin el conteo de aglomerados ni códigos de variable."
+  - "Nominal vs real: cs-1 y el Rastro distinguen ambos crecimientos; dnm-8 cita REL-PR-012 (no mezclar entre claims ni ventanas sin comparabilidad gobernada)."
+  - "IPC como deflactor, no como raíz de corroboración: cs-5 y el nodo de evidencia; no se cuenta como segunda raíz (G-PRV-06)."
+  - "Atribución causal o a la inflación: dnm-1 y el alcance; no se usa el verbo protegido «causa»."
+  - "CGI / masa salarial: dnm-2 cita la limitación 3; no se afirma equivalencia con {{id:LAB-CLM-0004}}."
+  - "Relaciones prohibidas: EPH vs SIPA/ARCA (REL-GR-002), Q-0006 (REL-PR-004), agregación de estado (REL-PR-001), compuesto (REL-PR-010), inscripción previa como anti-selección (REL-PR-011), mercado laboral en su conjunto (REL-PR-013), períodos entre claims (REL-GR-006)."
+  - "Exposición previa INDIRECT: el texto de divulgación traduce operational_definition y prior_data_exposure; no se presenta como evidencia de que no se eligió el resultado."
+  - "Empalme de IPC: dnm-12 cubre la limitación de la pregunta sin escribir años de las ventanas."
+  - "Brecha pregunta–claim: cs-6 declara que la pregunta cubre ventanas comparables y el claim cubre solo la ventana admitida."
+  - "Fuerza de la evidencia: ningún texto usa verbos protegidos ni conectores causales; el estado se lee solo de generated/."
+defaults:
+  verdict: PENDING_AUTHOR_REVIEW
+overrides:
+  "labor/LAB-Q-0005#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+      - "Auditoría de origen: reconciliation/public-question-editorial-audit.json, fila LAB-Q-0005, dimensiones FINAL_* todas en PASS/YES."
+  "labor/LAB-Q-0005#finding.title":
+    notes:
+      - "Traduce el alcance del claim: observación en una ventana comparable; no reproduce cifras."
+  "labor/LAB-Q-0005#finding.intro":
+    notes:
+      - "Enlaza la pregunta canónica, el claim ejecutado y la observación esperada; declara que no hay atribución causal."
+  "labor/LAB-Q-0005#finding.can_say.cs-1":
+    notes:
+      - "Nominal vs real sin magnitudes; sale del texto canónico del claim y de la métrica de la hipótesis."
+  "labor/LAB-Q-0005#finding.can_say.cs-3":
+    notes:
+      - "Cubre la limitación de período: una ventana de trimestres admitidos; no se escriben los códigos de trimestre."
+  "labor/LAB-Q-0005#finding.can_say.cs-4":
+    notes:
+      - "Población del claim y de la hipótesis, sin el conteo de aglomerados ni códigos de variable."
+  "labor/LAB-Q-0005#finding.can_say.cs-5":
+    notes:
+      - "IPC deflactor, no raíz de corroboración (limitación 1 y lineage_independence)."
+  "labor/LAB-Q-0005#finding.does_not_mean.dnm-1":
+    notes:
+      - "Limitación 4: no hay atribución causal ni a la inflación."
+  "labor/LAB-Q-0005#finding.does_not_mean.dnm-7":
+    notes:
+      - "Cita REL-PR-011 como lo que NO se afirma. La divulgación vive en procedencia."
+  "labor/LAB-Q-0005#finding.disclosure":
+    notes:
+      - "Traduce operational_definition (antes de EPH o IPC en el repositorio) y prior_data_exposure INDIRECT."
+  "labor/LAB-Q-0005#finding.trail.source":
+    notes:
+      - "Traduce LAB-ROOT-0005#publication sin el nombre de archivo ni el trimestre numerado (G-FIG-03)."

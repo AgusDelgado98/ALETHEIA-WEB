@@ -52,6 +52,7 @@ strings:
   cite_template: { id: ui-cite-template, text: "ALETHEIA. «{question}». Módulo labor v{version} ({tag}, commit {commit}). Afirmación {claim}." }
   cite_template_no_claim: { id: ui-cite-template-no-claim, text: "ALETHEIA. «{question}». Módulo labor v{version} ({tag}, commit {commit}). Sin afirmación." }
   shape_insufficient: { id: ui-shape-insufficient, text: "Forma del estado: hilo sólido, corte, hilo punteado y cuadrado hueco." }
+  shape_observed: { id: ui-shape-observed, text: "Forma del estado: hilo sólido y cuadrado macizo." }
   shape_not_identifiable: { id: ui-shape-not-identifiable, text: "Forma del estado: zona rayada, sin cuadrado." }
   no_claim_trail: { id: ui-no-claim-trail, text: "Sin claim: no hay Rastro de claim." }
   trail_legend_note: { id: ui-trail-legend-note, text: "Cada glifo va acompañado de su nombre." }

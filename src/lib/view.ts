@@ -77,6 +77,7 @@ export interface QuestionView {
     entityIds: string[];
     cite: Part[];
     disclosureRequired: boolean;
+    disclosure: Part[] | null;
     pendingSignoff: number;
   };
 }
@@ -203,6 +204,7 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
         entityIds,
         cite: markTokens(cite),
         disclosureRequired: hyp?.disclosure_required ?? false,
+        disclosure: null,
       },
     };
   }
@@ -250,7 +252,7 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     claim: claim.id,
     hypothesis: hyp.id,
     evidence: claim.evidence_ids,
-    roots: [...claim.root_ids, ...claim.referenced_root_ids],
+    roots: [...claim.root_ids, ...claim.referenced_root_ids, ...claim.deflator_root_ids],
     objects: claim.object_ids,
     ruling: claim.lab_gov,
     episodes: c.episodes.filter((x) => x.claim_ids.includes(claim.id)).map((x) => x.id),
@@ -270,13 +272,23 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
       claim: parts(trail.claim.text),
       hypothesis: parts(trail.hypothesis.text),
       evidence: parts(trail.evidence.text),
-      objects: [
-        { id: "LAB-OBJ-0003", parts: parts(trail.object_employment.text) },
-        { id: "LAB-OBJ-0016", parts: parts(trail.object_registration.text) },
-      ],
+      objects: (() => {
+        const objectUnits = [trail.object_employment, trail.object_registration];
+        if (claim.object_ids.length !== objectUnits.length)
+          throw new Error(
+            `${qid}: el Rastro espera ${objectUnits.length} objetos y el claim declara ${claim.object_ids.length}`,
+          );
+        return claim.object_ids.map((id, i) => ({
+          id,
+          parts: parts(objectUnits[i]!.text),
+        }));
+      })(),
       source: {
         rootId: rootPrimary.id,
-        publication: markTokens(rootPrimary.publication),
+        publication:
+          trail.source !== undefined
+            ? parts(trail.source.text)
+            : markTokens(rootPrimary.publication),
         linkUnresolved: rootPrimary.source_link_status === "UNRESOLVED",
       },
       reasons: e.finding.blockers_at_cut.map((id) => item(byId(e.finding.can_say, id))),
@@ -300,6 +312,7 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
       ],
       cite: markTokens(cite),
       disclosureRequired: hyp.disclosure_required,
+      disclosure: e.finding.disclosure !== undefined ? parts(e.finding.disclosure.text) : null,
     },
   };
 }
@@ -405,6 +418,7 @@ function loadCanonicalView(
       entityIds: [...new Set(entityIds)],
       cite: markTokens(cite),
       disclosureRequired: hyp?.disclosure_required ?? false,
+      disclosure: null,
       pendingSignoff: 0,
     },
   };

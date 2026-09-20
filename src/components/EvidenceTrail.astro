@@ -18,6 +18,14 @@ const ui = v.ui;
 if (v.trail === null || v.claim === null || v.state.claim === null || v.state.claimLabel === null)
   throw new Error("EvidenceTrail: no hay Rastro de claim");
 const t = v.trail;
+const observed = v.state.claim === "OBSERVED_IN_SOURCE";
+const showCut = t.reasons.length > 0;
+const shapeDesc =
+  v.state.claim === "INSUFFICIENT_EVIDENCE"
+    ? ui("shape_insufficient")
+    : observed
+      ? ui("shape_observed")
+      : ui("layer_question");
 ---
 
 <section class="rastro" aria-labelledby="trail-h" data-state={v.state.claim}>
@@ -69,9 +77,9 @@ const t = v.trail;
     </div>
 
     <ol class="core">
-      <li class="cn cn--ghost cn--claim">
+      <li class:list={["cn", "cn--claim", { "cn--ghost": !observed }]}>
         <span class="cn__g">
-          <Glyph kind="claim" fill="hollow" size="1.375rem" />
+          <Glyph kind="claim" fill={observed ? "solid" : "hollow"} size="1.375rem" />
         </span>
         <div class="cn__b">
           <p class="cn__k">{ui("node_claim")}</p>
@@ -80,9 +88,9 @@ const t = v.trail;
           </p>
           <p class="cn__st d2">
             <EvidenceState
-              state="INSUFFICIENT_EVIDENCE"
+              state={v.state.claim}
               label={v.state.claimLabel}
-              description={ui("shape_insufficient")}
+              description={shapeDesc}
             />
           </p>
         </div>
@@ -94,9 +102,9 @@ const t = v.trail;
         </p>
       </li>
 
-      <li class="cn cn--ghost cn--hyp">
+      <li class:list={["cn", "cn--hyp", { "cn--ghost": !observed, "cn--to-cut": showCut }]}>
         <span class="cn__g">
-          <Glyph kind="hypothesis" fill="ghost" size="1.375rem" />
+          <Glyph kind="hypothesis" fill={observed ? "solid" : "ghost"} size="1.375rem" />
         </span>
         <div class="cn__b">
           <p class="cn__k">{ui("node_hypothesis")}</p>
@@ -110,29 +118,31 @@ const t = v.trail;
         </p>
       </li>
 
-      <li class="cn cn--cut" data-node="cut">
-        <div class="cut">
-          <p class="cut__t">
-            <span class="cut__slot" aria-hidden="true">
-              <Glyph kind="limit" size="1.5rem" />
-            </span>
-            <span class="cut__k">{ui("cut_label")}.</span> {ui("cut_title")}
-          </p>
-          <p class="cut__l">
-            {ui("cut_above")} {ui("cut_below")}
-          </p>
-          <div class="cut__r d2">
-            <h3 class="cut__rh">{ui("cut_reasons")}</h3>
-            <ul>
-              {t.reasons.map((r) => (
-                <li>
-                  <SegmentText parts={r.parts} />
-                </li>
-              ))}
-            </ul>
+      {showCut && (
+        <li class="cn cn--cut" data-node="cut">
+          <div class="cut">
+            <p class="cut__t">
+              <span class="cut__slot" aria-hidden="true">
+                <Glyph kind="limit" size="1.5rem" />
+              </span>
+              <span class="cut__k">{ui("cut_label")}.</span> {ui("cut_title")}
+            </p>
+            <p class="cut__l">
+              {ui("cut_above")} {ui("cut_below")}
+            </p>
+            <div class="cut__r d2">
+              <h3 class="cut__rh">{ui("cut_reasons")}</h3>
+              <ul>
+                {t.reasons.map((r) => (
+                  <li>
+                    <SegmentText parts={r.parts} />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      )}
 
       <li class="cn cn--ev">
         <span class="cn__g">
@@ -191,22 +201,24 @@ const t = v.trail;
       </li>
     </ol>
 
-    <div class="audit d3">
-      <h3 class="audit__h">{ui("prov_limits_audit")}</h3>
-      <ul class="audit__l">
-        {t.auditOnly.map((a) => (
-          <li>
-            <p class="audit__o mono">
-              <span data-num="id">{a.ownerId}</span>
-            </p>
-            <p class="audit__t">
-              <SegmentText parts={a.text} />
-            </p>
-            <p class="audit__w">{a.waiver}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    {t.auditOnly.length > 0 && (
+      <div class="audit d3">
+        <h3 class="audit__h">{ui("prov_limits_audit")}</h3>
+        <ul class="audit__l">
+          {t.auditOnly.map((a) => (
+            <li>
+              <p class="audit__o mono">
+                <span data-num="id">{a.ownerId}</span>
+              </p>
+              <p class="audit__t">
+                <SegmentText parts={a.text} />
+              </p>
+              <p class="audit__w">{a.waiver}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
   </div>
 </section>
 
@@ -379,7 +391,7 @@ const t = v.trail;
   .cn--ghost::before {
     border-left: var(--rule) dotted var(--graphite);
   }
-  .cn--hyp::before {
+  .cn--hyp.cn--to-cut::before {
     bottom: 0; /* el hilo llega hasta el corte y termina */
   }
   .cn--src::before,

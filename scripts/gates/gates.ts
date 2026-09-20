@@ -1052,8 +1052,12 @@ const gLim03: Gate = {
   run(ctx) {
     const f: string[] = [];
     for (const qid of publishedQuestionIds(ctx)) {
+      const bundle = bundleForQuestion(ctx, qid);
       for (const h of ctx.generated.hypotheses.filter((x) => x.question_id === qid))
-        if (h.disclosure_required || h.prior_data_exposure !== "NONE")
+        if (
+          (h.disclosure_required || h.prior_data_exposure !== "NONE") &&
+          bundle.finding.disclosure === undefined
+        )
           f.push(
             `${h.id}: exige divulgación de exposición previa (${h.prior_data_exposure}) y no hay texto editorial para mostrarla`,
           );
@@ -1069,6 +1073,10 @@ const gLim03: Gate = {
           f.push(`${route}: no muestra el límite ${l.id}`);
       if (!t.includes(ctx.editorial.ui.strings["prov_disclosure"]?.text ?? "\0"))
         f.push(`${route}: falta la sección de exposición previa`);
+      if (bundle.finding.disclosure !== undefined) {
+        const shown = plain(parseSegments(bundle.finding.disclosure.text, ctx.generated));
+        if (!t.includes(shown)) f.push(`${route}: no muestra la divulgación de exposición previa`);
+      }
     }
     return res(
       f,

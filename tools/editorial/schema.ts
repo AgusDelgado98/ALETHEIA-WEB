@@ -34,7 +34,18 @@ export const Finding = z.strictObject({
   can_say: z.array(Unit).min(1),
   does_not_mean: z.array(Unit).min(1),
   would_need: z.array(Unit).min(1),
-  trail: z.strictObject({ claim: Unit, hypothesis: Unit, evidence: Unit, object_employment: Unit, object_registration: Unit }).optional(),
+  trail: z
+    .strictObject({
+      claim: Unit,
+      hypothesis: Unit,
+      evidence: Unit,
+      object_employment: Unit,
+      object_registration: Unit,
+      source: Unit.optional(),
+    })
+    .optional(),
+  /** Divulgación de exposición previa (G-LIM-03) cuando la hipótesis no es NONE. */
+  disclosure: Unit.optional(),
   blockers_at_cut: z.array(z.string()),
 });
 export type FindingT = z.infer<typeof Finding>;
