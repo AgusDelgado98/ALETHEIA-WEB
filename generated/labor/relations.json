@@ -2,6 +2,146 @@
   "entity": "Relation",
   "items": [
     {
+      "category": "AUTHORIZED_EXISTING_RELATION",
+      "claim_ids": [
+        "LAB-CLM-0007"
+      ],
+      "context_claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0003"
+      ],
+      "global_id": "labor/REL-AUTH-001",
+      "hypothesis_ids": [
+        "LAB-HYP-0005"
+      ],
+      "id": "REL-AUTH-001",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "The computation recorded in LAB-CLM-0007, exactly as written and inside that claim: the Monotributo share of ARCA Monotributista counts plus SIPA's ASALARIADO_PRIVADO, ASALARIADO_PUBLICO, and CASAS_PARTICULARES modalities as a LAB-analytical denominator component, with the Mixtos overlap, the GOV-005 caveat, and the cross-sectional limits disclosed. The SIPA side is a denominator component, never SIPA's own TOTAL.",
+      "prohibited_inference": "Treating SIPA and ARCA as two independent Evidence Roots; CONVERGENT or ESTABLISHED_WITHIN_SCOPE for LAB-CLM-0007; reading agreement with any SIPA-only claim as corroboration; using the substitution outside LAB-CLM-0007; merging LAB-OBJ-0016, LAB-OBJ-0006, and LAB-OBJ-0013, which remain distinct ledger objects.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-AUTH-001",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0008"
+      ],
+      "reason": "The ruling governs this one use and states, in its section F, that using SIPA directly removes a republication circularity but does not make SIPA and ARCA independent of each other for Root Counting: both trace to the same SUSS/ARCA declaration stream, so no CONVERGENT claim is or could be authorized. It is the only cross-regime reuse of a root that the ledgers govern.",
+      "scope_of_relation": "CROSS_REGIME_ROOT_USE_INSIDE_ONE_CLAIM",
+      "title": "SIPA and ARCA inside LAB-CLM-0007 (Monotributo share)"
+    },
+    {
+      "category": "AUTHORIZED_EXISTING_RELATION",
+      "claim_ids": [
+        "LAB-CLM-0003"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-AUTH-002",
+      "hypothesis_ids": [
+        "LAB-HYP-0007"
+      ],
+      "id": "REL-AUTH-002",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "The comparison of SIPA-derived and MLER-derived counts within their 2012-01 to 2021-12 overlap recorded in LAB-CLM-0003, inside that claim, with MLER named as a downstream proxy of SIPA.",
+      "prohibited_inference": "Reading MLER's closeness to SIPA as corroboration or as a second independent root; extending the comparison past 2021-12; using MLER's EMPLOYER or JOB fields (unrealized, GOV-006); reading the person-count sub-finding as passing or failing LAB-HYP-0007 (no numeric tolerance was pre-registered).",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-AUTH-002",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0002"
+      ],
+      "reason": "MLER is documented as constructed from the same SIPA/ARCA employer-declaration stream, so agreement between the two is expected by construction and only one root counts.",
+      "scope_of_relation": "WITHIN_REGIME",
+      "title": "SIPA and MLER inside LAB-CLM-0003"
+    },
+    {
+      "category": "AUTHORIZED_EXISTING_RELATION",
+      "claim_ids": [
+        "LAB-CLM-0004",
+        "LAB-CLM-0006"
+      ],
+      "context_claim_ids": [
+        "LAB-CLM-0002"
+      ],
+      "global_id": "labor/REL-AUTH-003",
+      "hypothesis_ids": [
+        "LAB-HYP-0002",
+        "LAB-HYP-0004"
+      ],
+      "id": "REL-AUTH-003",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Deflating a nominal series by the national IPC (base Dec-2016=100) inside the claim, and reporting nominal and real figures as separate, labelled values: LAB-CLM-0002 records nominal CGI growth, LAB-CLM-0004 records real CGI wage-bill growth, and LAB-CLM-0006 records nominal and real EPH labour income. NOMINAL != REAL.",
+      "prohibited_inference": "Reading a nominal figure as real or the reverse; counting IPC as an Evidence Root or as corroboration; comparing CGI wage-bill magnitudes with EPH labour-income magnitudes; extending the real CGI window beyond 2018-Q1 to 2026-Q1.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-AUTH-003",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0003",
+        "LAB-Q-0005"
+      ],
+      "reason": "IPC was admitted strictly as a deflator input, and a deflator root is recorded separately (DEFLATOR_ROOT_ID) and never counted toward the Root Counting Rule. Nominal and real are different measures of the same series and are kept apart.",
+      "scope_of_relation": "WITHIN_REGIME",
+      "title": "CGI and EPH nominal versus real, with IPC as deflator only"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-CONF-001",
+      "hypothesis_ids": [],
+      "id": "REL-CONF-001",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: the three objects are used only under their own definitions (LAB-OBJ-0019 JOB_POSTING, LAB-OBJ-0020 VACANCY, LAB-OBJ-0022 HIRE) and in the claims that record them.",
+      "prohibited_inference": "Treating a posting as a vacancy or a hire; inferring hiring or staffing need from postings; inferring a hire from an employment stock (LAB-OBJ-0003 is a stock, HIRE is the transition event); reading the Observatory pre-mortem as a measurement.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-CONF-001",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/31",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0018"
+      ],
+      "reason": "The object ledger defines each as distinct through IS_NOT; LAB-CLM-0014 preserved the distinction and measured no divergence.",
+      "scope_of_relation": "WITHIN_REGIME_WITH_CROSS_REGIME_OBJECT_GUARD",
+      "title": "POSTING != VACANCY != HIRE"
+    },
+    {
       "category": "PROHIBITED",
       "claim_ids": [
         "LAB-CLM-0007",
@@ -73,6 +213,98 @@
     {
       "category": "GOVERNANCE_REQUIRED",
       "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-GR-001",
+      "hypothesis_ids": [],
+      "id": "REL-GR-001",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "prohibited_inference": "SIPA modality composition (Regime A) and ARCA Monotributo registration measures (Regime B) as evidence about one phenomenon.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-GR-001",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/10",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Charter section 19 rule 3: the relation between their objects is not governed beyond AUTH-001's claim-internal use.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Governance required: SIPA composition and ARCA Monotributo measures as one phenomenon"
+    },
+    {
+      "category": "GOVERNANCE_REQUIRED",
+      "claim_ids": [
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0010"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-GR-002",
+      "hypothesis_ids": [],
+      "id": "REL-GR-002",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "prohibited_inference": "EPH-derived measures (unregistered-employment proxy, income, PP05F) related to registered-employment claims from SIPA/ARCA, including any administrative-vs-survey comparison.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-GR-002",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/11",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "No ruling governs the relation between EPH and administrative objects; LAB-Q-0006 also lacks a pre-registered metric.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Governance required: EPH-derived measures related to registered-employment claims (including administrative versus survey)"
+    },
+    {
+      "category": "GOVERNANCE_REQUIRED",
+      "claim_ids": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-GR-003",
+      "hypothesis_ids": [],
+      "id": "REL-GR-003",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "prohibited_inference": "Regime C objects (LAB-OBJ-0019 to LAB-OBJ-0024) related to employment or registration objects of Regimes A and B (for example LAB-OBJ-0003, LAB-OBJ-0016).",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-GR-003",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/12",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "No ruling governs any C-to-A/B object relation, and Regime C has no data.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Governance required: Regime C objects related to Regime A/B employment or registration objects"
+    },
+    {
+      "category": "GOVERNANCE_REQUIRED",
+      "claim_ids": [
         "LAB-CLM-0011",
         "LAB-CLM-0014"
       ],
@@ -99,6 +331,167 @@
       "reason": "Stating a pattern relates the two absences; rule 3 requires governance first (see JX-004).",
       "scope_of_relation": "CROSS_REGIME",
       "title": "Governance required: A cross-regime pattern of absent flow or hiring-event data"
+    },
+    {
+      "category": "GOVERNANCE_REQUIRED",
+      "claim_ids": [
+        "LAB-CLM-0007",
+        "LAB-CLM-0010"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-GR-005",
+      "hypothesis_ids": [],
+      "id": "REL-GR-005",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "prohibited_inference": "Counting a root used in one regime (LAB-ROOT-0001 SIPA, LAB-ROOT-0005 EPH) toward a claim of another regime beyond what LAB-GOV-SIPA-SUBSTITUTION-0001 already authorizes.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-GR-005",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/14",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Cross-regime root reuse is governed only for SIPA in LAB-CLM-0007; the Root Counting Rule default is same root, same count.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Governance required: Root reuse across regimes beyond LAB-GOV-SIPA-SUBSTITUTION-0001"
+    },
+    {
+      "category": "GOVERNANCE_REQUIRED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-GR-006",
+      "hypothesis_ids": [],
+      "id": "REL-GR-006",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "prohibited_inference": "Any statement comparing periods or magnitudes across claims with different windows or products.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-GR-006",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/15",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Comparability windows and GOV-008 breaks require governed treatment (PR-012).",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Governance required: Comparing periods or magnitudes across claims with different windows or products"
+    },
+    {
+      "category": "JUXTAPOSITION_ONLY",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-JX-001",
+      "hypothesis_ids": [],
+      "id": "REL-JX-001",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that both records draw on the same SUSS/ARCA declaration stream, and that they use different denominators, universes, and windows.",
+      "prohibited_inference": "Reading the fact that both records report a larger Monotributo weight as mutual support, agreement, or convergence; merging them into one statement or trend; computing a difference or ratio between them; counting them as two Evidence Roots.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-JX-001",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Same underlying declaration stream; registry classes alone would count two INDEPENDENT roots for LAB-CLM-0007, which its own record and the ruling deny.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "SIPA composition (LAB-CLM-0001) beside the Monotributo share (LAB-CLM-0007)"
+    },
+    {
+      "category": "JUXTAPOSITION_ONLY",
+      "claim_ids": [
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0001",
+        "LAB-CLM-0003"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-JX-002",
+      "hypothesis_ids": [],
+      "id": "REL-JX-002",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. EPH results cover two quarters in 32 urban agglomerates; SIPA and MLER results cover registered universes and other windows. Coexistence only.",
+      "prohibited_inference": "Any statement that they agree or diverge; using EPH's PP07H results to validate or invalidate SIPA counts, or the reverse; answering LAB-Q-0006 (BLOCKED_BY_DESIGN, no pre-registered metric) by direct or indirect comparison; reading independence of collection as license to compare.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-JX-002",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/4",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0006"
+      ],
+      "reason": "LAB-Q-0006 asks precisely for this comparison and was never executed; comparing existing claims would answer it without a metric.",
+      "scope_of_relation": "WITHIN_REGIME",
+      "title": "EPH results beside administrative results (Q-0006 stays unanswered)"
+    },
+    {
+      "category": "JUXTAPOSITION_ONLY",
+      "claim_ids": [
+        "LAB-CLM-0008",
+        "LAB-CLM-0010"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-JX-003",
+      "hypothesis_ids": [],
+      "id": "REL-JX-003",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that PP05F is an unvalidated candidate proxy and that the formal category is not economic dependence.",
+      "prohibited_inference": "Using PP05F together with ARCA registration to infer dependence; presenting PP05F as validated or governed; answering LAB-Q-0011.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-JX-003",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/5",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0009",
+        "LAB-Q-0010",
+        "LAB-Q-0011"
+      ],
+      "reason": "Placing them together invites an economic-dependence inference the ledgers do not support.",
+      "scope_of_relation": "WITHIN_REGIME",
+      "title": "ARCA formal category (LAB-CLM-0008) beside the EPH proxy PP05F (LAB-CLM-0010)"
     },
     {
       "category": "JUXTAPOSITION_ONLY",
@@ -174,6 +567,68 @@
       "title": "Regime C limits beside Regime A and B results"
     },
     {
+      "category": "JUXTAPOSITION_ONLY",
+      "claim_ids": [
+        "LAB-CLM-0002",
+        "LAB-CLM-0004",
+        "LAB-CLM-0006"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-JX-006",
+      "hypothesis_ids": [],
+      "id": "REL-JX-006",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. Each figure stays labelled nominal or real and within its own claim.",
+      "prohibited_inference": "Comparing nominal and real figures, or figures from different products, as if on one scale; ranking or averaging them.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-JX-006",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/8",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Different products and objects (aggregate wage bill versus individual labour income); NOMINAL != REAL.",
+      "scope_of_relation": "WITHIN_REGIME",
+      "title": "Nominal and real growth figures from CGI and EPH"
+    },
+    {
+      "category": "JUXTAPOSITION_ONLY",
+      "claim_ids": [
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0010"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-JX-007",
+      "hypothesis_ids": [],
+      "id": "REL-JX-007",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that these results rest on the same EPH root (LAB-ROOT-0005) and that it counts once wherever it is used.",
+      "prohibited_inference": "Counting the EPH root twice or presenting the Regime A and Regime B EPH results as two independent roots; using the EPH-based results of one regime as support for the other.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-JX-007",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/9",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Same PRIMARY_PRODUCER, COLLECTION_INSTRUMENT, and FRAME_POPULATION means the same root by default (Root Counting Rule); no ruling governs cross-regime EPH reuse (GR-005).",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "One EPH root beneath results of Regimes A and B"
+    },
+    {
       "category": "PROHIBITED",
       "claim_ids": [
         "LAB-CLM-0001",
@@ -214,6 +669,104 @@
       "reason": "Charter section 19 rule 1; Amendments A and C. Applies to every claim: each stays at its recorded state.",
       "scope_of_relation": "CROSS_REGIME",
       "title": "Upgrade any claim's epistemic state by aggregation (for example OBSERVED_IN_SOURCE to CONVERGENT or ESTABLISHED_WITHIN_S"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0007",
+        "LAB-CLM-0010"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-002",
+      "hypothesis_ids": [],
+      "id": "REL-PR-002",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Treat non-independent roots (SIPA, ARCA, MLER, SRT share a declaration stream; CGI vs SIPA untested) as corroboration.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-002",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/17",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Root Counting Rule; Amendment A. SIPA, ARCA, MLER, and SRT share a declaration stream; CGI versus SIPA is untested; the EPH root is one root.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Treat non-independent roots (SIPA, ARCA, MLER, SRT share a declaration stream; CGI vs SIPA untested) as corroboration"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-003",
+      "hypothesis_ids": [],
+      "id": "REL-PR-003",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Use Regime C to strengthen, explain, or qualify the force of any Regime A or B claim.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-003",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/18",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Charter section 19 rule 2. Regime C has no data and no root.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Use Regime C to strengthen, explain, or qualify the force of any Regime A or B claim"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0003",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-004",
+      "hypothesis_ids": [],
+      "id": "REL-PR-004",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Answer LAB-Q-0006 (administrative vs survey divergence) by comparing existing claims.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-004",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/19",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0006"
+      ],
+      "reason": "LAB-Q-0006 is BLOCKED_BY_DESIGN; no pre-registered metric. No pre-registered metric exists for the administrative-versus-survey question.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Answer LAB-Q-0006 (administrative vs survey divergence) by comparing existing claims"
     },
     {
       "category": "PROHIBITED",
@@ -285,6 +838,39 @@
     {
       "category": "PROHIBITED",
       "claim_ids": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-007",
+      "hypothesis_ids": [],
+      "id": "REL-PR-007",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Treat postings as vacancies or hires, or the Observatory pre-mortem as a measurement.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-007",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/22",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0018"
+      ],
+      "reason": "POSTING != VACANCY != HIRE; LAB-CLM-0012. The Observatory never observes vacancies or hires; its pre-mortem measures nothing.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Treat postings as vacancies or hires, or the Observatory pre-mortem as a measurement"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
         "LAB-CLM-0011",
         "LAB-CLM-0013",
         "LAB-CLM-0014"
@@ -318,6 +904,37 @@
       "reason": "ABSENT_VS_NEGATIVE (publication-contract.md). Absences are recorded as absent, not negative; only LAB-CLM-0005 is a negative result, within its scope.",
       "scope_of_relation": "CROSS_REGIME",
       "title": "Report an absence (no source, not identifiable, blocked) as a negative finding, or a negative finding as an absence"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0005"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-009",
+      "hypothesis_ids": [],
+      "id": "REL-PR-009",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Generalize LAB-CLM-0005 beyond two quarters, wage earners, and 32 urban agglomerates.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-009",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/24",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0004"
+      ],
+      "reason": "LAB-CLM-0005 SCOPE_STATEMENT. One proxy, one sub-population, one two-quarter window, one root.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Generalize LAB-CLM-0005 beyond two quarters, wage earners, and 32 urban agglomerates"
     },
     {
       "category": "PROHIBITED",
@@ -360,6 +977,161 @@
       "reason": "Charter section 19 rules 1, 5, 6; DEC-005. No composite, score, average, ranking, or vote across claims or regimes.",
       "scope_of_relation": "CROSS_REGIME",
       "title": "Produce any cross-regime composite: average, score, ranking, index, vote, or overall strength"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-011",
+      "hypothesis_ids": [],
+      "id": "REL-PR-011",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Present the pre-registration of DIRECT or INDIRECT PRIOR_DATA_EXPOSURE hypotheses as anti-cherry-picking evidence, or omit the disclosure.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-011",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/26",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Charter section 6; Amendment E. LAB-HYP-0001 and LAB-HYP-0007 carry DIRECT exposure; LAB-HYP-0002, 0003, and 0004 carry INDIRECT exposure.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Present the pre-registration of DIRECT or INDIRECT PRIOR_DATA_EXPOSURE hypotheses as anti-cherry-picking evidence, or om"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-012",
+      "hypothesis_ids": [],
+      "id": "REL-PR-012",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Mix nominal and real values across claims, or compare figures across windows or products without a governed comparability window.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-012",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/27",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "NOMINAL != REAL; GOV-008; LAB-GOV-EPH-0001, LAB-GOV-IPC-0001. Windows and products differ; GOV-008 breaks remain unbridged.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Mix nominal and real values across claims, or compare figures across windows or products without a governed comparabilit"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-013",
+      "hypothesis_ids": [],
+      "id": "REL-PR-013",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Present any Regime A source or claim as covering the whole Argentine labour market.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-013",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/28",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Charter section 3 (Regime A); SCOPE_COVERAGE_ADEQUACY of every claim. Every Regime A claim keeps its own documented universe.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Present any Regime A source or claim as covering the whole Argentine labour market"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-014",
+      "hypothesis_ids": [],
+      "id": "REL-PR-014",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Create a new claim, evidence record, source, object, hypothesis, lifecycle state, or LAB-GOV ruling in LAB-S.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-014",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/29",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "DEC-001, DEC-002; Charter section 7. A rule about LAB-S itself: no new record of any kind.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Create a new claim, evidence record, source, object, hypothesis, lifecycle state, or LAB-GOV ruling in LAB-S"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-015",
+      "hypothesis_ids": [],
+      "id": "REL-PR-015",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Resolve a divergence between sources by vote or smoothing; any future DIVERGENT result must be shown as-is.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-015",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/30",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Amendment H. No DIVERGENT result exists; any future one must be shown as recorded.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Resolve a divergence between sources by vote or smoothing; any future DIVERGENT result must be shown as-is"
     }
   ],
   "module_id": "labor",

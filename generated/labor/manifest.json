@@ -1,19 +1,19 @@
 {
-  "contract_sha256": "c71428ba2cae89a87562b7b076d759f18cb214352479ef03c0a25f01b4cbce99",
+  "contract_sha256": "81fca5c4651e6229672277a1b363072adabc92dcf51f55d1786de21201409fc1",
   "entity_counts": {
     "anchors": 2,
     "blockers": 3,
-    "claims": 1,
+    "claims": 14,
     "episodes": 1,
-    "evidence": 1,
-    "evidence-roots": 2,
-    "governance-rulings": 1,
-    "hypotheses": 1,
-    "limitations": 10,
-    "preserved-results": 2,
-    "questions": 1,
-    "relations": 10,
-    "statistical-objects": 3
+    "evidence": 25,
+    "evidence-roots": 7,
+    "governance-rulings": 7,
+    "hypotheses": 9,
+    "limitations": 210,
+    "preserved-results": 15,
+    "questions": 18,
+    "relations": 34,
+    "statistical-objects": 26
   },
   "files": [
     {
@@ -27,9 +27,9 @@
       "sha256": "0e0b36604297f9c72e0768258fb76b012f4c83169109988fceece6a804c1673c"
     },
     {
-      "bytes": 5574,
+      "bytes": 73386,
       "path": "claims.json",
-      "sha256": "534c275dd37ddf99d81088a8a11cc10eb0abc1b488547834870aac2102a6ead8"
+      "sha256": "e6bdf59ea3ac6a0dc4c63245cfe9325e6724f4e24af480e31eb73e98fc7ffe65"
     },
     {
       "bytes": 1222,
@@ -37,52 +37,52 @@
       "sha256": "192e7d1049f821223b00ed60375cc09fc0f644dbd6a471905f69f42cb6d755d6"
     },
     {
-      "bytes": 6744,
+      "bytes": 20303,
       "path": "evidence-roots.json",
-      "sha256": "adf6578ff9f6b67fd3f276ee191234955aabe1aeebb00496ab0e07d71b6aa767"
+      "sha256": "3bb226e300d34ca68d765ffb24b082a223ed61ca33dd77949a7a5fb22420dbd6"
     },
     {
-      "bytes": 4333,
+      "bytes": 93249,
       "path": "evidence.json",
-      "sha256": "b176ec2dc573db55755f2403c6264b8eb26401ec998f88ed92d5c04ba4ab687b"
+      "sha256": "aaf98f0ea7edc369be36371a246e2155377ece9046a8072fc339e1d1a833de55"
     },
     {
-      "bytes": 6202,
+      "bytes": 33562,
       "path": "governance-rulings.json",
-      "sha256": "04a68e85cc89a49697a5eb0e3e1a525e8ecbf863591f47ab1f12d45f25201982"
+      "sha256": "5936e7a39cab17e01b42b329616354f5f50234255bae152a62d82f5ea8bca24c"
     },
     {
-      "bytes": 1839,
+      "bytes": 17188,
       "path": "hypotheses.json",
-      "sha256": "17d8f8feee2c7398ace0b7cbfab4726cc3f63852062d39c2c16e9c351eacaed0"
+      "sha256": "b16e3581b7c2944f43e85347db1f34944073b863c9c629a55913022b0e2d7e0b"
     },
     {
-      "bytes": 10662,
+      "bytes": 216570,
       "path": "limitations.json",
-      "sha256": "50055310f1a6c686ec4208850033634704b9f66fb06e01a0324ef9160b397fd0"
+      "sha256": "9e39f558bf4da29903f05bc81a5560913fb13f797a16fe7629665eb6b299eec1"
     },
     {
-      "bytes": 3345,
+      "bytes": 23757,
       "path": "preserved-results.json",
-      "sha256": "37591514a2304e8d87cae1c72f4930fd3d379056423f3f49796a2645a8e38769"
+      "sha256": "bc9d54ceef2d1230b4d142c13914be537021b2891f9a6cfa0676d27284c0c0e2"
     },
     {
-      "bytes": 2698,
+      "bytes": 44436,
       "path": "questions.json",
-      "sha256": "88bad4cf7ee2c42b0548a84151c56034a092560ba3ce7ac8222045575e3d1929"
+      "sha256": "2591df816b57d4e7fa1f59ce191dbd6769abff7120771f60750116feff6f3402"
     },
     {
-      "bytes": 16869,
+      "bytes": 54825,
       "path": "relations.json",
-      "sha256": "9b4a7a68321801e440c8b38d76515af413030f64d99595545b53603d1acbc986"
+      "sha256": "3f580b4f7be7f1e2afccc24fa1313a8759b9e123454d9790c0a0ea7ce4a6dd85"
     },
     {
-      "bytes": 4599,
+      "bytes": 39408,
       "path": "statistical-objects.json",
-      "sha256": "4e55d2fff1c6a918b73818621e141323d49e172ed76e7c25c399341af61681c4"
+      "sha256": "d8fbf816e93719ed8e38c8548e60bb0d3b7af51951c4f1cab4c050ceef8d58f0"
     }
   ],
-  "generator_source_sha256": "574b08b19a7857b8b9ea0b7831c92856cdc9727babb6b41243180cfd53a699e8",
+  "generator_source_sha256": "98391fd8e3d1a26754efd4bcd236f66516afe02fb38ccd3c2d17b6bb6c0f7836",
   "generator_version": "1.0.0",
   "invariants": {
     "CONVERGENT": 0,
@@ -101,7 +101,24 @@
   "schema_version": "1.0.0",
   "slice": {
     "question_ids": [
-      "LAB-Q-0013"
+      "LAB-Q-0001",
+      "LAB-Q-0002",
+      "LAB-Q-0003",
+      "LAB-Q-0004",
+      "LAB-Q-0005",
+      "LAB-Q-0006",
+      "LAB-Q-0007",
+      "LAB-Q-0008",
+      "LAB-Q-0009",
+      "LAB-Q-0010",
+      "LAB-Q-0011",
+      "LAB-Q-0012",
+      "LAB-Q-0013",
+      "LAB-Q-0014",
+      "LAB-Q-0015",
+      "LAB-Q-0016",
+      "LAB-Q-0017",
+      "LAB-Q-0018"
     ]
   },
   "source_files": [

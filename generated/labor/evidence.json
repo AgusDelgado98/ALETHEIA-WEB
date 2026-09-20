@@ -2,6 +2,978 @@
   "entity": "Evidence",
   "items": [
     {
+      "claim_id": "LAB-CLM-0001",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0001",
+      "hypothesis_id": "LAB-HYP-0001",
+      "id": "LAB-EVD-0001",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0001.81802508",
+        "lim.LAB-EVD-0001.81af2263",
+        "lim.LAB-EVD-0001.cb1f870a",
+        "lim.LAB-EVD-0001.cdf745b0",
+        "lim.LAB-EVD-0001.4a05e90a"
+      ],
+      "method": "Filtered V1's standardized SIPA output to series_identifier=SIPA-T2-LEVEL-ORIGINAL (GOV-010: A.1 and T.2.1 are the same series; T.2 is V1's designated canonical level representation). For each of the two endpoint months (first and last available in the T.2 table), computed each named modality's share as value / (sum of the six named modalities: ASALARIADO_PRIVADO, ASALARIADO_PUBLICO, AUTONOMO, CASAS_PARTICULARES, MONOTRIBUTO, MONOTRIBUTO_SOCIAL). This analytical denominator is a LAB-A construct for share computation only -- it is NOT asserted to be, or to validate, SIPA's own published TOTAL row (GOV-005: TOTAL must not be recomputed by summing modalities). Computed percentage-point change in each modality's share between 2012-01 and 2026-05.",
+      "metric": "Percentage-point change in modality composition share of registered employment, 2012-01 vs 2026-05 (LAB-HYP-0001's pre-registered metric)",
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "data/standardized/sipa_trabajo_registrado/sipa_registered_work_monthly.csv",
+            "sha256": "8dc4be107038a78ad373b39b0f249a4872de10cada9e01981b680caaaf05100e"
+          }
+        ],
+        "source_id": "LAB-EVD-0001",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0001",
+      "reproducibility": "Recomputable from data/standardized/sipa_trabajo_registrado/sipa_registered_work_monthly.csv (SHA-256 above) filtered to series_identifier=SIPA-T2-LEVEL-ORIGINAL. Full monthly series (not just endpoints) archived at reports/lab_a/sipa-t2-level-monthly.json. Method detailed in reports/lab_a/LAB-A-method.md.",
+      "result_text": "Shares (2012-01 -> 2026-05, percentage points): ASALARIADO_PRIVADO 55.86% -> 47.89% (-7.97pp); ASALARIADO_PUBLICO 23.27% -> 26.50% (+3.23pp); MONOTRIBUTO 12.03% -> 17.24% (+5.21pp); AUTONOMO 3.75% -> 3.04% (-0.71pp); CASAS_PARTICULARES 3.56% -> 3.51% (-0.05pp); MONOTRIBUTO_SOCIAL 1.53% -> 1.82% (+0.29pp). Three modalities (ASALARIADO_PRIVADO, ASALARIADO_PUBLICO, MONOTRIBUTO) exceed the pre-registered 2 percentage-point threshold; this matches LAB-HYP-0001's EXPECTED_OBSERVATION, not its FAILURE_CONDITION.",
+      "root_ids": [
+        "LAB-ROOT-0001"
+      ],
+      "source_label": "SIPA",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0002",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0002",
+      "hypothesis_id": "LAB-HYP-0002",
+      "id": "LAB-EVD-0002",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0002.bc94c776",
+        "lim.LAB-EVD-0002.5189c87f",
+        "lim.LAB-EVD-0002.f3e24f14",
+        "lim.LAB-EVD-0002.c9d23415"
+      ],
+      "method": "Filtered V1's standardized CGI output to INDEC's own published national totals (occupational_category=TOTAL, activity_sector=TOTAL_GENERAL for JOB and HOUR; occupational_category=ASALARIADO, activity_sector=TOTAL_GENERAL for WAGE_BILL -- the only occupational_category WAGE_BILL has). Computed year-over-year (same quarter, prior year) percentage growth for each of the 3 series across all 37 quarters where a prior-year quarter exists (2017-Q1 through 2026-Q1). Computed the pairwise absolute difference in YoY growth rate between each pair of series per quarter. All values are NOMINAL (current Argentine pesos); no IPC deflation was applied (IPC is BLOCKED_BY_IPC, not admitted).",
+      "metric": "Pairwise divergence (percentage points) in year-over-year growth rates between JOB, HOUR, and WAGE_BILL (LAB-HYP-0002's pre-registered metric)",
+      "object_ids": [
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "data/standardized/indec_cgi/cgi_jobs_hours_wagebill_quarterly.csv",
+            "sha256": "81de3869da95bff185e6a47a9ef4d4dfbee382b5cd169824cdb98eb539d4fa35"
+          }
+        ],
+        "source_id": "LAB-EVD-0002",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0003",
+      "reproducibility": "Recomputable from data/standardized/indec_cgi/cgi_jobs_hours_wagebill_quarterly.csv (SHA-256 above). Full quarterly series and YoY table archived at reports/lab_a/cgi-national-quarterly.json. Method detailed in reports/lab_a/LAB-A-method.md.",
+      "result_text": "All three pairwise divergences exceed the pre-registered 1 percentage-point threshold in multiple quarters, far surpassing LAB-HYP-0002's EXPECTED_OBSERVATION. Two distinct patterns: (1) JOB vs HOUR diverge sharply during 2020-2021: 2020-Q2 JOB -16.94% YoY vs HOUR -36.23% YoY (19.29pp gap); 2021-Q2 JOB +17.58% vs HOUR +54.32% (36.75pp gap, the largest JOB-HOUR divergence in the series) -- consistent with intensive-margin (hours-per-job) adjustment around the COVID-19 period. (2) Nominal WAGE_BILL growth diverges massively from JOB/HOUR growth from 2022 onward (e.g. 2024-Q2: JOB +0.73%, HOUR -1.40%, WAGE_BILL +234.30% YoY; a 233-235pp gap) -- this is a large nominal-currency divergence; its real-terms interpretation (including whether it reflects inflation) is deferred pending IPC admission and is not asserted here.",
+      "root_ids": [
+        "LAB-ROOT-0002"
+      ],
+      "source_label": "CGI",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0003",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0003",
+      "hypothesis_id": "LAB-HYP-0007",
+      "id": "LAB-EVD-0003",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0003.a6ed4f99",
+        "lim.LAB-EVD-0003.811cb4b3",
+        "lim.LAB-EVD-0003.87dfc4c7",
+        "lim.LAB-EVD-0003.73564364",
+        "lim.LAB-EVD-0003.75870802"
+      ],
+      "method": "DuckDB (read-only, in-process) aggregation of V1's standardized MLER panel for the 120-month SIPA/MLER overlap window (2012-01 to 2021-12): (a) weighted PERSON-adjacent estimate per month = SUM(sample_weight) over one row per (reference_month, worker_id); (b) weighted EMPLOYMENT_RELATIONSHIP-adjacent estimate per month = SUM(sample_weight) over all rows (each row is one worker x relationship_sequence x month). Compared both series against SIPA's SIPA-T2-LEVEL-ORIGINAL ASALARIADO_PRIVADO series (LAB-ROOT-0001) for the same months. No individual MLER record was read or extracted; only the two resulting 120-point monthly aggregate series were retained.",
+      "metric": "Percent difference between MLER-derived and SIPA-derived counts of PERSON-adjacent and EMPLOYMENT_RELATIONSHIP-adjacent fields, within the 2012-01/2021-12 overlap (LAB-HYP-0007's pre-registered metric)",
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0003"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "data/standardized/oede_mler_2021/mler_panel.csv.gz",
+            "sha256": "df744fb6c23baab078b6607a846ac724453f71b9455cca897d4d66f951e6d084"
+          },
+          {
+            "file": "data/standardized/sipa_trabajo_registrado/sipa_registered_work_monthly.csv",
+            "sha256": "8dc4be107038a78ad373b39b0f249a4872de10cada9e01981b680caaaf05100e"
+          }
+        ],
+        "source_id": "LAB-EVD-0003",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0002",
+      "reproducibility": "Recomputable via DuckDB read_csv_auto against data/standardized/oede_mler_2021/mler_panel.csv.gz (SHA-256 above) and data/standardized/sipa_trabajo_registrado/sipa_registered_work_monthly.csv (SHA-256 above). The two 120-point monthly aggregate series (not individual records) are archived at reports/lab_a/mler-sipa-overlap-monthly-aggregates.json. Exact SQL and method detailed in reports/lab_a/LAB-A-method.md. Query runtime: ~21 seconds total on this machine (two passes over the 559 MB compressed panel).",
+      "result_text": "(a) PERSON-adjacent: MLER's weighted worker count tracks SIPA's ASALARIADO_PRIVADO level closely across all 120 months -- average absolute difference 0.54%, ranging 0.02% (2013-10) to 0.98% (2021-12). (b) EMPLOYMENT_RELATIONSHIP-adjacent: MLER's weighted relationship count is consistently higher than SIPA's person count, and the gap grows over the period: +3.38% (2012-01) to +5.07% (2021-12), averaging +4.27%. Interpretation: (b) is a clear, measurable, and widening divergence, matching LAB-HYP-0007's EXPECTED_OBSERVATION, and is substantively interpretable as a rising rate of multiple simultaneous job-holding among the same underlying population. (a) is a close but non-zero agreement whose relationship to LAB-HYP-0007's FAILURE_CONDITION ('agree to within stated tolerance') is ambiguous, because no numeric tolerance was pre-specified; this ambiguity is reported honestly rather than resolved by post-hoc threshold selection.",
+      "root_ids": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0003"
+      ],
+      "source_label": "MLER",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0004",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0004",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0004.8e246f0e",
+        "lim.LAB-EVD-0004.9f8cef4f",
+        "lim.LAB-EVD-0004.fbb86151",
+        "lim.LAB-EVD-0004.01faa512"
+      ],
+      "method": "Diagnostic only (LAB-A instruction section 3); no LAB question or hypothesis currently targets SRT. Filtered V1's standardized SRT output to activity_classification=CIIU_REV4, activity_code=TOTAL_UNIDADES_PRODUCTIVAS, statistical_object=PERSON, and reference_month >= 2020-01, deliberately excluding the entire CIIU Rev.2 series and the 2019 parallel-vintage overlap month range to respect GOV-007 (NOT_HOMOGENEOUS, no bridge, no auto-splice). Computed percent change between first (2020-01) and last (2026-05) available month within this single vintage.",
+      "metric": "Percent change in SRT-covered workers (TOTAL_UNIDADES_PRODUCTIVAS, PERSON), CIIU Rev.4 vintage only, 2020-01 to 2026-05",
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0004"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "data/standardized/srt_cobertura_financiacion/srt_coverage_by_activity_monthly.csv",
+            "sha256": "c49c455c1c07bf4b45b2741cfd561ccdc507b071fab788b984e90d9a83095a50"
+          }
+        ],
+        "source_id": "LAB-EVD-0004",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Recomputable from data/standardized/srt_cobertura_financiacion/srt_coverage_by_activity_monthly.csv (SHA-256 above). Full monthly series archived at reports/lab_a/srt-ciiu-rev4-total-monthly.json.",
+      "result_text": "9,150,252 (2020-01) -> 9,445,560 (2026-05): +3.23% within the single CIIU Rev.4 vintage. No cross-revision comparison is made or implied.",
+      "root_ids": [
+        "LAB-ROOT-0004"
+      ],
+      "source_label": "SRT",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0005",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0005",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0005.eb8d20d4",
+        "lim.LAB-EVD-0005.c62643a3",
+        "lim.LAB-EVD-0005.7e72f311",
+        "lim.LAB-EVD-0005.9169926f"
+      ],
+      "method": "Retrieved directly from INDEC's official EPH microdata FTP path (https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/), confirmed by HTTP responses returning application/x-zip-compressed and application/pdf content types with real Content-Length; SHA-256 computed locally on the downloaded bytes; zip contents listed and both usu_individual_T126.txt and usu_hogar_T126.txt parsed with Python's csv module (delimiter ';', quotechar '\"', latin-1 encoding) to confirm row/column counts and key field values against the matching official record-layout PDF for the same quarter. No labour-market metric (rates, shares, income, informality) was computed; only file structure and identifying fields (ANO4, TRIMESTRE, AGLOMERADO, ESTADO) were inspected.",
+      "metric": "Structural file inspection only: row count, column count, distinct ANO4/TRIMESTRE/AGLOMERADO/ESTADO values",
+      "object_ids": [
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0008",
+        "LAB-OBJ-0009"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "EPH_usu_1_Trim_2026_txt.zip",
+            "sha256": "d9d23945d4b1d3de362e154015fd9abacc76ed641aec6f41a805b809780c0343"
+          },
+          {
+            "file": "EPH_registro_1T2026.pdf",
+            "sha256": "37e02ea24a5c5a199a587828391ea7ab87d2feaf7c1d3b305f7cb8ba54b0fa01"
+          }
+        ],
+        "source_id": "LAB-EVD-0005",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/4",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "The exact retrieval URL, HTTP response headers, and SHA-256 values are recorded in reports/lab_a2/EPH-admission.md and metadata/sources/source-admission-result.json. Any party can re-download the same URL and reproduce the identical hash as long as INDEC has not altered the published file.",
+      "result_text": "usu_individual_T126.txt: 43,739 rows, 234 columns, ANO4={2026}, TRIMESTRE={1}, 32 distinct AGLOMERADO codes, ESTADO in {0,1,2,3,4} matching the documented EPH activity-condition coding. usu_hogar_T126.txt: 15,447 rows, 98 columns. Both files' header rows match the variable names documented in EPH_registro_1T2026.pdf for the same quarter. No comparison against any other period was performed; this is a single-quarter retrieval.",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "source_label": "EPH",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0006",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0006",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0006.00c0b7b8",
+        "lim.LAB-EVD-0006.3f4bc6d1",
+        "lim.LAB-EVD-0006.87e52cfc",
+        "lim.LAB-EVD-0006.408852a2"
+      ],
+      "method": "Retrieved directly from INDEC's official price-statistics FTP path (https://www.indec.gob.ar/ftp/cuadros/economia/), confirmed by HTTP GET returning real Content-Length and correct content types; SHA-256 computed locally; CSV parsed with Python's csv module (delimiter ';', latin-1 encoding) to confirm row count, period range, region list, and base-period value. No deflation or real-value computation was performed.",
+      "metric": "Structural file inspection only: row count, period range, region list, base-period index value",
+      "object_ids": [
+        "LAB-OBJ-0025"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "serie_ipc_divisiones.csv",
+            "sha256": "2809f9093513ac68baecb6684a30295e7b90cf124dcb7fbea7e28f0a6c899103"
+          },
+          {
+            "file": "metodologia_ipc_nacional_2019.pdf",
+            "sha256": "46345df4caa5cae987b2f9c26eb1a6444b7572e663dc150cc29ae71c46b3c7d0"
+          }
+        ],
+        "source_id": "LAB-EVD-0006",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/5",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "The exact retrieval URL, HTTP response headers, and SHA-256 values are recorded in reports/lab_a2/IPC-admission.md and metadata/sources/source-admission-result.json. Any party can re-download the same URL and reproduce the identical hash as long as INDEC has not altered the published file.",
+      "result_text": "serie_ipc_divisiones.csv: 14,742 data rows (plus header). Periods 201612 through 202608 inclusive, monthly. Regions present in every period: GBA, Pampeana, Noreste, Noroeste, Cuyo, Patagonia, Nacional (7 regions, all populated with real varying index values from the first retrieved period onward, not NA). NIVEL GENERAL (Codigo '0') = 100 in every region at period 201612, confirming the documented base diciembre 2016=100. No internal base change or gap was observed within the retrieved period range.",
+      "root_ids": [
+        "LAB-ROOT-0006"
+      ],
+      "source_label": "IPC",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0004",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0007",
+      "hypothesis_id": "LAB-HYP-0002",
+      "id": "LAB-EVD-0007",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0007.43075860",
+        "lim.LAB-EVD-0007.f0a288a8",
+        "lim.LAB-EVD-0007.a345547f",
+        "lim.LAB-EVD-0007.2060498c",
+        "lim.LAB-EVD-0007.bdd7ad64"
+      ],
+      "method": "V1's CGI standardized file (read-only) filtered to occupational_category=ASALARIADO/activity_sector=TOTAL_GENERAL for WAGE_BILL and occupational_category=TOTAL/activity_sector=TOTAL_GENERAL for JOB/HOUR, the same filter LAB-A's original LAB-EVD-0002 used (cross-checked: JOB/HOUR YoY figures reproduce LAB-A's reported 36.75pp 2021-Q2 JOB-HOUR divergence to within rounding, 36.74pp here). LABOR's admitted IPC file aggregated to quarterly by simple 3-month mean, no seasonal adjustment. Real WAGE_BILL level computed by dividing nominal by the quarterly IPC index; YoY growth computed on both nominal and real levels using the identical formula for direct comparability. Per LAB-A3 instruction section 4, IPC (LAB-ROOT-0006) is a deflator input in a MEASUREMENT_CHAIN, not a second corroborating Evidence Root; ROOT_IDS records only the one root that actually measures a labour object (CGI, LAB-ROOT-0002); DEFLATOR_ROOT_ID records the deflator separately and explicitly does not count toward the Root Counting Rule.",
+      "metric": "Real WAGE_BILL YoY growth (%) vs JOB YoY growth (%) and HOUR YoY growth (%), same quarters",
+      "object_ids": [
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0025"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "data/standardized/indec_cgi/cgi_jobs_hours_wagebill_quarterly.csv (V1, read-only)",
+            "sha256": "81de3869da95bff185e6a47a9ef4d4dfbee382b5cd169824cdb98eb539d4fa35"
+          },
+          {
+            "file": "serie_ipc_divisiones.csv (LABOR-admitted, LAB-A2)",
+            "sha256": "2809f9093513ac68baecb6684a30295e7b90cf124dcb7fbea7e28f0a6c899103"
+          }
+        ],
+        "source_id": "LAB-EVD-0007",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/6",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0003",
+      "reproducibility": "Exact filter conditions, formula, and input SHA-256 values (V1 CGI file and LABOR's admitted IPC file) are recorded in reports/lab_a3/cgi-real-wagebill-quarterly.json and reports/lab_a3/LAB-A3-method.md.",
+      "result_text": "Real WAGE_BILL YoY growth is small and volatile (approximately -14.75% to +14.86% across the computable 2018-Q1/2026-Q1 window) and frequently negative (e.g. 2018-Q3 through 2020-Q1, 2023-Q4 through 2024-Q3), in contrast to nominal WAGE_BILL YoY growth, which is large and always positive across the same window (peaking at 234.30% in 2024-Q2). Real WAGE_BILL still diverges from JOB and HOUR growth by more than the pre-registered 1-percentage-point threshold in most quarters (e.g. 2019-Q2: real WAGE_BILL -10.43% vs JOB +1.09% vs HOUR -2.43%), so LAB-HYP-0002's EXPECTED_OBSERVATION (divergence exceeding 1pp in at least one sub-period) is satisfied and its FAILURE_CONDITION is not met, on the real-value measure the hypothesis's own METRIC field specifies. Full quarterly table: reports/lab_a3/cgi-real-wagebill-quarterly.json.",
+      "root_ids": [
+        "LAB-ROOT-0002"
+      ],
+      "source_label": "CGI+IPC",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0008",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0008",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0008.9e331476",
+        "lim.LAB-EVD-0008.3acb86a6",
+        "lim.LAB-EVD-0008.fb0b53ee",
+        "lim.LAB-EVD-0008.04bc06f9"
+      ],
+      "method": "Retrieved EPH 2025-Q1 (EPH_usu_1_Trim_2025_txt.zip) directly from INDEC's official EPH FTP path, confirmed by HTTP HEAD/GET returning real Content-Length before download. Parsed usu_individual_T125.txt and usu_hogar_T125.txt with Python's csv module (delimiter ';', quotechar '\"', latin-1 encoding), same method as LAB-A2's 2026-Q1 inspection. Computed, for both quarters: row/column counts, missingness (blank-value counts) for the ten variables LAB-HYP-0003/LAB-HYP-0004 require (ESTADO, CAT_OCUP, PP07H, P21, PONDERA, PONDIIO, AGLOMERADO, ANO4, TRIMESTRE, CH04), domain values for ESTADO/CAT_OCUP/PP07H, and a column-set diff between the two releases' individual bases. No informality share, income growth, or any other substantive labour-market metric was computed. No weight was applied to any figure.",
+      "metric": "Structural/schema diagnostics only: row/column counts, per-variable missingness, categorical domains, column-set diff between releases",
+      "object_ids": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0008",
+        "LAB-OBJ-0009"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "EPH_usu_1_Trim_2025_txt.zip",
+            "sha256": "1c0070ba5d4d6775bc7de444f9f81bf4b300e3d09fef5635a27a7049cec31f0c"
+          },
+          {
+            "file": "EPH_registro_1T2025.pdf",
+            "sha256": "37aaf157a475638c5317c98ffdeb3a33b23cdc6d467259dedef03902b9259c3b"
+          },
+          {
+            "file": "EPH_usu_1_Trim_2026_txt.zip (LAB-A2)",
+            "sha256": "d9d23945d4b1d3de362e154015fd9abacc76ed641aec6f41a805b809780c0343"
+          }
+        ],
+        "source_id": "LAB-EVD-0008",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/7",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Exact filter/parse code, both quarters' full diagnostics, and the column-set diff are recorded in reports/lab_a2_1/eph-2025q1-2026q1-comparability-diagnostics.json.",
+      "result_text": "2025-Q1: usu_individual_T125.txt 45,425 rows / 235 columns; usu_hogar_T125.txt 15,984 rows / 98 columns; ANO4={2025}, TRIMESTRE={1}, 32 distinct AGLOMERADO codes, ESTADO in {0,1,2,3,4}. 2026-Q1 (re-confirmed): 43,739 rows / 234 columns individual; 15,447 rows / 98 columns hogar. Column-set diff: 2025-Q1's individual base carries one column (CAT_INAC) absent from 2026-Q1's; this is the only difference between the two releases' individual-base schemas, and it is not one of the ten required variables. All ten required variables are present, non-empty-schema, in both releases. PP07H is blank for 55.25% of 2026-Q1 individual rows (by design -- it applies only to a subset of respondents, e.g. not to self-employed or inactive persons), all other required variables are 0% blank in both releases. Full detail: reports/lab_a2_1/eph-2025q1-2026q1-comparability-diagnostics.json.",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "source_label": "EPH",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0005",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0009",
+      "hypothesis_id": "LAB-HYP-0003",
+      "id": "LAB-EVD-0009",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0009.d937129e",
+        "lim.LAB-EVD-0009.19105b73",
+        "lim.LAB-EVD-0009.5c4b5584",
+        "lim.LAB-EVD-0009.b3906504",
+        "lim.LAB-EVD-0009.e30832de"
+      ],
+      "method": "OPERATIONAL_DEFINITION filled at execution time (the hypothesis's own field deferred this to LAB-A2/LAB-A2.1 admission), without altering the hypothesis's registered METRIC/EXPECTED_OBSERVATION/FAILURE_CONDITION/POPULATION/PERIOD. EPH has no reliable common person-level identifier with SIPA/MLER, so a literal cross-source record match is not attempted (that would itself require an ungoverned equivalence). Instead, 'REGISTERED_EMPLOYMENT-mapped source category' is operationalized using EPH's own internal administrative-registration proxy, PP07H ('Por ese trabajo tiene descuento jubilatorio?', confirmed from EPH_registro_1T2026.pdf: 1=Si, 2=No), which is asked only of wage/salary earners (CAT_OCUP==3) among the employed (ESTADO==1); '0' (not applicable, other occupational categories, confirmed by inspection) and blank (not employed) are excluded, not imputed. Population: CAT_OCUP==3 & ESTADO==1 & PP07H in {1,2}, weighted by PONDERA. Weighted 'unregistered' share = weighted count(PP07H==2) / weighted count(PP07H in {1,2}), computed separately for 2025-Q1 and 2026-Q1; the shift between them is compared to the pre-registered 5-percentage-point threshold.",
+      "metric": "Weighted share of wage/salary-earning employed persons for whom no pension-fund (jubilatorio) deduction is reported (PP07H==2), 2025-Q1 vs. 2026-Q1",
+      "object_ids": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "EPH_usu_1_Trim_2025_txt.zip",
+            "sha256": "1c0070ba5d4d6775bc7de444f9f81bf4b300e3d09fef5635a27a7049cec31f0c"
+          },
+          {
+            "file": "EPH_usu_1_Trim_2026_txt.zip",
+            "sha256": "d9d23945d4b1d3de362e154015fd9abacc76ed641aec6f41a805b809780c0343"
+          }
+        ],
+        "source_id": "LAB-EVD-0009",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/8",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0004",
+      "reproducibility": "Exact filter and PONDERA-weighted formula recorded in reports/lab_a3_1/LAB-A3.1-method.md and reports/lab_a3_1/eph-hyp0003-registration-proxy.json.",
+      "result_text": "2025-Q1: 14,627 wage/salary earners (unweighted), weighted unregistered share 36.29% (weighted population 9,633,463; unregistered 3,495,931). 2026-Q1: 13,938 wage/salary earners (unweighted), weighted unregistered share 37.90% (weighted population 9,669,168; unregistered 3,664,820). Shift: +1.61 percentage points, within the pre-registered 5-percentage-point threshold. Full detail: reports/lab_a3_1/eph-hyp0003-registration-proxy.json.",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "source_label": "EPH",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0006",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0010",
+      "hypothesis_id": "LAB-HYP-0004",
+      "id": "LAB-EVD-0010",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0010.5a42ef05",
+        "lim.LAB-EVD-0010.b722432d",
+        "lim.LAB-EVD-0010.afcb6366",
+        "lim.LAB-EVD-0010.7717229e",
+        "lim.LAB-EVD-0010.6d6e3f57"
+      ],
+      "method": "OPERATIONAL_DEFINITION filled at execution time without altering the hypothesis's registered fields. Population: employed persons (ESTADO==1) with PONDIIO>0 (excludes -9/non-response by construction, confirmed by inspection: PONDIIO==0 exactly where P21==-9). Weighted mean P21 computed with PONDIIO as weight (EPH's own income-specific weight), for 2025-Q1 and 2026-Q1 separately. Quarterly IPC computed as the mean of the 3 within-quarter monthly Nacional/NIVEL GENERAL values (identical method to LAB-A3's CGI deflation). Real mean P21 = nominal / quarterly IPC. Nominal and real growth both computed as simple 2-point ratios (2026-Q1 vs 2025-Q1) using the identical formula, per LAB-A3.1 instruction section 3. IPC (LAB-ROOT-0006) is recorded as DEFLATOR_ROOT_ID, not included in ROOT_IDS, and does not count toward the Root Counting Rule.",
+      "metric": "Nominal vs. real (IPC-deflated) growth of weighted mean P21 (labour income from main occupation), 2025-Q1 to 2026-Q1",
+      "object_ids": [
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0025"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "EPH_usu_1_Trim_2025_txt.zip",
+            "sha256": "1c0070ba5d4d6775bc7de444f9f81bf4b300e3d09fef5635a27a7049cec31f0c"
+          },
+          {
+            "file": "EPH_usu_1_Trim_2026_txt.zip",
+            "sha256": "d9d23945d4b1d3de362e154015fd9abacc76ed641aec6f41a805b809780c0343"
+          },
+          {
+            "file": "serie_ipc_divisiones.csv (LABOR-admitted, LAB-A2)",
+            "sha256": "2809f9093513ac68baecb6684a30295e7b90cf124dcb7fbea7e28f0a6c899103"
+          }
+        ],
+        "source_id": "LAB-EVD-0010",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/9",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0005",
+      "reproducibility": "Exact filter, weighting, and formula recorded in reports/lab_a3_1/LAB-A3.1-method.md and reports/lab_a3_1/eph-hyp0004-real-income-growth.json.",
+      "result_text": "Weighted mean P21: ARS 794,253 (2025-Q1) -> ARS 1,076,056 (2026-Q1), nominal growth +35.48%. Quarterly IPC (Nacional, NIVEL GENERAL): 8,090.14 (2025-Q1 mean of Jan/Feb/Mar) -> 10,734.91 (2026-Q1 mean of Jan/Feb/Mar). Real mean P21 (deflated): 98.18 -> 100.24 (index units), real growth +2.10%. Gap between nominal and real growth: 33.38 percentage points, far exceeding the pre-registered 1-percentage-point threshold. Full detail: reports/lab_a3_1/eph-hyp0004-real-income-growth.json.",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "source_label": "EPH+IPC",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0011",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0011",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0011.e9ceed19",
+        "lim.LAB-EVD-0011.7e14757d",
+        "lim.LAB-EVD-0011.2a63850a",
+        "lim.LAB-EVD-0011.e23f3a74"
+      ],
+      "method": "LAB-B instruction section 1/6: inspected EPH's already-admitted record layout (EPH_registro_1T2026.pdf) and both admitted quarters' individual base for variable capability relevant to Regime B objects, without executing any hypothesis or creating any substantive claim. Found PP05I ('En los ultimos 3 meses, por este trabajo, realizo aportes como... 1=monotributista, 2=monotributista social, 3=autonomo/caja provincial o profesional, 4=ninguno de ellos'). Domain inspected in both quarters: coded '0' (not applicable) predominantly for CAT_OCUP==3 (wage/salary earners, for whom the question is not asked); valid responses (1-4) occur predominantly for CAT_OCUP in {1,2} (employer, self-employed/'cuenta propia').",
+      "metric": "Variable capability only: does EPH carry a self-reported tax-contribution-type field usable as a partial, non-administrative proxy for LEGAL_FORM/TAX_REGISTRATION for independent workers? No share, rate, or trend was computed.",
+      "object_ids": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "EPH_usu_1_Trim_2025_txt.zip",
+            "sha256": "1c0070ba5d4d6775bc7de444f9f81bf4b300e3d09fef5635a27a7049cec31f0c"
+          },
+          {
+            "file": "EPH_usu_1_Trim_2026_txt.zip",
+            "sha256": "d9d23945d4b1d3de362e154015fd9abacc76ed641aec6f41a805b809780c0343"
+          }
+        ],
+        "source_id": "LAB-EVD-0011",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/10",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Variable name, coding, and domain counts recorded in reports/lab_b/LAB-B-source-capability.md.",
+      "result_text": "Yes, PP05I exists and is populated for independent workers (CAT_OCUP in {1,2}) in both admitted quarters. This is a genuine EPH-native capability, distinct from and not a substitute for ARCA's administrative registration record: it is self-reported (subject to recall/reporting error), covers only EPH's surveyed independent-worker population (not all tax-registered persons), and does not carry ARCA's registration-date/category-history detail. LAB-HYP-0005's own registered design (CANDIDATE_SOURCES: ['ARCA'], OPERATIONAL_DEFINITION deferred to ARCA admission) was not modified and was not executed with this variable.",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "source_label": "EPH",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0012",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0012",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0012.6bbd2dc2",
+        "lim.LAB-EVD-0012.3508fbe8",
+        "lim.LAB-EVD-0012.be3e00a9",
+        "lim.LAB-EVD-0012.2c508f41",
+        "lim.LAB-EVD-0012.837ae774"
+      ],
+      "method": "LAB-B instruction section 1/6: inspected EPH's record layout and both admitted quarters for a candidate proxy answering LAB-Q-0010 ('do any observable proxies of economic dependence exist within admissible sources?'). Found PP05F ('Ese negocio/empresa/actividad, trabaja habitualmente para... 6=Un solo cliente? (persona, empresa) / 7=Distintos clientes? (incluye publico en general)'), asked only within the 'Ocupacion principal de los trabajadores independientes' section. Domain inspected in both quarters: coded '0' (not applicable) predominantly for CAT_OCUP==3; valid responses (6=single client, 7=multiple clients) occur predominantly for CAT_OCUP in {1,2}.",
+      "metric": "Variable capability only: does an admitted source carry a candidate observable for counterpart concentration (the example LAB-HYP-0009's own METRIC field names)? No proxy validity, separation rate, or share was computed or asserted.",
+      "object_ids": [
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "EPH_usu_1_Trim_2025_txt.zip",
+            "sha256": "1c0070ba5d4d6775bc7de444f9f81bf4b300e3d09fef5635a27a7049cec31f0c"
+          },
+          {
+            "file": "EPH_usu_1_Trim_2026_txt.zip",
+            "sha256": "d9d23945d4b1d3de362e154015fd9abacc76ed641aec6f41a805b809780c0343"
+          }
+        ],
+        "source_id": "LAB-EVD-0012",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/11",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Variable name, coding, and domain counts recorded in reports/lab_b/LAB-B-source-capability.md.",
+      "result_text": "Yes, PP05F exists and is populated for independent workers/employers (CAT_OCUP in {1,2}) in both admitted quarters, directly distinguishing single-client from multiple-client arrangements. This answers LAB-Q-0010's search question in the narrow sense that a candidate exists; it does NOT answer LAB-Q-0011/LAB-HYP-0009. No LAB-GOV ruling admits PP05F as a valid ECONOMIC_DEPENDENCE proxy (none was created this phase, per LAB-B instruction section 7), and no ground-truth 'known dependent vs. known independent' labels exist in any admitted source against which PP05F's separation rate could be validated -- LAB-HYP-0009's own METRIC requires exactly that validation. A single-client business relationship is also consistent with a genuinely independent contractor (e.g. a single ongoing project or seasonal client), so single-client status alone cannot be presumed to indicate economic dependence.",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "source_label": "EPH",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0013",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0013",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0013.5509f658",
+        "lim.LAB-EVD-0013.e9d3f79d",
+        "lim.LAB-EVD-0013.a69d939d",
+        "lim.LAB-EVD-0013.a78ea6d6"
+      ],
+      "method": "Retrieved three vintages of ARCA's official 'Boletin Anual de Seguridad Social' directly from ARCA's own 'Estadistica tributaria' portal (https://www.afip.gob.ar/institucional/estudios/, branded ARCA; the 2025 file downloaded via openpyxl, the 2020/2016 files via xlrd), confirmed via real HTTP Content-Length before download. Inspected 'Cuadro 1' (Cantidad de aportantes y cotizantes segun relacion laboral) in all three files and cross-checked the table's own published formula: Cotizantes totales al SIPA = Cotizantes autonomos + Cotizantes dependientes + Cotizantes monotributistas - Cotizantes mixtos. Verified this formula reproduces the published total exactly in all three vintages (e.g. Dec-2025: 787595+5821228+2428877-43059=8994641, matching the published 8,994,641). No labour-market or tax-registration trend, share, or rate was computed; only structural/formula verification was performed.",
+      "metric": "Structural verification only: does the retrieved table's own formula reproduce its own published totals, in every retrieved vintage?",
+      "object_ids": [
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0026"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "boletin-seg-soc-2025-12.xlsx",
+            "sha256": "29cdf06cd0043df4bc8e1ce1e594c2fb6da0b6f80d5cc39769300a0abb0b5501"
+          },
+          {
+            "file": "boletin-seg-soc-2020.xls",
+            "sha256": "59861aeb57b4eacd5829bda6f8db1df26fbd8a2e42b361328175c2a5398a14e7"
+          },
+          {
+            "file": "boletin-seg-soc-2016-12.xls",
+            "sha256": "fa3a39630f9ae2e3511beb6f0341c8b08cc431961396f8b0fe04037638392bae"
+          }
+        ],
+        "source_id": "LAB-EVD-0013",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/12",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Exact retrieval URLs, hashes, and formula cross-check recorded in reports/lab_b1/LAB-B1-ARCA-admission.md.",
+      "result_text": "Yes, in all three vintages (Dec-2016, Dec-2020, Dec-2025), the formula reproduces the published 'Cotizantes totales al SIPA' figure exactly. Confirmed category counts present and well-formed: Dec-2016 (Autonomos 523,855; Dependientes 6,254,941; Monotributistas 1,678,677; Mixtos 41,726); Dec-2020 (Autonomos 810,234; Dependientes 5,245,931; Monotributistas 1,887,224; Mixtos 44,998); Dec-2025 (Autonomos 787,595; Dependientes 5,821,228; Monotributistas 2,428,877; Mixtos 43,059). No share, percentage-point shift, or trend across vintages was computed or characterized as material or immaterial -- that determination is reserved for a future, separately authorized execution phase.",
+      "root_ids": [
+        "LAB-ROOT-0007"
+      ],
+      "source_label": "ARCA",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0014",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0014",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0014.f17ea246",
+        "lim.LAB-EVD-0014.c3e5ab65",
+        "lim.LAB-EVD-0014.3888aa20"
+      ],
+      "method": "Lineage/provenance inspection per LAB-B1 instruction section 4 (GOV-009 discipline): read the retrieved 2025 workbook's own table-of-contents ('Indice') sheet in full. Found that 34 of its 38 sheets (Cuadro 2.1 through Cuadro 6.3) are explicitly labeled 'Informacion SIPA' in their own titles (e.g. 'Empleadores segun sector de actividad. Informacion SIPA.'), confirming this ARCA publication substantially re-publishes SIPA-sourced statistics under its own cover, not just the two rows already flagged in LAB-EVD-0013/LAB-ROOT-0007. Only Cuadro 1's Autonomo/Monotributo rows, and Cuadro 7-10 (Recaudacion/distribution amounts by Seguridad Social concept, not inspected in detail this phase), are not labeled as SIPA-sourced.",
+      "metric": "Provenance mapping only: which tables in the retrieved ARCA publication are SIPA-derived republications versus genuinely ARCA-native content?",
+      "object_ids": [
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0026"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "boletin-seg-soc-2025-12.xlsx",
+            "sha256": "29cdf06cd0043df4bc8e1ce1e594c2fb6da0b6f80d5cc39769300a0abb0b5501"
+          }
+        ],
+        "source_id": "LAB-EVD-0014",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/13",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Full sheet-title listing recorded in reports/lab_b1/LAB-B1-lineage-audit.md.",
+      "result_text": "34 of 38 sheets in the 2025 workbook (Cuadro 2.1-6.3) are explicitly self-labeled 'Informacion SIPA' -- these are SIPA data, not new ARCA evidence, and were not admitted into LAB-ROOT-0007's scope. Only Cuadro 1's Cotizantes Autonomos and Cotizantes Monotributistas rows (this admission's actual scope) and Cuadro 7-10 (Recaudacion distribution, not used this phase) are ARCA-native. This confirms the SHARED_COVERAGE_BIAS already recorded on LAB-ROOT-0007 and directly supports LAB-B1's GOV-009 discipline: this ARCA publication is, for most of its content, a downstream republication of the same administrative system as SIPA (LAB-ROOT-0001), not an independent source -- and per GOV-009's own general rule, BESS (also downstream of ANSES/ARCA) must likewise never be treated as independent corroboration of this root's Autonomo/Monotributo figures, since both ultimately trace to the same ARCA/SUSS-collected contribution records.",
+      "root_ids": [
+        "LAB-ROOT-0007"
+      ],
+      "source_label": "ARCA",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0007",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0015",
+      "hypothesis_id": "LAB-HYP-0005",
+      "id": "LAB-EVD-0015",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0015.14c2e1a5",
+        "lim.LAB-EVD-0015.6a29fcdd",
+        "lim.LAB-EVD-0015.e35e7880",
+        "lim.LAB-EVD-0015.c0bd3e9d"
+      ],
+      "method": "Reconstructed LAB-HYP-0005's canonical METRIC/EXPECTED_OBSERVATION/FAILURE_CONDITION/CANDIDATE_SOURCES verbatim from metadata/hypotheses/hypothesis-registry.json (not modified). Cross-checked the METRIC's 'formal dependent registration' term against LAB-ROOT-0007's own FRAME_POPULATION ('Cotizantes autonomos' and 'Cotizantes monotributistas' rows only') and reports/lab_b1/LAB-B1-ARCA-admission.md's LIMITATIONS/PROHIBITED_USE, which explicitly exclude Cuadro 1's 'Cotizantes dependientes' row from this admission's scope (SIPA-derived, republished by ARCA, GOV-009 discipline). Confirmed LAB-HYP-0005's CANDIDATE_SOURCES is ['ARCA'] only, so LAB-ROOT-0001 (SIPA, independently admitted for Regime A but never pre-registered as a candidate source for this Regime B hypothesis) cannot be substituted without amending the hypothesis's own pre-registration, which this phase does not do. As non-adjudicating diagnostic context only, computed the Monotributo share within the two admitted-and-usable Cuadro 1 categories (Monotributo, Autonomo -- not the pre-registered Monotributo/Dependientes pairing), using the raw category counts already recorded in LAB-EVD-0013, across the three admitted vintages.",
+      "metric": "Feasibility check of LAB-HYP-0005's pre-registered METRIC (Monotributo share of Monotributo + formal dependent registration) against LAB-ROOT-0007's admitted-and-usable scope",
+      "object_ids": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0026"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "boletin-seg-soc-2025-12.xlsx",
+            "sha256": "29cdf06cd0043df4bc8e1ce1e594c2fb6da0b6f80d5cc39769300a0abb0b5501"
+          },
+          {
+            "file": "boletin-seg-soc-2020.xls",
+            "sha256": "59861aeb57b4eacd5829bda6f8db1df26fbd8a2e42b361328175c2a5398a14e7"
+          },
+          {
+            "file": "boletin-seg-soc-2016-12.xls",
+            "sha256": "fa3a39630f9ae2e3511beb6f0341c8b08cc431961396f8b0fe04037638392bae"
+          }
+        ],
+        "source_id": "LAB-EVD-0015",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/14",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0008",
+      "reproducibility": "Gap analysis recorded in reports/lab_b2/LAB-B2-method.md; diagnostic arithmetic recorded in reports/lab_b2/LAB-B2-results.md and reports/lab_b2/arca-hyp0005-diagnostic.json. Raw category counts sourced from LAB-EVD-0013 (already recorded; no new retrieval).",
+      "result_text": "NOT COMPUTABLE as pre-registered: the METRIC's 'formal dependent registration' term maps to Cuadro 1's 'Cotizantes dependientes' row, explicitly excluded from LAB-ROOT-0007's admitted scope; no substitute source is authorized (CANDIDATE_SOURCES == ['ARCA'] only, unmodified). Supplementary diagnostic only (does not adjudicate LAB-HYP-0005): within the two admitted-and-usable categories, the Monotributo share of (Monotributo+Autonomo) was 76.22% (Dec-2016; 1,678,677 of 2,202,532), 69.96% (Dec-2020; 1,887,224 of 2,697,458), and 75.51% (Dec-2025; 2,428,877 of 3,216,472) -- a non-monotonic path, net change Dec-2016->Dec-2025 of -0.70 percentage points. Full detail: reports/lab_b2/arca-hyp0005-diagnostic.json.",
+      "root_ids": [
+        "LAB-ROOT-0007"
+      ],
+      "source_label": "ARCA",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0008",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0016",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0016",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0016.83e9f32d",
+        "lim.LAB-EVD-0016.c6840338",
+        "lim.LAB-EVD-0016.bf23783f",
+        "lim.LAB-EVD-0016.1ea3e5e6"
+      ],
+      "method": "Re-examined LAB-Q-0009's canonical IDENTIFICATION_REQUIREMENTS verbatim from metadata/questions/question-ledger.json (not modified): 'ARCA admission', 'A documented mapping of what ARCA fields can and cannot proxy'. Confirmed both were already substantively satisfied by LAB-B1's own deliverables: ARCA admission (LAB-ROOT-0007, ADMITTED_WITH_LIMITATIONS) and a documented mapping (reports/lab_b1/LAB-B1-object-mapping.md's WHAT_IT_IS/WHAT_IT_IS_NOT and its explicit 'What ARCA cannot prove by itself' section). No new field, table, or source was inspected this phase; this evidence formalizes LAB-Q-0009's closure using exactly LAB-B1's own already-recorded findings, without altering them.",
+      "metric": "Whether LAB-Q-0009's two registered IDENTIFICATION_REQUIREMENTS are satisfied by evidence already on record",
+      "object_ids": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0018"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "boletin-seg-soc-2025-12.xlsx",
+            "sha256": "29cdf06cd0043df4bc8e1ce1e594c2fb6da0b6f80d5cc39769300a0abb0b5501"
+          },
+          {
+            "file": "boletin-seg-soc-2020.xls",
+            "sha256": "59861aeb57b4eacd5829bda6f8db1df26fbd8a2e42b361328175c2a5398a14e7"
+          },
+          {
+            "file": "boletin-seg-soc-2016-12.xls",
+            "sha256": "fa3a39630f9ae2e3511beb6f0341c8b08cc431961396f8b0fe04037638392bae"
+          }
+        ],
+        "source_id": "LAB-EVD-0016",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/15",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0009",
+      "reproducibility": "Full mapping already recorded in reports/lab_b1/LAB-B1-object-mapping.md and reports/lab_b1/LAB-B1-ARCA-admission.md; this phase's closure reasoning recorded in reports/lab_b2/LAB-B2-q0009-closure.md.",
+      "result_text": "Both satisfied. (1) ARCA admission: LAB-ROOT-0007, ADMITTED_WITH_LIMITATIONS (LAB-B1). (2) Documented mapping: LAB-B1-object-mapping.md's WHAT_IT_IS ('an aggregate monthly stock count of Seguridad Social contributors by tax/contribution-registration category') / WHAT_IT_IS_NOT, and its explicit list of what ARCA cannot prove (economic dependence, subordination, exclusivity, employer-side intent, real contractorization). Conclusion: from the admitted ARCA evidence, only the formal tax/contribution-registration CATEGORY (LEGAL_FORM/TAX_REGISTRATION, e.g. Monotributo vs. Autonomo) can be validly inferred; nothing about a worker's real economic independence or dependence can be validly inferred from this source alone.",
+      "root_ids": [
+        "LAB-ROOT-0007"
+      ],
+      "source_label": "ARCA",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0007",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0017",
+      "hypothesis_id": "LAB-HYP-0005",
+      "id": "LAB-EVD-0017",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0017.4f547c7e",
+        "lim.LAB-EVD-0017.d2abb96a",
+        "lim.LAB-EVD-0017.78633361",
+        "lim.LAB-EVD-0017.8335156a",
+        "lim.LAB-EVD-0017.753b37f1",
+        "lim.LAB-EVD-0017.8abc9487",
+        "lim.LAB-EVD-0017.0348b39c",
+        "lim.LAB-EVD-0017.4ce19a4c"
+      ],
+      "method": "Executes LAB-HYP-0005 under LAB-GOV-SIPA-SUBSTITUTION-0001's authorization. ARCA Monotributista counts for Dec-2016/2020/2025 reused verbatim from LAB-EVD-0013 (already recorded, no new retrieval). SIPA's already-admitted T.2 monthly series (reports/lab_a/sipa-t2-level-monthly.json, from LAB-EVD-0001/LAB-A) read for ASALARIADO_PRIVADO, ASALARIADO_PUBLICO, and CASAS_PARTICULARES at 2016-12, 2020-12, 2025-12 -- the exact three modalities and three vintages the ruling authorized, no others. Values in that file are in thousands of persons/contributors (reports/lab_a/LAB-A-method.md line 133); converted to units (x1000) before combining with ARCA's unit-level counts. The three SIPA modalities were summed as a LAB-analytical-only denominator component instantiating LAB-HYP-0005's 'formal dependent registration' term -- never asserted as, or used to validate, SIPA's own published TOTAL (GOV-005), per the same disclaimer already established in reports/lab_a/LAB-A-decision-log.md. Cuadro 1's own 'Cotizantes dependientes' row was not used. Monotributo share = ARCA_Monotributista / (ARCA_Monotributista + SIPA_dependent_sum), computed independently for each of the three vintages; percentage-point changes computed pairwise and endpoint-to-endpoint, per LAB-HYP-0005's own EXPECTED_OBSERVATION/FAILURE_CONDITION language ('across the observed period'). Full computation: reports/lab_b2_2/arca-sipa-hyp0005-execution.json.",
+      "metric": "Share of relevant tax registrations classified as Monotributo vs. formal dependent registration (SIPA ASALARIADO_PRIVADO+ASALARIADO_PUBLICO+CASAS_PARTICULARES, LAB-analytical sum), Dec-2016 vs. Dec-2020 vs. Dec-2025 -- LAB-HYP-0005's pre-registered METRIC, instantiated under LAB-GOV-SIPA-SUBSTITUTION-0001",
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "boletin-seg-soc-2025-12.xlsx",
+            "sha256": "29cdf06cd0043df4bc8e1ce1e594c2fb6da0b6f80d5cc39769300a0abb0b5501"
+          },
+          {
+            "file": "boletin-seg-soc-2020.xls",
+            "sha256": "59861aeb57b4eacd5829bda6f8db1df26fbd8a2e42b361328175c2a5398a14e7"
+          },
+          {
+            "file": "boletin-seg-soc-2016-12.xls",
+            "sha256": "fa3a39630f9ae2e3511beb6f0341c8b08cc431961396f8b0fe04037638392bae"
+          },
+          {
+            "file": "trabajoregistrado_2605_estadisticas.xlsx",
+            "sha256": "64fdd3c4dfab02034a3ee85a8515aac4b5bb523a33ca3e3ae8f6359be67b66b1"
+          }
+        ],
+        "source_id": "LAB-EVD-0017",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/16",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0008",
+      "reproducibility": "Exact formula, input values, and computation recorded in reports/lab_b2_2/arca-sipa-hyp0005-execution.json and reports/lab_b2_2/LAB-B2.2-closeout.md.",
+      "result_text": "Monotributo share: 14.60% (Dec-2016; 1,678,677 of 11,498,694), 16.49% (Dec-2020; 1,887,224 of 11,443,898), 19.44% (Dec-2025; 2,428,877 of 12,495,118). Change: +1.89pp (Dec-2016 to Dec-2020), +2.95pp (Dec-2020 to Dec-2025), +4.84pp (Dec-2016 to Dec-2025) -- monotonically increasing across all three vintages, exceeding LAB-HYP-0005's pre-registered 3-percentage-point materiality threshold over the full observed period. EXPECTED_OBSERVATION met; FAILURE_CONDITION not met. Full detail: reports/lab_b2_2/arca-sipa-hyp0005-execution.json.",
+      "root_ids": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0007"
+      ],
+      "source_label": "ARCA+SIPA",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0009",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0018",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0018",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0018.a8672118",
+        "lim.LAB-EVD-0018.0e76943a",
+        "lim.LAB-EVD-0018.ca5c090f",
+        "lim.LAB-EVD-0018.ce7e4126",
+        "lim.LAB-EVD-0018.5942a2ae",
+        "lim.LAB-EVD-0018.9903cf3a"
+      ],
+      "method": "Answers LAB-Q-0012 using exclusively the governed mapping LAB-B3 already produced under LAB-GOV-Q0012-REGULATORY-SOURCES-0001 (reports/lab_b3/LAB-B3-governed-mapping.json), itself built from the eight regulatory sources LAB-B3 admitted (LAB-SRC-0004 through LAB-SRC-0011). No new regulatory source was retrieved or consulted this phase; no OPEN_NOT_RESOLVED cell was completed by inference. SOURCE is recorded as 'REGULATORY' rather than a metadata/sources/source-admission-plan.json SOURCE_CANDIDATE, since that plan/pipeline is specific to statistical-dataset admission (EPH/IPC/ARCA); these are regulatory/legal-text citations, admitted instead via metadata/sources/source-registry.json at LAB-B3. ROOT_IDS is empty for the same reason: no Evidence Root (evidence-root-registry.json) applies to legal-text citations, which are not statistical measurements with a FRAME_POPULATION/GRAIN/INDEPENDENCE_CLASS -- the Root Counting Rule and CONVERGENT/ESTABLISHED_WITHIN_SCOPE eligibility do not apply to this claim shape. INPUT_HASH pins LABOR's own two already-committed LAB-B3 artifacts (the governed mapping and its source table) rather than an external raw file, since the underlying evidence is regulatory text already transcribed into those artifacts, not a downloadable dataset file.",
+      "metric": "Distribution of tax/pension obligations, labour-law protections, and social-security coverage across three observable registration categories (TRABAJADOR_REGISTRADO_DEPENDIENTE, MONOTRIBUTO_REGISTRATION, AUTONOMOS_REGISTRATION), per LAB-Q-0012's own TEXT, read directly from the LAB-B3 governed mapping",
+      "object_ids": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0026"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "reports/lab_b3/LAB-B3-governed-mapping.json",
+            "sha256": "767ccf014b3a0cb540240ef6389a5c66c07b9da2d5a8a04642fb3393476ecf65"
+          },
+          {
+            "file": "reports/lab_b3/LAB-B3-regulatory-sources.json",
+            "sha256": "fff4cd1af50e5f17d5ab2c0bc892419b126f024a05bf4338b5cb6251cc947a20"
+          }
+        ],
+        "source_id": "LAB-EVD-0018",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/17",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0012",
+      "reproducibility": "Full per-cell breakdown, tally, and adjudication rationale recorded in reports/lab_b3_1/LAB-B3.1-q0012-result.json and reports/lab_b3_1/LAB-B3.1-closeout.md.",
+      "result_text": "19 mapped cells across the three categories: 11 ESTABLISHED, 3 PARTIALLY_ESTABLISHED, 5 OPEN_NOT_RESOLVED. TRABAJADOR_REGISTRADO_DEPENDIENTE: tax/pension obligations ESTABLISHED; labour-law protections PARTIALLY_ESTABLISHED (LCT confirmed as the governing regime, not catalogued article-by-article); obra social ESTABLISHED (obligatory), ART ESTABLISHED (obligatory), asignaciones familiares ESTABLISHED, seguro de desempleo PARTIALLY_ESTABLISHED. MONOTRIBUTO_REGISTRATION: tax/pension obligations ESTABLISHED (cuota unica bundles a SIPA component); labour-law protections OPEN_NOT_RESOLVED; obra social ESTABLISHED (bundled in the cuota), jubilacion/SIPA ESTABLISHED (reduced, PBU-eligible), ART OPEN_NOT_RESOLVED, seguro de desempleo OPEN_NOT_RESOLVED, asignaciones familiares OPEN_NOT_RESOLVED. AUTONOMOS_REGISTRATION: tax/pension obligations ESTABLISHED; labour-law protections OPEN_NOT_RESOLVED; jubilacion/SIPA ESTABLISHED (ARCA's own quote: same prestaciones as dependiente), obra social PARTIALLY_ESTABLISHED (not an obligatory beneficiary under Ley 23.660 Art. 8), asignaciones familiares ESTABLISHED (explicit exclusion, ARCA's own quote), ART ESTABLISHED (not obligatory, incorporable only by decree). Full detail: reports/lab_b3_1/LAB-B3.1-q0012-result.json.",
+      "root_ids": [],
+      "source_label": "REGULATORY",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0010",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0019",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0019",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0019.f7e04ae9",
+        "lim.LAB-EVD-0019.1458be35",
+        "lim.LAB-EVD-0019.7e14757d",
+        "lim.LAB-EVD-0019.71947793",
+        "lim.LAB-EVD-0019.fb4e1a95",
+        "lim.LAB-EVD-0019.292da33d"
+      ],
+      "method": "Formalizes LAB-Q-0010's already-recorded answer into a claim, mirroring LAB-Q-0009's LAB-CLM-0008 closure pattern. No new research was performed and PP05F was not further validated: this evidence re-states, without alteration, the capability finding LAB-B already recorded in LAB-EVD-0012 (DIAGNOSTIC_ONLY, unlinked, preserved unchanged) -- the same two already-admitted EPH quarters, the same variable, the same domain counts. This record exists solely to give LAB-Q-0010 a non-diagnostic evidence/claim chain, per Regime B closeout.",
+      "metric": "Whether an observable candidate proxy exists, within sources admissible to ALETHEIA-LABOR, for the counterpart-concentration concept LAB-HYP-0009's own METRIC names -- LAB-Q-0010's own TEXT, verbatim",
+      "object_ids": [
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "EPH_usu_1_Trim_2025_txt.zip",
+            "sha256": "1c0070ba5d4d6775bc7de444f9f81bf4b300e3d09fef5635a27a7049cec31f0c"
+          },
+          {
+            "file": "EPH_usu_1_Trim_2026_txt.zip",
+            "sha256": "d9d23945d4b1d3de362e154015fd9abacc76ed641aec6f41a805b809780c0343"
+          }
+        ],
+        "source_id": "LAB-EVD-0019",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/18",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0010",
+      "reproducibility": "Variable name, coding, and domain counts already recorded in reports/lab_b/LAB-B-source-capability.md and LAB-EVD-0012; this claim's own closure reasoning recorded in reports/regime_b/REGIME-B-closeout.md.",
+      "result_text": "Yes: PP05F ('Ese negocio/empresa/actividad, trabaja habitualmente para... 6=Un solo cliente? / 7=Distintos clientes?') exists and is populated for independent workers/employers (CAT_OCUP in {1,2}) in both admitted EPH quarters (2025-Q1, 2026-Q1), per LAB-EVD-0012. This answers LAB-Q-0010's existence question in the narrow sense pre-registered: a candidate exists. Unvalidated: no LAB-GOV ruling has ever admitted PP05F as a governed ECONOMIC_DEPENDENCE proxy, and none is created here. No ground-truth 'known dependent vs. known independent' labels exist in any admitted source to validate any proxy's separation rate against -- LAB-Q-0011/LAB-HYP-0009's own, separate, already-terminal blocker (NOT_IDENTIFIABLE), unaffected and unchanged by this claim.",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "source_label": "EPH",
+      "status": "RECORDED"
+    },
+    {
       "claim_id": "LAB-CLM-0011",
       "diagnostic_only": false,
       "global_id": "labor/LAB-EVD-0020",
@@ -52,6 +1024,251 @@
         "LAB-ROOT-0007"
       ],
       "source_label": "ARCA",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0012",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0021",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0021",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0021.4953a5d6",
+        "lim.LAB-EVD-0021.c7fb0ab9",
+        "lim.LAB-EVD-0021.d8ebeb39",
+        "lim.LAB-EVD-0021.4dc2c958",
+        "lim.LAB-EVD-0021.a7a44b95",
+        "lim.LAB-EVD-0021.cd8c4790"
+      ],
+      "method": "Answers LAB-Q-0016 as a design-stage pre-mortem: structural reasoning about the minimum-viable Job Posting Observatory design this same phase produced (reports/lab_c0/LAB-C0-observatory-design.json), not an empirical measurement of any actual bias magnitude -- no platform was selected, no data was captured, no external site was investigated. SOURCE is recorded as 'OBSERVATORY_DESIGN' rather than a statistical or regulatory SOURCE_CANDIDATE, since the object of study here is LABOR's own proposed design specification, not an external dataset or legal text. ROOT_IDS is empty: no Evidence Root applies to a not-yet-built, ORIGINAL_ALETHEIA/GENERATED_SOURCE design (metadata/lineage/evidence-root-pre-map.json's own pre-registered entry already notes 'not yet built', 'UNVERIFIED' lineage confidence). INPUT_HASH pins the three self-authored LAB-C0 artifacts (design, GENERATED_SOURCE policy, bias pre-mortem) this evidence is built from.",
+      "metric": "What structural biases (platform selection, sector coverage, self-selection, and related dimensions) a future Job Posting Observatory would carry, per LAB-Q-0016's own TEXT, reasoned from the proposed design's own structural properties",
+      "object_ids": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "reports/lab_c0/LAB-C0-observatory-design.json",
+            "sha256": "8b9385d680863112bc2e4959645224f567e888e41af3acf0174a100c13046cf4"
+          },
+          {
+            "file": "reports/lab_c0/LAB-C0-generated-source-policy.json",
+            "sha256": "db796a74df3f92ead9af057175a4e348f53697d7afcb88d0fc3afee38d4342b1"
+          },
+          {
+            "file": "reports/lab_c0/LAB-C0-q0016-bias-premortem.json",
+            "sha256": "93a40d80a2821f7f31788dde6046bfb8f2ae1701309c367afa969e9ae851665a"
+          }
+        ],
+        "source_id": "LAB-EVD-0021",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/20",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0016",
+      "reproducibility": "Full eight-dimension analysis recorded in reports/lab_c0/LAB-C0-q0016-bias-premortem.json; design specification in reports/lab_c0/LAB-C0-observatory-design.json; closeout reasoning in reports/lab_c0/LAB-C0-closeout.md.",
+      "result_text": "Yes, substantial and structurally unavoidable biases across eight dimensions: platform selection (over-represents the chosen platform's own user base), sector coverage (over-represents white-collar/digital-native postings), geography (skews toward high-connectivity urban areas), seniority (a near-certain skew, direction undetermined), duplicates (same vacancy counted more than once absent a stable platform ID), posting persistence (long-lived postings over-represented by snapshot-design construction alone), employer self-selection (only employers who post formally, on a captured platform, are observed at all), and the posting-vs-real-hiring divergence (structurally unresolvable by this design -- LAB-Q-0018's own separate, unresolved question). None of these biases block LAB-Q-0014 itself (a narrower question about what posting text alone can reveal), but all must be disclosed alongside any future LAB-Q-0014 finding. Full per-dimension detail: reports/lab_c0/LAB-C0-q0016-bias-premortem.json.",
+      "root_ids": [],
+      "source_label": "OBSERVATORY_DESIGN",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0022",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0022",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0022.83eb47af",
+        "lim.LAB-EVD-0022.b55b8af8",
+        "lim.LAB-EVD-0022.1c0234f4",
+        "lim.LAB-EVD-0022.967fb92b",
+        "lim.LAB-EVD-0022.a534c49a",
+        "lim.LAB-EVD-0022.42880551"
+      ],
+      "method": "Read-only inspection, on 2026-09-18, of four candidate platforms' own publicly published Terms of Service / Aviso Legal, robots.txt, and (where claimed) API documentation, against LAB-C0's TOS_ROBOTS_API_COMPLIANCE_POLICY, COPYRIGHT_AND_TEXT_RETENTION, and PRIVACY gates (reports/lab_c0/LAB-C0-observatory-design.json), applied as written. No account was created, no login was used, no automated crawl or scrape was run, and no job posting was stored. This is a diagnostic governance/source-admission finding, not evidence toward any labour-market claim, so DIAGNOSTIC_ONLY is true and QUESTION_ID/HYPOTHESIS_ID/CLAIM_ID are null -- it does not answer, and is not linked to, LAB-Q-0014, which remains unexecuted.",
+      "metric": "Whether each candidate platform passes LAB-C0's automation/ToS, robots.txt, official-API, and privacy-fit gates for admission as the Job Posting Observatory's source",
+      "object_ids": [
+        "LAB-OBJ-0019"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "reports/lab_c1/LAB-C1-platform-evaluation.json",
+            "sha256": "6f1aec004fc35086d5ac075ca1856cd7d7ade2fb4640b9787a3fa22ae2539a3b"
+          }
+        ],
+        "source_id": "LAB-EVD-0022",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/21",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Full per-candidate evaluation matrix, comparison table, ruling, and future-reconsideration conditions recorded in reports/lab_c1/LAB-C1-platform-evaluation.json; governance ruling recorded at LAB-GOV-Q0014-PLATFORM-SELECTION-0001; closeout reasoning in reports/lab_c1/LAB-C1-closeout.md.",
+      "result_text": "All four evaluated candidates fail admission. PLATFORM-BUMERAN and PLATFORM-COMPUTRABAJO: HARD_EXCLUDED, each carrying an explicit Terms-of-Service ban on automated access/scraping with no official research-access API alternative. PLATFORM-ZONAJOBS: NOT_INDEPENDENTLY_ADMITTED, folded into Bumeran's exclusion given confirmed shared Navent-Group ownership and a byte-for-byte-equivalent robots.txt, since its own Terms of Service text could not be independently retrieved this block. PLATFORM-CARTELERA-EMPLEO-PUBLICO: NOT_ADMITTED -- no automation ban and CC BY 4.0 content, but its robots.txt disallows the .pdf format carrying most postings, and its postings structurally carry named individuals' DNI numbers, exceeding LAB-C0's incidental-contact-only PRIVACY provision. A separate check of datos.gob.ar found only aggregate labour statistics, no posting microdata (OUT_OF_SCOPE, not evaluated against the gate). Governance ruling: LAB-GOV-Q0014-PLATFORM-SELECTION-0001, NO_ADMISSIBLE_CANDIDATE_FOUND. Full detail: reports/lab_c1/LAB-C1-platform-evaluation.json.",
+      "root_ids": [],
+      "source_label": "PLATFORM_EVALUATION",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": null,
+      "diagnostic_only": true,
+      "global_id": "labor/LAB-EVD-0023",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0023",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0023.780cb154",
+        "lim.LAB-EVD-0023.11223004",
+        "lim.LAB-EVD-0023.b2dfbd0c",
+        "lim.LAB-EVD-0023.09fb2bd0",
+        "lim.LAB-EVD-0023.42880551"
+      ],
+      "method": "Read-only inspection, on 2026-09-18, of four further candidate platforms' own publicly published Terms of Service / User Agreement, robots.txt, and API/feed documentation, against LAB-C0's TOS_ROBOTS_API_COMPLIANCE_POLICY, COPYRIGHT_AND_TEXT_RETENTION, PRIVACY, and COVERAGE/GEOGRAPHIC_FILTER gates (reports/lab_c0/LAB-C0-observatory-design.json), applied as written. For the two candidates with a deliberately public, unauthenticated API/feed (Remote OK, We Work Remotely), a small number of live read-only calls to that same public endpoint were made to check the endpoint's own structured location fields against LAB-C0's GEOGRAPHIC_FILTER -- no job posting was stored, no scraping loop was run, no account was created, no login was used. This is a diagnostic governance/source-admission finding, not evidence toward any labour-market claim, so DIAGNOSTIC_ONLY is true and QUESTION_ID/HYPOTHESIS_ID/CLAIM_ID are null -- it does not answer, and is not linked to, LAB-Q-0014, which remains unexecuted.",
+      "metric": "Whether each candidate platform passes LAB-C0's automation/ToS, robots.txt, official-API, copyright, privacy, and Argentina-coverage gates for admission as the Job Posting Observatory's source",
+      "object_ids": [
+        "LAB-OBJ-0019"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "reports/lab_c1_1/LAB-C1.1-platform-evaluation.json",
+            "sha256": "dedeb4ebb1fc12d64165ede860dc9aacfd30a90daefc67dee1bfdec7bdc4d1f8"
+          }
+        ],
+        "source_id": "LAB-EVD-0023",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/22",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": null,
+      "reproducibility": "Full per-candidate evaluation matrix, comparison table, ruling, recommendation, and limitations recorded in reports/lab_c1_1/LAB-C1.1-platform-evaluation.json; governance ruling recorded at LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001; closeout reasoning in reports/lab_c1_1/LAB-C1.1-closeout.md.",
+      "result_text": "All four evaluated candidates fail admission. PLATFORM-REMOTEOK and PLATFORM-WEWORKREMOTELY: NOT_ADMITTED on COVERAGE alone -- each has the most permissive ToS/robots/API profile of any candidate evaluated in either round, but a live sample (99 and 84 listings respectively) found no meaningful Argentina-specific segment, and We Work Remotely's own structured country-eligibility field would affirmatively exclude Argentina-based candidates on a portion of listings. PLATFORM-INDEED: NOT_ADMITTED -- its historical public Publisher API was permanently discontinued in 2023, leaving only an NDA-gated enterprise sales channel, no admissible access mechanism at all. PLATFORM-LINKEDIN: HARD_EXCLUDED -- explicit Terms-of-Service scraping ban; its Economic Graph Research Program is a competitive, sandboxed, aggregate-only academic pathway, not a currently available or individual-record-supplying mechanism. A supplementary ownership check found Konzerta and Multitrabajos both belong to the already-excluded Navent Group family (LAB-C1) and were not independently re-evaluated. Governance ruling: LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001, NO_ADMISSIBLE_CANDIDATE_FOUND, with a recommendation (not executed) that a future block consider closing LAB-Q-0014 with a documented source-availability limitation. Full detail: reports/lab_c1_1/LAB-C1.1-platform-evaluation.json.",
+      "root_ids": [],
+      "source_label": "PLATFORM_EVALUATION",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0013",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0024",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0024",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0024.5e1a1512",
+        "lim.LAB-EVD-0024.e028f89f",
+        "lim.LAB-EVD-0024.48319fc5",
+        "lim.LAB-EVD-0024.6a85fbb6"
+      ],
+      "method": "Formalizes, as a claim, the already-established outcome of two bounded platform-evaluation rounds (LAB-C1, LAB-C1.1) into the claim-ledger's own terminal lifecycle, without any new research, without capturing any posting, and without weakening or reinterpreting LAB-C0's own design/policy to admit a candidate. No new platform was investigated and no new source was consulted; this evidence only reads LAB-GOV-Q0014-PLATFORM-SELECTION-0001 and LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001's own already-recorded findings.",
+      "metric": "Whether an admissible Job Posting Observatory source -- combining Argentina coverage, Terms-of-Service/robots.txt/API compliance, privacy fit, and reproducibility, per LAB-C0's own design (reports/lab_c0/LAB-C0-observatory-design.json) -- was identified within the two bounded evaluation rounds conducted",
+      "object_ids": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "reports/lab_c1/LAB-C1-platform-evaluation.json",
+            "sha256": "6f1aec004fc35086d5ac075ca1856cd7d7ade2fb4640b9787a3fa22ae2539a3b"
+          },
+          {
+            "file": "reports/lab_c1_1/LAB-C1.1-platform-evaluation.json",
+            "sha256": "dedeb4ebb1fc12d64165ede860dc9aacfd30a90daefc67dee1bfdec7bdc4d1f8"
+          }
+        ],
+        "source_id": "LAB-EVD-0024",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/23",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0014",
+      "reproducibility": "Full per-candidate findings already recorded in reports/lab_c1/LAB-C1-platform-evaluation.json and reports/lab_c1_1/LAB-C1.1-platform-evaluation.json; governance rulings LAB-GOV-Q0014-PLATFORM-SELECTION-0001 and LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001; this claim's own closure reasoning recorded directly in metadata/claims/claim-ledger.json (LAB-CLM-0013).",
+      "result_text": "No admissible candidate was identified within the scope and criteria evaluated. LAB-C1 (four candidates: Bumeran, ZonaJobs, Computrabajo, Cartelera Publica Central de Ofertas de Empleo Publico) and LAB-C1.1 (four further candidates: Remote OK, We Work Remotely, Indeed, LinkedIn Jobs, plus a Konzerta/Multitrabajos ownership check) each independently returned NO_ADMISSIBLE_CANDIDATE_FOUND. Every candidate failed on at least one of LAB-C0's own gates: explicit Terms-of-Service automation/scraping bans with no qualifying research API (Bumeran, Computrabajo, LinkedIn; ZonaJobs folded into Bumeran's exclusion); a robots.txt disallow on the dominant content format combined with a routine-DNI privacy misfit (Cartelera Publica); no admissible access mechanism at all (Indeed, after its public API's 2023 discontinuation); or a clean Terms-of-Service/robots.txt/API profile undermined by a decisive absence of Argentina-specific coverage (Remote OK, We Work Remotely). LAB-C0's design and GENERATED_SOURCE policy were applied exactly as written throughout both rounds and were never redefined, loosened, or adapted to admit a candidate that would otherwise fail. Zero postings were captured in either round; zero scraping and zero API calls for data collection were made against any candidate.",
+      "root_ids": [],
+      "source_label": "PLATFORM_EVALUATION",
+      "status": "RECORDED"
+    },
+    {
+      "claim_id": "LAB-CLM-0014",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0025",
+      "hypothesis_id": null,
+      "id": "LAB-EVD-0025",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0025.861591fd",
+        "lim.LAB-EVD-0025.a29c5142",
+        "lim.LAB-EVD-0025.31c39d05",
+        "lim.LAB-EVD-0025.616ce277",
+        "lim.LAB-EVD-0025.0050ce11"
+      ],
+      "method": "Formalizes, as a claim, an already-established dependency closure: LAB-Q-0018 requires, simultaneously, an admissible JOB_POSTING corpus, an independent source of HIRE events, and a validated comparison/linkage mechanism between them. No new research was conducted, no source or RAW file was read, no posting was captured, and LAB-C0's design/policy were not touched. This evidence reads only artifacts already committed: the posting-side absence from LAB-C1/LAB-C1.1 (and LAB-Q-0014's own closure, LAB-CLM-0013), the HIRE-side absence from LAB-OBJ-0022's own registered status, LAB-SCM-0024 in the source-claim matrix, and LAB-B1's documented absence of any registration-flow (altas/bajas) data, plus the no-person-level-linkage findings already recorded in LAB-CLM-0003 and LAB-CLM-0011. SOURCE is recorded as 'SOURCE_AVAILABILITY_REVIEW' rather than a statistical SOURCE_CANDIDATE, since the object of review is the availability of sources, not an external dataset; ROOT_IDS is empty because no Evidence Root applies to a source-availability finding.",
+      "metric": "Whether the sources admitted or evaluated within this project's scope allow a comparison between descriptions based on published job postings (LAB-OBJ-0019) and descriptions based on real hiring outcomes (LAB-OBJ-0022), as LAB-Q-0018's own TEXT requires",
+      "object_ids": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "reports/lab_c0/LAB-C0-observatory-design.json",
+            "sha256": "8b9385d680863112bc2e4959645224f567e888e41af3acf0174a100c13046cf4"
+          },
+          {
+            "file": "reports/lab_c1/LAB-C1-platform-evaluation.json",
+            "sha256": "6f1aec004fc35086d5ac075ca1856cd7d7ade2fb4640b9787a3fa22ae2539a3b"
+          },
+          {
+            "file": "reports/lab_c1_1/LAB-C1.1-platform-evaluation.json",
+            "sha256": "dedeb4ebb1fc12d64165ede860dc9aacfd30a90daefc67dee1bfdec7bdc4d1f8"
+          },
+          {
+            "file": "reports/lab_b1/LAB-B1-source-discovery.md",
+            "sha256": "8496fd0b46fdcce4de830cdffe78c6837546c76986f0c9ebf0b2cbf84e408213"
+          }
+        ],
+        "source_id": "LAB-EVD-0025",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/24",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0018",
+      "reproducibility": "INPUT_HASH pins the four committed artifacts this evidence reads (LAB-C0 design, LAB-C1 and LAB-C1.1 platform evaluations, LAB-B1 source-discovery report). The hire-side and linkage findings are further traceable to LAB-OBJ-0022 in the object ledger, LAB-SCM-0024 in the source-claim matrix, LAB-CLM-0003, LAB-CLM-0011, and LAB-CLM-0013 in the claim ledger; the closure reasoning is recorded in LAB-CLM-0014.",
+      "result_text": "No. All three simultaneous requirements are unmet within the sources and scope evaluated. (1) Posting side: no admissible JOB_POSTING corpus exists -- LAB-C1 and LAB-C1.1 evaluated eight candidates plus one ownership-check bundle and both ruled NO_ADMISSIBLE_CANDIDATE_FOUND; LAB-Q-0014 was closed INSUFFICIENT_EVIDENCE on that basis (LAB-CLM-0013); zero postings were captured. (2) Hire side: no admitted source observes HIRE events (LAB-OBJ-0022 remains DEFINED_PENDING_SOURCE with no observation mechanism; LAB-SCM-0024 records the Observatory as NOT_SUPPORTED_FOR HIRE; LAB-B1 found no registration-flow (altas/bajas) data in any ARCA publication evaluated, marked SOURCE_NOT_AVAILABLE and not substituted). Employment stocks (EMPLOYMENT_RELATIONSHIP, LAB-OBJ-0003, from SIPA/MLER/ARCA counts) were not reinterpreted as hiring events: HIRE is the transition event, not the resulting stock. (3) Linkage: no validated linkage or common taxonomy connects postings to hires -- no admitted source shares a person-level or employer-level identifier with any other (LAB-CLM-0003, LAB-CLM-0011), and MLER's EMPLOYER/JOB fields are unrealized (GOV-006). The POSTING != VACANCY != HIRE distinctions in the object ledger were preserved throughout; no divergence was measured or estimated.",
+      "root_ids": [],
+      "source_label": "SOURCE_AVAILABILITY_REVIEW",
       "status": "RECORDED"
     }
   ],

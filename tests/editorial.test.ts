@@ -138,7 +138,7 @@ describe("capa editorial de Q-0013", () => {
   });
   it("cambiar el canónico deja obsoleto el registro", () => {
     const c = structuredClone(corpus);
-    c.claims[0]!.scope_statement += " nuevo";
+    c.claims.find((x) => x.id === "LAB-CLM-0011")!.scope_statement += " nuevo";
     const stale = verifyAudit(bundle, c).filter((i) => i.message.includes("OBSOLETA"));
     expect(stale.length).toBeGreaterThan(0);
   });

@@ -25,8 +25,27 @@
     "reports/lab_s/LAB-S2-relation-register.json"
   ],
   "slice": {
-    "note": "M1: un corte vertical. Agregar una pregunta a esta lista extiende el pipeline sin cambiar código; exige revisar los conteos de slice_expected_counts y el pin.",
-    "question_ids": ["LAB-Q-0013"]
+    "note": "Pipeline: las 18 preguntas del corpus congelado. La UI de M1 sigue siendo el corte vertical Q-0013 (editorial + página); no se publican las demás.",
+    "question_ids": [
+      "LAB-Q-0001",
+      "LAB-Q-0002",
+      "LAB-Q-0003",
+      "LAB-Q-0004",
+      "LAB-Q-0005",
+      "LAB-Q-0006",
+      "LAB-Q-0007",
+      "LAB-Q-0008",
+      "LAB-Q-0009",
+      "LAB-Q-0010",
+      "LAB-Q-0011",
+      "LAB-Q-0012",
+      "LAB-Q-0013",
+      "LAB-Q-0014",
+      "LAB-Q-0015",
+      "LAB-Q-0016",
+      "LAB-Q-0017",
+      "LAB-Q-0018"
+    ]
   },
   "corpus_expected_counts": {
     "note": "Contrato del módulo (WEB-0 Data Contract §14), verificado por G-CNT-01 sobre los ledgers vendorizados completos, no solo sobre el corte.",
@@ -65,21 +84,20 @@
     "limitations_questions": 19
   },
   "slice_expected_counts": {
-    "LAB-Q-0013": {
-      "questions": 1,
-      "claims": 1,
-      "hypotheses": 1,
-      "evidence": 1,
-      "evidence_roots": 2,
-      "statistical_objects": 3,
-      "governance_rulings": 1,
-      "episodes": 1,
-      "limitations": { "claim": 5, "question": 1, "evidence": 4 },
-      "blockers": 3,
-      "anchors": 2,
-      "relations": 10,
-      "preserved_results": 2
-    }
+    "note": "Conteos del corpus web generado (las 18 preguntas). La UI publicada sigue siendo Q-0013.",
+    "questions": 18,
+    "claims": 14,
+    "hypotheses": 9,
+    "evidence": 25,
+    "evidence_roots": 7,
+    "statistical_objects": 26,
+    "governance_rulings": 7,
+    "episodes": 1,
+    "limitations": { "claim": 72, "question": 19, "evidence": 119 },
+    "blockers": 3,
+    "anchors": 2,
+    "relations": 34,
+    "preserved_results": 15
   },
   "vocabularies": {
     "claim_lifecycle_state": [
@@ -142,5 +160,12 @@
       ]
     }
   ],
-  "claim_supersessions": []
+  "claim_supersessions": [
+    {
+      "claim_id": "LAB-CLM-0007",
+      "replaced_evidence_id": "LAB-EVD-0015",
+      "superseding_evidence_id": "LAB-EVD-0017",
+      "corpus_quote": "This claim supersedes this record's own prior LAB-B2 finding (INSUFFICIENT_EVIDENCE, preserved in this repository's git history and referenced in LAB-EVD-0015)"
+    }
+  ]
 }

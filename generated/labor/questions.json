@@ -2,6 +2,910 @@
   "entity": "Question",
   "items": [
     {
+      "absent_vs_negative": "OBSERVATION_WITHIN_SCOPE",
+      "answerability": {
+        "answer_kind": "MEASUREMENT",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0001",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-003",
+          "REL-GR-001",
+          "REL-GR-006",
+          "REL-PR-001",
+          "REL-PR-002",
+          "REL-PR-004",
+          "REL-PR-006",
+          "REL-PR-010",
+          "REL-PR-011",
+          "REL-PR-012",
+          "REL-PR-013"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0001.3d0fbbec",
+          "lim.LAB-CLM-0001.4955abda",
+          "lim.LAB-CLM-0001.e8f57c2b",
+          "lim.LAB-Q-0001.7ad48d25"
+        ]
+      },
+      "canonical_text": "How did the composition of registered/administratively visible employment change over time, by observable category (person, job, employment relationship), within the universes each admitted source actually covers?",
+      "canonical_title": "Composition of registered employment by observable category",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0001"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0001",
+      "hypothesis_ids": [
+        "LAB-HYP-0001"
+      ],
+      "id": "LAB-Q-0001",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "V1 Inheritance Verification Gate PASS for SIPA/CGI/MLER"
+      ],
+      "known_breaks": [],
+      "ledger_status": "OPERATIONALIZABLE_NOW",
+      "limitation_ids": [
+        "lim.LAB-Q-0001.7ad48d25"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0006"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0001",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "A",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0001"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "OBSERVATION_WITHIN_SCOPE",
+      "answerability": {
+        "answer_kind": "MEASUREMENT",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0002",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-002",
+          "REL-PR-001",
+          "REL-PR-002",
+          "REL-PR-004",
+          "REL-PR-010",
+          "REL-PR-011",
+          "REL-PR-013"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0003.0c2f671a",
+          "lim.LAB-CLM-0003.574f545d",
+          "lim.LAB-CLM-0003.6e1d6e9c",
+          "lim.LAB-CLM-0003.963c8f8a",
+          "lim.LAB-Q-0002.f5cf49c7"
+        ]
+      },
+      "canonical_text": "What differences appear between PERSON, JOB, and EMPLOYMENT_RELATIONSHIP counts when more than one administrative source maps the same underlying activity?",
+      "canonical_title": "Cross-source divergence on persons, jobs, and relationships",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0003"
+      ],
+      "class": "COMPARATIVE",
+      "global_id": "labor/LAB-Q-0002",
+      "hypothesis_ids": [
+        "LAB-HYP-0007"
+      ],
+      "id": "LAB-Q-0002",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "V1 Inheritance Verification Gate PASS for SIPA and MLER"
+      ],
+      "known_breaks": [],
+      "ledger_status": "OPERATIONALIZABLE_NOW",
+      "limitation_ids": [
+        "lim.LAB-Q-0002.f5cf49c7"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0003"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0002",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "A",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0003"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "OBSERVATION_WITHIN_SCOPE",
+      "answerability": {
+        "answer_kind": "MEASUREMENT",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0003",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-GR-006",
+          "REL-PR-001",
+          "REL-PR-002",
+          "REL-PR-010",
+          "REL-PR-011",
+          "REL-PR-012",
+          "REL-PR-013"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0002.224e84d7",
+          "lim.LAB-CLM-0002.30430044",
+          "lim.LAB-CLM-0002.51d64b72",
+          "lim.LAB-CLM-0002.6fda70bb",
+          "lim.LAB-CLM-0004.2b694b4c",
+          "lim.LAB-CLM-0004.3b6242ca",
+          "lim.LAB-CLM-0004.ac34b8a8",
+          "lim.LAB-CLM-0004.bffbbe52",
+          "lim.LAB-CLM-0004.cf8328c7",
+          "lim.LAB-Q-0003.dbfaddf2"
+        ]
+      },
+      "canonical_text": "How did HOUR, JOB, and WAGE_BILL evolve within the national-accounts universe each is observed in?",
+      "canonical_title": "Evolution of hours, jobs, and wage bill",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0002",
+        "LAB-CLM-0004"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0003",
+      "hypothesis_ids": [
+        "LAB-HYP-0002"
+      ],
+      "id": "LAB-Q-0003",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "V1 Inheritance Verification Gate PASS for CGI"
+      ],
+      "known_breaks": [],
+      "ledger_status": "OPERATIONALIZABLE_NOW",
+      "limitation_ids": [
+        "lim.LAB-Q-0003.dbfaddf2"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0003",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "A",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0002",
+          "LAB-CLM-0004"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "NEGATIVE_WITHIN_SCOPE",
+      "answerability": {
+        "answer_kind": "MEASUREMENT",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0004",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-GR-002",
+          "REL-GR-006",
+          "REL-PR-001",
+          "REL-PR-004",
+          "REL-PR-009",
+          "REL-PR-010",
+          "REL-PR-011",
+          "REL-PR-012",
+          "REL-PR-013"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0005.2a2c293b",
+          "lim.LAB-CLM-0005.985cc1b1",
+          "lim.LAB-CLM-0005.ece127af",
+          "lim.LAB-Q-0004.990ecc68",
+          "lim.LAB-Q-0004.cc1c5123"
+        ]
+      },
+      "canonical_text": "How does the overall composition of observable work change once EPH's household-survey universe is incorporated alongside registration-based sources?",
+      "canonical_title": "Total composition once EPH is incorporated",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0005"
+      ],
+      "class": "COMPARATIVE",
+      "global_id": "labor/LAB-Q-0004",
+      "hypothesis_ids": [
+        "LAB-HYP-0003"
+      ],
+      "id": "LAB-Q-0004",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "EPH admission (LAB-A2)",
+        "LAB-GOV-EPH-* comparability ruling"
+      ],
+      "known_breaks": [
+        "EPH 2015-2016 discontinuity",
+        "EPH 2020 COVID collection-mode change",
+        "EPH 2023-Q4 informal-labour questionnaire change"
+      ],
+      "ledger_status": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+      "limitation_ids": [
+        "lim.LAB-Q-0004.990ecc68",
+        "lim.LAB-Q-0004.cc1c5123"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0008"
+      ],
+      "preserved_result_ids": [
+        "KEEP-001"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0004",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "A",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0005"
+        ],
+        "value": "REFUTED_WITHIN_SCOPE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "OBSERVATION_WITHIN_SCOPE",
+      "answerability": {
+        "answer_kind": "MEASUREMENT",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0005",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-GR-002",
+          "REL-GR-006",
+          "REL-PR-001",
+          "REL-PR-004",
+          "REL-PR-010",
+          "REL-PR-011",
+          "REL-PR-012",
+          "REL-PR-013"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0006.755b7143",
+          "lim.LAB-CLM-0006.a116b2f6",
+          "lim.LAB-CLM-0006.d399abb9",
+          "lim.LAB-CLM-0006.e6a6bcdf",
+          "lim.LAB-Q-0005.aacb81e3"
+        ]
+      },
+      "canonical_text": "How did nominal and real labour income evolve within windows that are internally comparable given registered breaks?",
+      "canonical_title": "Nominal vs real labour income within comparable windows",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0006"
+      ],
+      "class": "COMPARATIVE",
+      "global_id": "labor/LAB-Q-0005",
+      "hypothesis_ids": [
+        "LAB-HYP-0004"
+      ],
+      "id": "LAB-Q-0005",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "EPH admission for nominal income",
+        "IPC admission as deflator",
+        "LAB-GOV-IPC-* comparability windows"
+      ],
+      "known_breaks": [
+        "IPC 2007-2015 comparability window",
+        "IPC 2016-2017 restart",
+        "EPH 2024-Q4 income-measurement questionnaire change"
+      ],
+      "ledger_status": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+      "limitation_ids": [
+        "lim.LAB-Q-0005.aacb81e3"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0010"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0005",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/4",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "A",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0006"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "NOT_ANSWERABLE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0006",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-PR-004",
+          "REL-PR-008"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-Q-0006.043b7b55"
+        ]
+      },
+      "canonical_text": "Which dimensions of visible work diverge between administrative registration sources and household-survey sources, once both are admitted?",
+      "canonical_title": "Divergence between administrative sources and household surveys",
+      "causal_identification_status": null,
+      "claim_ids": [],
+      "class": "COMPARATIVE",
+      "global_id": "labor/LAB-Q-0006",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0006",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "EPH admission"
+      ],
+      "known_breaks": [
+        "EPH 2015-2016 discontinuity",
+        "EPH 2020 COVID collection-mode change"
+      ],
+      "ledger_status": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+      "limitation_ids": [
+        "lim.LAB-Q-0006.043b7b55"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0008"
+      ],
+      "preserved_result_ids": [
+        "KEEP-008"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0006",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/5",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "A",
+      "resolution": {
+        "basis": "REGIME_CLOSEOUT",
+        "basis_refs": [
+          "KEEP-008"
+        ],
+        "value": "BLOCKED_BY_DESIGN",
+        "vocabulary": "DOCUMENTED_REGIME_A_CLOSEOUT_LABEL_NOT_A_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "NOT_ANSWERABLE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0007",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-PR-008"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-Q-0007.af3a4e7f"
+        ]
+      },
+      "canonical_text": "Does a specific formalization policy intervention have a causal effect on the share of REGISTERED_EMPLOYMENT within the observable universe?",
+      "canonical_title": "Does formalization policy causally affect registered-employment share",
+      "causal_identification_status": "NO_DESIGN",
+      "claim_ids": [],
+      "class": "CAUSAL",
+      "global_id": "labor/LAB-Q-0007",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0007",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "A specific policy intervention with plausible exogenous variation",
+        "A candidate identification design (LAB-A phase or later)"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_YET_OPERATIONAL",
+      "limitation_ids": [
+        "lim.LAB-Q-0007.af3a4e7f"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0006"
+      ],
+      "preserved_result_ids": [
+        "KEEP-009"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0007",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/6",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "A",
+      "resolution": {
+        "basis": "REGIME_CLOSEOUT",
+        "basis_refs": [
+          "KEEP-009"
+        ],
+        "value": "OUTSIDE_LAB_A",
+        "vocabulary": "DOCUMENTED_REGIME_A_CLOSEOUT_LABEL_NOT_A_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "OBSERVATION_WITHIN_SCOPE",
+      "answerability": {
+        "answer_kind": "MEASUREMENT",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0008",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-002",
+          "REL-CONF-003",
+          "REL-GR-001",
+          "REL-GR-005",
+          "REL-PR-001",
+          "REL-PR-002",
+          "REL-PR-005",
+          "REL-PR-006",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0007.0348b39c",
+          "lim.LAB-CLM-0007.3804a77b",
+          "lim.LAB-CLM-0007.470b1737",
+          "lim.LAB-CLM-0007.4ce19a4c",
+          "lim.LAB-CLM-0007.558689f0",
+          "lim.LAB-CLM-0007.6fafa2cd",
+          "lim.LAB-CLM-0007.8335156a",
+          "lim.LAB-CLM-0007.c0e1c8ac",
+          "lim.LAB-Q-0008.640449bb"
+        ]
+      },
+      "canonical_text": "How did the distribution of tax/registration categories relevant to labour provision (e.g. monotributo vs formal dependent registration) change over time?",
+      "canonical_title": "Change in the distribution of relevant tax registrations",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0007"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0008",
+      "hypothesis_ids": [
+        "LAB-HYP-0005"
+      ],
+      "id": "LAB-Q-0008",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "ARCA admission"
+      ],
+      "known_breaks": [],
+      "ledger_status": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+      "limitation_ids": [
+        "lim.LAB-Q-0008.640449bb"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0008",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/7",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "B",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0007"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+      "answerability": {
+        "answer_kind": "DOCUMENTARY_FINDING",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0009",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-002",
+          "REL-PR-001",
+          "REL-PR-005",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0008.83e9f32d",
+          "lim.LAB-CLM-0008.a8dd1ad5",
+          "lim.LAB-CLM-0008.bf23783f",
+          "lim.LAB-CLM-0008.c6840338",
+          "lim.LAB-Q-0009.b16fb31f"
+        ]
+      },
+      "canonical_text": "Given ARCA-style tax/registration records, what can and cannot be validly inferred about a worker's real economic independence or dependence?",
+      "canonical_title": "What can and cannot be inferred about economic independence from tax registrations",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0008"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0009",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0009",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "ARCA admission",
+        "A documented mapping of what ARCA fields can and cannot proxy"
+      ],
+      "known_breaks": [],
+      "ledger_status": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+      "limitation_ids": [
+        "lim.LAB-Q-0009.b16fb31f"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0018"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0009",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/8",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "B",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0008"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+      "answerability": {
+        "answer_kind": "DOCUMENTARY_FINDING",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0010",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-GR-002",
+          "REL-GR-005",
+          "REL-PR-001",
+          "REL-PR-002",
+          "REL-PR-005",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0010.1458be35",
+          "lim.LAB-CLM-0010.2c508f41",
+          "lim.LAB-CLM-0010.38c96125",
+          "lim.LAB-CLM-0010.f7e04ae9",
+          "lim.LAB-CLM-0010.f918d766",
+          "lim.LAB-CLM-0010.fd9812ee",
+          "lim.LAB-Q-0010.7e1be138"
+        ]
+      },
+      "canonical_text": "Do any observable proxies of economic dependence exist within sources plausibly admissible to ALETHEIA-LABOR?",
+      "canonical_title": "Observable proxies of economic dependence",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0010"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0010",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0010",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "A candidate proxy definition",
+        "A LAB-GOV ruling admitting that proxy as valid for ECONOMIC_DEPENDENCE"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_YET_OPERATIONAL",
+      "limitation_ids": [
+        "lim.LAB-Q-0010.7e1be138"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0018"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0010",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/9",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "B",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0010"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "NOT_ANSWERABLE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0011",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-002",
+          "REL-PR-005",
+          "REL-PR-008"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-Q-0011.dd57c486"
+        ]
+      },
+      "canonical_text": "Can independent service provision be distinguished from a disguised dependent employment relationship using currently admissible sources?",
+      "canonical_title": "Distinguishing real independent provision from disguised dependent employment",
+      "causal_identification_status": null,
+      "claim_ids": [],
+      "class": "COMPARATIVE",
+      "global_id": "labor/LAB-Q-0011",
+      "hypothesis_ids": [
+        "LAB-HYP-0009"
+      ],
+      "id": "LAB-Q-0011",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "A governed proxy from LAB-Q-0010",
+        "Admission of a source capable of observing the underlying arrangement, not just its tax registration"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_IDENTIFIABLE",
+      "limitation_ids": [
+        "lim.LAB-Q-0011.dd57c486"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "preserved_result_ids": [
+        "KEEP-005"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0011",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/10",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "B",
+      "resolution": {
+        "basis": "QUESTION_LEDGER",
+        "basis_refs": [
+          "LAB-Q-0011"
+        ],
+        "value": "NOT_IDENTIFIABLE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS"
+      }
+    },
+    {
+      "absent_vs_negative": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+      "answerability": {
+        "answer_kind": "DOCUMENTARY_FINDING",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0012",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-002",
+          "REL-PR-001",
+          "REL-PR-005",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0009.0e76943a",
+          "lim.LAB-CLM-0009.2f167e2c",
+          "lim.LAB-CLM-0009.3a433329",
+          "lim.LAB-CLM-0009.5942a2ae",
+          "lim.LAB-CLM-0009.7d511bfc",
+          "lim.LAB-CLM-0009.9903cf3a",
+          "lim.LAB-CLM-0009.ce7e4126",
+          "lim.LAB-Q-0012.4a31045f"
+        ]
+      },
+      "canonical_text": "How are protections and obligations distributed across the labour-provision modalities that are observable (legal form, registration category)?",
+      "canonical_title": "Distribution of protections and obligations across observable modalities",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0009"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0012",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0012",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "ARCA admission"
+      ],
+      "known_breaks": [],
+      "ledger_status": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+      "limitation_ids": [
+        "lim.LAB-Q-0012.4a31045f"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0017"
+      ],
+      "preserved_result_ids": [
+        "KEEP-011",
+        "KEEP-012",
+        "KEEP-013",
+        "KEEP-014",
+        "KEEP-015"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0012",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/11",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "B",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0009"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
       "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
       "answerability": {
         "answer_kind": "ABSENCE",
@@ -76,6 +980,361 @@
         "basis": "CLAIM",
         "basis_refs": [
           "LAB-CLM-0011"
+        ],
+        "value": "INSUFFICIENT_EVIDENCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "ABSENCE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0014",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-001",
+          "REL-GR-003",
+          "REL-PR-001",
+          "REL-PR-003",
+          "REL-PR-007",
+          "REL-PR-008",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0013.1279a859",
+          "lim.LAB-CLM-0013.48319fc5",
+          "lim.LAB-CLM-0013.5dc58398",
+          "lim.LAB-CLM-0013.6da7b5e0",
+          "lim.LAB-CLM-0013.8c548ace",
+          "lim.LAB-CLM-0013.995787ed",
+          "lim.LAB-Q-0014.06f6188b"
+        ]
+      },
+      "canonical_text": "Which dimensions of a recruitment/selection process (number of stages, assessment types, duration) are observable using only public sources?",
+      "canonical_title": "Which dimensions of the selection process are observable with public sources",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0013"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0014",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0014",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "A defined candidate public-source corpus (not built in LAB-0.5)"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_YET_OPERATIONAL",
+      "limitation_ids": [
+        "lim.LAB-Q-0014.06f6188b"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023"
+      ],
+      "preserved_result_ids": [
+        "KEEP-003"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0014",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/13",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "C",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0013"
+        ],
+        "value": "INSUFFICIENT_EVIDENCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "NOT_ANSWERABLE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0015",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-PR-008"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-Q-0015.0ddc926f"
+        ]
+      },
+      "canonical_text": "Can the prevalence of ASSISTIVE, FILTERING, EVALUATIVE, and DECISIONAL AI usage in hiring be estimated for any defined population?",
+      "canonical_title": "Can AI-in-hiring prevalence be estimated by taxonomy category",
+      "causal_identification_status": null,
+      "claim_ids": [],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0015",
+      "hypothesis_ids": [
+        "LAB-HYP-0008"
+      ],
+      "id": "LAB-Q-0015",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "Disclosure requirements or an observable corpus of AI-mediated hiring decisions, neither of which currently exists"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_IDENTIFIABLE",
+      "limitation_ids": [
+        "lim.LAB-Q-0015.0ddc926f"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0024"
+      ],
+      "preserved_result_ids": [
+        "KEEP-006"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0015",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/14",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "C",
+      "resolution": {
+        "basis": "QUESTION_LEDGER",
+        "basis_refs": [
+          "LAB-Q-0015"
+        ],
+        "value": "NOT_IDENTIFIABLE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS"
+      }
+    },
+    {
+      "absent_vs_negative": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+      "answerability": {
+        "answer_kind": "DOCUMENTARY_FINDING",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0016",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-001",
+          "REL-GR-003",
+          "REL-PR-001",
+          "REL-PR-003",
+          "REL-PR-007",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0012.0f40486d",
+          "lim.LAB-CLM-0012.2baa6a78",
+          "lim.LAB-CLM-0012.4103d9db",
+          "lim.LAB-CLM-0012.46012f5e",
+          "lim.LAB-CLM-0012.e28b5dd6",
+          "lim.LAB-CLM-0012.fbf3b34d",
+          "lim.LAB-Q-0016.9d279ab8"
+        ]
+      },
+      "canonical_text": "If ALETHEIA-LABOR eventually builds a Job Posting Observatory, what structural biases (platform selection, sector coverage, self-selection) would it carry?",
+      "canonical_title": "What biases would a future Job Posting Observatory have",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0012"
+      ],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0016",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0016",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "A concrete observatory design proposal (not authorized yet)"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_YET_OPERATIONAL",
+      "limitation_ids": [
+        "lim.LAB-Q-0016.9d279ab8"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020"
+      ],
+      "preserved_result_ids": [],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0016",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/15",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "C",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0012"
+        ],
+        "value": "OBSERVED_IN_SOURCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    },
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "NOT_ANSWERABLE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0017",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-PR-008"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-Q-0017.449aec09"
+        ]
+      },
+      "canonical_text": "Can the prevalence of candidate 'ghosting' (unexplained process abandonment by employers or platforms) be measured at a population level?",
+      "canonical_title": "Can population-level ghosting be measured",
+      "causal_identification_status": null,
+      "claim_ids": [],
+      "class": "DESCRIPTIVE",
+      "global_id": "labor/LAB-Q-0017",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0017",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "A representative candidate-side sampling frame, none of which is known to exist"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_IDENTIFIABLE",
+      "limitation_ids": [
+        "lim.LAB-Q-0017.449aec09"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023"
+      ],
+      "preserved_result_ids": [
+        "KEEP-007"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0017",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/16",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "C",
+      "resolution": {
+        "basis": "QUESTION_LEDGER",
+        "basis_refs": [
+          "LAB-Q-0017"
+        ],
+        "value": "NOT_IDENTIFIABLE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS"
+      }
+    },
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "ABSENCE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0018",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-001",
+          "REL-CONF-003",
+          "REL-GR-003",
+          "REL-GR-004",
+          "REL-PR-001",
+          "REL-PR-003",
+          "REL-PR-006",
+          "REL-PR-007",
+          "REL-PR-008",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0014.183e6815",
+          "lim.LAB-CLM-0014.4b06abf9",
+          "lim.LAB-CLM-0014.5f6be7e0",
+          "lim.LAB-CLM-0014.62e2a158",
+          "lim.LAB-CLM-0014.861591fd",
+          "lim.LAB-CLM-0014.a57d3362",
+          "lim.LAB-CLM-0014.ab81cbce",
+          "lim.LAB-Q-0018.a6fa6f06"
+        ]
+      },
+      "canonical_text": "When both are observable, how do descriptions based on published job postings diverge from descriptions based on real hiring outcomes?",
+      "canonical_title": "Divergence between describing postings and describing real hiring outcomes",
+      "causal_identification_status": null,
+      "claim_ids": [
+        "LAB-CLM-0014"
+      ],
+      "class": "COMPARATIVE",
+      "global_id": "labor/LAB-Q-0018",
+      "hypothesis_ids": [],
+      "id": "LAB-Q-0018",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "A postings corpus and an independent hires-outcome source, neither of which exists yet"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_YET_OPERATIONAL",
+      "limitation_ids": [
+        "lim.LAB-Q-0018.a6fa6f06"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022"
+      ],
+      "preserved_result_ids": [
+        "KEEP-004"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0018",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/17",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "C",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0014"
         ],
         "value": "INSUFFICIENT_EVIDENCE",
         "vocabulary": "CLAIM_LIFECYCLE_STATE"

@@ -67,7 +67,8 @@ const FIXTURES: Fixture[] = [
     name: "cambiar el estado de un claim en generated/",
     gates: ["G-STA-01", "G-GEN-05", "G-GEN-02"],
     mutate: (c) => {
-      c.generated.claims[0]!.epistemic_state = "OBSERVED_IN_SOURCE";
+      const clm = c.generated.claims.find((x) => x.id === "LAB-CLM-0011")!;
+      clm.epistemic_state = "OBSERVED_IN_SOURCE";
       c.generatedFiles.set(
         "claims.json",
         (c.generatedFiles.get("claims.json") ?? "").replace(
@@ -81,13 +82,15 @@ const FIXTURES: Fixture[] = [
     name: "BLOCKED_BY_DESIGN como estado de un Claim",
     gates: ["G-SCH-01", "G-STA-03", "G-STA-01"],
     mutate: (c) =>
-      void ((c.generated.claims[0] as { epistemic_state: string }).epistemic_state =
-        "BLOCKED_BY_DESIGN"),
+      void ((
+        c.generated.claims.find((x) => x.id === "LAB-CLM-0011") as { epistemic_state: string }
+      ).epistemic_state = "BLOCKED_BY_DESIGN"),
   },
   {
     name: "agregar un claim a Q-0013 (mapeo 0..N roto)",
     gates: ["G-REF-04", "G-REF-01", "G-STA-02"],
-    mutate: (c) => void c.generated.questions[0]!.claim_ids.push("LAB-CLM-0001"),
+    mutate: (c) =>
+      void c.generated.questions.find((q) => q.id === "LAB-Q-0013")!.claim_ids.push("LAB-CLM-9999"),
   },
   {
     name: "agregar un claim a una pregunta sin claims (Q-0006)",
@@ -102,32 +105,42 @@ const FIXTURES: Fixture[] = [
   {
     name: "resolución de la pregunta distinta de la de su claim",
     gates: ["G-STA-02"],
-    mutate: (c) => void (c.generated.questions[0]!.resolution.value = "REFUTED_WITHIN_SCOPE"),
+    mutate: (c) =>
+      void (c.generated.questions.find((q) => q.id === "LAB-Q-0013")!.resolution.value =
+        "REFUTED_WITHIN_SCOPE"),
   },
   {
     name: "una ausencia presentada como resultado negativo",
     gates: ["G-STA-05"],
-    mutate: (c) => void (c.generated.claims[0]!.absent_vs_negative = "NEGATIVE_WITHIN_SCOPE"),
+    mutate: (c) =>
+      void (c.generated.claims.find((x) => x.id === "LAB-CLM-0011")!.absent_vs_negative =
+        "NEGATIVE_WITHIN_SCOPE"),
   },
   {
     name: "claim huérfano (apunta a otra pregunta)",
     gates: ["G-REF-02"],
-    mutate: (c) => void (c.generated.claims[0]!.question_id = "LAB-Q-0001"),
+    mutate: (c) =>
+      void (c.generated.claims.find((x) => x.id === "LAB-CLM-0011")!.question_id = "LAB-Q-0001"),
   },
   {
     name: "referencia a una evidencia inexistente",
     gates: ["G-REF-01"],
-    mutate: (c) => void c.generated.claims[0]!.evidence_ids.push("LAB-EVD-9999"),
+    mutate: (c) =>
+      void c.generated.claims
+        .find((x) => x.id === "LAB-CLM-0011")!
+        .evidence_ids.push("LAB-EVD-9999"),
   },
   // ── provenance, esquemas, conteos ──
   {
     name: "hash inventado en recorded_hashes",
     gates: ["G-PRV-02"],
     mutate: (c) =>
-      void c.generated.claims[0]!.provenance.recorded_hashes.push({
-        file: "x.xlsx",
-        sha256: "0".repeat(64),
-      }),
+      void c.generated.claims
+        .find((x) => x.id === "LAB-CLM-0011")!
+        .provenance.recorded_hashes.push({
+          file: "x.xlsx",
+          sha256: "0".repeat(64),
+        }),
   },
   {
     name: "provenance con un commit distinto del pin",
@@ -213,15 +226,18 @@ const FIXTURES: Fixture[] = [
   {
     name: "hipótesis con exposición previa sin divulgación",
     gates: ["G-LIM-03"],
-    mutate: (c) => void (c.generated.hypotheses[0]!.prior_data_exposure = "DIRECT"),
+    mutate: (c) =>
+      void (c.generated.hypotheses.find((h) => h.id === "LAB-HYP-0006")!.prior_data_exposure =
+        "DIRECT"),
   },
   // ── editorial ──
   {
     name: "cambiar el canónico sin reauditar (obsolescencia por hash)",
     gates: ["G-EDI-01"],
     mutate: (c) =>
-      void (c.generated.claims[0]!.scope_statement =
-        c.generated.claims[0]!.scope_statement + " Nuevo texto canónico."),
+      void (c.generated.claims.find((x) => x.id === "LAB-CLM-0011")!.scope_statement =
+        c.generated.claims.find((x) => x.id === "LAB-CLM-0011")!.scope_statement +
+        " Nuevo texto canónico."),
   },
   {
     name: "editar public_question sin nuevo registro",

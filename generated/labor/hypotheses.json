@@ -3,6 +3,233 @@
   "items": [
     {
       "candidate_sources": [
+        "SIPA"
+      ],
+      "claim_ids": [
+        "LAB-CLM-0001"
+      ],
+      "disclosure_required": true,
+      "effective_outcome": [
+        "OBSERVED_IN_SOURCE"
+      ],
+      "expected_observation": "The relative composition changes materially (more than 2 percentage points) across the observed period",
+      "failure_condition": "Composition remains within 2 percentage points of stable across the full observed period",
+      "global_id": "labor/LAB-HYP-0001",
+      "id": "LAB-HYP-0001",
+      "id_origin": "CORPUS",
+      "known_breaks": [
+        "SIPA A.1 vs T.2/T.3 duplicate representation of ASALARIADO_PRIVADO"
+      ],
+      "metric": "Year-over-year percentage-point change in the share of REGISTERED_EMPLOYMENT accounted for by each SIPA modality series",
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0006"
+      ],
+      "operational_definition": "Ratio computed from SIPA's monthly series as already standardized in V1 (data/standardized/sipa_trabajo_registrado), read-only, pending the V1 Inheritance Verification Gate",
+      "period": "2009-01 through the latest SIPA release retrieved in V1",
+      "population": "Employment relationships registered in SIPA within Argentina's private-sector registered universe",
+      "prior_data_exposure": "DIRECT",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0001",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0001",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
+        "CGI",
+        "IPC"
+      ],
+      "claim_ids": [
+        "LAB-CLM-0002",
+        "LAB-CLM-0004"
+      ],
+      "disclosure_required": true,
+      "effective_outcome": [
+        "OBSERVED_IN_SOURCE",
+        "OBSERVED_IN_SOURCE"
+      ],
+      "expected_observation": "Growth rates of JOB, HOUR, and WAGE_BILL diverge by more than 1 percentage point in at least one sub-period",
+      "failure_condition": "All three series move within 1 percentage point of each other in every observed sub-period",
+      "global_id": "labor/LAB-HYP-0002",
+      "id": "LAB-HYP-0002",
+      "id_origin": "CORPUS",
+      "known_breaks": [
+        "CGI current-base series begin 2016; no bridge to earlier-base products",
+        "IPC base December 2016=100; no bridge to earlier base"
+      ],
+      "metric": "Divergence (in percentage points of YoY growth) between JOB count growth, HOUR aggregate growth, and real WAGE_BILL growth",
+      "object_ids": [
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012"
+      ],
+      "operational_definition": "Compute YoY growth for each of the three CGI-derived series independently from V1's standardized output; compare pairwise divergence. Real WAGE_BILL requires IPC as deflator (not yet admitted; nominal-only analysis possible now)",
+      "period": "2016-Q1 through the latest CGI release retrieved in V1",
+      "population": "National-economy jobs, hours, and wage bill per INDEC CGI-IMO",
+      "prior_data_exposure": "INDIRECT",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0002",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0003",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
+        "EPH",
+        "SIPA",
+        "MLER"
+      ],
+      "claim_ids": [
+        "LAB-CLM-0005"
+      ],
+      "disclosure_required": true,
+      "effective_outcome": [
+        "REFUTED_WITHIN_SCOPE"
+      ],
+      "expected_observation": "The unregistered/registered split shows a material shift (more than 5 percentage points) across the observed period",
+      "failure_condition": "The split remains within 5 percentage points of stable across the observed period",
+      "global_id": "labor/LAB-HYP-0003",
+      "id": "LAB-HYP-0003",
+      "id_origin": "CORPUS",
+      "known_breaks": [
+        "EPH 2015-2016 discontinuity",
+        "EPH 2020 COVID collection-mode change",
+        "EPH 2023-Q4 informal-labour questionnaire change"
+      ],
+      "metric": "Share of EPH-classified employed persons not matched to any REGISTERED_EMPLOYMENT-mapped source category",
+      "object_ids": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007"
+      ],
+      "operational_definition": "Deferred to LAB-A2 (EPH admission); this record pre-registers the test before any EPH data exists in this repository",
+      "period": "Overlapping EPH and SIPA/MLER windows, once EPH is admitted",
+      "population": "Employed persons within EPH's regular 31-agglomerate urban universe, cross-referenced conceptually against the SIPA/MLER registered-employment universe",
+      "prior_data_exposure": "INDIRECT",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0003",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0004",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
+        "EPH",
+        "IPC"
+      ],
+      "claim_ids": [
+        "LAB-CLM-0006"
+      ],
+      "disclosure_required": true,
+      "effective_outcome": [
+        "OBSERVED_IN_SOURCE"
+      ],
+      "expected_observation": "Real labour income growth differs materially from nominal growth within at least one window",
+      "failure_condition": "Real and nominal growth track within 1 percentage point across all observed windows",
+      "global_id": "labor/LAB-HYP-0004",
+      "id": "LAB-HYP-0004",
+      "id_origin": "CORPUS",
+      "known_breaks": [
+        "IPC 2007-2015 comparability window",
+        "IPC 2016-2017 restart",
+        "EPH 2024-Q4 income-measurement questionnaire change"
+      ],
+      "metric": "Real labour income growth (nominal income deflated by IPC) within each break-consistent window",
+      "object_ids": [
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0010"
+      ],
+      "operational_definition": "Deferred to LAB-A2/LAB-A3; this record pre-registers the test before any EPH or IPC data exists in this repository",
+      "period": "Windows internally consistent with registered IPC and EPH breaks, once both are admitted",
+      "population": "EPH-observed employed persons with reported labour income",
+      "prior_data_exposure": "INDIRECT",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0004",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0005",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
+        "ARCA"
+      ],
+      "claim_ids": [
+        "LAB-CLM-0007"
+      ],
+      "disclosure_required": false,
+      "effective_outcome": [
+        "OBSERVED_IN_SOURCE"
+      ],
+      "expected_observation": "The Monotributo share changes materially (more than 3 percentage points) across the observed period",
+      "failure_condition": "The share remains within 3 percentage points of stable across the observed period",
+      "global_id": "labor/LAB-HYP-0005",
+      "id": "LAB-HYP-0005",
+      "id_origin": "CORPUS",
+      "known_breaks": [],
+      "metric": "Share of relevant tax registrations classified as Monotributo vs formal dependent registration, over time",
+      "object_ids": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016"
+      ],
+      "operational_definition": "Deferred to source admission; this record pre-registers the test before any ARCA data exists in this repository or in V1",
+      "period": "To be defined at ARCA admission",
+      "population": "Persons with an active tax registration relevant to labour provision",
+      "prior_data_exposure": "NONE",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0005",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/4",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0008",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
         "ARCA"
       ],
       "claim_ids": [
@@ -40,6 +267,124 @@
         "tag": "aletheia-labor-v1.0.0"
       },
       "question_id": "LAB-Q-0013",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
+        "SIPA",
+        "MLER"
+      ],
+      "claim_ids": [
+        "LAB-CLM-0003"
+      ],
+      "disclosure_required": true,
+      "effective_outcome": [
+        "OBSERVED_IN_SOURCE"
+      ],
+      "expected_observation": "Measurable divergence between the two sources within the overlapping window",
+      "failure_condition": "No measurable divergence within the overlapping window (sources agree to within stated tolerance)",
+      "global_id": "labor/LAB-HYP-0007",
+      "id": "LAB-HYP-0007",
+      "id_origin": "CORPUS",
+      "known_breaks": [
+        "SIPA A.1 vs T.2/T.3 duplicate representation"
+      ],
+      "metric": "Divergence between SIPA-derived and MLER-derived counts of PERSON-adjacent and EMPLOYMENT_RELATIONSHIP-adjacent fields, within their overlapping period",
+      "object_ids": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0003"
+      ],
+      "operational_definition": "Compare V1-standardized SIPA and MLER outputs directly, without asserting equivalence, respecting CMP-PERSON-JOB-EQUIVALENCE (FORBIDDEN) and GOV-006 (MLER EMPLOYER/JOB UNREALIZED)",
+      "period": "MLER's 1996-01 to 2021-12 window intersected with SIPA's retrieved window",
+      "population": "Persons/relationships jointly observable in SIPA and MLER",
+      "prior_data_exposure": "DIRECT",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0007",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/6",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0002",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
+        "Job Posting Observatory (prospective GENERATED_SOURCE)"
+      ],
+      "claim_ids": [],
+      "disclosure_required": false,
+      "effective_outcome": [],
+      "expected_observation": "This hypothesis is expected to resolve NOT_IDENTIFIABLE rather than to be confirmed or refuted (LAB-0.5 instruction section 14)",
+      "failure_condition": "No admissible source is ever found that observes AI involvement in hiring at population scale",
+      "global_id": "labor/LAB-HYP-0008",
+      "id": "LAB-HYP-0008",
+      "id_origin": "CORPUS",
+      "known_breaks": [],
+      "metric": "Estimated share of hiring processes involving each AI_HIRING_EVENT taxonomy category",
+      "object_ids": [
+        "LAB-OBJ-0024"
+      ],
+      "operational_definition": "No operational definition exists; no corpus or disclosure mechanism has been identified that could support this measurement",
+      "period": "Not yet defined",
+      "population": "Hiring processes conducted through any observable channel",
+      "prior_data_exposure": "NONE",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0008",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/7",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0015",
+      "registry_status": "HYPOTHESIS"
+    },
+    {
+      "candidate_sources": [
+        "ARCA"
+      ],
+      "claim_ids": [],
+      "disclosure_required": false,
+      "effective_outcome": [],
+      "expected_observation": "This hypothesis is expected to resolve NOT_IDENTIFIABLE with currently admissible sources (LAB-0.5 instruction section 14)",
+      "failure_condition": "No candidate proxy achieves governance-acceptable separation between the two groups",
+      "global_id": "labor/LAB-HYP-0009",
+      "id": "LAB-HYP-0009",
+      "id_origin": "CORPUS",
+      "known_breaks": [],
+      "metric": "Rate at which a candidate proxy for ECONOMIC_DEPENDENCE (e.g. counterpart concentration) correctly separates known dependent from known independent cases",
+      "object_ids": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "operational_definition": "No proxy currently exists (see LAB-Q-0010); this record exists to make the expected negative result explicit rather than silent",
+      "period": "Not yet defined",
+      "population": "Persons registered as Monotributo/self-employed who may be economically dependent on a single counterpart",
+      "prior_data_exposure": "NONE",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0009",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/8",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0011",
       "registry_status": "HYPOTHESIS"
     }
   ],

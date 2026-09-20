@@ -48,6 +48,10 @@ const res = (failures: string[], okDetail: string): Outcome =>
 
 const eq = (a: unknown, b: unknown): boolean => JSON.stringify(a) === JSON.stringify(b);
 const uniq = (xs: readonly string[]): string[] => [...new Set(xs)].sort();
+
+/** Pregunta con ficha editorial/UI (M1: Q-0013). El pipeline genera las 18; los gates de copy/HTML se acotan a esta. */
+const publishedQuestionId = (ctx: GateContext): string =>
+  ctx.editorial.finding.canonical_ref.replace(/^labor\//, "");
 const ENTITY_KINDS = Object.keys(ENTITY_FILES) as EntityFileName[];
 const allEntities = (ctx: GateContext): Record<string, unknown>[] =>
   ENTITY_KINDS.flatMap((k) => ctx.generated[k] as unknown as Record<string, unknown>[]);
@@ -325,30 +329,28 @@ const gCnt01: Gate = {
           `corpus ${k}: ${JSON.stringify((ctx.stats as unknown as Record<string, unknown>)[k])} != esperado ${JSON.stringify(v)}`,
         );
     const g = ctx.generated;
-    for (const [qid, exp] of Object.entries(ctx.contract.slice_expected_counts)) {
-      const claimIds = new Set(g.claims.filter((c) => c.question_id === qid).map((c) => c.id));
-      const lim = (k: string) => g.limitations.filter((l) => l.owner_kind === k).length;
-      const got = {
-        questions: g.questions.filter((x) => x.id === qid).length,
-        claims: claimIds.size,
-        hypotheses: g.hypotheses.filter((h) => h.question_id === qid).length,
-        evidence: g.evidence.length,
-        evidence_roots: g["evidence-roots"].length,
-        statistical_objects: g["statistical-objects"].length,
-        governance_rulings: g["governance-rulings"].length,
-        episodes: g.episodes.length,
-        limitations: { claim: lim("claim"), question: lim("question"), evidence: lim("evidence") },
-        blockers: g.blockers.length,
-        anchors: g.anchors.length,
-        relations: g.relations.length,
-        preserved_results: g["preserved-results"].length,
-      };
-      if (!eq(got, exp))
-        f.push(`corte ${qid}: ${JSON.stringify(got)} != esperado ${JSON.stringify(exp)}`);
-    }
+    const { note: sliceNote, ...exp } = ctx.contract.slice_expected_counts;
+    void sliceNote;
+    const lim = (k: string) => g.limitations.filter((l) => l.owner_kind === k).length;
+    const got = {
+      questions: g.questions.length,
+      claims: g.claims.length,
+      hypotheses: g.hypotheses.length,
+      evidence: g.evidence.length,
+      evidence_roots: g["evidence-roots"].length,
+      statistical_objects: g["statistical-objects"].length,
+      governance_rulings: g["governance-rulings"].length,
+      episodes: g.episodes.length,
+      limitations: { claim: lim("claim"), question: lim("question"), evidence: lim("evidence") },
+      blockers: g.blockers.length,
+      anchors: g.anchors.length,
+      relations: g.relations.length,
+      preserved_results: g["preserved-results"].length,
+    };
+    if (!eq(got, exp)) f.push(`corte: ${JSON.stringify(got)} != esperado ${JSON.stringify(exp)}`);
     return res(
       f,
-      `18 preguntas / 14 claims / 9 hipótesis / 25 evidencias / 7 raíces / 26 objetos / 7 rulings / 34 relaciones / 15 KEEP / 72+19 limitaciones; corte Q-0013 según contrato`,
+      `18 preguntas / 14 claims / 9 hipótesis / 25 evidencias / 7 raíces / 26 objetos / 7 rulings / 34 relaciones / 15 KEEP / 72+19 limitaciones; el corte generado es el corpus completo`,
     );
   },
 };
@@ -415,6 +417,7 @@ const gRef01: Gate = {
     for (const h of g.hypotheses) need(h.id, [h.question_id], "questions");
     for (const e of g.evidence) {
       need(e.id, [e.claim_id], "claims");
+      need(e.id, [e.question_id], "questions");
       need(e.id, [e.hypothesis_id], "hypotheses");
       need(e.id, e.root_ids, "evidence-roots");
       need(e.id, e.object_ids, "statistical-objects");
@@ -588,14 +591,20 @@ const gSta02: Gate = {
           !eq([...q.resolution.basis_refs].sort(), [...q.claim_ids].sort())
         )
           f.push(`${q.id}: la base de la resolución no es su(s) claim(s)`);
-      } else if (!ctx.contract.vocabularies.question_documentary_label.includes(q.resolution.value))
-        f.push(`${q.id}: sin claims y su resolución no es una etiqueta documental`);
+      } else {
+        if (!ctx.contract.vocabularies.question_documentary_label.includes(q.resolution.value))
+          f.push(`${q.id}: sin claims y su resolución no es una etiqueta documental`);
+        if (q.resolution.basis === "CLAIM" || q.resolution.vocabulary === "CLAIM_LIFECYCLE_STATE")
+          f.push(`${q.id}: etiqueta documental mezclada con vocabulario/base de claim`);
+        if (q.resolution.basis_refs.length === 0)
+          f.push(`${q.id}: resolución documental sin basis_refs`);
+      }
     }
     for (const [id, m] of Object.entries(ctx.map.questions))
       if (m.resolution === "") f.push(`${id}: sin resolución en S0`);
     return res(
       f,
-      "toda pregunta tiene resolución; la de las preguntas con claim coincide con ellos (el segundo testigo para las 5 sin claim, el cierre del régimen, aún no está pineado)",
+      "toda pregunta tiene resolución; con claims coincide con ellos; las 5 sin claim usan etiqueta documental (S0 + KEEP)",
     );
   },
 };
@@ -681,8 +690,13 @@ const gSta06: Gate = {
     "Vocabulario público: todo código presente tiene etiqueta, ninguna para un código ausente; «establecido/a» nunca sin calificador",
   run(ctx) {
     const f: string[] = [];
-    const cs = uniq(ctx.generated.claims.map((c) => c.epistemic_state));
-    const qs = uniq(ctx.generated.questions.map((q) => q.resolution.value));
+    const pub = publishedQuestionId(ctx);
+    const cs = uniq(
+      ctx.generated.claims.filter((c) => c.question_id === pub).map((c) => c.epistemic_state),
+    );
+    const qs = uniq(
+      ctx.generated.questions.filter((q) => q.id === pub).map((q) => q.resolution.value),
+    );
     const cl = Object.keys(ctx.editorial.states.claim_state_labels).sort();
     const ql = Object.keys(ctx.editorial.states.question_resolution_labels).sort();
     if (!eq(cs, cl))
@@ -712,6 +726,13 @@ const gSta07: Gate = {
       (c) =>
         c.epistemic_state === "OBSERVED_IN_SOURCE" && c.claim_kind !== "STATISTICAL_MEASUREMENT",
     );
+    const rendered = need.filter((c) =>
+      questionPages(ctx).some(([, h]) => h.includes(`data-claim-id="${c.id}"`)),
+    );
+    if (need.length > 0 && rendered.length === 0)
+      return na(
+        "claims OBSERVED que no son medición no están en páginas renderizadas (UI de M1 = Q-0013)",
+      );
     if (need.length === 0) return na("el corte no incluye claims OBSERVED que no sean mediciones");
     const f = need
       .filter(
@@ -840,12 +861,24 @@ const gPrv04: Gate = {
   id: "G-PRV-04",
   title: "Anotaciones de reemplazo de evidencia citan texto del corpus",
   run(ctx) {
-    const f = (ctx.contract.claim_supersessions as { claim_id?: string; corpus_quote?: string }[])
-      .filter((s) => !s.corpus_quote)
-      .map((s) => `${s.claim_id ?? "?"}: supresión sin cita textual del corpus`);
+    const f: string[] = [];
+    for (const s of ctx.contract.claim_supersessions) {
+      if (!s.corpus_quote) {
+        f.push(`${s.claim_id}: supresión sin cita textual del corpus`);
+        continue;
+      }
+      const c = ctx.generated.claims.find((x) => x.id === s.claim_id);
+      if (c === undefined) f.push(`${s.claim_id}: claim de reemplazo no generado`);
+      else if (!c.canonical_text.includes(s.corpus_quote))
+        f.push(`${s.claim_id}: corpus_quote no aparece en el texto del claim`);
+      if (!ctx.generated.evidence.some((e) => e.id === s.replaced_evidence_id))
+        f.push(`${s.claim_id}: evidencia reemplazada ${s.replaced_evidence_id} ausente`);
+      if (!ctx.generated.evidence.some((e) => e.id === s.superseding_evidence_id))
+        f.push(`${s.claim_id}: evidencia vigente ${s.superseding_evidence_id} ausente`);
+    }
     return res(
       f,
-      `${ctx.contract.claim_supersessions.length} anotaciones de reemplazo (no aplican al corte)`,
+      `${ctx.contract.claim_supersessions.length} anotaciones de reemplazo con cita textual del corpus`,
     );
   },
 };
@@ -888,7 +921,8 @@ const gLim01: Gate = {
   title: "Todo claim publicado tiene ≥ 1 límite público",
   run(ctx) {
     const f: string[] = [];
-    for (const c of ctx.generated.claims) {
+    const pub = publishedQuestionId(ctx);
+    for (const c of ctx.generated.claims.filter((x) => x.question_id === pub)) {
       const ids = new Set(c.limitation_ids);
       const shown = ctx.editorial.limits.dispositions.filter(
         (d) =>
@@ -896,13 +930,13 @@ const gLim01: Gate = {
           ids.has(limitationIdFromRef(ctx.generated, d.limitation) ?? ""),
       );
       if (shown.length === 0) f.push(`${c.id}: sin límites públicos SHOWN`);
-      for (const [route, html] of ctx.html) {
-        const text = visibleText(html);
-        if (!text.includes(ctx.editorial.ui.strings["not_heading"]?.text ?? "\0"))
-          f.push(`${route}: falta el bloque «Lo que esto NO significa»`);
-      }
     }
-    return res(f, "el claim tiene límites públicos y la página los muestra");
+    for (const [route, html] of ctx.html) {
+      const text = visibleText(html);
+      if (!text.includes(ctx.editorial.ui.strings["not_heading"]?.text ?? "\0"))
+        f.push(`${route}: falta el bloque «Lo que esto NO significa»`);
+    }
+    return res(f, "el claim publicado tiene límites públicos y la página los muestra");
   },
 };
 const gLim02: Gate = {
@@ -931,9 +965,15 @@ const gLim02: Gate = {
           if (!pub.has(r)) f.push(`${d.limitation}: el texto público ${r} no existe`);
       }
     }
-    for (const l of ctx.generated.limitations)
-      if (l.owner_kind !== "evidence" && !covered.has(l.id))
-        f.push(`${l.owner_id}#limitation:${l.ordinal}: sin disposición`);
+    const qid = publishedQuestionId(ctx);
+    const pubClaims = new Set(
+      ctx.generated.claims.filter((c) => c.question_id === qid).map((c) => c.id),
+    );
+    for (const l of ctx.generated.limitations) {
+      if (l.owner_kind === "evidence") continue;
+      if (l.owner_id !== qid && !pubClaims.has(l.owner_id)) continue;
+      if (!covered.has(l.id)) f.push(`${l.owner_id}#limitation:${l.ordinal}: sin disposición`);
+    }
     return res(
       f,
       "toda limitación de la pregunta y del claim tiene clase y disposición; AUDIT_ONLY solo PROCEDURAL; SHOWN remite a un texto público existente",
@@ -946,7 +986,8 @@ const gLim03: Gate = {
     "La pregunta muestra sus limitaciones, la divulgación de exposición previa si aplica y la brecha pregunta–claim",
   run(ctx) {
     const f: string[] = [];
-    for (const h of ctx.generated.hypotheses)
+    const pub = publishedQuestionId(ctx);
+    for (const h of ctx.generated.hypotheses.filter((x) => x.question_id === pub))
       if (h.disclosure_required || h.prior_data_exposure !== "NONE")
         f.push(
           `${h.id}: exige divulgación de exposición previa (${h.prior_data_exposure}) y no hay texto editorial para mostrarla`,
@@ -1211,9 +1252,7 @@ const gEdi08: Gate = {
     hay.push(ctx.generated.manifest.pin.commit.slice(0, 7), ctx.generated.manifestSha256);
     hay.push(
       sha256Hex(readFileSync(join(ctx.root, "editorial", "manifest.json"))),
-      plainText(
-        loadQuestionView(ctx.root, ctx.contract.slice.question_ids[0] ?? "").provenance.cite,
-      ),
+      plainText(loadQuestionView(ctx.root, publishedQuestionId(ctx)).provenance.cite),
     );
     const haystack = hay.join(" ").replace(/\s+/g, " ");
     const clean = (t: string): string => t.replace(/^[.,;:()«»"' ]+|[.,;:()«»"' ]+$/g, "");

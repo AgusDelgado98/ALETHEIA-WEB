@@ -125,7 +125,7 @@ export function loadContext(root: string): GateContext {
     generatedFiles,
     stats: norm.stats,
     map: norm.map,
-    editorial: loadEditorial(root, contract.slice.question_ids[0] ?? "LAB-Q-0013"),
+    editorial: loadEditorial(root, "LAB-Q-0013"),
     golden,
     html: htmlRoutes(join(root, "dist")),
     srcDir: dir,

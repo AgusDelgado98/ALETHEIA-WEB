@@ -40,6 +40,42 @@
       ]
     },
     {
+      "global_id": "labor/LAB-OBJ-0002",
+      "grain": "one row per job per observation period",
+      "id": "LAB-OBJ-0002",
+      "id_origin": "CORPUS",
+      "is": "a declared position or job, not a unique person",
+      "is_not": [
+        "PERSON",
+        "EMPLOYMENT_RELATIONSHIP",
+        "EMPLOYER",
+        "TAX_REGISTRATION"
+      ],
+      "name": "JOB",
+      "observation_mechanism": "national-accounts labour-input estimation or administrative job registration, depending on source",
+      "population": "declared/registered positions within the admitting source's frame",
+      "producer": "source-specific (e.g. INDEC CGI, OEDE)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0002",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "one declared position",
+      "universe": "source-specific",
+      "v1_references": [
+        "V1 statistical object JOB",
+        "GOV-006"
+      ]
+    },
+    {
       "global_id": "labor/LAB-OBJ-0003",
       "grain": "one row per relationship per observation period",
       "id": "LAB-OBJ-0003",
@@ -76,6 +112,416 @@
       ]
     },
     {
+      "global_id": "labor/LAB-OBJ-0004",
+      "grain": "one row per employer per observation period",
+      "id": "LAB-OBJ-0004",
+      "id_origin": "CORPUS",
+      "is": "an employing or insured party",
+      "is_not": [
+        "JOB",
+        "PERSON",
+        "EMPLOYMENT_RELATIONSHIP"
+      ],
+      "name": "EMPLOYER",
+      "observation_mechanism": "administrative registration of employing/insured parties",
+      "population": "registered employers within the admitting source's frame",
+      "producer": "source-specific (e.g. OEDE, ARCA, SRT)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0004",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "one employing/insured party",
+      "universe": "source-specific",
+      "v1_references": [
+        "V1 statistical object EMPLOYER",
+        "GOV-006"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0005",
+      "grain": "one row per registration record per observation period",
+      "id": "LAB-OBJ-0005",
+      "id_origin": "CORPUS",
+      "is": "a registration record, not proof of a unique employed person",
+      "is_not": [
+        "PERSON",
+        "EMPLOYMENT_RELATIONSHIP",
+        "JOB",
+        "ECONOMIC_RELATIONSHIP"
+      ],
+      "name": "TAX_REGISTRATION",
+      "observation_mechanism": "tax/administrative registration",
+      "population": "tax/registration records within the admitting source's frame",
+      "producer": "source-specific (e.g. ARCA)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0005",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/4",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "one registration record",
+      "universe": "source-specific",
+      "v1_references": [
+        "V1 statistical object TAX_REGISTRATION"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0006",
+      "grain": "aggregate stock per period, decomposable to its underlying PERSON/EMPLOYMENT_RELATIONSHIP/JOB rows",
+      "id": "LAB-OBJ-0006",
+      "id_origin": "CORPUS",
+      "is": "the stock of employment activity that is administratively visible through registration systems",
+      "is_not": [
+        "UNREGISTERED_EMPLOYMENT",
+        "total Argentine employment",
+        "JOB"
+      ],
+      "name": "REGISTERED_EMPLOYMENT",
+      "observation_mechanism": "composition of registration-based administrative records",
+      "population": "persons/relationships/jobs within an administratively registered universe (SIPA/CGI/MLER-mapped)",
+      "producer": "derived by LABOR from admitted registration-based sources, not itself a primary producer",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0006",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/5",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "aggregate stock",
+      "universe": "the union of universes covered by admitted registration-based sources; never assumed to equal total employment",
+      "v1_references": [
+        "Composed from V1-mapped SIPA/CGI/MLER objects (PERSON, EMPLOYMENT_RELATIONSHIP, JOB) restricted to their administratively registered scope; no single V1 object of this exact name exists"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0007",
+      "grain": "aggregate stock per period, if and when an admitted source can approach it",
+      "id": "LAB-OBJ-0007",
+      "id_origin": "CORPUS",
+      "is": "labour activity not captured by the administrative registration systems that produce REGISTERED_EMPLOYMENT",
+      "is_not": [
+        "REGISTERED_EMPLOYMENT",
+        "an informality rate (that is a metric computed FROM this and REGISTERED_EMPLOYMENT, not this object itself)",
+        "total Argentine employment"
+      ],
+      "name": "UNREGISTERED_EMPLOYMENT",
+      "observation_mechanism": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (household survey self-report is the only inventoried candidate mechanism)",
+      "population": "labour activity outside the frame of REGISTERED_EMPLOYMENT's admitted sources",
+      "producer": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0007",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/6",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "aggregate stock",
+      "universe": "not directly observable via SIPA/CGI/MLER/SRT/BESS; requires a household-survey source (EPH) or an explicit proxy",
+      "v1_references": [
+        "No V1 object; V1 never retrieved EPH RAW, the only inventoried source capable of approaching this population"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0008",
+      "grain": "one classification per person per reference period",
+      "id": "LAB-OBJ-0008",
+      "id_origin": "CORPUS",
+      "is": "a categorical labour-force classification of a PERSON within a reference period, as classified by a household survey methodology",
+      "is_not": [
+        "PERSON",
+        "EMPLOYMENT_RELATIONSHIP",
+        "JOB",
+        "REGISTERED_EMPLOYMENT"
+      ],
+      "name": "LABOR_FORCE_STATUS",
+      "observation_mechanism": "household labour-force survey questionnaire classification (employed/unemployed/inactive)",
+      "population": "persons within a household-survey universe",
+      "producer": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (INDEC/EPH is the only inventoried candidate)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0008",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/7",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "one categorical classification per person per period",
+      "universe": "source-specific (e.g. EPH's 31 urban agglomerates plus third-quarter total-urban extension)",
+      "v1_references": [
+        "V1's SRC-INDEC-EPH manifest entry maps only PERSON/HOUSEHOLD/HOUR; no LABOR_FORCE_STATUS-equivalent object exists in V1's vocabulary"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0009",
+      "grain": "one amount per person per income component per period",
+      "id": "LAB-OBJ-0009",
+      "id_origin": "CORPUS",
+      "is": "income received by a person from labour activity, in any modality, within a reference period",
+      "is_not": [
+        "SALARY",
+        "WAGE_BILL",
+        "BENEFIT_INSTANCE"
+      ],
+      "name": "LABOR_INCOME",
+      "observation_mechanism": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (household survey self-report or administrative payroll record, depending on source)",
+      "population": "persons receiving income from labour activity in any modality",
+      "producer": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0009",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/8",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "monetary flow per person per period",
+      "universe": "source-specific",
+      "v1_references": [
+        "No V1 object; distinguished from WAGE_BILL (V1-reused, aggregate, LAB-OBJ-0011) per the LAB-A3 rule SALARY != LABOR_INCOME"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0010",
+      "grain": "one rate per relationship/job per period",
+      "id": "LAB-OBJ-0010",
+      "id_origin": "CORPUS",
+      "is": "a wage or pay rate associated with a specific EMPLOYMENT_RELATIONSHIP or JOB, nominal or real",
+      "is_not": [
+        "LABOR_INCOME",
+        "WAGE_BILL",
+        "PERSON"
+      ],
+      "name": "SALARY",
+      "observation_mechanism": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+      "population": "employment relationships or jobs with an observable pay rate",
+      "producer": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0010",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/9",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "monetary rate per relationship or job",
+      "universe": "source-specific",
+      "v1_references": [
+        "No V1 object; SALARY != LABOR_INCOME is an explicit LAB-A3 rule this object exists to enforce"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0011",
+      "grain": "one aggregate value per period",
+      "id": "LAB-OBJ-0011",
+      "id_origin": "CORPUS",
+      "is": "aggregate labour remuneration flow within a universe/period",
+      "is_not": [
+        "SALARY",
+        "LABOR_INCOME",
+        "PERSON"
+      ],
+      "name": "WAGE_BILL",
+      "observation_mechanism": "national-accounts estimation from surveys and administrative records",
+      "population": "national-accounts labour remuneration aggregate",
+      "producer": "INDEC (CGI-IMO), per V1's mapping",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0011",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/10",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "aggregate monetary flow",
+      "universe": "national economy (source-specific vintage)",
+      "v1_references": [
+        "V1 statistical object WAGE_BILL (SRC-INDEC-CGI)"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0012",
+      "grain": "one measured quantity per person/job per period",
+      "id": "LAB-OBJ-0012",
+      "id_origin": "CORPUS",
+      "is": "a measured hours-worked quantity, not a person or household record unit",
+      "is_not": [
+        "PERSON",
+        "JOB",
+        "HOUSEHOLD"
+      ],
+      "name": "HOUR",
+      "observation_mechanism": "survey self-report or national-accounts estimation, depending on source",
+      "population": "hours worked or usual hours within the admitting source's frame",
+      "producer": "source-specific (e.g. INDEC EPH, INDEC CGI)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0012",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/11",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "hours",
+      "universe": "source-specific",
+      "v1_references": [
+        "V1 statistical object HOUR (EPH, CGI)"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0013",
+      "grain": "one row per contributor per period",
+      "id": "LAB-OBJ-0013",
+      "id_origin": "CORPUS",
+      "is": "a contributing person or contributor record",
+      "is_not": [
+        "PERSON",
+        "EMPLOYMENT_RELATIONSHIP",
+        "TAX_REGISTRATION"
+      ],
+      "name": "CONTRIBUTOR",
+      "observation_mechanism": "administrative social-security contribution registration",
+      "population": "persons or entities contributing to the social-security system",
+      "producer": "source-specific (e.g. SIPA, ARCA, ANSES, BESS)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0013",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/12",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "one contributing person/record",
+      "universe": "source-specific",
+      "v1_references": [
+        "V1 statistical object CONTRIBUTOR (SIPA, ARCA, ANSES, BESS)"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0014",
+      "grain": "one entitlement instance per period (stock, not flow)",
+      "id": "LAB-OBJ-0014",
+      "id_origin": "CORPUS",
+      "is": "an entitlement extant in a period (a stock)",
+      "is_not": [
+        "PERSON",
+        "CONTRIBUTOR",
+        "a flow / an 'Alta' (new grant) event"
+      ],
+      "name": "BENEFIT_INSTANCE",
+      "observation_mechanism": "administrative benefit-eligibility registration",
+      "population": "eligible beneficiaries within the admitting source's frame",
+      "producer": "source-specific (e.g. SSS/BESS)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0014",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/13",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "one entitlement, extant in a period",
+      "universe": "source-specific",
+      "v1_references": [
+        "V1 statistical object BENEFIT_INSTANCE (BESS eligible Beneficios)",
+        "GOV-003",
+        "GOV-009"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0015",
+      "grain": "one classification per person/arrangement per period",
+      "id": "LAB-OBJ-0015",
+      "id_origin": "CORPUS",
+      "is": "the formal legal/tax categorization under which labour or services are provided (e.g. employee, monotributista, autonomo)",
+      "is_not": [
+        "ECONOMIC_RELATIONSHIP",
+        "EMPLOYMENT_RELATIONSHIP"
+      ],
+      "name": "LEGAL_FORM",
+      "observation_mechanism": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (tax/registration classification)",
+      "population": "persons or arrangements with a formal legal/tax categorization",
+      "producer": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (ARCA is the leading candidate)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0015",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/14",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "one categorical legal/tax status",
+      "universe": "source-specific",
+      "v1_references": []
+    },
+    {
       "global_id": "labor/LAB-OBJ-0016",
       "grain": "one registration record per person per period",
       "id": "LAB-OBJ-0016",
@@ -106,6 +552,334 @@
       "status": "DEFINED_PENDING_SOURCE",
       "unit": "one registration record",
       "universe": "source-specific",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0017",
+      "grain": "one arrangement per person per period, where observable",
+      "id": "LAB-OBJ-0017",
+      "id_origin": "CORPUS",
+      "is": "a labour arrangement in which a person supplies labour or services without being party to a legally defined EMPLOYMENT_RELATIONSHIP",
+      "is_not": [
+        "EMPLOYMENT_RELATIONSHIP",
+        "MONOTRIBUTO_REGISTRATION (a legal instrument, not the underlying economic arrangement)",
+        "ECONOMIC_DEPENDENCE"
+      ],
+      "name": "SELF_EMPLOYMENT",
+      "observation_mechanism": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (proxy via tax/registration records; direct observation of the underlying economic arrangement is not expected to be available)",
+      "population": "persons supplying labour/services without being party to a documented EMPLOYMENT_RELATIONSHIP",
+      "producer": "EPH (self-reported occupational category, CAT_OCUP) for the labour-force classification; a legal/administrative producer (e.g. ARCA) would still be needed for any registration-based cross-check",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0017",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/16",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PARTIALLY_IDENTIFIABLE",
+      "unit": "one labour arrangement",
+      "universe": "source-specific, likely partial",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0018",
+      "grain": "one condition assessment per person per period, if ever observable",
+      "id": "LAB-OBJ-0018",
+      "id_origin": "CORPUS",
+      "is": "a proxy-observable condition indicating a worker's economic reliance on a single or dominant counterpart, distinct from legal employment status",
+      "is_not": [
+        "EMPLOYMENT_RELATIONSHIP",
+        "LEGAL_FORM",
+        "TAX_REGISTRATION"
+      ],
+      "name": "ECONOMIC_DEPENDENCE",
+      "observation_mechanism": "no known direct observation mechanism among inventoried sources; would require a proxy (e.g. concentration of invoiced counterparts) not currently admitted",
+      "population": "workers with an observable concentration of income/activity on a single or dominant counterpart",
+      "producer": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0018",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/17",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_LIKELY_NOT_IDENTIFIABLE",
+      "unit": "one proxy-observable condition",
+      "universe": "unknown; no admitted source is expected to observe this directly",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0019",
+      "grain": "one posting per platform per publication instance",
+      "id": "LAB-OBJ-0019",
+      "id_origin": "CORPUS",
+      "is": "a public advertisement of an alleged intent to hire, on a specific platform, at a specific time",
+      "is_not": [
+        "VACANCY (the underlying real, possibly-unfilled need; a posting can exist without one, e.g. evergreen or decoy postings)",
+        "JOB",
+        "APPLICATION",
+        "HIRE"
+      ],
+      "name": "JOB_POSTING",
+      "observation_mechanism": "public listing capture (not built in LAB-0.5)",
+      "population": "advertisements published on a given platform",
+      "producer": "the platform on which the posting appears",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0019",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/18",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "one advertisement",
+      "universe": "that platform's own listings only",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0020",
+      "grain": "one need per employer per position per period, where observable",
+      "id": "LAB-OBJ-0020",
+      "id_origin": "CORPUS",
+      "is": "an employer's real, current need or intent to fill a position, independent of whether it is ever advertised",
+      "is_not": [
+        "JOB_POSTING",
+        "JOB",
+        "HIRE"
+      ],
+      "name": "VACANCY",
+      "observation_mechanism": "none known; only proxied, imperfectly, by JOB_POSTING",
+      "population": "employers' real, current intent to fill a position",
+      "producer": "the employer (not directly observable by LABOR)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0020",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/19",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_LIKELY_NOT_IDENTIFIABLE",
+      "unit": "one real staffing need",
+      "universe": "generally not directly observable",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0021",
+      "grain": "one submission per person per posting",
+      "id": "LAB-OBJ-0021",
+      "id_origin": "CORPUS",
+      "is": "an individual's submitted response to a JOB_POSTING",
+      "is_not": [
+        "HIRE",
+        "JOB_POSTING",
+        "PERSON (a person may submit zero, one, or many applications)"
+      ],
+      "name": "APPLICATION",
+      "observation_mechanism": "not built in LAB-0.5",
+      "population": "individuals who submit a response to a JOB_POSTING",
+      "producer": "the platform/ATS on which the application is submitted",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0021",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/20",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "one submission",
+      "universe": "that posting's own applicant pool",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0022",
+      "grain": "one event per person per recruitment process",
+      "id": "LAB-OBJ-0022",
+      "id_origin": "CORPUS",
+      "is": "the transition event of a person entering an EMPLOYMENT_RELATIONSHIP as a documented outcome of a recruitment process",
+      "is_not": [
+        "APPLICATION",
+        "JOB_POSTING",
+        "EMPLOYMENT_RELATIONSHIP (HIRE is the transition event, not the resulting stock)"
+      ],
+      "name": "HIRE",
+      "observation_mechanism": "not built in LAB-0.5",
+      "population": "persons who enter an EMPLOYMENT_RELATIONSHIP as a documented consequence of a recruitment process",
+      "producer": "the hiring employer/platform",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0022",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/21",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "one transition event",
+      "universe": "that recruitment process's own scope",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0023",
+      "grain": "one stage per application per step (e.g. screening, interview, assessment)",
+      "id": "LAB-OBJ-0023",
+      "id_origin": "CORPUS",
+      "is": "a discrete step within a recruitment process associated with one APPLICATION",
+      "is_not": [
+        "APPLICATION",
+        "HIRE"
+      ],
+      "name": "SELECTION_STAGE",
+      "observation_mechanism": "not built in LAB-0.5",
+      "population": "steps within a recruitment process associated with one APPLICATION",
+      "producer": "the platform/ATS/employer running the process",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0023",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/22",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "one discrete recruitment step",
+      "universe": "that recruitment process's own scope",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0024",
+      "grain": "one event per AI action per selection stage/application",
+      "id": "LAB-OBJ-0024",
+      "id_origin": "CORPUS",
+      "is": "an instance of an AI system, classified ASSISTIVE/FILTERING/EVALUATIVE/DECISIONAL, acting on a SELECTION_STAGE or APPLICATION",
+      "is_not": [
+        "SELECTION_STAGE",
+        "HIRE",
+        "a human-only decision without AI involvement"
+      ],
+      "name": "AI_HIRING_EVENT",
+      "observation_mechanism": "not built in LAB-0.5",
+      "population": "instances where an AI system acts on a SELECTION_STAGE or APPLICATION",
+      "producer": "the platform/ATS/employer whose AI system acts",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0024",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/23",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_LIKELY_NOT_IDENTIFIABLE",
+      "unit": "one AI-system action",
+      "universe": "that recruitment process's own scope",
+      "v1_references": []
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0025",
+      "grain": "one index value per COICOP division/group/nivel-general row per region per month",
+      "id": "LAB-OBJ-0025",
+      "id_origin": "CORPUS",
+      "is": "a price-level index for a defined consumption basket, at a stated base period, used as a deflator input; it is not itself a labour-market object",
+      "is_not": [
+        "REAL_WAGE or any other deflated/real-terms quantity (that is a metric COMPUTED FROM this object and a nominal quantity, not this object itself)",
+        "an inflation rate (a period-over-period transformation of this object, not the object itself)",
+        "LABOR_INCOME or WAGE_BILL",
+        "a labour-market participation or employment measure"
+      ],
+      "name": "PRICE_INDEX",
+      "observation_mechanism": "retail/point-of-sale price collection instrument, aggregated by expenditure weights into a Laspeyres-type index",
+      "population": "consumption basket of goods and services representative of resident-household spending",
+      "producer": "INDEC (Direccion de Indices de Precios de Consumo)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0025",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/24",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_AT_LAB_A2",
+      "unit": "index points (base period = 100)",
+      "universe": "INDEC IPC Nacional coverage: national total and six statistical regions (GBA, Pampeana, Noreste, Noroeste, Cuyo, Patagonia)",
+      "v1_references": [
+        "SRC-INDEC-IPC-NACIONAL (V1 manifest-only reference; V1 never retrieved IPC RAW)",
+        "GOV-008",
+        "BRK-INDEC-IPC-2007-2015-COMPARABILITY",
+        "BRK-INDEC-IPC-2016-2017-RESTART"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0026",
+      "grain": "aggregate monthly stock, not person-level microdata",
+      "id": "LAB-OBJ-0026",
+      "id_origin": "CORPUS",
+      "is": "a registration/contribution record for a person registered under the general Autonomos regime, a specific tax-registration category distinct from Monotributo",
+      "is_not": [
+        "MONOTRIBUTO_REGISTRATION (a different, simplified tax-registration regime with different eligibility criteria)",
+        "EMPLOYMENT_RELATIONSHIP",
+        "SELF_EMPLOYMENT (the broader labour-arrangement concept; this is one specific legal/tax instrument some self-employed persons use)",
+        "ECONOMIC_DEPENDENCE or ECONOMIC_INDEPENDENCE",
+        "proof of employer intent, subordination, or exclusivity"
+      ],
+      "name": "AUTONOMOS_REGISTRATION",
+      "observation_mechanism": "administrative tax/contribution registration and monthly payment records (SUSS unified collection system)",
+      "population": "self-employed/independent workers registered under Argentina's general Autonomos tax/contribution regime (distinct from the simplified Monotributo regime)",
+      "producer": "ARCA (Agencia de Recaudacion y Control Aduanero), Boletin Anual de Seguridad Social",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0026",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/25",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_AT_LAB_B1",
+      "unit": "aggregate stock (person count)",
+      "universe": "national, ARCA/SUSS-administered contribution collection system",
       "v1_references": []
     }
   ],

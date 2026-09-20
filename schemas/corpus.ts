@@ -201,7 +201,7 @@ export const Claim = z.strictObject({
   not_eligible_for: z.array(nonEmpty),
   lineage_independence: nonEmpty,
   scope_coverage_adequacy: nonEmpty,
-  shared_coverage_bias: nonEmpty,
+  shared_coverage_bias: nonEmpty.nullable(),
   /** Texto tal cual (`"ARCA"`, `"EPH+IPC"`): NO es una clave de join. */
   source_label: nonEmpty,
   /** Sin cifras estructuradas en este corte: `figure_ids` debe estar vacío (no se inventan Figures). */
@@ -237,7 +237,8 @@ export const Evidence = z.strictObject({
   id: z.string().regex(ID_PATTERNS.evidence),
   ...base,
   claim_id: z.string().regex(ID_PATTERNS.claim).nullable(),
-  question_id: z.string().regex(ID_PATTERNS.question),
+  /** Null en evidencia DIAGNOSTIC_ONLY que el registro no ata a una pregunta. */
+  question_id: z.string().regex(ID_PATTERNS.question).nullable(),
   hypothesis_id: z.string().regex(ID_PATTERNS.hypothesis).nullable(),
   diagnostic_only: z.boolean(),
   object_ids: z.array(z.string().regex(ID_PATTERNS.object)),

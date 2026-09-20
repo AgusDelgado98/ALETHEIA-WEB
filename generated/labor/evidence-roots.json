@@ -2,6 +2,74 @@
   "entity": "EvidenceRoot",
   "items": [
     {
+      "collection_instrument": "SIPA administrative registration system (statistical processing of employer/contributor declarations; declarations themselves flow through ARCA)",
+      "dataset_release": "trabajoregistrado_2605_estadisticas.xlsx, SHA-256 64fdd3c4dfab02034a3ee85a8515aac4b5bb523a33ca3e3ae8f6359be67b66b1",
+      "frame_population": "Argentina; registered employment relationships/contributors across ASALARIADO_PRIVADO, ASALARIADO_PUBLICO, CASAS_PARTICULARES, AUTONOMO, MONOTRIBUTO, MONOTRIBUTO_SOCIAL modalities (T.2 table)",
+      "global_id": "labor/LAB-ROOT-0001",
+      "id": "LAB-ROOT-0001",
+      "id_origin": "CORPUS",
+      "independence_class": "INDEPENDENT",
+      "is_deflator": false,
+      "period": "2012-01 to 2026-05 (T.2 level table; A.1 index table covers 2009-01 onward for ASALARIADO_PRIVADO only)",
+      "primary_producer": "Secretaria de Trabajo, Empleo y Seguridad Social (STEySS/SSS), Ministerio de Capital Humano",
+      "provenance": {
+        "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-ROOT-0001",
+        "source_path": "metadata/lineage/evidence-root-registry.json",
+        "source_pointer": "/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "publication": "Situacion y evolucion del trabajo registrado (SIPA Trabajo Registrado)",
+      "relative_to_root_id": null,
+      "shared_coverage_bias": "Registration-based: this root cannot see any employment outside SIPA's administrative registration system (no visibility into unregistered/informal work). Per C5B (V1 P1 audit), SIPA's own inputs (ARCA employer declarations) are shared with MLER, SRT, and BESS -- claims combining SIPA with those sources must not treat agreement as independent corroboration of registration-status coverage itself.",
+      "source_link_status": "UNRESOLVED",
+      "source_links": [],
+      "statistical_object": "LAB-OBJ-0006",
+      "transformations": [
+        "V1 standardization: XLSX parsed to long-form CSV, one row per reference_month x series_identifier x statistical_object x registration_modality",
+        "LAB-A: filtered to SIPA-T2-LEVEL-ORIGINAL series only (GOV-010: A.1 and T.2.1 are the same series; T.2 selected as V1's designated canonical level representation)"
+      ]
+    },
+    {
+      "collection_instrument": "National-accounts integrated estimation from surveys and administrative records (CGI-IMO methodology)",
+      "dataset_release": "serie_cgi_07_26.xls, SHA-256 85f8e1a40e8b5fa143b20ad78b67405b3a728f19756d5aeeb1dd1a1e7efb4f4b",
+      "frame_population": "Argentina; national economy jobs/hours/wage bill, 2016-current base",
+      "global_id": "labor/LAB-ROOT-0002",
+      "id": "LAB-ROOT-0002",
+      "id_origin": "CORPUS",
+      "independence_class": "INDEPENDENT",
+      "is_deflator": false,
+      "period": "2016-Q1 to 2026-Q1",
+      "primary_producer": "Instituto Nacional de Estadistica y Censos (INDEC)",
+      "provenance": {
+        "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-ROOT-0002",
+        "source_path": "metadata/lineage/evidence-root-registry.json",
+        "source_pointer": "/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "publication": "Cuenta de generacion del ingreso e insumo de mano de obra (CGI-IMO)",
+      "relative_to_root_id": null,
+      "shared_coverage_bias": "This root's own JOB/HOUR/WAGE_BILL series are three internal measures of the same national-accounts product, not three independent sources; no CONVERGENT claim can be built from comparing them to each other. Relationship to LAB-ROOT-0001 (SIPA) was not tested in LAB-A and is UNVERIFIED, not assumed independent.",
+      "source_link_status": "UNRESOLVED",
+      "source_links": [],
+      "statistical_object": "LAB-OBJ-0002",
+      "transformations": [
+        "V1 standardization: XLS parsed to long-form CSV, one row per reference_quarter x measure_identifier x occupational_category x activity_sector",
+        "LAB-A: filtered to occupational_category=TOTAL (JOB, HOUR) / ASALARIADO (WAGE_BILL) and activity_sector=TOTAL_GENERAL for a single national-aggregate series per measure -- INDEC's own published totals, not a LAB-computed sum across sectors"
+      ]
+    },
+    {
       "collection_instrument": "Anonymized longitudinal sample constructed from monthly employer declarations to SIPA/AFIP (ARCA) for registered private salaried employment (per V1 P1 audit, reports/p1/C5B-Argentina-administrative-source-audit.md)",
       "dataset_release": "MLER.csv (extracted from mler_csv.rar), SHA-256 0e71f5f920c81a6f10e13325c1e9acd0c2866ca806884f2d9487f8ff37599852",
       "frame_population": "Argentina; registered private-sector salaried employment, sampled (~600,000 workers, ~1.8 million employer-worker relationships per official documentation)",
@@ -34,6 +102,106 @@
         "V1 extraction: MLER.csv extracted from mler_csv.rar, whole-file SHA-256/CRC32 verified, no record content read",
         "V1 standardization: fields copied byte-for-byte with no coercion except reference_month, into mler_panel.csv.gz",
         "LAB-A: DuckDB aggregation, read-only, of the standardized gzip CSV -- (a) SUM(sample_weight) per reference_month = weighted EMPLOYMENT_RELATIONSHIP-adjacent count; (b) one row per (reference_month, worker_id) with SUM(sample_weight) = weighted PERSON-adjacent count. No individual worker_id, relationship, or record was read, printed, or extracted -- only the two resulting monthly aggregate series (240 numbers total) were retained, in reports/lab_a/mler-sipa-overlap-monthly-aggregates.json"
+      ]
+    },
+    {
+      "collection_instrument": "Occupational-risk-insurance coverage registration (SUSS worker declarations received through ARCA, per V1 P1 audit C5B)",
+      "dataset_release": "Serie_historica_Segun_Sector_de_actividad_economica_CIIUrev4 - UP.xlsx, SHA-256 43c5ced299ca2cfee4266ea5b9b06c646beabc8a9a51b4e612f2a699a10649ba",
+      "frame_population": "Argentina; workers/employer parties within the occupational-risk-insurance system, CIIU Revision 4 classification only",
+      "global_id": "labor/LAB-ROOT-0004",
+      "id": "LAB-ROOT-0004",
+      "id_origin": "CORPUS",
+      "independence_class": "PARTIALLY_DEPENDENT",
+      "is_deflator": false,
+      "period": "2020-01 to 2026-05 (Revision 4 vintage only; the 2019 parallel-vintage overlap and the entire CIIU Revision 2 series, 1996-07 to 2019-12, were deliberately excluded to respect GOV-007's no-bridge/no-auto-splice ruling)",
+      "primary_producer": "Superintendencia de Riesgos del Trabajo (SRT)",
+      "provenance": {
+        "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-ROOT-0004",
+        "source_path": "metadata/lineage/evidence-root-registry.json",
+        "source_pointer": "/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "publication": "Estadisticas de cobertura y financiacion del Sistema de Riesgos del Trabajo (SRT)",
+      "relative_to_root_id": "LAB-ROOT-0001",
+      "shared_coverage_bias": "SRT receives SUSS worker declarations through ARCA (V1 P1 audit, C5B), the same declaration stream feeding SIPA; this diagnostic was not compared against SIPA in LAB-A (DIAGNOSTIC_ONLY, no claim attached), so this classification is recorded for completeness but did not gate any claim this round.",
+      "source_link_status": "UNRESOLVED",
+      "source_links": [],
+      "statistical_object": "LAB-OBJ-0001",
+      "transformations": [
+        "V1 standardization: two XLSX workbooks (Rev.2, Rev.4) parsed to one long-form CSV, activity_classification kept as a separate column, never merged across revisions",
+        "LAB-A: filtered to activity_classification=CIIU_REV4, activity_code=TOTAL_UNIDADES_PRODUCTIVAS, statistical_object=PERSON, reference_month >= 2020-01"
+      ]
+    },
+    {
+      "collection_instrument": "Encuesta Permanente de Hogares household-survey questionnaire (continuous EPH)",
+      "dataset_release": "EPH_usu_1_Trim_2026_txt.zip (retrieved 2026-09-17) and EPH_usu_1_Trim_2025_txt.zip (retrieved 2026-09-18), both from https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/; record layouts EPH_registro_1T2026.pdf and EPH_registro_1T2025.pdf, same source directory. Two releases of the SAME root (LAB-A2.1 instruction section 6: different EPH releases are not independent roots merely for being different files).",
+      "frame_population": "persons and households in 32 urban agglomerates surveyed by EPH (2026-Q1 release), per usu_individual_T126.txt/usu_hogar_T126.txt AGLOMERADO codes",
+      "global_id": "labor/LAB-ROOT-0005",
+      "id": "LAB-ROOT-0005",
+      "id_origin": "CORPUS",
+      "independence_class": "INDEPENDENT",
+      "is_deflator": false,
+      "period": "2025-Q1 and 2026-Q1 (ANO4/TRIMESTRE confirmed by direct inspection of both releases), both retrieved; both sit within the post-2024-Q4-break regime (LAB-GOV-EPH-0001), no GOV-008 boundary crossed between them. INDEC's own catalog documents continuous quarterly releases back to 2003-Q3, the large majority of which LABOR has still not retrieved.",
+      "primary_producer": "INDEC (Direccion de Encuestas de Hogares)",
+      "provenance": {
+        "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-ROOT-0005",
+        "source_path": "metadata/lineage/evidence-root-registry.json",
+        "source_pointer": "/4",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "publication": "INDEC EPH microdata release, 1er trimestre 2026 (EPH_usu_1_Trim_2026_txt.zip)",
+      "relative_to_root_id": null,
+      "shared_coverage_bias": "EPH's PRIMARY_PRODUCER, COLLECTION_INSTRUMENT (household survey questionnaire), and FRAME_POPULATION (surveyed persons/households) are each distinct from every Regime A administrative-registration root (LAB-ROOT-0001 SIPA, LAB-ROOT-0002 CGI, LAB-ROOT-0003 MLER, LAB-ROOT-0004 SRT) under the Amendment A same-root test; verified by direct inspection of the retrieved microdata's own record layout in this phase, not merely assumed from a different institutional publisher. EPH and IPC (LAB-ROOT-0006) are also produced by INDEC but use different collection instruments and frame populations (household questionnaire vs. retail price collection) and are treated as distinct roots on the same test; this has not been independently corroborated by a third method and remains a same-test judgement, not an empirically cross-checked one. Extended at LAB-A2.1 (2026-09-18) to a second release (2025-Q1) of the same root; this remains one Evidence Root with two vintages, not two roots, per LAB-A2.1 instruction section 6.",
+      "source_link_status": "UNRESOLVED",
+      "source_links": [],
+      "statistical_object": "LAB-OBJ-0008",
+      "transformations": [
+        "None applied by LABOR to either release. Both files retrieved as published by INDEC and read directly from their official zip archives; no recoding, weighting, or aggregation performed. Schema note: the 2025-Q1 individual base carries one column (CAT_INAC) absent from the 2026-Q1 individual base; none of the variables required for LAB-HYP-0003/LAB-HYP-0004 (ESTADO, CAT_OCUP, PP07H, P21, PONDERA, PONDIIO, AGLOMERADO, ANO4, TRIMESTRE, CH04) are affected."
+      ]
+    },
+    {
+      "collection_instrument": "retail/point-of-sale price-collection instrument (IPC Nacional, base diciembre 2016=100)",
+      "dataset_release": "serie_ipc_divisiones.csv; retrieved 2026-09-17 from https://www.indec.gob.ar/ftp/cuadros/economia/serie_ipc_divisiones.csv; methodology document metodologia_ipc_nacional_2019.pdf, same source directory",
+      "frame_population": "consumption basket of goods and services, national total and six statistical regions (GBA, Pampeana, Noreste, Noroeste, Cuyo, Patagonia)",
+      "global_id": "labor/LAB-ROOT-0006",
+      "id": "LAB-ROOT-0006",
+      "id_origin": "CORPUS",
+      "independence_class": "INDEPENDENT",
+      "is_deflator": true,
+      "period": "2016-12 through 2026-08 (201612-202608), as actually retrieved in the single file admitted this phase; base month 2016-12=100 for every region in the file, no internal base change observed",
+      "primary_producer": "INDEC (Direccion de Indices de Precios de Consumo)",
+      "provenance": {
+        "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-ROOT-0006",
+        "source_path": "metadata/lineage/evidence-root-registry.json",
+        "source_pointer": "/5",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "publication": "INDEC Indice de Precios al Consumidor Nacional, serie historica por divisiones (serie_ipc_divisiones.csv)",
+      "relative_to_root_id": null,
+      "shared_coverage_bias": "IPC's COLLECTION_INSTRUMENT (retail price collection) and FRAME_POPULATION (a consumption basket, not persons/jobs/employers) differ from every other admitted root under the Amendment A same-root test, including EPH (LAB-ROOT-0005), despite sharing INDEC as PRIMARY_PRODUCER with EPH and CGI. Not treated as a labour-object co-measurement: IPC's STATISTICAL_OBJECT (LAB-OBJ-0025, PRICE_INDEX) does not compete for CONVERGENT status against any labour-object root, since the Root Counting Rule counts roots that measure the SAME object, and no other admitted root measures PRICE_INDEX.",
+      "source_link_status": "UNRESOLVED",
+      "source_links": [],
+      "statistical_object": "LAB-OBJ-0025",
+      "transformations": [
+        "None applied by LABOR beyond CSV parsing for inspection (delimiter ';', decimal comma). No re-basing, deflation, or splicing performed."
       ]
     },
     {

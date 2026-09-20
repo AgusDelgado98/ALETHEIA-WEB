@@ -16,7 +16,11 @@ import type {
   RelationT,
   StatisticalObjectT,
 } from "../../schemas/corpus.ts";
-import { CLAIM_LIFECYCLE_STATES, GENERATOR_VERSION } from "../../schemas/corpus.ts";
+import {
+  CLAIM_LIFECYCLE_STATES,
+  DOCUMENTARY_LABELS,
+  GENERATOR_VERSION,
+} from "../../schemas/corpus.ts";
 import type { ModuleContractT } from "./contract.ts";
 import { srcDir } from "./extract.ts";
 import type { Pin } from "./pin.ts";
@@ -117,6 +121,35 @@ function bool(r: Rec, k: string, what: string): boolean {
 const uniqSorted = (xs: readonly string[]): string[] => [...new Set(xs)].sort();
 const eqSets = (a: readonly string[], b: readonly string[]): boolean =>
   JSON.stringify(uniqSorted(a)) === JSON.stringify(uniqSorted(b));
+
+/** `KNOWN_BREAKS` llega como strings o como objetos `{ KNOWN_BREAK, … }`. */
+function knownBreaks(r: Rec, field: string, what: string): string[] {
+  const v = r[field];
+  if (v === undefined) return [];
+  const arr = asArr(v, `${what}.${field}`);
+  return arr.map((x, i) => {
+    if (typeof x === "string" && x !== "") return x;
+    const rec = asRec(x, `${what}.${field}[${i}]`);
+    return str(rec, "KNOWN_BREAK", `${what}.${field}[${i}]`);
+  });
+}
+
+/** S0 `EFFECTIVE_OUTCOME`: array de estados, o el marcador `NO_CLAIM: …` en hipótesis sin claim. */
+function effectiveOutcomes(r: Rec, hid: string): ClaimT["epistemic_state"][] {
+  const v = r["EFFECTIVE_OUTCOME"];
+  if (v === undefined || v === null) return [];
+  if (typeof v === "string") {
+    if (v.startsWith("NO_CLAIM")) return [];
+    throw new Error(`${hid}: EFFECTIVE_OUTCOME texto no esperado: ${v}`);
+  }
+  return asArr(v, `${hid}.EFFECTIVE_OUTCOME`).map((s, i) => {
+    if (typeof s !== "string" || s === "")
+      throw new Error(`${hid}.EFFECTIVE_OUTCOME[${i}]: se esperaba texto`);
+    if (!(CLAIM_LIFECYCLE_STATES as readonly string[]).includes(s))
+      throw new Error(`${hid}: outcome fuera del vocabulario: ${s}`);
+    return s as ClaimT["epistemic_state"];
+  });
+}
 
 /** `LAB-CLM-0011` → `labor/LAB-CLM-0011`. */
 export const gid = (id: string): string => `labor/${id}`;
@@ -342,27 +375,67 @@ export function normalize(args: {
     if (!eqSets(strs(qs0.r, "CLAIM_IDS", "S0Q", true), claimIds))
       throw new Error(`G-REF-02: S0 lista otros claims para ${qid}`);
 
-    // ── resolución de la pregunta: se DERIVA de los claims; S0 es el segundo testigo (§8, G-STA-02) ──
+    // ── resolución de la pregunta: campo DISTINTO del epistemic_state del claim (§8, G-STA-02) ──
+    const s0Res = asRec(qs0.r["EFFECTIVE_RESOLUTION"], `${qid}.S0.EFFECTIVE_RESOLUTION`);
+    const s0Value = str(s0Res, "VALUE", qid);
+    const s0Vocab = str(s0Res, "VOCABULARY", qid);
+    let resolutionValue: QuestionT["resolution"]["value"];
+    let resolutionVocab: QuestionT["resolution"]["vocabulary"];
+    let resolutionBasis: QuestionT["resolution"]["basis"];
+    let resolutionBasisRefs: string[];
+
     if (claimIds.length === 0) {
-      throw new Error(
-        `${qid}: sin claims. La rama documental (NOT_IDENTIFIABLE / BLOCKED_BY_DESIGN / OUTSIDE_LAB_A) aún no está soportada: exige pinear el cierre del régimen como segundo testigo`,
-      );
+      if (!(DOCUMENTARY_LABELS as readonly string[]).includes(s0Value))
+        throw new Error(
+          `G-STA-02: ${qid} sin claims y S0 resuelve ${s0Value}, que no es etiqueta documental`,
+        );
+      resolutionValue = s0Value as (typeof DOCUMENTARY_LABELS)[number];
+      resolutionVocab = s0Vocab as QuestionT["resolution"]["vocabulary"];
+      const keepIdsForRes = uniqSorted(strs(qs0.r, "PRESERVED_RESULT_IDS", "S0Q", true));
+      const keepWitnesses = keepIdsForRes.map((kid) => findBy(keep, "PRESERVE_ID", kid, "KEEP"));
+      if (keepWitnesses.length === 0)
+        throw new Error(`G-STA-02: ${qid} sin claims y sin KEEP como segundo testigo`);
+      for (const k of keepWitnesses) {
+        const kid = str(k.r, "PRESERVE_ID", "keep");
+        if (str(k.r, "STATUS_VALUE", kid) !== resolutionValue)
+          throw new Error(
+            `G-STA-02: ${qid} S0=${resolutionValue} y KEEP ${kid}=${str(k.r, "STATUS_VALUE", kid)}`,
+          );
+      }
+      if (resolutionValue === "NOT_IDENTIFIABLE") {
+        if (str(q.r, "STATUS", qid) !== "NOT_IDENTIFIABLE")
+          throw new Error(
+            `G-STA-02: ${qid} NOT_IDENTIFIABLE en S0 pero el ledger registra ${str(q.r, "STATUS", qid)}`,
+          );
+        if (s0Vocab !== "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS")
+          throw new Error(`G-STA-02: vocabulario de S0 inesperado para ${qid}: ${s0Vocab}`);
+        resolutionBasis = "QUESTION_LEDGER";
+        resolutionBasisRefs = [qid];
+      } else {
+        if (s0Vocab !== "DOCUMENTED_REGIME_A_CLOSEOUT_LABEL_NOT_A_LIFECYCLE_STATE")
+          throw new Error(`G-STA-02: vocabulario de S0 inesperado para ${qid}: ${s0Vocab}`);
+        resolutionBasis = "REGIME_CLOSEOUT";
+        resolutionBasisRefs = keepIdsForRes;
+      }
+    } else {
+      const states = uniqSorted(qClaims.map((c) => str(c.r, "STATE", "claim")));
+      if (states.length !== 1)
+        throw new Error(
+          `G-STA-02: ${qid} tiene claims con estados distintos (${states.join(", ")}): requiere una regla gobernada`,
+        );
+      resolutionValue = states[0] as ClaimT["epistemic_state"];
+      if (s0Value !== resolutionValue)
+        throw new Error(
+          `G-STA-02: S0 resuelve ${qid} como ${s0Value} y los claims como ${resolutionValue}`,
+        );
+      if (s0Vocab !== "CLAIM_LIFECYCLE_STATE" || s0Res["BASIS"] !== "CLAIM")
+        throw new Error(`G-STA-02: vocabulario/base de S0 inesperados para ${qid}`);
+      if (!(CLAIM_LIFECYCLE_STATES as readonly string[]).includes(resolutionValue))
+        throw new Error(`Estado de claim fuera del vocabulario: ${resolutionValue}`);
+      resolutionVocab = "CLAIM_LIFECYCLE_STATE";
+      resolutionBasis = "CLAIM";
+      resolutionBasisRefs = claimIds;
     }
-    const states = uniqSorted(qClaims.map((c) => str(c.r, "STATE", "claim")));
-    if (states.length !== 1)
-      throw new Error(
-        `G-STA-02: ${qid} tiene claims con estados distintos (${states.join(", ")}): requiere una regla gobernada`,
-      );
-    const resolutionValue = states[0]!;
-    const s0Res = asRec(qs0.r["EFFECTIVE_RESOLUTION"], "S0.EFFECTIVE_RESOLUTION");
-    if (s0Res["VALUE"] !== resolutionValue)
-      throw new Error(
-        `G-STA-02: S0 resuelve ${qid} como ${String(s0Res["VALUE"])} y los claims como ${resolutionValue}`,
-      );
-    if (s0Res["VOCABULARY"] !== "CLAIM_LIFECYCLE_STATE" || s0Res["BASIS"] !== "CLAIM")
-      throw new Error(`G-STA-02: vocabulario/base de S0 inesperados para ${qid}`);
-    if (!(CLAIM_LIFECYCLE_STATES as readonly string[]).includes(resolutionValue))
-      throw new Error(`Estado de claim fuera del vocabulario: ${resolutionValue}`);
 
     // ── limitaciones ──
     const qLimIds = makeLimitations(
@@ -385,11 +458,7 @@ export function normalize(args: {
         throw new Error(`${hid}: PRIOR_DATA_EXPOSURE difiere entre registro y S0`);
       if (exposure !== "DIRECT" && exposure !== "INDIRECT" && exposure !== "NONE")
         throw new Error(`${hid}: exposición desconocida ${exposure}`);
-      const outcome = strs(hs0.r, "EFFECTIVE_OUTCOME", hid, true).map((s) => {
-        if (!(CLAIM_LIFECYCLE_STATES as readonly string[]).includes(s))
-          throw new Error(`${hid}: outcome fuera del vocabulario: ${s}`);
-        return s as (typeof CLAIM_LIFECYCLE_STATES)[number];
-      });
+      const outcome = effectiveOutcomes(hs0.r, hid);
       const hClaimIds = qClaims
         .filter((c) => c.r["HYPOTHESIS_ID"] === hid)
         .map((c) => str(c.r, "CLAIM_ID", "claim"));
@@ -411,7 +480,7 @@ export function normalize(args: {
         expected_observation: str(h.r, "EXPECTED_OBSERVATION", hid),
         failure_condition: str(h.r, "FAILURE_CONDITION", hid),
         candidate_sources: strs(h.r, "CANDIDATE_SOURCES", hid, true),
-        known_breaks: strs(h.r, "KNOWN_BREAKS", hid, true),
+        known_breaks: knownBreaks(h.r, "KNOWN_BREAKS", hid),
         registry_status: str(h.r, "STATUS", hid),
         claim_ids: hClaimIds,
         effective_outcome: outcome,
@@ -488,7 +557,7 @@ export function normalize(args: {
         not_eligible_for: strs(c.r, "NOT_ELIGIBLE_FOR", cid, true),
         lineage_independence: str(c.r, "LINEAGE_INDEPENDENCE", cid),
         scope_coverage_adequacy: str(c.r, "SCOPE_COVERAGE_ADEQUACY", cid),
-        shared_coverage_bias: str(c.r, "SHARED_COVERAGE_BIAS", cid),
+        shared_coverage_bias: strOrNull(c.r, "SHARED_COVERAGE_BIAS"),
         source_label: str(c.r, "SOURCE", cid),
         figure_ids: [],
         blocker_ids: [],
@@ -534,7 +603,7 @@ export function normalize(args: {
         id_origin: "CORPUS",
         provenance: prov(PATHS.evidence, eid, `/${e.i}`, inputHash),
         claim_id: strOrNull(e.r, "CLAIM_ID"),
-        question_id: str(e.r, "QUESTION_ID", eid),
+        question_id: strOrNull(e.r, "QUESTION_ID"),
         hypothesis_id: strOrNull(e.r, "HYPOTHESIS_ID"),
         diagnostic_only: bool(e.r, "DIAGNOSTIC_ONLY", eid),
         object_ids: uniqSorted(strs(e.r, "OBJECT_IDS", eid, true)),
@@ -846,22 +915,25 @@ export function normalize(args: {
       hypothesis_ids: hypIds,
       object_ids: uniqSorted(strs(q.r, "RELATED_OBJECTS", qid, true)),
       identification_requirements: strs(q.r, "IDENTIFICATION_REQUIREMENTS", qid, true),
-      known_breaks: strs(q.r, "KNOWN_BREAKS", qid, true),
+      known_breaks: knownBreaks(q.r, "KNOWN_BREAKS", qid),
       causal_identification_status: strOrNull(q.r, "CAUSAL_IDENTIFICATION_STATUS"),
       limitation_ids: qLimIds,
       resolution: {
-        value: resolutionValue as QuestionT["resolution"]["value"],
-        vocabulary: "CLAIM_LIFECYCLE_STATE",
-        basis: "CLAIM",
-        basis_refs: claimIds,
+        value: resolutionValue,
+        vocabulary: resolutionVocab,
+        basis: resolutionBasis,
+        basis_refs: resolutionBasisRefs,
       },
       absent_vs_negative: str(qs0.r, "ABSENT_VS_NEGATIVE", qid) as QuestionT["absent_vs_negative"],
       preserved_result_ids: keepIds,
       answerability: {
-        answer_kind: answerKind(
-          resolutionValue as ClaimT["epistemic_state"],
-          claimEntities[0]!.claim_kind,
-        ),
+        answer_kind:
+          claimEntities.length === 0
+            ? "NOT_ANSWERABLE"
+            : answerKind(
+                resolutionValue as ClaimT["epistemic_state"],
+                claimEntities[0]!.claim_kind,
+              ),
         answerable_from_corpus: true,
         required_qualifiers: uniqSorted([
           ...qLimIds,
@@ -875,6 +947,134 @@ export function normalize(args: {
       },
     };
     put(out.questions, questionEntity);
+  }
+
+  // Evidencia DIAGNOSTIC_ONLY que el registro no ata a una pregunta: entra al corpus completo, no al corte de una ficha.
+  for (const e of evidence) {
+    const eid = str(e.r, "EVIDENCE_ID", "evidence");
+    if (out.evidence.some((x) => x.id === eid)) continue;
+    const inputHash = asArr(e.r["INPUT_HASH"] ?? [], `${eid}.INPUT_HASH`).map((h, k) => {
+      const hr = asRec(h, `${eid}.INPUT_HASH[${k}]`);
+      return { file: str(hr, "FILE", eid), sha256: str(hr, "SHA256", eid) };
+    });
+    const limIds = makeLimitations(
+      "evidence",
+      eid,
+      strs(e.r, "LIMITATIONS", eid, true),
+      PATHS.evidence,
+      e.i,
+      "LIMITATIONS",
+      eid,
+    );
+    put(out.evidence, {
+      id: eid,
+      global_id: gid(eid),
+      id_origin: "CORPUS",
+      provenance: prov(PATHS.evidence, eid, `/${e.i}`, inputHash),
+      claim_id: strOrNull(e.r, "CLAIM_ID"),
+      question_id: strOrNull(e.r, "QUESTION_ID"),
+      hypothesis_id: strOrNull(e.r, "HYPOTHESIS_ID"),
+      diagnostic_only: bool(e.r, "DIAGNOSTIC_ONLY", eid),
+      object_ids: uniqSorted(strs(e.r, "OBJECT_IDS", eid, true)),
+      source_label: str(e.r, "SOURCE", eid),
+      root_ids: uniqSorted(strs(e.r, "ROOT_IDS", eid, true)),
+      method: str(e.r, "METHOD", eid),
+      metric: str(e.r, "METRIC", eid),
+      result_text: str(e.r, "RESULT", eid),
+      reproducibility: str(e.r, "REPRODUCIBILITY", eid),
+      status: str(e.r, "STATUS", eid),
+      limitation_ids: limIds,
+    });
+    const extraRoots = uniqSorted(strs(e.r, "ROOT_IDS", eid, true));
+    const extraObjects = new Set(strs(e.r, "OBJECT_IDS", eid, true));
+    for (const rid of extraRoots) {
+      if (out["evidence-roots"].some((x) => x.id === rid)) continue;
+      const r = findBy(roots, "ROOT_ID", rid, "evidence-root-registry");
+      extraObjects.add(str(r.r, "STATISTICAL_OBJECT", rid));
+      put(out["evidence-roots"], {
+        id: rid,
+        global_id: gid(rid),
+        id_origin: "CORPUS",
+        provenance: prov(PATHS.roots, rid, `/${r.i}`),
+        publication: str(r.r, "PUBLICATION", rid),
+        dataset_release: str(r.r, "DATASET_RELEASE", rid),
+        primary_producer: str(r.r, "PRIMARY_PRODUCER", rid),
+        collection_instrument: str(r.r, "COLLECTION_INSTRUMENT", rid),
+        frame_population: str(r.r, "FRAME_POPULATION", rid),
+        period: str(r.r, "PERIOD", rid),
+        transformations: strs(r.r, "TRANSFORMATIONS", rid, true),
+        statistical_object: str(r.r, "STATISTICAL_OBJECT", rid),
+        independence_class: str(r.r, "INDEPENDENCE_CLASS", rid),
+        relative_to_root_id: strOrNull(r.r, "RELATIVE_TO_ROOT_ID"),
+        shared_coverage_bias: str(r.r, "SHARED_COVERAGE_BIAS", rid),
+        is_deflator: deflatorRoots.has(rid),
+        source_links: [],
+        source_link_status: "UNRESOLVED",
+      });
+    }
+    for (const oid of uniqSorted([...extraObjects])) {
+      if (out["statistical-objects"].some((x) => x.id === oid)) continue;
+      const o = findBy(objects, "OBJECT_ID", oid, "object-ledger");
+      put(out["statistical-objects"], {
+        id: oid,
+        global_id: gid(oid),
+        id_origin: "CORPUS",
+        provenance: prov(PATHS.objects, oid, `/${o.i}`),
+        name: str(o.r, "NAME", oid),
+        unit: str(o.r, "UNIT", oid),
+        population: str(o.r, "POPULATION", oid),
+        universe: str(o.r, "UNIVERSE", oid),
+        grain: str(o.r, "GRAIN", oid),
+        producer: str(o.r, "PRODUCER", oid),
+        observation_mechanism: str(o.r, "OBSERVATION_MECHANISM", oid),
+        is: str(o.r, "IS", oid),
+        is_not: strs(o.r, "IS_NOT", oid, true),
+        status: str(o.r, "STATUS", oid),
+        v1_references: strs(o.r, "V1_REFERENCES", oid, true),
+      });
+    }
+  }
+
+  for (const o of objects) {
+    const oid = str(o.r, "OBJECT_ID", "object");
+    if (out["statistical-objects"].some((x) => x.id === oid)) continue;
+    put(out["statistical-objects"], {
+      id: oid,
+      global_id: gid(oid),
+      id_origin: "CORPUS",
+      provenance: prov(PATHS.objects, oid, `/${o.i}`),
+      name: str(o.r, "NAME", oid),
+      unit: str(o.r, "UNIT", oid),
+      population: str(o.r, "POPULATION", oid),
+      universe: str(o.r, "UNIVERSE", oid),
+      grain: str(o.r, "GRAIN", oid),
+      producer: str(o.r, "PRODUCER", oid),
+      observation_mechanism: str(o.r, "OBSERVATION_MECHANISM", oid),
+      is: str(o.r, "IS", oid),
+      is_not: strs(o.r, "IS_NOT", oid, true),
+      status: str(o.r, "STATUS", oid),
+      v1_references: strs(o.r, "V1_REFERENCES", oid, true),
+    });
+  }
+  for (const rr of rels) {
+    const rid = str(rr.r, "RELATION_ID", "rel");
+    if (out.relations.some((x) => x.id === rid)) continue;
+    put(out.relations, {
+      id: rid,
+      global_id: gid(rid),
+      id_origin: "CORPUS",
+      provenance: prov(PATHS.rel, rid, `/RELATIONS/${rr.i}`),
+      category: str(rr.r, "CATEGORY", rid) as RelationT["category"],
+      title: str(rr.r, "TITLE", rid),
+      claim_ids: strs(rr.r, "CLAIM_IDS", rid, true),
+      context_claim_ids: strs(rr.r, "CONTEXT_CLAIM_IDS", rid, true),
+      question_ids: strs(rr.r, "QUESTION_IDS", rid, true),
+      hypothesis_ids: strs(rr.r, "HYPOTHESIS_IDS", rid, true),
+      scope_of_relation: str(rr.r, "SCOPE_OF_RELATION", rid),
+      permitted_comparison: str(rr.r, "PERMITTED_COMPARISON", rid),
+      prohibited_inference: str(rr.r, "PROHIBITED_INFERENCE", rid),
+      reason: str(rr.r, "REASON", rid),
+    });
   }
 
   // Orden explícito de todo (Data Contract §4.2.6)

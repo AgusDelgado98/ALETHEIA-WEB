@@ -20,7 +20,10 @@ export const ModuleContract = z.strictObject({
   pin: z.string(),
   repo: z.strictObject({ repo_id: z.string(), tag: z.string(), commit: z.string() }),
   consumed_paths: z.array(z.string()).min(1),
-  slice: z.strictObject({ note: z.string(), question_ids: z.array(z.string()).min(1) }),
+  slice: z.strictObject({
+    note: z.string(),
+    question_ids: z.array(z.string()).min(1),
+  }),
   corpus_expected_counts: z.strictObject({
     note: z.string(),
     questions: z.number(),
@@ -45,28 +48,26 @@ export const ModuleContract = z.strictObject({
     limitations_claims: z.number(),
     limitations_questions: z.number(),
   }),
-  slice_expected_counts: z.record(
-    z.string(),
-    z.strictObject({
-      questions: z.number(),
-      claims: z.number(),
-      hypotheses: z.number(),
+  slice_expected_counts: z.strictObject({
+    note: z.string(),
+    questions: z.number(),
+    claims: z.number(),
+    hypotheses: z.number(),
+    evidence: z.number(),
+    evidence_roots: z.number(),
+    statistical_objects: z.number(),
+    governance_rulings: z.number(),
+    episodes: z.number(),
+    limitations: z.strictObject({
+      claim: z.number(),
+      question: z.number(),
       evidence: z.number(),
-      evidence_roots: z.number(),
-      statistical_objects: z.number(),
-      governance_rulings: z.number(),
-      episodes: z.number(),
-      limitations: z.strictObject({
-        claim: z.number(),
-        question: z.number(),
-        evidence: z.number(),
-      }),
-      blockers: z.number(),
-      anchors: z.number(),
-      relations: z.number(),
-      preserved_results: z.number(),
     }),
-  ),
+    blockers: z.number(),
+    anchors: z.number(),
+    relations: z.number(),
+    preserved_results: z.number(),
+  }),
   vocabularies: z.strictObject({
     claim_lifecycle_state: z.array(z.string()),
     claim_lifecycle_state_note: z.string(),
@@ -96,7 +97,14 @@ export const ModuleContract = z.strictObject({
       witnesses: z.array(witness).min(2),
     }),
   ),
-  claim_supersessions: z.array(z.unknown()),
+  claim_supersessions: z.array(
+    z.strictObject({
+      claim_id: z.string(),
+      replaced_evidence_id: z.string(),
+      superseding_evidence_id: z.string(),
+      corpus_quote: z.string().min(1),
+    }),
+  ),
 });
 export type ModuleContractT = z.infer<typeof ModuleContract>;
 

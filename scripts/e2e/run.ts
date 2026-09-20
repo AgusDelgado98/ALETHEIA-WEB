@@ -23,6 +23,10 @@ const ROUTE = "/labor/preguntas/q-0013";
 const VERD = ["rgb(30, 106, 94)", "rgb(21, 79, 70)"];
 
 const ctxData = loadContext(root);
+const publishedQid = ctxData.editorial.finding.canonical_ref.replace(/^labor\//, "");
+const publishedQuestion = ctxData.generated.questions.find((q) => q.id === publishedQid)!;
+const publishedClaims = ctxData.generated.claims.filter((c) => c.question_id === publishedQid);
+const publishedClaim = publishedClaims[0]!;
 const failures: string[] = [];
 const report: Record<string, unknown> = {};
 const check = (ok: boolean, msg: string): void => {
@@ -47,7 +51,7 @@ const needles: string[] = [
   e.ui.strings["need_heading"]!.text,
   e.ui.strings["trail_heading"]!.text,
   e.ui.strings["cut_title"]!.text,
-  ...ctxData.generated.claims.map((c) => c.id),
+  ...publishedClaims.map((c) => c.id),
 ];
 
 const norm = (s: string): string => s.replace(/\s+/g, " ").trim();
@@ -176,9 +180,9 @@ try {
       };
     });
     check(
-      dom.q === ctxData.generated.questions[0]!.resolution.value &&
-        dom.c === ctxData.generated.claims[0]!.epistemic_state &&
-        dom.id === ctxData.generated.claims[0]!.id,
+      dom.q === publishedQuestion.resolution.value &&
+        dom.c === publishedClaim.epistemic_state &&
+        dom.id === publishedClaim.id,
       "el estado del DOM difiere del generado",
     );
 

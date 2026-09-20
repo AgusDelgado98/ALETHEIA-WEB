@@ -223,7 +223,7 @@ describe("esquemas: Question → 0..N Claims y estados separados", () => {
     JSON.parse(readFileSync(join(ROOT, "generated", "labor", f), "utf8")) as {
       items: Record<string, unknown>[];
     };
-  const q = generated("questions.json").items[0]!;
+  const q = generated("questions.json").items.find((x) => x["id"] === "LAB-Q-0013")!;
 
   it("una pregunta admite 0, 1 o N claims (no es 1:1)", () => {
     for (const ids of [[], ["LAB-CLM-0011"], ["LAB-CLM-0002", "LAB-CLM-0004"]]) {
@@ -298,5 +298,78 @@ describe("esquemas: Question → 0..N Claims y estados separados", () => {
   });
   it("cada entidad rechaza campos desconocidos", () => {
     expect(Question.safeParse({ ...q, invento: true }).success).toBe(false);
+  });
+});
+
+describe("corpus completo: 18 preguntas → 0..N claims", () => {
+  const generated = (f: string): { items: Record<string, unknown>[] } =>
+    JSON.parse(readFileSync(join(ROOT, "generated", "labor", f), "utf8")) as {
+      items: Record<string, unknown>[];
+    };
+  const questions = (): Record<string, unknown>[] => generated("questions.json").items;
+  const claims = (): Record<string, unknown>[] => generated("claims.json").items;
+  const byId = (id: string): Record<string, unknown> => {
+    const hit = questions().find((x) => x["id"] === id);
+    if (hit === undefined) throw new Error(`falta ${id}`);
+    return hit;
+  };
+
+  it("genera 18 preguntas y 14 claims", () => {
+    expect(questions().map((x) => x["id"])).toEqual([
+      "LAB-Q-0001",
+      "LAB-Q-0002",
+      "LAB-Q-0003",
+      "LAB-Q-0004",
+      "LAB-Q-0005",
+      "LAB-Q-0006",
+      "LAB-Q-0007",
+      "LAB-Q-0008",
+      "LAB-Q-0009",
+      "LAB-Q-0010",
+      "LAB-Q-0011",
+      "LAB-Q-0012",
+      "LAB-Q-0013",
+      "LAB-Q-0014",
+      "LAB-Q-0015",
+      "LAB-Q-0016",
+      "LAB-Q-0017",
+      "LAB-Q-0018",
+    ]);
+    expect(claims()).toHaveLength(14);
+  });
+  it("5 preguntas tienen 0 claims y resolución documental", () => {
+    const zero = ["LAB-Q-0006", "LAB-Q-0007", "LAB-Q-0011", "LAB-Q-0015", "LAB-Q-0017"];
+    expect(
+      questions()
+        .filter((x) => (x["claim_ids"] as string[]).length === 0)
+        .map((x) => x["id"]),
+    ).toEqual(zero);
+    expect((byId("LAB-Q-0006")["resolution"] as { value: string; basis: string }).value).toBe(
+      "BLOCKED_BY_DESIGN",
+    );
+    expect((byId("LAB-Q-0006")["resolution"] as { basis: string }).basis).toBe("REGIME_CLOSEOUT");
+    expect((byId("LAB-Q-0007")["resolution"] as { value: string }).value).toBe("OUTSIDE_LAB_A");
+    for (const id of ["LAB-Q-0011", "LAB-Q-0015", "LAB-Q-0017"]) {
+      const r = byId(id)["resolution"] as { value: string; basis: string; vocabulary: string };
+      expect(r.value).toBe("NOT_IDENTIFIABLE");
+      expect(r.basis).toBe("QUESTION_LEDGER");
+      expect(r.vocabulary).toBe("CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS");
+    }
+    for (const c of claims())
+      expect(["NOT_IDENTIFIABLE", "BLOCKED_BY_DESIGN", "OUTSIDE_LAB_A"]).not.toContain(
+        c["epistemic_state"],
+      );
+  });
+  it("Q-0003 tiene 2 claims y resolución de pregunta distinta del campo de estado del claim", () => {
+    const q3 = byId("LAB-Q-0003");
+    expect(q3["claim_ids"]).toEqual(["LAB-CLM-0002", "LAB-CLM-0004"]);
+    expect((q3["resolution"] as { value: string; basis: string }).value).toBe("OBSERVED_IN_SOURCE");
+    expect((q3["resolution"] as { basis: string }).basis).toBe("CLAIM");
+    const pair = claims().filter((c) => c["question_id"] === "LAB-Q-0003");
+    expect(pair).toHaveLength(2);
+    for (const c of pair) {
+      expect(c["epistemic_state"]).toBe("OBSERVED_IN_SOURCE");
+      expect(c).not.toHaveProperty("resolution");
+    }
   });
 });
