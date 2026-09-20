@@ -11,6 +11,9 @@ question_resolution_labels:
   INSUFFICIENT_EVIDENCE:
     id: question-insufficient-evidence
     text: "Evidencia insuficiente"
+  NOT_IDENTIFIABLE:
+    id: question-not-identifiable
+    text: "No identificable con las fuentes conocidas"
 fixed:
   absence_not_negative:
     id: fixed-absence-not-negative

@@ -3,6 +3,7 @@ import { join, resolve } from "node:path";
 import { gzipSync } from "node:zlib";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium, type BrowserContext, type Page } from "playwright-core";
+import { loadEditorial } from "../../tools/editorial/load.ts";
 import { loadContext } from "../gates/context.ts";
 import { plain } from "../../tools/editorial/directives.ts";
 import { parseSegments } from "../../tools/editorial/directives.ts";
@@ -94,6 +95,72 @@ try {
       script_requests: 0,
       radios_work: before === false && after,
       details_work: true,
+    };
+    await ctx.close();
+  }
+
+  // ═════════ 1b. Q-0011 SIN JAVASCRIPT (0 claims, NOT_IDENTIFIABLE) ═════════
+  {
+    const e11 = loadEditorial(root, "LAB-Q-0011");
+    const needles11: string[] = [
+      e11.question.public_question,
+      resolved(e11.finding.title.text),
+      resolved(e11.finding.intro.text),
+      resolved(e11.finding.scope.text),
+      ...e11.finding.can_say.map((u) => resolved(u.text)),
+      ...e11.finding.does_not_mean.map((u) => resolved(u.text)),
+      ...e11.finding.would_need.map((u) => resolved(u.text)),
+      e11.states.fixed.absence_not_negative.text,
+      e11.states.question_resolution_labels["NOT_IDENTIFIABLE"]!.text,
+      e11.ui.strings["no_claim_trail"]!.text,
+      e11.ui.strings["say_heading"]!.text,
+      e11.ui.strings["not_heading"]!.text,
+      e11.ui.strings["need_heading"]!.text,
+      e11.ui.strings["provenance_summary"]!.text,
+    ];
+    const ctx = await browser.newContext({
+      javaScriptEnabled: false,
+      viewport: { width: 1440, height: 900 },
+    });
+    const reqs: { type: string; url: string }[] = [];
+    ctx.on("request", (r) => reqs.push({ type: r.resourceType(), url: r.url() }));
+    const page = await ctx.newPage();
+    await page.goto(`${origin}/labor/preguntas/q-0011`, { waitUntil: "networkidle" });
+    const text = norm(await page.evaluate(() => document.body.innerText));
+    const missing = needles11.filter((n) => !text.toLowerCase().includes(norm(n).toLowerCase()));
+    check(
+      missing.length === 0,
+      `Q-0011 sin JS falta contenido: ${missing.join(" | ").slice(0, 300)}`,
+    );
+    check(reqs.filter((r) => r.type === "script").length === 0, "Q-0011 sin JS se pidió un script");
+    check((await page.locator(".rastro").count()) === 0, "Q-0011 muestra Rastro de claim");
+    const dom = await page.evaluate(() => {
+      const a = document.querySelector("article")!;
+      return {
+        q: a.getAttribute("data-question-resolution"),
+        c: a.getAttribute("data-claim-state"),
+        id: a.getAttribute("data-claim-id"),
+        ni: document.querySelectorAll('[data-state="NOT_IDENTIFIABLE"]').length,
+        ins: document.querySelectorAll('[data-state="INSUFFICIENT_EVIDENCE"]').length,
+        sq: document.querySelectorAll("rect.sq").length,
+      };
+    });
+    check(dom.q === "NOT_IDENTIFIABLE", "Q-0011 resolución del DOM distinta de NOT_IDENTIFIABLE");
+    check(dom.c === null && dom.id === null, "Q-0011 inventa data-claim-id o data-claim-state");
+    check(
+      dom.ni === 1 && dom.ins === 0 && dom.sq === 0,
+      "Q-0011 representa NOT_IDENTIFIABLE como estado de claim",
+    );
+    await page.locator("summary").click();
+    check(
+      await page.locator("details").evaluate((d) => (d as HTMLDetailsElement).open),
+      "Q-0011 sin JS <details> no abre",
+    );
+    report["q_0011_no_js"] = {
+      needles_checked: needles11.length,
+      missing: missing.length,
+      script_requests: 0,
+      claim_attrs: dom,
     };
     await ctx.close();
   }
@@ -212,6 +279,12 @@ try {
     axe.push(await axeRun("auditoria"));
     await page.locator("summary").click();
     axe.push(await axeRun("auditoria + procedencia abierta"));
+    await page.goto(`${origin}/labor/preguntas/q-0011`, { waitUntil: "networkidle" });
+    axe.push(await axeRun("q-0011"));
+    await page.locator("summary").click();
+    axe.push(await axeRun("q-0011 procedencia abierta"));
+    await page.goto(`${origin}${ROUTE}`, { waitUntil: "networkidle" });
+    await page.locator("summary").click();
     report["axe"] = {
       tags: "wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice",
       states: axe,

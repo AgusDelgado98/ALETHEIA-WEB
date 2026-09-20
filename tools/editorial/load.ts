@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
 import { AuditFile, Finding, Limits, QuestionEditorial, Review, States, Ui, type AuditFileT, type FindingT, type LimitsT, type ReviewT, type StatesT, type UiT } from "./schema.ts";
@@ -40,8 +40,24 @@ const ROOT_FILES = (qid: string) => ({
 
 export class EditorialError extends Error {}
 
+/** Pregunta que posee las cadenas compartidas de sitio (`states.yml`, `ui.yml`) en su auditoría. */
+export const SITE_STRINGS_OWNER = "LAB-Q-0013";
+
+export function publishedEditorialIds(root: string): string[] {
+  const dir = join(root, "editorial", "labor", "findings");
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir)
+    .filter((n) => n.endsWith(".yml"))
+    .map((n) => n.replace(/\.yml$/, ""))
+    .sort();
+}
+
 /** Carga pura desde textos (los tests inyectan variantes defectuosas sin tocar el disco). */
-export function loadEditorialFromTexts(texts: Record<string, string>, qid: string): EditorialBundle {
+export function loadEditorialFromTexts(
+  texts: Record<string, string>,
+  qid: string,
+  opts?: { includeSiteUnits?: boolean },
+): EditorialBundle {
   const p = ROOT_FILES(qid);
   const get = (path: string): string => {
     const t = texts[path];
@@ -79,15 +95,20 @@ export function loadEditorialFromTexts(texts: Record<string, string>, qid: strin
   for (const u of finding.can_say) add(`can_say.${u.id}`, u, "can_say");
   for (const u of finding.does_not_mean) add(`does_not_mean.${u.id}`, u, "does_not_mean");
   for (const u of finding.would_need) add(`would_need.${u.id}`, u, "would_need");
-  for (const [k, u] of Object.entries(finding.trail)) add(`trail.${k}`, u, "trail");
+  if (finding.trail !== undefined) {
+    for (const [k, u] of Object.entries(finding.trail)) add(`trail.${k}`, u, "trail");
+  }
   // Razones de las limitaciones AUDIT_ONLY: se muestran en el nivel Auditoría, así que son texto público auditado.
   for (const d of limits.dispositions) {
     if (d.waiver_reason !== undefined) units.push({ string_id: `${cref}#limits.${d.limitation}.waiver`, kind: "limit_waiver", text: d.waiver_reason, maps_to: [d.limitation], section: "limits" });
   }
-  for (const [code, l] of Object.entries(states.claim_state_labels)) units.push({ string_id: `site#states.claim.${code}`, kind: "state_label", text: l.text, maps_to: [`vocab:claim_state:${code}`], section: "states" });
-  for (const [code, l] of Object.entries(states.question_resolution_labels)) units.push({ string_id: `site#states.question.${code}`, kind: "state_label", text: l.text, maps_to: [`vocab:question_resolution:${code}`], section: "states" });
-  units.push({ string_id: "site#fixed.absence_not_negative", kind: "fixed_text", text: states.fixed.absence_not_negative.text, maps_to: [`${cref}#absent_vs_negative`], section: "states" });
-  for (const [k, l] of Object.entries(ui.strings)) units.push({ string_id: `site#ui.${k}`, kind: "ui_label", text: l.text, maps_to: [], section: "ui" });
+  const includeSiteUnits = opts?.includeSiteUnits ?? qid === SITE_STRINGS_OWNER;
+  if (includeSiteUnits) {
+    for (const [code, l] of Object.entries(states.claim_state_labels)) units.push({ string_id: `site#states.claim.${code}`, kind: "state_label", text: l.text, maps_to: [`vocab:claim_state:${code}`], section: "states" });
+    for (const [code, l] of Object.entries(states.question_resolution_labels)) units.push({ string_id: `site#states.question.${code}`, kind: "state_label", text: l.text, maps_to: [`vocab:question_resolution:${code}`], section: "states" });
+    units.push({ string_id: "site#fixed.absence_not_negative", kind: "fixed_text", text: states.fixed.absence_not_negative.text, maps_to: [`${cref}#absent_vs_negative`], section: "states" });
+    for (const [k, l] of Object.entries(ui.strings)) units.push({ string_id: `site#ui.${k}`, kind: "ui_label", text: l.text, maps_to: [], section: "ui" });
+  }
 
   return { question, finding, limits, states, ui, review, audit, files, units };
 }
@@ -96,7 +117,11 @@ export function editorialPaths(qid: string): string[] {
   return Object.values(ROOT_FILES(qid));
 }
 
-export function loadEditorial(root: string, qid = "LAB-Q-0013"): EditorialBundle {
+export function loadEditorial(
+  root: string,
+  qid = SITE_STRINGS_OWNER,
+  opts?: { includeSiteUnits?: boolean },
+): EditorialBundle {
   const texts: Record<string, string> = {};
   for (const path of editorialPaths(qid)) {
     try {
@@ -105,5 +130,5 @@ export function loadEditorial(root: string, qid = "LAB-Q-0013"): EditorialBundle
       /* el archivo de auditoría puede no existir todavía */
     }
   }
-  return loadEditorialFromTexts(texts, qid);
+  return loadEditorialFromTexts(texts, qid, opts);
 }

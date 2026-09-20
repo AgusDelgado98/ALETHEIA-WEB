@@ -13,6 +13,7 @@ import { sha256Hex, short8 } from "../../tools/corpus/util.ts";
 import { parseSegments, plain } from "../../tools/editorial/directives.ts";
 import { lintBundle, verifyAudit } from "../../tools/editorial/audit.ts";
 import { limitationIdFromRef } from "../../tools/editorial/resolve.ts";
+import type { EditorialBundle, EditorialUnit } from "../../tools/editorial/load.ts";
 import type { GateContext } from "./context.ts";
 import { plainText } from "../../src/lib/render.ts";
 import { loadQuestionView } from "../../src/lib/view.ts";
@@ -49,9 +50,34 @@ const res = (failures: string[], okDetail: string): Outcome =>
 const eq = (a: unknown, b: unknown): boolean => JSON.stringify(a) === JSON.stringify(b);
 const uniq = (xs: readonly string[]): string[] => [...new Set(xs)].sort();
 
-/** Pregunta con ficha editorial/UI (M1: Q-0013). El pipeline genera las 18; los gates de copy/HTML se acotan a esta. */
-const publishedQuestionId = (ctx: GateContext): string =>
-  ctx.editorial.finding.canonical_ref.replace(/^labor\//, "");
+const editorialBundles = (ctx: GateContext): EditorialBundle[] => {
+  const seen = new Set<string>();
+  const out: EditorialBundle[] = [];
+  for (const b of [ctx.editorial, ...(ctx.editorials ?? [])]) {
+    if (seen.has(b.finding.canonical_ref)) continue;
+    seen.add(b.finding.canonical_ref);
+    out.push(b);
+  }
+  return out;
+};
+const allUnits = (ctx: GateContext): EditorialUnit[] => {
+  const seen = new Set<string>();
+  const out: EditorialUnit[] = [];
+  for (const b of editorialBundles(ctx)) {
+    for (const u of b.units) {
+      if (seen.has(u.string_id)) continue;
+      seen.add(u.string_id);
+      out.push(u);
+    }
+  }
+  return out;
+};
+const publishedQuestionIds = (ctx: GateContext): string[] =>
+  uniq(editorialBundles(ctx).map((b) => b.finding.canonical_ref.replace(/^labor\//, "")));
+const bundleForQuestion = (ctx: GateContext, qid: string): EditorialBundle =>
+  editorialBundles(ctx).find((b) => b.finding.canonical_ref === `labor/${qid}`) ?? ctx.editorial;
+const lintAll = (ctx: GateContext): ReturnType<typeof lintBundle> =>
+  editorialBundles(ctx).flatMap((b) => lintBundle(b));
 const ENTITY_KINDS = Object.keys(ENTITY_FILES) as EntityFileName[];
 const allEntities = (ctx: GateContext): Record<string, unknown>[] =>
   ENTITY_KINDS.flatMap((k) => ctx.generated[k] as unknown as Record<string, unknown>[]);
@@ -638,16 +664,29 @@ const gSta04: Gate = {
             f.push(
               `${route}: resolución renderizada ${t.attrs["data-question-resolution"] ?? "?"} != generada ${q.resolution.value}`,
             );
-          const cid = t.attrs["data-claim-id"];
-          const c = ctx.generated.claims.find((x) => x.id === cid);
-          if (c === undefined || t.attrs["data-claim-state"] !== c.epistemic_state)
-            f.push(
-              `${route}: estado de claim renderizado ${t.attrs["data-claim-state"] ?? "?"} != generado ${c?.epistemic_state ?? "?"}`,
-            );
+          else if (q.claim_ids.length === 0) {
+            const cid = t.attrs["data-claim-id"];
+            if (cid !== undefined) f.push(`${route}: pregunta sin claim con data-claim-id ${cid}`);
+            if (t.attrs["data-claim-state"] !== undefined)
+              f.push(
+                `${route}: pregunta sin claim con data-claim-state ${t.attrs["data-claim-state"]}`,
+              );
+          } else {
+            const cid = t.attrs["data-claim-id"];
+            const c = ctx.generated.claims.find((x) => x.id === cid);
+            if (c === undefined || t.attrs["data-claim-state"] !== c.epistemic_state)
+              f.push(
+                `${route}: estado de claim renderizado ${t.attrs["data-claim-state"] ?? "?"} != generado ${c?.epistemic_state ?? "?"}`,
+              );
+          }
         }
         const s = t.attrs["data-state"];
-        if (s !== undefined && !ctx.generated.claims.some((c) => c.epistemic_state === s))
-          f.push(`${route}: forma de estado ${s} sin claim generado`);
+        if (
+          s !== undefined &&
+          !ctx.generated.claims.some((c) => c.epistemic_state === s) &&
+          !ctx.generated.questions.some((q) => q.resolution.value === s)
+        )
+          f.push(`${route}: forma de estado ${s} sin código generado`);
       }
     }
     return f.length === 0 && ctx.html.size === 0
@@ -690,12 +729,14 @@ const gSta06: Gate = {
     "Vocabulario público: todo código presente tiene etiqueta, ninguna para un código ausente; «establecido/a» nunca sin calificador",
   run(ctx) {
     const f: string[] = [];
-    const pub = publishedQuestionId(ctx);
+    const pubs = publishedQuestionIds(ctx);
     const cs = uniq(
-      ctx.generated.claims.filter((c) => c.question_id === pub).map((c) => c.epistemic_state),
+      ctx.generated.claims
+        .filter((c) => pubs.includes(c.question_id))
+        .map((c) => c.epistemic_state),
     );
     const qs = uniq(
-      ctx.generated.questions.filter((q) => q.id === pub).map((q) => q.resolution.value),
+      ctx.generated.questions.filter((q) => pubs.includes(q.id)).map((q) => q.resolution.value),
     );
     const cl = Object.keys(ctx.editorial.states.claim_state_labels).sort();
     const ql = Object.keys(ctx.editorial.states.question_resolution_labels).sort();
@@ -703,10 +744,7 @@ const gSta06: Gate = {
       f.push(`etiquetas de claim ${cl.join(",")} != códigos presentes ${cs.join(",")}`);
     if (!eq(qs, ql))
       f.push(`etiquetas de resolución ${ql.join(",")} != códigos presentes ${qs.join(",")}`);
-    const texts = [
-      ...ctx.editorial.units.map((u) => u.text),
-      ...[...ctx.html.values()].map(visibleText),
-    ];
+    const texts = [...allUnits(ctx).map((u) => u.text), ...[...ctx.html.values()].map(visibleText)];
     for (const t of texts)
       if (/establecid[oa]s?/i.test(t)) f.push(`«establecido/a» sin calificador: ${t.slice(0, 60)}`);
     for (const l of [
@@ -889,7 +927,7 @@ const gPrv06: Gate = {
   title: "Ningún conteo de raíces ni «N fuentes»",
   run(ctx) {
     const texts = [
-      ...ctx.editorial.units.map((u) => ({ where: u.string_id, t: u.text })),
+      ...allUnits(ctx).map((u) => ({ where: u.string_id, t: u.text })),
       ...[...ctx.html].map(([r, h]) => ({ where: r, t: visibleText(h) })),
     ];
     return res(
@@ -907,36 +945,36 @@ const gPrv06: Gate = {
 const questionPages = (ctx: GateContext): [string, string][] =>
   [...ctx.html].filter(([, h]) => h.includes("data-question-id="));
 
-const publicTextIds = (ctx: GateContext): Set<string> => {
-  const fnd = ctx.editorial.finding;
-  return new Set([
-    ...fnd.can_say.map((u) => `can_say:${u.id}`),
-    ...fnd.does_not_mean.map((u) => `does_not_mean:${u.id}`),
-    ...fnd.would_need.map((u) => `would_need:${u.id}`),
+const publicTextIds = (finding: EditorialBundle["finding"]): Set<string> =>
+  new Set([
+    ...finding.can_say.map((u) => `can_say:${u.id}`),
+    ...finding.does_not_mean.map((u) => `does_not_mean:${u.id}`),
+    ...finding.would_need.map((u) => `would_need:${u.id}`),
   ]);
-};
 
 const gLim01: Gate = {
   id: "G-LIM-01",
   title: "Todo claim publicado tiene ≥ 1 límite público",
   run(ctx) {
     const f: string[] = [];
-    const pub = publishedQuestionId(ctx);
-    for (const c of ctx.generated.claims.filter((x) => x.question_id === pub)) {
-      const ids = new Set(c.limitation_ids);
-      const shown = ctx.editorial.limits.dispositions.filter(
-        (d) =>
-          d.disposition === "SHOWN" &&
-          ids.has(limitationIdFromRef(ctx.generated, d.limitation) ?? ""),
-      );
-      if (shown.length === 0) f.push(`${c.id}: sin límites públicos SHOWN`);
+    for (const qid of publishedQuestionIds(ctx)) {
+      const bundle = bundleForQuestion(ctx, qid);
+      for (const c of ctx.generated.claims.filter((x) => x.question_id === qid)) {
+        const ids = new Set(c.limitation_ids);
+        const shown = bundle.limits.dispositions.filter(
+          (d) =>
+            d.disposition === "SHOWN" &&
+            ids.has(limitationIdFromRef(ctx.generated, d.limitation) ?? ""),
+        );
+        if (shown.length === 0) f.push(`${c.id}: sin límites públicos SHOWN`);
+      }
     }
-    for (const [route, html] of ctx.html) {
+    for (const [route, html] of questionPages(ctx)) {
       const text = visibleText(html);
       if (!text.includes(ctx.editorial.ui.strings["not_heading"]?.text ?? "\0"))
         f.push(`${route}: falta el bloque «Lo que esto NO significa»`);
     }
-    return res(f, "el claim publicado tiene límites públicos y la página los muestra");
+    return res(f, "cada ficha publicada tiene límites públicos y la página los muestra");
   },
 };
 const gLim02: Gate = {
@@ -944,35 +982,36 @@ const gLim02: Gate = {
   title: "Matriz de cobertura completa: toda limitación canónica tiene clase y disposición",
   run(ctx) {
     const f: string[] = [];
-    const pub = publicTextIds(ctx);
-    const disp = ctx.editorial.limits.dispositions;
-    const covered = new Set<string>();
-    for (const d of disp) {
-      const id = limitationIdFromRef(ctx.generated, d.limitation);
-      if (id === null) {
-        f.push(`${d.limitation}: no resuelve a una limitación canónica`);
-        continue;
+    for (const qid of publishedQuestionIds(ctx)) {
+      const bundle = bundleForQuestion(ctx, qid);
+      const pub = publicTextIds(bundle.finding);
+      const covered = new Set<string>();
+      for (const d of bundle.limits.dispositions) {
+        const id = limitationIdFromRef(ctx.generated, d.limitation);
+        if (id === null) {
+          f.push(`${d.limitation}: no resuelve a una limitación canónica`);
+          continue;
+        }
+        covered.add(id);
+        if (d.disposition === "AUDIT_ONLY" && d.class !== "PROCEDURAL")
+          f.push(`${d.limitation}: AUDIT_ONLY solo se admite con clase PROCEDURAL (es ${d.class})`);
+        if (d.disposition === "AUDIT_ONLY" && !d.waiver_reason)
+          f.push(`${d.limitation}: AUDIT_ONLY sin waiver_reason`);
+        if (d.disposition === "SHOWN") {
+          if (!d.public_refs || d.public_refs.length === 0)
+            f.push(`${d.limitation}: SHOWN sin texto público`);
+          for (const r of d.public_refs ?? [])
+            if (!pub.has(r)) f.push(`${d.limitation}: el texto público ${r} no existe`);
+        }
       }
-      covered.add(id);
-      if (d.disposition === "AUDIT_ONLY" && d.class !== "PROCEDURAL")
-        f.push(`${d.limitation}: AUDIT_ONLY solo se admite con clase PROCEDURAL (es ${d.class})`);
-      if (d.disposition === "AUDIT_ONLY" && !d.waiver_reason)
-        f.push(`${d.limitation}: AUDIT_ONLY sin waiver_reason`);
-      if (d.disposition === "SHOWN") {
-        if (!d.public_refs || d.public_refs.length === 0)
-          f.push(`${d.limitation}: SHOWN sin texto público`);
-        for (const r of d.public_refs ?? [])
-          if (!pub.has(r)) f.push(`${d.limitation}: el texto público ${r} no existe`);
+      const pubClaims = new Set(
+        ctx.generated.claims.filter((c) => c.question_id === qid).map((c) => c.id),
+      );
+      for (const l of ctx.generated.limitations) {
+        if (l.owner_kind === "evidence") continue;
+        if (l.owner_id !== qid && !pubClaims.has(l.owner_id)) continue;
+        if (!covered.has(l.id)) f.push(`${l.owner_id}#limitation:${l.ordinal}: sin disposición`);
       }
-    }
-    const qid = publishedQuestionId(ctx);
-    const pubClaims = new Set(
-      ctx.generated.claims.filter((c) => c.question_id === qid).map((c) => c.id),
-    );
-    for (const l of ctx.generated.limitations) {
-      if (l.owner_kind === "evidence") continue;
-      if (l.owner_id !== qid && !pubClaims.has(l.owner_id)) continue;
-      if (!covered.has(l.id)) f.push(`${l.owner_id}#limitation:${l.ordinal}: sin disposición`);
     }
     return res(
       f,
@@ -986,15 +1025,20 @@ const gLim03: Gate = {
     "La pregunta muestra sus limitaciones, la divulgación de exposición previa si aplica y la brecha pregunta–claim",
   run(ctx) {
     const f: string[] = [];
-    const pub = publishedQuestionId(ctx);
-    for (const h of ctx.generated.hypotheses.filter((x) => x.question_id === pub))
-      if (h.disclosure_required || h.prior_data_exposure !== "NONE")
-        f.push(
-          `${h.id}: exige divulgación de exposición previa (${h.prior_data_exposure}) y no hay texto editorial para mostrarla`,
-        );
+    for (const qid of publishedQuestionIds(ctx)) {
+      for (const h of ctx.generated.hypotheses.filter((x) => x.question_id === qid))
+        if (h.disclosure_required || h.prior_data_exposure !== "NONE")
+          f.push(
+            `${h.id}: exige divulgación de exposición previa (${h.prior_data_exposure}) y no hay texto editorial para mostrarla`,
+          );
+    }
     for (const [route, html] of questionPages(ctx)) {
       const t = visibleText(html);
-      for (const l of ctx.editorial.finding.does_not_mean)
+      const qid = tags(html).find((x) => x.attrs["data-question-id"] !== undefined)?.attrs[
+        "data-question-id"
+      ];
+      const bundle = qid !== undefined ? bundleForQuestion(ctx, qid) : ctx.editorial;
+      for (const l of bundle.finding.does_not_mean)
         if (!t.includes(plain(parseSegments(l.text, ctx.generated))))
           f.push(`${route}: no muestra el límite ${l.id}`);
       if (!t.includes(ctx.editorial.ui.strings["prov_disclosure"]?.text ?? "\0"))
@@ -1019,24 +1063,29 @@ const gLim05: Gate = {
   title:
     "Las limitaciones SHOWN no se editaron fuera de auditoría (hash del texto público == auditado)",
   run(ctx) {
-    const shown = new Set(
-      ctx.editorial.limits.dispositions
-        .filter((d) => d.disposition === "SHOWN")
-        .flatMap((d) => d.public_refs ?? []),
-    );
-    const ids = new Set(
-      [...shown].map(
-        (r) => `${ctx.editorial.finding.canonical_ref}#finding.${r.replace(":", ".")}`,
-      ),
-    );
-    const f = verifyAudit(ctx.editorial, ctx.generated)
-      .filter(
-        (i) =>
-          ids.has(i.unit) &&
-          (i.message.includes("hash distinto") || i.message.includes("sin registro")),
-      )
-      .map((i) => `${i.unit}: ${i.message}`);
-    return res(f, `${ids.size} textos públicos de límites con hash igual al auditado`);
+    const f: string[] = [];
+    let n = 0;
+    for (const b of editorialBundles(ctx)) {
+      const shown = new Set(
+        b.limits.dispositions
+          .filter((d) => d.disposition === "SHOWN")
+          .flatMap((d) => d.public_refs ?? []),
+      );
+      const ids = new Set(
+        [...shown].map((r) => `${b.finding.canonical_ref}#finding.${r.replace(":", ".")}`),
+      );
+      n += ids.size;
+      f.push(
+        ...verifyAudit(b, ctx.generated)
+          .filter(
+            (i) =>
+              ids.has(i.unit) &&
+              (i.message.includes("hash distinto") || i.message.includes("sin registro")),
+          )
+          .map((i) => `${i.unit}: ${i.message}`),
+      );
+    }
+    return res(f, `${n} textos públicos de límites con hash igual al auditado`);
   },
 };
 
@@ -1058,10 +1107,10 @@ const gFig02: Gate = {
   title: "Editorial sin literales numéricos fuera de directivas",
   run: (ctx) =>
     res(
-      lintBundle(ctx.editorial)
+      lintAll(ctx)
         .filter((i) => i.gate === "G-FIG-02")
         .map((i) => `${i.unit}: ${i.message}`),
-      `${ctx.editorial.units.length} textos sin literales numéricos (fechas y cantidades son directivas)`,
+      `${allUnits(ctx).length} textos sin literales numéricos (fechas y cantidades son directivas)`,
     ),
 };
 const gFig03: Gate = {
@@ -1100,7 +1149,7 @@ const gFig05: Gate = {
     "Sin aritmética en la capa web: ningún porcentaje, razón, puntaje o índice sobre estados o claims",
   run(ctx) {
     const f: string[] = [];
-    for (const u of ctx.editorial.units)
+    for (const u of allUnits(ctx))
       if (NO_ARITHMETIC.test(u.text))
         f.push(`${u.string_id}: expresión aritmética o de composición`);
     for (const [route, html] of ctx.html)
@@ -1130,28 +1179,34 @@ const gEdi01: Gate = {
   title: "Todo texto público tiene auditoría vigente atada por hash al canónico actual",
   run: (ctx) =>
     res(
-      verifyAudit(ctx.editorial, ctx.generated)
+      editorialBundles(ctx)
+        .flatMap((b) => verifyAudit(b, ctx.generated))
         .filter((i) => i.gate === "G-EDI-01" || i.gate === "G-REF-01" || i.gate === "G-STA-04")
         .map((i) => `${i.unit}: ${i.message}`),
-      `${ctx.editorial.units.length} textos con registro vigente y canonical_hash actual`,
+      `${allUnits(ctx).length} textos con registro vigente y canonical_hash actual`,
     ),
 };
 const gEdi02: Gate = {
   id: "G-EDI-02",
   title: "public_question == texto auditado y aprobado (hash) y == la reconciliación aceptada",
   run(ctx) {
-    const f = verifyAudit(ctx.editorial, ctx.generated)
-      .filter((i) => i.gate === "G-EDI-02")
-      .map((i) => `${i.unit}: ${i.message}`);
-    const qid = ctx.editorial.finding.canonical_ref.replace("labor/", "");
-    const g = ctx.golden.find((x) => x.QUESTION_ID === qid);
-    if (g === undefined || g.PUBLIC_QUESTION !== ctx.editorial.question.public_question)
-      f.push(`${qid}: el texto difiere de la public_question aprobada en la reconciliación`);
-    const rec = ctx.editorial.audit?.records.find(
-      (r) => r.string_id === `${ctx.editorial.finding.canonical_ref}#public_question`,
-    );
-    if (rec === undefined || rec.verdict !== "APPROVED")
-      f.push(`${qid}: public_question sin veredicto APPROVED`);
+    const f: string[] = [];
+    for (const b of editorialBundles(ctx)) {
+      f.push(
+        ...verifyAudit(b, ctx.generated)
+          .filter((i) => i.gate === "G-EDI-02")
+          .map((i) => `${i.unit}: ${i.message}`),
+      );
+      const qid = b.finding.canonical_ref.replace("labor/", "");
+      const g = ctx.golden.find((x) => x.QUESTION_ID === qid);
+      if (g === undefined || g.PUBLIC_QUESTION !== b.question.public_question)
+        f.push(`${qid}: el texto difiere de la public_question aprobada en la reconciliación`);
+      const rec = b.audit?.records.find(
+        (r) => r.string_id === `${b.finding.canonical_ref}#public_question`,
+      );
+      if (rec === undefined || rec.verdict !== "APPROVED")
+        f.push(`${qid}: public_question sin veredicto APPROVED`);
+    }
     return res(
       f,
       "public_question idéntica a la aprobada (Charter v1.2 §20.7), con hash igual al auditado",
@@ -1163,7 +1218,7 @@ const lintGate = (id: string, title: string, okDetail: string): Gate => ({
   title,
   run: (ctx) =>
     res(
-      lintBundle(ctx.editorial)
+      lintAll(ctx)
         .filter((i) => i.gate === id && i.severity === "error")
         .map((i) => `${i.unit}: ${i.message}`),
       okDetail,
@@ -1178,7 +1233,7 @@ const gEdi04: Gate = {
   id: "G-EDI-04",
   title: "Población/período/causalidad ⊂ scope_statement (heurística; positivos a revisión humana)",
   run(ctx) {
-    const w = lintBundle(ctx.editorial).filter((i) => i.gate === "G-EDI-04");
+    const w = lintAll(ctx).filter((i) => i.gate === "G-EDI-04");
     return ok(
       w.length === 0
         ? "sin conectores causales; sin advertencias para revisión humana"
@@ -1192,7 +1247,7 @@ const gEdi05: Gate = {
     "Solo Relation AUTHORIZED/JUXTAPOSITION con su texto; PROHIBITED/GOVERNANCE_REQUIRED solo como «lo que no se afirma»",
   run(ctx) {
     const f: string[] = [];
-    for (const u of ctx.editorial.units) {
+    for (const u of allUnits(ctx)) {
       for (const ref of u.maps_to) {
         const m = /^labor\/(REL-[A-Z]+-[0-9]{3})#(.+)$/.exec(ref);
         if (m === null) continue;
@@ -1233,7 +1288,7 @@ const gEdi08: Gate = {
   run(ctx) {
     if (ctx.html.size === 0) return skip("sin dist/");
     const hay: string[] = [];
-    for (const u of ctx.editorial.units) {
+    for (const u of allUnits(ctx)) {
       hay.push(u.text);
       try {
         hay.push(plain(parseSegments(u.text, ctx.generated)));
@@ -1244,16 +1299,15 @@ const gEdi08: Gate = {
     for (const t of ctx.generatedFiles.values())
       hay.push(...(t.match(/"((?:[^"\\]|\\.)*)"/g) ?? []).map((s) => JSON.parse(s) as string));
     for (const a of ctx.generated.anchors) hay.push(String(a.value_raw));
-    for (const u of ctx.editorial.units)
+    for (const u of allUnits(ctx))
       for (const m of u.text.matchAll(/\{\{(?:anchor):([^}|]+)\}\}/g)) {
         const a = ctx.generated.anchors.find((x) => x.id === m[1]);
         if (a !== undefined) hay.push(plain(parseSegments(m[0], ctx.generated)));
       }
     hay.push(ctx.generated.manifest.pin.commit.slice(0, 7), ctx.generated.manifestSha256);
-    hay.push(
-      sha256Hex(readFileSync(join(ctx.root, "editorial", "manifest.json"))),
-      plainText(loadQuestionView(ctx.root, publishedQuestionId(ctx)).provenance.cite),
-    );
+    hay.push(sha256Hex(readFileSync(join(ctx.root, "editorial", "manifest.json"))));
+    for (const qid of publishedQuestionIds(ctx))
+      hay.push(plainText(loadQuestionView(ctx.root, qid).provenance.cite));
     const haystack = hay.join(" ").replace(/\s+/g, " ");
     const clean = (t: string): string => t.replace(/^[.,;:()«»"' ]+|[.,;:()«»"' ]+$/g, "");
     const explained = (node: string): boolean =>

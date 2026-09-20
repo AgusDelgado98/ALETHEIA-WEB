@@ -1,0 +1,74 @@
+# Capa editorial · Q-0011 (WEB-0 Editorial Contract §3, §5, §6; MVP H-5 / OD-08).
+# Pregunta sin claim: no se fabrica una afirmación ni un Rastro de claim.
+# Cada texto es lenguaje público y NO es fuente de hechos.
+schema: aletheia-web/editorial-finding/1
+canonical_ref: labor/LAB-Q-0011
+revision: 1
+
+title:
+  id: title
+  text: "No identificable con las fuentes conocidas"
+  maps_to:
+    - labor/KEEP-005#what_is_preserved
+
+intro:
+  id: intro
+  text: "Esta pregunta busca distinguir una prestación de servicios realmente independiente de una relación de empleo dependiente encubierta. Con las fuentes hoy admitidas no se puede identificar: ninguna fuente conocida, incluida ARCA, observa de forma directa la relación económica real. No hay afirmación: el resultado queda en el registro de la pregunta."
+  maps_to:
+    - labor/LAB-Q-0011#canonical_text
+    - "labor/LAB-Q-0011#limitation:1"
+    - labor/KEEP-005#what_is_preserved
+
+scope:
+  id: scope
+  text: "Solo dice que, con las fuentes conocidas, la pregunta no es identificable. No dice que la distinción no exista, ni que se haya medido, ni que se haya ejecutado la hipótesis."
+  maps_to:
+    - labor/KEEP-005#what_is_preserved
+    - labor/LAB-HYP-0009#expected_observation
+
+can_say:
+  - id: cs-1
+    text: "No existe ninguna afirmación: el resultado está registrado en el registro de preguntas."
+    maps_to:
+      - labor/KEEP-005#what_is_preserved
+  - id: cs-2
+    text: "Ninguna fuente admitida ni plausiblemente admisible trae etiquetas de dependencia que permitan validar un indicador."
+    maps_to:
+      - labor/KEEP-005#what_is_preserved
+      - "labor/LAB-Q-0011#limitation:1"
+  - id: cs-3
+    text: "Ninguna fuente inventariada, incluida ARCA, se conoce que observe de forma directa la relación económica real."
+    maps_to:
+      - "labor/LAB-Q-0011#limitation:1"
+
+does_not_mean:
+  - id: dnm-1
+    text: "No significa un resultado negativo. Es una ausencia: la pregunta no es identificable con las fuentes actuales."
+    maps_to:
+      - labor/REL-PR-008#prohibited_inference
+      - labor/KEEP-005#must_not
+  - id: dnm-2
+    text: "No significa que se pueda inferir dependencia económica o subordinación desde las categorías de registro ni desde el indicador de un solo cliente frente a varios clientes."
+    maps_to:
+      - labor/REL-PR-005#prohibited_inference
+      - labor/REL-CONF-002#prohibited_inference
+      - labor/KEEP-005#must_not
+  - id: dnm-3
+    text: "No significa que la falta de una afirmación haga desaparecer el resultado: el desenlace se conserva en el registro de la pregunta."
+    maps_to:
+      - labor/KEEP-005#must_not
+      - labor/KEEP-005#what_is_preserved
+
+would_need:
+  - id: wn-1
+    text: "Una fuente admitida capaz de observar el arreglo económico subyacente, y no solo su registro fiscal."
+    maps_to:
+      - labor/LAB-Q-0011#identification_requirements
+      - "labor/LAB-Q-0011#limitation:1"
+  - id: wn-2
+    text: "Un indicador gobernado de la pregunta {{id:LAB-Q-0010}} no alcanza: hace falta poder validarlo contra casos de dependencia conocidos."
+    maps_to:
+      - labor/LAB-Q-0011#identification_requirements
+      - labor/LAB-HYP-0009#metric
+
+blockers_at_cut: []

@@ -22,6 +22,7 @@ export function cloneCtx(ctx: GateContext): GateContext {
     stats: structuredClone(ctx.stats),
     map: structuredClone(ctx.map),
     editorial: structuredClone(ctx.editorial),
+    editorials: ctx.editorials.map((b) => structuredClone(b)),
     golden: structuredClone(ctx.golden),
     html: new Map(ctx.html),
     sources: structuredClone(ctx.sources),

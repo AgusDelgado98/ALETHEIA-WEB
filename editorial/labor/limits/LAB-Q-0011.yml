@@ -1,0 +1,13 @@
+# Matriz de cobertura de limitaciones (WEB-0 Editorial Contract §5, gate G-LIM-02).
+# Q-0011 no tiene claim: solo la limitación canónica de la pregunta.
+schema: aletheia-web/editorial-limits/1
+canonical_ref: labor/LAB-Q-0011
+revision: 1
+dispositions:
+  - limitation: "labor/LAB-Q-0011#limitation:1"
+    class: MEASUREMENT
+    disposition: SHOWN
+    public_refs:
+      - "can_say:cs-2"
+      - "can_say:cs-3"
+      - "does_not_mean:dnm-2"

@@ -11,7 +11,7 @@ interface Props {
 const { v } = Astro.props;
 const ui = v.ui;
 const p = v.provenance;
-const ids = v.trail.ids;
+const ids = p.entityIds;
 ---
 
 <section class="prov" aria-labelledby="prov-h">
@@ -56,18 +56,7 @@ const ids = v.trail.ids;
           <div>
             <dt>{ui("prov_ids")}</dt>
             <dd class="mono ids">
-              {[
-                v.id,
-                ids.claim,
-                ids.hypothesis,
-                ...ids.evidence,
-                ...ids.roots,
-                ...ids.objects,
-                ...ids.ruling,
-                ...ids.episodes,
-                ...p.preserved,
-                ...p.forbidden,
-              ].map((x) => (
+              {ids.map((x) => (
                 <span data-num="id">{x}</span>
               ))}
             </dd>

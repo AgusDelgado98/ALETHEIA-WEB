@@ -25,7 +25,8 @@ export const QuestionEditorial = z.strictObject({
 export const Finding = z.strictObject({
   schema: z.literal("aletheia-web/editorial-finding/1"),
   canonical_ref: z.string().min(1),
-  claim_ref: z.string().min(1),
+  /** Ausente en preguntas sin claim: no se fabrica una afirmación (Charter OD-08 / MVP H-5). */
+  claim_ref: z.string().min(1).optional(),
   revision: rev,
   title: Unit,
   intro: Unit,
@@ -33,7 +34,7 @@ export const Finding = z.strictObject({
   can_say: z.array(Unit).min(1),
   does_not_mean: z.array(Unit).min(1),
   would_need: z.array(Unit).min(1),
-  trail: z.strictObject({ claim: Unit, hypothesis: Unit, evidence: Unit, object_employment: Unit, object_registration: Unit }),
+  trail: z.strictObject({ claim: Unit, hypothesis: Unit, evidence: Unit, object_employment: Unit, object_registration: Unit }).optional(),
   blockers_at_cut: z.array(z.string()),
 });
 export type FindingT = z.infer<typeof Finding>;

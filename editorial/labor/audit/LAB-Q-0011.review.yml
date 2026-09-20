@@ -1,0 +1,36 @@
+# Entrada humana/adversarial de la auditoría (Editorial Contract §4). De aquí salen los veredictos y las notas;
+# los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
+schema: aletheia-web/editorial-review/1
+canonical_ref: labor/LAB-Q-0011
+revision: 1
+reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
+date: "2026-09-20"
+independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
+adversarial_review:
+  - "Lectura a favor de un resultado negativo: «no identificable» podría leerse como «no hay distinción». Se mitiga con el aviso fijo «Ausencia, no resultado negativo.» y con dnm-1 (REL-PR-008)."
+  - "Fabricar una afirmación: el título, cs-1 y la cadena de interfaz «Sin claim: no hay Rastro de claim.» declaran que no hay claim; no se inventa uno ni se muestra un Rastro de afirmación (OD-08 / H-5)."
+  - "NOT_IDENTIFIABLE como estado de claim: la etiqueta es de resolución de pregunta; no hay capa de afirmación ni data-claim-state; la forma es zona rayada, sin cuadrado (G-STA-03)."
+  - "Registro vs. relación económica: dnm-2 cita REL-PR-005 y REL-CONF-002; no se infiere dependencia ni subordinación desde categorías de registro ni desde el indicador de un solo cliente."
+  - "PP05F / Q-0010: wn-2 dice que un indicador gobernado de {{id:LAB-Q-0010}} no alcanza; no reabre ni responde esa pregunta."
+  - "Fuerza de la evidencia: ningún texto usa verbos protegidos ni conectores causales; el estado se lee solo de generated/."
+defaults:
+  verdict: PENDING_AUTHOR_REVIEW
+overrides:
+  "labor/LAB-Q-0011#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+      - "Auditoría de origen: reconciliation/public-question-editorial-audit.json, fila LAB-Q-0011, dimensiones FINAL_* todas en PASS/YES."
+  "labor/LAB-Q-0011#finding.title":
+    notes:
+      - "Traduce el rótulo público propuesto; no dice que la distinción no exista."
+  "labor/LAB-Q-0011#finding.intro":
+    notes:
+      - "La razón de no identificable sale de la limitación canónica de la pregunta (ARCA incluida) y de KEEP-005 (no hay claim; el resultado vive en el ledger)."
+  "labor/LAB-Q-0011#finding.can_say.cs-1":
+    notes:
+      - "KEEP-005: no claim exists; the outcome lives in the question ledger."
+  "labor/LAB-Q-0011#finding.does_not_mean.dnm-2":
+    notes:
+      - "Cita REL-PR-005 y REL-CONF-002 como lo que NO se afirma. No se usa «contractorización» ni el código del indicador."

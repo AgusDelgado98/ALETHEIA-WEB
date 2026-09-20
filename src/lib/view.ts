@@ -26,12 +26,12 @@ export interface QuestionView {
   ui: (key: string) => string;
   state: {
     question: string;
-    claim: string;
-    claimLabel: string;
+    claim: string | null;
+    claimLabel: string | null;
     questionLabel: string;
     absenceNotNegative: boolean;
   };
-  claim: { id: string; source: string; hypothesisId: string };
+  claim: { id: string; source: string; hypothesisId: string } | null;
   title: Part[];
   intro: Part[];
   scope: Part[];
@@ -56,7 +56,7 @@ export interface QuestionView {
       episodes: string[];
     };
     auditOnly: { ownerId: string; text: Part[]; waiver: string }[];
-  };
+  } | null;
   provenance: {
     moduleVersion: string;
     tag: string;
@@ -67,6 +67,7 @@ export interface QuestionView {
     editorialSha: string;
     preserved: string[];
     forbidden: string[];
+    entityIds: string[];
     cite: Part[];
     disclosureRequired: boolean;
     pendingSignoff: number;
@@ -98,28 +99,105 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     c.questions.find((x) => x.id === qid),
     `pregunta ${qid}`,
   );
-  const claim = req(
-    c.claims.find((x) => x.id === q.claim_ids[0]),
-    `claim de ${qid}`,
-  );
-  if (q.claim_ids.length !== 1)
+  if (q.claim_ids.length > 1)
     throw new Error(
-      `${qid}: la página de M1 muestra un claim; hay ${q.claim_ids.length}. La regla 0..N exige una plantilla multi-claim antes de publicarla`,
+      `${qid}: hay ${q.claim_ids.length} claims. La regla 0..N exige una plantilla multi-claim antes de publicarla`,
     );
-  const hyp = req(
-    c.hypotheses.find((x) => x.id === claim.hypothesis_id),
-    "hipótesis del claim",
-  );
 
   const segs = (text: string): Segment[] => parseSegments(text, c);
   const parts = (text: string): Part[] => fromSegments(segs(text));
   const item = (u: { id: string; text: string }): TextItem => ({ id: u.id, parts: parts(u.text) });
   const ui = (key: string): string => req(e.ui.strings[key], `cadena de interfaz «${key}»`).text;
-
   const qLabel = req(
     e.states.question_resolution_labels[q.resolution.value],
     `etiqueta pública de la resolución ${q.resolution.value} (G-STA-06)`,
   ).text;
+  const editorialManifest = readFileSync(join(root, "editorial", "manifest.json"));
+  const pinCite = {
+    question: e.question.public_question,
+    version: c.manifest.version,
+    tag: c.manifest.pin.tag,
+    commit: c.manifest.pin.commit.slice(0, 7),
+  };
+  const fillCite = (template: string, claimId?: string): string => {
+    let s = template
+      .replace("{question}", pinCite.question)
+      .replace("{version}", pinCite.version)
+      .replace("{tag}", pinCite.tag)
+      .replace("{commit}", pinCite.commit);
+    if (claimId !== undefined) s = s.replace("{claim}", claimId);
+    return s;
+  };
+  const provenanceBase = {
+    moduleVersion: c.manifest.version,
+    tag: c.manifest.pin.tag,
+    commit: c.manifest.pin.commit,
+    commitShort: c.manifest.pin.commit.slice(0, 7),
+    generatorVersion: c.manifest.generator_version,
+    manifestSha: c.manifestSha256,
+    editorialSha: sha256Hex(editorialManifest),
+    preserved: q.preserved_result_ids,
+    pendingSignoff: pendingSignoff(e).length,
+  };
+  const shared = {
+    slug: questionSlug(qid),
+    moduleId: c.manifest.module_id,
+    id: qid,
+    publicQuestion: e.question.public_question,
+    canonicalQuestion: q.canonical_text,
+    ui,
+    title: parts(e.finding.title.text),
+    intro: parts(e.finding.intro.text),
+    scope: parts(e.finding.scope.text),
+    canSay: e.finding.can_say.map(item),
+    doesNotMean: e.finding.does_not_mean.map(item),
+    wouldNeed: e.finding.would_need.map(item),
+    absenceText: e.states.fixed.absence_not_negative.text,
+  };
+
+  if (q.claim_ids.length === 0) {
+    const hyp = req(
+      c.hypotheses.find((x) => x.id === q.hypothesis_ids[0]),
+      `hipótesis de ${qid}`,
+    );
+    const cite = fillCite(ui("cite_template_no_claim"));
+    const entityIds = [
+      qid,
+      hyp.id,
+      ...q.object_ids,
+      ...q.preserved_result_ids,
+      ...q.answerability.forbidden_inferences,
+    ];
+    return {
+      ...shared,
+      state: {
+        question: q.resolution.value,
+        claim: null,
+        claimLabel: null,
+        questionLabel: qLabel,
+        absenceNotNegative: q.absent_vs_negative === "ABSENT_NOT_NEGATIVE",
+      },
+      claim: null,
+      trail: null,
+      provenance: {
+        ...provenanceBase,
+        forbidden: q.answerability.forbidden_inferences,
+        entityIds,
+        cite: markTokens(cite),
+        disclosureRequired: hyp.disclosure_required,
+      },
+    };
+  }
+
+  const claim = req(
+    c.claims.find((x) => x.id === q.claim_ids[0]),
+    `claim de ${qid}`,
+  );
+  const hyp = req(
+    c.hypotheses.find((x) => x.id === claim.hypothesis_id),
+    "hipótesis del claim",
+  );
+  const trail = req(e.finding.trail, `Rastro editorial de ${qid}`);
   const cLabel = req(
     e.states.claim_state_labels[claim.epistemic_state],
     `etiqueta pública del estado ${claim.epistemic_state} (G-STA-06)`,
@@ -149,21 +227,19 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
       };
     });
 
-  const editorialManifest = readFileSync(join(root, "editorial", "manifest.json"));
-  const cite = ui("cite_template")
-    .replace("{question}", e.question.public_question)
-    .replace("{version}", c.manifest.version)
-    .replace("{tag}", c.manifest.pin.tag)
-    .replace("{commit}", c.manifest.pin.commit.slice(0, 7))
-    .replace("{claim}", claim.id);
+  const cite = fillCite(ui("cite_template"), claim.id);
+  const ids = {
+    claim: claim.id,
+    hypothesis: hyp.id,
+    evidence: claim.evidence_ids,
+    roots: [...claim.root_ids, ...claim.referenced_root_ids],
+    objects: claim.object_ids,
+    ruling: claim.lab_gov,
+    episodes: c.episodes.filter((x) => x.claim_ids.includes(claim.id)).map((x) => x.id),
+  };
 
   return {
-    slug: questionSlug(qid),
-    moduleId: c.manifest.module_id,
-    id: qid,
-    publicQuestion: e.question.public_question,
-    canonicalQuestion: q.canonical_text,
-    ui,
+    ...shared,
     state: {
       question: q.resolution.value,
       claim: claim.epistemic_state,
@@ -172,20 +248,13 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
       absenceNotNegative: q.absent_vs_negative === "ABSENT_NOT_NEGATIVE",
     },
     claim: { id: claim.id, source: claim.source_label, hypothesisId: hyp.id },
-    title: parts(e.finding.title.text),
-    intro: parts(e.finding.intro.text),
-    scope: parts(e.finding.scope.text),
-    canSay: e.finding.can_say.map(item),
-    doesNotMean: e.finding.does_not_mean.map(item),
-    wouldNeed: e.finding.would_need.map(item),
-    absenceText: e.states.fixed.absence_not_negative.text,
     trail: {
-      claim: parts(e.finding.trail.claim.text),
-      hypothesis: parts(e.finding.trail.hypothesis.text),
-      evidence: parts(e.finding.trail.evidence.text),
+      claim: parts(trail.claim.text),
+      hypothesis: parts(trail.hypothesis.text),
+      evidence: parts(trail.evidence.text),
       objects: [
-        { id: "LAB-OBJ-0003", parts: parts(e.finding.trail.object_employment.text) },
-        { id: "LAB-OBJ-0016", parts: parts(e.finding.trail.object_registration.text) },
+        { id: "LAB-OBJ-0003", parts: parts(trail.object_employment.text) },
+        { id: "LAB-OBJ-0016", parts: parts(trail.object_registration.text) },
       ],
       source: {
         rootId: rootPrimary.id,
@@ -193,30 +262,26 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
         linkUnresolved: rootPrimary.source_link_status === "UNRESOLVED",
       },
       reasons: e.finding.blockers_at_cut.map((id) => item(byId(e.finding.can_say, id))),
-      ids: {
-        claim: claim.id,
-        hypothesis: hyp.id,
-        evidence: claim.evidence_ids,
-        roots: [...claim.root_ids, ...claim.referenced_root_ids],
-        objects: claim.object_ids,
-        ruling: claim.lab_gov,
-        episodes: c.episodes.filter((x) => x.claim_ids.includes(claim.id)).map((x) => x.id),
-      },
+      ids,
       auditOnly: audit,
     },
     provenance: {
-      moduleVersion: c.manifest.version,
-      tag: c.manifest.pin.tag,
-      commit: c.manifest.pin.commit,
-      commitShort: c.manifest.pin.commit.slice(0, 7),
-      generatorVersion: c.manifest.generator_version,
-      manifestSha: c.manifestSha256,
-      editorialSha: sha256Hex(editorialManifest),
-      preserved: q.preserved_result_ids,
+      ...provenanceBase,
       forbidden: claim.answerability.forbidden_inferences,
+      entityIds: [
+        qid,
+        ids.claim,
+        ids.hypothesis,
+        ...ids.evidence,
+        ...ids.roots,
+        ...ids.objects,
+        ...ids.ruling,
+        ...ids.episodes,
+        ...q.preserved_result_ids,
+        ...claim.answerability.forbidden_inferences,
+      ],
       cite: markTokens(cite),
       disclosureRequired: hyp.disclosure_required,
-      pendingSignoff: pendingSignoff(e).length,
     },
   };
 }

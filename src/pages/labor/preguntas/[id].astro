@@ -12,7 +12,7 @@ import Base from "../../../layouts/Base.astro";
 import { plainText } from "../../../lib/render.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
-/** Una ruta por pregunta con editorial completa. En M1 solo existe LAB-Q-0013 (`/labor/preguntas/q-0013`). */
+/** Una ruta por pregunta con editorial completa. Publicadas: Q-0013 (un claim) y Q-0011 (0 claims). */
 export function getStaticPaths() {
   return availableQuestionIds(process.cwd()).map((id) => ({
     params: { id: questionSlug(id) },
@@ -34,7 +34,7 @@ const ui = v.ui;
     class="page"
     data-question-id={v.id}
     data-question-resolution={v.state.question}
-    data-claim-id={v.claim.id}
+    data-claim-id={v.claim?.id}
     data-claim-state={v.state.claim}
   >
     <div class="wrap">
@@ -54,7 +54,7 @@ const ui = v.ui;
           <SegmentText parts={v.title} />
         </p>
         <Frame
-          source={v.claim.source}
+          source={v.claim?.source}
           labelSource={ui("frame_source")}
           labelScope={ui("frame_scope")}
         >
@@ -62,33 +62,44 @@ const ui = v.ui;
             <div>
               <dt>{ui("layer_question")}</dt>
               <dd>
-                <EvidenceState
-                  state="INSUFFICIENT_EVIDENCE"
-                  label={v.state.questionLabel}
-                  description={ui("shape_insufficient")}
-                />
+                {v.claim !== null ? (
+                  <EvidenceState
+                    state="INSUFFICIENT_EVIDENCE"
+                    label={v.state.questionLabel}
+                    description={ui("shape_insufficient")}
+                  />
+                ) : (
+                  <EvidenceState
+                    state="NOT_IDENTIFIABLE"
+                    label={v.state.questionLabel}
+                    description={ui("shape_not_identifiable")}
+                  />
+                )}
               </dd>
             </div>
-            <div>
-              <dt>
-                {ui("layer_claim")}{" "}
-                <span class="mono" data-num="id">
-                  {v.claim.id}
-                </span>
-              </dt>
-              <dd>
-                <EvidenceState
-                  state="INSUFFICIENT_EVIDENCE"
-                  label={v.state.claimLabel}
-                  description={ui("shape_insufficient")}
-                />
-              </dd>
-            </div>
+            {v.claim !== null && v.state.claimLabel !== null && (
+              <div>
+                <dt>
+                  {ui("layer_claim")}{" "}
+                  <span class="mono" data-num="id">
+                    {v.claim.id}
+                  </span>
+                </dt>
+                <dd>
+                  <EvidenceState
+                    state="INSUFFICIENT_EVIDENCE"
+                    label={v.state.claimLabel}
+                    description={ui("shape_insufficient")}
+                  />
+                </dd>
+              </div>
+            )}
           </dl>
           <span slot="scope">
             <SegmentText parts={v.scope} />
           </span>
         </Frame>
+        {v.claim === null && <p class="answer__a">{ui("no_claim_trail")}</p>}
         {v.state.absenceNotNegative && <p class="answer__a">{v.absenceText}</p>}
         <p class="answer__i">
           <SegmentText parts={v.intro} />
@@ -125,7 +136,7 @@ const ui = v.ui;
         </ul>
       </section>
     </div>
-    <EvidenceTrail v={v} />
+    {v.trail !== null && <EvidenceTrail v={v} />}
     <ProvenanceDetails v={v} />
   </article>
 </Base>

@@ -2,25 +2,42 @@
 /**
  * Estado epistemológico por GEOMETRÍA, relleno y corte; nunca solo por color (Charter §8, §15.1).
  * INSUFICIENTE: hilo sólido → corte → hilo punteado → ■ hueco.
- * Solo se implementa la forma que la página necesita; las demás exigen auditar su descripción accesible.
+ * NO IDENTIFICABLE (resolución de pregunta, no estado de claim): zona rayada, sin ■.
+ * Solo se implementan las formas que las páginas publicadas necesitan; las demás exigen auditar su descripción accesible.
  */
 interface Props {
-  state: "INSUFFICIENT_EVIDENCE";
+  state: "INSUFFICIENT_EVIDENCE" | "NOT_IDENTIFIABLE";
   label: string;
   description: string;
 }
 const { state, label, description } = Astro.props;
-if (state !== "INSUFFICIENT_EVIDENCE")
-  throw new Error(`EvidenceState: forma no implementada para ${String(state)}`);
 ---
 
 <span class="state" data-state={state}>
-  <svg class="state__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
-    <line class="thread" x1="2" y1="12" x2="58" y2="12"></line>
-    <path class="cut" d="M62 3v18M72 3v18"></path>
-    <line class="dots" x1="78" y1="12" x2="140" y2="12"></line>
-    <rect class="sq" x="146" y="5" width="14" height="14"></rect>
-  </svg>
+  {state === "INSUFFICIENT_EVIDENCE" && (
+    <svg class="state__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <line class="thread" x1="2" y1="12" x2="58" y2="12"></line>
+      <path class="cut" d="M62 3v18M72 3v18"></path>
+      <line class="dots" x1="78" y1="12" x2="140" y2="12"></line>
+      <rect class="sq" x="146" y="5" width="14" height="14"></rect>
+    </svg>
+  )}
+  {state === "NOT_IDENTIFIABLE" && (
+    <svg class="state__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <defs>
+        <pattern
+          id="ni-hatch"
+          width="6"
+          height="6"
+          patternUnits="userSpaceOnUse"
+          patternTransform="rotate(45)"
+        >
+          <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1.4"></line>
+        </pattern>
+      </defs>
+      <rect class="hatch" x="2" y="4" width="164" height="16" fill="url(#ni-hatch)"></rect>
+    </svg>
+  )}
   <span class="state__label">{label}</span>
 </span>
 
@@ -53,6 +70,10 @@ if (state !== "INSUFFICIENT_EVIDENCE")
   }
   .sq {
     fill: var(--sect-bg);
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+  .hatch {
     stroke: currentColor;
     stroke-width: 1.4;
   }

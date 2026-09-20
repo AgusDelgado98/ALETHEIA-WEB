@@ -6,7 +6,7 @@ import Glyph from "./Glyph.astro";
  * las marcas son decorativas; la cota es una lista de definiciones legible.
  */
 interface Props {
-  source: string;
+  source?: string | undefined;
   labelSource: string;
   labelScope: string;
   labelPeriod?: string;
@@ -24,12 +24,14 @@ const { source, labelSource, labelScope, labelPeriod, period } = Astro.props;
     <slot />
   </div>
   <dl class="dim">
-    <div class="dim__s">
-      <dt>
-        <Glyph kind="source" size="0.65rem" /> {labelSource}
-      </dt>
-      <dd class="mono">{source}</dd>
-    </div>
+    {source !== undefined && (
+      <div class="dim__s">
+        <dt>
+          <Glyph kind="source" size="0.65rem" /> {labelSource}
+        </dt>
+        <dd class="mono">{source}</dd>
+      </div>
+    )}
     <div class="dim__e">
       <dt>{labelScope}</dt>
       <dd>

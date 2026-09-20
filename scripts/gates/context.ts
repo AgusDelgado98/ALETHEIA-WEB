@@ -5,7 +5,11 @@ import { resolveRepoPath, srcDir } from "../../tools/corpus/extract.ts";
 import { loadGenerated, type GeneratedCorpus } from "../../tools/corpus/load.ts";
 import { normalize, type CorpusMap, type CorpusStats } from "../../tools/corpus/normalize.ts";
 import { loadPin, type Pin } from "../../tools/corpus/pin.ts";
-import { loadEditorial, type EditorialBundle } from "../../tools/editorial/load.ts";
+import {
+  loadEditorial,
+  publishedEditorialIds,
+  type EditorialBundle,
+} from "../../tools/editorial/load.ts";
 
 export interface GoldenQuestion {
   QUESTION_ID: string;
@@ -27,6 +31,8 @@ export interface GateContext {
   stats: CorpusStats;
   map: CorpusMap;
   editorial: EditorialBundle;
+  /** Fichas editoriales publicadas (Q-0013 y Q-0011). `editorial` sigue siendo la de Q-0013 (cadenas de sitio). */
+  editorials: EditorialBundle[];
   golden: GoldenQuestion[];
   /** Ruta (`/labor/preguntas/q-0013`) → HTML construido. Vacío si no hay `dist/`. */
   html: Map<string, string>;
@@ -116,6 +122,11 @@ export function loadContext(root: string): GateContext {
       sources.push({ path: f.path, text: readFileSync(join(root, f.path), "utf8") });
   }
 
+  const editorialIds = publishedEditorialIds(root);
+  const editorials = editorialIds.map((id) => loadEditorial(root, id));
+  const editorial =
+    editorials.find((b) => b.finding.canonical_ref.endsWith("LAB-Q-0013")) ?? editorials[0]!;
+
   return {
     root,
     pin,
@@ -125,7 +136,8 @@ export function loadContext(root: string): GateContext {
     generatedFiles,
     stats: norm.stats,
     map: norm.map,
-    editorial: loadEditorial(root, "LAB-Q-0013"),
+    editorial,
+    editorials,
     golden,
     html: htmlRoutes(join(root, "dist")),
     srcDir: dir,

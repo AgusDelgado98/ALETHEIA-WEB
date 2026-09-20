@@ -8,6 +8,7 @@ import {
   parseSegments,
   plain,
 } from "../tools/editorial/directives.ts";
+import { plainText } from "../src/lib/render.ts";
 import {
   editorialPaths,
   EditorialError,
@@ -17,6 +18,7 @@ import {
 import { lintText, findBannedKeys } from "../tools/editorial/lint.ts";
 import { loadGenerated } from "../tools/corpus/load.ts";
 import { ROOT } from "./helpers.ts";
+import { availableQuestionIds, loadQuestionView } from "../src/lib/view.ts";
 
 const corpus = loadGenerated(ROOT);
 const QID = "LAB-Q-0013";
@@ -149,5 +151,36 @@ describe("capa editorial de Q-0013", () => {
         .filter((d) => d.disposition === "AUDIT_ONLY")
         .every((d) => d.class === "PROCEDURAL"),
     ).toBe(true);
+  });
+});
+
+describe("capa editorial de Q-0011 (0 claims)", () => {
+  const bundle = loadEditorial(ROOT, "LAB-Q-0011");
+  it("no fabrica claim ni Rastro y la auditoría está vigente", () => {
+    expect(bundle.finding.claim_ref).toBeUndefined();
+    expect(bundle.finding.trail).toBeUndefined();
+    expect(verifyAudit(bundle, corpus)).toEqual([]);
+  });
+  it("public_question es la aprobada y no hay unidades de sitio duplicadas", () => {
+    expect(bundle.units.some((u) => u.string_id.startsWith("site#"))).toBe(false);
+    const rec = bundle.audit!.records.find((r) => r.string_id.endsWith("#public_question"));
+    expect(rec?.verdict).toBe("APPROVED");
+    expect(bundle.question.public_question).toBe(
+      "¿Se puede distinguir una prestación de servicios realmente independiente de una relación de empleo dependiente encubierta con las fuentes hoy admisibles?",
+    );
+  });
+});
+
+describe("vista de Q-0011", () => {
+  it("carga 0 claims y NOT_IDENTIFIABLE sin inventar afirmación", () => {
+    expect(availableQuestionIds(ROOT)).toEqual(["LAB-Q-0011", "LAB-Q-0013"]);
+    const v = loadQuestionView(ROOT, "LAB-Q-0011");
+    expect(v.claim).toBeNull();
+    expect(v.trail).toBeNull();
+    expect(v.state.question).toBe("NOT_IDENTIFIABLE");
+    expect(v.state.claim).toBeNull();
+    expect(v.state.questionLabel).toBe("No identificable con las fuentes conocidas");
+    expect(plainText(v.provenance.cite)).not.toMatch(/LAB-CLM-/);
+    expect(plainText(v.provenance.cite)).toMatch(/Sin afirmación/);
   });
 });
