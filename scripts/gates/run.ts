@@ -2,11 +2,12 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { canonicalJson } from "../../tools/corpus/util.ts";
 import { loadContext } from "./context.ts";
-import { GATES } from "./gates.ts";
+import { ALL_GATES } from "./gates.ts";
 
 /**
- * Ejecutor de gates CORE_BUILD del corte M1. Cada gate emite `reports/gates/<id>.json` (legible por máquina) y el
- * agregado `summary.json`. Un solo FAIL termina con código 1. Los reportes son efímeros (no se commitean).
+ * Ejecutor de gates CORE_BUILD y RELEASE. Cada gate emite `reports/gates/<id>.json`.
+ * Un FAIL de un gate que bloquea CI termina con código 1. G-LEG-03 se registra y no
+ * fabrica revisión legal: falla de forma explícita sin abortar la integridad técnica.
  * Uso: node scripts/gates/run.ts [--require-html]
  */
 const root = resolve(import.meta.dirname, "..", "..");
@@ -23,7 +24,7 @@ const out = join(root, "reports", "gates");
 mkdirSync(out, { recursive: true });
 const rows: { id: string; status: string; detail: string }[] = [];
 let failed = 0;
-for (const g of GATES) {
+for (const g of ALL_GATES) {
   let r;
   try {
     r = g.run(ctx);
@@ -34,17 +35,21 @@ for (const g of GATES) {
       failures: [(e as Error).message],
     };
   }
+  const classification = g.classification ?? "CORE_BUILD";
+  const blocksCi = g.blocksCi !== false && g.id !== "G-LEG-03";
   writeFileSync(
     join(out, `${g.id}.json`),
-    canonicalJson({ id: g.id, title: g.title, classification: "CORE_BUILD", ...r }),
+    canonicalJson({ id: g.id, title: g.title, classification, blocks_ci: blocksCi, ...r }),
     "utf8",
   );
   rows.push({ id: g.id, status: r.status, detail: r.detail });
-  if (r.status === "FAIL") failed++;
+  if (r.status === "FAIL" && blocksCi) failed++;
   const mark = r.status === "PASS" ? "✓" : r.status === "FAIL" ? "✗" : "·";
-  console.log(`${mark} ${g.id.padEnd(9)} ${r.status.padEnd(4)} ${g.title}`);
+  console.log(
+    `${mark} ${g.id.padEnd(9)} ${r.status.padEnd(4)} ${classification.padEnd(11)} ${g.title}`,
+  );
   if (r.status !== "PASS") console.log(`             ${r.detail}`);
-  for (const f of r.failures.slice(0, 8)) console.log(`             - ${f}`);
+  for (const x of r.failures.slice(0, 8)) console.log(`             - ${x}`);
 }
 const count = (s: string): number => rows.filter((r) => r.status === s).length;
 writeFileSync(
@@ -59,6 +64,6 @@ writeFileSync(
   "utf8",
 );
 console.log(
-  `\n${GATES.length} gates: ${count("PASS")} PASS · ${count("FAIL")} FAIL · ${count("NA")} N/A · ${count("SKIP")} SKIP (routes: ${[...ctx.html.keys()].join(", ") || "ninguna"})`,
+  `\n${ALL_GATES.length} gates: ${count("PASS")} PASS · ${count("FAIL")} FAIL · ${count("NA")} N/A · ${count("SKIP")} SKIP (routes: ${[...ctx.html.keys()].join(", ") || "ninguna"})`,
 );
 process.exit(failed > 0 ? 1 : 0);

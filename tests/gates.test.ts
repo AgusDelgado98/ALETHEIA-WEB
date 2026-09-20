@@ -2,7 +2,7 @@ import { cpSync, existsSync, mkdtempSync, readFileSync, writeFileSync } from "no
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { GATES, runGate } from "../scripts/gates/gates.ts";
+import { GATES, RELEASE_GATES, runGate } from "../scripts/gates/gates.ts";
 import type { GateContext } from "../scripts/gates/context.ts";
 import { cloneCtx, realContext, ROOT, ROUTE } from "./helpers.ts";
 
@@ -48,6 +48,26 @@ describe("gates CORE_BUILD sobre el estado real", () => {
       expect(ids, required).toContain(required);
     }
   });
+});
+
+describe("gates RELEASE", () => {
+  it.skipIf(!hasHtml)(
+    "los técnicos no fallan; G-LEG-03 permanece FAIL/OPEN; G-PERF-02 puede SKIP",
+    () => {
+      for (const g of RELEASE_GATES) {
+        const r = g.run(ctx);
+        if (g.id === "G-LEG-03") {
+          expect(r.status, r.detail).toBe("FAIL");
+          continue;
+        }
+        if (g.id === "G-PERF-02") {
+          expect(["PASS", "SKIP"]).toContain(r.status);
+          continue;
+        }
+        expect(r.status, `${g.id}: ${r.detail} ${r.failures.join(" | ")}`).toBe("PASS");
+      }
+    },
+  );
 });
 
 describe("18 rutas de pregunta LABOR", () => {
@@ -531,6 +551,31 @@ const FIXTURES: Fixture[] = [
     gates: ["G-LEG-01"],
     mutate: (c) => void c.files.push({ path: "public/x.bin", bytes: 3 * 1024 * 1024 }),
   },
+  {
+    name: "og:image en una página",
+    gates: ["G-OG-01"],
+    html: true,
+    mutate: (c) =>
+      setPage(
+        c,
+        page(c).replace("</head>", '<meta property="og:image" content="/x.png" /></head>'),
+      ),
+  },
+  {
+    name: "title duplicado entre dos rutas",
+    gates: ["G-SEO-01"],
+    html: true,
+    mutate: (c) => {
+      const html = page(c);
+      if (html !== "") c.html.set("/hallazgos", html);
+    },
+  },
+  {
+    name: "enlace interno a una ruta inexistente",
+    gates: ["G-LNK-01", "G-UX-02"],
+    html: true,
+    mutate: (c) => inject(c, '<a href="/no-existe">x</a>'),
+  },
 ];
 
 describe("fixtures defectuosos: cada gate debe FALLAR cuando debe", () => {
@@ -591,6 +636,9 @@ describe("fixtures defectuosos: cada gate debe FALLAR cuando debe", () => {
       "G-SCH-01",
       "G-SCH-02",
       "G-PRV-06",
+      "G-SEO-01",
+      "G-OG-01",
+      "G-LNK-01",
     ]) {
       expect(covered.has(id), `sin fixture defectuoso para ${id}`).toBe(true);
     }

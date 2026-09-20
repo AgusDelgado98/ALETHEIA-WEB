@@ -41,6 +41,23 @@ export function loadUi(root: string): UiFn {
   return (key: string): string => req(site.ui.strings[key], `cadena de interfaz «${key}»`).text;
 }
 
+/** Rutas de contenido indexable (25 públicas). Excluye 404 y artefactos (sitemap, robots, favicon). */
+export function contentPaths(root: string): string[] {
+  const c = loadGenerated(root);
+  return [
+    "/",
+    "/hallazgos",
+    "/explorar",
+    "/limites",
+    "/metodo",
+    "/sobre",
+    "/versiones",
+    ...c.manifest.slice.question_ids.map(
+      (id) => `/labor/preguntas/${id.replace(/^LAB-/, "").toLowerCase()}`,
+    ),
+  ];
+}
+
 export function isDocumentaryObserved(kind: string, state: string): boolean {
   return state === "OBSERVED_IN_SOURCE" && kind !== "STATISTICAL_MEASUREMENT";
 }

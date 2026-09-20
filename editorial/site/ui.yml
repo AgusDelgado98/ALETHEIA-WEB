@@ -140,3 +140,6 @@ strings:
   qualifier_documentary: { id: ui-qualifier-documentary, text: "Hallazgo documental: no es una medición del mercado laboral." }
   relation_governance: { id: ui-relation-governance, text: "GOVERNANCE_REQUIRED" }
   regime_c_note: { id: ui-regime-c-note, text: "El régimen C no produjo corpus empírico. Sigue visible. No forma parte de los hallazgos destacados." }
+  not_found_heading: { id: ui-not-found-heading, text: "Página no encontrada" }
+  not_found_lede: { id: ui-not-found-lede, text: "Esta dirección no corresponde a ninguna página publicada de este sitio." }
+  not_found_home: { id: ui-not-found-home, text: "Volver al inicio" }

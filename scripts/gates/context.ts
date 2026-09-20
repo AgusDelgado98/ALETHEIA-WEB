@@ -51,6 +51,7 @@ const SKIP_DIRS = new Set([
   "reports",
   "coverage",
   ".vite",
+  ".vercel",
 ]);
 
 export function walkFiles(root: string, dir = root): { path: string; bytes: number }[] {

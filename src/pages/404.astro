@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import { loadSite } from "../lib/site.ts";
+
+const site = loadSite(process.cwd());
+const ui = site.ui;
+---
+
+<Base
+  title={`${ui("not_found_heading")} · ${ui("brand_wordmark")}`}
+  description={ui("not_found_lede")}
+  robots="noindex"
+>
+  <div class="wrap page">
+    <header class="ph">
+      <h1>{ui("not_found_heading")}</h1>
+      <p>{ui("not_found_lede")}</p>
+      <p>
+        <a href="/">{ui("not_found_home")}</a>
+      </p>
+    </header>
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-bottom: var(--space-10);
+  }
+  .ph {
+    padding-block: var(--space-8) var(--space-6);
+    max-width: var(--measure-prose);
+  }
+  h1 {
+    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.018em;
+  }
+  .ph p {
+    margin-top: var(--space-5);
+    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  a {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    text-underline-offset: 0.2em;
+  }
+</style>

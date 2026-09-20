@@ -10,6 +10,7 @@ import WhatThisDoesNotMean from "../../../components/WhatThisDoesNotMean.astro";
 import WhatWeCanSay from "../../../components/WhatWeCanSay.astro";
 import Base from "../../../layouts/Base.astro";
 import { plainText } from "../../../lib/render.ts";
+import { isDocumentaryObserved } from "../../../lib/site.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
 /** Una ruta por cada pregunta del corpus. Q-0003, Q-0004, Q-0005, Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
@@ -38,6 +39,11 @@ const shapeOf = (state: string): string =>
 <Base
   title={`${v.publicQuestion} · ${ui("brand_wordmark")}`}
   description={plainText(v.title)}
+  ogDescription={`${v.state.questionLabel}. ${
+    v.claims.some((cl) => isDocumentaryObserved(cl.kind, cl.state))
+      ? ui("qualifier_documentary")
+      : ui("legal_states")
+  }`}
   skip={ui("skip_link")}
   wordmark={ui("brand_wordmark")}
 >

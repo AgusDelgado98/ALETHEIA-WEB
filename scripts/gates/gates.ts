@@ -1,5 +1,6 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { gzipSync } from "node:zlib";
 import { ENTITY_FILES, GENERATOR_VERSION, type EntityFileName } from "../../schemas/corpus.ts";
 import { verifyAgainstRepo, verifyVendored } from "../../tools/corpus/extract.ts";
 import { gitText, sameSnapshot, snapshot } from "../../tools/corpus/git.ts";
@@ -16,6 +17,8 @@ import { limitationIdFromRef } from "../../tools/editorial/resolve.ts";
 import type { EditorialBundle, EditorialUnit } from "../../tools/editorial/load.ts";
 import type { GateContext } from "./context.ts";
 import { plainText } from "../../src/lib/render.ts";
+import { SITE_ORIGIN } from "../../src/lib/origin.ts";
+import { contentPaths } from "../../src/lib/site.ts";
 import { loadQuestionView, questionSlug } from "../../src/lib/view.ts";
 import {
   humanAttributeValues,
@@ -33,16 +36,20 @@ export interface Outcome {
   detail: string;
   failures: string[];
 }
+export type Classification = "CORE_BUILD" | "RELEASE";
 export interface Gate {
   id: string;
   title: string;
+  classification?: Classification;
+  /** Si es `false`, un FAIL se registra pero no termina el proceso (bloqueos humanos). */
+  blocksCi?: boolean;
   run: (ctx: GateContext) => Outcome;
 }
 
-const ok = (detail: string): Outcome => ({ status: "PASS", detail, failures: [] });
-const na = (detail: string): Outcome => ({ status: "NA", detail, failures: [] });
-const skip = (detail: string): Outcome => ({ status: "SKIP", detail, failures: [] });
-const res = (failures: string[], okDetail: string): Outcome =>
+export const ok = (detail: string): Outcome => ({ status: "PASS", detail, failures: [] });
+export const na = (detail: string): Outcome => ({ status: "NA", detail, failures: [] });
+export const skip = (detail: string): Outcome => ({ status: "SKIP", detail, failures: [] });
+export const res = (failures: string[], okDetail: string): Outcome =>
   failures.length === 0
     ? ok(okDetail)
     : { status: "FAIL", detail: `${failures.length} fallo(s)`, failures };
@@ -1570,6 +1577,380 @@ const gGov: Gate = {
   },
 };
 
+const rel = (id: string, title: string, run: Gate["run"], extra?: Partial<Gate>): Gate => ({
+  id,
+  title,
+  classification: "RELEASE",
+  ...extra,
+  run,
+});
+
+function metaContent(html: string, attr: "name" | "property", key: string): string | undefined {
+  return tags(html).find((t) => t.name === "meta" && t.attrs[attr] === key)?.attrs["content"];
+}
+function docTitle(html: string): string {
+  const m = /<title>([\s\S]*?)<\/title>/i.exec(stripCode(html));
+  return (m?.[1] ?? "").replace(/\s+/g, " ").trim();
+}
+function canonicalHref(html: string): string | undefined {
+  return tags(html).find((t) => t.name === "link" && t.attrs["rel"] === "canonical")?.attrs["href"];
+}
+function vercelHeaderMap(root: string): Map<string, string> {
+  const p = join(root, "vercel.json");
+  const out = new Map<string, string>();
+  if (!existsSync(p)) return out;
+  const j = JSON.parse(readFileSync(p, "utf8")) as {
+    headers?: { headers?: { key: string; value: string }[] }[];
+  };
+  for (const block of j.headers ?? [])
+    for (const h of block.headers ?? []) out.set(h.key.toLowerCase(), h.value);
+  return out;
+}
+function walkDir(dir: string): string[] {
+  if (!existsSync(dir)) return [];
+  const out: string[] = [];
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (statSync(p).isDirectory()) out.push(...walkDir(p));
+    else out.push(p);
+  }
+  return out;
+}
+function gz(buf: Buffer | string): number {
+  return gzipSync(typeof buf === "string" ? Buffer.from(buf) : buf, { level: 9 }).length;
+}
+function sitemapLocs(root: string): string[] {
+  const p = join(root, "dist", "sitemap.xml");
+  if (!existsSync(p)) return [];
+  return [...readFileSync(p, "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1] ?? "");
+}
+function pathFromLoc(loc: string): string {
+  const u = new URL(loc);
+  return u.pathname === "" || u.pathname === "/" ? "/" : u.pathname.replace(/\/$/, "");
+}
+function questionOgLabel(ctx: GateContext, code: string): string {
+  if (code === "BLOCKED_BY_DESIGN") return ctx.editorial.ui.strings["doc_blocked"]?.text ?? code;
+  if (code === "OUTSIDE_LAB_A") return ctx.editorial.ui.strings["doc_open"]?.text ?? code;
+  return ctx.editorial.states.question_resolution_labels[code]?.text ?? code;
+}
+function distHas(root: string, urlPath: string): boolean {
+  const relPath = urlPath.replace(/^\//, "");
+  const direct = join(root, "dist", relPath);
+  if (existsSync(direct) && statSync(direct).isFile()) return true;
+  if (existsSync(`${direct}.html`) && statSync(`${direct}.html`).isFile()) return true;
+  return false;
+}
+
+const gSeo01 = rel(
+  "G-SEO-01",
+  "title y descripción únicos, lang es-AR, canónica del host real, sitemap = rutas públicas",
+  (ctx) => {
+    if (ctx.html.size === 0) return skip("sin dist/");
+    const f: string[] = [];
+    const titles = new Map<string, string>();
+    const descs = new Map<string, string>();
+    for (const [route, html] of ctx.html) {
+      if (!/<html\b[^>]*\blang="es-AR"/.test(html)) f.push(`${route}: falta lang=es-AR`);
+      const t = docTitle(html);
+      const d = metaContent(html, "name", "description") ?? "";
+      if (t === "") f.push(`${route}: <title> vacío`);
+      if (d === "") f.push(`${route}: meta description vacía`);
+      const prevT = [...titles.entries()].find(([, v]) => v === t);
+      if (prevT !== undefined) f.push(`${route}: <title> duplicado de ${prevT[0]}`);
+      titles.set(route, t);
+      const prevD = [...descs.entries()].find(([, v]) => v === d);
+      if (d !== "" && prevD !== undefined) f.push(`${route}: description duplicada de ${prevD[0]}`);
+      descs.set(route, d);
+      const can = canonicalHref(html);
+      if (can === undefined) f.push(`${route}: falta rel=canonical`);
+      else if (!can.startsWith(SITE_ORIGIN))
+        f.push(`${route}: canonical ${can} no usa el host de producción`);
+    }
+    const expected = contentPaths(ctx.root);
+    const locs = sitemapLocs(ctx.root);
+    if (locs.length === 0) f.push("dist/sitemap.xml ausente o vacío");
+    const got = locs.map(pathFromLoc).sort();
+    const want = [...expected].sort();
+    if (JSON.stringify(got) !== JSON.stringify(want))
+      f.push(`sitemap ≠ rutas públicas (${got.length} vs ${want.length})`);
+    if (locs.some((u) => u.includes("/preguntar"))) f.push("sitemap incluye /preguntar");
+    if (got.includes("/404")) f.push("sitemap indexa /404");
+    const robots = existsSync(join(ctx.root, "dist", "robots.txt"))
+      ? readFileSync(join(ctx.root, "dist", "robots.txt"), "utf8")
+      : "";
+    if (robots === "") f.push("dist/robots.txt ausente");
+    if (!robots.includes("Disallow: /preguntar")) f.push("robots.txt no excluye /preguntar");
+    if (!robots.includes(`${SITE_ORIGIN}/sitemap.xml`))
+      f.push("robots.txt no apunta al sitemap del host real");
+    const notFound = ctx.html.get("/404") ?? "";
+    if (notFound !== "" && metaContent(notFound, "name", "robots") !== "noindex")
+      f.push("/404: falta robots=noindex");
+    return res(
+      f,
+      `${ctx.html.size} HTML + sitemap de ${expected.length} rutas públicas en ${SITE_ORIGIN}`,
+    );
+  },
+);
+const gOg01 = rel(
+  "G-OG-01",
+  "Open Graph / Twitter textuales; sin imagen de compartir; contexto de resolución",
+  (ctx) => {
+    if (ctx.html.size === 0) return skip("sin dist/");
+    const f: string[] = [];
+    for (const [route, html] of ctx.html) {
+      const img = [
+        metaContent(html, "property", "og:image"),
+        metaContent(html, "name", "twitter:image"),
+        metaContent(html, "property", "twitter:image"),
+      ].filter((v) => v !== undefined);
+      if (img.length > 0) f.push(`${route}: imagen de compartir prohibida (P-16 / G-OG-01)`);
+      const card = metaContent(html, "name", "twitter:card");
+      if (card === "summary_large_image")
+        f.push(`${route}: twitter:card=summary_large_image exige imagen`);
+      if (card !== "summary") f.push(`${route}: twitter:card debe ser summary, es «${card ?? ""}»`);
+      if (metaContent(html, "property", "og:type") === undefined) f.push(`${route}: falta og:type`);
+      if (metaContent(html, "property", "og:title") === undefined)
+        f.push(`${route}: falta og:title`);
+      if (metaContent(html, "property", "og:description") === undefined)
+        f.push(`${route}: falta og:description`);
+      const ogUrl = metaContent(html, "property", "og:url");
+      if (ogUrl !== undefined && /[0-9]/.test(ogUrl))
+        f.push(`${route}: og:url con cifra (G-FIG-03)`);
+    }
+    for (const q of ctx.generated.questions) {
+      const route = `/labor/preguntas/${questionSlug(q.id)}`;
+      const html = ctx.html.get(route);
+      if (html === undefined) {
+        f.push(`${route}: página ausente`);
+        continue;
+      }
+      const g = ctx.golden.find((x) => x.QUESTION_ID === q.id);
+      const pq = g?.PUBLIC_QUESTION ?? q.canonical_text;
+      const ogTitle = metaContent(html, "property", "og:title") ?? "";
+      const ogDesc = metaContent(html, "property", "og:description") ?? "";
+      if (!ogTitle.includes(pq)) f.push(`${route}: og:title no lleva la public_question auditada`);
+      const label = questionOgLabel(ctx, q.resolution.value);
+      if (!ogDesc.includes(label))
+        f.push(`${route}: og:description no lleva la etiqueta de resolución`);
+    }
+    return res(f, "OG/Twitter textuales; 0 imágenes de compartir; resolución presente en fichas");
+  },
+);
+const gSec02 = rel(
+  "G-SEC-02",
+  "Cabeceras CSP, Referrer-Policy, Permissions-Policy configuradas; HSTS del host HTTPS",
+  (ctx) => {
+    const f: string[] = [];
+    const headers = vercelHeaderMap(ctx.root);
+    for (const key of [
+      "content-security-policy",
+      "referrer-policy",
+      "permissions-policy",
+      "x-content-type-options",
+    ])
+      if (!headers.has(key)) f.push(`vercel.json: falta ${key}`);
+    const csp = headers.get("content-security-policy") ?? "";
+    if (csp !== "" && !csp.includes("script-src 'none'"))
+      f.push("CSP: script-src no es 'none' (el sitio no envía JS de cliente)");
+    if (csp !== "" && !csp.includes("font-src 'self'"))
+      f.push("CSP: falta font-src 'self' para las fuentes autoalojadas");
+    if (csp !== "" && !csp.includes("style-src 'self' 'unsafe-inline'"))
+      f.push("CSP: style-src debe permitir estilos scoped de Astro ('unsafe-inline')");
+    if (headers.has("strict-transport-security"))
+      f.push(
+        "HSTS duplicado en vercel.json: el host *.vercel.app ya lo envía; no se redefine para no debilitar includeSubDomains",
+      );
+    const vercel = existsSync(join(ctx.root, "vercel.json"))
+      ? (JSON.parse(readFileSync(join(ctx.root, "vercel.json"), "utf8")) as { cleanUrls?: boolean })
+      : {};
+    if (vercel.cleanUrls !== true)
+      f.push("vercel.json: cleanUrls debe ser true para servir /explorar desde explorar.html");
+    return res(
+      f,
+      "CSP/Referrer/Permissions/nosniff en vercel.json; HSTS lo emite el host HTTPS de Vercel",
+    );
+  },
+);
+const gSec03 = rel(
+  "G-SEC-03",
+  "Lockfile, sin postinstall, dependencias de producción ≤ 5, ignore-scripts",
+  (ctx) => {
+    const f: string[] = [];
+    if (!existsSync(join(ctx.root, "package-lock.json"))) f.push("falta package-lock.json");
+    const pkg = JSON.parse(readFileSync(join(ctx.root, "package.json"), "utf8")) as {
+      dependencies?: Record<string, string>;
+      scripts?: Record<string, string>;
+    };
+    const n = Object.keys(pkg.dependencies ?? {}).length;
+    if (n > 5) f.push(`dependencias de producción: ${n} (> 5)`);
+    for (const s of ["postinstall", "preinstall"])
+      if (pkg.scripts?.[s] !== undefined) f.push(`script ${s} presente`);
+    const npmrc = existsSync(join(ctx.root, ".npmrc"))
+      ? readFileSync(join(ctx.root, ".npmrc"), "utf8")
+      : "";
+    if (!npmrc.includes("ignore-scripts=true")) f.push(".npmrc: falta ignore-scripts=true");
+    return res(f, `${n} dependencia(s) de producción; lockfile; sin postinstall`);
+  },
+);
+const gLnk01 = rel(
+  "G-LNK-01",
+  "Link check completo: internos bloquean; externos se reportan; sin localhost",
+  (ctx) => {
+    if (ctx.html.size === 0) return skip("sin dist/");
+    const f: string[] = [];
+    const warnings: string[] = [];
+    for (const [route, html] of ctx.html) {
+      if (/localhost|127\.0\.0\.1/i.test(html)) f.push(`${route}: URL localhost`);
+      const known = ids(html);
+      for (const t of tags(html)) {
+        const href = t.attrs["href"] ?? t.attrs["src"];
+        if (href === undefined) continue;
+        if (href.startsWith("mailto:") || href.startsWith("data:")) continue;
+        if (href.startsWith("#")) {
+          if (href !== "#" && !known.has(href.slice(1)))
+            f.push(`${route}: ancla ${href} sin destino`);
+          continue;
+        }
+        if (href.startsWith("http://") || href.startsWith("https://")) {
+          if (href.startsWith(SITE_ORIGIN)) {
+            const rest = href.slice(SITE_ORIGIN.length) || "/";
+            const path = rest.split("#")[0] ?? "/";
+            if (!ctx.html.has(path === "" ? "/" : path) && !distHas(ctx.root, path))
+              f.push(`${route}: enlace absoluto interno roto ${href}`);
+          } else {
+            warnings.push(`${route}: externo ${href}`);
+          }
+          continue;
+        }
+        if (href.startsWith("/")) {
+          const path = href.split("#")[0] ?? "";
+          const hash = href.includes("#") ? (href.split("#")[1] ?? "") : "";
+          const norm = path === "" ? "/" : path.replace(/\/$/, "") || "/";
+          if (ctx.html.has(norm)) {
+            if (hash !== "" && !ids(ctx.html.get(norm) ?? "").has(hash))
+              f.push(`${route}: ancla ${href} sin destino en ${norm}`);
+          } else if (!distHas(ctx.root, path)) f.push(`${route}: enlace ${href} sin destino`);
+        }
+      }
+    }
+    const roots = ctx.generated["evidence-roots"] ?? [];
+    const unresolved = roots.filter((r) => r.source_link_status === "UNRESOLVED").length;
+    return res(
+      f,
+      `internos resuelven; ${warnings.length} externo(s) reportado(s); ${unresolved} raíces con source_link UNRESOLVED (sin original_url que verificar)`,
+    );
+  },
+);
+const gPerf01 = rel(
+  "G-PERF-01",
+  "Presupuestos B-JS, B-HTML, B-CSS, B-REQ, B-TOT sobre dist/",
+  (ctx) => {
+    const dist = join(ctx.root, "dist");
+    if (!existsSync(dist) || ctx.html.size === 0) return skip("sin dist/");
+    const f: string[] = [];
+    const files = walkDir(dist);
+    const js = files.filter((p) => /\.(m?js)$/.test(p));
+    const jsBytes = js.reduce((n, p) => n + gz(readFileSync(p)), 0);
+    if (js.length > 0 || jsBytes > 0)
+      f.push(`B-JS: ${js.length} archivo(s) JS, ${jsBytes} B gzip (presupuesto: 0 en este sitio)`);
+    for (const [route, html] of ctx.html) {
+      const htmlGz = gz(html);
+      if (htmlGz > 80 * 1024) f.push(`B-HTML ${route}: ${htmlGz} B gzip > 80 KB`);
+    }
+    const cssFiles = files.filter((p) => p.endsWith(".css"));
+    const cssGz = cssFiles.reduce((n, p) => n + gz(readFileSync(p)), 0);
+    if (cssGz > 25 * 1024) f.push(`B-CSS: ${cssGz} B gzip > 25 KB`);
+    const home = ctx.html.get("/") ?? "";
+    const reqs = new Set<string>(["/"]);
+    for (const t of tags(home)) {
+      if (t.name !== "link" && t.name !== "script" && t.name !== "img" && t.name !== "source")
+        continue;
+      const u = t.attrs["href"] ?? t.attrs["src"];
+      if (u !== undefined && u.startsWith("/")) reqs.add((u.split("?")[0] ?? u).split("#")[0] ?? u);
+    }
+    if (reqs.size > 12) f.push(`B-REQ: ${reqs.size} solicitudes > 12`);
+    const fontBytes = files
+      .filter((p) => p.endsWith(".woff2"))
+      .reduce((n, p) => n + statSync(p).size, 0);
+    const totWith = gz(home) + cssGz + fontBytes;
+    const totWithout = gz(home) + cssGz;
+    if (totWithout > 150 * 1024) f.push(`B-TOT sin fuentes: ${totWithout} B > 150 KB`);
+    if (totWith > 300 * 1024) f.push(`B-TOT con fuentes: ${totWith} B > 300 KB`);
+    return res(
+      f,
+      `JS ${jsBytes} B · CSS gzip ${cssGz} B · fuentes ${fontBytes} B · reqs ${reqs.size}`,
+    );
+  },
+);
+const gPerf02 = rel("G-PERF-02", "Lighthouse de producción: LCP, FCP, CLS, TBT", (ctx) => {
+  const p = join(ctx.root, "reports", "lighthouse.json");
+  if (!existsSync(p))
+    return skip("sin reports/lighthouse.json (se mide contra el host de producción)");
+  const raw = JSON.parse(readFileSync(p, "utf8")) as {
+    audits?: Record<string, { numericValue?: number }>;
+  };
+  const num = (id: string): number | undefined => raw.audits?.[id]?.numericValue;
+  const f: string[] = [];
+  const lcp = num("largest-contentful-paint");
+  const fcp = num("first-contentful-paint");
+  const cls = num("cumulative-layout-shift");
+  const tbt = num("total-blocking-time");
+  if (lcp !== undefined && lcp > 2000) f.push(`B-LCP: ${lcp} ms > 2000`);
+  if (fcp !== undefined && fcp > 1500) f.push(`B-FCP: ${fcp} ms > 1500`);
+  if (cls !== undefined && cls > 0.02) f.push(`B-CLS: ${cls} > 0.02`);
+  if (tbt !== undefined && tbt > 100) f.push(`B-TBT: ${tbt} ms > 100`);
+  if (lcp === undefined && fcp === undefined && cls === undefined && tbt === undefined)
+    return skip("lighthouse.json sin auditorías numéricas");
+  return res(f, `LCP ${lcp ?? "—"} · FCP ${fcp ?? "—"} · CLS ${cls ?? "—"} · TBT ${tbt ?? "—"}`);
+});
+const gPerf04 = rel("G-PERF-04", "Fuentes autoalojadas, 0 imágenes raster, sin terceros", (ctx) => {
+  if (ctx.html.size === 0) return skip("sin dist/");
+  const f: string[] = [];
+  const dist = join(ctx.root, "dist");
+  const fonts = walkDir(join(dist, "fonts")).filter((p) => p.endsWith(".woff2"));
+  const fontBytes = fonts.reduce((n, p) => n + statSync(p).size, 0);
+  if (fontBytes > 160 * 1024) f.push(`B-FONT: ${fontBytes} B > 160 KB`);
+  const home = ctx.html.get("/") ?? "";
+  const preloads = tags(home).filter(
+    (t) => t.name === "link" && t.attrs["rel"] === "preload" && t.attrs["as"] === "font",
+  );
+  if (preloads.length > 2) f.push(`B-FONT: ${preloads.length} fuentes en camino crítico (> 2)`);
+  for (const [route, html] of ctx.html) {
+    for (const t of tags(html)) {
+      if (t.name === "img" || t.name === "picture") f.push(`${route}: imagen raster (B-IMG = 0)`);
+      const url = t.attrs["href"] ?? t.attrs["src"] ?? "";
+      if (/^https?:\/\//i.test(url) && !url.startsWith(SITE_ORIGIN))
+        f.push(`${route}: solicitud a tercero ${url}`);
+    }
+  }
+  const tokens = ctx.sources.find((s) => s.path === "design/tokens.css")?.text ?? "";
+  if (!tokens.includes("font-display: swap")) f.push("design/tokens.css: falta font-display: swap");
+  return res(f, `${fonts.length} woff2 (${fontBytes} B); 0 raster; 0 terceros; ≤ 2 preload`);
+});
+const gLeg03 = rel(
+  "G-LEG-03",
+  "Registro fechado de revisión legal de cada Source mostrada (OD-03)",
+  (ctx) => {
+    const candidates = [
+      "editorial/legal/review.yml",
+      "editorial/legal/G-LEG-03.yml",
+      "docs/legal-review.md",
+    ];
+    const found = candidates.filter((p) => existsSync(join(ctx.root, p)));
+    if (found.length === 0)
+      return {
+        status: "FAIL" as const,
+        detail:
+          "OPEN: no hay registro fechado de revisión legal que cubra las Source mostradas y los derivados (OD-03). No se fabrica el registro.",
+        failures: [
+          "sin registro de revisión legal: G-LEG-03 permanece abierto y bloquea el release público formal",
+        ],
+      };
+    return ok(`registro legal presente: ${found.join(", ")}`);
+  },
+  { blocksCi: false },
+);
+
 export const GATES: Gate[] = [
   gSrc01,
   gSrc02,
@@ -1633,9 +2014,23 @@ export const GATES: Gate[] = [
   gGov,
 ];
 
+export const RELEASE_GATES: Gate[] = [
+  gSeo01,
+  gOg01,
+  gSec02,
+  gSec03,
+  gLnk01,
+  gPerf01,
+  gPerf02,
+  gPerf04,
+  gLeg03,
+];
+
+export const ALL_GATES: Gate[] = [...GATES, ...RELEASE_GATES];
+
 /** Ejecuta un gate por id (los tests de fixtures defectuosos usan esto). */
 export function runGate(id: string, ctx: GateContext): Outcome {
-  const g = GATES.find((x) => x.id === id);
+  const g = ALL_GATES.find((x) => x.id === id);
   if (g === undefined) throw new Error(`gate desconocido: ${id}`);
   return g.run(ctx);
 }
