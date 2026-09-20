@@ -20,13 +20,17 @@ const ui = v.ui;
 const t = trail ?? v.trail;
 if (t === null) throw new Error("EvidenceTrail: no hay Rastro de claim");
 const observed = t.claimState === "OBSERVED_IN_SOURCE";
+const refuted = t.claimState === "REFUTED_WITHIN_SCOPE";
+const held = observed || refuted;
 const showCut = t.reasons.length > 0;
 const shapeDesc =
   t.claimState === "INSUFFICIENT_EVIDENCE"
     ? ui("shape_insufficient")
     : observed
       ? ui("shape_observed")
-      : ui("layer_question");
+      : refuted
+        ? ui("shape_refuted")
+        : ui("layer_question");
 const hid = `${prefix}trail-h`;
 const d1 = `${prefix}depth-1`;
 const d2 = `${prefix}depth-2`;
@@ -97,9 +101,13 @@ const depthName = prefix === "" ? "rastro-depth" : `rastro-depth-${prefix.replac
     </div>
 
     <ol class="core">
-      <li class:list={["cn", "cn--claim", { "cn--ghost": !observed }]}>
+      <li class:list={["cn", "cn--claim", { "cn--ghost": !held }]}>
         <span class="cn__g">
-          <Glyph kind="claim" fill={observed ? "solid" : "hollow"} size="1.375rem" />
+          <Glyph
+            kind="claim"
+            fill={observed ? "solid" : refuted ? "ghost" : "hollow"}
+            size="1.375rem"
+          />
         </span>
         <div class="cn__b">
           <p class="cn__k">{ui("node_claim")}</p>
@@ -118,9 +126,9 @@ const depthName = prefix === "" ? "rastro-depth" : `rastro-depth-${prefix.replac
         </p>
       </li>
 
-      <li class:list={["cn", "cn--hyp", { "cn--ghost": !observed, "cn--to-cut": showCut }]}>
+      <li class:list={["cn", "cn--hyp", { "cn--ghost": !held, "cn--to-cut": showCut }]}>
         <span class="cn__g">
-          <Glyph kind="hypothesis" fill={observed ? "solid" : "ghost"} size="1.375rem" />
+          <Glyph kind="hypothesis" fill={held ? "solid" : "ghost"} size="1.375rem" />
         </span>
         <div class="cn__b">
           <p class="cn__k">{ui("node_hypothesis")}</p>

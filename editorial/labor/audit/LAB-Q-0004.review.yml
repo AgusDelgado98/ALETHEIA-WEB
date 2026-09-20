@@ -1,0 +1,60 @@
+# Entrada humana/adversarial de la auditoría (Editorial Contract §4). De aquí salen los veredictos y las notas;
+# los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
+schema: aletheia-web/editorial-review/1
+canonical_ref: labor/LAB-Q-0004
+revision: 1
+reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
+date: "2026-09-20"
+independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
+adversarial_review:
+  - "Alcance de la hipótesis, no de la informalidad: cs-2 y dnm-1/KEEP-001 declaran que se cumple la condición de fallo en el alcance ejecutado; no se presenta como hallazgo sobre informalidad en general ni sobre estabilidad del mercado laboral."
+  - "Cifras del claim (proporciones y umbral): el corpus las registra y no hay anclas; ningún texto editorial las reproduce. El resultado se enuncia en cualitativo: el desplazamiento no fue material."
+  - "Período: ningún texto escribe trimestres ni años; se dice «ventana de trimestres de EPH admitidos» y que el corpus no tiene otros trimestres de esa encuesta."
+  - "Población: asalariadas ocupadas de EPH con indicador interno de descuento jubilatorio, dominio de aglomerados urbanos, sin el conteo de aglomerados ni códigos de variable."
+  - "Resolución de la pregunta y estado del claim se leen de generated/; las etiquetas públicas son las formas largas del vocabulario, en femenino y masculino respectivamente. El texto editorial no escribe el código."
+  - "No es un cruce con SIPA/MLER: cs-5 y dnm-4; REL-GR-002 y la limitación 2."
+  - "Brecha pregunta–claim: cs-6 declara que la pregunta cubre la composición al sumar la EPH a las fuentes de registro y el claim cubre solo la composición asalariada interna."
+  - "Generalización (REL-PR-009): dnm-2; no se copian umbrales ni conteos."
+  - "Atribución causal: dnm-3 y el alcance."
+  - "Quiebres de la EPH: dnm-13 cubre la limitación de la pregunta sin escribir años."
+  - "Dominio urbano no es el país: dnm-12."
+  - "Ausencia vs negativo: dnm-14 cita REL-PR-008; este resultado negativo no se lee como ausencia."
+  - "Relaciones prohibidas: REL-PR-001, REL-PR-004, REL-PR-010, REL-PR-011, REL-PR-012, REL-PR-013, REL-GR-006."
+  - "Exposición previa INDIRECT: el texto de divulgación traduce operational_definition y prior_data_exposure."
+  - "Fuerza de la evidencia: ningún texto usa verbos protegidos ni conectores causales; el estado se lee solo de generated/."
+defaults:
+  verdict: PENDING_AUTHOR_REVIEW
+overrides:
+  "labor/LAB-Q-0004#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+      - "Auditoría de origen: reconciliation/public-question-editorial-audit.json, fila LAB-Q-0004, dimensiones FINAL_* todas en PASS/YES."
+  "labor/LAB-Q-0004#finding.title":
+    notes:
+      - "Traduce el alcance del claim: condición de fallo de la hipótesis en su alcance; no reproduce cifras ni afirma informalidad en general."
+  "labor/LAB-Q-0004#finding.intro":
+    notes:
+      - "Enlaza la pregunta canónica, el claim ejecutado y la condición de fallo; declara que no hay hallazgo de informalidad en general ni atribución causal."
+  "labor/LAB-Q-0004#finding.can_say.cs-1":
+    notes:
+      - "Resultado cualitativo sin magnitudes; sale del texto canónico del claim y de la métrica de la hipótesis."
+  "labor/LAB-Q-0004#finding.can_say.cs-5":
+    notes:
+      - "Limitación 2: indicador interno, no cruce persona a persona."
+  "labor/LAB-Q-0004#finding.can_say.cs-6":
+    notes:
+      - "Brecha pregunta–claim: composición al sumar la EPH vs composición asalariada interna."
+  "labor/LAB-Q-0004#finding.does_not_mean.dnm-1":
+    notes:
+      - "KEEP-001: no presentar como informalidad en general ni como estabilidad del mercado laboral."
+  "labor/LAB-Q-0004#finding.does_not_mean.dnm-2":
+    notes:
+      - "REL-PR-009 y limitación 1, sin escribir el conteo de aglomerados ni los códigos de trimestre."
+  "labor/LAB-Q-0004#finding.disclosure":
+    notes:
+      - "Traduce operational_definition (antes de EPH en el repositorio) y prior_data_exposure INDIRECT."
+  "labor/LAB-Q-0004#finding.trail.source":
+    notes:
+      - "Traduce LAB-ROOT-0005#publication sin el nombre de archivo ni el trimestre numerado (G-FIG-03)."

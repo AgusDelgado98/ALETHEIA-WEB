@@ -10,6 +10,9 @@ claim_state_labels:
   OBSERVED_IN_SOURCE:
     id: claim-observed-in-source
     text: "Observado en la fuente"
+  REFUTED_WITHIN_SCOPE:
+    id: claim-refuted-within-scope
+    text: "Refutado dentro de su alcance"
 question_resolution_labels:
   INSUFFICIENT_EVIDENCE:
     id: question-insufficient-evidence
@@ -20,6 +23,9 @@ question_resolution_labels:
   OBSERVED_IN_SOURCE:
     id: question-observed-in-source
     text: "Observado en la fuente"
+  REFUTED_WITHIN_SCOPE:
+    id: question-refuted-within-scope
+    text: "Refutada dentro de su alcance"
 fixed:
   absence_not_negative:
     id: fixed-absence-not-negative

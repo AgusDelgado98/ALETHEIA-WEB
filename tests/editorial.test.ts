@@ -210,7 +210,7 @@ describe("páginas mínimas de las 18 preguntas LABOR", () => {
       expect(v.trail, id).toBeNull();
     }
   });
-  it("Q-0013, Q-0011, Q-0005 y Q-0003 conservan la ficha editorial", () => {
+  it("Q-0013, Q-0011, Q-0005, Q-0003 y Q-0004 conservan la ficha editorial", () => {
     const a = loadQuestionView(ROOT, "LAB-Q-0013");
     expect(a.hasEditorial).toBe(true);
     expect(a.claim?.id).toBe("LAB-CLM-0011");
@@ -225,6 +225,9 @@ describe("páginas mínimas de las 18 preguntas LABOR", () => {
     const d = loadQuestionView(ROOT, "LAB-Q-0003");
     expect(d.hasEditorial).toBe(true);
     expect(d.claims.map((x) => x.id)).toEqual(["LAB-CLM-0002", "LAB-CLM-0004"]);
+    const e = loadQuestionView(ROOT, "LAB-Q-0004");
+    expect(e.hasEditorial).toBe(true);
+    expect(e.claim?.id).toBe("LAB-CLM-0005");
   });
 });
 
@@ -330,6 +333,53 @@ describe("vista de Q-0003", () => {
     expect(plainText(v.scope)).not.toMatch(/[0-9]/);
     expect(plainText(v.provenance.cite)).toMatch(/LAB-CLM-0002/);
     expect(plainText(v.provenance.cite)).toMatch(/LAB-CLM-0004/);
+  });
+});
+
+describe("capa editorial de Q-0004", () => {
+  const bundle = loadEditorial(ROOT, "LAB-Q-0004");
+  it("conserva el claim y la auditoría está vigente", () => {
+    expect(bundle.finding.claim_ref).toBe("labor/LAB-CLM-0005");
+    expect(bundle.finding.trail).toBeDefined();
+    expect(bundle.finding.blockers_at_cut).toEqual([]);
+    expect(bundle.finding.disclosure).toBeDefined();
+    expect(bundle.units.some((u) => u.string_id.startsWith("site#"))).toBe(false);
+    expect(verifyAudit(bundle, corpus)).toEqual([]);
+    const approved = bundle.audit!.records.filter((r) => r.verdict === "APPROVED");
+    expect(approved.map((r) => r.string_id)).toEqual(["labor/LAB-Q-0004#public_question"]);
+  });
+  it("public_question es la aprobada y no hay literales numéricos", () => {
+    expect(bundle.question.public_question).toBe(
+      "¿Cómo cambia la composición del trabajo observable en conjunto cuando a las fuentes de registro se les suma la encuesta de hogares (EPH)?",
+    );
+    for (const u of bundle.units) {
+      const errors = lintText(u.string_id, u.text).filter((i) => i.severity === "error");
+      expect(errors, u.string_id).toEqual([]);
+    }
+  });
+});
+
+describe("vista de Q-0004", () => {
+  it("carga el claim refutado en su alcance, separado de la resolución de la pregunta", () => {
+    const v = loadQuestionView(ROOT, "LAB-Q-0004");
+    expect(v.hasEditorial).toBe(true);
+    expect(v.claim?.id).toBe("LAB-CLM-0005");
+    expect(v.state.question).toBe("REFUTED_WITHIN_SCOPE");
+    expect(v.state.claim).toBe("REFUTED_WITHIN_SCOPE");
+    expect(v.state.questionLabel).toBe("Refutada dentro de su alcance");
+    expect(v.state.claimLabel).toBe("Refutado dentro de su alcance");
+    expect(v.claim?.hypothesisId).toBe("LAB-HYP-0003");
+    expect(v.trail).not.toBeNull();
+    expect(v.trail!.reasons).toEqual([]);
+    expect(v.trail!.objects.map((o) => o.id)).toEqual(["LAB-OBJ-0006", "LAB-OBJ-0007"]);
+    expect(v.trail!.ids.roots).toEqual(["LAB-ROOT-0005"]);
+    expect(v.provenance.disclosureRequired).toBe(true);
+    expect(plainText(v.provenance.disclosure ?? [])).toMatch(/indirecta/);
+    expect(plainText(v.title)).not.toMatch(/[0-9]/);
+    expect(plainText(v.intro)).not.toMatch(/[0-9]/);
+    expect(plainText(v.scope)).not.toMatch(/[0-9]/);
+    expect(plainText(v.intro)).toMatch(/No es un hallazgo sobre la informalidad en general/);
+    expect(plainText(v.provenance.cite)).toMatch(/LAB-CLM-0005/);
   });
 });
 

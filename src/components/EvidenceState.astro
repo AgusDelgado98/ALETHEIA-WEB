@@ -3,6 +3,7 @@
  * Estado epistemológico por GEOMETRÍA, relleno y corte; nunca solo por color (Charter §8, §15.1).
  * INSUFICIENTE: hilo sólido → corte → hilo punteado → ■ hueco.
  * OBSERVADO: hilo sólido → ■ macizo.
+ * REFUTADO DENTRO DE SU ALCANCE: hilo sólido → ■ de borde discontinuo.
  * Etiquetas documentales de pregunta (NOT_IDENTIFIABLE, BLOCKED_BY_DESIGN, OUTSIDE_LAB_A): zona rayada, sin ■.
  * Los demás códigos se muestran por su identificador canónico, sin forma no auditada.
  */
@@ -28,6 +29,12 @@ const hatch = new Set(["NOT_IDENTIFIABLE", "BLOCKED_BY_DESIGN", "OUTSIDE_LAB_A"]
     <svg class="state__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
       <line class="thread" x1="2" y1="12" x2="140" y2="12"></line>
       <rect class="sq sq--solid" x="146" y="5" width="14" height="14"></rect>
+    </svg>
+  )}
+  {state === "REFUTED_WITHIN_SCOPE" && (
+    <svg class="state__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <line class="thread" x1="2" y1="12" x2="140" y2="12"></line>
+      <rect class="sq sq--dash" x="146" y="5" width="14" height="14"></rect>
     </svg>
   )}
   {hatch.has(state) && (
@@ -83,6 +90,9 @@ const hatch = new Set(["NOT_IDENTIFIABLE", "BLOCKED_BY_DESIGN", "OUTSIDE_LAB_A"]
   }
   .sq--solid {
     fill: currentColor;
+  }
+  .sq--dash {
+    stroke-dasharray: 2.4 2;
   }
   .hatch {
     stroke: currentColor;

@@ -12,7 +12,7 @@ import Base from "../../../layouts/Base.astro";
 import { plainText } from "../../../lib/render.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
-/** Una ruta por cada pregunta del corpus. Q-0003, Q-0005, Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
+/** Una ruta por cada pregunta del corpus. Q-0003, Q-0004, Q-0005, Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
 export function getStaticPaths() {
   return availableQuestionIds(process.cwd()).map((id) => ({
     params: { id: questionSlug(id) },
@@ -28,9 +28,11 @@ const shapeOf = (state: string): string =>
     ? ui("shape_insufficient")
     : state === "OBSERVED_IN_SOURCE"
       ? ui("shape_observed")
-      : hatch.has(state)
-        ? ui("shape_not_identifiable")
-        : ui("layer_question");
+      : state === "REFUTED_WITHIN_SCOPE"
+        ? ui("shape_refuted")
+        : hatch.has(state)
+          ? ui("shape_not_identifiable")
+          : ui("layer_question");
 ---
 
 <Base

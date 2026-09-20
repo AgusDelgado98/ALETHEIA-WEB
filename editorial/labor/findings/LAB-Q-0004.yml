@@ -1,0 +1,195 @@
+# Capa editorial · Q-0004 (WEB-0 Editorial Contract §3, §5, §6).
+# Un claim: LAB-CLM-0005. La condición de fallo de LAB-HYP-0003 se cumple en su alcance; no se afirma informalidad en general.
+schema: aletheia-web/editorial-finding/1
+canonical_ref: labor/LAB-Q-0004
+claim_ref: labor/LAB-CLM-0005
+revision: 1
+
+title:
+  id: title
+  text: "Composición asalariada en la EPH: la condición de fallo de la hipótesis se cumple en su alcance"
+  maps_to:
+    - labor/LAB-CLM-0005#scope_statement
+    - labor/LAB-HYP-0003#failure_condition
+
+intro:
+  id: intro
+  text: "Esta pregunta busca cómo cambia la composición del trabajo observable cuando a las fuentes de registro se les suma la encuesta de hogares. El corpus ejecutó la métrica preinscripta solo sobre la composición asalariada según el indicador interno de descuento jubilatorio, en la ventana de trimestres de EPH admitidos. Ese desplazamiento no fue material: se cumple la condición de fallo de la hipótesis en ese alcance. No es un hallazgo sobre la informalidad en general. No se afirma una atribución causal."
+  maps_to:
+    - labor/LAB-Q-0004#canonical_text
+    - labor/LAB-CLM-0005#canonical_text
+    - labor/LAB-HYP-0003#failure_condition
+    - labor/KEEP-001#must_not
+    - "labor/LAB-CLM-0005#limitation:3"
+
+scope:
+  id: scope
+  text: "Solo describe si la proporción ponderada de personas asalariadas ocupadas de la EPH sin descuento jubilatorio informado se desplazó de forma material en la ventana de trimestres admitidos, dentro del dominio de aglomerados urbanos de esa encuesta. No dice nada sobre otras categorías de ocupación, sobre un cruce con fuentes de registro, sobre otros períodos ni sobre una atribución causal."
+  maps_to:
+    - labor/LAB-CLM-0005#scope_statement
+    - labor/LAB-CLM-0005#scope_coverage_adequacy
+
+can_say:
+  - id: cs-1
+    text: "La composición asalariada según el indicador interno de descuento jubilatorio no mostró un desplazamiento material entre los trimestres de EPH admitidos."
+    maps_to:
+      - labor/LAB-CLM-0005#canonical_text
+      - labor/LAB-HYP-0003#metric
+  - id: cs-2
+    text: "Ese resultado cumple la condición de fallo preinscripta de la hipótesis en esa ventana y en esa subpoblación."
+    maps_to:
+      - labor/LAB-HYP-0003#failure_condition
+      - labor/LAB-CLM-0005#canonical_text
+  - id: cs-3
+    text: "El período cubierto es esa ventana de trimestres admitidos; el corpus no tiene otros trimestres de EPH."
+    maps_to:
+      - "labor/LAB-CLM-0005#limitation:1"
+      - labor/LAB-CLM-0005#scope_statement
+  - id: cs-4
+    text: "La población es la de personas asalariadas ocupadas observadas por la EPH, en el dominio de aglomerados urbanos de esa encuesta, con el indicador interno de descuento jubilatorio informado."
+    maps_to:
+      - labor/LAB-CLM-0005#scope_coverage_adequacy
+      - labor/LAB-HYP-0003#population
+  - id: cs-5
+    text: "El indicador es interno a la EPH. No es un cruce persona a persona con SIPA ni con MLER."
+    maps_to:
+      - "labor/LAB-CLM-0005#limitation:2"
+      - labor/LAB-EVD-0009#method
+  - id: cs-6
+    text: "La pregunta cubre la composición del trabajo observable al sumar la EPH a las fuentes de registro. El claim cubre solo esa composición asalariada interna, en la ventana admitida."
+    maps_to:
+      - labor/LAB-Q-0004#canonical_text
+      - labor/LAB-CLM-0005#scope_statement
+      - labor/LAB-HYP-0003#period
+  - id: cs-7
+    text: "El claim se sostiene en la raíz de evidencia de la EPH. No es convergente."
+    maps_to:
+      - "labor/LAB-CLM-0005#limitation:1"
+      - labor/LAB-CLM-0005#lineage_independence
+
+does_not_mean:
+  - id: dnm-1
+    text: "No significa un hallazgo sobre la informalidad en general, ni sobre la estabilidad del mercado laboral."
+    maps_to:
+      - labor/KEEP-001#must_not
+      - "labor/LAB-CLM-0005#limitation:1"
+  - id: dnm-2
+    text: "No significa generalizar más allá de las personas asalariadas, de la ventana de trimestres admitidos ni del dominio de aglomerados urbanos de la EPH."
+    maps_to:
+      - labor/REL-PR-009#prohibited_inference
+      - "labor/LAB-CLM-0005#limitation:1"
+  - id: dnm-3
+    text: "No significa una atribución causal del desplazamiento observado."
+    maps_to:
+      - "labor/LAB-CLM-0005#limitation:3"
+      - labor/LAB-CLM-0005#scope_statement
+  - id: dnm-4
+    text: "No significa un cruce con claims de empleo registrado de SIPA o ARCA, ni una comparación administrativa frente a encuesta."
+    maps_to:
+      - labor/REL-GR-002#prohibited_inference
+      - "labor/LAB-CLM-0005#limitation:2"
+  - id: dnm-5
+    text: "No significa responder la pregunta {{id:LAB-Q-0006}} comparando claims ya existentes."
+    maps_to:
+      - labor/REL-PR-004#prohibited_inference
+  - id: dnm-6
+    text: "No significa elevar el estado de la afirmación por agregación."
+    maps_to:
+      - labor/REL-PR-001#prohibited_inference
+  - id: dnm-7
+    text: "No significa un compuesto entre claims ni entre regímenes, ni una votación de fuerza global."
+    maps_to:
+      - labor/REL-PR-010#prohibited_inference
+  - id: dnm-8
+    text: "No significa que la inscripción previa de la hipótesis sea evidencia de que no se eligió el resultado, ni que se omita la divulgación."
+    maps_to:
+      - labor/REL-PR-011#prohibited_inference
+  - id: dnm-9
+    text: "No significa que se puedan mezclar valores nominales y reales entre claims, ni comparar cifras entre ventanas o productos sin una ventana de comparabilidad gobernada."
+    maps_to:
+      - labor/REL-PR-012#prohibited_inference
+  - id: dnm-10
+    text: "No significa que esta fuente o este claim cubran el mercado laboral argentino en su conjunto."
+    maps_to:
+      - labor/REL-PR-013#prohibited_inference
+  - id: dnm-11
+    text: "No significa una comparación de períodos o de magnitudes entre claims con ventanas o productos distintos."
+    maps_to:
+      - labor/REL-GR-006#prohibited_inference
+  - id: dnm-12
+    text: "No significa que el dominio urbano de la encuesta cubra el país en su conjunto."
+    maps_to:
+      - "labor/LAB-Q-0004#limitation:1"
+  - id: dnm-13
+    text: "No significa que se empalmen quiebres de la EPH que el proyecto registró como no homogéneos."
+    maps_to:
+      - "labor/LAB-Q-0004#limitation:2"
+      - labor/LAB-HYP-0003#known_breaks
+  - id: dnm-14
+    text: "No significa leer una ausencia como resultado negativo, ni este resultado negativo como una ausencia."
+    maps_to:
+      - labor/REL-PR-008#prohibited_inference
+  - id: dnm-15
+    text: "No significa otra operacionalización del indicador de registro, ni otras categorías de ocupación distintas de la asalariada."
+    maps_to:
+      - "labor/LAB-CLM-0005#limitation:1"
+      - labor/LAB-CLM-0005#scope_coverage_adequacy
+
+would_need:
+  - id: wn-1
+    text: "Una demostración de error en la recuperación o el hash de EPH de esta sesión."
+    maps_to:
+      - labor/LAB-CLM-0005#what_would_unseat
+  - id: wn-2
+    text: "Una demostración de error en el cálculo ponderado."
+    maps_to:
+      - labor/LAB-CLM-0005#what_would_unseat
+  - id: wn-3
+    text: "Un trimestre adicional que, al sumarse a esta serie, cruce el umbral de materialidad preinscrito."
+    maps_to:
+      - labor/LAB-CLM-0005#what_would_unseat
+
+disclosure:
+  id: disclosure
+  text: "La hipótesis quedó inscrita antes de que este repositorio tuviera datos de EPH. La exposición previa registrada es indirecta."
+  maps_to:
+    - labor/LAB-HYP-0003#operational_definition
+    - labor/LAB-HYP-0003#prior_data_exposure
+
+trail:
+  claim:
+    id: trail-claim
+    text: "La composición asalariada según el indicador interno de descuento jubilatorio no se desplazó de forma material en la ventana de trimestres de EPH admitidos. Se cumple la condición de fallo de la hipótesis en ese alcance."
+    maps_to:
+      - labor/LAB-CLM-0005#canonical_text
+      - labor/LAB-CLM-0005#scope_statement
+  hypothesis:
+    id: trail-hypothesis
+    text: "Se esperaba un desplazamiento material de la composición entre ocupación no registrada y registrada, a lo largo del período observado."
+    maps_to:
+      - labor/LAB-HYP-0003#expected_observation
+      - labor/LAB-HYP-0003#failure_condition
+  evidence:
+    id: trail-evidence
+    text: "El registro de evidencia operacionalizó la categoría de registro con el indicador interno de descuento jubilatorio de la EPH, solo entre personas asalariadas ocupadas, y comparó la proporción ponderada entre los trimestres admitidos."
+    maps_to:
+      - labor/LAB-EVD-0009#method
+      - labor/LAB-EVD-0009#metric
+  objects:
+    - id: trail-obj-registered
+      text: "Empleo visible por sistemas de registro"
+      maps_to:
+        - labor/LAB-OBJ-0006#name
+        - labor/LAB-OBJ-0006#is
+    - id: trail-obj-unregistered
+      text: "Actividad laboral no capturada por esos sistemas de registro"
+      maps_to:
+        - labor/LAB-OBJ-0007#name
+        - labor/LAB-OBJ-0007#is
+  source:
+    id: trail-source
+    text: "Publicación de microdatos de la Encuesta Permanente de Hogares (EPH) de INDEC."
+    maps_to:
+      - labor/LAB-ROOT-0005#publication
+
+blockers_at_cut: []

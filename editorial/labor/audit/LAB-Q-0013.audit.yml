@@ -652,6 +652,26 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#states.claim.REFUTED_WITHIN_SCOPE
+    kind: state_label
+    canonical_refs:
+      - vocab:claim_state:REFUTED_WITHIN_SCOPE
+    canonical_hash: 093079f8dbdac225931925f8f7d2f91fc1eadf6259c03dfea386806e0cb73050
+    text_hash: 79bad4930d8b287705e5eb78aee3fa643b06a2fd5238497f2017035650b9cadc
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#states.question.INSUFFICIENT_EVIDENCE
     kind: state_label
     canonical_refs:
@@ -698,6 +718,26 @@ records:
       - vocab:question_resolution:OBSERVED_IN_SOURCE
     canonical_hash: 3d48e552ca43d2705d710016d0fb5510fadca53e152bab60ccf83afa861a6b57
     text_hash: f725142e1e7f3ec12b3ac63898f62c42bfbef13224cbd0051fbb86e3ef5a5cd3
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#states.question.REFUTED_WITHIN_SCOPE
+    kind: state_label
+    canonical_refs:
+      - vocab:question_resolution:REFUTED_WITHIN_SCOPE
+    canonical_hash: c41dbe6947b276dcede6904a4c1305e189f23ea79bd29895196e31d57938f211
+    text_hash: d0c8833e1327ef9d103e5457e4c484eaee16b39f0ea4d5a1328dc5256a841f92
     revision: 1
     dimensions:
       semantics: PASS
@@ -1591,6 +1631,25 @@ records:
     canonical_refs: []
     canonical_hash: null
     text_hash: ba19f897e4104b059b940357da2c91fe0f000606ced4d9798b880d35ec9d50d8
+    revision: 1
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.shape_refuted
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 88cf409a5dfe6bfab5f6b19630c41aba9dc3e3b611f5a9cabd71019b7c8f0100
     revision: 1
     dimensions:
       semantics: PASS
