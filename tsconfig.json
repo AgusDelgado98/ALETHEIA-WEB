@@ -1,11 +1,31 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "src/**/*", "tests/**/*", "*.config.ts", "*.config.mjs"],
-  "exclude": ["dist", "node_modules", "spikes", "governance", "corpus-pins", "docs"],
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*",
+    "tests/**/*",
+    "tools/**/*",
+    "schemas/**/*",
+    "scripts/**/*",
+    "*.config.ts",
+    "*.config.mjs"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "spikes",
+    "governance",
+    "corpus-pins",
+    "docs",
+    "corpus-src",
+    "generated"
+  ],
   "compilerOptions": {
     "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
+    "erasableSyntaxOnly": true,
     "types": ["node"]
   }
 }

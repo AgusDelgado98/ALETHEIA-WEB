@@ -1,0 +1,87 @@
+{
+  "entity": "Question",
+  "items": [
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "ABSENCE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-Q-0013",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-002",
+          "REL-CONF-003",
+          "REL-GR-004",
+          "REL-PR-001",
+          "REL-PR-005",
+          "REL-PR-006",
+          "REL-PR-008",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0011.6a355bb6",
+          "lim.LAB-CLM-0011.91104881",
+          "lim.LAB-CLM-0011.a890ced7",
+          "lim.LAB-CLM-0011.bea8975a",
+          "lim.LAB-CLM-0011.d278178c",
+          "lim.LAB-Q-0013.59009bb6"
+        ]
+      },
+      "canonical_text": "Does a change in Monotributo tax-category thresholds have a causal effect on the observed shift between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION?",
+      "canonical_title": "Does a monotributo threshold change cause a shift in registration modality",
+      "causal_identification_status": "CANDIDATE_DESIGN",
+      "claim_ids": [
+        "LAB-CLM-0011"
+      ],
+      "class": "CAUSAL",
+      "global_id": "labor/LAB-Q-0013",
+      "hypothesis_ids": [
+        "LAB-HYP-0006"
+      ],
+      "id": "LAB-Q-0013",
+      "id_origin": "CORPUS",
+      "identification_requirements": [
+        "ARCA admission",
+        "A documented threshold-change event with a plausible discontinuity design"
+      ],
+      "known_breaks": [],
+      "ledger_status": "NOT_YET_OPERATIONAL",
+      "limitation_ids": [
+        "lim.LAB-Q-0013.59009bb6"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0016"
+      ],
+      "preserved_result_ids": [
+        "KEEP-002",
+        "KEEP-010"
+      ],
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0013",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/12",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "regime": "B",
+      "resolution": {
+        "basis": "CLAIM",
+        "basis_refs": [
+          "LAB-CLM-0011"
+        ],
+        "value": "INSUFFICIENT_EVIDENCE",
+        "vocabulary": "CLAIM_LIFECYCLE_STATE"
+      }
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,2029 @@
+{
+ "_meta": {
+  "source_tag": "aletheia-labor-v1.0.0",
+  "source_commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+  "status": "PROPOSED — not yet wired into any prototype",
+  "editorial_transform_definition": "false = literal translation of canonical_question; true = reworded in plain language (identifiers or jargon replaced by common words, clauses reordered); meaning, scope, population and period unchanged in both cases.",
+  "state_vocabulary_note": "Public labels translate the frozen lifecycle states; they add or rename none. BLOCKED_BY_DESIGN / OUTSIDE_LAB_A are documented Regime A closeout labels, not lifecycle states.",
+  "public_question_editorial_status": "APPROVED_FOR_V1 (audit: reconciliation/public-question-editorial-audit.md)"
+ },
+ "public_result_class_labels": {
+  "CLAIM_OBSERVED_MEASUREMENT": "Observado en la fuente",
+  "CLAIM_OBSERVED_NON_MEASUREMENT": "Observado en la fuente · hallazgo documental (no es una medición)",
+  "CLAIM_REFUTED_WITHIN_SCOPE": "Refutada dentro de su alcance",
+  "CLAIM_INSUFFICIENT_EVIDENCE": "Evidencia insuficiente",
+  "DOC_NOT_IDENTIFIABLE": "No identificable con las fuentes conocidas",
+  "DOC_BLOCKED_BY_DESIGN": "Bloqueada por diseño (sin métrica preregistrada)",
+  "DOC_OPEN_NOT_EXECUTED": "Abierta: no ejecutada (sin diseño de identificación)"
+ },
+ "claim_state_labels": {
+  "OBSERVED_IN_SOURCE": "Observado en la fuente",
+  "REFUTED_WITHIN_SCOPE": "Refutado dentro de su alcance",
+  "INSUFFICIENT_EVIDENCE": "Evidencia insuficiente"
+ },
+ "questions": [
+  {
+   "QUESTION_ID": "LAB-Q-0001",
+   "REGIME": "A",
+   "CANONICAL_QUESTION": "How did the composition of registered/administratively visible employment change over time, by observable category (person, job, employment relationship), within the universes each admitted source actually covers?",
+   "PUBLIC_QUESTION": "¿Cómo cambió con el tiempo la composición del empleo que figura en registros administrativos, según se cuenten personas, puestos o relaciones laborales, dentro de lo que cubre cada fuente?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_NOW",
+   "CLAIM_IDS": [
+    "LAB-CLM-0001"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0001"
+   ],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Solo cubre el empleo capturado por sistemas de registro; no describe todo el empleo argentino.",
+    "Comparación entre dos puntos (2012-01 y 2026-05), no la trayectoria completa.",
+    "Una sola raíz de evidencia (SIPA): no puede ser CONVERGENT ni ESTABLISHED_WITHIN_SCOPE."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Excludes any employment not captured by registration systems (see LAB-Q-0004)"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0001": [
+      "Single Evidence Root; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result strength",
+      "Endpoint (two-month) comparison; does not characterize the full trajectory",
+      "ASALARIADO_PUBLICO carries a mandatory GOV-005 extrapolation caveat"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0001",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0001",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0001"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Cómo cambió con el tiempo la composición del empleo registrado (o visible administrativamente), por categoría observable —persona, puesto, relación laboral—, dentro de los universos que cubre realmente cada fuente admitida?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": false,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0002",
+   "REGIME": "A",
+   "CANONICAL_QUESTION": "What differences appear between PERSON, JOB, and EMPLOYMENT_RELATIONSHIP counts when more than one administrative source maps the same underlying activity?",
+   "PUBLIC_QUESTION": "¿Qué diferencias aparecen entre los conteos de personas, puestos y relaciones laborales cuando más de una fuente administrativa registra la misma actividad?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_NOW",
+   "CLAIM_IDS": [
+    "LAB-CLM-0003"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0007"
+   ],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Solo el solapamiento 2012–2021: MLER termina en 2021-12.",
+    "MLER y SIPA no son independientes: la cercanía entre ambos es esperable por construcción, no corroboración.",
+    "Empleador y puesto no están disponibles en MLER (GOV-006); la relación con la tolerancia de LAB-HYP-0007 es ambigua porque no se fijó una tolerancia numérica."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "MLER cannot supply EMPLOYER or JOB (GOV-006); comparison is limited to PERSON/relationship-adjacent fields"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0003": [
+      "Non-independent root pair; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of numeric agreement",
+      "The person-count sub-finding's relation to LAB-HYP-0007's FAILURE_CONDITION is ambiguous because no numeric tolerance was pre-specified",
+      "GOV-006: EMPLOYER and JOB are UNREALIZED on MLER; not used",
+      "MLER ends 2021-12; no claim is made about 2022-2026"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0002",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0003",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0002"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0003",
+   "REGIME": "A",
+   "CANONICAL_QUESTION": "How did HOUR, JOB, and WAGE_BILL evolve within the national-accounts universe each is observed in?",
+   "PUBLIC_QUESTION": "¿Cómo evolucionaron las horas, los puestos y la masa salarial dentro del universo de cuentas nacionales en que se observa cada uno?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_NOW",
+   "CLAIM_IDS": [
+    "LAB-CLM-0002",
+    "LAB-CLM-0004"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE",
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0002"
+   ],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Dos claims separados: uno nominal (LAB-CLM-0002) y otro real, deflactado por IPC (LAB-CLM-0004); no se mezclan.",
+    "Las series de CGI empiezan en la base 2016; no se afirma ningún empalme con bases anteriores.",
+    "2020–2021 (COVID) cae dentro de la ventana; no se asigna ninguna causa a las divergencias."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Real-value comparison requires IPC as deflator, which is not yet admitted"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0002": [
+      "Single Evidence Root; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE",
+      "WAGE_BILL's divergence from JOB/HOUR is a large nominal-currency divergence; its real-terms interpretation is deferred pending IPC admission, not asserted here",
+      "No real-value (IPC-deflated) claim is made; BLOCKED_BY_IPC",
+      "2020-2021 treated as a potentially special (COVID-19) period; the JOB-HOUR relationship in that window may not generalize"
+     ],
+     "LAB-CLM-0004": [
+      "Single Evidence Root measuring WAGE_BILL (LAB-ROOT-0002); not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result strength",
+      "IPC used strictly as a deflator (MEASUREMENT_CHAIN); does not count as a second independent corroborating root (LAB-A3 instruction section 4)",
+      "Real WAGE_BILL YoY computable only 2018-Q1 through 2026-Q1, narrower than the nominal series' own 2017-Q1/2026-Q1 range, limited by IPC's Dec-2016 retrieval start (LAB-A2)",
+      "2020-2021 (COVID_REGIME_PRESENT=true) falls within this window; no preregistered with/without-COVID sensitivity exists for LAB-HYP-0002 and none was executed ad hoc",
+      "No causal or inflation-attribution claim is made; only the two computed growth measures (nominal, real) are compared"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0003",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0002",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0004",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0003"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0004",
+   "REGIME": "A",
+   "CANONICAL_QUESTION": "How does the overall composition of observable work change once EPH's household-survey universe is incorporated alongside registration-based sources?",
+   "PUBLIC_QUESTION": "¿Cómo cambia la composición del trabajo observable en conjunto cuando a las fuentes de registro se les suma la encuesta de hogares (EPH)?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "REFUTED_WITHIN_SCOPE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+   "CLAIM_IDS": [
+    "LAB-CLM-0005"
+   ],
+   "CLAIM_STATES": [
+    "REFUTED_WITHIN_SCOPE"
+   ],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0003"
+   ],
+   "PUBLIC_RESULT_CLASS": "CLAIM_REFUTED_WITHIN_SCOPE",
+   "PUBLIC_LABEL_PROPOSED": "Refutada dentro de su alcance",
+   "ABSENT_VS_NEGATIVE": "NEGATIVE_WITHIN_SCOPE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "La refutación es de la hipótesis LAB-HYP-0003, no de la pregunta: una sola variable indirecta (descuento jubilatorio), asalariados, dos trimestres (2025-Q1 y 2026-Q1), una raíz.",
+    "No es un hallazgo sobre informalidad total ni sobre tendencias de largo plazo; el dominio de la EPH son 32 aglomerados urbanos.",
+    "Los quiebres GOV-008 de la EPH no están empalmados."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "EPH's regular domain is 31 urban agglomerates, not all of Argentina",
+     "GOV-008 breaks apply; no automatic splice across EPH discontinuities"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0005": [
+      "Refuted only WITHIN this scope: one proxy variable (PP07H), one sub-population (wage/salary earners), one two-quarter window (2025-Q1/2026-Q1), one Evidence Root (EPH). Says nothing about longer-run trends, other employment categories, or a differently-operationalized registration proxy",
+      "Not a person-level cross-source match against SIPA/MLER (no common identifier exists); a genuinely independent corroborating root was not attempted",
+      "No cause is asserted for the small observed shift"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-001"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0004",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0005",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0004"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Cómo cambia la composición global del trabajo observable al incorporar el universo de la encuesta de hogares (EPH) junto con las fuentes basadas en registros?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": false,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0005",
+   "REGIME": "A",
+   "CANONICAL_QUESTION": "How did nominal and real labour income evolve within windows that are internally comparable given registered breaks?",
+   "PUBLIC_QUESTION": "¿Cómo evolucionó el ingreso laboral, nominal y real (descontada la inflación), dentro de tramos de tiempo comparables, sin cruzar los quiebres registrados en las series?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+   "CLAIM_IDS": [
+    "LAB-CLM-0006"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0004"
+   ],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Una sola ventana: 2025-Q1 a 2026-Q1; ALETHEIA-LABOR no tiene otros trimestres de EPH.",
+    "El IPC se usa solo como deflactor, nunca como segunda raíz de evidencia.",
+    "No se asigna causa a la brecha entre crecimiento nominal y real; no se compara en magnitud con el claim de CGI (objetos distintos)."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "No automatic splice across IPC 2007-2015 or 2016-2017 windows"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0006": [
+      "Single Evidence Root measuring LABOR_INCOME (LAB-ROOT-0005); IPC used strictly as a deflator, never a corroborating root",
+      "Exactly one window (2025-Q1 to 2026-Q1); the hypothesis's 'within each break-consistent window' language is satisfied for this one window only, since LABOR holds no other EPH quarter",
+      "Not compared in magnitude to LAB-CLM-0004's CGI WAGE_BILL finding -- different objects (aggregate WAGE_BILL vs. individual LABOR_INCOME), no equivalence asserted",
+      "No causal or inflation-attribution claim is made"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0005",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0006",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0005"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Cómo evolucionaron el ingreso laboral nominal y el real dentro de ventanas comparables, dados los quiebres registrados?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": false,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0006",
+   "REGIME": "A",
+   "CANONICAL_QUESTION": "Which dimensions of visible work diverge between administrative registration sources and household-survey sources, once both are admitted?",
+   "PUBLIC_QUESTION": "¿En qué dimensiones del trabajo visible divergen las fuentes administrativas de registro y las encuestas de hogares, una vez admitidas ambas?",
+   "EDITORIAL_TRANSFORM": false,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "BLOCKED_BY_DESIGN",
+    "VOCABULARY": "DOCUMENTED_REGIME_A_CLOSEOUT_LABEL_NOT_A_LIFECYCLE_STATE",
+    "BASIS": "QUESTION_LEDGER_AND_REGIME_CLOSEOUT"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+   "CLAIM_IDS": [],
+   "CLAIM_STATES": [],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "DOC_BLOCKED_BY_DESIGN",
+   "PUBLIC_LABEL_PROPOSED": "Bloqueada por diseño (sin métrica preregistrada)",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No existe ningún claim: nunca se preregistró una métrica, una observación esperada ni una condición de falla.",
+    "Es un vacío de diseño, no un vacío de datos; inventar una métrica a posteriori fue rechazado.",
+    "Ausencia, no resultado negativo. No debe responderse yuxtaponiendo claims de SIPA/CGI/MLER con los de la EPH."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Administrative and survey universes are not identical by construction; divergence may reflect coverage, not error"
+    ],
+    "CLAIM_LIMITATIONS": {}
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-008"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0006",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0006",
+    "aletheia-labor-v1.0.0:reports/regime_a/REGIME-A-closeout.md",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-preserved-results.json#KEEP-008"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0007",
+   "REGIME": "A",
+   "CANONICAL_QUESTION": "Does a specific formalization policy intervention have a causal effect on the share of REGISTERED_EMPLOYMENT within the observable universe?",
+   "PUBLIC_QUESTION": "¿Tiene una política de formalización específica un efecto causal sobre la proporción de empleo registrado dentro del universo observable?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OUTSIDE_LAB_A",
+    "VOCABULARY": "DOCUMENTED_REGIME_A_CLOSEOUT_LABEL_NOT_A_LIFECYCLE_STATE",
+    "BASIS": "QUESTION_LEDGER_AND_REGIME_CLOSEOUT"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_YET_OPERATIONAL",
+   "CLAIM_IDS": [],
+   "CLAIM_STATES": [],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "DOC_OPEN_NOT_EXECUTED",
+   "PUBLIC_LABEL_PROPOSED": "Abierta: no ejecutada (sin diseño de identificación)",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No existe ningún claim ni diseño de identificación (NO_DESIGN); quedó fuera del alcance de la etapa LAB-A.",
+    "Ausencia, no resultado negativo. Ningún claim descriptivo puede leerse como causal."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "No design proposed; correlation alone in registered-employment time series cannot support this claim"
+    ],
+    "CLAIM_LIMITATIONS": {}
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": "NO_DESIGN",
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-009"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0007",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0007",
+    "aletheia-labor-v1.0.0:reports/regime_a/REGIME-A-closeout.md",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-preserved-results.json#KEEP-009"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0008",
+   "REGIME": "B",
+   "CANONICAL_QUESTION": "How did the distribution of tax/registration categories relevant to labour provision (e.g. monotributo vs formal dependent registration) change over time?",
+   "PUBLIC_QUESTION": "¿Cómo cambió con el tiempo la distribución de las categorías de registro tributario relevantes para prestar trabajo (por ejemplo, monotributo frente a registro dependiente formal)?",
+   "EDITORIAL_TRANSFORM": false,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+   "CLAIM_IDS": [
+    "LAB-CLM-0007"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0005"
+   ],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Tres cortes transversales (dic-2016, dic-2020, dic-2025), no un panel: no dice nada sobre personas que cambian de categoría.",
+    "El denominador es una construcción analítica de LAB; incluye una superposición no deduplicable (mixtos) y no es el empleo total.",
+    "SIPA y ARCA no son independientes: no puede ser CONVERGENT. No se asigna causa al cambio."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Legal-form distribution alone cannot establish anything about the underlying economic relationship (see LAB-Q-0009, LAB-Q-0011)"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0007": [
+      "MIXTOS / not mutually exclusive: ARCA's own Cuadro 1 formula (Autonomos+Dependientes+Monotributistas-Mixtos=Total) proves persons can be registered as both Monotributista and Dependiente simultaneously (Mixtos: 41,726 / 44,998 / 43,059 across the three vintages, LAB-EVD-0013); no person-level identifier links SIPA and ARCA's published tables, so this overlap cannot be deduplicated -- the denominator is inflated by an unknown, currently unquantifiable amount, and Monotributo/SIPA-dependent must not be read as mutually exclusive person populations",
+      "Cross-sectional only: three separate points in time, not a panel; no individual is tracked and no claim is made or may be inferred about any person transitioning between Monotributo and dependent registration",
+      "Not total employment: the denominator is a LAB-analytical construct covering only Monotributo and the three named SIPA modalities, not total Argentine or total registered employment",
+      "No causal claim: no cause is asserted for the observed shift in Monotributo share",
+      "Not eligible for CONVERGENT: SIPA and ARCA are not independent of each other (same underlying SUSS/ARCA declaration stream)",
+      "Not SIPA's own TOTAL: the three-modality sum is a LAB-analytical denominator component only (GOV-005), never asserted to equal or validate SIPA's own published TOTAL row",
+      "ASALARIADO_PUBLICO carries a mandatory GOV-005 extrapolation caveat (not a direct recount), inherited from V1",
+      "Three targeted, non-adjacent vintages only (Dec-2016, 2020, 2025), inherited from LAB-B1's own ARCA admission scope"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0008",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0007",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0008"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0009",
+   "REGIME": "B",
+   "CANONICAL_QUESTION": "Given ARCA-style tax/registration records, what can and cannot be validly inferred about a worker's real economic independence or dependence?",
+   "PUBLIC_QUESTION": "A partir de registros tributarios del tipo ARCA, ¿qué se puede y qué no se puede inferir válidamente sobre la independencia o dependencia económica real de quien trabaja?",
+   "EDITORIAL_TRANSFORM": false,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+   "CLAIM_IDS": [
+    "LAB-CLM-0008"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_NON_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente · hallazgo documental (no es una medición)",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Limitado a la tabla de ARCA admitida (Cuadro 1) y a una sola raíz de evidencia.",
+    "Lo que no se puede inferir refleja las fuentes admitidas hoy, no una imposibilidad permanente.",
+    "Es un hallazgo de alcance, no una medición del mercado laboral."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Tax registration records were never designed to capture economic dependence"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0008": [
+      "Answer is scoped to the one ARCA table admitted in this project (Cuadro 1); does not survey every ARCA publication that could theoretically exist",
+      "A negative/exclusionary finding (cannot identify X) reflects current admitted sources, not a permanent impossibility -- a future admitted source or governed proxy could change this",
+      "Single Evidence Root (LAB-ROOT-0007); not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result",
+      "No hypothesis is registered against LAB-Q-0009 (methodological/scoping question by design); this claim answers the scoping question itself, not a quantitative test"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0009",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0008",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0009"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0010",
+   "REGIME": "B",
+   "CANONICAL_QUESTION": "Do any observable proxies of economic dependence exist within sources plausibly admissible to ALETHEIA-LABOR?",
+   "PUBLIC_QUESTION": "¿Existe algún indicador indirecto y observable (proxy) de dependencia económica en fuentes que ALETHEIA-LABOR podría llegar a usar?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_YET_OPERATIONAL",
+   "CLAIM_IDS": [
+    "LAB-CLM-0010"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_NON_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente · hallazgo documental (no es una medición)",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Solo se afirma que existe un candidato (PP05F en la EPH); no está validado ni admitido como proxy gobernado.",
+    "Es autodeclarado y solo aplica a trabajadores independientes de la EPH; un único cliente no implica dependencia económica.",
+    "No responde ni reabre LAB-Q-0011, que sigue siendo NOT_IDENTIFIABLE."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "No inventoried source is known to observe this directly"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0010": [
+      "Unvalidated: no LAB-GOV ruling admits PP05F as a governed ECONOMIC_DEPENDENCE proxy; none is created by this claim",
+      "Self-reported (EPH), not an administrative registration record",
+      "Applies only to EPH's surveyed independent-worker population (CAT_OCUP in {1,2})",
+      "A single-client business relationship is not presumed to imply economic dependence",
+      "Does not answer, reopen, or otherwise affect LAB-Q-0011/LAB-HYP-0009, which remains NOT_IDENTIFIABLE",
+      "No new research was performed; this claim formalizes LAB-EVD-0012's own already-recorded finding"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0010",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0010",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0010"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Existen indicadores indirectos (proxies) de dependencia económica dentro de fuentes plausiblemente admisibles para ALETHEIA-LABOR?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": true,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0011",
+   "REGIME": "B",
+   "CANONICAL_QUESTION": "Can independent service provision be distinguished from a disguised dependent employment relationship using currently admissible sources?",
+   "PUBLIC_QUESTION": "¿Se puede distinguir una prestación de servicios realmente independiente de una relación de empleo dependiente encubierta con las fuentes hoy admisibles?",
+   "EDITORIAL_TRANSFORM": false,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "NOT_IDENTIFIABLE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS",
+    "BASIS": "QUESTION_LEDGER_AND_REGIME_CLOSEOUT"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_IDENTIFIABLE",
+   "CLAIM_IDS": [],
+   "CLAIM_STATES": [],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0009"
+   ],
+   "PUBLIC_RESULT_CLASS": "DOC_NOT_IDENTIFIABLE",
+   "PUBLIC_LABEL_PROPOSED": "No identificable con las fuentes conocidas",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No existe ningún claim: el resultado está registrado en el ledger de preguntas.",
+    "Ninguna fuente admitida ni plausiblemente admisible trae etiquetas verificadas de dependencia.",
+    "Ausencia, no resultado negativo. No debe inferirse contractorización ni dependencia desde categorías de registro ni desde PP05F."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "No inventoried source, including ARCA, is known to observe the real economic relationship directly"
+    ],
+    "CLAIM_LIMITATIONS": {}
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-005"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0011",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0011",
+    "aletheia-labor-v1.0.0:reports/regime_b/REGIME-B-closeout.md",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-preserved-results.json#KEEP-005"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0012",
+   "REGIME": "B",
+   "CANONICAL_QUESTION": "How are protections and obligations distributed across the labour-provision modalities that are observable (legal form, registration category)?",
+   "PUBLIC_QUESTION": "¿Cómo se reparten las protecciones y las obligaciones entre las modalidades de trabajo que los datos permiten distinguir (forma legal, categoría de registro)?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "OPERATIONALIZABLE_AFTER_SOURCE_ADMISSION",
+   "CLAIM_IDS": [
+    "LAB-CLM-0009"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_NON_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente · hallazgo documental (no es una medición)",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Describe el estatus normativo, no la relación económica real de ninguna persona.",
+    "De 19 celdas del mapeo: 11 establecidas, 3 parcialmente establecidas y 5 abiertas sin resolver; las abiertas no son evidencia de ausencia.",
+    "Construido solo con textos legales: no hay raíz de evidencia ni elegibilidad para CONVERGENT."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Protections/obligations are defined by regulation, not directly observed in administrative microdata; requires an explicit, governed mapping"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0009": [
+      "Regulatory status only: says nothing about whether any individual's real economic/labour relationship matches their registration category (TAX_REGISTRATION/LEGAL_FORM != EMPLOYMENT_RELATIONSHIP/ECONOMIC_RELATIONSHIP, unaffected)",
+      "5 of 19 mapped cells remain OPEN_NOT_RESOLVED (LCT-protection detail for Monotributo/Autonomos; ART and seguro de desempleo for Monotributo; asignaciones familiares for Monotributo) -- reported as unresolved, never converted into evidence of absence",
+      "3 of 19 mapped cells are PARTIALLY_ESTABLISHED only: the general regime is confirmed but not exhaustively detailed",
+      "No comparative ranking, scoring, or causal claim between the three categories is made",
+      "Built entirely from regulatory/legal-text citations, not statistical/administrative microdata; no Evidence Root, no Root Counting Rule, no CONVERGENT eligibility",
+      "Inherits every limitation already declared in LAB-GOV-Q0012-REGULATORY-SOURCES-0001 and reports/lab_b3/LAB-B3-closeout.md verbatim; none relaxed or reinterpreted this phase",
+      "No new regulatory source was retrieved to resolve any open cell; resolving them would require a future, separately authorized source-admission phase"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-011",
+    "KEEP-012",
+    "KEEP-013",
+    "KEEP-014",
+    "KEEP-015"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0012",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0009",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0012"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Cómo se distribuyen las protecciones y obligaciones entre las modalidades de prestación de trabajo observables (forma legal, categoría de registro)?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": false,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0013",
+   "REGIME": "B",
+   "CANONICAL_QUESTION": "Does a change in Monotributo tax-category thresholds have a causal effect on the observed shift between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION?",
+   "PUBLIC_QUESTION": "¿Un cambio en los umbrales de las categorías del Monotributo tiene un efecto causal sobre el desplazamiento observado entre la relación de empleo y el registro como monotributista?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "INSUFFICIENT_EVIDENCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_YET_OPERATIONAL",
+   "CLAIM_IDS": [
+    "LAB-CLM-0011"
+   ],
+   "CLAIM_STATES": [
+    "INSUFFICIENT_EVIDENCE"
+   ],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0006"
+   ],
+   "PUBLIC_RESULT_CLASS": "CLAIM_INSUFFICIENT_EVIDENCE",
+   "PUBLIC_LABEL_PROPOSED": "Evidencia insuficiente",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No se calculó ningún efecto causal: el diseño no es computable con las fuentes conocidas.",
+    "Tres bloqueos apilados: los datos de ARCA son stock y no flujo; la única fuente de relaciones de empleo (MLER) termina en 2021-12; no existe vinculación a nivel persona entre fuentes.",
+    "Ausencia, no resultado negativo: no es evidencia de que el efecto sea nulo ni de que exista."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "No specific threshold-change episode has been selected or validated yet"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0011": [
+      "This is a documented incapacity to test the hypothesis with currently known or plausible sources, not a finding about the true causal effect in either direction",
+      "No causal effect was computed; no proxy metric was substituted; LAB-HYP-0006's own METRIC/EXPECTED_OBSERVATION/FAILURE_CONDITION/CANDIDATE_SOURCES text is unmodified",
+      "Blockers (1) and (2) are, in principle, resolvable by a future source not currently known to exist; blocker (3) is structural and, based on every prior search in this project (LAB-CLM-0003, LAB-B1, LAB-B4), unlikely to be resolved by public-source discovery alone",
+      "Does not reopen or alter LAB-GOV-Q0013-EPISODE-SELECTION-0001's own selected episode (EP-2025-AUG); a future source admission would still use that same episode unless a new ruling changes it",
+      "Treated as this project's terminal disposition for Regime B closeout purposes; not a claim that no future evidence could ever unseat it"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": "CANDIDATE_DESIGN",
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-002",
+    "KEEP-010"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0013",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0011",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0013"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Tiene un cambio en los umbrales de categorías del Monotributo un efecto causal sobre el pasaje observado entre relación de empleo y registro como monotributista?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": true,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0014",
+   "REGIME": "C",
+   "CANONICAL_QUESTION": "Which dimensions of a recruitment/selection process (number of stages, assessment types, duration) are observable using only public sources?",
+   "PUBLIC_QUESTION": "¿Qué dimensiones de un proceso de selección (cantidad de etapas, tipos de evaluación, duración) son observables usando solo fuentes públicas?",
+   "EDITORIAL_TRANSFORM": false,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "INSUFFICIENT_EVIDENCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_YET_OPERATIONAL",
+   "CLAIM_IDS": [
+    "LAB-CLM-0013"
+   ],
+   "CLAIM_STATES": [
+    "INSUFFICIENT_EVIDENCE"
+   ],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "CLAIM_INSUFFICIENT_EVIDENCE",
+   "PUBLIC_LABEL_PROPOSED": "Evidencia insuficiente",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No se capturó ningún aviso: 0 avisos, 0 fuentes admitidas, 0 raíces de evidencia.",
+    "Se evaluaron ocho candidatas y un chequeo de propiedad en dos rondas acotadas; ninguna resultó admisible.",
+    "El resultado es «no se identificó una fuente admisible dentro del alcance evaluado», no «no existe una fuente»."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Public sources are unlikely to expose internal selection-process detail beyond the posting itself"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0013": [
+      "This is a documented incapacity to identify an admissible source within two explicitly bounded evaluation rounds, not a claim that no admissible source could ever exist -- a materially different future candidate, or a change in an already-evaluated candidate's own Terms of Service/API offering, could unseat it",
+      "No new platform research was conducted to produce this claim; it formalizes LAB-C1's and LAB-C1.1's own already-recorded findings into the claim-ledger's terminal lifecycle",
+      "Does not reopen, alter, or re-litigate any individual candidate's own GATE_RESULT from LAB-C1 or LAB-C1.1",
+      "Does not modify LAB-Q-0014's own ledger STATUS field (remains NOT_YET_OPERATIONAL), per this project's own established convention that a question's registered STATUS is never rewritten post-hoc when a claim resolves it (precedent: LAB-Q-0004/0005/0008/0009/0010/0012/0016)",
+      "Does not affect LAB-Q-0015/LAB-HYP-0008, LAB-Q-0016, LAB-Q-0017, or LAB-Q-0018, none of which depend on this claim or on any Job Posting Observatory capture",
+      "Treated as this project's terminal disposition for LAB-Q-0014 given the search conducted; not a claim that no future evidence could ever unseat it"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-003"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0014",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0013",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0014"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0015",
+   "REGIME": "C",
+   "CANONICAL_QUESTION": "Can the prevalence of ASSISTIVE, FILTERING, EVALUATIVE, and DECISIONAL AI usage in hiring be estimated for any defined population?",
+   "PUBLIC_QUESTION": "¿Se puede estimar qué tan extendido está el uso de IA en la contratación (para asistir, filtrar, evaluar o decidir) en alguna población definida?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "NOT_IDENTIFIABLE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS",
+    "BASIS": "QUESTION_LEDGER_AND_REGIME_CLOSEOUT"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_IDENTIFIABLE",
+   "CLAIM_IDS": [],
+   "CLAIM_STATES": [],
+   "HYPOTHESIS_IDS": [
+    "LAB-HYP-0008"
+   ],
+   "PUBLIC_RESULT_CLASS": "DOC_NOT_IDENTIFIABLE",
+   "PUBLIC_LABEL_PROPOSED": "No identificable con las fuentes conocidas",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No existe ningún claim: NOT_IDENTIFIABLE es un estado terminal diseñado.",
+    "No se buscó ningún mecanismo de divulgación de uso de IA; el silencio de los avisos no significa que no se haya usado IA.",
+    "Ausencia, no resultado negativo."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "AI usage in hiring is typically undisclosed and not observable from postings alone"
+    ],
+    "CLAIM_LIMITATIONS": {}
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-006"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0015",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0015",
+    "aletheia-labor-v1.0.0:reports/regime_c/REGIME-C-closeout.md",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-preserved-results.json#KEEP-006"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Se puede estimar la prevalencia de usos asistivo, de filtrado, evaluativo y decisional de IA en la contratación para alguna población definida?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": true,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0016",
+   "REGIME": "C",
+   "CANONICAL_QUESTION": "If ALETHEIA-LABOR eventually builds a Job Posting Observatory, what structural biases (platform selection, sector coverage, self-selection) would it carry?",
+   "PUBLIC_QUESTION": "Si ALETHEIA-LABOR llegara a construir un Observatorio de Avisos de Empleo, ¿qué sesgos estructurales tendría (selección de plataforma, cobertura sectorial, autoselección)?",
+   "EDITORIAL_TRANSFORM": false,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "OBSERVED_IN_SOURCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_YET_OPERATIONAL",
+   "CLAIM_IDS": [
+    "LAB-CLM-0012"
+   ],
+   "CLAIM_STATES": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "CLAIM_OBSERVED_NON_MEASUREMENT",
+   "PUBLIC_LABEL_PROPOSED": "Observado en la fuente · hallazgo documental (no es una medición)",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "LIMITATIONS_PUBLIC_ES": [
+    "Análisis cualitativo a nivel de diseño: no hay corpus ni magnitudes de sesgo.",
+    "No dice nada sobre el mercado laboral; no resuelve LAB-Q-0018 ni aporta evidencia a LAB-Q-0014.",
+    "Vale solo para el diseño mínimo analizado; otro diseño exigiría su propio análisis previo."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Any single-platform or small-set-of-platforms corpus will not represent the full Argentine vacancy/posting universe"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0012": [
+      "Qualitative, design-stage reasoning only; no corpus exists, so no actual bias magnitude is measured or claimed",
+      "Seniority bias direction is explicitly left undetermined",
+      "Duplicate/evergreen biases are disclosed and flagged, not resolved, by the design's own taxonomy",
+      "Does not resolve LAB-Q-0018's own posting-vs-real-hiring divergence question",
+      "Does not authorize, execute, or provide evidence toward LAB-Q-0014, which remains unexecuted",
+      "Applies to the specific minimum-viable, single-pass design analyzed here; a materially different future design could carry a different bias profile"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0016",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0012",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0016"
+   ],
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0017",
+   "REGIME": "C",
+   "CANONICAL_QUESTION": "Can the prevalence of candidate 'ghosting' (unexplained process abandonment by employers or platforms) be measured at a population level?",
+   "PUBLIC_QUESTION": "¿Se puede medir a nivel poblacional qué tan extendido está el «ghosting» a candidatos (que empleadores o plataformas abandonen el proceso sin dar explicaciones)?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "NOT_IDENTIFIABLE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS",
+    "BASIS": "QUESTION_LEDGER_AND_REGIME_CLOSEOUT"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_IDENTIFIABLE",
+   "CLAIM_IDS": [],
+   "CLAIM_STATES": [],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "DOC_NOT_IDENTIFIABLE",
+   "PUBLIC_LABEL_PROPOSED": "No identificable con las fuentes conocidas",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No existe ningún claim: el resultado está registrado en el ledger de preguntas.",
+    "Solo es observable desde el lado del candidato y no se conoce un marco muestral representativo.",
+    "No debe estimarse ni insinuarse prevalencia desde ninguna fuente; ausencia, no resultado negativo."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "Any candidate self-report corpus is inherently non-representative of the full applicant population"
+    ],
+    "CLAIM_LIMITATIONS": {}
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-007"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0017",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0017",
+    "aletheia-labor-v1.0.0:reports/regime_c/REGIME-C-closeout.md",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-preserved-results.json#KEEP-007"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "¿Se puede medir a nivel poblacional la prevalencia del «ghosting» de candidatos (abandono sin explicación del proceso por parte de empleadores o plataformas)?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": false,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  },
+  {
+   "QUESTION_ID": "LAB-Q-0018",
+   "REGIME": "C",
+   "CANONICAL_QUESTION": "When both are observable, how do descriptions based on published job postings diverge from descriptions based on real hiring outcomes?",
+   "PUBLIC_QUESTION": "¿En qué difieren las descripciones basadas en avisos de empleo publicados de las basadas en resultados reales de contratación, cuando se pueden observar ambos?",
+   "EDITORIAL_TRANSFORM": true,
+   "EFFECTIVE_RESOLUTION": {
+    "VALUE": "INSUFFICIENT_EVIDENCE",
+    "VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+    "BASIS": "CLAIM"
+   },
+   "LEDGER_STATUS_UNCHANGED": "NOT_YET_OPERATIONAL",
+   "CLAIM_IDS": [
+    "LAB-CLM-0014"
+   ],
+   "CLAIM_STATES": [
+    "INSUFFICIENT_EVIDENCE"
+   ],
+   "HYPOTHESIS_IDS": [],
+   "PUBLIC_RESULT_CLASS": "CLAIM_INSUFFICIENT_EVIDENCE",
+   "PUBLIC_LABEL_PROPOSED": "Evidencia insuficiente",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "LIMITATIONS_PUBLIC_ES": [
+    "No hay corpus de avisos, ni fuente de eventos de contratación, ni vinculación validada.",
+    "Deliberadamente no se usa NOT_IDENTIFIABLE: no se afirma una imposibilidad estructural.",
+    "Ausencia, no resultado negativo; no se midió ninguna divergencia."
+   ],
+   "LIMITATIONS_SOURCE_VERBATIM": {
+    "QUESTION_KNOWN_LIMITATIONS": [
+     "No admitted source currently observes real hiring outcomes at all"
+    ],
+    "CLAIM_LIMITATIONS": {
+     "LAB-CLM-0014": [
+      "This is a documented insufficiency of evidence within the sources and scope evaluated, not a claim that such evidence cannot exist outside this project's scope",
+      "No new source discovery, RAW reading, or data capture was performed to produce this claim; it formalizes already-recorded findings into the claim ledger's terminal lifecycle",
+      "The hire-side absence rests on this project's own admitted sources and prior searches; V1 manifests were not inspected for flow series in this block",
+      "Does not assert NOT_IDENTIFIABLE; no structural impossibility of the comparison is claimed",
+      "Does not measure or estimate any postings-versus-hires divergence in either direction",
+      "Does not modify LAB-Q-0018's own ledger STATUS (remains NOT_YET_OPERATIONAL), per this project's convention that a question's registered STATUS is never rewritten post-hoc when a claim resolves it",
+      "Does not affect LAB-Q-0014 (closed, LAB-CLM-0013), LAB-Q-0015/LAB-HYP-0008 and LAB-Q-0017 (NOT_IDENTIFIABLE), or LAB-Q-0016 (closed, LAB-CLM-0012)"
+     ]
+    }
+   },
+   "CAUSAL_IDENTIFICATION_STATUS": null,
+   "PRESERVED_RESULT_IDS": [
+    "KEEP-004"
+   ],
+   "SOURCE_OF_TRUTH": [
+    "aletheia-labor-v1.0.0:metadata/questions/question-ledger.json#LAB-Q-0018",
+    "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0014",
+    "aletheia-labor-v1.0.0:reports/lab_s/LAB-S0-inventory.json#QUESTIONS/LAB-Q-0018"
+   ],
+   "PUBLIC_QUESTION_PREVIOUS": "Cuando ambos son observables, ¿en qué difieren las descripciones basadas en avisos de empleo publicados de las basadas en resultados reales de contratación?",
+   "EDITORIAL_TRANSFORM_PREVIOUS": false,
+   "PUBLIC_QUESTION_EDITORIAL_AUDIT": "REVISED_AND_APPROVED_FOR_V1"
+  }
+ ],
+ "claims": [
+  {
+   "CLAIM_ID": "LAB-CLM-0001",
+   "QUESTION_ID": "LAB-Q-0001",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "STATISTICAL_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "PUBLIC_HEADLINE_ES": "Dentro del empleo registrado en SIPA, entre 2012-01 y 2026-05 el peso del asalariado privado bajó 7,97 puntos porcentuales, el del asalariado público subió 3,23 y el del monotributo subió 5,21.",
+   "HYPOTHESIS_ID": "LAB-HYP-0001",
+   "SOURCE": "SIPA",
+   "ROOT_IDS": [
+    "LAB-ROOT-0001"
+   ],
+   "LAB_GOV": [],
+   "V1_GOV": [
+    "GOV-005",
+    "GOV-010"
+   ],
+   "CLAIM_TEXT_VERBATIM": "Within SIPA's registered-employment universe, the composition by modality shifted materially between 2012-01 and 2026-05: ASALARIADO_PRIVADO's share fell 7.97 percentage points, ASALARIADO_PUBLICO's share rose 3.23 percentage points, and MONOTRIBUTO's share rose 5.21 percentage points, exceeding the pre-registered 2-percentage-point materiality threshold.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim describes the composition of SIPA-registered employment by modality between 2012-01 and 2026-05. It does not describe total Argentine employment, and it does not describe any period before 2012-01 or after 2026-05.",
+   "LIMITATIONS_VERBATIM": [
+    "Single Evidence Root; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result strength",
+    "Endpoint (two-month) comparison; does not characterize the full trajectory",
+    "ASALARIADO_PUBLICO carries a mandatory GOV-005 extrapolation caveat"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A demonstrated error in V1's SIPA standardization pipeline (e.g. a failed SHA-256 re-verification, contradicting this session's own recomputed match), or a future SIPA release showing the 2012-01/2026-05 comparison was an artifact of those two specific months rather than a real trend across the intervening period.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0001"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0002",
+   "QUESTION_ID": "LAB-Q-0003",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "STATISTICAL_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "PUBLIC_HEADLINE_ES": "En CGI-IMO (2017-Q1 a 2026-Q1), en términos nominales, el crecimiento de puestos y de horas divergió hasta 36,75 pp en 2021-Q2, y el de la masa salarial divergió del de puestos y horas hasta 235 pp desde 2022. Sin lectura en términos reales y sin causa asignada.",
+   "HYPOTHESIS_ID": "LAB-HYP-0002",
+   "SOURCE": "CGI",
+   "ROOT_IDS": [
+    "LAB-ROOT-0002"
+   ],
+   "LAB_GOV": [],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Within CGI-IMO, JOB and HOUR growth rates diverged sharply during 2020-2021 (up to 36.75 percentage points in 2021-Q2, plausibly reflecting intensive-margin adjustment around COVID-19); nominal WAGE_BILL growth diverged massively from JOB/HOUR from 2022 onward (up to 235 percentage points). This is a large nominal-currency divergence; its real-terms interpretation is deferred pending IPC admission, not asserted as a real labour-market signal here.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim describes divergence in nominal year-over-year growth rates among JOB, HOUR, and WAGE_BILL within INDEC's CGI-IMO national-accounts product, 2017-Q1 through 2026-Q1. It makes no real-value (inflation-adjusted) claim, since IPC is not admitted.",
+   "LIMITATIONS_VERBATIM": [
+    "Single Evidence Root; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE",
+    "WAGE_BILL's divergence from JOB/HOUR is a large nominal-currency divergence; its real-terms interpretation is deferred pending IPC admission, not asserted here",
+    "No real-value (IPC-deflated) claim is made; BLOCKED_BY_IPC",
+    "2020-2021 treated as a potentially special (COVID-19) period; the JOB-HOUR relationship in that window may not generalize"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A demonstrated error in V1's CGI standardization pipeline, or evidence that the TOTAL/TOTAL_GENERAL rows used here are not INDEC's genuine published national totals.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0002"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0003",
+   "QUESTION_ID": "LAB-Q-0002",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "STATISTICAL_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "PUBLIC_HEADLINE_ES": "En el solapamiento 2012–2021, el conteo de personas de MLER difiere en promedio 0,54% del nivel de asalariados privados de SIPA (esperable por construcción, no es corroboración independiente); las relaciones laborales superan a las personas en 3,38% (2012) y 5,07% (2021).",
+   "HYPOTHESIS_ID": "LAB-HYP-0007",
+   "SOURCE": "MLER",
+   "ROOT_IDS": [
+    "LAB-ROOT-0001",
+    "LAB-ROOT-0003"
+   ],
+   "LAB_GOV": [],
+   "V1_GOV": [
+    "GOV-006",
+    "GOV-010"
+   ],
+   "CLAIM_TEXT_VERBATIM": "Within the 2012-2021 overlap, MLER's weighted person-count tracks SIPA's ASALARIADO_PRIVADO level closely (average 0.54% difference), which is expected given MLER's downstream-proxy relationship to SIPA and is not independent corroboration. MLER's weighted employment-relationship count is consistently and increasingly higher than the person count (3.38% in 2012 rising to 5.07% in 2021), a measurable and substantively interpretable divergence consistent with rising multiple-job-holding among the sampled population.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim describes the relationship between MLER-derived and SIPA-derived counts within their 2012-01/2021-12 overlap only. It says nothing about 2022-2026 (MLER's edition ends 2021-12) and nothing about EMPLOYER or JOB (both UNREALIZED on MLER per GOV-006).",
+   "LIMITATIONS_VERBATIM": [
+    "Non-independent root pair; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of numeric agreement",
+    "The person-count sub-finding's relation to LAB-HYP-0007's FAILURE_CONDITION is ambiguous because no numeric tolerance was pre-specified",
+    "GOV-006: EMPLOYER and JOB are UNREALIZED on MLER; not used",
+    "MLER ends 2021-12; no claim is made about 2022-2026"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A demonstrated error in the DuckDB aggregation (e.g. a failed re-run producing different monthly totals), or documentation showing MLER's sampling frame changed materially within 2012-2021 in a way that breaks comparability with SIPA's frame.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0003"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0004",
+   "QUESTION_ID": "LAB-Q-0003",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "STATISTICAL_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "PUBLIC_HEADLINE_ES": "Deflactada por el IPC, la masa salarial real de CGI-IMO varió −14,75% interanual en 2024-Q1 y −11,73% en 2024-Q2, frente a 218,46% y 234,30% nominales en los mismos trimestres (ventana 2018-Q1 a 2026-Q1). Sin causa asignada.",
+   "HYPOTHESIS_ID": "LAB-HYP-0002",
+   "SOURCE": "CGI+IPC",
+   "ROOT_IDS": [
+    "LAB-ROOT-0002"
+   ],
+   "LAB_GOV": [
+    "LAB-GOV-IPC-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Once deflated by the admitted national IPC (base Dec-2016=100), CGI-IMO's real WAGE_BILL year-over-year growth (ASALARIADO/TOTAL_GENERAL) is far smaller in magnitude than its nominal counterpart and frequently negative -- e.g. -14.75% in 2024-Q1 and -11.73% in 2024-Q2, versus nominal growth of 218.46% and 234.30% in those same quarters -- while JOB and HOUR growth (both non-currency counts, unaffected by deflation) remained within roughly ±18 percentage points throughout. Real WAGE_BILL growth still diverges from JOB/HOUR growth by more than the pre-registered 1-percentage-point threshold in most observed quarters (e.g. 2019-Q2: -10.43% vs +1.09% JOB vs -2.43% HOUR), satisfying LAB-HYP-0002's EXPECTED_OBSERVATION on its own preregistered real-value METRIC. No cause is asserted for either the nominal or the real divergence.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim describes real (IPC-deflated) year-over-year WAGE_BILL growth compared to nominal JOB and HOUR growth within CGI-IMO's ASALARIADO/TOTAL_GENERAL series, 2018-Q1 through 2026-Q1 (the window where CGI and LABOR's admitted IPC file overlap with a full quarter of monthly IPC data plus a 4-quarter-earlier base for YoY computation). It makes no claim about any period outside this window, and asserts no cause for the divergence observed.",
+   "LIMITATIONS_VERBATIM": [
+    "Single Evidence Root measuring WAGE_BILL (LAB-ROOT-0002); not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result strength",
+    "IPC used strictly as a deflator (MEASUREMENT_CHAIN); does not count as a second independent corroborating root (LAB-A3 instruction section 4)",
+    "Real WAGE_BILL YoY computable only 2018-Q1 through 2026-Q1, narrower than the nominal series' own 2017-Q1/2026-Q1 range, limited by IPC's Dec-2016 retrieval start (LAB-A2)",
+    "2020-2021 (COVID_REGIME_PRESENT=true) falls within this window; no preregistered with/without-COVID sensitivity exists for LAB-HYP-0002 and none was executed ad hoc",
+    "No causal or inflation-attribution claim is made; only the two computed growth measures (nominal, real) are compared"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A demonstrated error in V1's CGI standardization pipeline, a demonstrated error in LABOR's own IPC retrieval/hash (LAB-A2), or evidence that the ASALARIADO/TOTAL_GENERAL WAGE_BILL rows are not INDEC's genuine published figures.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0004"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0005",
+   "QUESTION_ID": "LAB-Q-0004",
+   "STATE": "REFUTED_WITHIN_SCOPE",
+   "PUBLIC_STATE_LABEL": "Refutado dentro de su alcance",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "STATISTICAL_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "NEGATIVE_WITHIN_SCOPE",
+   "PUBLIC_HEADLINE_ES": "En la EPH (32 aglomerados urbanos, asalariados), la proporción sin descuento jubilatorio pasó de 36,29% (2025-Q1) a 37,90% (2026-Q1): +1,61 pp, dentro del umbral de 5 pp fijado de antemano. La hipótesis no se sostuvo en esta prueba de dos trimestres.",
+   "HYPOTHESIS_ID": "LAB-HYP-0003",
+   "SOURCE": "EPH",
+   "ROOT_IDS": [
+    "LAB-ROOT-0005"
+   ],
+   "LAB_GOV": [
+    "LAB-GOV-EPH-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Within EPH's wage/salary-earner population (32 urban agglomerates), the weighted share without a reported pension-fund deduction (the EPH-internal proxy for unregistered employment) moved from 36.29% in 2025-Q1 to 37.90% in 2026-Q1, a shift of +1.61 percentage points. This is within LAB-HYP-0003's pre-registered 5-percentage-point materiality threshold: the split did NOT show a material shift between these two quarters. LAB-HYP-0003's FAILURE_CONDITION is met on this specific two-quarter, single-root test.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim describes whether the weighted share of wage/salary earners without a reported pension-fund deduction (PP07H==2) shifted materially between 2025-Q1 and 2026-Q1, within EPH's own 32-agglomerate wage/salary-earner population. It makes no claim about any other period, about non-wage-earning employment categories, or about the underlying causes of the observed (small) shift.",
+   "LIMITATIONS_VERBATIM": [
+    "Refuted only WITHIN this scope: one proxy variable (PP07H), one sub-population (wage/salary earners), one two-quarter window (2025-Q1/2026-Q1), one Evidence Root (EPH). Says nothing about longer-run trends, other employment categories, or a differently-operationalized registration proxy",
+    "Not a person-level cross-source match against SIPA/MLER (no common identifier exists); a genuinely independent corroborating root was not attempted",
+    "No cause is asserted for the small observed shift"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A demonstrated error in this session's own EPH retrieval/hash (LAB-A2/LAB-A2.1), a demonstrated error in the PONDERA-weighted computation, or a future quarter showing the shift crossing the 5-percentage-point threshold when added to this two-point series.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0005"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0006",
+   "QUESTION_ID": "LAB-Q-0005",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "STATISTICAL_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "PUBLIC_HEADLINE_ES": "Entre 2025-Q1 y 2026-Q1 el ingreso laboral medio declarado en la EPH creció 35,48% nominal y 2,10% en términos reales (deflactado por IPC): una brecha de 33,38 pp. Una sola ventana; sin causa asignada.",
+   "HYPOTHESIS_ID": "LAB-HYP-0004",
+   "SOURCE": "EPH+IPC",
+   "ROOT_IDS": [
+    "LAB-ROOT-0005"
+   ],
+   "LAB_GOV": [
+    "LAB-GOV-EPH-0001",
+    "LAB-GOV-IPC-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Between 2025-Q1 and 2026-Q1, EPH's weighted mean reported labour income (P21) grew 35.48% in nominal terms but only 2.10% once deflated by the admitted national IPC (base Dec-2016=100) -- a gap of 33.38 percentage points, far exceeding LAB-HYP-0004's pre-registered 1-percentage-point threshold. LAB-HYP-0004's EXPECTED_OBSERVATION (real and nominal growth differing materially) is satisfied within this one window; no cause is asserted for the gap.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim describes nominal and real year-over-year growth of EPH-reported weighted mean labour income (P21) between 2025-Q1 and 2026-Q1 only. It makes no claim about any other period, about non-labour income, or about the cause of the gap between nominal and real growth.",
+   "LIMITATIONS_VERBATIM": [
+    "Single Evidence Root measuring LABOR_INCOME (LAB-ROOT-0005); IPC used strictly as a deflator, never a corroborating root",
+    "Exactly one window (2025-Q1 to 2026-Q1); the hypothesis's 'within each break-consistent window' language is satisfied for this one window only, since LABOR holds no other EPH quarter",
+    "Not compared in magnitude to LAB-CLM-0004's CGI WAGE_BILL finding -- different objects (aggregate WAGE_BILL vs. individual LABOR_INCOME), no equivalence asserted",
+    "No causal or inflation-attribution claim is made"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A demonstrated error in this session's own EPH or IPC retrieval/hash, a demonstrated error in the PONDIIO-weighted computation, or evidence that P21/PONDIIO do not carry the meaning documented in INDEC's own record layout.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0006"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0007",
+   "QUESTION_ID": "LAB-Q-0008",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "STATISTICAL_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "OBSERVATION_WITHIN_SCOPE",
+   "PUBLIC_HEADLINE_ES": "La participación del monotributo en (monotributo + dependientes formales derivados de SIPA) fue 14,60% (dic-2016), 16,49% (dic-2020) y 19,44% (dic-2025): +4,84 pp. Tres cortes transversales; el denominador incluye superposición no deduplicable (mixtos: 41.726 / 44.998 / 43.059).",
+   "HYPOTHESIS_ID": "LAB-HYP-0005",
+   "SOURCE": "ARCA+SIPA",
+   "ROOT_IDS": [
+    "LAB-ROOT-0007",
+    "LAB-ROOT-0001"
+   ],
+   "LAB_GOV": [
+    "LAB-GOV-SIPA-SUBSTITUTION-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Executed under LAB-GOV-SIPA-SUBSTITUTION-0001's authorization. LAB-HYP-0005's pre-registered METRIC (Monotributo share of Monotributo + formal dependent registration) was computed using ARCA's already-admitted Monotributista counts (Cuadro 1, Dec-2016/2020/2025) and SIPA's already-admitted ASALARIADO_PRIVADO+ASALARIADO_PUBLICO+CASAS_PARTICULARES modalities (T.2 table, same three vintages), summed as a LAB-analytical-only denominator component -- never SIPA's own TOTAL (GOV-005) -- instantiating the term the excluded ARCA Dependientes row could not supply. Result: the Monotributo share was 14.60% (Dec-2016; 1,678,677 of 11,498,694), 16.49% (Dec-2020; 1,887,224 of 11,443,898), and 19.44% (Dec-2025; 2,428,877 of 12,495,118) -- a monotonic increase of +4.84 percentage points from Dec-2016 to Dec-2025 (+1.89pp Dec-2016 to Dec-2020, +2.95pp Dec-2020 to Dec-2025), exceeding LAB-HYP-0005's pre-registered 3-percentage-point materiality threshold. LAB-HYP-0005's EXPECTED_OBSERVATION is met on this specific three-vintage test; its FAILURE_CONDITION is not met. This result is adjudicated as found, without being forced toward or away from significance. Full computation: reports/lab_b2_2/arca-sipa-hyp0005-execution.json. This claim supersedes this record's own prior LAB-B2 finding (INSUFFICIENT_EVIDENCE, preserved in this repository's git history and referenced in LAB-EVD-0015), which held only because the ARCA-alone evidence available at that time could not supply the 'formal dependent registration' term; that gap is what LAB-GOV-SIPA-SUBSTITUTION-0001 and this execution resolve.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim describes the share of Monotributo within (Monotributo + SIPA-derived formal dependent registration) at three separate points in time (Dec-2016, Dec-2020, Dec-2025) only. It makes no claim about any other period, about total employment, about individual-level transitions between categories, or about the cause of the observed shift. Monotributo and the SIPA-dependent modalities are not asserted to be mutually exclusive person populations (see LIMITATIONS, Mixtos).",
+   "LIMITATIONS_VERBATIM": [
+    "MIXTOS / not mutually exclusive: ARCA's own Cuadro 1 formula (Autonomos+Dependientes+Monotributistas-Mixtos=Total) proves persons can be registered as both Monotributista and Dependiente simultaneously (Mixtos: 41,726 / 44,998 / 43,059 across the three vintages, LAB-EVD-0013); no person-level identifier links SIPA and ARCA's published tables, so this overlap cannot be deduplicated -- the denominator is inflated by an unknown, currently unquantifiable amount, and Monotributo/SIPA-dependent must not be read as mutually exclusive person populations",
+    "Cross-sectional only: three separate points in time, not a panel; no individual is tracked and no claim is made or may be inferred about any person transitioning between Monotributo and dependent registration",
+    "Not total employment: the denominator is a LAB-analytical construct covering only Monotributo and the three named SIPA modalities, not total Argentine or total registered employment",
+    "No causal claim: no cause is asserted for the observed shift in Monotributo share",
+    "Not eligible for CONVERGENT: SIPA and ARCA are not independent of each other (same underlying SUSS/ARCA declaration stream)",
+    "Not SIPA's own TOTAL: the three-modality sum is a LAB-analytical denominator component only (GOV-005), never asserted to equal or validate SIPA's own published TOTAL row",
+    "ASALARIADO_PUBLICO carries a mandatory GOV-005 extrapolation caveat (not a direct recount), inherited from V1",
+    "Three targeted, non-adjacent vintages only (Dec-2016, 2020, 2025), inherited from LAB-B1's own ARCA admission scope"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A demonstrated error in the SIPA T.2 monthly series (reports/lab_a/sipa-t2-level-monthly.json) or in the ARCA Monotributista counts (LAB-EVD-0013), a demonstrated error in the unit conversion or share formula, or a future admitted source that deduplicates the Mixto-type overlap and shows the true (deduplicated) share moving materially differently from the figures reported here.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0007"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0008",
+   "QUESTION_ID": "LAB-Q-0009",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": "Hallazgo documental: no es una medición del mercado laboral",
+   "CLAIM_KIND": "SCOPING_OR_EXISTENCE_FINDING",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "PUBLIC_HEADLINE_ES": "Con el cuadro de ARCA admitido solo puede inferirse la categoría formal de registro tributario/contributivo; no la dependencia económica, la subordinación, la exclusividad ni la intención del empleador.",
+   "HYPOTHESIS_ID": null,
+   "SOURCE": "ARCA",
+   "ROOT_IDS": [
+    "LAB-ROOT-0007"
+   ],
+   "LAB_GOV": [],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "From the ARCA evidence admitted at LAB-B1 (Cuadro 1, Autonomo/Monotributo rows), only the formal tax/contribution-registration category a stock of persons holds (LEGAL_FORM/TAX_REGISTRATION) can be validly inferred. Economic dependence, subordination, exclusivity, and employer-side intent are not observed by any admitted ARCA field and cannot be validly inferred from this source. This closes LAB-Q-0009's two registered identification requirements (ARCA admission; a documented mapping of what ARCA fields can/cannot proxy), both satisfied by LAB-B1's own reports (LAB-B1-ARCA-admission.md, LAB-B1-object-mapping.md).",
+   "SCOPE_STATEMENT_VERBATIM": "This claim states only what the admitted ARCA evidence (LAB-ROOT-0007) can and cannot validly support: formal tax/contribution-registration category, yes; economic dependence, subordination, exclusivity, or employer-side intent, no. It makes no claim about any other admissible or inadmissible source.",
+   "LIMITATIONS_VERBATIM": [
+    "Answer is scoped to the one ARCA table admitted in this project (Cuadro 1); does not survey every ARCA publication that could theoretically exist",
+    "A negative/exclusionary finding (cannot identify X) reflects current admitted sources, not a permanent impossibility -- a future admitted source or governed proxy could change this",
+    "Single Evidence Root (LAB-ROOT-0007); not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result",
+    "No hypothesis is registered against LAB-Q-0009 (methodological/scoping question by design); this claim answers the scoping question itself, not a quantitative test"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "Admission of a new ARCA table, or any other source, whose fields do observe subordination, exclusivity, or employer-side intent; or a LAB-GOV ruling admitting a valid economic-dependence proxy.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0008"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0009",
+   "QUESTION_ID": "LAB-Q-0012",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": "Hallazgo documental: no es una medición del mercado laboral",
+   "CLAIM_KIND": "REGULATORY_TEXT_MAPPING",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "PUBLIC_HEADLINE_ES": "Mapa de estatus regulatorio de 19 celdas (3 categorías de registro): 11 establecidas, 3 parcialmente establecidas y 5 abiertas sin resolver. Describe el estatus normativo, no la relación económica real de nadie.",
+   "HYPOTHESIS_ID": null,
+   "SOURCE": "REGULATORY",
+   "ROOT_IDS": [],
+   "LAB_GOV": [
+    "LAB-GOV-Q0012-REGULATORY-SOURCES-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Answers LAB-Q-0012 ('How are protections and obligations distributed across the labour-provision modalities that are observable?') using exclusively the governed mapping LAB-B3 produced under LAB-GOV-Q0012-REGULATORY-SOURCES-0001 (reports/lab_b3/LAB-B3-governed-mapping.json); no new regulatory source was consulted. TRABAJADOR_REGISTRADO_DEPENDIENTE: tax/pension obligations ESTABLISHED (aportes personales y contribuciones patronales al SIPA, Ley 24.241); labour-law protections PARTIALLY_ESTABLISHED (regulated by the LCT, Ley 20.744, as a general framework, not catalogued article-by-article); obra social ESTABLISHED as obligatory (Ley 23.660 Art. 8 inciso a); ART ESTABLISHED as obligatory (Ley 24.557); asignaciones familiares ESTABLISHED (Ley 24.714 Art. 1); seguro de desempleo PARTIALLY_ESTABLISHED (structurally implied dependiente-only, no explicit textual exclusion for non-dependientes located). MONOTRIBUTO_REGISTRATION: tax/pension obligations ESTABLISHED (cuota unica con componente previsional, Ley 24.977 Art. 39); labour-law protections OPEN_NOT_RESOLVED (no LCT-style provision found in the law reviewed -- an absence observed in the text, not proven exhaustive); obra social ESTABLISHED as bundled in the cuota (Ley 24.977 Art. 39 inciso b, confirmed operatively by ARCA's own portal); jubilacion/SIPA ESTABLISHED (reduced contribution, access to the Prestacion Basica Universal); ART, seguro de desempleo, and asignaciones familiares all OPEN_NOT_RESOLVED (no admissible primary source located this phase; only inadmissible press sources were found for asignaciones familiares). AUTONOMOS_REGISTRATION: tax/pension obligations ESTABLISHED (aportes por categoria, Ley 24.241 Art. 10); labour-law protections OPEN_NOT_RESOLVED; jubilacion/SIPA ESTABLISHED (ARCA's own official quote: access to 'las mismas [prestaciones]... a las que accederia si trabajara en relacion de dependencia'); obra social PARTIALLY_ESTABLISHED (NOT listed as an obligatory beneficiary under Ley 23.660 Art. 8; voluntary/private affiliation not investigated); asignaciones familiares ESTABLISHED as an explicit exclusion (ARCA's own quote: '...excepto las asignaciones familiares'); ART ESTABLISHED as not obligatory (incorporable only by decree of the Poder Ejecutivo). This is a distribution of REGULATORY STATUS only: it does not establish that any individual holding a given registration category is in that category's corresponding real economic or labour relationship (TAX_REGISTRATION/LEGAL_FORM != EMPLOYMENT_RELATIONSHIP/ECONOMIC_RELATIONSHIP, Regime B's frozen prohibition, unaffected); asserts no cause for the distribution; and does not convert any OPEN_NOT_RESOLVED cell into evidence of absence -- those cells are reported unresolved, not established non-existent.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim states only the regulatory STATUS (ESTABLISHED / PARTIALLY_ESTABLISHED / OPEN_NOT_RESOLVED) that the eight LAB-B3 sources support for each of three categories across tax/pension obligations, labour-law protections, and social-security coverage. It makes no claim about any individual's real economic or labour relationship, no comparison or ranking between the three categories, and no claim about any regulation outside the eight admitted sources.",
+   "LIMITATIONS_VERBATIM": [
+    "Regulatory status only: says nothing about whether any individual's real economic/labour relationship matches their registration category (TAX_REGISTRATION/LEGAL_FORM != EMPLOYMENT_RELATIONSHIP/ECONOMIC_RELATIONSHIP, unaffected)",
+    "5 of 19 mapped cells remain OPEN_NOT_RESOLVED (LCT-protection detail for Monotributo/Autonomos; ART and seguro de desempleo for Monotributo; asignaciones familiares for Monotributo) -- reported as unresolved, never converted into evidence of absence",
+    "3 of 19 mapped cells are PARTIALLY_ESTABLISHED only: the general regime is confirmed but not exhaustively detailed",
+    "No comparative ranking, scoring, or causal claim between the three categories is made",
+    "Built entirely from regulatory/legal-text citations, not statistical/administrative microdata; no Evidence Root, no Root Counting Rule, no CONVERGENT eligibility",
+    "Inherits every limitation already declared in LAB-GOV-Q0012-REGULATORY-SOURCES-0001 and reports/lab_b3/LAB-B3-closeout.md verbatim; none relaxed or reinterpreted this phase",
+    "No new regulatory source was retrieved to resolve any open cell; resolving them would require a future, separately authorized source-admission phase"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "Admission of further official regulatory sources (a LAB-GOV ruling analogous to LAB-GOV-Q0012-REGULATORY-SOURCES-0001) that resolve one or more of the five OPEN_NOT_RESOLVED cells, or that demonstrate an error in how the eight already-admitted LAB-SRC-0004 through LAB-SRC-0011 sources were read.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0009"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0010",
+   "QUESTION_ID": "LAB-Q-0010",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": "Hallazgo documental: no es una medición del mercado laboral",
+   "CLAIM_KIND": "SCOPING_OR_EXISTENCE_FINDING",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "PUBLIC_HEADLINE_ES": "En la EPH existe un candidato a indicador indirecto de dependencia económica (PP05F: un solo cliente / varios clientes) para trabajadores independientes. No está validado ni admitido como proxy gobernado.",
+   "HYPOTHESIS_ID": null,
+   "SOURCE": "EPH",
+   "ROOT_IDS": [
+    "LAB-ROOT-0005"
+   ],
+   "LAB_GOV": [],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Answers LAB-Q-0010 ('Do any observable proxies of economic dependence exist within sources plausibly admissible to ALETHEIA-LABOR?') using exclusively LAB-B's own already-recorded finding (LAB-EVD-0012); no new research was performed. Yes: PP05F ('trabaja habitualmente para... un solo cliente / distintos clientes') exists and is populated for independent workers/employers in both admitted EPH quarters. This answers LAB-Q-0010's existence question in the narrow, pre-registered sense: a candidate exists. It is explicitly unvalidated -- no LAB-GOV ruling has ever admitted PP05F as a governed ECONOMIC_DEPENDENCE proxy, and none is created by this claim. This does not answer, reopen, or affect LAB-Q-0011/LAB-HYP-0009, which remains NOT_IDENTIFIABLE for its own separate reason: no admitted source carries the ground-truth 'known dependent vs. known independent' labels any proxy's separation rate would need to be validated against.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim states only that a candidate observable proxy (PP05F, single- vs. multiple-client status) exists within EPH, LABOR's one admitted source with independent-worker microdata. It makes no claim that PP05F is a valid, governed ECONOMIC_DEPENDENCE proxy, and no claim about LAB-Q-0011/LAB-HYP-0009, which remains separately NOT_IDENTIFIABLE.",
+   "LIMITATIONS_VERBATIM": [
+    "Unvalidated: no LAB-GOV ruling admits PP05F as a governed ECONOMIC_DEPENDENCE proxy; none is created by this claim",
+    "Self-reported (EPH), not an administrative registration record",
+    "Applies only to EPH's surveyed independent-worker population (CAT_OCUP in {1,2})",
+    "A single-client business relationship is not presumed to imply economic dependence",
+    "Does not answer, reopen, or otherwise affect LAB-Q-0011/LAB-HYP-0009, which remains NOT_IDENTIFIABLE",
+    "No new research was performed; this claim formalizes LAB-EVD-0012's own already-recorded finding"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "A future LAB-GOV ruling either validating or rejecting PP05F as a governed ECONOMIC_DEPENDENCE proxy would change what can be done with it, but would not change this claim's own narrow existence finding. Discovery of ground-truth dependence labels in some admitted or admissible source would be required to unblock LAB-Q-0011/LAB-HYP-0009 separately.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0010"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0011",
+   "QUESTION_ID": "LAB-Q-0013",
+   "STATE": "INSUFFICIENT_EVIDENCE",
+   "PUBLIC_STATE_LABEL": "Evidencia insuficiente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "HYPOTHESIS_NOT_COMPUTABLE",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "PUBLIC_HEADLINE_ES": "El diseño preregistrado sobre cambios de umbral del Monotributo no puede calcularse con las fuentes conocidas (datos de stock y no de flujo; la única fuente de relaciones de empleo termina en 2021-12; sin vinculación a nivel persona). No se calculó ningún efecto causal.",
+   "HYPOTHESIS_ID": "LAB-HYP-0006",
+   "SOURCE": "ARCA",
+   "ROOT_IDS": [
+    "LAB-ROOT-0007"
+   ],
+   "LAB_GOV": [
+    "LAB-GOV-Q0013-EPISODE-SELECTION-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "LAB-HYP-0006's pre-registered design remains genuinely blocked even after LAB-B4 selected its best-available treatment-timing episode (EP-2025-AUG, 2025-08-01, LAB-GOV-Q0013-EPISODE-SELECTION-0001). Three independent, stacked blockers, none resolved by episode selection: (1) STOCK vs. FLOW -- LAB-ROOT-0007 (ARCA, Cuadro 1) is monthly stock data only; LAB-B1 already declared registration-flow (altas/bajas) data SOURCE_NOT_AVAILABLE in every ARCA publication evaluated, and the pre-registered METRIC needs a transition/flow rate. (2) EMPLOYMENT_RELATIONSHIP coverage gap -- the only source this project has operationalized for LAB-OBJ-0003 is MLER (LAB-ROOT-0003), whose admitted period ends 2021-12, four years before the selected episode. (3) No person-level linkage -- no source admitted anywhere in this project (ARCA, SIPA, MLER, EPH) shares a person-level identifier with any other (LAB-CLM-0003 already established this absence between EPH and SIPA/MLER; LAB-B1/LAB-B4 found no different situation for ARCA), so even a perfectly-windowed episode with every source admitted could not measure an individual-level transition rate as pre-registered. LAB-HYP-0006 is therefore adjudicated INSUFFICIENT_EVIDENCE, the same terminal state used for LAB-HYP-0005 before its own, later, separately-authorized resolution -- not forced to REFUTED/ESTABLISHED, and not resolved by inventing a stock-level proxy in place of the pre-registered transition-rate definition. No causal effect was computed; the hypothesis was not executed.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim states only that LAB-HYP-0006's pre-registered METRIC (discontinuity in the rate of transition between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION around a Monotributo threshold-change episode) cannot be computed from any source this project has admitted or has reason to believe exists. It makes no claim about the actual existence, direction, or magnitude of any such discontinuity.",
+   "LIMITATIONS_VERBATIM": [
+    "This is a documented incapacity to test the hypothesis with currently known or plausible sources, not a finding about the true causal effect in either direction",
+    "No causal effect was computed; no proxy metric was substituted; LAB-HYP-0006's own METRIC/EXPECTED_OBSERVATION/FAILURE_CONDITION/CANDIDATE_SOURCES text is unmodified",
+    "Blockers (1) and (2) are, in principle, resolvable by a future source not currently known to exist; blocker (3) is structural and, based on every prior search in this project (LAB-CLM-0003, LAB-B1, LAB-B4), unlikely to be resolved by public-source discovery alone",
+    "Does not reopen or alter LAB-GOV-Q0013-EPISODE-SELECTION-0001's own selected episode (EP-2025-AUG); a future source admission would still use that same episode unless a new ruling changes it",
+    "Treated as this project's terminal disposition for Regime B closeout purposes; not a claim that no future evidence could ever unseat it"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "Discovery and governed admission of a genuinely new official source with individual-level or flow/transition data linking tax registration to employment status, covering a period overlapping an admissible episode -- not pursued or expected based on this project's own repeated prior investigation.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0011"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0012",
+   "QUESTION_ID": "LAB-Q-0016",
+   "STATE": "OBSERVED_IN_SOURCE",
+   "PUBLIC_STATE_LABEL": "Observado en la fuente",
+   "PUBLIC_KIND_QUALIFIER": "Hallazgo documental: no es una medición del mercado laboral",
+   "CLAIM_KIND": "DESIGN_STAGE_ANALYSIS_NOT_A_MEASUREMENT",
+   "ABSENT_VS_NEGATIVE": "NOT_A_MEASUREMENT_OF_THE_LABOUR_MARKET",
+   "PUBLIC_HEADLINE_ES": "Análisis a nivel de diseño (no es una medición): un futuro Observatorio de Avisos de Empleo tendría sesgos estructurales en ocho dimensiones. No hay corpus ni magnitudes.",
+   "HYPOTHESIS_ID": null,
+   "SOURCE": "OBSERVATORY_DESIGN",
+   "ROOT_IDS": [],
+   "LAB_GOV": [],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "Answers LAB-Q-0016 ('what structural biases would a future Job Posting Observatory carry?') as a design-stage pre-mortem, using exclusively this phase's own Observatory design (reports/lab_c0/LAB-C0-observatory-design.json); no platform was selected, no data was captured. Finding: yes, substantial and structurally unavoidable biases across eight dimensions. Platform selection: over-represents the eventually-chosen platform's own user base, under-represents employers using other channels (direct career pages, referrals, niche boards, or no formal posting at all). Sector coverage: over-represents white-collar/digital-native roles relative to informal, manual, rural, or micro-enterprise hiring. Geography: skews toward high-connectivity urban areas. Seniority: a near-certain skew whose direction is not determinable without data. Duplicates: the same vacancy can be counted more than once absent a platform-issued stable identifier -- disclosed and flagged by the design's own dedup taxonomy, not resolved by it. Posting persistence: long-lived postings are structurally over-represented by snapshot-design construction alone, independent of their true relative frequency. Employer self-selection: only employers who post formally, on a captured platform, are observed at all. Posting-vs-real-hiring divergence: structurally unresolvable by this design, since it never observes VACANCY or HIRE -- this is LAB-Q-0018's own separate, unresolved question. None of these biases block LAB-Q-0014 itself, which asks only what posting text alone can reveal; they must, however, be disclosed in full alongside any future LAB-Q-0014 finding.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim states only which structural biases the proposed Observatory design would carry if built as specified, reasoned from the design's own properties. It makes no claim about any actual bias magnitude, does not resolve LAB-Q-0018's posting-vs-real-hiring divergence question, and does not authorize, execute, or provide evidence toward LAB-Q-0014.",
+   "LIMITATIONS_VERBATIM": [
+    "Qualitative, design-stage reasoning only; no corpus exists, so no actual bias magnitude is measured or claimed",
+    "Seniority bias direction is explicitly left undetermined",
+    "Duplicate/evergreen biases are disclosed and flagged, not resolved, by the design's own taxonomy",
+    "Does not resolve LAB-Q-0018's own posting-vs-real-hiring divergence question",
+    "Does not authorize, execute, or provide evidence toward LAB-Q-0014, which remains unexecuted",
+    "Applies to the specific minimum-viable, single-pass design analyzed here; a materially different future design could carry a different bias profile"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "Not literally falsifiable without a built corpus, since most of these biases follow near-definitionally from the design's own structure (single/few platform, public-listing-only, snapshot-based). A materially different future Observatory design (e.g. genuinely multi-platform, continuous, or supplemented by an independent hires-outcome source) would need its own, separate pre-mortem rather than reusing this one.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0012"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0013",
+   "QUESTION_ID": "LAB-Q-0014",
+   "STATE": "INSUFFICIENT_EVIDENCE",
+   "PUBLIC_STATE_LABEL": "Evidencia insuficiente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "SOURCE_AVAILABILITY_FINDING",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "PUBLIC_HEADLINE_ES": "No se identificó una fuente admisible de avisos de empleo dentro del alcance y criterios evaluados (dos rondas, ocho candidatas y un chequeo de propiedad). No equivale a «no existe».",
+   "HYPOTHESIS_ID": null,
+   "SOURCE": "PLATFORM_EVALUATION",
+   "ROOT_IDS": [],
+   "LAB_GOV": [
+    "LAB-GOV-Q0014-PLATFORM-SELECTION-0001",
+    "LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "LAB-Q-0014 ('which dimensions of a recruitment/selection process are observable using only public sources?') is closed INSUFFICIENT_EVIDENCE on source-availability grounds, without executing the question and without capturing a single posting. The path to this closure: LAB-C0 fully governed a minimum-viable Job Posting Observatory design (grain, coverage, temporal window, minimum fields, deduplication, provenance, hashing/versioning, reproducibility, retention, privacy, copyright/text-retention, ToS/robots/API compliance, rate limiting, inclusion/exclusion criteria) and populated this project's first-ever GENERATED_SOURCE governance policy (coverage, ethics, retention, reproducibility, bias, hashing, methodology), before any platform was investigated. Two bounded evaluation rounds then applied that governance, exactly as written, to eight named candidates plus one ownership-check bundle: LAB-C1 (Bumeran, ZonaJobs, Computrabajo, and the Cartelera Publica Central de Ofertas de Empleo Publico; ruling LAB-GOV-Q0014-PLATFORM-SELECTION-0001, NO_ADMISSIBLE_CANDIDATE_FOUND) and LAB-C1.1 (Remote OK, We Work Remotely, Indeed, and LinkedIn Jobs, plus a Konzerta/Multitrabajos ownership check; ruling LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001, NO_ADMISSIBLE_CANDIDATE_FOUND). No candidate combining Argentina coverage, Terms-of-Service/robots.txt/API compliance, privacy fit, and reproducibility could be admitted: the private job boards (Bumeran, Computrabajo, and by shared-ownership inference ZonaJobs) carry explicit Terms-of-Service bans on automated access with no qualifying research API; the one Terms-of-Service-permissive candidate found in the first round, the Cartelera Publica, is blocked by a robots.txt disallow on the .pdf format carrying most of its postings and by a routine DNI-bearing privacy footprint that does not fit LAB-C0's incidental-contact-only PRIVACY provision; the two candidates with the most permissive Terms-of-Service/robots.txt/API profile found in either round, Remote OK and We Work Remotely, both fail decisively on Argentina-specific coverage; Indeed's own public API was permanently discontinued in 2023, leaving no admissible access mechanism at all; and LinkedIn carries an explicit Terms-of-Service scraping ban whose sole research exception is a competitive, sandboxed, aggregate-only program that would not supply individual posting records even if granted. Zero postings were captured across both rounds; zero scraping and zero API calls for data collection were made against any candidate. LAB-C0's own design and GENERATED_SOURCE policy were never redefined, loosened, or adapted to force any candidate's admission, in either round. Continuing to expand the search was assessed, at LAB-C1.1's own close, as carrying low marginal value relative to its scope-creep risk, given the structural diversity of failure modes already observed across eight distinct candidates. The conclusion is limited strictly to: no admissible source was identified within the scope and criteria evaluated -- this claim does not assert, and must not be read as asserting, that no admissible source exists at all.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim states only that no candidate platform evaluated across LAB-C1 and LAB-C1.1, against LAB-C0's own governance gates, could be admitted as the Job Posting Observatory's source. It makes no claim that no admissible source exists anywhere; the conclusion is limited to: no se identifico una fuente admisible dentro del alcance y criterios evaluados (no admissible source was identified within the scope and criteria evaluated).",
+   "LIMITATIONS_VERBATIM": [
+    "This is a documented incapacity to identify an admissible source within two explicitly bounded evaluation rounds, not a claim that no admissible source could ever exist -- a materially different future candidate, or a change in an already-evaluated candidate's own Terms of Service/API offering, could unseat it",
+    "No new platform research was conducted to produce this claim; it formalizes LAB-C1's and LAB-C1.1's own already-recorded findings into the claim-ledger's terminal lifecycle",
+    "Does not reopen, alter, or re-litigate any individual candidate's own GATE_RESULT from LAB-C1 or LAB-C1.1",
+    "Does not modify LAB-Q-0014's own ledger STATUS field (remains NOT_YET_OPERATIONAL), per this project's own established convention that a question's registered STATUS is never rewritten post-hoc when a claim resolves it (precedent: LAB-Q-0004/0005/0008/0009/0010/0012/0016)",
+    "Does not affect LAB-Q-0015/LAB-HYP-0008, LAB-Q-0016, LAB-Q-0017, or LAB-Q-0018, none of which depend on this claim or on any Job Posting Observatory capture",
+    "Treated as this project's terminal disposition for LAB-Q-0014 given the search conducted; not a claim that no future evidence could ever unseat it"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "Discovery and governed evaluation of a genuinely new candidate not considered in LAB-C1 or LAB-C1.1 (e.g. a sector-specific Argentine board, an employer-side ATS with a public research feed, or a future official open dataset of individual job postings), or a material change in an already-evaluated candidate's own Terms of Service, robots.txt, or API offering (e.g. a private board publishing a public research-scoped API, or the Cartelera Publica moving its convocatorias to a non-PDF, robots.txt-permitted format) -- none of which is pursued or expected by this claim.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0013"
+  },
+  {
+   "CLAIM_ID": "LAB-CLM-0014",
+   "QUESTION_ID": "LAB-Q-0018",
+   "STATE": "INSUFFICIENT_EVIDENCE",
+   "PUBLIC_STATE_LABEL": "Evidencia insuficiente",
+   "PUBLIC_KIND_QUALIFIER": null,
+   "CLAIM_KIND": "SOURCE_AVAILABILITY_FINDING",
+   "ABSENT_VS_NEGATIVE": "ABSENT_NOT_NEGATIVE",
+   "PUBLIC_HEADLINE_ES": "No hay evidencia suficiente, dentro de las fuentes y el alcance evaluados, para comparar avisos publicados con resultados reales de contratación: sin corpus de avisos, sin fuente de eventos de contratación y sin vinculación validada.",
+   "HYPOTHESIS_ID": null,
+   "SOURCE": "SOURCE_AVAILABILITY_REVIEW",
+   "ROOT_IDS": [],
+   "LAB_GOV": [
+    "LAB-GOV-Q0014-PLATFORM-SELECTION-0001",
+    "LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001"
+   ],
+   "V1_GOV": [],
+   "CLAIM_TEXT_VERBATIM": "LAB-Q-0018 ('when both are observable, how do descriptions based on published job postings diverge from descriptions based on real hiring outcomes?') is closed INSUFFICIENT_EVIDENCE on source-availability grounds, without any new research and without measuring or estimating any divergence. The question's own IDENTIFICATION_REQUIREMENTS demand, simultaneously: (1) an admissible JOB_POSTING corpus (LAB-OBJ-0019); (2) an independent source of HIRE events (LAB-OBJ-0022); and (3) a valid mechanism to compare or link the two. None is met within the sources and scope evaluated. (1) No admissible postings corpus exists: LAB-C1 and LAB-C1.1 evaluated eight candidates plus an ownership-check bundle against LAB-C0's own governance, applied as written, and both ruled NO_ADMISSIBLE_CANDIDATE_FOUND; LAB-Q-0014 was closed INSUFFICIENT_EVIDENCE on that limitation (LAB-CLM-0013); no posting was captured. (2) No admitted source observes HIRE events: LAB-OBJ-0022 remains DEFINED_PENDING_SOURCE with no observation mechanism, the Job Posting Observatory is NOT_SUPPORTED_FOR HIRE (LAB-SCM-0024) and was designed never to observe hiring outcomes, and LAB-B1 found no registration-flow (altas/bajas) data in any ARCA publication evaluated. Employment stocks (EMPLOYMENT_RELATIONSHIP, LAB-OBJ-0003) were not reinterpreted as hiring events, because HIRE is the transition event and not the resulting stock. (3) No validated linkage or common taxonomy connects the two sides: no admitted source shares a person-level or employer-level identifier with any other (LAB-CLM-0003, LAB-CLM-0011), and MLER's EMPLOYER/JOB fields are unrealized (GOV-006). The object-model distinctions POSTING != VACANCY != HIRE were preserved throughout: a posting was never treated as a vacancy, a vacancy was never treated as observable, and neither was treated as a hire. Because the question is conjunctive (both sides must be observable), the absence of either side alone would suffice; here both are absent. The conclusion is limited strictly to: there is not sufficient evidence, within the sources and scope evaluated, to compare postings with real hiring outcomes. This claim does not assert, and must not be read as asserting, that such evidence cannot exist outside this project's scope, and it deliberately does not use NOT_IDENTIFIABLE, which would assert a stronger structural impossibility than the current evidence supports.",
+   "SCOPE_STATEMENT_VERBATIM": "This claim states only that no evidence sufficient to compare descriptions based on published job postings with descriptions based on real hiring outcomes exists within the sources and scope evaluated. It does not assert that such evidence cannot exist outside this project's scope. In Spanish, as scoped: no existe evidencia suficiente dentro de las fuentes y alcance evaluados para comparar postings con resultados reales de contratacion.",
+   "LIMITATIONS_VERBATIM": [
+    "This is a documented insufficiency of evidence within the sources and scope evaluated, not a claim that such evidence cannot exist outside this project's scope",
+    "No new source discovery, RAW reading, or data capture was performed to produce this claim; it formalizes already-recorded findings into the claim ledger's terminal lifecycle",
+    "The hire-side absence rests on this project's own admitted sources and prior searches; V1 manifests were not inspected for flow series in this block",
+    "Does not assert NOT_IDENTIFIABLE; no structural impossibility of the comparison is claimed",
+    "Does not measure or estimate any postings-versus-hires divergence in either direction",
+    "Does not modify LAB-Q-0018's own ledger STATUS (remains NOT_YET_OPERATIONAL), per this project's convention that a question's registered STATUS is never rewritten post-hoc when a claim resolves it",
+    "Does not affect LAB-Q-0014 (closed, LAB-CLM-0013), LAB-Q-0015/LAB-HYP-0008 and LAB-Q-0017 (NOT_IDENTIFIABLE), or LAB-Q-0016 (closed, LAB-CLM-0012)"
+   ],
+   "WHAT_WOULD_UNSEAT_THIS_VERBATIM": "Governed admission of an admissible JOB_POSTING corpus together with an independent source of HIRE events (transition or flow data, not employment stocks) and a validated linkage or taxonomy connecting them -- none of which is pursued or expected by this claim, and each of which would require its own separately authorized admission.",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/claims/claim-ledger.json#LAB-CLM-0014"
+  }
+ ],
+ "hypotheses": [
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0001",
+   "QUESTION_ID": "LAB-Q-0001",
+   "PRIOR_DATA_EXPOSURE": "DIRECT",
+   "CLAIM_IDS": [
+    "LAB-CLM-0001"
+   ],
+   "EFFECTIVE_OUTCOME": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0001"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0002",
+   "QUESTION_ID": "LAB-Q-0003",
+   "PRIOR_DATA_EXPOSURE": "INDIRECT",
+   "CLAIM_IDS": [
+    "LAB-CLM-0002",
+    "LAB-CLM-0004"
+   ],
+   "EFFECTIVE_OUTCOME": [
+    "OBSERVED_IN_SOURCE",
+    "OBSERVED_IN_SOURCE"
+   ],
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0002"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0003",
+   "QUESTION_ID": "LAB-Q-0004",
+   "PRIOR_DATA_EXPOSURE": "INDIRECT",
+   "CLAIM_IDS": [
+    "LAB-CLM-0005"
+   ],
+   "EFFECTIVE_OUTCOME": [
+    "REFUTED_WITHIN_SCOPE"
+   ],
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0003"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0004",
+   "QUESTION_ID": "LAB-Q-0005",
+   "PRIOR_DATA_EXPOSURE": "INDIRECT",
+   "CLAIM_IDS": [
+    "LAB-CLM-0006"
+   ],
+   "EFFECTIVE_OUTCOME": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0004"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0005",
+   "QUESTION_ID": "LAB-Q-0008",
+   "PRIOR_DATA_EXPOSURE": "NONE",
+   "CLAIM_IDS": [
+    "LAB-CLM-0007"
+   ],
+   "EFFECTIVE_OUTCOME": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0005"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0006",
+   "QUESTION_ID": "LAB-Q-0013",
+   "PRIOR_DATA_EXPOSURE": "NONE",
+   "CLAIM_IDS": [
+    "LAB-CLM-0011"
+   ],
+   "EFFECTIVE_OUTCOME": [
+    "INSUFFICIENT_EVIDENCE"
+   ],
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0006"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0007",
+   "QUESTION_ID": "LAB-Q-0002",
+   "PRIOR_DATA_EXPOSURE": "DIRECT",
+   "CLAIM_IDS": [
+    "LAB-CLM-0003"
+   ],
+   "EFFECTIVE_OUTCOME": [
+    "OBSERVED_IN_SOURCE"
+   ],
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0007"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0008",
+   "QUESTION_ID": "LAB-Q-0015",
+   "PRIOR_DATA_EXPOSURE": "NONE",
+   "CLAIM_IDS": [],
+   "EFFECTIVE_OUTCOME": "NO_CLAIM: outcome carried by the question-level terminal status (see the question record)",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0008"
+  },
+  {
+   "HYPOTHESIS_ID": "LAB-HYP-0009",
+   "QUESTION_ID": "LAB-Q-0011",
+   "PRIOR_DATA_EXPOSURE": "NONE",
+   "CLAIM_IDS": [],
+   "EFFECTIVE_OUTCOME": "NO_CLAIM: outcome carried by the question-level terminal status (see the question record)",
+   "SOURCE_OF_TRUTH": "aletheia-labor-v1.0.0:metadata/hypotheses/hypothesis-registry.json#LAB-HYP-0009"
+  }
+ ],
+ "validation": {
+  "total": 112,
+  "failed": 0,
+  "checks": [
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/questions/question-ledger.json",
+    "pass": true,
+    "detail": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/claims/claim-ledger.json",
+    "pass": true,
+    "detail": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/evidence/evidence-registry.json",
+    "pass": true,
+    "detail": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/hypotheses/hypothesis-registry.json",
+    "pass": true,
+    "detail": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/objects/object-ledger.json",
+    "pass": true,
+    "detail": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/lineage/evidence-root-registry.json",
+    "pass": true,
+    "detail": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/governance/lab-gov-registry.json",
+    "pass": true,
+    "detail": "a1a683298bdfe29de26a4fddf54ef46b37c0991d2c96da6fed138934f3c2a535"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/sources/source-registry.json",
+    "pass": true,
+    "detail": "f20a26818496d2c9e37c4442c24bc314df51580568923096b511149ecfc47579"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/sources/source-admission-plan.json",
+    "pass": true,
+    "detail": "5c8e0d8d204aa15cd9847b96ee08751139c3dde00e7e3398de49323716776939"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/sources/source-claim-matrix.json",
+    "pass": true,
+    "detail": "3cb72fa2eae89392c81f583b49a5587baa25aef2d6639cbbe69483506d49476a"
+   },
+   {
+    "check": "S0-pinned sha256 == tag blob: metadata/sources/source-admission-result.json",
+    "pass": true,
+    "detail": "eff7dc01d81196a79b1c39871e0fcb44aa37f022cdcc2ba5b45698056baead75"
+   },
+   {
+    "check": "LAB-Q-0001 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0001'] vs ['LAB-HYP-0001']"
+   },
+   {
+    "check": "LAB-Q-0002 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0007'] vs ['LAB-HYP-0007']"
+   },
+   {
+    "check": "LAB-Q-0003 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0002'] vs ['LAB-HYP-0002']"
+   },
+   {
+    "check": "LAB-Q-0004 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0003'] vs ['LAB-HYP-0003']"
+   },
+   {
+    "check": "LAB-Q-0005 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0004'] vs ['LAB-HYP-0004']"
+   },
+   {
+    "check": "LAB-Q-0006 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0007 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0008 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0005'] vs ['LAB-HYP-0005']"
+   },
+   {
+    "check": "LAB-Q-0009 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0010 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0011 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0009'] vs ['LAB-HYP-0009']"
+   },
+   {
+    "check": "LAB-Q-0012 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0013 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0006'] vs ['LAB-HYP-0006']"
+   },
+   {
+    "check": "LAB-Q-0014 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0015 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "['LAB-HYP-0008'] vs ['LAB-HYP-0008']"
+   },
+   {
+    "check": "LAB-Q-0016 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0017 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-Q-0018 RELATED_HYPOTHESES == hypothesis-registry",
+    "pass": true,
+    "detail": "[] vs []"
+   },
+   {
+    "check": "LAB-CLM-0001 hypothesis LAB-HYP-0001 belongs to LAB-Q-0001",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0002 hypothesis LAB-HYP-0002 belongs to LAB-Q-0003",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0003 hypothesis LAB-HYP-0007 belongs to LAB-Q-0002",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0004 hypothesis LAB-HYP-0002 belongs to LAB-Q-0003",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0005 hypothesis LAB-HYP-0003 belongs to LAB-Q-0004",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0006 hypothesis LAB-HYP-0004 belongs to LAB-Q-0005",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0007 hypothesis LAB-HYP-0005 belongs to LAB-Q-0008",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0011 hypothesis LAB-HYP-0006 belongs to LAB-Q-0013",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-Q-0001 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0001']"
+   },
+   {
+    "check": "LAB-Q-0002 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0003']"
+   },
+   {
+    "check": "LAB-Q-0003 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0002', 'LAB-CLM-0004']"
+   },
+   {
+    "check": "LAB-Q-0004 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0005']"
+   },
+   {
+    "check": "LAB-Q-0005 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0006']"
+   },
+   {
+    "check": "LAB-Q-0006 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "[]"
+   },
+   {
+    "check": "LAB-Q-0007 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "[]"
+   },
+   {
+    "check": "LAB-Q-0008 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0007']"
+   },
+   {
+    "check": "LAB-Q-0009 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0008']"
+   },
+   {
+    "check": "LAB-Q-0010 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0010']"
+   },
+   {
+    "check": "LAB-Q-0011 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "[]"
+   },
+   {
+    "check": "LAB-Q-0012 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0009']"
+   },
+   {
+    "check": "LAB-Q-0013 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0011']"
+   },
+   {
+    "check": "LAB-Q-0014 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0013']"
+   },
+   {
+    "check": "LAB-Q-0015 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "[]"
+   },
+   {
+    "check": "LAB-Q-0016 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0012']"
+   },
+   {
+    "check": "LAB-Q-0017 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "[]"
+   },
+   {
+    "check": "LAB-Q-0018 S0 CLAIM_IDS == claim-ledger",
+    "pass": true,
+    "detail": "['LAB-CLM-0014']"
+   },
+   {
+    "check": "LAB-CLM-0001 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0001 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0002 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0002 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0003 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0003 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0004 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0004 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0005 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0005 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0006 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0006 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0007 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0007 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0008 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0008 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0009 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0009 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0010 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0010 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0011 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0011 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0012 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0012 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0013 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0013 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0014 S0 STATE == ledger STATE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "LAB-CLM-0014 S0 QUESTION_ID == ledger",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "exactly 18 questions",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "exactly 14 claims",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "exactly 9 hypotheses",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "unique ids (Q/C/H)",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "13 questions with claim",
+    "pass": true,
+    "detail": "['LAB-Q-0001', 'LAB-Q-0002', 'LAB-Q-0003', 'LAB-Q-0004', 'LAB-Q-0005', 'LAB-Q-0008', 'LAB-Q-0009', 'LAB-Q-0010', 'LAB-Q-0012', 'LAB-Q-0013', 'LAB-Q-0014', 'LAB-Q-0016', 'LAB-Q-0018']"
+   },
+   {
+    "check": "5 questions without claim",
+    "pass": true,
+    "detail": "['LAB-Q-0006', 'LAB-Q-0007', 'LAB-Q-0011', 'LAB-Q-0015', 'LAB-Q-0017']"
+   },
+   {
+    "check": "questions-without-claim == closeout list",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "total claim mapping == 14",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "every claim maps to an existing question",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "no claim mapped twice",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "multi-claim questions == [LAB-Q-0003]",
+    "pass": true,
+    "detail": "['LAB-Q-0003']"
+   },
+   {
+    "check": "claim tally 10/1/3",
+    "pass": true,
+    "detail": "{'OBSERVED_IN_SOURCE': 10, 'REFUTED_WITHIN_SCOPE': 1, 'INSUFFICIENT_EVIDENCE': 3}"
+   },
+   {
+    "check": "tally == S0 COUNTS",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "0 ESTABLISHED/CONVERGENT/DIVERGENT",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "hypotheses PRIOR_DATA_EXPOSURE 2 DIRECT / 3 INDIRECT / 4 NONE",
+    "pass": true,
+    "detail": "{'DIRECT': 2, 'INDIRECT': 3, 'NONE': 4}"
+   },
+   {
+    "check": "map has 18 question rows",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "map has 14 claim rows",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "map has 9 hypothesis rows",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "sum(claim ids across question rows) == 14",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "no question row without SOURCE_OF_TRUTH",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "claim-less questions carry no invented claim",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "DOC_* classes are exactly the 5 claim-less questions",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "every CLAIM_* class has >=1 claim",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "question EFFECTIVE_RESOLUTION == claim STATE where claim-resolved",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "public states are the frozen state names only (no new state)",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "only Q-0004 is NEGATIVE_WITHIN_SCOPE",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "public label class counts 5/4/1/3/3/1/1",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "hypotheses: 7 with claim, 2 without",
+    "pass": true,
+    "detail": ""
+   },
+   {
+    "check": "no ledger status rewritten (LEDGER_STATUS_UNCHANGED kept as recorded)",
+    "pass": true,
+    "detail": ""
+   }
+  ]
+ }
+}

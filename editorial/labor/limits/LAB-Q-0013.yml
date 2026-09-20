@@ -1,0 +1,38 @@
+# Matriz de cobertura de limitaciones (WEB-0 Editorial Contract §5, gate G-LIM-02).
+# Toda limitación canónica de la pregunta y del claim tiene clase y disposición. `AUDIT_ONLY` solo con
+# clase PROCEDURAL; el resto es SHOWN y remite a un texto público de `findings/LAB-Q-0013.yml`.
+# La limitación se identifica por `<global_id del dueño>#limitation:<ordinal>` (el id derivado incluye un hash
+# del texto: si el texto canónico cambia, el gate G-EDI-01 marca esta matriz como obsoleta).
+schema: aletheia-web/editorial-limits/1
+canonical_ref: labor/LAB-Q-0013
+revision: 1
+dispositions:
+  - limitation: "labor/LAB-CLM-0011#limitation:1"
+    class: CAUSAL
+    disposition: SHOWN
+    public_refs:
+      - "does_not_mean:dnm-1"
+      - "does_not_mean:dnm-2"
+  - limitation: "labor/LAB-CLM-0011#limitation:2"
+    class: MEASUREMENT
+    disposition: SHOWN
+    public_refs:
+      - "can_say:cs-6"
+  - limitation: "labor/LAB-CLM-0011#limitation:3"
+    class: DATA_QUALITY
+    disposition: SHOWN
+    public_refs:
+      - "would_need:wn-5"
+  - limitation: "labor/LAB-CLM-0011#limitation:4"
+    class: PROCEDURAL
+    disposition: AUDIT_ONLY
+    waiver_reason: "Aclaración de procedimiento de gobernanza (no reabre el ruling de selección del episodio). Se muestra en el nivel Auditoría del Rastro, con el texto canónico."
+  - limitation: "labor/LAB-CLM-0011#limitation:5"
+    class: SCOPE
+    disposition: SHOWN
+    public_refs:
+      - "does_not_mean:dnm-6"
+  - limitation: "labor/LAB-Q-0013#limitation:1"
+    class: PROCEDURAL
+    disposition: AUDIT_ONLY
+    waiver_reason: "Registrada al inscribir la pregunta; el ledger no reescribe lo registrado (convención del corpus). El episodio elegido posteriormente está en el ruling y se muestra en el Rastro. Se conserva visible, con el texto canónico, en el nivel Auditoría."

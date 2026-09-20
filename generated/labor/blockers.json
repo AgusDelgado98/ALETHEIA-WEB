@@ -1,0 +1,85 @@
+{
+  "entity": "Blocker",
+  "items": [
+    {
+      "claim_id": "LAB-CLM-0011",
+      "global_id": "labor/blk.LAB-CLM-0011.1.4af80a5e",
+      "id": "blk.LAB-CLM-0011.1.4af80a5e",
+      "id_origin": "DERIVED",
+      "kind": "STOCK_VS_FLOW",
+      "label": "STOCK vs. FLOW",
+      "ordinal": 1,
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "LAB-ROOT-0007 (ARCA, Cuadro 1) is monthly stock data only; LAB-B1 already declared registration-flow (altas/bajas) data SOURCE_NOT_AVAILABLE in every ARCA publication evaluated, and the pre-registered METRIC needs a transition/flow rate.",
+      "witness": {
+        "evidence_id": "LAB-EVD-0020",
+        "segment_text": "LAB-ROOT-0007 (ARCA, Cuadro 1) is monthly STOCK data only; LAB-B1 already declared registration-flow (altas/bajas) data SOURCE_NOT_AVAILABLE in every ARCA publication evaluated -- the pre-registered METRIC needs a TRANSITION/FLOW rate, which no admitted ARCA table supplies."
+      }
+    },
+    {
+      "claim_id": "LAB-CLM-0011",
+      "global_id": "labor/blk.LAB-CLM-0011.2.575e8419",
+      "id": "blk.LAB-CLM-0011.2.575e8419",
+      "id_origin": "DERIVED",
+      "kind": "EMPLOYMENT_RELATIONSHIP_COVERAGE",
+      "label": "EMPLOYMENT_RELATIONSHIP coverage gap",
+      "ordinal": 2,
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "the only source this project has operationalized for LAB-OBJ-0003 is MLER (LAB-ROOT-0003), whose admitted period ends 2021-12, four years before the selected episode.",
+      "witness": {
+        "evidence_id": "LAB-EVD-0020",
+        "segment_text": "The only source this project has operationalized for EMPLOYMENT_RELATIONSHIP (LAB-OBJ-0003) is MLER (LAB-ROOT-0003), whose admitted period ends 2021-12 -- before even the earliest realistically-datable episode this project could construct, and four years before the LAB-B4-selected episode (2025-08-01)."
+      }
+    },
+    {
+      "claim_id": "LAB-CLM-0011",
+      "global_id": "labor/blk.LAB-CLM-0011.3.c49ea18f",
+      "id": "blk.LAB-CLM-0011.3.c49ea18f",
+      "id_origin": "DERIVED",
+      "kind": "NO_PERSON_LEVEL_LINKAGE",
+      "label": "No person-level linkage",
+      "ordinal": 3,
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "no source admitted anywhere in this project (ARCA, SIPA, MLER, EPH) shares a person-level identifier with any other (LAB-CLM-0003 already established this absence between EPH and SIPA/MLER; LAB-B1/LAB-B4 found no different situation for ARCA), so even a perfectly-windowed episode with every source admitted could not measure an individual-level transition rate as pre-registered.",
+      "witness": {
+        "evidence_id": "LAB-EVD-0020",
+        "segment_text": "No source admitted anywhere in this project (ARCA, SIPA, MLER, EPH) shares a person-level identifier with any other (LAB-CLM-0003 already established this absence between EPH and SIPA/MLER; LAB-B1 and LAB-B4 found no different situation for ARCA) -- so even a perfectly-windowed episode with every source admitted could not measure an INDIVIDUAL-level transition rate as pre-registered, only separate aggregate series observed in parallel."
+      }
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

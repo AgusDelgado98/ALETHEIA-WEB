@@ -1,0 +1,61 @@
+{
+  "entity": "PreservedResult",
+  "items": [
+    {
+      "category": "INSUFFICIENT_EVIDENCE",
+      "claim_id": "LAB-CLM-0011",
+      "global_id": "labor/KEEP-002",
+      "hypothesis_id": "LAB-HYP-0006",
+      "id": "KEEP-002",
+      "id_origin": "CORPUS",
+      "must_not": "Do not soften, omit, or convert into a negative finding or a positive finding; the result is absence of evidence within the evaluated scope. Do not report a causal effect of Monotributo threshold changes in either direction.",
+      "provenance": {
+        "blob_sha": "f333f4b7d319201062002cb7a98aa3ce025df540",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "dc8129f275950d3e7276066aef2940572d820227a482fc767b3c5b6b52374a3a",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "KEEP-002",
+        "source_path": "reports/lab_s/LAB-S0-preserved-results.json",
+        "source_pointer": "/PRESERVED_RESULTS/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0013",
+      "regime": "B",
+      "status_value": "INSUFFICIENT_EVIDENCE",
+      "status_vocabulary": "CLAIM_LIFECYCLE_STATE",
+      "what_is_preserved": "LAB-HYP-0006's pre-registered design is not computable from admitted or plausibly admissible sources: (1) ARCA data is stock, not flow; (2) the only EMPLOYMENT_RELATIONSHIP source (MLER) ends 2021-12; (3) no source links a person across tax-registration and employment records. No causal effect was computed and no proxy was substituted.",
+      "what_would_unseat": "Discovery and governed admission of a genuinely new official source with individual-level or flow/transition data linking tax registration to employment status, covering a period overlapping an admissible episode -- not pursued or expected based on this project's own repeated prior investigation."
+    },
+    {
+      "category": "OPEN_CAUSAL_QUESTION",
+      "claim_id": "LAB-CLM-0011",
+      "global_id": "labor/KEEP-010",
+      "hypothesis_id": "LAB-HYP-0006",
+      "id": "KEEP-010",
+      "id_origin": "CORPUS",
+      "must_not": "Do not present the selected episode as evidence of an effect; do not report any causal estimate.",
+      "provenance": {
+        "blob_sha": "f333f4b7d319201062002cb7a98aa3ce025df540",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "dc8129f275950d3e7276066aef2940572d820227a482fc767b3c5b6b52374a3a",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "KEEP-010",
+        "source_path": "reports/lab_s/LAB-S0-preserved-results.json",
+        "source_pointer": "/PRESERVED_RESULTS/9",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0013",
+      "regime": "B",
+      "status_value": "INSUFFICIENT_EVIDENCE",
+      "status_vocabulary": "CLAIM_LIFECYCLE_STATE",
+      "what_is_preserved": "The causal question on Monotributo threshold changes stays open: CAUSAL_IDENTIFICATION_STATUS is CANDIDATE_DESIGN, an episode (EP-2025-AUG, 2025-08-01) was selected under LAB-GOV-Q0013-EPISODE-SELECTION-0001, and no causal effect was ever computed. See KEEP-002.",
+      "what_would_unseat": null
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

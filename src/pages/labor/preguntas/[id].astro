@@ -1,0 +1,247 @@
+---
+import EvidenceState from "../../../components/EvidenceState.astro";
+import EvidenceTrail from "../../../components/EvidenceTrail.astro";
+import Frame from "../../../components/Frame.astro";
+import Glyph from "../../../components/Glyph.astro";
+import ProvenanceDetails from "../../../components/ProvenanceDetails.astro";
+import QuestionHeader from "../../../components/QuestionHeader.astro";
+import SegmentText from "../../../components/SegmentText.astro";
+import WhatThisDoesNotMean from "../../../components/WhatThisDoesNotMean.astro";
+import WhatWeCanSay from "../../../components/WhatWeCanSay.astro";
+import Base from "../../../layouts/Base.astro";
+import { plainText } from "../../../lib/render.ts";
+import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
+
+/** Una ruta por pregunta con editorial completa. En M1 solo existe LAB-Q-0013 (`/labor/preguntas/q-0013`). */
+export function getStaticPaths() {
+  return availableQuestionIds(process.cwd()).map((id) => ({
+    params: { id: questionSlug(id) },
+    props: { qid: id },
+  }));
+}
+const { qid } = Astro.props;
+const v = loadQuestionView(process.cwd(), qid);
+const ui = v.ui;
+---
+
+<Base
+  title={`${v.publicQuestion} · ${ui("brand_wordmark")}`}
+  description={plainText(v.title)}
+  skip={ui("skip_link")}
+  wordmark={ui("brand_wordmark")}
+>
+  <article
+    class="page"
+    data-question-id={v.id}
+    data-question-resolution={v.state.question}
+    data-claim-id={v.claim.id}
+    data-claim-state={v.state.claim}
+  >
+    <div class="wrap">
+      <QuestionHeader
+        kicker={ui("question_kicker")}
+        moduleId={v.moduleId}
+        id={v.id}
+        question={v.publicQuestion}
+        canonical={v.canonicalQuestion}
+      />
+
+      <section class="answer" aria-labelledby="answer-h">
+        <h2 id="answer-h" class="answer__k">
+          {ui("answer_heading")}
+        </h2>
+        <p class="answer__t">
+          <SegmentText parts={v.title} />
+        </p>
+        <Frame
+          source={v.claim.source}
+          labelSource={ui("frame_source")}
+          labelScope={ui("frame_scope")}
+        >
+          <dl class="layers">
+            <div>
+              <dt>{ui("layer_question")}</dt>
+              <dd>
+                <EvidenceState
+                  state="INSUFFICIENT_EVIDENCE"
+                  label={v.state.questionLabel}
+                  description={ui("shape_insufficient")}
+                />
+              </dd>
+            </div>
+            <div>
+              <dt>
+                {ui("layer_claim")}{" "}
+                <span class="mono" data-num="id">
+                  {v.claim.id}
+                </span>
+              </dt>
+              <dd>
+                <EvidenceState
+                  state="INSUFFICIENT_EVIDENCE"
+                  label={v.state.claimLabel}
+                  description={ui("shape_insufficient")}
+                />
+              </dd>
+            </div>
+          </dl>
+          <span slot="scope">
+            <SegmentText parts={v.scope} />
+          </span>
+        </Frame>
+        {v.state.absenceNotNegative && <p class="answer__a">{v.absenceText}</p>}
+        <p class="answer__i">
+          <SegmentText parts={v.intro} />
+        </p>
+      </section>
+
+      <div class="lim">
+        <div class="lim__say">
+          <WhatWeCanSay heading={ui("say_heading")} items={v.canSay} />
+        </div>
+        <div class="lim__thread" aria-hidden="true">
+          <span class="a"></span>
+          <span class="gap"></span>
+          <span class="z"></span>
+        </div>
+        <div class="lim__no">
+          <WhatThisDoesNotMean heading={ui("not_heading")} items={v.doesNotMean} />
+        </div>
+      </div>
+
+      <section class="need" aria-labelledby="need-h">
+        <h2 id="need-h" class="need__h">
+          {ui("need_heading")}
+        </h2>
+        <ul class="need__l">
+          {v.wouldNeed.map((it) => (
+            <li id={`need-${it.id}`}>
+              <Glyph kind="hypothesis" fill="ghost" size="1.125rem" />
+              <p>
+                <SegmentText parts={it.parts} />
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+    <EvidenceTrail v={v} />
+    <ProvenanceDetails v={v} />
+  </article>
+</Base>
+
+<style>
+  .answer {
+    padding-bottom: var(--space-9);
+  }
+  .answer__k {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .answer__t {
+    margin-top: var(--space-4);
+    font: 300 var(--fs-serif-xl) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 24ch;
+    text-wrap: balance;
+  }
+  .layers {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .layers > div {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .layers dt {
+    font: 400 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .layers dd {
+    margin: 0;
+  }
+  .answer__a {
+    margin-top: var(--space-5);
+    font: italic 300 var(--fs-serif-md) / var(--lh-serif) var(--serif);
+    max-width: var(--measure-serif);
+  }
+  .answer__i {
+    margin-top: var(--space-5);
+    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+
+  /* Lo que sí / Lo que NO: el hilo baja de la afirmación, SE CORTA y sigue punteado junto a los límites (Charter §11.1) */
+  .lim {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-7);
+    padding-bottom: var(--space-9);
+  }
+  .lim__thread {
+    display: none;
+  }
+  @media (min-width: 64rem) {
+    .lim {
+      grid-template-columns: minmax(0, 5fr) 3rem minmax(0, 6fr);
+      column-gap: var(--space-5);
+    }
+    .lim__thread {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: var(--space-2);
+    }
+    .lim__thread .a {
+      flex: none;
+      width: 1px;
+      height: 11rem;
+      background: var(--ink);
+    }
+    .lim__thread .gap {
+      flex: none;
+      position: relative;
+      width: 0.8rem;
+      height: 3.4rem;
+      border-block: var(--rule) solid var(--ink);
+    }
+    .lim__thread .z {
+      flex: 1;
+      width: 0;
+      border-left: var(--rule) dotted var(--graphite);
+    }
+    .lim__no {
+      padding-top: 14.5rem;
+    }
+  }
+
+  .need {
+    padding-bottom: var(--space-9);
+  }
+  .need__h {
+    font: 300 var(--fs-serif-xl) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 22ch;
+    margin-bottom: var(--space-6);
+  }
+  .need__l {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 46rem;
+  }
+  .need__l li {
+    display: grid;
+    grid-template-columns: 1.125rem minmax(0, 1fr);
+    column-gap: var(--space-4);
+    align-items: baseline;
+  }
+  .need__l :global(.g) {
+    margin-top: 0.2em;
+    color: var(--graphite);
+  }
+  .need__l p {
+    font: 400 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+    max-width: 48ch;
+  }
+</style>

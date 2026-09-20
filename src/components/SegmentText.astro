@@ -1,0 +1,20 @@
+---
+import type { Part } from "../lib/render.ts";
+/** Renderiza partes de texto. Todo token numérico va marcado con `data-num` (G-FIG-03): nunca una cifra suelta. */
+interface Props {
+  parts: readonly Part[];
+}
+const { parts } = Astro.props;
+---
+
+{parts.map((p) =>
+  p.t === "text" ? (
+    p.v
+  ) : p.kind === "anchor" || p.kind === "count" || p.kind === "table" ? (
+    <span data-num={p.kind}>{p.v}</span>
+  ) : (
+    <span class="mono" data-num={p.kind}>
+      {p.v}
+    </span>
+  ),
+)}

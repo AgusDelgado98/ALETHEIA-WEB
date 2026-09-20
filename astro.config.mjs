@@ -1,7 +1,10 @@
 import { defineConfig } from "astro/config";
 
-// Sitio 100 % estático (WEB-0 §3). Sin integraciones de UI hasta que un componente las necesite.
+// Sitio 100 % estático (WEB-0 §3). Sin integraciones de UI: las páginas de contenido no envían JavaScript.
+// `format: "file"` + `trailingSlash: "never"` producen `/labor/preguntas/q-0013` (sin barra final) en hosts estáticos.
 export default defineConfig({
   output: "static",
+  trailingSlash: "never",
+  build: { format: "file" },
   devToolbar: { enabled: false },
 });

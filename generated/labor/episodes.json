@@ -1,0 +1,33 @@
+{
+  "entity": "Episode",
+  "items": [
+    {
+      "claim_ids": [
+        "LAB-CLM-0011"
+      ],
+      "date_raw": "2025-08-01 (effective)",
+      "global_id": "labor/EP-2025-AUG",
+      "id": "EP-2025-AUG",
+      "id_origin": "CORPUS",
+      "norm": "Art. 52 of Ley 24.977's Anexo, as amended -- semi-annual IPC-indexed update, second application of fiscal year 2025",
+      "provenance": {
+        "blob_sha": "7068337973fd17e6424fc29a3bb278cce0a44d87",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "fd4035c637c796bb9cd2de031c6a0c4a74007da3c4207cbf2a69cc5892117956",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "EP-2025-AUG",
+        "source_path": "reports/lab_b4/LAB-B4-episode-sources.json",
+        "source_pointer": "/CANDIDATE_EPISODES/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "ruling_id": "LAB-GOV-Q0013-EPISODE-SELECTION-0001",
+      "selected": true,
+      "verdict_raw": "SELECTED as the best available treatment-timing candidate -- see RULING",
+      "vigencia": "2025-08-01 through 2026-01-31"
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

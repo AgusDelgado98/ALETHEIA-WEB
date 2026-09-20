@@ -1,0 +1,17 @@
+# Etiquetas públicas de estado (WEB-0 Editorial Contract §7): TRADUCCIONES de códigos que ya existen en el corpus.
+# No crean estados. Solo figuran los códigos presentes en el corte (G-STA-06: ninguna etiqueta para un código ausente).
+# Forma larga obligatoria («Evidencia insuficiente», nunca «Insuficiente»). Ampliar exige auditar cada etiqueta.
+schema: aletheia-web/editorial-states/1
+revision: 1
+claim_state_labels:
+  INSUFFICIENT_EVIDENCE:
+    id: claim-insufficient-evidence
+    text: "Evidencia insuficiente"
+question_resolution_labels:
+  INSUFFICIENT_EVIDENCE:
+    id: question-insufficient-evidence
+    text: "Evidencia insuficiente"
+fixed:
+  absence_not_negative:
+    id: fixed-absence-not-negative
+    text: "Ausencia, no resultado negativo."

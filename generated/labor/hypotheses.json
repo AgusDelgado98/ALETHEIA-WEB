@@ -1,0 +1,48 @@
+{
+  "entity": "Hypothesis",
+  "items": [
+    {
+      "candidate_sources": [
+        "ARCA"
+      ],
+      "claim_ids": [
+        "LAB-CLM-0011"
+      ],
+      "disclosure_required": false,
+      "effective_outcome": [
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "expected_observation": "A detectable discontinuity in transition rates coincident with the threshold change",
+      "failure_condition": "No detectable discontinuity around the threshold-change date",
+      "global_id": "labor/LAB-HYP-0006",
+      "id": "LAB-HYP-0006",
+      "id_origin": "CORPUS",
+      "known_breaks": [],
+      "metric": "Discontinuity in the rate of transition between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION around the threshold-change date",
+      "object_ids": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0016"
+      ],
+      "operational_definition": "Candidate regression-discontinuity-style design around a specific, not-yet-selected threshold-change event; not implemented",
+      "period": "Around a to-be-selected threshold-change episode",
+      "population": "Persons near a Monotributo tax-category threshold",
+      "prior_data_exposure": "NONE",
+      "provenance": {
+        "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-HYP-0006",
+        "source_path": "metadata/hypotheses/hypothesis-registry.json",
+        "source_pointer": "/5",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0013",
+      "registry_status": "HYPOTHESIS"
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

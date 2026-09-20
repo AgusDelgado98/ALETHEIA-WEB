@@ -1,0 +1,543 @@
+[
+  {
+    "CLAIM_ID": "LAB-CLM-0001",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0001",
+    "HYPOTHESIS_ID": "LAB-HYP-0001",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0001"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0001",
+      "LAB-OBJ-0006",
+      "LAB-OBJ-0013"
+    ],
+    "SOURCE": "SIPA",
+    "ROOT_IDS": [
+      "LAB-ROOT-0001"
+    ],
+    "LINEAGE_INDEPENDENCE": "Single root (LAB-ROOT-0001); independence is not applicable to a single-root observation. CONVERGENT is structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only SIPA's own registered-employment universe (private salaried, public salaried, domestic work, self-employed/monotributo modalities as SIPA itself tabulates them). Says nothing about unregistered/informal employment.",
+    "SHARED_COVERAGE_BIAS": "SIPA cannot see any employment outside its own registration system by construction.",
+    "SCOPE_STATEMENT": "This claim describes the composition of SIPA-registered employment by modality between 2012-01 and 2026-05. It does not describe total Argentine employment, and it does not describe any period before 2012-01 or after 2026-05.",
+    "CLAIM_TEXT": "Within SIPA's registered-employment universe, the composition by modality shifted materially between 2012-01 and 2026-05: ASALARIADO_PRIVADO's share fell 7.97 percentage points, ASALARIADO_PUBLICO's share rose 3.23 percentage points, and MONOTRIBUTO's share rose 5.21 percentage points, exceeding the pre-registered 2-percentage-point materiality threshold.",
+    "LIMITATIONS": [
+      "Single Evidence Root; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result strength",
+      "Endpoint (two-month) comparison; does not characterize the full trajectory",
+      "ASALARIADO_PUBLICO carries a mandatory GOV-005 extrapolation caveat"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in V1's SIPA standardization pipeline (e.g. a failed SHA-256 re-verification, contradicting this session's own recomputed match), or a future SIPA release showing the 2012-01/2026-05 comparison was an artifact of those two specific months rather than a real trend across the intervening period.",
+    "V1_GOV": [
+      "GOV-005",
+      "GOV-010"
+    ],
+    "LAB_GOV": [],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0002",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0003",
+    "HYPOTHESIS_ID": "LAB-HYP-0002",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0002"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0002",
+      "LAB-OBJ-0011",
+      "LAB-OBJ-0012"
+    ],
+    "SOURCE": "CGI",
+    "ROOT_IDS": [
+      "LAB-ROOT-0002"
+    ],
+    "LINEAGE_INDEPENDENCE": "Single root (LAB-ROOT-0002); JOB, HOUR, and WAGE_BILL are three measures of one national-accounts product, not three sources. CONVERGENT is structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only INDEC's national-accounts CGI-IMO universe, current base (2016-Q1 onward). Says nothing about earlier-base CGI vintages or non-national-accounts measures of jobs/hours/wages.",
+    "SHARED_COVERAGE_BIAS": "All three series share the same producer and estimation methodology; disagreement or agreement among them is an internal-consistency fact about one product, not cross-source evidence.",
+    "SCOPE_STATEMENT": "This claim describes divergence in nominal year-over-year growth rates among JOB, HOUR, and WAGE_BILL within INDEC's CGI-IMO national-accounts product, 2017-Q1 through 2026-Q1. It makes no real-value (inflation-adjusted) claim, since IPC is not admitted.",
+    "CLAIM_TEXT": "Within CGI-IMO, JOB and HOUR growth rates diverged sharply during 2020-2021 (up to 36.75 percentage points in 2021-Q2, plausibly reflecting intensive-margin adjustment around COVID-19); nominal WAGE_BILL growth diverged massively from JOB/HOUR from 2022 onward (up to 235 percentage points). This is a large nominal-currency divergence; its real-terms interpretation is deferred pending IPC admission, not asserted as a real labour-market signal here.",
+    "LIMITATIONS": [
+      "Single Evidence Root; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE",
+      "WAGE_BILL's divergence from JOB/HOUR is a large nominal-currency divergence; its real-terms interpretation is deferred pending IPC admission, not asserted here",
+      "No real-value (IPC-deflated) claim is made; BLOCKED_BY_IPC",
+      "2020-2021 treated as a potentially special (COVID-19) period; the JOB-HOUR relationship in that window may not generalize"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in V1's CGI standardization pipeline, or evidence that the TOTAL/TOTAL_GENERAL rows used here are not INDEC's genuine published national totals.",
+    "V1_GOV": [],
+    "LAB_GOV": [],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0003",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0002",
+    "HYPOTHESIS_ID": "LAB-HYP-0007",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0003"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0001",
+      "LAB-OBJ-0003"
+    ],
+    "SOURCE": "MLER",
+    "ROOT_IDS": [
+      "LAB-ROOT-0001",
+      "LAB-ROOT-0003"
+    ],
+    "LINEAGE_INDEPENDENCE": "LAB-ROOT-0003 (MLER) is DOWNSTREAM_PROXY of LAB-ROOT-0001 (SIPA), per V1's own P1 audit (C5B): MLER is sampled from the same SIPA/AFIP declaration stream. Not independent. CONVERGENT is unavailable for this pair regardless of numeric agreement.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only the 2012-01/2021-12 window where both sources' data exist, and only MLER's registered private-sector salaried sample population.",
+    "SHARED_COVERAGE_BIAS": "Both roots trace to the same underlying ARCA/SIPA declaration stream; close numerical agreement is expected by construction and is not treated as corroboration.",
+    "SCOPE_STATEMENT": "This claim describes the relationship between MLER-derived and SIPA-derived counts within their 2012-01/2021-12 overlap only. It says nothing about 2022-2026 (MLER's edition ends 2021-12) and nothing about EMPLOYER or JOB (both UNREALIZED on MLER per GOV-006).",
+    "CLAIM_TEXT": "Within the 2012-2021 overlap, MLER's weighted person-count tracks SIPA's ASALARIADO_PRIVADO level closely (average 0.54% difference), which is expected given MLER's downstream-proxy relationship to SIPA and is not independent corroboration. MLER's weighted employment-relationship count is consistently and increasingly higher than the person count (3.38% in 2012 rising to 5.07% in 2021), a measurable and substantively interpretable divergence consistent with rising multiple-job-holding among the sampled population.",
+    "LIMITATIONS": [
+      "Non-independent root pair; not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of numeric agreement",
+      "The person-count sub-finding's relation to LAB-HYP-0007's FAILURE_CONDITION is ambiguous because no numeric tolerance was pre-specified",
+      "GOV-006: EMPLOYER and JOB are UNREALIZED on MLER; not used",
+      "MLER ends 2021-12; no claim is made about 2022-2026"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in the DuckDB aggregation (e.g. a failed re-run producing different monthly totals), or documentation showing MLER's sampling frame changed materially within 2012-2021 in a way that breaks comparability with SIPA's frame.",
+    "V1_GOV": [
+      "GOV-006",
+      "GOV-010"
+    ],
+    "LAB_GOV": [],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0004",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0003",
+    "HYPOTHESIS_ID": "LAB-HYP-0002",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0007"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0002",
+      "LAB-OBJ-0011",
+      "LAB-OBJ-0012",
+      "LAB-OBJ-0025"
+    ],
+    "SOURCE": "CGI+IPC",
+    "ROOT_IDS": [
+      "LAB-ROOT-0002"
+    ],
+    "DEFLATOR_ROOT_ID": "LAB-ROOT-0006",
+    "LINEAGE_INDEPENDENCE": "Single labour-object-measuring root (LAB-ROOT-0002, CGI). LAB-ROOT-0006 (IPC) is used only as a deflator input in a MEASUREMENT_CHAIN (per LAB-A3 instruction section 4) and does not count as a second independent corroborating root: it measures a different STATISTICAL_OBJECT (LAB-OBJ-0025 PRICE_INDEX), not WAGE_BILL. CONVERGENT is structurally unavailable regardless of numeric result.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only INDEC's national-accounts CGI-IMO ASALARIADO WAGE_BILL, current base (2016-Q1 onward), deflated by INDEC's national IPC (base Dec-2016=100). Says nothing about non-national-accounts income measures or any pre-2016/pre-2017 vintage of either series.",
+    "SHARED_COVERAGE_BIAS": "CGI and IPC are both INDEC publications but use different producers within INDEC, different collection instruments, and different frame populations (see metadata/lineage/evidence-root-registry.json LAB-ROOT-0002/LAB-ROOT-0006); using IPC as a deflator does not introduce circularity with the WAGE_BILL measurement itself.",
+    "SCOPE_STATEMENT": "This claim describes real (IPC-deflated) year-over-year WAGE_BILL growth compared to nominal JOB and HOUR growth within CGI-IMO's ASALARIADO/TOTAL_GENERAL series, 2018-Q1 through 2026-Q1 (the window where CGI and LABOR's admitted IPC file overlap with a full quarter of monthly IPC data plus a 4-quarter-earlier base for YoY computation). It makes no claim about any period outside this window, and asserts no cause for the divergence observed.",
+    "CLAIM_TEXT": "Once deflated by the admitted national IPC (base Dec-2016=100), CGI-IMO's real WAGE_BILL year-over-year growth (ASALARIADO/TOTAL_GENERAL) is far smaller in magnitude than its nominal counterpart and frequently negative -- e.g. -14.75% in 2024-Q1 and -11.73% in 2024-Q2, versus nominal growth of 218.46% and 234.30% in those same quarters -- while JOB and HOUR growth (both non-currency counts, unaffected by deflation) remained within roughly ±18 percentage points throughout. Real WAGE_BILL growth still diverges from JOB/HOUR growth by more than the pre-registered 1-percentage-point threshold in most observed quarters (e.g. 2019-Q2: -10.43% vs +1.09% JOB vs -2.43% HOUR), satisfying LAB-HYP-0002's EXPECTED_OBSERVATION on its own preregistered real-value METRIC. No cause is asserted for either the nominal or the real divergence.",
+    "LIMITATIONS": [
+      "Single Evidence Root measuring WAGE_BILL (LAB-ROOT-0002); not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result strength",
+      "IPC used strictly as a deflator (MEASUREMENT_CHAIN); does not count as a second independent corroborating root (LAB-A3 instruction section 4)",
+      "Real WAGE_BILL YoY computable only 2018-Q1 through 2026-Q1, narrower than the nominal series' own 2017-Q1/2026-Q1 range, limited by IPC's Dec-2016 retrieval start (LAB-A2)",
+      "2020-2021 (COVID_REGIME_PRESENT=true) falls within this window; no preregistered with/without-COVID sensitivity exists for LAB-HYP-0002 and none was executed ad hoc",
+      "No causal or inflation-attribution claim is made; only the two computed growth measures (nominal, real) are compared"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in V1's CGI standardization pipeline, a demonstrated error in LABOR's own IPC retrieval/hash (LAB-A2), or evidence that the ASALARIADO/TOTAL_GENERAL WAGE_BILL rows are not INDEC's genuine published figures.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-IPC-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0005",
+    "STATE": "REFUTED_WITHIN_SCOPE",
+    "QUESTION_ID": "LAB-Q-0004",
+    "HYPOTHESIS_ID": "LAB-HYP-0003",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0009"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0006",
+      "LAB-OBJ-0007"
+    ],
+    "SOURCE": "EPH",
+    "ROOT_IDS": [
+      "LAB-ROOT-0005"
+    ],
+    "LINEAGE_INDEPENDENCE": "Single Evidence Root (LAB-ROOT-0005, EPH); no second source corroborates or contradicts this specific proxy classification. CONVERGENT and DIVERGENT are both structurally unavailable; only a single-root state (OBSERVED_IN_SOURCE or, as here, REFUTED_WITHIN_SCOPE) applies.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only wage/salary-earning employed persons (CAT_OCUP==3) in EPH's 32-urban-agglomerate domain, using the PP07H pension-deduction proxy for registration status. Says nothing about self-employed, employer, or unpaid-family-worker registration status, and nothing about rural or non-agglomerate populations.",
+    "SHARED_COVERAGE_BIAS": null,
+    "SCOPE_STATEMENT": "This claim describes whether the weighted share of wage/salary earners without a reported pension-fund deduction (PP07H==2) shifted materially between 2025-Q1 and 2026-Q1, within EPH's own 32-agglomerate wage/salary-earner population. It makes no claim about any other period, about non-wage-earning employment categories, or about the underlying causes of the observed (small) shift.",
+    "CLAIM_TEXT": "Within EPH's wage/salary-earner population (32 urban agglomerates), the weighted share without a reported pension-fund deduction (the EPH-internal proxy for unregistered employment) moved from 36.29% in 2025-Q1 to 37.90% in 2026-Q1, a shift of +1.61 percentage points. This is within LAB-HYP-0003's pre-registered 5-percentage-point materiality threshold: the split did NOT show a material shift between these two quarters. LAB-HYP-0003's FAILURE_CONDITION is met on this specific two-quarter, single-root test.",
+    "LIMITATIONS": [
+      "Refuted only WITHIN this scope: one proxy variable (PP07H), one sub-population (wage/salary earners), one two-quarter window (2025-Q1/2026-Q1), one Evidence Root (EPH). Says nothing about longer-run trends, other employment categories, or a differently-operationalized registration proxy",
+      "Not a person-level cross-source match against SIPA/MLER (no common identifier exists); a genuinely independent corroborating root was not attempted",
+      "No cause is asserted for the small observed shift"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in this session's own EPH retrieval/hash (LAB-A2/LAB-A2.1), a demonstrated error in the PONDERA-weighted computation, or a future quarter showing the shift crossing the 5-percentage-point threshold when added to this two-point series.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-EPH-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0006",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0005",
+    "HYPOTHESIS_ID": "LAB-HYP-0004",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0010"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0009",
+      "LAB-OBJ-0025"
+    ],
+    "SOURCE": "EPH+IPC",
+    "ROOT_IDS": [
+      "LAB-ROOT-0005"
+    ],
+    "DEFLATOR_ROOT_ID": "LAB-ROOT-0006",
+    "LINEAGE_INDEPENDENCE": "Single labour-object-measuring root (LAB-ROOT-0005, EPH). LAB-ROOT-0006 (IPC) is a deflator in a MEASUREMENT_CHAIN and is never counted toward the Root Counting Rule: it measures a different STATISTICAL_OBJECT (LAB-OBJ-0025 PRICE_INDEX), not LABOR_INCOME. CONVERGENT is structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only EPH-observed employed persons with a valid P21 response (32 urban agglomerates), 2025-Q1 and 2026-Q1, deflated by INDEC's national IPC (base Dec-2016=100). Says nothing about non-labour income, other periods, or populations outside EPH's domain.",
+    "SHARED_COVERAGE_BIAS": "EPH and IPC are both INDEC publications but use different producers, collection instruments, and frame populations (see LAB-ROOT-0005/LAB-ROOT-0006); using IPC as a deflator does not introduce circularity with the income measurement itself.",
+    "SCOPE_STATEMENT": "This claim describes nominal and real year-over-year growth of EPH-reported weighted mean labour income (P21) between 2025-Q1 and 2026-Q1 only. It makes no claim about any other period, about non-labour income, or about the cause of the gap between nominal and real growth.",
+    "CLAIM_TEXT": "Between 2025-Q1 and 2026-Q1, EPH's weighted mean reported labour income (P21) grew 35.48% in nominal terms but only 2.10% once deflated by the admitted national IPC (base Dec-2016=100) -- a gap of 33.38 percentage points, far exceeding LAB-HYP-0004's pre-registered 1-percentage-point threshold. LAB-HYP-0004's EXPECTED_OBSERVATION (real and nominal growth differing materially) is satisfied within this one window; no cause is asserted for the gap.",
+    "LIMITATIONS": [
+      "Single Evidence Root measuring LABOR_INCOME (LAB-ROOT-0005); IPC used strictly as a deflator, never a corroborating root",
+      "Exactly one window (2025-Q1 to 2026-Q1); the hypothesis's 'within each break-consistent window' language is satisfied for this one window only, since LABOR holds no other EPH quarter",
+      "Not compared in magnitude to LAB-CLM-0004's CGI WAGE_BILL finding -- different objects (aggregate WAGE_BILL vs. individual LABOR_INCOME), no equivalence asserted",
+      "No causal or inflation-attribution claim is made"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in this session's own EPH or IPC retrieval/hash, a demonstrated error in the PONDIIO-weighted computation, or evidence that P21/PONDIIO do not carry the meaning documented in INDEC's own record layout.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-EPH-0001",
+      "LAB-GOV-IPC-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0007",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0008",
+    "HYPOTHESIS_ID": "LAB-HYP-0005",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0015",
+      "LAB-EVD-0017"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0005",
+      "LAB-OBJ-0015",
+      "LAB-OBJ-0016",
+      "LAB-OBJ-0001",
+      "LAB-OBJ-0006",
+      "LAB-OBJ-0013"
+    ],
+    "SOURCE": "ARCA+SIPA",
+    "ROOT_IDS": [
+      "LAB-ROOT-0007",
+      "LAB-ROOT-0001"
+    ],
+    "LINEAGE_INDEPENDENCE": "Two roots cited (LAB-ROOT-0007 ARCA, LAB-ROOT-0001 SIPA), but NOT independent of each other -- both trace to the same underlying SUSS/ARCA declaration stream (LAB-GOV-SIPA-SUBSTITUTION-0001 section F). This is a single-conceptual-system composition metric built by combining two non-independent, non-competing measurements, not a two-independent-root corroboration. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable, for this reason rather than mere single-root weight.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only ARCA's Monotributista count (Cuadro 1) and SIPA's ASALARIADO_PRIVADO/ASALARIADO_PUBLICO/CASAS_PARTICULARES modalities (T.2 table), summed as a LAB-analytical-only denominator component, across three targeted vintages (Dec-2016, 2020, 2025). Says nothing about Autonomo, Mixtos, or any other category; says nothing about total employment.",
+    "SHARED_COVERAGE_BIAS": "SIPA's own declarations flow through ARCA (LAB-ROOT-0001's own SHARED_COVERAGE_BIAS); this is precisely why no CONVERGENT claim is eligible here. Distinct from LAB-B1's original exclusion (ARCA's own Dependientes row republishing SIPA under ARCA's cover): here SIPA is used from its own, independently-admitted, primary-producer root (LAB-ROOT-0001), per LAB-GOV-SIPA-SUBSTITUTION-0001 section F's same-phenomenon/not-same-evidence-path distinction.",
+    "SCOPE_STATEMENT": "This claim describes the share of Monotributo within (Monotributo + SIPA-derived formal dependent registration) at three separate points in time (Dec-2016, Dec-2020, Dec-2025) only. It makes no claim about any other period, about total employment, about individual-level transitions between categories, or about the cause of the observed shift. Monotributo and the SIPA-dependent modalities are not asserted to be mutually exclusive person populations (see LIMITATIONS, Mixtos).",
+    "CLAIM_TEXT": "Executed under LAB-GOV-SIPA-SUBSTITUTION-0001's authorization. LAB-HYP-0005's pre-registered METRIC (Monotributo share of Monotributo + formal dependent registration) was computed using ARCA's already-admitted Monotributista counts (Cuadro 1, Dec-2016/2020/2025) and SIPA's already-admitted ASALARIADO_PRIVADO+ASALARIADO_PUBLICO+CASAS_PARTICULARES modalities (T.2 table, same three vintages), summed as a LAB-analytical-only denominator component -- never SIPA's own TOTAL (GOV-005) -- instantiating the term the excluded ARCA Dependientes row could not supply. Result: the Monotributo share was 14.60% (Dec-2016; 1,678,677 of 11,498,694), 16.49% (Dec-2020; 1,887,224 of 11,443,898), and 19.44% (Dec-2025; 2,428,877 of 12,495,118) -- a monotonic increase of +4.84 percentage points from Dec-2016 to Dec-2025 (+1.89pp Dec-2016 to Dec-2020, +2.95pp Dec-2020 to Dec-2025), exceeding LAB-HYP-0005's pre-registered 3-percentage-point materiality threshold. LAB-HYP-0005's EXPECTED_OBSERVATION is met on this specific three-vintage test; its FAILURE_CONDITION is not met. This result is adjudicated as found, without being forced toward or away from significance. Full computation: reports/lab_b2_2/arca-sipa-hyp0005-execution.json. This claim supersedes this record's own prior LAB-B2 finding (INSUFFICIENT_EVIDENCE, preserved in this repository's git history and referenced in LAB-EVD-0015), which held only because the ARCA-alone evidence available at that time could not supply the 'formal dependent registration' term; that gap is what LAB-GOV-SIPA-SUBSTITUTION-0001 and this execution resolve.",
+    "LIMITATIONS": [
+      "MIXTOS / not mutually exclusive: ARCA's own Cuadro 1 formula (Autonomos+Dependientes+Monotributistas-Mixtos=Total) proves persons can be registered as both Monotributista and Dependiente simultaneously (Mixtos: 41,726 / 44,998 / 43,059 across the three vintages, LAB-EVD-0013); no person-level identifier links SIPA and ARCA's published tables, so this overlap cannot be deduplicated -- the denominator is inflated by an unknown, currently unquantifiable amount, and Monotributo/SIPA-dependent must not be read as mutually exclusive person populations",
+      "Cross-sectional only: three separate points in time, not a panel; no individual is tracked and no claim is made or may be inferred about any person transitioning between Monotributo and dependent registration",
+      "Not total employment: the denominator is a LAB-analytical construct covering only Monotributo and the three named SIPA modalities, not total Argentine or total registered employment",
+      "No causal claim: no cause is asserted for the observed shift in Monotributo share",
+      "Not eligible for CONVERGENT: SIPA and ARCA are not independent of each other (same underlying SUSS/ARCA declaration stream)",
+      "Not SIPA's own TOTAL: the three-modality sum is a LAB-analytical denominator component only (GOV-005), never asserted to equal or validate SIPA's own published TOTAL row",
+      "ASALARIADO_PUBLICO carries a mandatory GOV-005 extrapolation caveat (not a direct recount), inherited from V1",
+      "Three targeted, non-adjacent vintages only (Dec-2016, 2020, 2025), inherited from LAB-B1's own ARCA admission scope"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in the SIPA T.2 monthly series (reports/lab_a/sipa-t2-level-monthly.json) or in the ARCA Monotributista counts (LAB-EVD-0013), a demonstrated error in the unit conversion or share formula, or a future admitted source that deduplicates the Mixto-type overlap and shows the true (deduplicated) share moving materially differently from the figures reported here.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-SIPA-SUBSTITUTION-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0008",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0009",
+    "HYPOTHESIS_ID": null,
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0016"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0005",
+      "LAB-OBJ-0015",
+      "LAB-OBJ-0018"
+    ],
+    "SOURCE": "ARCA",
+    "ROOT_IDS": [
+      "LAB-ROOT-0007"
+    ],
+    "LINEAGE_INDEPENDENCE": "Single Evidence Root (LAB-ROOT-0007, ARCA). No hypothesis is registered against LAB-Q-0009, so this claim formalizes a scoping/methodological finding, not a multi-root corroborated quantitative result. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only what LAB-B1's admission of Cuadro 1 (Autonomo/Monotributo rows) can and cannot support; does not survey every conceivable administrative source.",
+    "SHARED_COVERAGE_BIAS": "Inherited from LAB-ROOT-0007's own SHARED_COVERAGE_BIAS (GOV-009/BESS-ANSES forward note); does not affect this claim's negative/exclusionary finding, since no corroboration across roots is attempted.",
+    "SCOPE_STATEMENT": "This claim states only what the admitted ARCA evidence (LAB-ROOT-0007) can and cannot validly support: formal tax/contribution-registration category, yes; economic dependence, subordination, exclusivity, or employer-side intent, no. It makes no claim about any other admissible or inadmissible source.",
+    "CLAIM_TEXT": "From the ARCA evidence admitted at LAB-B1 (Cuadro 1, Autonomo/Monotributo rows), only the formal tax/contribution-registration category a stock of persons holds (LEGAL_FORM/TAX_REGISTRATION) can be validly inferred. Economic dependence, subordination, exclusivity, and employer-side intent are not observed by any admitted ARCA field and cannot be validly inferred from this source. This closes LAB-Q-0009's two registered identification requirements (ARCA admission; a documented mapping of what ARCA fields can/cannot proxy), both satisfied by LAB-B1's own reports (LAB-B1-ARCA-admission.md, LAB-B1-object-mapping.md).",
+    "LIMITATIONS": [
+      "Answer is scoped to the one ARCA table admitted in this project (Cuadro 1); does not survey every ARCA publication that could theoretically exist",
+      "A negative/exclusionary finding (cannot identify X) reflects current admitted sources, not a permanent impossibility -- a future admitted source or governed proxy could change this",
+      "Single Evidence Root (LAB-ROOT-0007); not eligible for CONVERGENT or ESTABLISHED_WITHIN_SCOPE regardless of result",
+      "No hypothesis is registered against LAB-Q-0009 (methodological/scoping question by design); this claim answers the scoping question itself, not a quantitative test"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "Admission of a new ARCA table, or any other source, whose fields do observe subordination, exclusivity, or employer-side intent; or a LAB-GOV ruling admitting a valid economic-dependence proxy.",
+    "V1_GOV": [],
+    "LAB_GOV": [],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0009",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0012",
+    "HYPOTHESIS_ID": null,
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0018"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0005",
+      "LAB-OBJ-0015",
+      "LAB-OBJ-0016",
+      "LAB-OBJ-0026"
+    ],
+    "SOURCE": "REGULATORY",
+    "ROOT_IDS": [],
+    "LINEAGE_INDEPENDENCE": "No Evidence Root applies: this claim cites regulatory/legal-text sources admitted via metadata/sources/source-registry.json at LAB-B3, not statistical data with a FRAME_POPULATION/GRAIN/INDEPENDENCE_CLASS. No hypothesis is registered against LAB-Q-0012, so this claim formalizes a descriptive scoping finding, not a multi-root corroborated quantitative result. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only what the eight LAB-B3-admitted regulatory sources (LAB-SRC-0004 through LAB-SRC-0011) establish for three observable registration categories (TRABAJADOR_REGISTRADO_DEPENDIENTE, MONOTRIBUTO_REGISTRATION, AUTONOMOS_REGISTRATION) across three protection/obligation dimensions. Does not survey any regulation beyond those eight sources.",
+    "SHARED_COVERAGE_BIAS": "Not applicable: SHARED_COVERAGE_BIAS as defined for statistical Evidence Roots (sampling/collection-instrument overlap) has no analogue for regulatory/legal-text citations. No corroboration across sources is attempted or implied.",
+    "SCOPE_STATEMENT": "This claim states only the regulatory STATUS (ESTABLISHED / PARTIALLY_ESTABLISHED / OPEN_NOT_RESOLVED) that the eight LAB-B3 sources support for each of three categories across tax/pension obligations, labour-law protections, and social-security coverage. It makes no claim about any individual's real economic or labour relationship, no comparison or ranking between the three categories, and no claim about any regulation outside the eight admitted sources.",
+    "CLAIM_TEXT": "Answers LAB-Q-0012 ('How are protections and obligations distributed across the labour-provision modalities that are observable?') using exclusively the governed mapping LAB-B3 produced under LAB-GOV-Q0012-REGULATORY-SOURCES-0001 (reports/lab_b3/LAB-B3-governed-mapping.json); no new regulatory source was consulted. TRABAJADOR_REGISTRADO_DEPENDIENTE: tax/pension obligations ESTABLISHED (aportes personales y contribuciones patronales al SIPA, Ley 24.241); labour-law protections PARTIALLY_ESTABLISHED (regulated by the LCT, Ley 20.744, as a general framework, not catalogued article-by-article); obra social ESTABLISHED as obligatory (Ley 23.660 Art. 8 inciso a); ART ESTABLISHED as obligatory (Ley 24.557); asignaciones familiares ESTABLISHED (Ley 24.714 Art. 1); seguro de desempleo PARTIALLY_ESTABLISHED (structurally implied dependiente-only, no explicit textual exclusion for non-dependientes located). MONOTRIBUTO_REGISTRATION: tax/pension obligations ESTABLISHED (cuota unica con componente previsional, Ley 24.977 Art. 39); labour-law protections OPEN_NOT_RESOLVED (no LCT-style provision found in the law reviewed -- an absence observed in the text, not proven exhaustive); obra social ESTABLISHED as bundled in the cuota (Ley 24.977 Art. 39 inciso b, confirmed operatively by ARCA's own portal); jubilacion/SIPA ESTABLISHED (reduced contribution, access to the Prestacion Basica Universal); ART, seguro de desempleo, and asignaciones familiares all OPEN_NOT_RESOLVED (no admissible primary source located this phase; only inadmissible press sources were found for asignaciones familiares). AUTONOMOS_REGISTRATION: tax/pension obligations ESTABLISHED (aportes por categoria, Ley 24.241 Art. 10); labour-law protections OPEN_NOT_RESOLVED; jubilacion/SIPA ESTABLISHED (ARCA's own official quote: access to 'las mismas [prestaciones]... a las que accederia si trabajara en relacion de dependencia'); obra social PARTIALLY_ESTABLISHED (NOT listed as an obligatory beneficiary under Ley 23.660 Art. 8; voluntary/private affiliation not investigated); asignaciones familiares ESTABLISHED as an explicit exclusion (ARCA's own quote: '...excepto las asignaciones familiares'); ART ESTABLISHED as not obligatory (incorporable only by decree of the Poder Ejecutivo). This is a distribution of REGULATORY STATUS only: it does not establish that any individual holding a given registration category is in that category's corresponding real economic or labour relationship (TAX_REGISTRATION/LEGAL_FORM != EMPLOYMENT_RELATIONSHIP/ECONOMIC_RELATIONSHIP, Regime B's frozen prohibition, unaffected); asserts no cause for the distribution; and does not convert any OPEN_NOT_RESOLVED cell into evidence of absence -- those cells are reported unresolved, not established non-existent.",
+    "LIMITATIONS": [
+      "Regulatory status only: says nothing about whether any individual's real economic/labour relationship matches their registration category (TAX_REGISTRATION/LEGAL_FORM != EMPLOYMENT_RELATIONSHIP/ECONOMIC_RELATIONSHIP, unaffected)",
+      "5 of 19 mapped cells remain OPEN_NOT_RESOLVED (LCT-protection detail for Monotributo/Autonomos; ART and seguro de desempleo for Monotributo; asignaciones familiares for Monotributo) -- reported as unresolved, never converted into evidence of absence",
+      "3 of 19 mapped cells are PARTIALLY_ESTABLISHED only: the general regime is confirmed but not exhaustively detailed",
+      "No comparative ranking, scoring, or causal claim between the three categories is made",
+      "Built entirely from regulatory/legal-text citations, not statistical/administrative microdata; no Evidence Root, no Root Counting Rule, no CONVERGENT eligibility",
+      "Inherits every limitation already declared in LAB-GOV-Q0012-REGULATORY-SOURCES-0001 and reports/lab_b3/LAB-B3-closeout.md verbatim; none relaxed or reinterpreted this phase",
+      "No new regulatory source was retrieved to resolve any open cell; resolving them would require a future, separately authorized source-admission phase"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "Admission of further official regulatory sources (a LAB-GOV ruling analogous to LAB-GOV-Q0012-REGULATORY-SOURCES-0001) that resolve one or more of the five OPEN_NOT_RESOLVED cells, or that demonstrate an error in how the eight already-admitted LAB-SRC-0004 through LAB-SRC-0011 sources were read.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-Q0012-REGULATORY-SOURCES-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0010",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0010",
+    "HYPOTHESIS_ID": null,
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0019"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0017",
+      "LAB-OBJ-0018"
+    ],
+    "SOURCE": "EPH",
+    "ROOT_IDS": [
+      "LAB-ROOT-0005"
+    ],
+    "LINEAGE_INDEPENDENCE": "Single Evidence Root (LAB-ROOT-0005, EPH). No hypothesis is registered against LAB-Q-0010, so this claim formalizes an existence/scoping finding, not a multi-root corroborated quantitative result. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only EPH's surveyed independent-worker population (CAT_OCUP in {1,2}), two admitted quarters (2025-Q1, 2026-Q1). Does not survey any other source or population for a candidate proxy.",
+    "SHARED_COVERAGE_BIAS": "Not applicable in the corroboration sense: this claim reports only that a candidate variable exists within EPH's own domain, not agreement or disagreement with any other source.",
+    "SCOPE_STATEMENT": "This claim states only that a candidate observable proxy (PP05F, single- vs. multiple-client status) exists within EPH, LABOR's one admitted source with independent-worker microdata. It makes no claim that PP05F is a valid, governed ECONOMIC_DEPENDENCE proxy, and no claim about LAB-Q-0011/LAB-HYP-0009, which remains separately NOT_IDENTIFIABLE.",
+    "CLAIM_TEXT": "Answers LAB-Q-0010 ('Do any observable proxies of economic dependence exist within sources plausibly admissible to ALETHEIA-LABOR?') using exclusively LAB-B's own already-recorded finding (LAB-EVD-0012); no new research was performed. Yes: PP05F ('trabaja habitualmente para... un solo cliente / distintos clientes') exists and is populated for independent workers/employers in both admitted EPH quarters. This answers LAB-Q-0010's existence question in the narrow, pre-registered sense: a candidate exists. It is explicitly unvalidated -- no LAB-GOV ruling has ever admitted PP05F as a governed ECONOMIC_DEPENDENCE proxy, and none is created by this claim. This does not answer, reopen, or affect LAB-Q-0011/LAB-HYP-0009, which remains NOT_IDENTIFIABLE for its own separate reason: no admitted source carries the ground-truth 'known dependent vs. known independent' labels any proxy's separation rate would need to be validated against.",
+    "LIMITATIONS": [
+      "Unvalidated: no LAB-GOV ruling admits PP05F as a governed ECONOMIC_DEPENDENCE proxy; none is created by this claim",
+      "Self-reported (EPH), not an administrative registration record",
+      "Applies only to EPH's surveyed independent-worker population (CAT_OCUP in {1,2})",
+      "A single-client business relationship is not presumed to imply economic dependence",
+      "Does not answer, reopen, or otherwise affect LAB-Q-0011/LAB-HYP-0009, which remains NOT_IDENTIFIABLE",
+      "No new research was performed; this claim formalizes LAB-EVD-0012's own already-recorded finding"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "A future LAB-GOV ruling either validating or rejecting PP05F as a governed ECONOMIC_DEPENDENCE proxy would change what can be done with it, but would not change this claim's own narrow existence finding. Discovery of ground-truth dependence labels in some admitted or admissible source would be required to unblock LAB-Q-0011/LAB-HYP-0009 separately.",
+    "V1_GOV": [],
+    "LAB_GOV": [],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0011",
+    "STATE": "INSUFFICIENT_EVIDENCE",
+    "QUESTION_ID": "LAB-Q-0013",
+    "HYPOTHESIS_ID": "LAB-HYP-0006",
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0020"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0003",
+      "LAB-OBJ-0016"
+    ],
+    "SOURCE": "ARCA",
+    "ROOT_IDS": [
+      "LAB-ROOT-0007"
+    ],
+    "LINEAGE_INDEPENDENCE": "Single Evidence Root (LAB-ROOT-0007, ARCA), LAB-HYP-0006's own sole CANDIDATE_SOURCE. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only whether LAB-HYP-0006's pre-registered design is computable from currently admitted or plausibly admissible sources; does not survey any new source this phase.",
+    "SHARED_COVERAGE_BIAS": "Inherited from LAB-ROOT-0007 and, by reference, LAB-ROOT-0003 (MLER, the only source ever operationalized for EMPLOYMENT_RELATIONSHIP): both trace to SUSS/ARCA-administered declaration streams; no corroboration across roots is attempted or implied by this claim.",
+    "SCOPE_STATEMENT": "This claim states only that LAB-HYP-0006's pre-registered METRIC (discontinuity in the rate of transition between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION around a Monotributo threshold-change episode) cannot be computed from any source this project has admitted or has reason to believe exists. It makes no claim about the actual existence, direction, or magnitude of any such discontinuity.",
+    "CLAIM_TEXT": "LAB-HYP-0006's pre-registered design remains genuinely blocked even after LAB-B4 selected its best-available treatment-timing episode (EP-2025-AUG, 2025-08-01, LAB-GOV-Q0013-EPISODE-SELECTION-0001). Three independent, stacked blockers, none resolved by episode selection: (1) STOCK vs. FLOW -- LAB-ROOT-0007 (ARCA, Cuadro 1) is monthly stock data only; LAB-B1 already declared registration-flow (altas/bajas) data SOURCE_NOT_AVAILABLE in every ARCA publication evaluated, and the pre-registered METRIC needs a transition/flow rate. (2) EMPLOYMENT_RELATIONSHIP coverage gap -- the only source this project has operationalized for LAB-OBJ-0003 is MLER (LAB-ROOT-0003), whose admitted period ends 2021-12, four years before the selected episode. (3) No person-level linkage -- no source admitted anywhere in this project (ARCA, SIPA, MLER, EPH) shares a person-level identifier with any other (LAB-CLM-0003 already established this absence between EPH and SIPA/MLER; LAB-B1/LAB-B4 found no different situation for ARCA), so even a perfectly-windowed episode with every source admitted could not measure an individual-level transition rate as pre-registered. LAB-HYP-0006 is therefore adjudicated INSUFFICIENT_EVIDENCE, the same terminal state used for LAB-HYP-0005 before its own, later, separately-authorized resolution -- not forced to REFUTED/ESTABLISHED, and not resolved by inventing a stock-level proxy in place of the pre-registered transition-rate definition. No causal effect was computed; the hypothesis was not executed.",
+    "LIMITATIONS": [
+      "This is a documented incapacity to test the hypothesis with currently known or plausible sources, not a finding about the true causal effect in either direction",
+      "No causal effect was computed; no proxy metric was substituted; LAB-HYP-0006's own METRIC/EXPECTED_OBSERVATION/FAILURE_CONDITION/CANDIDATE_SOURCES text is unmodified",
+      "Blockers (1) and (2) are, in principle, resolvable by a future source not currently known to exist; blocker (3) is structural and, based on every prior search in this project (LAB-CLM-0003, LAB-B1, LAB-B4), unlikely to be resolved by public-source discovery alone",
+      "Does not reopen or alter LAB-GOV-Q0013-EPISODE-SELECTION-0001's own selected episode (EP-2025-AUG); a future source admission would still use that same episode unless a new ruling changes it",
+      "Treated as this project's terminal disposition for Regime B closeout purposes; not a claim that no future evidence could ever unseat it"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "Discovery and governed admission of a genuinely new official source with individual-level or flow/transition data linking tax registration to employment status, covering a period overlapping an admissible episode -- not pursued or expected based on this project's own repeated prior investigation.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-Q0013-EPISODE-SELECTION-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0012",
+    "STATE": "OBSERVED_IN_SOURCE",
+    "QUESTION_ID": "LAB-Q-0016",
+    "HYPOTHESIS_ID": null,
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0021"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0019",
+      "LAB-OBJ-0020"
+    ],
+    "SOURCE": "OBSERVATORY_DESIGN",
+    "ROOT_IDS": [],
+    "LINEAGE_INDEPENDENCE": "No Evidence Root applies: this claim reasons about LABOR's own not-yet-built design specification, not an external statistical or regulatory source. No hypothesis is registered against LAB-Q-0016, so this claim formalizes a design-stage scoping/pre-mortem finding, not a multi-root corroborated quantitative result. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only the structural properties of the minimum-viable, single-pass Observatory design specified in reports/lab_c0/LAB-C0-observatory-design.json. Does not measure any actual bias magnitude (no corpus exists) and does not evaluate any alternative, larger, or differently-designed observatory.",
+    "SHARED_COVERAGE_BIAS": "Not applicable: no data source exists to carry a coverage bias yet; this claim is itself an anticipatory analysis of the bias the eventual data source would carry.",
+    "SCOPE_STATEMENT": "This claim states only which structural biases the proposed Observatory design would carry if built as specified, reasoned from the design's own properties. It makes no claim about any actual bias magnitude, does not resolve LAB-Q-0018's posting-vs-real-hiring divergence question, and does not authorize, execute, or provide evidence toward LAB-Q-0014.",
+    "CLAIM_TEXT": "Answers LAB-Q-0016 ('what structural biases would a future Job Posting Observatory carry?') as a design-stage pre-mortem, using exclusively this phase's own Observatory design (reports/lab_c0/LAB-C0-observatory-design.json); no platform was selected, no data was captured. Finding: yes, substantial and structurally unavoidable biases across eight dimensions. Platform selection: over-represents the eventually-chosen platform's own user base, under-represents employers using other channels (direct career pages, referrals, niche boards, or no formal posting at all). Sector coverage: over-represents white-collar/digital-native roles relative to informal, manual, rural, or micro-enterprise hiring. Geography: skews toward high-connectivity urban areas. Seniority: a near-certain skew whose direction is not determinable without data. Duplicates: the same vacancy can be counted more than once absent a platform-issued stable identifier -- disclosed and flagged by the design's own dedup taxonomy, not resolved by it. Posting persistence: long-lived postings are structurally over-represented by snapshot-design construction alone, independent of their true relative frequency. Employer self-selection: only employers who post formally, on a captured platform, are observed at all. Posting-vs-real-hiring divergence: structurally unresolvable by this design, since it never observes VACANCY or HIRE -- this is LAB-Q-0018's own separate, unresolved question. None of these biases block LAB-Q-0014 itself, which asks only what posting text alone can reveal; they must, however, be disclosed in full alongside any future LAB-Q-0014 finding.",
+    "LIMITATIONS": [
+      "Qualitative, design-stage reasoning only; no corpus exists, so no actual bias magnitude is measured or claimed",
+      "Seniority bias direction is explicitly left undetermined",
+      "Duplicate/evergreen biases are disclosed and flagged, not resolved, by the design's own taxonomy",
+      "Does not resolve LAB-Q-0018's own posting-vs-real-hiring divergence question",
+      "Does not authorize, execute, or provide evidence toward LAB-Q-0014, which remains unexecuted",
+      "Applies to the specific minimum-viable, single-pass design analyzed here; a materially different future design could carry a different bias profile"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "Not literally falsifiable without a built corpus, since most of these biases follow near-definitionally from the design's own structure (single/few platform, public-listing-only, snapshot-based). A materially different future Observatory design (e.g. genuinely multi-platform, continuous, or supplemented by an independent hires-outcome source) would need its own, separate pre-mortem rather than reusing this one.",
+    "V1_GOV": [],
+    "LAB_GOV": [],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0013",
+    "STATE": "INSUFFICIENT_EVIDENCE",
+    "QUESTION_ID": "LAB-Q-0014",
+    "HYPOTHESIS_ID": null,
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0024"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0019",
+      "LAB-OBJ-0021",
+      "LAB-OBJ-0023"
+    ],
+    "SOURCE": "PLATFORM_EVALUATION",
+    "ROOT_IDS": [],
+    "LINEAGE_INDEPENDENCE": "No Evidence Root applies: this claim reasons about source availability, not about a statistical measurement drawn from an admitted Evidence Root. No hypothesis is registered against LAB-Q-0014, so HYPOTHESIS_ID is null, mirroring the hypothesis-less closure pattern already used for LAB-Q-0009/LAB-Q-0010/LAB-Q-0012/LAB-Q-0016. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only whether an admissible Job Posting Observatory source could be identified within two explicitly bounded evaluation rounds (LAB-C1: four candidates; LAB-C1.1: four further candidates plus one ownership-check bundle), each applying LAB-C0's own design/policy exactly as written. Does not survey the entire universe of conceivable public job-posting sources, and makes no claim that it does.",
+    "SHARED_COVERAGE_BIAS": "Not applicable: no data source was admitted, so no source carries a coverage bias into this claim. The candidates themselves span structurally different failure modes (ToS automation bans, robots.txt/privacy misfit, discontinued access mechanism, and Argentina-coverage insufficiency), so the non-admission is not attributable to a single shared cause.",
+    "SCOPE_STATEMENT": "This claim states only that no candidate platform evaluated across LAB-C1 and LAB-C1.1, against LAB-C0's own governance gates, could be admitted as the Job Posting Observatory's source. It makes no claim that no admissible source exists anywhere; the conclusion is limited to: no se identifico una fuente admisible dentro del alcance y criterios evaluados (no admissible source was identified within the scope and criteria evaluated).",
+    "CLAIM_TEXT": "LAB-Q-0014 ('which dimensions of a recruitment/selection process are observable using only public sources?') is closed INSUFFICIENT_EVIDENCE on source-availability grounds, without executing the question and without capturing a single posting. The path to this closure: LAB-C0 fully governed a minimum-viable Job Posting Observatory design (grain, coverage, temporal window, minimum fields, deduplication, provenance, hashing/versioning, reproducibility, retention, privacy, copyright/text-retention, ToS/robots/API compliance, rate limiting, inclusion/exclusion criteria) and populated this project's first-ever GENERATED_SOURCE governance policy (coverage, ethics, retention, reproducibility, bias, hashing, methodology), before any platform was investigated. Two bounded evaluation rounds then applied that governance, exactly as written, to eight named candidates plus one ownership-check bundle: LAB-C1 (Bumeran, ZonaJobs, Computrabajo, and the Cartelera Publica Central de Ofertas de Empleo Publico; ruling LAB-GOV-Q0014-PLATFORM-SELECTION-0001, NO_ADMISSIBLE_CANDIDATE_FOUND) and LAB-C1.1 (Remote OK, We Work Remotely, Indeed, and LinkedIn Jobs, plus a Konzerta/Multitrabajos ownership check; ruling LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001, NO_ADMISSIBLE_CANDIDATE_FOUND). No candidate combining Argentina coverage, Terms-of-Service/robots.txt/API compliance, privacy fit, and reproducibility could be admitted: the private job boards (Bumeran, Computrabajo, and by shared-ownership inference ZonaJobs) carry explicit Terms-of-Service bans on automated access with no qualifying research API; the one Terms-of-Service-permissive candidate found in the first round, the Cartelera Publica, is blocked by a robots.txt disallow on the .pdf format carrying most of its postings and by a routine DNI-bearing privacy footprint that does not fit LAB-C0's incidental-contact-only PRIVACY provision; the two candidates with the most permissive Terms-of-Service/robots.txt/API profile found in either round, Remote OK and We Work Remotely, both fail decisively on Argentina-specific coverage; Indeed's own public API was permanently discontinued in 2023, leaving no admissible access mechanism at all; and LinkedIn carries an explicit Terms-of-Service scraping ban whose sole research exception is a competitive, sandboxed, aggregate-only program that would not supply individual posting records even if granted. Zero postings were captured across both rounds; zero scraping and zero API calls for data collection were made against any candidate. LAB-C0's own design and GENERATED_SOURCE policy were never redefined, loosened, or adapted to force any candidate's admission, in either round. Continuing to expand the search was assessed, at LAB-C1.1's own close, as carrying low marginal value relative to its scope-creep risk, given the structural diversity of failure modes already observed across eight distinct candidates. The conclusion is limited strictly to: no admissible source was identified within the scope and criteria evaluated -- this claim does not assert, and must not be read as asserting, that no admissible source exists at all.",
+    "LIMITATIONS": [
+      "This is a documented incapacity to identify an admissible source within two explicitly bounded evaluation rounds, not a claim that no admissible source could ever exist -- a materially different future candidate, or a change in an already-evaluated candidate's own Terms of Service/API offering, could unseat it",
+      "No new platform research was conducted to produce this claim; it formalizes LAB-C1's and LAB-C1.1's own already-recorded findings into the claim-ledger's terminal lifecycle",
+      "Does not reopen, alter, or re-litigate any individual candidate's own GATE_RESULT from LAB-C1 or LAB-C1.1",
+      "Does not modify LAB-Q-0014's own ledger STATUS field (remains NOT_YET_OPERATIONAL), per this project's own established convention that a question's registered STATUS is never rewritten post-hoc when a claim resolves it (precedent: LAB-Q-0004/0005/0008/0009/0010/0012/0016)",
+      "Does not affect LAB-Q-0015/LAB-HYP-0008, LAB-Q-0016, LAB-Q-0017, or LAB-Q-0018, none of which depend on this claim or on any Job Posting Observatory capture",
+      "Treated as this project's terminal disposition for LAB-Q-0014 given the search conducted; not a claim that no future evidence could ever unseat it"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "Discovery and governed evaluation of a genuinely new candidate not considered in LAB-C1 or LAB-C1.1 (e.g. a sector-specific Argentine board, an employer-side ATS with a public research feed, or a future official open dataset of individual job postings), or a material change in an already-evaluated candidate's own Terms of Service, robots.txt, or API offering (e.g. a private board publishing a public research-scoped API, or the Cartelera Publica moving its convocatorias to a non-PDF, robots.txt-permitted format) -- none of which is pursued or expected by this claim.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-Q0014-PLATFORM-SELECTION-0001",
+      "LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  },
+  {
+    "CLAIM_ID": "LAB-CLM-0014",
+    "STATE": "INSUFFICIENT_EVIDENCE",
+    "QUESTION_ID": "LAB-Q-0018",
+    "HYPOTHESIS_ID": null,
+    "EVIDENCE_IDS": [
+      "LAB-EVD-0025"
+    ],
+    "OBJECT_IDS": [
+      "LAB-OBJ-0019",
+      "LAB-OBJ-0020",
+      "LAB-OBJ-0022"
+    ],
+    "SOURCE": "SOURCE_AVAILABILITY_REVIEW",
+    "ROOT_IDS": [],
+    "LINEAGE_INDEPENDENCE": "No Evidence Root applies: this claim reasons about source availability, not a statistical measurement from an admitted Evidence Root. No hypothesis is registered against LAB-Q-0018, so HYPOTHESIS_ID is null, mirroring the hypothesis-less closure pattern of LAB-CLM-0013 and earlier. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are structurally unavailable.",
+    "SCOPE_COVERAGE_ADEQUACY": "Covers only whether the sources admitted or evaluated within this project (including the two bounded platform-evaluation rounds LAB-C1 and LAB-C1.1) can support a postings-versus-hires comparison. Does not survey any source outside that scope, and makes no claim that it does.",
+    "SHARED_COVERAGE_BIAS": "Not applicable: no data source was admitted for either side of the comparison, so no source carries a coverage bias into this claim.",
+    "SCOPE_STATEMENT": "This claim states only that no evidence sufficient to compare descriptions based on published job postings with descriptions based on real hiring outcomes exists within the sources and scope evaluated. It does not assert that such evidence cannot exist outside this project's scope. In Spanish, as scoped: no existe evidencia suficiente dentro de las fuentes y alcance evaluados para comparar postings con resultados reales de contratacion.",
+    "CLAIM_TEXT": "LAB-Q-0018 ('when both are observable, how do descriptions based on published job postings diverge from descriptions based on real hiring outcomes?') is closed INSUFFICIENT_EVIDENCE on source-availability grounds, without any new research and without measuring or estimating any divergence. The question's own IDENTIFICATION_REQUIREMENTS demand, simultaneously: (1) an admissible JOB_POSTING corpus (LAB-OBJ-0019); (2) an independent source of HIRE events (LAB-OBJ-0022); and (3) a valid mechanism to compare or link the two. None is met within the sources and scope evaluated. (1) No admissible postings corpus exists: LAB-C1 and LAB-C1.1 evaluated eight candidates plus an ownership-check bundle against LAB-C0's own governance, applied as written, and both ruled NO_ADMISSIBLE_CANDIDATE_FOUND; LAB-Q-0014 was closed INSUFFICIENT_EVIDENCE on that limitation (LAB-CLM-0013); no posting was captured. (2) No admitted source observes HIRE events: LAB-OBJ-0022 remains DEFINED_PENDING_SOURCE with no observation mechanism, the Job Posting Observatory is NOT_SUPPORTED_FOR HIRE (LAB-SCM-0024) and was designed never to observe hiring outcomes, and LAB-B1 found no registration-flow (altas/bajas) data in any ARCA publication evaluated. Employment stocks (EMPLOYMENT_RELATIONSHIP, LAB-OBJ-0003) were not reinterpreted as hiring events, because HIRE is the transition event and not the resulting stock. (3) No validated linkage or common taxonomy connects the two sides: no admitted source shares a person-level or employer-level identifier with any other (LAB-CLM-0003, LAB-CLM-0011), and MLER's EMPLOYER/JOB fields are unrealized (GOV-006). The object-model distinctions POSTING != VACANCY != HIRE were preserved throughout: a posting was never treated as a vacancy, a vacancy was never treated as observable, and neither was treated as a hire. Because the question is conjunctive (both sides must be observable), the absence of either side alone would suffice; here both are absent. The conclusion is limited strictly to: there is not sufficient evidence, within the sources and scope evaluated, to compare postings with real hiring outcomes. This claim does not assert, and must not be read as asserting, that such evidence cannot exist outside this project's scope, and it deliberately does not use NOT_IDENTIFIABLE, which would assert a stronger structural impossibility than the current evidence supports.",
+    "LIMITATIONS": [
+      "This is a documented insufficiency of evidence within the sources and scope evaluated, not a claim that such evidence cannot exist outside this project's scope",
+      "No new source discovery, RAW reading, or data capture was performed to produce this claim; it formalizes already-recorded findings into the claim ledger's terminal lifecycle",
+      "The hire-side absence rests on this project's own admitted sources and prior searches; V1 manifests were not inspected for flow series in this block",
+      "Does not assert NOT_IDENTIFIABLE; no structural impossibility of the comparison is claimed",
+      "Does not measure or estimate any postings-versus-hires divergence in either direction",
+      "Does not modify LAB-Q-0018's own ledger STATUS (remains NOT_YET_OPERATIONAL), per this project's convention that a question's registered STATUS is never rewritten post-hoc when a claim resolves it",
+      "Does not affect LAB-Q-0014 (closed, LAB-CLM-0013), LAB-Q-0015/LAB-HYP-0008 and LAB-Q-0017 (NOT_IDENTIFIABLE), or LAB-Q-0016 (closed, LAB-CLM-0012)"
+    ],
+    "WHAT_WOULD_UNSEAT_THIS": "Governed admission of an admissible JOB_POSTING corpus together with an independent source of HIRE events (transition or flow data, not employment stocks) and a validated linkage or taxonomy connecting them -- none of which is pursued or expected by this claim, and each of which would require its own separately authorized admission.",
+    "V1_GOV": [],
+    "LAB_GOV": [
+      "LAB-GOV-Q0014-PLATFORM-SELECTION-0001",
+      "LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001"
+    ],
+    "NOT_ELIGIBLE_FOR": [
+      "ESTABLISHED_WITHIN_SCOPE",
+      "CONVERGENT"
+    ]
+  }
+]

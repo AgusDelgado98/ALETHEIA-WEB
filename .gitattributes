@@ -1,3 +1,7 @@
 * text=auto eol=lf
 # Frozen governance imports are stored byte-for-byte (they use CRLF); never normalise them.
 governance/** -text
+# Fuentes vendorizadas y fixtures con hash fijado: se guardan byte a byte (sin normalizar saltos de línea).
+corpus-src/** -text
+tests/fixtures/golden/** -text
+public/fonts/** binary

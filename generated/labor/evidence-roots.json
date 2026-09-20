@@ -1,0 +1,75 @@
+{
+  "entity": "EvidenceRoot",
+  "items": [
+    {
+      "collection_instrument": "Anonymized longitudinal sample constructed from monthly employer declarations to SIPA/AFIP (ARCA) for registered private salaried employment (per V1 P1 audit, reports/p1/C5B-Argentina-administrative-source-audit.md)",
+      "dataset_release": "MLER.csv (extracted from mler_csv.rar), SHA-256 0e71f5f920c81a6f10e13325c1e9acd0c2866ca806884f2d9487f8ff37599852",
+      "frame_population": "Argentina; registered private-sector salaried employment, sampled (~600,000 workers, ~1.8 million employer-worker relationships per official documentation)",
+      "global_id": "labor/LAB-ROOT-0003",
+      "id": "LAB-ROOT-0003",
+      "id_origin": "CORPUS",
+      "independence_class": "DOWNSTREAM_PROXY",
+      "is_deflator": false,
+      "period": "1996-01 to 2021-12",
+      "primary_producer": "Observatorio de Empleo y Dinamica Empresarial (OEDE), STEySS, Ministerio de Capital Humano",
+      "provenance": {
+        "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-ROOT-0003",
+        "source_path": "metadata/lineage/evidence-root-registry.json",
+        "source_pointer": "/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "publication": "Muestra Longitudinal de Empleo Registrado (MLER), edicion 2021",
+      "relative_to_root_id": "LAB-ROOT-0001",
+      "shared_coverage_bias": "MLER is explicitly documented (V1 P1 audit, C5B) as a sample constructed FROM the same SIPA/AFIP(ARCA) employer-declaration stream that LAB-ROOT-0001 (SIPA) itself publishes aggregates from. Close numerical agreement between the two is therefore expected by construction, not evidence of independent corroboration of the underlying registered-employment count. GOV-006 also applies: EMPLOYER and JOB are UNREALIZED on this artifact; only PERSON (LAB-OBJ-0001) and EMPLOYMENT_RELATIONSHIP (LAB-OBJ-0003, relationship_sequence only) are used.",
+      "source_link_status": "UNRESOLVED",
+      "source_links": [],
+      "statistical_object": "LAB-OBJ-0001",
+      "transformations": [
+        "V1 extraction: MLER.csv extracted from mler_csv.rar, whole-file SHA-256/CRC32 verified, no record content read",
+        "V1 standardization: fields copied byte-for-byte with no coercion except reference_month, into mler_panel.csv.gz",
+        "LAB-A: DuckDB aggregation, read-only, of the standardized gzip CSV -- (a) SUM(sample_weight) per reference_month = weighted EMPLOYMENT_RELATIONSHIP-adjacent count; (b) one row per (reference_month, worker_id) with SUM(sample_weight) = weighted PERSON-adjacent count. No individual worker_id, relationship, or record was read, printed, or extracted -- only the two resulting monthly aggregate series (240 numbers total) were retained, in reports/lab_a/mler-sipa-overlap-monthly-aggregates.json"
+      ]
+    },
+    {
+      "collection_instrument": "SUSS (Sistema Unico de la Seguridad Social) unified administrative tax/contribution collection and registration system",
+      "dataset_release": "Three retrieved vintages: boletin-anual-diciembre2025.xlsx (year 2025, monthly Jan-Dec), boletin-seg-soc-2020.xls (year 2020, monthly Jan-Dec), diciembre2016.xls (December 2016 single-month snapshot with MoM/YoY variation); all retrieved 2026-09-18 from ARCA's official 'Estadistica tributaria' portal (https://www.afip.gob.ar/institucional/estudios/boletines-mensuales-de-seguridad-social, branded ARCA, served at the legacy afip.gob.ar domain)",
+      "frame_population": "persons making Autonomo or Monotributo contribution payments nationally, as tabulated monthly in Cuadro 1's 'Cotizantes autonomos' and 'Cotizantes monotributistas' rows only",
+      "global_id": "labor/LAB-ROOT-0007",
+      "id": "LAB-ROOT-0007",
+      "id_origin": "CORPUS",
+      "independence_class": "INDEPENDENT",
+      "is_deflator": false,
+      "period": "December 2016 (single month); January-December 2020 (monthly); January-December 2025 (monthly). Not a continuous series -- three targeted, non-adjacent vintages, chosen to give LAB-HYP-0005 a multi-point distribution-over-time comparison without downloading every available year (instruction section 1: 'NO descargar todo ARCA. Solo lo necesario').",
+      "primary_producer": "ARCA (Agencia de Recaudacion y Control Aduanero), formerly AFIP",
+      "provenance": {
+        "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-ROOT-0007",
+        "source_path": "metadata/lineage/evidence-root-registry.json",
+        "source_pointer": "/6",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "publication": "ARCA Boletin Anual de Seguridad Social, Cuadro 1 ('Cantidad de aportantes y cotizantes segun relacion laboral')",
+      "relative_to_root_id": null,
+      "shared_coverage_bias": "IMPORTANT: this same table (Cuadro 1) also carries a 'Cotizantes dependientes' row and a 'Cotizantes totales al SIPA' row, which are SIPA-derived figures republished by ARCA, not independent ARCA observations -- confirmed by the table's own row label and by the fact that ARCA's Boletin devotes most of its other tables (Cuadro 2.x-6.x) explicitly to 'Informacion SIPA'. Those two rows are NOT part of this root's admitted scope and must never be treated as a second, independent corroboration of LAB-ROOT-0001 (SIPA) -- doing so would double-count the same underlying administrative declarations under two different source labels. Per GOV-009's general principle (BESS/ANSES shared provenance), if BESS is ever used again in this project, it must not be treated as independent of this root either: BESS is documented as downstream of ANSES/ARCA declarations, and this root's Autonomo/Monotributo figures are exactly the kind of ARCA-collected contribution record BESS's own downstream figures would ultimately trace back to.",
+      "source_link_status": "UNRESOLVED",
+      "source_links": [],
+      "statistical_object": "LAB-OBJ-0016",
+      "transformations": [
+        "None applied by LABOR. Files retrieved as published by ARCA and read directly with openpyxl (2025) / xlrd (2020, 2016); no recoding, weighting, or aggregation performed."
+      ]
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

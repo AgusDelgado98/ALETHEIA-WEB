@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "bytes": 48840,
+      "path": "editorial/labor/audit/LAB-Q-0013.audit.yml",
+      "sha256": "485e4c9d6596a1970f1f2f8440f79444c5deec0beb3af79c2a32863a0981d6d0"
+    },
+    {
+      "bytes": 4718,
+      "path": "editorial/labor/audit/LAB-Q-0013.review.yml",
+      "sha256": "79dda08a051fbd85f3ff5ec4db4d8055f70741d745a95fe977d6fd0b2604679b"
+    },
+    {
+      "bytes": 7580,
+      "path": "editorial/labor/findings/LAB-Q-0013.yml",
+      "sha256": "cbbc9e324e8011f82324b0d59b485267f33f8e713645bb892113ae2a186dfd37"
+    },
+    {
+      "bytes": 1827,
+      "path": "editorial/labor/limits/LAB-Q-0013.yml",
+      "sha256": "5b19b2cb6edab8486aed3cf4badc73949d5fe9f22d3462f11d3db6ff9550d475"
+    },
+    {
+      "bytes": 849,
+      "path": "editorial/labor/questions/LAB-Q-0013.yml",
+      "sha256": "82b8d9be3e8e59ad77569ac1df13a2a03498f162ccdc87cb04e7445903c021e0"
+    },
+    {
+      "bytes": 763,
+      "path": "editorial/site/states.yml",
+      "sha256": "04db3e5eafb0ae52448685e40a1232920f3682b3db101b7f220ebda3d77443c5"
+    },
+    {
+      "bytes": 4056,
+      "path": "editorial/site/ui.yml",
+      "sha256": "d6b2e4673ce1c7bd1d226a86bbf8369700a98de305b9bf3bfafe5e840740a58d"
+    }
+  ],
+  "schema": "aletheia-web/editorial-manifest/1",
+  "units": 79,
+  "units_pending_author_signoff": 78
+}

@@ -1,0 +1,57 @@
+# Entrada humana/adversarial de la auditoría (Editorial Contract §4). De aquí salen los veredictos y las notas;
+# los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
+schema: aletheia-web/editorial-review/1
+canonical_ref: labor/LAB-Q-0013
+revision: 1
+reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
+date: "2026-09-19"
+independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
+adversarial_review:
+  - "Lectura a favor del efecto nulo: ¿alguien puede entender «no se puede medir» como «no hay efecto»? Se mitiga con el aviso fijo «Ausencia, no resultado negativo.» junto a la respuesta y con dnm-1; el título dice «no se puede medir», no «no tiene efecto»."
+  - "Lectura a favor del efecto existente: dnm-2 declara que tampoco se informa un efecto, ni en un sentido ni en otro ni de ningún tamaño (KEEP-002 y el alcance del claim)."
+  - "Stock vs. flujo: cs-3, dnm-3 y wn-1 nunca leen una diferencia de cuentas como movimiento de personas (REL-PR-006, REL-CONF-003)."
+  - "Registro vs. empleo: dnm-4 conserva la distinción registro fiscal / relación de empleo y no infiere dependencia ni subordinación (REL-CONF-002, REL-PR-005)."
+  - "El episodio elegido: cs-2 y dnm-5 lo presentan como ubicación de una fecha, nunca como evidencia de efecto (KEEP-010)."
+  - "Población y período: ningún texto agrega población distinta de la del claim ni un período propio; las únicas fechas salen de dos anclas con doble testigo."
+  - "Fuerza de la evidencia: ningún texto usa verbos protegidos ni conectores causales (lint G-EDI-03 y G-EDI-04 sin hallazgos); el estado se lee solo de generated/."
+  - "Limitación de registro de la pregunta («no se eligió episodio»): se conserva en el nivel Auditoría con su razón; no se oculta ni se contradice con el episodio elegido."
+defaults:
+  verdict: PENDING_AUTHOR_REVIEW
+overrides:
+  "labor/LAB-Q-0013#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+      - "Auditoría de origen: reconciliation/public-question-editorial-audit.json, fila LAB-Q-0013, dimensiones FINAL_* todas en PASS/YES (equivalencia semántica, causalidad, población, período, tipo de medición, fuerza de la evidencia)."
+  "labor/LAB-Q-0013#finding.title":
+    notes:
+      - "«no se puede medir el efecto» sale del alcance del claim; no dice que el efecto sea nulo."
+  "labor/LAB-Q-0013#finding.intro":
+    notes:
+      - "«el mejor episodio disponible para ubicar el cambio en el tiempo» traduce «best-available treatment-timing episode»; la fecha es una directiva de ancla."
+      - "«No se calculó ningún efecto» es literal del claim."
+  "labor/LAB-Q-0013#finding.can_say.cs-3":
+    notes:
+      - "«stock» y «flujo» se definen en el mismo texto para no usar jerga sin glosa."
+  "labor/LAB-Q-0013#finding.can_say.cs-4":
+    notes:
+      - "El nombre completo de MLER sale de LAB-ROOT-0003#publication; «termina en …» es una directiva de ancla; no se afirma nada sobre cuántos años median hasta el episodio."
+  "labor/LAB-Q-0013#finding.does_not_mean.dnm-1":
+    notes:
+      - "Cita la inferencia prohibida REL-PR-008 (ausencia leída como resultado negativo) como lo que NO se afirma."
+  "labor/LAB-Q-0013#finding.does_not_mean.dnm-4":
+    notes:
+      - "Cita REL-CONF-002 y REL-PR-005 como lo que NO se afirma. No se usa el término «contractorización»: no agrega precisión y no está en el vocabulario público."
+  "labor/LAB-Q-0013#finding.does_not_mean.dnm-6":
+    notes:
+      - "Traduce la disposición terminal del claim sin endurecerla ni suavizarla."
+  "labor/LAB-Q-0013#finding.would_need.wn-4":
+    notes:
+      - "«no la busca ni la espera» es la traducción de «not pursued or expected based on this project's own repeated prior investigation»."
+  "labor/LAB-Q-0013#finding.would_need.wn-5":
+    notes:
+      - "Cubre la limitación canónica 3 del claim: bloqueos de flujo y cobertura resolubles en principio; la falta de vinculación entre personas es estructural."
+  "site#fixed.absence_not_negative":
+    notes:
+      - "Texto fijo del Editorial Contract §7.3.4 y del MVP §2.4 (H-4)."

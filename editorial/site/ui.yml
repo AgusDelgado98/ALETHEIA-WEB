@@ -1,0 +1,54 @@
+# Cadenas de interfaz (G-EDI-08: toda cadena mostrada viene de generated/ o de un texto con auditoría vigente).
+# Son etiquetas de navegación y estructura; no contienen contenido sustantivo, cifras ni estados.
+# Los títulos «Lo que sí podemos decir» y «Lo que esto NO significa» son los fijos del Charter §11.1 / Editorial §3.
+schema: aletheia-web/editorial-ui/1
+revision: 1
+strings:
+  brand_wordmark: { id: ui-brand-wordmark, text: "ALETHEIA" }
+  skip_link: { id: ui-skip-link, text: "Ir al contenido" }
+  question_kicker: { id: ui-question-kicker, text: "Pregunta" }
+  answer_heading: { id: ui-answer-heading, text: "Respuesta efectiva" }
+  layer_question: { id: ui-layer-question, text: "Resolución de la pregunta" }
+  layer_claim: { id: ui-layer-claim, text: "Estado de la afirmación" }
+  frame_source: { id: ui-frame-source, text: "Fuente" }
+  frame_scope: { id: ui-frame-scope, text: "Alcance" }
+  frame_period: { id: ui-frame-period, text: "Período" }
+  say_heading: { id: ui-say-heading, text: "Lo que sí podemos decir" }
+  not_heading: { id: ui-not-heading, text: "Lo que esto NO significa" }
+  need_heading: { id: ui-need-heading, text: "Qué haría falta para poder responderlo" }
+  trail_heading: { id: ui-trail-heading, text: "El Rastro" }
+  trail_direction: { id: ui-trail-direction, text: "De la respuesta al origen" }
+  depth_group: { id: ui-depth-group, text: "Profundidad del Rastro" }
+  depth_summary: { id: ui-depth-summary, text: "Resumen" }
+  depth_detail: { id: ui-depth-detail, text: "Detalle" }
+  depth_audit: { id: ui-depth-audit, text: "Auditoría" }
+  node_claim: { id: ui-node-claim, text: "Afirmación" }
+  node_hypothesis: { id: ui-node-hypothesis, text: "Hipótesis" }
+  node_evidence: { id: ui-node-evidence, text: "Evidencia" }
+  node_object: { id: ui-node-object, text: "Objeto" }
+  node_source: { id: ui-node-source, text: "Fuente" }
+  node_limit: { id: ui-node-limit, text: "Límite" }
+  cut_label: { id: ui-cut-label, text: "Corte" }
+  cut_title: { id: ui-cut-title, text: "La cadena deja de sostenerse" }
+  cut_above: { id: ui-cut-above, text: "Arriba: lo que no se alcanza." }
+  cut_below: { id: ui-cut-below, text: "Abajo: lo que sí se sostiene." }
+  cut_reasons: { id: ui-cut-reasons, text: "Por qué se corta" }
+  source_link_unresolved: { id: ui-source-link-unresolved, text: "Enlace a la fuente original: no registrado en el corpus." }
+  legend_heading: { id: ui-legend-heading, text: "Glifos del Rastro" }
+  provenance_summary: { id: ui-provenance-summary, text: "Procedencia y auditoría" }
+  provenance_intro: { id: ui-provenance-intro, text: "De dónde sale esta página, para poder seguirla hasta el corpus congelado." }
+  prov_module: { id: ui-prov-module, text: "Módulo" }
+  prov_tag: { id: ui-prov-tag, text: "Versión congelada" }
+  prov_commit: { id: ui-prov-commit, text: "Commit" }
+  prov_manifest: { id: ui-prov-manifest, text: "Manifest del corpus" }
+  prov_editorial: { id: ui-prov-editorial, text: "Manifest editorial" }
+  prov_ids: { id: ui-prov-ids, text: "Identificadores" }
+  prov_limits_audit: { id: ui-prov-limits-audit, text: "Limitaciones que se conservan en el nivel Auditoría" }
+  prov_canonical_question: { id: ui-prov-canonical-question, text: "Pregunta canónica (texto del corpus, sin traducir)" }
+  prov_disclosure: { id: ui-prov-disclosure, text: "Exposición previa a los datos" }
+  prov_disclosure_none: { id: ui-prov-disclosure-none, text: "Ninguna registrada: la hipótesis no exige divulgación." }
+  prov_cite: { id: ui-prov-cite, text: "Cómo citar" }
+  prov_pending_signoff: { id: ui-prov-pending-signoff, text: "Textos públicos pendientes de aprobación de la autoría" }
+  cite_template: { id: ui-cite-template, text: "ALETHEIA. «{question}». Módulo labor v{version} ({tag}, commit {commit}). Afirmación {claim}." }
+  shape_insufficient: { id: ui-shape-insufficient, text: "Forma del estado: hilo sólido, corte, hilo punteado y cuadrado hueco." }
+  trail_legend_note: { id: ui-trail-legend-note, text: "Cada glifo va acompañado de su nombre." }

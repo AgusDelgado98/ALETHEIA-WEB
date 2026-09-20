@@ -1,0 +1,571 @@
+[
+  {
+    "OBJECT_ID": "LAB-OBJ-0001",
+    "NAME": "PERSON",
+    "UNIT": "one natural person",
+    "POPULATION": "persons within the frame/universe of the admitting source",
+    "UNIVERSE": "source-specific; never assumed to be all Argentine residents unless the source's own frame says so",
+    "GRAIN": "one row per person per observation period",
+    "PRODUCER": "source-specific (e.g. INDEC for EPH, STEySS/OEDE for SIPA/MLER)",
+    "OBSERVATION_MECHANISM": "administrative registration or household survey enumeration, depending on source",
+    "IS": "a person-level count or estimate observed within a defined universe and period",
+    "IS_NOT": [
+      "JOB",
+      "EMPLOYMENT_RELATIONSHIP",
+      "TAX_REGISTRATION",
+      "HOUSEHOLD",
+      "CONTRIBUTOR"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object PERSON (metadata/schemas/statistical-object.schema.json)",
+      "GOV-005",
+      "GOV-010"
+    ],
+    "V1_INHERITANCE_STATUS": "REUSED_AS_REFERENCE",
+    "NOTES": "Definition reused as-is from V1's frozen PERSON object. LABOR does not broaden or narrow it."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0002",
+    "NAME": "JOB",
+    "UNIT": "one declared position",
+    "POPULATION": "declared/registered positions within the admitting source's frame",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one row per job per observation period",
+    "PRODUCER": "source-specific (e.g. INDEC CGI, OEDE)",
+    "OBSERVATION_MECHANISM": "national-accounts labour-input estimation or administrative job registration, depending on source",
+    "IS": "a declared position or job, not a unique person",
+    "IS_NOT": [
+      "PERSON",
+      "EMPLOYMENT_RELATIONSHIP",
+      "EMPLOYER",
+      "TAX_REGISTRATION"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object JOB",
+      "GOV-006"
+    ],
+    "V1_INHERITANCE_STATUS": "REUSED_AS_REFERENCE",
+    "NOTES": "GOV-006 binding: MLER does not realize JOB on the ingested artifact. Inherited unchanged."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0003",
+    "NAME": "EMPLOYMENT_RELATIONSHIP",
+    "UNIT": "one employer-worker spell",
+    "POPULATION": "registered employment relationships within the admitting source's frame",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one row per relationship per observation period",
+    "PRODUCER": "source-specific (e.g. STEySS/SIPA, OEDE/MLER)",
+    "OBSERVATION_MECHANISM": "administrative registration of employer-worker spells",
+    "IS": "an employer-worker spell or relationship",
+    "IS_NOT": [
+      "PERSON",
+      "JOB",
+      "TAX_REGISTRATION",
+      "MONOTRIBUTO_REGISTRATION"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object EMPLOYMENT_RELATIONSHIP",
+      "GOV-006"
+    ],
+    "V1_INHERITANCE_STATUS": "ADAPTED",
+    "NOTES": "V1 restricted this object, on MLER specifically, to 'relationship_sequence' only (GOV-006). LABOR keeps that restriction; ADAPTED (not REUSED_AS_REFERENCE) only because LABOR's definition text is generalized across sources rather than copied verbatim from one source-role mapping."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0004",
+    "NAME": "EMPLOYER",
+    "UNIT": "one employing/insured party",
+    "POPULATION": "registered employers within the admitting source's frame",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one row per employer per observation period",
+    "PRODUCER": "source-specific (e.g. OEDE, ARCA, SRT)",
+    "OBSERVATION_MECHANISM": "administrative registration of employing/insured parties",
+    "IS": "an employing or insured party",
+    "IS_NOT": [
+      "JOB",
+      "PERSON",
+      "EMPLOYMENT_RELATIONSHIP"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object EMPLOYER",
+      "GOV-006"
+    ],
+    "V1_INHERITANCE_STATUS": "ADAPTED",
+    "NOTES": "GOV-006 binding: EMPLOYER is UNREALIZED on the MLER artifact specifically. Any future LABOR use of MLER RAW must preserve this exact restriction (see metadata/v1/v1-inheritance-map.json PROHIBITED_USE)."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0005",
+    "NAME": "TAX_REGISTRATION",
+    "UNIT": "one registration record",
+    "POPULATION": "tax/registration records within the admitting source's frame",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one row per registration record per observation period",
+    "PRODUCER": "source-specific (e.g. ARCA)",
+    "OBSERVATION_MECHANISM": "tax/administrative registration",
+    "IS": "a registration record, not proof of a unique employed person",
+    "IS_NOT": [
+      "PERSON",
+      "EMPLOYMENT_RELATIONSHIP",
+      "JOB",
+      "ECONOMIC_RELATIONSHIP"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object TAX_REGISTRATION"
+    ],
+    "V1_INHERITANCE_STATUS": "REUSED_AS_REFERENCE",
+    "NOTES": "Central to Regime B's core prohibition: TAX_REGISTRATION != EMPLOYMENT_RELATIONSHIP."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0006",
+    "NAME": "REGISTERED_EMPLOYMENT",
+    "UNIT": "aggregate stock",
+    "POPULATION": "persons/relationships/jobs within an administratively registered universe (SIPA/CGI/MLER-mapped)",
+    "UNIVERSE": "the union of universes covered by admitted registration-based sources; never assumed to equal total employment",
+    "GRAIN": "aggregate stock per period, decomposable to its underlying PERSON/EMPLOYMENT_RELATIONSHIP/JOB rows",
+    "PRODUCER": "derived by LABOR from admitted registration-based sources, not itself a primary producer",
+    "OBSERVATION_MECHANISM": "composition of registration-based administrative records",
+    "IS": "the stock of employment activity that is administratively visible through registration systems",
+    "IS_NOT": [
+      "UNREGISTERED_EMPLOYMENT",
+      "total Argentine employment",
+      "JOB"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "Composed from V1-mapped SIPA/CGI/MLER objects (PERSON, EMPLOYMENT_RELATIONSHIP, JOB) restricted to their administratively registered scope; no single V1 object of this exact name exists"
+    ],
+    "V1_INHERITANCE_STATUS": "NEW_LAB_OBJECT",
+    "NOTES": "Guards the Regime A default stated in LAB-0 Charter section 3: Regime A does not automatically equal 'all Argentine work'."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0007",
+    "NAME": "UNREGISTERED_EMPLOYMENT",
+    "UNIT": "aggregate stock",
+    "POPULATION": "labour activity outside the frame of REGISTERED_EMPLOYMENT's admitted sources",
+    "UNIVERSE": "not directly observable via SIPA/CGI/MLER/SRT/BESS; requires a household-survey source (EPH) or an explicit proxy",
+    "GRAIN": "aggregate stock per period, if and when an admitted source can approach it",
+    "PRODUCER": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+    "OBSERVATION_MECHANISM": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (household survey self-report is the only inventoried candidate mechanism)",
+    "IS": "labour activity not captured by the administrative registration systems that produce REGISTERED_EMPLOYMENT",
+    "IS_NOT": [
+      "REGISTERED_EMPLOYMENT",
+      "an informality rate (that is a metric computed FROM this and REGISTERED_EMPLOYMENT, not this object itself)",
+      "total Argentine employment"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [
+      "No V1 object; V1 never retrieved EPH RAW, the only inventoried source capable of approaching this population"
+    ],
+    "V1_INHERITANCE_STATUS": "NEW_LAB_OBJECT",
+    "NOTES": "Operationalization is gated on EPH admission (see metadata/sources/source-admission-plan.json)."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0008",
+    "NAME": "LABOR_FORCE_STATUS",
+    "UNIT": "one categorical classification per person per period",
+    "POPULATION": "persons within a household-survey universe",
+    "UNIVERSE": "source-specific (e.g. EPH's 31 urban agglomerates plus third-quarter total-urban extension)",
+    "GRAIN": "one classification per person per reference period",
+    "PRODUCER": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (INDEC/EPH is the only inventoried candidate)",
+    "OBSERVATION_MECHANISM": "household labour-force survey questionnaire classification (employed/unemployed/inactive)",
+    "IS": "a categorical labour-force classification of a PERSON within a reference period, as classified by a household survey methodology",
+    "IS_NOT": [
+      "PERSON",
+      "EMPLOYMENT_RELATIONSHIP",
+      "JOB",
+      "REGISTERED_EMPLOYMENT"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [
+      "V1's SRC-INDEC-EPH manifest entry maps only PERSON/HOUSEHOLD/HOUR; no LABOR_FORCE_STATUS-equivalent object exists in V1's vocabulary"
+    ],
+    "V1_INHERITANCE_STATUS": "NEW_LAB_OBJECT",
+    "NOTES": "Operationalization is gated on EPH admission."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0009",
+    "NAME": "LABOR_INCOME",
+    "UNIT": "monetary flow per person per period",
+    "POPULATION": "persons receiving income from labour activity in any modality",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one amount per person per income component per period",
+    "PRODUCER": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+    "OBSERVATION_MECHANISM": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (household survey self-report or administrative payroll record, depending on source)",
+    "IS": "income received by a person from labour activity, in any modality, within a reference period",
+    "IS_NOT": [
+      "SALARY",
+      "WAGE_BILL",
+      "BENEFIT_INSTANCE"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [
+      "No V1 object; distinguished from WAGE_BILL (V1-reused, aggregate, LAB-OBJ-0011) per the LAB-A3 rule SALARY != LABOR_INCOME"
+    ],
+    "V1_INHERITANCE_STATUS": "NEW_LAB_OBJECT",
+    "NOTES": "Any future use must keep NOMINAL vs REAL and STOCK vs FLOW distinct (LAB-A3 rules)."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0010",
+    "NAME": "SALARY",
+    "UNIT": "monetary rate per relationship or job",
+    "POPULATION": "employment relationships or jobs with an observable pay rate",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one rate per relationship/job per period",
+    "PRODUCER": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+    "OBSERVATION_MECHANISM": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+    "IS": "a wage or pay rate associated with a specific EMPLOYMENT_RELATIONSHIP or JOB, nominal or real",
+    "IS_NOT": [
+      "LABOR_INCOME",
+      "WAGE_BILL",
+      "PERSON"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [
+      "No V1 object; SALARY != LABOR_INCOME is an explicit LAB-A3 rule this object exists to enforce"
+    ],
+    "V1_INHERITANCE_STATUS": "NEW_LAB_OBJECT",
+    "NOTES": "Must not be aggregated into WAGE_BILL without an explicit, governed reconciliation rule."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0011",
+    "NAME": "WAGE_BILL",
+    "UNIT": "aggregate monetary flow",
+    "POPULATION": "national-accounts labour remuneration aggregate",
+    "UNIVERSE": "national economy (source-specific vintage)",
+    "GRAIN": "one aggregate value per period",
+    "PRODUCER": "INDEC (CGI-IMO), per V1's mapping",
+    "OBSERVATION_MECHANISM": "national-accounts estimation from surveys and administrative records",
+    "IS": "aggregate labour remuneration flow within a universe/period",
+    "IS_NOT": [
+      "SALARY",
+      "LABOR_INCOME",
+      "PERSON"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object WAGE_BILL (SRC-INDEC-CGI)"
+    ],
+    "V1_INHERITANCE_STATUS": "REUSED_AS_REFERENCE",
+    "NOTES": "Reused unchanged from V1."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0012",
+    "NAME": "HOUR",
+    "UNIT": "hours",
+    "POPULATION": "hours worked or usual hours within the admitting source's frame",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one measured quantity per person/job per period",
+    "PRODUCER": "source-specific (e.g. INDEC EPH, INDEC CGI)",
+    "OBSERVATION_MECHANISM": "survey self-report or national-accounts estimation, depending on source",
+    "IS": "a measured hours-worked quantity, not a person or household record unit",
+    "IS_NOT": [
+      "PERSON",
+      "JOB",
+      "HOUSEHOLD"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object HOUR (EPH, CGI)"
+    ],
+    "V1_INHERITANCE_STATUS": "REUSED_AS_REFERENCE",
+    "NOTES": "Reused unchanged; deliberately not split into a separate WORKED_HOURS object to avoid inflating the vocabulary (see reports/lab_0_5/LAB-0.5-decision-log.md)."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0013",
+    "NAME": "CONTRIBUTOR",
+    "UNIT": "one contributing person/record",
+    "POPULATION": "persons or entities contributing to the social-security system",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one row per contributor per period",
+    "PRODUCER": "source-specific (e.g. SIPA, ARCA, ANSES, BESS)",
+    "OBSERVATION_MECHANISM": "administrative social-security contribution registration",
+    "IS": "a contributing person or contributor record",
+    "IS_NOT": [
+      "PERSON",
+      "EMPLOYMENT_RELATIONSHIP",
+      "TAX_REGISTRATION"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object CONTRIBUTOR (SIPA, ARCA, ANSES, BESS)"
+    ],
+    "V1_INHERITANCE_STATUS": "REUSED_AS_REFERENCE",
+    "NOTES": "Reused unchanged."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0014",
+    "NAME": "BENEFIT_INSTANCE",
+    "UNIT": "one entitlement, extant in a period",
+    "POPULATION": "eligible beneficiaries within the admitting source's frame",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one entitlement instance per period (stock, not flow)",
+    "PRODUCER": "source-specific (e.g. SSS/BESS)",
+    "OBSERVATION_MECHANISM": "administrative benefit-eligibility registration",
+    "IS": "an entitlement extant in a period (a stock)",
+    "IS_NOT": [
+      "PERSON",
+      "CONTRIBUTOR",
+      "a flow / an 'Alta' (new grant) event"
+    ],
+    "STATUS": "DEFINED",
+    "V1_REFERENCES": [
+      "V1 statistical object BENEFIT_INSTANCE (BESS eligible Beneficios)",
+      "GOV-003",
+      "GOV-009"
+    ],
+    "V1_INHERITANCE_STATUS": "REUSED_AS_REFERENCE",
+    "NOTES": "Amendment F binding: GOV-003 and GOV-009 must be read jointly whenever BESS is used with this object -- BESS is not independent corroboration of ANSES/ARCA-derived series."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0015",
+    "NAME": "LEGAL_FORM",
+    "UNIT": "one categorical legal/tax status",
+    "POPULATION": "persons or arrangements with a formal legal/tax categorization",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one classification per person/arrangement per period",
+    "PRODUCER": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (ARCA is the leading candidate)",
+    "OBSERVATION_MECHANISM": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (tax/registration classification)",
+    "IS": "the formal legal/tax categorization under which labour or services are provided (e.g. employee, monotributista, autonomo)",
+    "IS_NOT": [
+      "ECONOMIC_RELATIONSHIP",
+      "EMPLOYMENT_RELATIONSHIP"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "No V1 analogue; Regime B objects are new to LABOR. Core of the Regime B prohibition LEGAL_FORM != ECONOMIC_RELATIONSHIP."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0016",
+    "NAME": "MONOTRIBUTO_REGISTRATION",
+    "UNIT": "one registration record",
+    "POPULATION": "persons registered under the Argentine simplified tax regime (Monotributo)",
+    "UNIVERSE": "source-specific",
+    "GRAIN": "one registration record per person per period",
+    "PRODUCER": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (ARCA is the leading candidate)",
+    "OBSERVATION_MECHANISM": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (tax registration)",
+    "IS": "a specific Argentine simplified tax-registration category record",
+    "IS_NOT": [
+      "SELF_EMPLOYMENT",
+      "CONTRACTOR (undefined object; this term is never used as a LABOR object name)",
+      "EMPLOYMENT_RELATIONSHIP",
+      "TAX_REGISTRATION (broader class; this is one instance of it)"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "Directly enforces the frozen prohibition MONOTRIBUTO != CONTRACTOR by never defining CONTRACTOR as a LABOR object at all."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0017",
+    "NAME": "SELF_EMPLOYMENT",
+    "UNIT": "one labour arrangement",
+    "POPULATION": "persons supplying labour/services without being party to a documented EMPLOYMENT_RELATIONSHIP",
+    "UNIVERSE": "source-specific, likely partial",
+    "GRAIN": "one arrangement per person per period, where observable",
+    "PRODUCER": "EPH (self-reported occupational category, CAT_OCUP) for the labour-force classification; a legal/administrative producer (e.g. ARCA) would still be needed for any registration-based cross-check",
+    "OBSERVATION_MECHANISM": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (proxy via tax/registration records; direct observation of the underlying economic arrangement is not expected to be available)",
+    "IS": "a labour arrangement in which a person supplies labour or services without being party to a legally defined EMPLOYMENT_RELATIONSHIP",
+    "IS_NOT": [
+      "EMPLOYMENT_RELATIONSHIP",
+      "MONOTRIBUTO_REGISTRATION (a legal instrument, not the underlying economic arrangement)",
+      "ECONOMIC_DEPENDENCE"
+    ],
+    "STATUS": "DEFINED_PARTIALLY_IDENTIFIABLE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "The real economic arrangement is expected to be, at best, partially observable through proxies. Any claim using this object inherits Regime B's default NOT_IDENTIFIABLE presumption until displaced by evidence. Updated at LAB-B (2026-09-18): EPH's CAT_OCUP directly observes the self-reported labour-force category 'cuenta propia' (self-account work), which is a genuine, direct observable for the labour-arrangement type this object defines -- not a proxy or an inferred equivalence. This does NOT identify whether a given self-employed person is genuinely independent or economically dependent on a single counterpart (see LAB-OBJ-0018); that finer distinction remains unidentified. See reports/lab_b/LAB-B-source-capability.md."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0018",
+    "NAME": "ECONOMIC_DEPENDENCE",
+    "UNIT": "one proxy-observable condition",
+    "POPULATION": "workers with an observable concentration of income/activity on a single or dominant counterpart",
+    "UNIVERSE": "unknown; no admitted source is expected to observe this directly",
+    "GRAIN": "one condition assessment per person per period, if ever observable",
+    "PRODUCER": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION",
+    "OBSERVATION_MECHANISM": "no known direct observation mechanism among inventoried sources; would require a proxy (e.g. concentration of invoiced counterparts) not currently admitted",
+    "IS": "a proxy-observable condition indicating a worker's economic reliance on a single or dominant counterpart, distinct from legal employment status",
+    "IS_NOT": [
+      "EMPLOYMENT_RELATIONSHIP",
+      "LEGAL_FORM",
+      "TAX_REGISTRATION"
+    ],
+    "STATUS": "DEFINED_LIKELY_NOT_IDENTIFIABLE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "Registered explicitly as a design case likely to resolve to NOT_IDENTIFIABLE (LAB-0.5 instruction section 14). Not to be 'rescued' with a weak proxy absent a LAB-GOV ruling."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0019",
+    "NAME": "JOB_POSTING",
+    "UNIT": "one advertisement",
+    "POPULATION": "advertisements published on a given platform",
+    "UNIVERSE": "that platform's own listings only",
+    "GRAIN": "one posting per platform per publication instance",
+    "PRODUCER": "the platform on which the posting appears",
+    "OBSERVATION_MECHANISM": "public listing capture (not built in LAB-0.5)",
+    "IS": "a public advertisement of an alleged intent to hire, on a specific platform, at a specific time",
+    "IS_NOT": [
+      "VACANCY (the underlying real, possibly-unfilled need; a posting can exist without one, e.g. evergreen or decoy postings)",
+      "JOB",
+      "APPLICATION",
+      "HIRE"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "No corpus exists yet (GENERATED_SOURCE, not built in LAB-0.5 or P0)."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0020",
+    "NAME": "VACANCY",
+    "UNIT": "one real staffing need",
+    "POPULATION": "employers' real, current intent to fill a position",
+    "UNIVERSE": "generally not directly observable",
+    "GRAIN": "one need per employer per position per period, where observable",
+    "PRODUCER": "the employer (not directly observable by LABOR)",
+    "OBSERVATION_MECHANISM": "none known; only proxied, imperfectly, by JOB_POSTING",
+    "IS": "an employer's real, current need or intent to fill a position, independent of whether it is ever advertised",
+    "IS_NOT": [
+      "JOB_POSTING",
+      "JOB",
+      "HIRE"
+    ],
+    "STATUS": "DEFINED_LIKELY_NOT_IDENTIFIABLE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "Kept distinct from JOB_POSTING specifically so that 'describing postings' is never silently equated with 'describing real vacancies' (LAB-0.5 instruction section 8)."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0021",
+    "NAME": "APPLICATION",
+    "UNIT": "one submission",
+    "POPULATION": "individuals who submit a response to a JOB_POSTING",
+    "UNIVERSE": "that posting's own applicant pool",
+    "GRAIN": "one submission per person per posting",
+    "PRODUCER": "the platform/ATS on which the application is submitted",
+    "OBSERVATION_MECHANISM": "not built in LAB-0.5",
+    "IS": "an individual's submitted response to a JOB_POSTING",
+    "IS_NOT": [
+      "HIRE",
+      "JOB_POSTING",
+      "PERSON (a person may submit zero, one, or many applications)"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "Core of the Regime C prohibition APPLICATION != HIRE."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0022",
+    "NAME": "HIRE",
+    "UNIT": "one transition event",
+    "POPULATION": "persons who enter an EMPLOYMENT_RELATIONSHIP as a documented consequence of a recruitment process",
+    "UNIVERSE": "that recruitment process's own scope",
+    "GRAIN": "one event per person per recruitment process",
+    "PRODUCER": "the hiring employer/platform",
+    "OBSERVATION_MECHANISM": "not built in LAB-0.5",
+    "IS": "the transition event of a person entering an EMPLOYMENT_RELATIONSHIP as a documented outcome of a recruitment process",
+    "IS_NOT": [
+      "APPLICATION",
+      "JOB_POSTING",
+      "EMPLOYMENT_RELATIONSHIP (HIRE is the transition event, not the resulting stock)"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "Distinguishing 'describing postings' from 'describing real hires' is explicitly required (LAB-0.5 instruction section 8)."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0023",
+    "NAME": "SELECTION_STAGE",
+    "UNIT": "one discrete recruitment step",
+    "POPULATION": "steps within a recruitment process associated with one APPLICATION",
+    "UNIVERSE": "that recruitment process's own scope",
+    "GRAIN": "one stage per application per step (e.g. screening, interview, assessment)",
+    "PRODUCER": "the platform/ATS/employer running the process",
+    "OBSERVATION_MECHANISM": "not built in LAB-0.5",
+    "IS": "a discrete step within a recruitment process associated with one APPLICATION",
+    "IS_NOT": [
+      "APPLICATION",
+      "HIRE"
+    ],
+    "STATUS": "DEFINED_PENDING_SOURCE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "Needed to eventually ask how many stages a process has, without conflating stage count with outcome."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0024",
+    "NAME": "AI_HIRING_EVENT",
+    "UNIT": "one AI-system action",
+    "POPULATION": "instances where an AI system acts on a SELECTION_STAGE or APPLICATION",
+    "UNIVERSE": "that recruitment process's own scope",
+    "GRAIN": "one event per AI action per selection stage/application",
+    "PRODUCER": "the platform/ATS/employer whose AI system acts",
+    "OBSERVATION_MECHANISM": "not built in LAB-0.5",
+    "IS": "an instance of an AI system, classified ASSISTIVE/FILTERING/EVALUATIVE/DECISIONAL, acting on a SELECTION_STAGE or APPLICATION",
+    "IS_NOT": [
+      "SELECTION_STAGE",
+      "HIRE",
+      "a human-only decision without AI involvement"
+    ],
+    "STATUS": "DEFINED_LIKELY_NOT_IDENTIFIABLE",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "There is no obligation to obtain national prevalence for this object (LAB-0 Charter section 18, LAB-C2). May remain NOT_IDENTIFIABLE at the population level indefinitely."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0025",
+    "NAME": "PRICE_INDEX",
+    "UNIT": "index points (base period = 100)",
+    "POPULATION": "consumption basket of goods and services representative of resident-household spending",
+    "UNIVERSE": "INDEC IPC Nacional coverage: national total and six statistical regions (GBA, Pampeana, Noreste, Noroeste, Cuyo, Patagonia)",
+    "GRAIN": "one index value per COICOP division/group/nivel-general row per region per month",
+    "PRODUCER": "INDEC (Direccion de Indices de Precios de Consumo)",
+    "OBSERVATION_MECHANISM": "retail/point-of-sale price collection instrument, aggregated by expenditure weights into a Laspeyres-type index",
+    "IS": "a price-level index for a defined consumption basket, at a stated base period, used as a deflator input; it is not itself a labour-market object",
+    "IS_NOT": [
+      "REAL_WAGE or any other deflated/real-terms quantity (that is a metric COMPUTED FROM this object and a nominal quantity, not this object itself)",
+      "an inflation rate (a period-over-period transformation of this object, not the object itself)",
+      "LABOR_INCOME or WAGE_BILL",
+      "a labour-market participation or employment measure"
+    ],
+    "STATUS": "DEFINED_AT_LAB_A2",
+    "V1_REFERENCES": [
+      "SRC-INDEC-IPC-NACIONAL (V1 manifest-only reference; V1 never retrieved IPC RAW)",
+      "GOV-008",
+      "BRK-INDEC-IPC-2007-2015-COMPARABILITY",
+      "BRK-INDEC-IPC-2016-2017-RESTART"
+    ],
+    "V1_INHERITANCE_STATUS": "NEW_LAB_OBJECT",
+    "NOTES": "Created at LAB-A2 specifically so lineage.schema.json's STATISTICAL_OBJECT field has a real object to point to for the IPC Evidence Root (LAB-ROOT-0006). Admission of this object does not authorize REAL_WAGE/REAL_LABOR_INCOME computation; that remains a LAB-A3-or-later decision."
+  },
+  {
+    "OBJECT_ID": "LAB-OBJ-0026",
+    "NAME": "AUTONOMOS_REGISTRATION",
+    "UNIT": "aggregate stock (person count)",
+    "POPULATION": "self-employed/independent workers registered under Argentina's general Autonomos tax/contribution regime (distinct from the simplified Monotributo regime)",
+    "UNIVERSE": "national, ARCA/SUSS-administered contribution collection system",
+    "GRAIN": "aggregate monthly stock, not person-level microdata",
+    "PRODUCER": "ARCA (Agencia de Recaudacion y Control Aduanero), Boletin Anual de Seguridad Social",
+    "OBSERVATION_MECHANISM": "administrative tax/contribution registration and monthly payment records (SUSS unified collection system)",
+    "IS": "a registration/contribution record for a person registered under the general Autonomos regime, a specific tax-registration category distinct from Monotributo",
+    "IS_NOT": [
+      "MONOTRIBUTO_REGISTRATION (a different, simplified tax-registration regime with different eligibility criteria)",
+      "EMPLOYMENT_RELATIONSHIP",
+      "SELF_EMPLOYMENT (the broader labour-arrangement concept; this is one specific legal/tax instrument some self-employed persons use)",
+      "ECONOMIC_DEPENDENCE or ECONOMIC_INDEPENDENCE",
+      "proof of employer intent, subordination, or exclusivity"
+    ],
+    "STATUS": "DEFINED_AT_LAB_B1",
+    "V1_REFERENCES": [],
+    "V1_INHERITANCE_STATUS": null,
+    "NOTES": "Created at LAB-B1 (2026-09-18) because the admitted ARCA Boletin Anual de Seguridad Social reports 'Cotizantes autonomos' as a category distinct from Monotributo, and lumping them into LAB-OBJ-0016 (MONOTRIBUTO_REGISTRATION specifically) would conflate two legally and administratively distinct tax regimes."
+  }
+]

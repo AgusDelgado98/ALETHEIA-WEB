@@ -1,0 +1,60 @@
+{
+  "entity": "Evidence",
+  "items": [
+    {
+      "claim_id": "LAB-CLM-0011",
+      "diagnostic_only": false,
+      "global_id": "labor/LAB-EVD-0020",
+      "hypothesis_id": "LAB-HYP-0006",
+      "id": "LAB-EVD-0020",
+      "id_origin": "CORPUS",
+      "limitation_ids": [
+        "lim.LAB-EVD-0020.d278178c",
+        "lim.LAB-EVD-0020.a5f820c7",
+        "lim.LAB-EVD-0020.01ad2b25",
+        "lim.LAB-EVD-0020.286cadc5"
+      ],
+      "method": "Formalizes, as a claim, the three structural blockers LAB-B1 and LAB-B4 already established for LAB-HYP-0006, without any new research, without computing any causal effect, and without executing the hypothesis. No new source was consulted; the episode selection itself (LAB-GOV-Q0013-EPISODE-SELECTION-0001) already documented that selecting the best-available treatment-timing episode (EP-2025-AUG, 2025-08-01) does not resolve what LAB-HYP-0006's own pre-registered OUTCOME requires. This evidence only packages that already-established conclusion into the claim-ledger's own lifecycle, per Regime B closeout.",
+      "metric": "Whether LAB-HYP-0006's pre-registered design (discontinuity in the rate of transition between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION, around a Monotributo threshold-change episode) can be computed from any source this project has admitted or has reason to believe exists",
+      "object_ids": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0016"
+      ],
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [
+          {
+            "file": "boletin-seg-soc-2025-12.xlsx",
+            "sha256": "29cdf06cd0043df4bc8e1ce1e594c2fb6da0b6f80d5cc39769300a0abb0b5501"
+          },
+          {
+            "file": "boletin-seg-soc-2020.xls",
+            "sha256": "59861aeb57b4eacd5829bda6f8db1df26fbd8a2e42b361328175c2a5398a14e7"
+          },
+          {
+            "file": "boletin-seg-soc-2016-12.xls",
+            "sha256": "fa3a39630f9ae2e3511beb6f0341c8b08cc431961396f8b0fe04037638392bae"
+          }
+        ],
+        "source_id": "LAB-EVD-0020",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/19",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0013",
+      "reproducibility": "Full blocker analysis already recorded in reports/lab_b4/LAB-B4-episode-sources.json, reports/lab_b4/LAB-B4-closeout.md, and metadata/governance/lab-gov-registry.json's LAB-GOV-Q0013-EPISODE-SELECTION-0001; this claim's own closure reasoning recorded in reports/regime_b/REGIME-B-closeout.md.",
+      "result_text": "No. Three independent, stacked blockers, none resolved by episode selection: (1) LAB-ROOT-0007 (ARCA, Cuadro 1) is monthly STOCK data only; LAB-B1 already declared registration-flow (altas/bajas) data SOURCE_NOT_AVAILABLE in every ARCA publication evaluated -- the pre-registered METRIC needs a TRANSITION/FLOW rate, which no admitted ARCA table supplies. (2) The only source this project has operationalized for EMPLOYMENT_RELATIONSHIP (LAB-OBJ-0003) is MLER (LAB-ROOT-0003), whose admitted period ends 2021-12 -- before even the earliest realistically-datable episode this project could construct, and four years before the LAB-B4-selected episode (2025-08-01). (3) No source admitted anywhere in this project (ARCA, SIPA, MLER, EPH) shares a person-level identifier with any other (LAB-CLM-0003 already established this absence between EPH and SIPA/MLER; LAB-B1 and LAB-B4 found no different situation for ARCA) -- so even a perfectly-windowed episode with every source admitted could not measure an INDIVIDUAL-level transition rate as pre-registered, only separate aggregate series observed in parallel. LAB-HYP-0006's METRIC/EXPECTED_OBSERVATION/FAILURE_CONDITION/CANDIDATE_SOURCES text is unmodified; no stock-level proxy was substituted for the pre-registered transition-rate definition.",
+      "root_ids": [
+        "LAB-ROOT-0007"
+      ],
+      "source_label": "ARCA",
+      "status": "RECORDED"
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

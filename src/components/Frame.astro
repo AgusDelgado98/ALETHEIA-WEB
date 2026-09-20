@@ -1,0 +1,121 @@
+---
+import Glyph from "./Glyph.astro";
+/**
+ * El Encuadre (Charter §5): marcas de esquina alrededor del dato y cota de alcance debajo.
+ * Es la metadata contextual mínima: fuente y alcance (y período cuando existe). Semántica accesible:
+ * las marcas son decorativas; la cota es una lista de definiciones legible.
+ */
+interface Props {
+  source: string;
+  labelSource: string;
+  labelScope: string;
+  labelPeriod?: string;
+  period?: string;
+}
+const { source, labelSource, labelScope, labelPeriod, period } = Astro.props;
+---
+
+<div class="frame">
+  <span class="c tl" aria-hidden="true"></span>
+  <span class="c tr" aria-hidden="true"></span>
+  <span class="c bl" aria-hidden="true"></span>
+  <span class="c br" aria-hidden="true"></span>
+  <div class="frame__body">
+    <slot />
+  </div>
+  <dl class="dim">
+    <div class="dim__s">
+      <dt>
+        <Glyph kind="source" size="0.65rem" /> {labelSource}
+      </dt>
+      <dd class="mono">{source}</dd>
+    </div>
+    <div class="dim__e">
+      <dt>{labelScope}</dt>
+      <dd>
+        <slot name="scope" />
+      </dd>
+    </div>
+    {period !== undefined && labelPeriod !== undefined && (
+      <div class="dim__e">
+        <dt>{labelPeriod}</dt>
+        <dd class="mono">{period}</dd>
+      </div>
+    )}
+  </dl>
+</div>
+
+<style>
+  .frame {
+    position: relative;
+    margin: var(--space-6) var(--space-6) var(--space-8);
+  }
+  .c {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border: 0 solid var(--ink);
+    pointer-events: none;
+  }
+  .tl {
+    top: -1.5rem;
+    left: -1.5rem;
+    border-top-width: var(--rule);
+    border-left-width: var(--rule);
+  }
+  .tr {
+    top: -1.5rem;
+    right: -1.5rem;
+    border-top-width: var(--rule);
+    border-right-width: var(--rule);
+  }
+  .bl {
+    bottom: -1.5rem;
+    left: -1.5rem;
+    border-bottom-width: var(--rule);
+    border-left-width: var(--rule);
+  }
+  .br {
+    bottom: -1.5rem;
+    right: -1.5rem;
+    border-bottom-width: var(--rule);
+    border-right-width: var(--rule);
+  }
+  .dim {
+    margin-top: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-5);
+    font: 400 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .dim > div {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+  }
+  .dim__s {
+    flex: none;
+  }
+  .dim__e {
+    flex: 1 1 18rem;
+  }
+  .dim__e::before {
+    content: "";
+    flex: 0 0 var(--space-6);
+    align-self: center;
+    border-top: var(--rule) solid var(--hair-2);
+  }
+  dt {
+    white-space: nowrap;
+  }
+  dd {
+    margin: 0;
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  .dim__s dd {
+    color: var(--ink);
+  }
+</style>

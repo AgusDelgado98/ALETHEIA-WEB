@@ -1,0 +1,153 @@
+# Capa editorial · Q-0013 (WEB-0 Editorial Contract §3, §5, §6).
+# Cada texto es lenguaje público y NO es fuente de hechos. Reglas:
+#  - `maps_to` lista el contenido canónico del que deriva cada frase (ref = global_id#campo).
+#  - Ningún literal numérico ni estado: las fechas y conteos son directivas resueltas desde generated/.
+#  - Directivas permitidas: {{id:<ID>}}, {{anchor:<ID de ancla>}}, {{count:<ID de claim>.blockers|words}}.
+#  - Solo se citan Relation PROHIBITED/GOVERNANCE_REQUIRED por su `prohibited_inference`, y solo en «no significa».
+schema: aletheia-web/editorial-finding/1
+canonical_ref: labor/LAB-Q-0013
+claim_ref: labor/LAB-CLM-0011
+revision: 1
+
+title:
+  id: title
+  text: "Umbrales del Monotributo: con las fuentes conocidas no se puede medir el efecto"
+  maps_to:
+    - labor/LAB-CLM-0011#scope_statement
+
+intro:
+  id: intro
+  text: "Esta pregunta busca saber si un cambio en los umbrales de las categorías del Monotributo modifica el desplazamiento entre la relación de empleo y el registro como monotributista. El corpus eligió el mejor episodio disponible para ubicar el cambio en el tiempo ({{id:EP-2025-AUG}}, {{anchor:anc.LAB-CLM-0011.episode_effective_date}}) y comprobó que, aun así, el diseño previsto no se puede calcular. No se calculó ningún efecto."
+  maps_to:
+    - labor/LAB-CLM-0011#canonical_text
+    - labor/EP-2025-AUG#verdict_raw
+    - labor/LAB-Q-0013#canonical_text
+
+scope:
+  id: scope
+  text: "Solo dice si el diseño previsto se puede calcular con las fuentes conocidas. No dice nada sobre si el efecto existe, en qué sentido iría ni de qué tamaño sería."
+  maps_to:
+    - labor/LAB-CLM-0011#scope_statement
+
+can_say:
+  - id: cs-1
+    text: "El diseño previsto para responder esta pregunta no se puede calcular con ninguna fuente que el proyecto haya admitido ni con ninguna que tenga motivos para creer que existe."
+    maps_to:
+      - labor/LAB-CLM-0011#scope_statement
+  - id: cs-2
+    text: "Ese bloqueo sigue en pie aunque se eligió el mejor episodio disponible para ubicar el cambio en el tiempo: elegir una fecha no resuelve ninguno de los {{count:LAB-CLM-0011.blockers|words}} bloqueos que se apilan."
+    maps_to:
+      - labor/LAB-CLM-0011#canonical_text
+      - labor/EP-2025-AUG#verdict_raw
+  - id: cs-3
+    text: "Los datos de ARCA que se usaron son de stock, es decir, cuántos hay en cada fecha. La métrica preinscripta necesita una tasa de transición, es decir, un flujo."
+    maps_to:
+      - "labor/LAB-CLM-0011#blocker:1"
+  - id: cs-4
+    text: "La única fuente que el proyecto usó para relaciones de empleo, la Muestra Longitudinal de Empleo Registrado (MLER), termina en {{anchor:anc.LAB-CLM-0011.mler_admitted_period_end}}, antes del episodio elegido."
+    maps_to:
+      - "labor/LAB-CLM-0011#blocker:2"
+      - labor/LAB-ROOT-0003#publication
+  - id: cs-5
+    text: "Ninguna fuente admitida permite reconocer a una misma persona en registros distintos, así que no se puede medir una transición individual entre la relación de empleo y el registro como monotributista."
+    maps_to:
+      - "labor/LAB-CLM-0011#blocker:3"
+  - id: cs-6
+    text: "No se calculó ningún efecto causal ni se reemplazó la métrica preinscripta por un indicador de otro tipo. La hipótesis no se ejecutó."
+    maps_to:
+      - labor/LAB-CLM-0011#canonical_text
+      - labor/LAB-EVD-0020#method
+
+does_not_mean:
+  - id: dnm-1
+    text: "No significa que el cambio de umbrales no tenga efecto. Es una ausencia, no un resultado negativo."
+    maps_to:
+      - "labor/LAB-CLM-0011#limitation:1"
+      - labor/REL-PR-008#prohibited_inference
+      - labor/KEEP-002#must_not
+  - id: dnm-2
+    text: "Tampoco significa que el efecto exista: el corpus no informa ningún efecto causal, ni en un sentido ni en otro, ni de ningún tamaño."
+    maps_to:
+      - labor/LAB-CLM-0011#scope_statement
+      - labor/KEEP-002#must_not
+  - id: dnm-3
+    text: "No significa que las cuentas de ARCA muestren a personas que pasan de una relación de empleo a un registro como monotributista. Son cuentas de stock, no de flujo."
+    maps_to:
+      - "labor/LAB-CLM-0011#blocker:1"
+      - labor/REL-PR-006#prohibited_inference
+      - labor/REL-CONF-003#prohibited_inference
+  - id: dnm-4
+    text: "No significa que registrarse como monotributista sea lo mismo que tener una relación de empleo, ni que permita inferir dependencia económica o subordinación."
+    maps_to:
+      - labor/REL-CONF-002#prohibited_inference
+      - labor/REL-PR-005#prohibited_inference
+  - id: dnm-5
+    text: "No significa que el episodio elegido sea evidencia de un efecto. Solo ubica el cambio en el tiempo."
+    maps_to:
+      - labor/KEEP-010#must_not
+      - labor/EP-2025-AUG#verdict_raw
+  - id: dnm-6
+    text: "Es la conclusión final del proyecto para esta pregunta, pero no significa que ninguna evidencia futura pueda cambiarla."
+    maps_to:
+      - "labor/LAB-CLM-0011#limitation:5"
+      - labor/LAB-CLM-0011#what_would_unseat
+
+would_need:
+  - id: wn-1
+    text: "Datos de flujo: altas y bajas de la inscripción al Monotributo, y no solo cuántos hay cada mes."
+    maps_to:
+      - "labor/LAB-CLM-0011#blocker:1"
+      - labor/LAB-EVD-0020#result_text
+  - id: wn-2
+    text: "Una fuente de relaciones de empleo que cubra el período del episodio elegido ({{anchor:anc.LAB-CLM-0011.episode_effective_date}})."
+    maps_to:
+      - "labor/LAB-CLM-0011#blocker:2"
+      - labor/LAB-CLM-0011#what_would_unseat
+  - id: wn-3
+    text: "Datos que permitan seguir a una misma persona entre el registro fiscal y el empleo."
+    maps_to:
+      - "labor/LAB-CLM-0011#blocker:3"
+      - labor/LAB-CLM-0011#what_would_unseat
+  - id: wn-4
+    text: "Todo eso tendría que venir de una fuente oficial nueva, admitida con las reglas del proyecto. El proyecto no la busca ni la espera, según sus propias investigaciones previas."
+    maps_to:
+      - labor/LAB-CLM-0011#what_would_unseat
+  - id: wn-5
+    text: "De esos bloqueos, los de flujo y de cobertura podrían resolverse, en principio, con una fuente nueva que hoy no se conoce. La falta de vinculación entre personas es estructural y, según todas las búsquedas previas del proyecto, es poco probable que se resuelva solo con fuentes públicas."
+    maps_to:
+      - "labor/LAB-CLM-0011#limitation:3"
+
+# Nodos del Rastro (Charter §11.3): afirmación → hipótesis → corte → evidencia → objeto → fuente.
+trail:
+  claim:
+    id: trail-claim
+    text: "El diseño previsto para responder la pregunta no se puede calcular con las fuentes conocidas."
+    maps_to:
+      - labor/LAB-CLM-0011#scope_statement
+  hypothesis:
+    id: trail-hypothesis
+    text: "Se esperaba encontrar una discontinuidad en la tasa de transición entre la relación de empleo y el registro como monotributista alrededor de la fecha del cambio de umbrales."
+    maps_to:
+      - labor/LAB-HYP-0006#expected_observation
+      - labor/LAB-HYP-0006#metric
+  evidence:
+    id: trail-evidence
+    text: "El registro de evidencia formaliza estos bloqueos como afirmación. No hizo investigación nueva, no calculó ningún efecto y no ejecutó la hipótesis."
+    maps_to:
+      - labor/LAB-EVD-0020#method
+  object_employment:
+    id: trail-object-employment
+    text: "Relación de empleo"
+    maps_to:
+      - labor/LAB-OBJ-0003#name
+  object_registration:
+    id: trail-object-registration
+    text: "Registro como monotributista"
+    maps_to:
+      - labor/LAB-OBJ-0016#name
+
+# Bloqueos que se muestran en el corte del Rastro (ids de `can_say`).
+blockers_at_cut:
+  - cs-3
+  - cs-4
+  - cs-5

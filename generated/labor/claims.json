@@ -1,0 +1,96 @@
+{
+  "entity": "Claim",
+  "items": [
+    {
+      "absent_vs_negative": "ABSENT_NOT_NEGATIVE",
+      "answerability": {
+        "answer_kind": "ABSENCE",
+        "answerable_from_corpus": true,
+        "citation": {
+          "global_id": "labor/LAB-CLM-0011",
+          "permalink_version": "labor@1.0.0"
+        },
+        "forbidden_inferences": [
+          "REL-CONF-002",
+          "REL-CONF-003",
+          "REL-GR-004",
+          "REL-PR-001",
+          "REL-PR-005",
+          "REL-PR-006",
+          "REL-PR-008",
+          "REL-PR-010"
+        ],
+        "required_qualifiers": [
+          "lim.LAB-CLM-0011.d278178c",
+          "lim.LAB-CLM-0011.bea8975a",
+          "lim.LAB-CLM-0011.6a355bb6",
+          "lim.LAB-CLM-0011.91104881",
+          "lim.LAB-CLM-0011.a890ced7"
+        ]
+      },
+      "blocker_ids": [
+        "blk.LAB-CLM-0011.1.4af80a5e",
+        "blk.LAB-CLM-0011.2.575e8419",
+        "blk.LAB-CLM-0011.3.c49ea18f"
+      ],
+      "canonical_text": "LAB-HYP-0006's pre-registered design remains genuinely blocked even after LAB-B4 selected its best-available treatment-timing episode (EP-2025-AUG, 2025-08-01, LAB-GOV-Q0013-EPISODE-SELECTION-0001). Three independent, stacked blockers, none resolved by episode selection: (1) STOCK vs. FLOW -- LAB-ROOT-0007 (ARCA, Cuadro 1) is monthly stock data only; LAB-B1 already declared registration-flow (altas/bajas) data SOURCE_NOT_AVAILABLE in every ARCA publication evaluated, and the pre-registered METRIC needs a transition/flow rate. (2) EMPLOYMENT_RELATIONSHIP coverage gap -- the only source this project has operationalized for LAB-OBJ-0003 is MLER (LAB-ROOT-0003), whose admitted period ends 2021-12, four years before the selected episode. (3) No person-level linkage -- no source admitted anywhere in this project (ARCA, SIPA, MLER, EPH) shares a person-level identifier with any other (LAB-CLM-0003 already established this absence between EPH and SIPA/MLER; LAB-B1/LAB-B4 found no different situation for ARCA), so even a perfectly-windowed episode with every source admitted could not measure an individual-level transition rate as pre-registered. LAB-HYP-0006 is therefore adjudicated INSUFFICIENT_EVIDENCE, the same terminal state used for LAB-HYP-0005 before its own, later, separately-authorized resolution -- not forced to REFUTED/ESTABLISHED, and not resolved by inventing a stock-level proxy in place of the pre-registered transition-rate definition. No causal effect was computed; the hypothesis was not executed.",
+      "claim_kind": "HYPOTHESIS_NOT_COMPUTABLE",
+      "deflator_root_ids": [],
+      "epistemic_state": "INSUFFICIENT_EVIDENCE",
+      "evidence_ids": [
+        "LAB-EVD-0020"
+      ],
+      "figure_ids": [],
+      "global_id": "labor/LAB-CLM-0011",
+      "hypothesis_id": "LAB-HYP-0006",
+      "id": "LAB-CLM-0011",
+      "id_origin": "CORPUS",
+      "lab_gov": [
+        "LAB-GOV-Q0013-EPISODE-SELECTION-0001"
+      ],
+      "limitation_ids": [
+        "lim.LAB-CLM-0011.d278178c",
+        "lim.LAB-CLM-0011.bea8975a",
+        "lim.LAB-CLM-0011.6a355bb6",
+        "lim.LAB-CLM-0011.91104881",
+        "lim.LAB-CLM-0011.a890ced7"
+      ],
+      "lineage_independence": "Single Evidence Root (LAB-ROOT-0007, ARCA), LAB-HYP-0006's own sole CANDIDATE_SOURCE. CONVERGENT and ESTABLISHED_WITHIN_SCOPE are both structurally unavailable.",
+      "not_eligible_for": [
+        "ESTABLISHED_WITHIN_SCOPE",
+        "CONVERGENT"
+      ],
+      "object_ids": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0016"
+      ],
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0013",
+      "referenced_root_ids": [
+        "LAB-ROOT-0003"
+      ],
+      "root_ids": [
+        "LAB-ROOT-0007"
+      ],
+      "scope_coverage_adequacy": "Covers only whether LAB-HYP-0006's pre-registered design is computable from currently admitted or plausibly admissible sources; does not survey any new source this phase.",
+      "scope_statement": "This claim states only that LAB-HYP-0006's pre-registered METRIC (discontinuity in the rate of transition between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION around a Monotributo threshold-change episode) cannot be computed from any source this project has admitted or has reason to believe exists. It makes no claim about the actual existence, direction, or magnitude of any such discontinuity.",
+      "shared_coverage_bias": "Inherited from LAB-ROOT-0007 and, by reference, LAB-ROOT-0003 (MLER, the only source ever operationalized for EMPLOYMENT_RELATIONSHIP): both trace to SUSS/ARCA-administered declaration streams; no corroboration across roots is attempted or implied by this claim.",
+      "source_label": "ARCA",
+      "v1_gov": [],
+      "what_would_unseat": "Discovery and governed admission of a genuinely new official source with individual-level or flow/transition data linking tax registration to employment status, covering a period overlapping an admissible episode -- not pursued or expected based on this project's own repeated prior investigation."
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

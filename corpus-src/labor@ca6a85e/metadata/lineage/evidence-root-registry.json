@@ -1,0 +1,131 @@
+[
+  {
+    "ROOT_ID": "LAB-ROOT-0001",
+    "PUBLICATION": "Situacion y evolucion del trabajo registrado (SIPA Trabajo Registrado)",
+    "DATASET_RELEASE": "trabajoregistrado_2605_estadisticas.xlsx, SHA-256 64fdd3c4dfab02034a3ee85a8515aac4b5bb523a33ca3e3ae8f6359be67b66b1",
+    "PRIMARY_PRODUCER": "Secretaria de Trabajo, Empleo y Seguridad Social (STEySS/SSS), Ministerio de Capital Humano",
+    "COLLECTION_INSTRUMENT": "SIPA administrative registration system (statistical processing of employer/contributor declarations; declarations themselves flow through ARCA)",
+    "FRAME_POPULATION": "Argentina; registered employment relationships/contributors across ASALARIADO_PRIVADO, ASALARIADO_PUBLICO, CASAS_PARTICULARES, AUTONOMO, MONOTRIBUTO, MONOTRIBUTO_SOCIAL modalities (T.2 table)",
+    "PERIOD": "2012-01 to 2026-05 (T.2 level table; A.1 index table covers 2009-01 onward for ASALARIADO_PRIVADO only)",
+    "TRANSFORMATIONS": [
+      "V1 standardization: XLSX parsed to long-form CSV, one row per reference_month x series_identifier x statistical_object x registration_modality",
+      "LAB-A: filtered to SIPA-T2-LEVEL-ORIGINAL series only (GOV-010: A.1 and T.2.1 are the same series; T.2 selected as V1's designated canonical level representation)"
+    ],
+    "STATISTICAL_OBJECT": "LAB-OBJ-0006",
+    "INDEPENDENCE_CLASS": "INDEPENDENT",
+    "RELATIVE_TO_ROOT_ID": null,
+    "SHARED_COVERAGE_BIAS": "Registration-based: this root cannot see any employment outside SIPA's administrative registration system (no visibility into unregistered/informal work). Per C5B (V1 P1 audit), SIPA's own inputs (ARCA employer declarations) are shared with MLER, SRT, and BESS -- claims combining SIPA with those sources must not treat agreement as independent corroboration of registration-status coverage itself."
+  },
+  {
+    "ROOT_ID": "LAB-ROOT-0002",
+    "PUBLICATION": "Cuenta de generacion del ingreso e insumo de mano de obra (CGI-IMO)",
+    "DATASET_RELEASE": "serie_cgi_07_26.xls, SHA-256 85f8e1a40e8b5fa143b20ad78b67405b3a728f19756d5aeeb1dd1a1e7efb4f4b",
+    "PRIMARY_PRODUCER": "Instituto Nacional de Estadistica y Censos (INDEC)",
+    "COLLECTION_INSTRUMENT": "National-accounts integrated estimation from surveys and administrative records (CGI-IMO methodology)",
+    "FRAME_POPULATION": "Argentina; national economy jobs/hours/wage bill, 2016-current base",
+    "PERIOD": "2016-Q1 to 2026-Q1",
+    "TRANSFORMATIONS": [
+      "V1 standardization: XLS parsed to long-form CSV, one row per reference_quarter x measure_identifier x occupational_category x activity_sector",
+      "LAB-A: filtered to occupational_category=TOTAL (JOB, HOUR) / ASALARIADO (WAGE_BILL) and activity_sector=TOTAL_GENERAL for a single national-aggregate series per measure -- INDEC's own published totals, not a LAB-computed sum across sectors"
+    ],
+    "STATISTICAL_OBJECT": "LAB-OBJ-0002",
+    "INDEPENDENCE_CLASS": "INDEPENDENT",
+    "RELATIVE_TO_ROOT_ID": null,
+    "SHARED_COVERAGE_BIAS": "This root's own JOB/HOUR/WAGE_BILL series are three internal measures of the same national-accounts product, not three independent sources; no CONVERGENT claim can be built from comparing them to each other. Relationship to LAB-ROOT-0001 (SIPA) was not tested in LAB-A and is UNVERIFIED, not assumed independent."
+  },
+  {
+    "ROOT_ID": "LAB-ROOT-0003",
+    "PUBLICATION": "Muestra Longitudinal de Empleo Registrado (MLER), edicion 2021",
+    "DATASET_RELEASE": "MLER.csv (extracted from mler_csv.rar), SHA-256 0e71f5f920c81a6f10e13325c1e9acd0c2866ca806884f2d9487f8ff37599852",
+    "PRIMARY_PRODUCER": "Observatorio de Empleo y Dinamica Empresarial (OEDE), STEySS, Ministerio de Capital Humano",
+    "COLLECTION_INSTRUMENT": "Anonymized longitudinal sample constructed from monthly employer declarations to SIPA/AFIP (ARCA) for registered private salaried employment (per V1 P1 audit, reports/p1/C5B-Argentina-administrative-source-audit.md)",
+    "FRAME_POPULATION": "Argentina; registered private-sector salaried employment, sampled (~600,000 workers, ~1.8 million employer-worker relationships per official documentation)",
+    "PERIOD": "1996-01 to 2021-12",
+    "TRANSFORMATIONS": [
+      "V1 extraction: MLER.csv extracted from mler_csv.rar, whole-file SHA-256/CRC32 verified, no record content read",
+      "V1 standardization: fields copied byte-for-byte with no coercion except reference_month, into mler_panel.csv.gz",
+      "LAB-A: DuckDB aggregation, read-only, of the standardized gzip CSV -- (a) SUM(sample_weight) per reference_month = weighted EMPLOYMENT_RELATIONSHIP-adjacent count; (b) one row per (reference_month, worker_id) with SUM(sample_weight) = weighted PERSON-adjacent count. No individual worker_id, relationship, or record was read, printed, or extracted -- only the two resulting monthly aggregate series (240 numbers total) were retained, in reports/lab_a/mler-sipa-overlap-monthly-aggregates.json"
+    ],
+    "STATISTICAL_OBJECT": "LAB-OBJ-0001",
+    "INDEPENDENCE_CLASS": "DOWNSTREAM_PROXY",
+    "RELATIVE_TO_ROOT_ID": "LAB-ROOT-0001",
+    "SHARED_COVERAGE_BIAS": "MLER is explicitly documented (V1 P1 audit, C5B) as a sample constructed FROM the same SIPA/AFIP(ARCA) employer-declaration stream that LAB-ROOT-0001 (SIPA) itself publishes aggregates from. Close numerical agreement between the two is therefore expected by construction, not evidence of independent corroboration of the underlying registered-employment count. GOV-006 also applies: EMPLOYER and JOB are UNREALIZED on this artifact; only PERSON (LAB-OBJ-0001) and EMPLOYMENT_RELATIONSHIP (LAB-OBJ-0003, relationship_sequence only) are used."
+  },
+  {
+    "ROOT_ID": "LAB-ROOT-0004",
+    "PUBLICATION": "Estadisticas de cobertura y financiacion del Sistema de Riesgos del Trabajo (SRT)",
+    "DATASET_RELEASE": "Serie_historica_Segun_Sector_de_actividad_economica_CIIUrev4 - UP.xlsx, SHA-256 43c5ced299ca2cfee4266ea5b9b06c646beabc8a9a51b4e612f2a699a10649ba",
+    "PRIMARY_PRODUCER": "Superintendencia de Riesgos del Trabajo (SRT)",
+    "COLLECTION_INSTRUMENT": "Occupational-risk-insurance coverage registration (SUSS worker declarations received through ARCA, per V1 P1 audit C5B)",
+    "FRAME_POPULATION": "Argentina; workers/employer parties within the occupational-risk-insurance system, CIIU Revision 4 classification only",
+    "PERIOD": "2020-01 to 2026-05 (Revision 4 vintage only; the 2019 parallel-vintage overlap and the entire CIIU Revision 2 series, 1996-07 to 2019-12, were deliberately excluded to respect GOV-007's no-bridge/no-auto-splice ruling)",
+    "TRANSFORMATIONS": [
+      "V1 standardization: two XLSX workbooks (Rev.2, Rev.4) parsed to one long-form CSV, activity_classification kept as a separate column, never merged across revisions",
+      "LAB-A: filtered to activity_classification=CIIU_REV4, activity_code=TOTAL_UNIDADES_PRODUCTIVAS, statistical_object=PERSON, reference_month >= 2020-01"
+    ],
+    "STATISTICAL_OBJECT": "LAB-OBJ-0001",
+    "INDEPENDENCE_CLASS": "PARTIALLY_DEPENDENT",
+    "RELATIVE_TO_ROOT_ID": "LAB-ROOT-0001",
+    "SHARED_COVERAGE_BIAS": "SRT receives SUSS worker declarations through ARCA (V1 P1 audit, C5B), the same declaration stream feeding SIPA; this diagnostic was not compared against SIPA in LAB-A (DIAGNOSTIC_ONLY, no claim attached), so this classification is recorded for completeness but did not gate any claim this round."
+  },
+  {
+    "ROOT_ID": "LAB-ROOT-0005",
+    "PUBLICATION": "INDEC EPH microdata release, 1er trimestre 2026 (EPH_usu_1_Trim_2026_txt.zip)",
+    "DATASET_RELEASE": "EPH_usu_1_Trim_2026_txt.zip (retrieved 2026-09-17) and EPH_usu_1_Trim_2025_txt.zip (retrieved 2026-09-18), both from https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/; record layouts EPH_registro_1T2026.pdf and EPH_registro_1T2025.pdf, same source directory. Two releases of the SAME root (LAB-A2.1 instruction section 6: different EPH releases are not independent roots merely for being different files).",
+    "PRIMARY_PRODUCER": "INDEC (Direccion de Encuestas de Hogares)",
+    "COLLECTION_INSTRUMENT": "Encuesta Permanente de Hogares household-survey questionnaire (continuous EPH)",
+    "FRAME_POPULATION": "persons and households in 32 urban agglomerates surveyed by EPH (2026-Q1 release), per usu_individual_T126.txt/usu_hogar_T126.txt AGLOMERADO codes",
+    "PERIOD": "2025-Q1 and 2026-Q1 (ANO4/TRIMESTRE confirmed by direct inspection of both releases), both retrieved; both sit within the post-2024-Q4-break regime (LAB-GOV-EPH-0001), no GOV-008 boundary crossed between them. INDEC's own catalog documents continuous quarterly releases back to 2003-Q3, the large majority of which LABOR has still not retrieved.",
+    "TRANSFORMATIONS": [
+      "None applied by LABOR to either release. Both files retrieved as published by INDEC and read directly from their official zip archives; no recoding, weighting, or aggregation performed. Schema note: the 2025-Q1 individual base carries one column (CAT_INAC) absent from the 2026-Q1 individual base; none of the variables required for LAB-HYP-0003/LAB-HYP-0004 (ESTADO, CAT_OCUP, PP07H, P21, PONDERA, PONDIIO, AGLOMERADO, ANO4, TRIMESTRE, CH04) are affected."
+    ],
+    "STATISTICAL_OBJECT": "LAB-OBJ-0008",
+    "INDEPENDENCE_CLASS": "INDEPENDENT",
+    "RELATIVE_TO_ROOT_ID": null,
+    "SHARED_COVERAGE_BIAS": "EPH's PRIMARY_PRODUCER, COLLECTION_INSTRUMENT (household survey questionnaire), and FRAME_POPULATION (surveyed persons/households) are each distinct from every Regime A administrative-registration root (LAB-ROOT-0001 SIPA, LAB-ROOT-0002 CGI, LAB-ROOT-0003 MLER, LAB-ROOT-0004 SRT) under the Amendment A same-root test; verified by direct inspection of the retrieved microdata's own record layout in this phase, not merely assumed from a different institutional publisher. EPH and IPC (LAB-ROOT-0006) are also produced by INDEC but use different collection instruments and frame populations (household questionnaire vs. retail price collection) and are treated as distinct roots on the same test; this has not been independently corroborated by a third method and remains a same-test judgement, not an empirically cross-checked one. Extended at LAB-A2.1 (2026-09-18) to a second release (2025-Q1) of the same root; this remains one Evidence Root with two vintages, not two roots, per LAB-A2.1 instruction section 6.",
+    "RELEASES": [
+      {
+        "RELEASE": "EPH_usu_1_Trim_2026_txt.zip",
+        "PERIOD": "2026-Q1",
+        "RETRIEVED_AT": "2026-09-17"
+      },
+      {
+        "RELEASE": "EPH_usu_1_Trim_2025_txt.zip",
+        "PERIOD": "2025-Q1",
+        "RETRIEVED_AT": "2026-09-18"
+      }
+    ]
+  },
+  {
+    "ROOT_ID": "LAB-ROOT-0006",
+    "PUBLICATION": "INDEC Indice de Precios al Consumidor Nacional, serie historica por divisiones (serie_ipc_divisiones.csv)",
+    "DATASET_RELEASE": "serie_ipc_divisiones.csv; retrieved 2026-09-17 from https://www.indec.gob.ar/ftp/cuadros/economia/serie_ipc_divisiones.csv; methodology document metodologia_ipc_nacional_2019.pdf, same source directory",
+    "PRIMARY_PRODUCER": "INDEC (Direccion de Indices de Precios de Consumo)",
+    "COLLECTION_INSTRUMENT": "retail/point-of-sale price-collection instrument (IPC Nacional, base diciembre 2016=100)",
+    "FRAME_POPULATION": "consumption basket of goods and services, national total and six statistical regions (GBA, Pampeana, Noreste, Noroeste, Cuyo, Patagonia)",
+    "PERIOD": "2016-12 through 2026-08 (201612-202608), as actually retrieved in the single file admitted this phase; base month 2016-12=100 for every region in the file, no internal base change observed",
+    "TRANSFORMATIONS": [
+      "None applied by LABOR beyond CSV parsing for inspection (delimiter ';', decimal comma). No re-basing, deflation, or splicing performed."
+    ],
+    "STATISTICAL_OBJECT": "LAB-OBJ-0025",
+    "INDEPENDENCE_CLASS": "INDEPENDENT",
+    "RELATIVE_TO_ROOT_ID": null,
+    "SHARED_COVERAGE_BIAS": "IPC's COLLECTION_INSTRUMENT (retail price collection) and FRAME_POPULATION (a consumption basket, not persons/jobs/employers) differ from every other admitted root under the Amendment A same-root test, including EPH (LAB-ROOT-0005), despite sharing INDEC as PRIMARY_PRODUCER with EPH and CGI. Not treated as a labour-object co-measurement: IPC's STATISTICAL_OBJECT (LAB-OBJ-0025, PRICE_INDEX) does not compete for CONVERGENT status against any labour-object root, since the Root Counting Rule counts roots that measure the SAME object, and no other admitted root measures PRICE_INDEX."
+  },
+  {
+    "ROOT_ID": "LAB-ROOT-0007",
+    "PUBLICATION": "ARCA Boletin Anual de Seguridad Social, Cuadro 1 ('Cantidad de aportantes y cotizantes segun relacion laboral')",
+    "DATASET_RELEASE": "Three retrieved vintages: boletin-anual-diciembre2025.xlsx (year 2025, monthly Jan-Dec), boletin-seg-soc-2020.xls (year 2020, monthly Jan-Dec), diciembre2016.xls (December 2016 single-month snapshot with MoM/YoY variation); all retrieved 2026-09-18 from ARCA's official 'Estadistica tributaria' portal (https://www.afip.gob.ar/institucional/estudios/boletines-mensuales-de-seguridad-social, branded ARCA, served at the legacy afip.gob.ar domain)",
+    "PRIMARY_PRODUCER": "ARCA (Agencia de Recaudacion y Control Aduanero), formerly AFIP",
+    "COLLECTION_INSTRUMENT": "SUSS (Sistema Unico de la Seguridad Social) unified administrative tax/contribution collection and registration system",
+    "FRAME_POPULATION": "persons making Autonomo or Monotributo contribution payments nationally, as tabulated monthly in Cuadro 1's 'Cotizantes autonomos' and 'Cotizantes monotributistas' rows only",
+    "PERIOD": "December 2016 (single month); January-December 2020 (monthly); January-December 2025 (monthly). Not a continuous series -- three targeted, non-adjacent vintages, chosen to give LAB-HYP-0005 a multi-point distribution-over-time comparison without downloading every available year (instruction section 1: 'NO descargar todo ARCA. Solo lo necesario').",
+    "TRANSFORMATIONS": [
+      "None applied by LABOR. Files retrieved as published by ARCA and read directly with openpyxl (2025) / xlrd (2020, 2016); no recoding, weighting, or aggregation performed."
+    ],
+    "STATISTICAL_OBJECT": "LAB-OBJ-0016",
+    "INDEPENDENCE_CLASS": "INDEPENDENT",
+    "RELATIVE_TO_ROOT_ID": null,
+    "SHARED_COVERAGE_BIAS": "IMPORTANT: this same table (Cuadro 1) also carries a 'Cotizantes dependientes' row and a 'Cotizantes totales al SIPA' row, which are SIPA-derived figures republished by ARCA, not independent ARCA observations -- confirmed by the table's own row label and by the fact that ARCA's Boletin devotes most of its other tables (Cuadro 2.x-6.x) explicitly to 'Informacion SIPA'. Those two rows are NOT part of this root's admitted scope and must never be treated as a second, independent corroboration of LAB-ROOT-0001 (SIPA) -- doing so would double-count the same underlying administrative declarations under two different source labels. Per GOV-009's general principle (BESS/ANSES shared provenance), if BESS is ever used again in this project, it must not be treated as independent of this root either: BESS is documented as downstream of ANSES/ARCA declarations, and this root's Autonomo/Monotributo figures are exactly the kind of ARCA-collected contribution record BESS's own downstream figures would ultimately trace back to."
+  }
+]

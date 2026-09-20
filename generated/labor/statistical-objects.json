@@ -1,0 +1,114 @@
+{
+  "entity": "StatisticalObject",
+  "items": [
+    {
+      "global_id": "labor/LAB-OBJ-0001",
+      "grain": "one row per person per observation period",
+      "id": "LAB-OBJ-0001",
+      "id_origin": "CORPUS",
+      "is": "a person-level count or estimate observed within a defined universe and period",
+      "is_not": [
+        "JOB",
+        "EMPLOYMENT_RELATIONSHIP",
+        "TAX_REGISTRATION",
+        "HOUSEHOLD",
+        "CONTRIBUTOR"
+      ],
+      "name": "PERSON",
+      "observation_mechanism": "administrative registration or household survey enumeration, depending on source",
+      "population": "persons within the frame/universe of the admitting source",
+      "producer": "source-specific (e.g. INDEC for EPH, STEySS/OEDE for SIPA/MLER)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0001",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "one natural person",
+      "universe": "source-specific; never assumed to be all Argentine residents unless the source's own frame says so",
+      "v1_references": [
+        "V1 statistical object PERSON (metadata/schemas/statistical-object.schema.json)",
+        "GOV-005",
+        "GOV-010"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0003",
+      "grain": "one row per relationship per observation period",
+      "id": "LAB-OBJ-0003",
+      "id_origin": "CORPUS",
+      "is": "an employer-worker spell or relationship",
+      "is_not": [
+        "PERSON",
+        "JOB",
+        "TAX_REGISTRATION",
+        "MONOTRIBUTO_REGISTRATION"
+      ],
+      "name": "EMPLOYMENT_RELATIONSHIP",
+      "observation_mechanism": "administrative registration of employer-worker spells",
+      "population": "registered employment relationships within the admitting source's frame",
+      "producer": "source-specific (e.g. STEySS/SIPA, OEDE/MLER)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0003",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED",
+      "unit": "one employer-worker spell",
+      "universe": "source-specific",
+      "v1_references": [
+        "V1 statistical object EMPLOYMENT_RELATIONSHIP",
+        "GOV-006"
+      ]
+    },
+    {
+      "global_id": "labor/LAB-OBJ-0016",
+      "grain": "one registration record per person per period",
+      "id": "LAB-OBJ-0016",
+      "id_origin": "CORPUS",
+      "is": "a specific Argentine simplified tax-registration category record",
+      "is_not": [
+        "SELF_EMPLOYMENT",
+        "CONTRACTOR (undefined object; this term is never used as a LABOR object name)",
+        "EMPLOYMENT_RELATIONSHIP",
+        "TAX_REGISTRATION (broader class; this is one instance of it)"
+      ],
+      "name": "MONOTRIBUTO_REGISTRATION",
+      "observation_mechanism": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (tax registration)",
+      "population": "persons registered under the Argentine simplified tax regime (Monotributo)",
+      "producer": "TO_BE_DETERMINED_AT_SOURCE_ADMISSION (ARCA is the leading candidate)",
+      "provenance": {
+        "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-OBJ-0016",
+        "source_path": "metadata/objects/object-ledger.json",
+        "source_pointer": "/15",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "status": "DEFINED_PENDING_SOURCE",
+      "unit": "one registration record",
+      "universe": "source-specific",
+      "v1_references": []
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

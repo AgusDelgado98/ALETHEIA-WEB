@@ -1,0 +1,80 @@
+/* Base tipográfica y reset. Solo usa tokens de design/tokens.css (sin literales de color). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--fs-base) / var(--lh-body) var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+}
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: var(--focus);
+  outline-offset: var(--focus-offset);
+  border-radius: 2px;
+}
+::selection {
+  background: var(--selection);
+}
+.mono {
+  font-family: var(--mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0;
+}
+/* Texto solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* Enlace de salto: visible únicamente con foco de teclado */
+.skip {
+  position: absolute;
+  left: var(--pad);
+  top: var(--space-2);
+  z-index: 10;
+  padding: var(--space-2) var(--space-3);
+  background: var(--paper);
+  border: var(--rule) solid var(--ink);
+  font-size: var(--fs-small);
+  transform: translateY(-200%);
+}
+.skip:focus-visible {
+  transform: none;
+}
+.wrap {
+  padding-inline: var(--pad);
+  max-width: 100rem;
+  margin-inline: auto;
+}

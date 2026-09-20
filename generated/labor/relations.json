@@ -1,0 +1,367 @@
+{
+  "entity": "Relation",
+  "items": [
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0011",
+        "LAB-CLM-0003"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-CONF-002",
+      "hypothesis_ids": [],
+      "id": "REL-CONF-002",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: tax and contribution registration counts (LAB-OBJ-0005 TAX_REGISTRATION, LAB-OBJ-0016 MONOTRIBUTO_REGISTRATION, LAB-OBJ-0026 AUTONOMOS_REGISTRATION) and employment-relationship counts (LAB-OBJ-0003 EMPLOYMENT_RELATIONSHIP) are each used only under their own definitions and in their own claims.",
+      "prohibited_inference": "Reading registration counts or shares as employment relationships, contractor status, or economic dependence; reading employment-relationship counts as registration categories; equating a Regime A employment-relationship record with a Regime B registration record; MONOTRIBUTO != CONTRACTOR; LEGAL_FORM != ECONOMIC_RELATIONSHIP.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-CONF-002",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/32",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0011"
+      ],
+      "reason": "Regime B's frozen prohibitions; LAB-CLM-0008 records that ARCA supports only the formal category; LAB-CLM-0009 records regulatory status only.",
+      "scope_of_relation": "WITHIN_REGIME_B_WITH_CROSS_REGIME_OBJECT_GUARD",
+      "title": "TAX_REGISTRATION != EMPLOYMENT_RELATIONSHIP"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007",
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-CONF-003",
+      "hypothesis_ids": [],
+      "id": "REL-CONF-003",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: each level or share is described as a level or share at its dates; the absence of flow or transition data is stated as an absence (LAB-CLM-0011, LAB-CLM-0014).",
+      "prohibited_inference": "Reading a change between dated levels or shares as transitions or flows (for example the Monotributo share change as movement of persons); deriving hires or transitions from stock differences; treating an employment stock as a hiring event.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-CONF-003",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/33",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0013"
+      ],
+      "reason": "Regime A's LAB-A3 rule; LAB-CLM-0007 is cross-sectional with no individual tracked; LAB-CLM-0011 is blocked because ARCA data is stock while the metric needs a flow rate; LAB-CLM-0014 preserved that a stock is not a HIRE event.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "STOCK != FLOW"
+    },
+    {
+      "category": "GOVERNANCE_REQUIRED",
+      "claim_ids": [
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-GR-004",
+      "hypothesis_ids": [],
+      "id": "REL-GR-004",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "prohibited_inference": "A cross-regime pattern such as a recurrent absence of flow, transition, or hiring-event data, stated as a synthesized finding rather than as two juxtaposed facts.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-GR-004",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/13",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Stating a pattern relates the two absences; rule 3 requires governance first (see JX-004).",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Governance required: A cross-regime pattern of absent flow or hiring-event data"
+    },
+    {
+      "category": "JUXTAPOSITION_ONLY",
+      "claim_ids": [
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-JX-004",
+      "hypothesis_ids": [],
+      "id": "REL-JX-004",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. Two separately established absences: registration-flow data absent (LAB-CLM-0011) and no HIRE-event source (LAB-CLM-0014), each with its own basis and scope.",
+      "prohibited_inference": "Stating a shared cause, or a pattern of missing flow data, as a synthesized finding; treating one absence as evidence for the other.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-JX-004",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/6",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Stating a pattern would relate the two absences, which rule 3 of the synthesis gate reserves for governance (GR-004).",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Absent flow data (LAB-CLM-0011) beside absent HIRE-event source (LAB-CLM-0014)"
+    },
+    {
+      "category": "JUXTAPOSITION_ONLY",
+      "claim_ids": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011"
+      ],
+      "global_id": "labor/REL-JX-005",
+      "hypothesis_ids": [],
+      "id": "REL-JX-005",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that Regime C contributes design, governance, and source-availability results and no data, no Evidence Root, and no posting.",
+      "prohibited_inference": "Any empirical relation; using Regime C's design pre-mortem, source-availability findings, or NOT_IDENTIFIABLE questions to strengthen, weaken, explain, or qualify the force of any Regime A or B claim; reading Regime C's absences as findings about labour-market conditions.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-JX-005",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/7",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Regime C has no data; rule 2 of the synthesis gate forbids weak Regime C evidence from raising the force of any other regime's claim.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Regime C limits beside Regime A and B results"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011",
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-001",
+      "hypothesis_ids": [],
+      "id": "REL-PR-001",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Upgrade any claim's epistemic state by aggregation (for example OBSERVED_IN_SOURCE to CONVERGENT or ESTABLISHED_WITHIN_SCOPE).",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-001",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/16",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Charter section 19 rule 1; Amendments A and C. Applies to every claim: each stays at its recorded state.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Upgrade any claim's epistemic state by aggregation (for example OBSERVED_IN_SOURCE to CONVERGENT or ESTABLISHED_WITHIN_S"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-005",
+      "hypothesis_ids": [],
+      "id": "REL-PR-005",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Infer economic dependence, subordination, or contractorization from registration shares, legal categories, or PP05F.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-005",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/20",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0011"
+      ],
+      "reason": "Regime B prohibited conflations; LAB-CLM-0008, LAB-CLM-0010. Registration and PP05F do not observe economic dependence.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Infer economic dependence, subordination, or contractorization from registration shares, legal categories, or PP05F"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007",
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-006",
+      "hypothesis_ids": [],
+      "id": "REL-PR-006",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Treat stocks as flows or transitions, or employment stocks as hiring events.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-006",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/21",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "STOCK != FLOW; HIRE != EMPLOYMENT_RELATIONSHIP; LAB-CLM-0011, LAB-CLM-0014. Dated levels or shares are not transitions; employment stocks are not hiring events.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Treat stocks as flows or transitions, or employment stocks as hiring events"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0011",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-008",
+      "hypothesis_ids": [],
+      "id": "REL-PR-008",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Report an absence (no source, not identifiable, blocked) as a negative finding, or a negative finding as an absence.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-008",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/23",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [
+        "LAB-Q-0006",
+        "LAB-Q-0007",
+        "LAB-Q-0011",
+        "LAB-Q-0015",
+        "LAB-Q-0017"
+      ],
+      "reason": "ABSENT_VS_NEGATIVE (publication-contract.md). Absences are recorded as absent, not negative; only LAB-CLM-0005 is a negative result, within its scope.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Report an absence (no source, not identifiable, blocked) as a negative finding, or a negative finding as an absence"
+    },
+    {
+      "category": "PROHIBITED",
+      "claim_ids": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011",
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "context_claim_ids": [],
+      "global_id": "labor/REL-PR-010",
+      "hypothesis_ids": [],
+      "id": "REL-PR-010",
+      "id_origin": "CORPUS",
+      "permitted_comparison": "None: this relation is not permitted in any form.",
+      "prohibited_inference": "Produce any cross-regime composite: average, score, ranking, index, vote, or overall strength.",
+      "provenance": {
+        "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "REL-PR-010",
+        "source_path": "reports/lab_s/LAB-S2-relation-register.json",
+        "source_pointer": "/RELATIONS/25",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_ids": [],
+      "reason": "Charter section 19 rules 1, 5, 6; DEC-005. No composite, score, average, ranking, or vote across claims or regimes.",
+      "scope_of_relation": "CROSS_REGIME",
+      "title": "Produce any cross-regime composite: average, score, ranking, index, vote, or overall strength"
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

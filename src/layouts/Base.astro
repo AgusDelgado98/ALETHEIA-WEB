@@ -1,0 +1,75 @@
+---
+import "../../design/tokens.css";
+import "../styles/global.css";
+interface Props {
+  title: string;
+  description: string;
+  skip: string;
+  wordmark: string;
+}
+const { title, description, skip, wordmark } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link
+      rel="preload"
+      href="/fonts/newsreader-latin-wght.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/instrument-sans-latin-wght.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">
+      {skip}
+    </a>
+    <header class="site">
+      <div class="wrap">
+        <span class="wordmark">{wordmark}</span>
+      </div>
+    </header>
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  .site {
+    padding-block: var(--space-5);
+  }
+  /* Wordmark (Charter §12): serif 500, tracking amplio y LA RANURA a media altura de las mayúsculas */
+  .wordmark {
+    position: relative;
+    display: inline-block;
+    font: 500 1.0625rem / 1 var(--serif);
+    letter-spacing: var(--tracking-wordmark);
+    padding-right: 0.24em;
+    color: var(--ink);
+  }
+  .wordmark::after {
+    content: "";
+    position: absolute;
+    left: -3px;
+    right: -1px;
+    top: calc(50% - 0.27em);
+    height: max(1.5px, 0.09em);
+    background: var(--paper);
+  }
+  main:focus {
+    outline: none;
+  }
+</style>

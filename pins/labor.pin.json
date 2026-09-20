@@ -1,0 +1,77 @@
+{
+  "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+  "files": [
+    {
+      "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+      "bytes": 59034,
+      "path": "metadata/claims/claim-ledger.json",
+      "sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5"
+    },
+    {
+      "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+      "bytes": 94806,
+      "path": "metadata/evidence/evidence-registry.json",
+      "sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582"
+    },
+    {
+      "blob_sha": "7cc8006857dc377ce7f5fc9f3f2ddcc62fa915e8",
+      "bytes": 28868,
+      "path": "metadata/governance/lab-gov-registry.json",
+      "sha256": "a1a683298bdfe29de26a4fddf54ef46b37c0991d2c96da6fed138934f3c2a535"
+    },
+    {
+      "blob_sha": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+      "bytes": 11826,
+      "path": "metadata/hypotheses/hypothesis-registry.json",
+      "sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d"
+    },
+    {
+      "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+      "bytes": 15327,
+      "path": "metadata/lineage/evidence-root-registry.json",
+      "sha256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2"
+    },
+    {
+      "blob_sha": "e877c21d64f1d297e3b60eb68e1d4b92dd4a8fd7",
+      "bytes": 28268,
+      "path": "metadata/objects/object-ledger.json",
+      "sha256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064"
+    },
+    {
+      "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+      "bytes": 19356,
+      "path": "metadata/questions/question-ledger.json",
+      "sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e"
+    },
+    {
+      "blob_sha": "7068337973fd17e6424fc29a3bb278cce0a44d87",
+      "bytes": 7812,
+      "path": "reports/lab_b4/LAB-B4-episode-sources.json",
+      "sha256": "fd4035c637c796bb9cd2de031c6a0c4a74007da3c4207cbf2a69cc5892117956"
+    },
+    {
+      "blob_sha": "7757d310673296b9b7fc34ba2509d1fa17232d29",
+      "bytes": 146136,
+      "path": "reports/lab_s/LAB-S0-inventory.json",
+      "sha256": "9ddc210bd965728269f97c6238b75ac201891f4147d74d2cf701e20a4e446bb8"
+    },
+    {
+      "blob_sha": "f333f4b7d319201062002cb7a98aa3ce025df540",
+      "bytes": 26210,
+      "path": "reports/lab_s/LAB-S0-preserved-results.json",
+      "sha256": "dc8129f275950d3e7276066aef2940572d820227a482fc767b3c5b6b52374a3a"
+    },
+    {
+      "blob_sha": "31c9c2ed77cd4c0036b5643bbb5ed0957e143849",
+      "bytes": 83255,
+      "path": "reports/lab_s/LAB-S2-relation-register.json",
+      "sha256": "9a0aebcc04fc54c1ef4ed28551cdd77e2986a9cd10adc426047b354fac55cd5e"
+    }
+  ],
+  "module_id": "labor",
+  "repo_id": "ALETHEIA-LABOR",
+  "schema": "aletheia-web/pin/1",
+  "tag": "aletheia-labor-v1.0.0",
+  "tag_object": "43279191455e5ed64b9d9a2fe492ae14a701e344",
+  "tree": "6150649a97e41a028a6966b114df36edbb937619"
+}

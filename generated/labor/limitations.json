@@ -1,0 +1,227 @@
+{
+  "entity": "Limitation",
+  "items": [
+    {
+      "global_id": "labor/lim.LAB-CLM-0011.6a355bb6",
+      "id": "lim.LAB-CLM-0011.6a355bb6",
+      "id_origin": "DERIVED",
+      "ordinal": 3,
+      "origin_path": "metadata/claims/claim-ledger.json#LAB-CLM-0011/LIMITATIONS[2]",
+      "owner_id": "LAB-CLM-0011",
+      "owner_kind": "claim",
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/LIMITATIONS/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "Blockers (1) and (2) are, in principle, resolvable by a future source not currently known to exist; blocker (3) is structural and, based on every prior search in this project (LAB-CLM-0003, LAB-B1, LAB-B4), unlikely to be resolved by public-source discovery alone"
+    },
+    {
+      "global_id": "labor/lim.LAB-CLM-0011.91104881",
+      "id": "lim.LAB-CLM-0011.91104881",
+      "id_origin": "DERIVED",
+      "ordinal": 4,
+      "origin_path": "metadata/claims/claim-ledger.json#LAB-CLM-0011/LIMITATIONS[3]",
+      "owner_id": "LAB-CLM-0011",
+      "owner_kind": "claim",
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/LIMITATIONS/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "Does not reopen or alter LAB-GOV-Q0013-EPISODE-SELECTION-0001's own selected episode (EP-2025-AUG); a future source admission would still use that same episode unless a new ruling changes it"
+    },
+    {
+      "global_id": "labor/lim.LAB-CLM-0011.a890ced7",
+      "id": "lim.LAB-CLM-0011.a890ced7",
+      "id_origin": "DERIVED",
+      "ordinal": 5,
+      "origin_path": "metadata/claims/claim-ledger.json#LAB-CLM-0011/LIMITATIONS[4]",
+      "owner_id": "LAB-CLM-0011",
+      "owner_kind": "claim",
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/LIMITATIONS/4",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "Treated as this project's terminal disposition for Regime B closeout purposes; not a claim that no future evidence could ever unseat it"
+    },
+    {
+      "global_id": "labor/lim.LAB-CLM-0011.bea8975a",
+      "id": "lim.LAB-CLM-0011.bea8975a",
+      "id_origin": "DERIVED",
+      "ordinal": 2,
+      "origin_path": "metadata/claims/claim-ledger.json#LAB-CLM-0011/LIMITATIONS[1]",
+      "owner_id": "LAB-CLM-0011",
+      "owner_kind": "claim",
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/LIMITATIONS/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "No causal effect was computed; no proxy metric was substituted; LAB-HYP-0006's own METRIC/EXPECTED_OBSERVATION/FAILURE_CONDITION/CANDIDATE_SOURCES text is unmodified"
+    },
+    {
+      "global_id": "labor/lim.LAB-CLM-0011.d278178c",
+      "id": "lim.LAB-CLM-0011.d278178c",
+      "id_origin": "DERIVED",
+      "ordinal": 1,
+      "origin_path": "metadata/claims/claim-ledger.json#LAB-CLM-0011/LIMITATIONS[0]",
+      "owner_id": "LAB-CLM-0011",
+      "owner_kind": "claim",
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/LIMITATIONS/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "This is a documented incapacity to test the hypothesis with currently known or plausible sources, not a finding about the true causal effect in either direction"
+    },
+    {
+      "global_id": "labor/lim.LAB-EVD-0020.01ad2b25",
+      "id": "lim.LAB-EVD-0020.01ad2b25",
+      "id_origin": "DERIVED",
+      "ordinal": 3,
+      "origin_path": "metadata/evidence/evidence-registry.json#LAB-EVD-0020/LIMITATIONS[2]",
+      "owner_id": "LAB-EVD-0020",
+      "owner_kind": "evidence",
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-EVD-0020",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/19/LIMITATIONS/2",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "Blockers (1) and (2) are, in principle, resolvable by a future source that has not been found to exist (registration-flow ARCA data; a post-2021 EMPLOYMENT_RELATIONSHIP-capable source); blocker (3) is structural and, based on every prior search in this project, unlikely to be resolved by public-source discovery alone"
+    },
+    {
+      "global_id": "labor/lim.LAB-EVD-0020.286cadc5",
+      "id": "lim.LAB-EVD-0020.286cadc5",
+      "id_origin": "DERIVED",
+      "ordinal": 4,
+      "origin_path": "metadata/evidence/evidence-registry.json#LAB-EVD-0020/LIMITATIONS[3]",
+      "owner_id": "LAB-EVD-0020",
+      "owner_kind": "evidence",
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-EVD-0020",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/19/LIMITATIONS/3",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "This claim does not reopen or alter LAB-GOV-Q0013-EPISODE-SELECTION-0001's own selected episode (EP-2025-AUG); a future source admission would still use that same episode unless a new ruling changes it"
+    },
+    {
+      "global_id": "labor/lim.LAB-EVD-0020.a5f820c7",
+      "id": "lim.LAB-EVD-0020.a5f820c7",
+      "id_origin": "DERIVED",
+      "ordinal": 2,
+      "origin_path": "metadata/evidence/evidence-registry.json#LAB-EVD-0020/LIMITATIONS[1]",
+      "owner_id": "LAB-EVD-0020",
+      "owner_kind": "evidence",
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-EVD-0020",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/19/LIMITATIONS/1",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "No causal effect was computed; no proxy metric was substituted; LAB-HYP-0006's own registered fields are unmodified"
+    },
+    {
+      "global_id": "labor/lim.LAB-EVD-0020.d278178c",
+      "id": "lim.LAB-EVD-0020.d278178c",
+      "id_origin": "DERIVED",
+      "ordinal": 1,
+      "origin_path": "metadata/evidence/evidence-registry.json#LAB-EVD-0020/LIMITATIONS[0]",
+      "owner_id": "LAB-EVD-0020",
+      "owner_kind": "evidence",
+      "provenance": {
+        "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "4a5631f6a34f8323f3873e3396d1cdc78743260b5464ca2310c039c7bda1d582",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-EVD-0020",
+        "source_path": "metadata/evidence/evidence-registry.json",
+        "source_pointer": "/19/LIMITATIONS/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "This is a documented incapacity to test the hypothesis with currently known or plausible sources, not a finding about the true causal effect in either direction"
+    },
+    {
+      "global_id": "labor/lim.LAB-Q-0013.59009bb6",
+      "id": "lim.LAB-Q-0013.59009bb6",
+      "id_origin": "DERIVED",
+      "ordinal": 1,
+      "origin_path": "metadata/questions/question-ledger.json#LAB-Q-0013/KNOWN_LIMITATIONS[0]",
+      "owner_id": "LAB-Q-0013",
+      "owner_kind": "question",
+      "provenance": {
+        "blob_sha": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-Q-0013",
+        "source_path": "metadata/questions/question-ledger.json",
+        "source_pointer": "/12/KNOWN_LIMITATIONS/0",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "text": "No specific threshold-change episode has been selected or validated yet"
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

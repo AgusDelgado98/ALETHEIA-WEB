@@ -1,0 +1,93 @@
+{
+  "entity": "Anchor",
+  "items": [
+    {
+      "claim_id": "LAB-CLM-0011",
+      "display": {
+        "locale": "es-AR",
+        "style": "date-long"
+      },
+      "global_id": "labor/anc.LAB-CLM-0011.episode_effective_date",
+      "id": "anc.LAB-CLM-0011.episode_effective_date",
+      "id_origin": "DERIVED",
+      "key": "episode_effective_date",
+      "kind": "DATE",
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "value_raw": "2025-08-01",
+      "witnesses": [
+        {
+          "blob_sha": "7068337973fd17e6424fc29a3bb278cce0a44d87",
+          "entity": "labor/EP-2025-AUG",
+          "field": "DATE",
+          "pointer": "/CANDIDATE_EPISODES/3/DATE",
+          "source_path": "reports/lab_b4/LAB-B4-episode-sources.json",
+          "text_anchor": "2025-08-01"
+        },
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0011",
+          "field": "CLAIM_TEXT",
+          "pointer": "/10/CLAIM_TEXT",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "EP-2025-AUG, 2025-08-01"
+        }
+      ]
+    },
+    {
+      "claim_id": "LAB-CLM-0011",
+      "display": {
+        "locale": "es-AR",
+        "style": "month-long"
+      },
+      "global_id": "labor/anc.LAB-CLM-0011.mler_admitted_period_end",
+      "id": "anc.LAB-CLM-0011.mler_admitted_period_end",
+      "id_origin": "DERIVED",
+      "key": "mler_admitted_period_end",
+      "kind": "PERIOD_MONTH",
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0011",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/10/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "value_raw": "2021-12",
+      "witnesses": [
+        {
+          "blob_sha": "c3e4fff30cf23f410105106662dac8ea28dfcdf2",
+          "entity": "labor/LAB-ROOT-0003",
+          "field": "PERIOD",
+          "pointer": "/2/PERIOD",
+          "source_path": "metadata/lineage/evidence-root-registry.json",
+          "text_anchor": "to 2021-12"
+        },
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0011",
+          "field": "CLAIM_TEXT",
+          "pointer": "/10/CLAIM_TEXT",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "admitted period ends 2021-12"
+        }
+      ]
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

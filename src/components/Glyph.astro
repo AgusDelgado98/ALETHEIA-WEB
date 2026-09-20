@@ -1,0 +1,57 @@
+---
+/**
+ * Los seis glifos del Charter §7 (grilla de 24 px, una sola familia geométrica).
+ * El relleno expresa el estado: macizo = sostenido; hueco/discontinuo = enunciado pero no alcanzado.
+ * Los glifos son gramática interna y SIEMPRE van acompañados de texto (Charter §7.4): aquí son decorativos.
+ */
+interface Props {
+  kind: "source" | "object" | "evidence" | "hypothesis" | "claim" | "limit";
+  fill?: "solid" | "hollow" | "ghost";
+  size?: string;
+}
+const { kind, fill = "solid", size } = Astro.props;
+---
+
+<svg
+  class={`g g--${fill}`}
+  viewBox="0 0 24 24"
+  aria-hidden="true"
+  focusable="false"
+  style={size === undefined ? undefined : `--g-size:${size}`}
+>
+  {kind === "source" && <circle cx="12" cy="12" r="7" />}
+  {kind === "object" && <polygon points="12,4 20,12 12,20 4,12" />}
+  {kind === "evidence" && <polygon points="12,4 21,19 3,19" />}
+  {kind === "hypothesis" && <polygon points="3,5 21,5 12,20" />}
+  {kind === "claim" && <rect x="5" y="5" width="14" height="14" />}
+  {kind === "limit" && <path class="slot" d="M1.5 12H8M8 6.5v11M16 6.5v11M16 12h6.5" />}
+</svg>
+
+<style>
+  .g {
+    display: inline-block;
+    width: var(--g-size, 1rem);
+    height: var(--g-size, 1rem);
+    flex: none;
+    fill: currentColor;
+    stroke: none;
+    vertical-align: -0.15em;
+  }
+  .g--hollow {
+    fill: var(--sect-bg);
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+  .g--ghost {
+    fill: var(--sect-bg);
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-dasharray: 2.6 2.6;
+  }
+  .slot {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-dasharray: none;
+  }
+</style>
