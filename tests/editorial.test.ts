@@ -99,12 +99,23 @@ describe("capa editorial de Q-0013", () => {
     expect(verifyAudit(bundle, corpus)).toEqual([]);
     expect(bundle.units.length).toBeGreaterThan(70);
   });
-  it("public_question es exactamente la aprobada y la única con veredicto APPROVED de la autoría", () => {
-    const approved = bundle.audit!.records.filter((r) => r.verdict === "APPROVED");
-    expect(approved.map((r) => r.string_id)).toEqual(["labor/LAB-Q-0013#public_question"]);
-    expect(bundle.audit!.records.filter((r) => r.verdict === "PENDING_AUTHOR_REVIEW").length).toBe(
-      bundle.units.length - 1,
+  it("public_question de Q-0013 y las 13 fichas mínimas tienen veredicto APPROVED (Charter §20.7)", () => {
+    const latest = (sid: string) =>
+      bundle
+        .audit!.records.filter((r) => r.string_id === sid)
+        .sort((a, z) => z.revision - a.revision)[0];
+    expect(latest("labor/LAB-Q-0013#public_question")?.verdict).toBe("APPROVED");
+    const extras = bundle.units
+      .filter(
+        (u) => u.kind === "public_question" && u.string_id !== "labor/LAB-Q-0013#public_question",
+      )
+      .map((u) => u.string_id);
+    expect(extras).toHaveLength(13);
+    for (const sid of extras) expect(latest(sid)?.verdict, sid).toBe("APPROVED");
+    const pendingLatest = bundle.units.filter(
+      (u) => latest(u.string_id)?.verdict === "PENDING_AUTHOR_REVIEW",
     );
+    expect(pendingLatest.length).toBe(bundle.units.length - 14);
   });
   it("cada frase de «sí / no / haría falta» cita contenido canónico que resuelve", () => {
     for (const u of bundle.units.filter((x) =>
@@ -130,10 +141,10 @@ describe("capa editorial de Q-0013", () => {
     const unit = b.units.find((u) => u.string_id.endsWith("finding.title"))!;
     unit.text = b.finding.title.text;
     expect(() => seal(b, corpus)).toThrow(/cambió después de auditarse/);
-    b.review.revision = 2;
+    b.review.revision = b.review.revision + 1;
     const sealed = seal(b, corpus);
     const recs = sealed.records.filter((r) => r.string_id === unit.string_id);
-    expect(recs.map((r) => r.revision)).toEqual([1, 2]);
+    expect(recs.map((r) => r.revision)).toEqual([1, 2, 3]);
   });
   it("sellar dos veces no cambia nada (idempotente)", () => {
     const again = seal(loadEditorial(ROOT, QID), corpus);

@@ -1,0 +1,132 @@
+---
+import MapState from "./MapState.astro";
+import { isDocumentaryObserved } from "../lib/site.ts";
+import type { MapQuestion } from "../lib/map.ts";
+interface Props {
+  q: MapQuestion;
+  kicker: string;
+  ui: (key: string) => string;
+  dense?: boolean;
+}
+const { q, kicker, ui, dense = false } = Astro.props;
+const hatch = new Set(["NOT_IDENTIFIABLE"]);
+const shapeOf = (state: string): string =>
+  state === "INSUFFICIENT_EVIDENCE"
+    ? ui("shape_insufficient")
+    : hatch.has(state)
+      ? ui("shape_not_identifiable")
+      : state === "OBSERVED_IN_SOURCE"
+        ? ui("shape_observed")
+        : state === "REFUTED_WITHIN_SCOPE"
+          ? ui("shape_refuted")
+          : state === "BLOCKED_BY_DESIGN"
+            ? ui("shape_blocked")
+            : state === "OUTSIDE_LAB_A"
+              ? ui("shape_open")
+              : ui("layer_question");
+---
+
+<article
+  class:list={["entry", dense && "entry--dense"]}
+  data-index-question={q.id}
+  data-question-resolution={q.resolution}
+  data-regime={q.regime}
+  data-tier={q.hasEditorial ? "A" : "B"}
+>
+  <p class="entry__k">
+    {kicker}
+    <span class="mono" data-num="id">
+      {q.id}
+    </span>
+    <span class="entry__reg">
+      {ui("map_regime")} <span>{q.regime}</span>
+    </span>
+  </p>
+  <h2 class="entry__t">
+    <a href={q.href}>{q.text}</a>
+  </h2>
+  <div class="entry__end">
+    <MapState
+      state={q.resolution}
+      label={q.resolutionLabel}
+      description={shapeOf(q.resolution)}
+      patternId={`entry-hatch-${q.id}`}
+    />
+    {q.claims.map((cl) => (
+      <span data-claim-id={cl.id} data-claim-state={cl.state} class="entry__cl">
+        <span class="sr-only">
+          {ui("layer_claim")} <span data-num="id">{cl.id}</span>
+          <span>{cl.label}</span>
+          {isDocumentaryObserved(cl.kind, cl.state) && <span>{ui("qualifier_documentary")}</span>}
+        </span>
+      </span>
+    ))}
+  </div>
+  {!dense && (
+    <p class="entry__open">
+      <a href={q.href}>{ui("open_question")}</a>
+    </p>
+  )}
+</article>
+
+<style>
+  .entry {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-6);
+    border-bottom: var(--rule) solid var(--hair);
+  }
+  .entry--dense {
+    padding-block: var(--space-4);
+    gap: var(--space-2);
+  }
+  .entry__k {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    align-items: baseline;
+  }
+  .entry__t {
+    font: 300 var(--fs-serif-md) / var(--lh-serif) var(--serif);
+    letter-spacing: var(--tracking-serif);
+    max-width: 28ch;
+    text-wrap: balance;
+  }
+  .entry--dense .entry__t {
+    font-size: var(--fs-serif-sm);
+    max-width: 36ch;
+  }
+  .entry__t a {
+    text-decoration: none;
+  }
+  .entry__end {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  .entry__open a {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    text-underline-offset: 0.2em;
+  }
+  @media (min-width: 64rem) {
+    .entry:not(.entry--dense) {
+      grid-template-columns: minmax(0, 1fr) minmax(12rem, 22rem);
+      column-gap: var(--space-6);
+      align-items: start;
+    }
+    .entry:not(.entry--dense) .entry__k,
+    .entry:not(.entry--dense) .entry__t,
+    .entry:not(.entry--dense) .entry__open {
+      grid-column: 1;
+    }
+    .entry:not(.entry--dense) .entry__end {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      justify-content: flex-end;
+      align-self: center;
+    }
+  }
+</style>

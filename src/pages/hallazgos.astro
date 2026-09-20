@@ -1,0 +1,50 @@
+---
+import QuestionEntry from "../components/QuestionEntry.astro";
+import Base from "../layouts/Base.astro";
+import { loadSite } from "../lib/site.ts";
+
+const site = loadSite(process.cwd());
+const ui = site.ui;
+---
+
+<Base
+  title={`${ui("findings_heading")} · ${ui("brand_wordmark")}`}
+  description={ui("findings_lede")}
+>
+  <div class="wrap page">
+    <header class="ph">
+      <p class="k">{ui("featured_kicker")}</p>
+      <h1>{ui("findings_heading")}</h1>
+      <p>{ui("findings_lede")}</p>
+    </header>
+    <div data-featured="true">
+      {site.featured.map((q) => (
+        <QuestionEntry q={q} kicker={ui("featured_kicker")} ui={ui} />
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-bottom: var(--space-10);
+  }
+  .ph {
+    padding-block: var(--space-8) var(--space-6);
+    max-width: var(--measure-prose);
+  }
+  .k {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  h1 {
+    margin-top: var(--space-4);
+    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.018em;
+  }
+  .ph p:last-child {
+    margin-top: var(--space-5);
+    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+  }
+</style>

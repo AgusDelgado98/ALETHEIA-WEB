@@ -1,13 +1,21 @@
 ---
 import "../../design/tokens.css";
 import "../styles/global.css";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import { loadSite } from "../lib/site.ts";
 interface Props {
   title: string;
   description: string;
-  skip: string;
-  wordmark: string;
+  skip?: string;
+  wordmark?: string;
 }
-const { title, description, skip, wordmark } = Astro.props;
+const site = loadSite(process.cwd());
+const ui = site.ui;
+const { title, description } = Astro.props;
+const skip = Astro.props.skip ?? ui("skip_link");
+const wordmark = Astro.props.wordmark ?? ui("brand_wordmark");
+const current = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
 ---
 
 <!doctype html>
@@ -36,21 +44,15 @@ const { title, description, skip, wordmark } = Astro.props;
     <a class="skip" href="#contenido">
       {skip}
     </a>
-    <header class="site">
-      <div class="wrap">
-        <span class="wordmark">{wordmark}</span>
-      </div>
-    </header>
+    <SiteNav ui={ui} wordmark={wordmark} current={current} />
     <main id="contenido" tabindex="-1">
       <slot />
     </main>
+    <SiteFooter ui={ui} tag={site.pin.tag} commitShort={site.pin.commitShort} />
   </body>
 </html>
 
 <style is:global>
-  .site {
-    padding-block: var(--space-5);
-  }
   /* Wordmark (Charter §12): serif 500, tracking amplio y LA RANURA a media altura de las mayúsculas */
   .wordmark {
     position: relative;

@@ -132,6 +132,18 @@ export function loadEditorialFromTexts(
     for (const [code, l] of Object.entries(states.question_resolution_labels)) units.push({ string_id: `site#states.question.${code}`, kind: "state_label", text: l.text, maps_to: [`vocab:question_resolution:${code}`], section: "states" });
     units.push({ string_id: "site#fixed.absence_not_negative", kind: "fixed_text", text: states.fixed.absence_not_negative.text, maps_to: [`${cref}#absent_vs_negative`], section: "states" });
     for (const [k, l] of Object.entries(ui.strings)) units.push({ string_id: `site#ui.${k}`, kind: "ui_label", text: l.text, maps_to: [], section: "ui" });
+    // public_question de preguntas sin ficha editorial (OD-05 / Charter §20.7): viven en questions/*.yml.
+    for (const [path, t] of Object.entries(texts)) {
+      if (!path.startsWith("editorial/labor/questions/") || path === p.question) continue;
+      const extra = QuestionEditorial.parse(parse(t));
+      units.push({
+        string_id: `${extra.canonical_ref}#public_question`,
+        kind: "public_question",
+        text: extra.public_question,
+        maps_to: [`${extra.canonical_ref}#canonical_text`],
+        section: "question",
+      });
+    }
   }
 
   return { question, finding, limits, states, ui, review, audit, files, units };
@@ -139,6 +151,23 @@ export function loadEditorialFromTexts(
 
 export function editorialPaths(qid: string): string[] {
   return Object.values(ROOT_FILES(qid));
+}
+
+/** Lista de `public_question` YAML (las 18). */
+export function listQuestionEditorialPaths(root: string): string[] {
+  const dir = join(root, "editorial", "labor", "questions");
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir)
+    .filter((n) => n.endsWith(".yml"))
+    .sort()
+    .map((n) => `editorial/labor/questions/${n}`);
+}
+
+/** `public_question` aprobado, o `null` si todavía no hay YAML. */
+export function loadQuestionCopy(root: string, qid: string): ReturnType<typeof QuestionEditorial.parse> | null {
+  const path = join(root, "editorial", "labor", "questions", `${qid}.yml`);
+  if (!existsSync(path)) return null;
+  return QuestionEditorial.parse(parse(readFileSync(path, "utf8")));
 }
 
 export function loadEditorial(
@@ -152,6 +181,14 @@ export function loadEditorial(
       texts[path] = readFileSync(join(root, path), "utf8");
     } catch {
       /* el archivo de auditoría puede no existir todavía */
+    }
+  }
+  const includeSiteUnits = opts?.includeSiteUnits ?? qid === SITE_STRINGS_OWNER;
+  if (includeSiteUnits) {
+    for (const path of listQuestionEditorialPaths(root)) {
+      const extraQid = path.replace(/^editorial\/labor\/questions\//, "").replace(/\.yml$/, "");
+      if (hasEditorialFinding(root, extraQid)) continue;
+      texts[path] = readFileSync(join(root, path), "utf8");
     }
   }
   return loadEditorialFromTexts(texts, qid, opts);

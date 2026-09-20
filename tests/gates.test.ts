@@ -92,7 +92,7 @@ describe("mapa /explorar", () => {
       }
       expect(html).toContain('data-claim-id="LAB-CLM-0002"');
       expect(html).toContain('data-claim-id="LAB-CLM-0004"');
-      expect([...html.matchAll(/Sin claim: no hay Rastro de claim\./g)]).toHaveLength(6);
+      expect([...html.matchAll(/Sin claim: no hay Rastro de claim\./g)]).toHaveLength(5);
       expect(runGate("G-UX-01", ctx).status).toBe("PASS");
       expect(runGate("G-UX-02", ctx).status).toBe("PASS");
       expect(runGate("G-UX-04", ctx).status).toBe("PASS");

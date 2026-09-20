@@ -36,6 +36,10 @@ ol {
 a {
   color: inherit;
 }
+a:hover,
+a:focus-visible {
+  color: var(--verd-deep);
+}
 :focus-visible {
   outline: var(--focus);
   outline-offset: var(--focus-offset);

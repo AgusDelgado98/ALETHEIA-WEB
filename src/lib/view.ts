@@ -12,6 +12,9 @@ import {
 import { pendingSignoff } from "../../tools/editorial/audit.ts";
 import { limitationIdFromRef } from "../../tools/editorial/resolve.ts";
 import { fromSegments, markTokens, type Part } from "./render.ts";
+import { documentaryLabel, publicQuestionText } from "./map.ts";
+import { questionSlug } from "./slug.ts";
+export { questionSlug };
 
 /**
  * Modelo de vista de una página de pregunta. Lee SOLO `generated/` (hechos y estados) y `editorial/` (palabras).
@@ -61,7 +64,7 @@ export interface QuestionView {
     absenceNotNegative: boolean;
   };
   claim: { id: string; source: string; hypothesisId: string } | null;
-  claims: { id: string; state: string; source: string; kind: string }[];
+  claims: { id: string; state: string; source: string; kind: string; label: string }[];
   title: Part[];
   intro: Part[];
   scope: Part[];
@@ -87,10 +90,6 @@ export interface QuestionView {
     disclosure: Part[] | null;
     pendingSignoff: number;
   };
-}
-
-export function questionSlug(id: string): string {
-  return id.replace(/^LAB-/, "").toLowerCase();
 }
 
 export function availableQuestionIds(root: string): string[] {
@@ -120,12 +119,19 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     editorialSha: sha256Hex(editorialManifest),
     preserved: q.preserved_result_ids,
   };
+  const siteLabels = loadSiteStrings(root);
   const listedClaims = q.claim_ids.map((id) => {
     const cl = req(
       c.claims.find((x) => x.id === id),
       `claim ${id}`,
     );
-    return { id: cl.id, state: cl.epistemic_state, source: cl.source_label, kind: cl.claim_kind };
+    return {
+      id: cl.id,
+      state: cl.epistemic_state,
+      source: cl.source_label,
+      kind: cl.claim_kind,
+      label: siteLabels.states.claim_state_labels[cl.epistemic_state]?.text ?? cl.epistemic_state,
+    };
   });
 
   if (!hasEditorialFinding(root, qid))
@@ -394,8 +400,12 @@ function loadCanonicalView(
 ): QuestionView {
   const site = loadSiteStrings(root);
   const ui = (key: string): string => req(site.ui.strings[key], `cadena de interfaz «${key}»`).text;
-  const qLabel =
-    site.states.question_resolution_labels[q.resolution.value]?.text ?? q.resolution.value;
+  const qLabel = documentaryLabel(
+    ui,
+    q.resolution.value,
+    site.states.question_resolution_labels[q.resolution.value]?.text ?? q.resolution.value,
+  );
+  const publicQuestion = publicQuestionText(root, qid, q.canonical_text);
   const hyp = q.hypothesis_ids[0]
     ? req(
         c.hypotheses.find((x) => x.id === q.hypothesis_ids[0]),
@@ -404,7 +414,7 @@ function loadCanonicalView(
     : null;
   const fillCite = (template: string, claimId?: string): string => {
     let s = template
-      .replace("{question}", q.canonical_text)
+      .replace("{question}", publicQuestion)
       .replace("{version}", c.manifest.version)
       .replace("{tag}", c.manifest.pin.tag)
       .replace("{commit}", c.manifest.pin.commit.slice(0, 7));
@@ -437,7 +447,7 @@ function loadCanonicalView(
     slug: questionSlug(qid),
     moduleId: c.manifest.module_id,
     id: qid,
-    publicQuestion: q.canonical_text,
+    publicQuestion,
     canonicalQuestion: q.canonical_text,
     hasEditorial: false,
     ui,

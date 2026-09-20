@@ -57,3 +57,86 @@ strings:
   shape_not_identifiable: { id: ui-shape-not-identifiable, text: "Forma del estado: zona rayada, sin cuadrado." }
   no_claim_trail: { id: ui-no-claim-trail, text: "Sin claim: no hay Rastro de claim." }
   trail_legend_note: { id: ui-trail-legend-note, text: "Cada glifo va acompañado de su nombre." }
+  nav_findings: { id: ui-nav-findings, text: "Hallazgos" }
+  nav_explore: { id: ui-nav-explore, text: "Explorar" }
+  nav_limits: { id: ui-nav-limits, text: "Límites" }
+  nav_method: { id: ui-nav-method, text: "Método" }
+  nav_about: { id: ui-nav-about, text: "Sobre" }
+  nav_label: { id: ui-nav-label, text: "Recorrido" }
+  footer_versions: { id: ui-footer-versions, text: "Versiones" }
+  footer_frozen: { id: ui-footer-frozen, text: "Corpus congelado" }
+  home_kicker: { id: ui-home-kicker, text: "Investigación cerrada" }
+  home_lede: { id: ui-home-lede, text: "ALETHEIA publica, sin agregar conclusiones nuevas, lo que dice un corpus de investigación congelado." }
+  home_cta_questions: { id: ui-home-cta-questions, text: "Ver las preguntas" }
+  home_cta_findings: { id: ui-home-cta-findings, text: "Ver los hallazgos" }
+  home_overview_heading: { id: ui-home-overview-heading, text: "Alcance" }
+  home_overview_lede: { id: ui-home-overview-lede, text: "Universo del módulo labor. Ningún claim en ESTABLISHED_WITHIN_SCOPE, CONVERGENT ni DIVERGENT." }
+  home_limits_lede: { id: ui-home-limits-lede, text: "Fuentes admitidas, ventanas propias, sin causalidad donde el corpus no la identificó." }
+  home_featured_heading: { id: ui-home-featured-heading, text: "Hallazgos" }
+  home_featured_lede: { id: ui-home-featured-lede, text: "Fichas con editorial completa. El régimen C no entra aquí y sigue visible en Explorar y en Límites." }
+  home_remaining_heading: { id: ui-home-remaining-heading, text: "El resto del mapa" }
+  home_remaining_lede: { id: ui-home-remaining-lede, text: "Fichas mínimas del mismo contrato de datos y de estados. Ninguna pregunta queda fuera." }
+  home_status_heading: { id: ui-home-status-heading, text: "Estados epistemológicos" }
+  home_status_lede: { id: ui-home-status-lede, text: "Se distinguen por forma, no por color. No son juicios de valor." }
+  home_method_heading: { id: ui-home-method-heading, text: "Método" }
+  home_method_lede: { id: ui-home-method-lede, text: "Las palabras públicas se atan al corpus congelado. Los estados se leen del ledger." }
+  home_governance_heading: { id: ui-home-governance-heading, text: "Gobernanza pendiente" }
+  home_governance_lede: { id: ui-home-governance-lede, text: "Relaciones que exigen gobernanza y permanecen sin resolver. Esta capa no las cierra." }
+  home_closure_heading: { id: ui-home-closure-heading, text: "Cierre" }
+  home_closure_lede: { id: ui-home-closure-lede, text: "ALETHEIA-LABOR está formalmente cerrado. Esta capa es presentación web posterior, no un resultado nuevo." }
+  home_legal_heading: { id: ui-home-legal-heading, text: "Aviso" }
+  count_questions: { id: ui-count-questions, text: "Preguntas" }
+  count_claims: { id: ui-count-claims, text: "Afirmaciones" }
+  count_hypotheses: { id: ui-count-hypotheses, text: "Hipótesis" }
+  count_roots: { id: ui-count-roots, text: "Raíces de evidencia" }
+  count_preserved: { id: ui-count-preserved, text: "Resultados preservados" }
+  count_governance: { id: ui-count-governance, text: "Gobernanza requerida" }
+  findings_heading: { id: ui-findings-heading, text: "Hallazgos" }
+  findings_lede: { id: ui-findings-lede, text: "Fichas con editorial completa. El régimen C no entra en este listado y sigue visible en Explorar y en Límites." }
+  map_heading: { id: ui-map-heading, text: "Explorar" }
+  map_kicker: { id: ui-map-kicker, text: "Sin selección" }
+  map_lede: { id: ui-map-lede, text: "Todas las preguntas del corpus, en el orden del ledger. Una fila se abre para ver su resolución y sus afirmaciones." }
+  map_legend: { id: ui-map-legend, text: "Cada cuadrado es una afirmación. Puede haber más de una por pregunta. Sin cuadrado no hay afirmación." }
+  map_regime: { id: ui-map-regime, text: "Régimen" }
+  open_question: { id: ui-open-question, text: "Abrir la pregunta" }
+  featured_kicker: { id: ui-featured-kicker, text: "Hallazgo" }
+  minimal_kicker: { id: ui-minimal-kicker, text: "Ficha mínima" }
+  limits_heading: { id: ui-limits-heading, text: "Límites" }
+  limits_lede: { id: ui-limits-lede, text: "Lo que este corpus no puede afirmar. Incluye relaciones que exigen gobernanza y resultados que deben sobrevivir." }
+  limits_gr_heading: { id: ui-limits-gr-heading, text: "Gobernanza requerida, sin resolver" }
+  limits_gr_intro: { id: ui-limits-gr-intro, text: "Estas relaciones permanecen pendientes. La web no las afirma ni las cierra." }
+  limits_keep_heading: { id: ui-limits-keep-heading, text: "Resultados preservados" }
+  limits_keep_intro: { id: ui-limits-keep-intro, text: "Ausencias y resultados que deben sobrevivir, incluidos los del régimen C." }
+  limits_unresolved: { id: ui-limits-unresolved, text: "Sin resolver" }
+  limits_must_not: { id: ui-limits-must-not, text: "Lo que no se afirma" }
+  limits_inference: { id: ui-limits-inference, text: "Inferencia que exigiría gobernanza" }
+  method_heading: { id: ui-method-heading, text: "Método" }
+  method_lede: { id: ui-method-lede, text: "Las palabras públicas se atan a un corpus congelado. Los estados se leen del ledger, no se reescriben aquí." }
+  method_two_layers: { id: ui-method-two-layers, text: "La resolución pertenece a la pregunta. El estado epistemológico pertenece a la afirmación, cuando existe. Las capas no se mezclan." }
+  method_provenance: { id: ui-method-provenance, text: "Cada ficha conserva identificadores, tag, commit y manifiesto para poder seguir el rastro hasta el origen." }
+  method_no_new: { id: ui-method-no-new, text: "No se agrega metodología nueva. No se reabren claims." }
+  method_observed: { id: ui-method-observed, text: "Observado en la fuente describe lo registrado en una fuente admitida, dentro de su alcance. No equivale a verdad confirmada." }
+  about_heading: { id: ui-about-heading, text: "Sobre" }
+  about_what: { id: ui-about-what, text: "ALETHEIA es un expediente de investigación sobre trabajo observable a partir de fuentes admitidas." }
+  about_independence: { id: ui-about-independence, text: "Las cifras no se presentan como mérito o culpa de un gobierno." }
+  about_a11y: { id: ui-about-a11y, text: "El contenido se lee sin JavaScript. El foco de teclado es visible." }
+  about_privacy: { id: ui-about-privacy, text: "Sin cuentas, sin formularios, sin analítica por defecto." }
+  legal_heading: { id: ui-legal-heading, text: "Aviso" }
+  legal_scope: { id: ui-legal-scope, text: "Esta publicación presenta evidencia y resultados documentales dentro del alcance de ALETHEIA-LABOR. No es una medición del conjunto del trabajo en Argentina." }
+  legal_states: { id: ui-legal-states, text: "Algunos resultados quedan en evidencia insuficiente o no identificable. Observado en la fuente no significa verdad confirmada." }
+  legal_governance: { id: ui-legal-governance, text: "Hay relaciones que exigen gobernanza y siguen sin resolver. Esta capa web no las resuelve." }
+  legal_frozen: { id: ui-legal-frozen, text: "La investigación está cerrada. Este sitio es una presentación posterior, no un resultado nuevo." }
+  legal_not_advice: { id: ui-legal-not-advice, text: "No es asesoramiento legal, laboral ni estadístico." }
+  versions_heading: { id: ui-versions-heading, text: "Versiones" }
+  versions_lede: { id: ui-versions-lede, text: "El sitio presenta un corpus congelado. El commit y el tag de investigación no se modifican aquí." }
+  versions_labor: { id: ui-versions-labor, text: "Módulo labor" }
+  versions_v1: { id: ui-versions-v1, text: "Fundación de investigación ALETHEIA" }
+  versions_closed: { id: ui-versions-closed, text: "CLOSED / FROZEN" }
+  versions_web: { id: ui-versions-web, text: "Capa de presentación posterior" }
+  doc_blocked: { id: ui-doc-blocked, text: "Bloqueada por diseño (sin métrica preregistrada)" }
+  doc_open: { id: ui-doc-open, text: "Abierta: no ejecutada (sin diseño de identificación)" }
+  shape_blocked: { id: ui-shape-blocked, text: "Forma del estado: hilo sólido y tope, sin cuadrado." }
+  shape_open: { id: ui-shape-open, text: "Forma del estado: hilo punteado y triángulo hueco, sin cuadrado." }
+  qualifier_documentary: { id: ui-qualifier-documentary, text: "Hallazgo documental: no es una medición del mercado laboral." }
+  relation_governance: { id: ui-relation-governance, text: "GOVERNANCE_REQUIRED" }
+  regime_c_note: { id: ui-regime-c-note, text: "El régimen C no produjo corpus empírico. Sigue visible. No forma parte de los hallazgos destacados." }

@@ -36,6 +36,26 @@ export function markTokens(text: string): Part[] {
   return out;
 }
 
+/** Cifras sueltas de un texto canónico (p. ej. KEEP must_not) para G-FIG-03. */
+export function markAllNumerals(text: string): Part[] {
+  const out: Part[] = [];
+  for (const p of markTokens(text)) {
+    if (p.t === "num") {
+      out.push(p);
+      continue;
+    }
+    let last = 0;
+    for (const m of p.v.matchAll(/\S*[0-9]\S*/g)) {
+      const i = m.index ?? 0;
+      if (i > last) out.push({ t: "text", v: p.v.slice(last, i) });
+      out.push({ t: "num", kind: "count", v: m[0] });
+      last = i + m[0].length;
+    }
+    if (last < p.v.length) out.push({ t: "text", v: p.v.slice(last) });
+  }
+  return out;
+}
+
 /** Segmentos de directivas → partes (los valores ya vienen resueltos desde generated/). */
 export function fromSegments(segments: readonly Segment[]): Part[] {
   return segments.flatMap((s): Part[] => {

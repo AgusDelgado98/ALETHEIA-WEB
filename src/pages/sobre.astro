@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+import { loadSite } from "../lib/site.ts";
+
+const site = loadSite(process.cwd());
+const ui = site.ui;
+---
+
+<Base title={`${ui("about_heading")} · ${ui("brand_wordmark")}`} description={ui("about_what")}>
+  <div class="wrap page">
+    <header class="ph">
+      <h1>{ui("about_heading")}</h1>
+      <p>{ui("about_what")}</p>
+    </header>
+    <section>
+      <p>{ui("about_independence")}</p>
+      <p>{ui("about_a11y")}</p>
+      <p>{ui("about_privacy")}</p>
+    </section>
+    <section id="aviso" aria-labelledby="legal-h">
+      <h2 id="legal-h">{ui("legal_heading")}</h2>
+      <p>{ui("legal_scope")}</p>
+      <p>{ui("legal_states")}</p>
+      <p>{ui("legal_governance")}</p>
+      <p>{ui("legal_frozen")}</p>
+      <p>{ui("legal_not_advice")}</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-bottom: var(--space-10);
+  }
+  .ph {
+    padding-block: var(--space-8) var(--space-6);
+    max-width: var(--measure-prose);
+  }
+  h1 {
+    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.018em;
+  }
+  .ph p,
+  section p {
+    margin-top: var(--space-5);
+    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  section {
+    padding-block: var(--space-8);
+    border-top: var(--rule) solid var(--hair);
+  }
+  h2 {
+    font: 300 var(--fs-serif-xl) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 22ch;
+  }
+</style>

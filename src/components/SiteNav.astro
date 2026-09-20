@@ -1,0 +1,63 @@
+---
+import { NAV } from "../lib/site.ts";
+interface Props {
+  ui: (key: string) => string;
+  wordmark: string;
+  current: string;
+}
+const { ui, wordmark, current } = Astro.props;
+const here = current === "/" ? "/" : current.replace(/\/$/, "");
+---
+
+<header class="site">
+  <div class="wrap site__bar">
+    <a class="wordmark" href="/" aria-current={here === "/" ? "page" : undefined}>
+      {wordmark}
+    </a>
+    <nav class="nav" aria-label={ui("nav_label")}>
+      {NAV.map((item) => (
+        <a href={item.href} aria-current={here === item.href ? "page" : undefined}>
+          {ui(item.key)}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site {
+    padding-block: var(--space-5);
+    border-bottom: var(--rule) solid var(--hair);
+  }
+  .site__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-6);
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+  }
+  .nav a {
+    text-decoration: none;
+    color: var(--graphite);
+  }
+  .nav a:hover,
+  .nav a[aria-current="page"] {
+    color: var(--verd-deep);
+  }
+  .nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  a.wordmark {
+    text-decoration: none;
+  }
+  a.wordmark:hover {
+    color: var(--verd-deep);
+  }
+</style>

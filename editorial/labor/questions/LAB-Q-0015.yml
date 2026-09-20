@@ -1,0 +1,12 @@
+# public_question aprobado editorialmente para V1 (Design Charter v1.2, Enmienda 1.2, §20.7).
+# Texto copiado SIN CAMBIOS de `reconciliation/question-map-reconciled.json` (sha256 a8dfc588…) del prototipo.
+# No lleva ningún campo de estado: el estado se lee solo de generated/ (G-STA-04).
+schema: aletheia-web/editorial-question/1
+canonical_ref: labor/LAB-Q-0015
+revision: 1
+public_question: "¿Se puede estimar qué tan extendido está el uso de IA en la contratación (para asistir, filtrar, evaluar o decidir) en alguna población definida?"
+editorial_transform: true
+approval:
+  source: "Design Charter v1.2, Enmienda 1.2 (§20.7)"
+  approved_by: author
+  audit_report: "reconciliation/public-question-editorial-audit.json (prototipo, sha256 d68c0247647e0dbbe01d7b63cf2576ab5df67803aba937cd31242b70bc805e40)"

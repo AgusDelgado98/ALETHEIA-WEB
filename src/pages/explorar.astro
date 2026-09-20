@@ -6,45 +6,43 @@ import { loadQuestionMap } from "../lib/map.ts";
 
 const map = loadQuestionMap(process.cwd());
 const ui = map.ui;
-const hatch = new Set(["NOT_IDENTIFIABLE"]);
 const shapeOf = (state: string): string =>
   state === "INSUFFICIENT_EVIDENCE"
     ? ui("shape_insufficient")
-    : hatch.has(state)
+    : state === "NOT_IDENTIFIABLE"
       ? ui("shape_not_identifiable")
       : state === "OBSERVED_IN_SOURCE"
-        ? ui("node_claim")
+        ? ui("shape_observed")
         : state === "REFUTED_WITHIN_SCOPE"
-          ? ui("node_limit")
+          ? ui("shape_refuted")
           : state === "BLOCKED_BY_DESIGN"
-            ? ui("cut_title")
+            ? ui("shape_blocked")
             : state === "OUTSIDE_LAB_A"
-              ? ui("node_hypothesis")
+              ? ui("shape_open")
               : ui("layer_question");
 const claimFill = (state: string): "solid" | "hollow" | "ghost" =>
   state === "OBSERVED_IN_SOURCE" ? "solid" : state === "REFUTED_WITHIN_SCOPE" ? "ghost" : "hollow";
 ---
 
-<Base
-  title={`${ui("question_kicker")} · ${ui("brand_wordmark")}`}
-  description={ui("question_kicker")}
-  skip={ui("skip_link")}
-  wordmark={ui("brand_wordmark")}
->
+<Base title={`${ui("map_heading")} · ${ui("brand_wordmark")}`} description={ui("map_lede")}>
   <div class="wrap map">
     <header class="map__h">
-      <p class="map__k">{ui("question_kicker")}</p>
-      <h1 class="map__t">{ui("question_kicker")}</h1>
+      <p class="map__k">{ui("map_kicker")}</p>
+      <h1 class="map__t">{ui("map_heading")}</h1>
     </header>
     <div class="map__intro">
-      <p>{ui("legend_heading")}</p>
-      <p>{ui("node_claim")}</p>
-      <p>{ui("trail_legend_note")}</p>
-      <p>{ui("no_claim_trail")}</p>
+      <p>{ui("map_lede")}</p>
+      <p>{ui("map_legend")}</p>
+      <p>{ui("regime_c_note")}</p>
     </div>
     <ol class="map__l">
       {map.questions.map((q) => (
-        <li class="map__row" data-question-id={q.id} data-question-resolution={q.resolution}>
+        <li
+          class="map__row"
+          data-question-id={q.id}
+          data-question-resolution={q.resolution}
+          data-regime={q.regime}
+        >
           <details class="map__d" name="mapa">
             <summary class="map__s">
               <span class="map__q">{q.text}</span>

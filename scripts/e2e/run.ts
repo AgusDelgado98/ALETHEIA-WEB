@@ -342,6 +342,7 @@ try {
     );
 
     // ═════════ 5. TECLADO Y FOCO VISIBLE ═════════
+    await page.goto(origin + ROUTE, { waitUntil: "networkidle" });
     const stops: { tag: string; text: string; outline: string }[] = [];
     await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
     for (let i = 0; i < 8; i++) {

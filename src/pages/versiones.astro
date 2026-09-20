@@ -1,0 +1,103 @@
+---
+import Base from "../layouts/Base.astro";
+import { loadSite } from "../lib/site.ts";
+
+const site = loadSite(process.cwd());
+const ui = site.ui;
+---
+
+<Base
+  title={`${ui("versions_heading")} · ${ui("brand_wordmark")}`}
+  description={ui("versions_lede")}
+>
+  <div class="wrap page">
+    <header class="ph">
+      <h1>{ui("versions_heading")}</h1>
+      <p>{ui("versions_lede")}</p>
+    </header>
+    <section>
+      <h2>{ui("versions_labor")}</h2>
+      <p>{ui("versions_closed")}</p>
+      <dl>
+        <div>
+          <dt>{ui("prov_module")}</dt>
+          <dd class="mono">
+            {site.pin.repoId} <span data-num="version">{site.pin.version}</span>
+          </dd>
+        </div>
+        <div>
+          <dt>{ui("prov_tag")}</dt>
+          <dd class="mono">
+            <span data-num="hash">{site.pin.tag}</span>
+          </dd>
+        </div>
+        <div>
+          <dt>{ui("prov_commit")}</dt>
+          <dd class="mono">
+            <span data-num="hash">{site.pin.commit}</span>
+          </dd>
+        </div>
+      </dl>
+    </section>
+    <section>
+      <h2>{ui("versions_v1")}</h2>
+      <p>{ui("versions_closed")}</p>
+      <p>{ui("versions_web")}</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-bottom: var(--space-10);
+  }
+  .ph {
+    padding-block: var(--space-8) var(--space-6);
+    max-width: var(--measure-prose);
+  }
+  h1 {
+    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.018em;
+  }
+  .ph p,
+  section p {
+    margin-top: var(--space-5);
+    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  section {
+    padding-block: var(--space-8);
+    border-top: var(--rule) solid var(--hair);
+  }
+  h2 {
+    font: 300 var(--fs-serif-xl) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 22ch;
+  }
+  dl {
+    margin-top: var(--space-6);
+    display: grid;
+    gap: var(--space-4);
+    max-width: 52rem;
+  }
+  dl > div {
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
+    column-gap: var(--space-5);
+    align-items: baseline;
+  }
+  dt {
+    font: 500 var(--fs-label) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+  }
+  dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 40rem) {
+    dl > div {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

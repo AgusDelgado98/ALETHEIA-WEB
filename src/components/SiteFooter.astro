@@ -1,0 +1,50 @@
+---
+interface Props {
+  ui: (key: string) => string;
+  tag: string;
+  commitShort: string;
+}
+const { ui, tag, commitShort } = Astro.props;
+---
+
+<footer class="foot">
+  <div class="wrap foot__bar">
+    <p>
+      {ui("footer_frozen")}
+      <span class="mono" data-num="hash">
+        {tag}
+      </span>
+      <span class="mono" data-num="hash">
+        {commitShort}
+      </span>
+    </p>
+    <p>
+      <a href="/versiones">{ui("footer_versions")}</a>
+      <span aria-hidden="true"> · </span>
+      <a href="/sobre#aviso">{ui("legal_heading")}</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    margin-top: var(--space-10);
+    padding-block: var(--space-6) var(--space-8);
+    border-top: var(--rule) solid var(--hair);
+  }
+  .foot__bar {
+    display: grid;
+    gap: var(--space-3);
+    font: 400 var(--fs-small) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+  }
+  .foot__bar p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    align-items: baseline;
+  }
+  .foot a {
+    text-underline-offset: 0.2em;
+  }
+</style>

@@ -2,7 +2,7 @@
 # los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
 schema: aletheia-web/editorial-review/1
 canonical_ref: labor/LAB-Q-0013
-revision: 1
+revision: 2
 reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
 date: "2026-09-19"
 independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
@@ -52,6 +52,71 @@ overrides:
   "labor/LAB-Q-0013#finding.would_need.wn-5":
     notes:
       - "Cubre la limitación canónica 3 del claim: bloqueos de flujo y cobertura resolubles en principio; la falta de vinculación entre personas es estructural."
+  "labor/LAB-Q-0001#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0002#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0006#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0007#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0008#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0009#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0010#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0012#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0014#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0015#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0016#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0017#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0018#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
   "site#fixed.absence_not_negative":
     notes:
       - "Texto fijo del Editorial Contract §7.3.4 y del MVP §2.4 (H-4)."

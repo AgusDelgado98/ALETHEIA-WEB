@@ -41,14 +41,14 @@
       "sha256": "e478fd94a976eea0ff1640435da069b809bfe2904ada9a3577118635191df958"
     },
     {
-      "bytes": 54897,
+      "bytes": 218611,
       "path": "editorial/labor/audit/LAB-Q-0013.audit.yml",
-      "sha256": "b36860488fffdfd4e04c16edc0c6c28f731aad131e496adf74b82b890e9758a1"
+      "sha256": "58272c98de09b391f41f25a719f7b60acbfbc0573dc21852976a82271e20c1aa"
     },
     {
-      "bytes": 4718,
+      "bytes": 7708,
       "path": "editorial/labor/audit/LAB-Q-0013.review.yml",
-      "sha256": "79dda08a051fbd85f3ff5ec4db4d8055f70741d745a95fe977d6fd0b2604679b"
+      "sha256": "47bce423c38b408ea61917e56fa0db8ec2f09e35223a20c94af98f67608d3683"
     },
     {
       "bytes": 11437,
@@ -101,6 +101,16 @@
       "sha256": "5b19b2cb6edab8486aed3cf4badc73949d5fe9f22d3462f11d3db6ff9550d475"
     },
     {
+      "bytes": 859,
+      "path": "editorial/labor/questions/LAB-Q-0001.yml",
+      "sha256": "41afb2eb2df67daff4774a042299577770a6b4205b3157f182eccf6fb66a443d"
+    },
+    {
+      "bytes": 825,
+      "path": "editorial/labor/questions/LAB-Q-0002.yml",
+      "sha256": "328bfcafca438a6f4811a9a4535236737da1d95882d56bed05d8d85b30848225"
+    },
+    {
       "bytes": 799,
       "path": "editorial/labor/questions/LAB-Q-0003.yml",
       "sha256": "e8381e0536e5c282c413ab7efd48da3fc5cad7b55994be138f0bbab690002ecb"
@@ -116,9 +126,39 @@
       "sha256": "9dc8b005e18c18cb5f600df3d6021b44f9baee4c07ce228b052ef768f814fddd"
     },
     {
+      "bytes": 810,
+      "path": "editorial/labor/questions/LAB-Q-0006.yml",
+      "sha256": "22a9a6222732459295e5447580d1b782dfe4c9891dacadb9a0c958b04d86993c"
+    },
+    {
+      "bytes": 808,
+      "path": "editorial/labor/questions/LAB-Q-0007.yml",
+      "sha256": "c0634649ade66c836adf68ae0018574ad96f407aff3e55f93f3813b40df2d225"
+    },
+    {
+      "bytes": 852,
+      "path": "editorial/labor/questions/LAB-Q-0008.yml",
+      "sha256": "11c44e520aa1c908c73ff106f17ea53e12776cbdaadc9eaa577629950087b912"
+    },
+    {
+      "bytes": 842,
+      "path": "editorial/labor/questions/LAB-Q-0009.yml",
+      "sha256": "708fe30a4336a5a2182dfe8189ad878c71137ee80b77cc8b07c081caa7493007"
+    },
+    {
+      "bytes": 801,
+      "path": "editorial/labor/questions/LAB-Q-0010.yml",
+      "sha256": "ebb90462410885442bb85559a238981c30acb57fbee17a5212c35df3d5193e70"
+    },
+    {
       "bytes": 823,
       "path": "editorial/labor/questions/LAB-Q-0011.yml",
       "sha256": "944d7bf81f9cccca85b9367f33db68427da3f8f697820cfb4015206a50ca4e3d"
+    },
+    {
+      "bytes": 827,
+      "path": "editorial/labor/questions/LAB-Q-0012.yml",
+      "sha256": "7eba273efea033ba274d2e31f98d7c2837f85e53a59840d09de7bc6e2df335a7"
     },
     {
       "bytes": 849,
@@ -126,17 +166,42 @@
       "sha256": "82b8d9be3e8e59ad77569ac1df13a2a03498f162ccdc87cb04e7445903c021e0"
     },
     {
+      "bytes": 814,
+      "path": "editorial/labor/questions/LAB-Q-0014.yml",
+      "sha256": "7503de45e826b54a84bfc9193bc1eb650d15417d5a80ca8e394a26e95e2257d8"
+    },
+    {
+      "bytes": 816,
+      "path": "editorial/labor/questions/LAB-Q-0015.yml",
+      "sha256": "ee63cbfde97e3005b6827e1b9f8f6626d63dcbc22a545cb0bf39af5dcce39f69"
+    },
+    {
+      "bytes": 843,
+      "path": "editorial/labor/questions/LAB-Q-0016.yml",
+      "sha256": "d6d0da797d6c2ef007b9a69ecae7b61943ad65189db02042bce9b2ec614e7213"
+    },
+    {
+      "bytes": 832,
+      "path": "editorial/labor/questions/LAB-Q-0017.yml",
+      "sha256": "6f82c596f68057e40edf01424a0d54e0d0623be30013d90056d3a0c8a89c5f11"
+    },
+    {
+      "bytes": 828,
+      "path": "editorial/labor/questions/LAB-Q-0018.yml",
+      "sha256": "3799c81f2096809de33c7193ce6d21c4adb1ec0fb74d16df96e56b1a91829381"
+    },
+    {
       "bytes": 1260,
       "path": "editorial/site/states.yml",
       "sha256": "9e8b41f66e1a5bac5ead709f91eafa764ef81123bff049fa074c1e8ee0441cf5"
     },
     {
-      "bytes": 4639,
+      "bytes": 13076,
       "path": "editorial/site/ui.yml",
-      "sha256": "8471a49e3be5e9d37db7d37830a622f556423d109ef09fc1bdace0562db2de8a"
+      "sha256": "37adf6676aee8dc5d66b3803b02da46f24ee8525126e79eab9eef65a88a54e71"
     }
   ],
   "schema": "aletheia-web/editorial-manifest/1",
-  "units": 213,
-  "units_pending_author_signoff": 208
+  "units": 309,
+  "units_pending_author_signoff": 291
 }
