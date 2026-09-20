@@ -22,6 +22,20 @@ export const QuestionEditorial = z.strictObject({
   approval: z.strictObject({ source: z.string(), approved_by: z.literal("author"), audit_report: z.string() }),
 });
 
+export const Trail = z.strictObject({
+  /** Claim al que pertenece este Rastro (obligatorio si hay más de uno). */
+  claim_ref: z.string().min(1).optional(),
+  claim: Unit,
+  hypothesis: Unit,
+  evidence: Unit,
+  object_employment: Unit.optional(),
+  object_registration: Unit.optional(),
+  objects: z.array(Unit).optional(),
+  source: Unit.optional(),
+  blockers_at_cut: z.array(z.string()).optional(),
+});
+export type TrailT = z.infer<typeof Trail>;
+
 export const Finding = z.strictObject({
   schema: z.literal("aletheia-web/editorial-finding/1"),
   canonical_ref: z.string().min(1),
@@ -34,16 +48,9 @@ export const Finding = z.strictObject({
   can_say: z.array(Unit).min(1),
   does_not_mean: z.array(Unit).min(1),
   would_need: z.array(Unit).min(1),
-  trail: z
-    .strictObject({
-      claim: Unit,
-      hypothesis: Unit,
-      evidence: Unit,
-      object_employment: Unit,
-      object_registration: Unit,
-      source: Unit.optional(),
-    })
-    .optional(),
+  trail: Trail.optional(),
+  /** Varios Rastros, uno por claim; no se fusionan (p. ej. Q-0003). */
+  trails: z.array(Trail).optional(),
   /** Divulgación de exposición previa (G-LIM-03) cuando la hipótesis no es NONE. */
   disclosure: Unit.optional(),
   blockers_at_cut: z.array(z.string()),

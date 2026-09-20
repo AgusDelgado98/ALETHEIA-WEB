@@ -1,0 +1,255 @@
+# Capa editorial · Q-0003 (WEB-0 Editorial Contract §3, §5, §6).
+# Claims separados: LAB-CLM-0002 (nominal) y LAB-CLM-0004 (real). No se fusionan.
+schema: aletheia-web/editorial-finding/1
+canonical_ref: labor/LAB-Q-0003
+revision: 1
+
+title:
+  id: title
+  text: "Horas, puestos y masa salarial en cuentas nacionales: un claim nominal y un claim real, aparte"
+  maps_to:
+    - labor/LAB-Q-0003#canonical_text
+    - labor/LAB-CLM-0002#scope_statement
+    - labor/LAB-CLM-0004#scope_statement
+
+intro:
+  id: intro
+  text: "Esta pregunta busca cómo evolucionaron las horas, los puestos y la masa salarial dentro del universo de cuentas nacionales en que se observa cada uno. El corpus registra un claim nominal, sobre divergencias de crecimiento en CGI-IMO, y un claim real, sobre la masa salarial deflactada con el IPC admitido. Se informan como valores separados y etiquetados. No se leen uno como el otro. No se afirma una atribución causal de las divergencias."
+  maps_to:
+    - labor/LAB-Q-0003#canonical_text
+    - labor/LAB-CLM-0002#canonical_text
+    - labor/LAB-CLM-0004#canonical_text
+    - labor/REL-AUTH-003#permitted_comparison
+    - "labor/LAB-CLM-0004#limitation:5"
+
+scope:
+  id: scope
+  text: "Población: el universo de cuentas nacionales de CGI-IMO (puestos, horas y masa salarial de la ocupación asalariada, total general). Unidad: puesto como posición declarada, no como persona; horas trabajadas; masa salarial como flujo monetario agregado. Período: el claim nominal cubre la ventana de trimestres de la base vigente de CGI; el claim real cubre la ventana más estrecha en que se superponen CGI y el IPC admitido, con un trimestre completo de IPC mensual. El claim nominal no afirma valores reales."
+  maps_to:
+    - labor/LAB-HYP-0002#population
+    - labor/LAB-OBJ-0002#is
+    - labor/LAB-OBJ-0012#is
+    - labor/LAB-OBJ-0011#is
+    - labor/LAB-CLM-0002#scope_statement
+    - labor/LAB-CLM-0004#scope_statement
+    - labor/LAB-CLM-0004#scope_coverage_adequacy
+    - "labor/LAB-CLM-0004#limitation:3"
+
+can_say:
+  - id: cs-1
+    text: "El claim {{id:LAB-CLM-0002}} describe divergencias de crecimiento nominal entre puestos, horas y masa salarial dentro de CGI-IMO, en la ventana de trimestres de la base vigente."
+    maps_to:
+      - labor/LAB-CLM-0002#scope_statement
+      - labor/LAB-CLM-0002#canonical_text
+  - id: cs-2
+    text: "Ese claim nominal no afirma valores reales: la interpretación en términos reales queda diferida y no se afirma ahí."
+    maps_to:
+      - "labor/LAB-CLM-0002#limitation:2"
+      - "labor/LAB-CLM-0002#limitation:3"
+      - labor/LAB-CLM-0002#scope_statement
+  - id: cs-3
+    text: "El claim {{id:LAB-CLM-0004}} describe el crecimiento interanual de la masa salarial en términos reales, deflactada con el IPC nacional admitido, frente al crecimiento de puestos y de horas, que no son series de moneda."
+    maps_to:
+      - labor/LAB-CLM-0004#scope_statement
+      - labor/LAB-CLM-0004#canonical_text
+      - labor/LAB-HYP-0002#metric
+  - id: cs-4
+    text: "En el claim real, el crecimiento real de la masa salarial no coincide en magnitud con el nominal y en varios trimestres es negativo; sigue divergiendo de puestos y de horas más allá del umbral preinscrito de la hipótesis."
+    maps_to:
+      - labor/LAB-CLM-0004#canonical_text
+      - labor/LAB-HYP-0002#expected_observation
+  - id: cs-5
+    text: "Los crecimientos nominales y los reales se informan como valores separados y etiquetados. No se leen uno como el otro."
+    maps_to:
+      - labor/REL-AUTH-003#permitted_comparison
+  - id: cs-6
+    text: "El IPC se usa como deflactor. No cuenta como raíz de corroboración de la masa salarial."
+    maps_to:
+      - "labor/LAB-CLM-0004#limitation:2"
+      - labor/LAB-CLM-0004#lineage_independence
+  - id: cs-7
+    text: "La ventana del claim real es más estrecha que la del claim nominal: solo donde se superponen CGI y el IPC admitido con un trimestre completo de IPC mensual."
+    maps_to:
+      - "labor/LAB-CLM-0004#limitation:3"
+      - labor/LAB-CLM-0004#scope_statement
+  - id: cs-8
+    text: "Un tramo de ambas ventanas coincide con el régimen excepcional de la pandemia; no se ejecutó un contraste con y sin ese régimen."
+    maps_to:
+      - "labor/LAB-CLM-0002#limitation:4"
+      - "labor/LAB-CLM-0004#limitation:4"
+  - id: cs-9
+    text: "Cada claim se sostiene en la raíz de evidencia de CGI. No es convergente."
+    maps_to:
+      - "labor/LAB-CLM-0002#limitation:1"
+      - "labor/LAB-CLM-0004#limitation:1"
+      - labor/LAB-CLM-0002#lineage_independence
+      - labor/LAB-CLM-0004#lineage_independence
+
+does_not_mean:
+  - id: dnm-1
+    text: "No significa leer una cifra nominal como real, ni la inversa, ni mezclar valores nominales y reales entre claims."
+    maps_to:
+      - labor/REL-PR-012#prohibited_inference
+      - labor/REL-AUTH-003#permitted_comparison
+  - id: dnm-2
+    text: "No significa una atribución causal de las divergencias ni una atribución a la inflación."
+    maps_to:
+      - "labor/LAB-CLM-0004#limitation:5"
+      - labor/LAB-CLM-0004#scope_statement
+  - id: dnm-3
+    text: "No significa que el claim nominal y el claim real sean una sola afirmación, ni que se eleve el estado por agregación."
+    maps_to:
+      - labor/REL-PR-001#prohibited_inference
+      - labor/LAB-Q-0003#canonical_text
+  - id: dnm-4
+    text: "No significa un compuesto entre claims ni entre regímenes, ni una votación de fuerza global."
+    maps_to:
+      - labor/REL-PR-010#prohibited_inference
+  - id: dnm-5
+    text: "No significa que esta fuente o estos claims cubran el mercado laboral argentino en su conjunto."
+    maps_to:
+      - labor/REL-PR-013#prohibited_inference
+  - id: dnm-6
+    text: "No significa una comparación de períodos o de magnitudes entre claims con ventanas o productos distintos."
+    maps_to:
+      - labor/REL-GR-006#prohibited_inference
+  - id: dnm-7
+    text: "No significa tratar raíces no independientes como corroboración."
+    maps_to:
+      - labor/REL-PR-002#prohibited_inference
+  - id: dnm-8
+    text: "No significa que la inscripción previa de la hipótesis sea evidencia de que no se eligió el resultado, ni que se omita la divulgación."
+    maps_to:
+      - labor/REL-PR-011#prohibited_inference
+  - id: dnm-9
+    text: "No significa un empalme con bases anteriores de CGI ni de IPC."
+    maps_to:
+      - labor/LAB-HYP-0002#known_breaks
+      - labor/LAB-CLM-0002#scope_coverage_adequacy
+  - id: dnm-10
+    text: "No significa que las divergencias del tramo de pandemia se generalicen, ni que se deban a ese régimen."
+    maps_to:
+      - "labor/LAB-CLM-0002#limitation:4"
+      - "labor/LAB-CLM-0004#limitation:4"
+  - id: dnm-11
+    text: "El registro de la pregunta conserva que la comparación en términos reales requería el IPC como deflactor. Esa comparación no se hace en el claim nominal: se ejecuta en el claim real, aparte."
+    maps_to:
+      - "labor/LAB-Q-0003#limitation:1"
+      - labor/LAB-CLM-0004#scope_statement
+  - id: dnm-12
+    text: "No significa comparar en magnitud la masa salarial de CGI con el ingreso laboral de la EPH."
+    maps_to:
+      - labor/REL-AUTH-003#permitted_comparison
+      - labor/LAB-OBJ-0011#is_not
+
+would_need:
+  - id: wn-1
+    text: "Una demostración de error en la estandarización de CGI."
+    maps_to:
+      - labor/LAB-CLM-0002#what_would_unseat
+      - labor/LAB-CLM-0004#what_would_unseat
+  - id: wn-2
+    text: "Evidencia de que las filas de totales nacionales usadas no son las publicadas por el productor de la fuente."
+    maps_to:
+      - labor/LAB-CLM-0002#what_would_unseat
+      - labor/LAB-CLM-0004#what_would_unseat
+  - id: wn-3
+    text: "Una demostración de error en la recuperación o el hash del IPC admitido."
+    maps_to:
+      - labor/LAB-CLM-0004#what_would_unseat
+
+disclosure:
+  id: disclosure
+  text: "La hipótesis quedó inscrita antes de que este repositorio tuviera datos de CGI o de IPC. La exposición previa registrada es indirecta."
+  maps_to:
+    - labor/LAB-HYP-0002#operational_definition
+    - labor/LAB-HYP-0002#prior_data_exposure
+
+trails:
+  - claim_ref: labor/LAB-CLM-0002
+    claim:
+      id: trail-n-claim
+      text: "Dentro de CGI-IMO, los crecimientos nominales de puestos, horas y masa salarial divergen. No se afirma una lectura en términos reales."
+      maps_to:
+        - labor/LAB-CLM-0002#canonical_text
+        - labor/LAB-CLM-0002#scope_statement
+    hypothesis:
+      id: trail-n-hyp
+      text: "Se esperaba que los crecimientos de puestos, horas y masa salarial divergieran de forma material en al menos un subperíodo."
+      maps_to:
+        - labor/LAB-HYP-0002#expected_observation
+        - labor/LAB-HYP-0002#metric
+    evidence:
+      id: trail-n-ev
+      text: "El registro de evidencia calculó crecimientos interanuales nominales de las series de totales nacionales de CGI-IMO. No aplicó deflación."
+      maps_to:
+        - labor/LAB-EVD-0002#method
+        - labor/LAB-EVD-0002#metric
+    objects:
+      - id: trail-n-job
+        text: "Puesto (posición declarada, no una persona)"
+        maps_to:
+          - labor/LAB-OBJ-0002#name
+          - labor/LAB-OBJ-0002#is
+      - id: trail-n-wage
+        text: "Masa salarial (flujo monetario agregado)"
+        maps_to:
+          - labor/LAB-OBJ-0011#name
+          - labor/LAB-OBJ-0011#is
+      - id: trail-n-hour
+        text: "Horas trabajadas"
+        maps_to:
+          - labor/LAB-OBJ-0012#name
+          - labor/LAB-OBJ-0012#is
+    source:
+      id: trail-n-src
+      text: "Cuenta de generación del ingreso e insumo de mano de obra (CGI-IMO) de INDEC."
+      maps_to:
+        - labor/LAB-ROOT-0002#publication
+  - claim_ref: labor/LAB-CLM-0004
+    claim:
+      id: trail-r-claim
+      text: "La masa salarial de CGI-IMO, deflactada con el IPC admitido, crece en términos reales de forma distinta al crecimiento nominal y sigue divergiendo de puestos y de horas."
+      maps_to:
+        - labor/LAB-CLM-0004#canonical_text
+        - labor/LAB-CLM-0004#scope_statement
+    hypothesis:
+      id: trail-r-hyp
+      text: "La métrica preinscripta compara el crecimiento real de la masa salarial con el de puestos y el de horas."
+      maps_to:
+        - labor/LAB-HYP-0002#metric
+        - labor/LAB-HYP-0002#expected_observation
+    evidence:
+      id: trail-r-ev
+      text: "El registro de evidencia deflactó la masa salarial con el IPC admitido, agregado a trimestre. El IPC entra como deflactor, no como raíz de corroboración."
+      maps_to:
+        - labor/LAB-EVD-0007#method
+        - labor/LAB-EVD-0007#metric
+    objects:
+      - id: trail-r-job
+        text: "Puesto (posición declarada, no una persona)"
+        maps_to:
+          - labor/LAB-OBJ-0002#name
+          - labor/LAB-OBJ-0002#is
+      - id: trail-r-wage
+        text: "Masa salarial (flujo monetario agregado)"
+        maps_to:
+          - labor/LAB-OBJ-0011#name
+          - labor/LAB-OBJ-0011#is
+      - id: trail-r-hour
+        text: "Horas trabajadas"
+        maps_to:
+          - labor/LAB-OBJ-0012#name
+          - labor/LAB-OBJ-0012#is
+      - id: trail-r-ipc
+        text: "Deflactor de precios al consumidor (IPC)"
+        maps_to:
+          - labor/LAB-OBJ-0025#name
+          - labor/LAB-OBJ-0025#is
+    source:
+      id: trail-r-src
+      text: "Cuenta de generación del ingreso e insumo de mano de obra (CGI-IMO) de INDEC."
+      maps_to:
+        - labor/LAB-ROOT-0002#publication
+
+blockers_at_cut: []

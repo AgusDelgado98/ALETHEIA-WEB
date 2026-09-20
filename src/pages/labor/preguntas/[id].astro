@@ -12,7 +12,7 @@ import Base from "../../../layouts/Base.astro";
 import { plainText } from "../../../lib/render.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
-/** Una ruta por cada pregunta del corpus. Q-0005, Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
+/** Una ruta por cada pregunta del corpus. Q-0003, Q-0005, Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
 export function getStaticPaths() {
   return availableQuestionIds(process.cwd()).map((id) => ({
     params: { id: questionSlug(id) },
@@ -43,8 +43,8 @@ const shapeOf = (state: string): string =>
     class="page"
     data-question-id={v.id}
     data-question-resolution={v.state.question}
-    data-claim-id={v.hasEditorial ? v.claim?.id : undefined}
-    data-claim-state={v.hasEditorial ? v.state.claim : undefined}
+    data-claim-id={v.hasEditorial && v.claim !== null ? v.claim.id : undefined}
+    data-claim-state={v.hasEditorial && v.state.claim !== null ? v.state.claim : undefined}
   >
     <div class="wrap">
       <QuestionHeader
@@ -79,29 +79,34 @@ const shapeOf = (state: string): string =>
                   />
                 </dd>
               </div>
-              {v.claim !== null && v.state.claimLabel !== null && v.state.claim !== null && (
-                <div>
+              {v.trails.map((t) => (
+                <div data-claim-id={t.claimId} data-claim-state={t.claimState}>
                   <dt>
                     {ui("layer_claim")}{" "}
                     <span class="mono" data-num="id">
-                      {v.claim.id}
+                      {t.claimId}
                     </span>
                   </dt>
                   <dd>
                     <EvidenceState
-                      state={v.state.claim}
-                      label={v.state.claimLabel}
-                      description={shapeOf(v.state.claim)}
+                      state={t.claimState}
+                      label={t.claimLabel}
+                      description={shapeOf(t.claimState)}
                     />
+                    {v.trails.length > 1 && (
+                      <p class="answer__src">
+                        {ui("frame_source")} <span class="mono">{t.sourceLabel}</span>
+                      </p>
+                    )}
                   </dd>
                 </div>
-              )}
+              ))}
             </dl>
             <span slot="scope">
               <SegmentText parts={v.scope} />
             </span>
           </Frame>
-          {v.claim === null && <p class="answer__a">{ui("no_claim_trail")}</p>}
+          {v.claims.length === 0 && <p class="answer__a">{ui("no_claim_trail")}</p>}
           {v.state.absenceNotNegative && <p class="answer__a">{v.absenceText}</p>}
           <p class="answer__i">
             <SegmentText parts={v.intro} />
@@ -192,7 +197,9 @@ const shapeOf = (state: string): string =>
         </section>
       )}
     </div>
-    {v.trail !== null && <EvidenceTrail v={v} />}
+    {v.trails.map((t) => (
+      <EvidenceTrail v={v} trail={t} prefix={v.trails.length > 1 ? `${t.claimId}-` : ""} />
+    ))}
     <ProvenanceDetails v={v} />
   </article>
 </Base>
@@ -226,6 +233,11 @@ const shapeOf = (state: string): string =>
   }
   .layers dd {
     margin: 0;
+  }
+  .answer__src {
+    margin-top: var(--space-2);
+    font: 400 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
   }
   .answer__a {
     margin-top: var(--space-5);

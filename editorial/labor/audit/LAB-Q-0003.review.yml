@@ -1,0 +1,48 @@
+# Entrada humana/adversarial de la auditoría (Editorial Contract §4). De aquí salen los veredictos y las notas;
+# los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
+schema: aletheia-web/editorial-review/1
+canonical_ref: labor/LAB-Q-0003
+revision: 1
+reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
+date: "2026-09-20"
+independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
+adversarial_review:
+  - "Fusión de claims: el claim nominal (LAB-CLM-0002) y el claim real (LAB-CLM-0004) se informan aparte, cada uno con su capa, su fuente etiquetada y su Rastro. No hay un solo data-claim-id en el artículo. dnm-3 cita REL-PR-001."
+  - "Nominal vs real: cs-1/cs-2 cubren el claim nominal sin afirmar valores reales; cs-3/cs-4 cubren el claim real; cs-5 y REL-AUTH-003#permitted_comparison informan valores separados y etiquetados. dnm-1 cita REL-PR-012."
+  - "Cifras: el corpus registra divergencias y umbrales; ningún texto editorial las reproduce. El resultado se enuncia en cualitativo."
+  - "Período: ningún texto escribe trimestres ni años; se dice ventana de trimestres de la base vigente de CGI frente a la ventana más estrecha CGI+IPC admitido (limitación 3 del claim real)."
+  - "Población y unidad: universo de cuentas nacionales de CGI-IMO; puesto como posición declarada, no persona; horas; masa salarial como flujo monetario agregado. Sin conteos ni códigos de fila."
+  - "IPC como deflactor, no como raíz de corroboración: cs-6 y el Rastro real; no se cuenta como segunda raíz (G-PRV-06)."
+  - "Atribución causal o a la inflación: dnm-2 y el alcance; no se usa el verbo protegido «causa»."
+  - "Limitación de la pregunta (IPC no admitido): dnm-11 la muestra como registro del ledger; la comparación real vive en el claim real, aparte. No se oculta ni se declara AUDIT_ONLY."
+  - "Régimen excepcional de la pandemia: cs-8 y dnm-10; no se generaliza ni se atribuye."
+  - "Relaciones prohibidas: REL-GR-006, REL-PR-001, REL-PR-002, REL-PR-010, REL-PR-011, REL-PR-012, REL-PR-013. CGI vs EPH: dnm-12."
+  - "Exposición previa INDIRECT: el texto de divulgación traduce operational_definition y prior_data_exposure; no se presenta como evidencia de que no se eligió el resultado."
+  - "Fuerza de la evidencia: ningún texto usa verbos protegidos ni conectores causales; el estado se lee solo de generated/."
+defaults:
+  verdict: PENDING_AUTHOR_REVIEW
+overrides:
+  "labor/LAB-Q-0003#public_question":
+    verdict: APPROVED
+    reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
+    notes:
+      - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+      - "Auditoría de origen: reconciliation/public-question-editorial-audit.json, fila LAB-Q-0003, dimensiones FINAL_* todas en PASS/YES."
+  "labor/LAB-Q-0003#finding.title":
+    notes:
+      - "Nombra el claim nominal y el claim real por separado; no reproduce cifras."
+  "labor/LAB-Q-0003#finding.intro":
+    notes:
+      - "Enlaza la pregunta canónica con ambos claims; declara valores separados y etiquetados y que no hay atribución causal."
+  "labor/LAB-Q-0003#finding.can_say.cs-1":
+    notes:
+      - "Claim nominal: divergencias en CGI-IMO; no afirma reales."
+  "labor/LAB-Q-0003#finding.can_say.cs-5":
+    notes:
+      - "REL-AUTH-003: nominal y real como valores separados y etiquetados."
+  "labor/LAB-Q-0003#finding.disclosure":
+    notes:
+      - "Traduce operational_definition (antes de CGI o IPC en el repositorio) y prior_data_exposure INDIRECT."
+  "labor/LAB-Q-0003#finding.does_not_mean.dnm-11":
+    notes:
+      - "Limitación de la pregunta conservada en el ledger; la comparación real se ejecuta en el claim real."

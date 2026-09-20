@@ -1,5 +1,5 @@
 ---
-import type { QuestionView } from "../lib/view.ts";
+import type { QuestionView, TrailView } from "../lib/view.ts";
 import EvidenceState from "./EvidenceState.astro";
 import Glyph from "./Glyph.astro";
 import SegmentText from "./SegmentText.astro";
@@ -12,42 +12,62 @@ import SegmentText from "./SegmentText.astro";
  */
 interface Props {
   v: QuestionView;
+  trail?: TrailView;
+  prefix?: string;
 }
-const { v } = Astro.props;
+const { v, trail, prefix = "" } = Astro.props;
 const ui = v.ui;
-if (v.trail === null || v.claim === null || v.state.claim === null || v.state.claimLabel === null)
-  throw new Error("EvidenceTrail: no hay Rastro de claim");
-const t = v.trail;
-const observed = v.state.claim === "OBSERVED_IN_SOURCE";
+const t = trail ?? v.trail;
+if (t === null) throw new Error("EvidenceTrail: no hay Rastro de claim");
+const observed = t.claimState === "OBSERVED_IN_SOURCE";
 const showCut = t.reasons.length > 0;
 const shapeDesc =
-  v.state.claim === "INSUFFICIENT_EVIDENCE"
+  t.claimState === "INSUFFICIENT_EVIDENCE"
     ? ui("shape_insufficient")
     : observed
       ? ui("shape_observed")
       : ui("layer_question");
+const hid = `${prefix}trail-h`;
+const d1 = `${prefix}depth-1`;
+const d2 = `${prefix}depth-2`;
+const d3 = `${prefix}depth-3`;
+const depthName = prefix === "" ? "rastro-depth" : `rastro-depth-${prefix.replace(/-$/, "")}`;
 ---
 
-<section class="rastro" aria-labelledby="trail-h" data-state={v.state.claim}>
+<section
+  class="rastro"
+  aria-labelledby={hid}
+  data-state={t.claimState}
+  data-claim-id={t.claimId}
+  data-claim-state={t.claimState}
+>
   <div class="wrap rastro__in">
     <div class="rastro__head">
-      <h2 id="trail-h" class="rastro__h">
+      <h2 id={hid} class="rastro__h">
         {ui("trail_heading")}
+        {v.trails.length > 1 && (
+          <>
+            {" "}
+            <span class="mono" data-num="id">
+              {t.claimId}
+            </span>
+          </>
+        )}
       </h2>
       <p class="rastro__dir">{ui("trail_direction")}</p>
       <fieldset class="seg">
         <legend class="sr-only">{ui("depth_group")}</legend>
         <span class="seg__o">
-          <input class="sr-only" type="radio" name="rastro-depth" id="depth-1" value="1" checked />
-          <label for="depth-1">{ui("depth_summary")}</label>
+          <input class="sr-only" type="radio" name={depthName} id={d1} value="1" checked />
+          <label for={d1}>{ui("depth_summary")}</label>
         </span>
         <span class="seg__o">
-          <input class="sr-only" type="radio" name="rastro-depth" id="depth-2" value="2" />
-          <label for="depth-2">{ui("depth_detail")}</label>
+          <input class="sr-only" type="radio" name={depthName} id={d2} value="2" />
+          <label for={d2}>{ui("depth_detail")}</label>
         </span>
         <span class="seg__o">
-          <input class="sr-only" type="radio" name="rastro-depth" id="depth-3" value="3" />
-          <label for="depth-3">{ui("depth_audit")}</label>
+          <input class="sr-only" type="radio" name={depthName} id={d3} value="3" />
+          <label for={d3}>{ui("depth_audit")}</label>
         </span>
       </fieldset>
       <div class="key d2">
@@ -87,11 +107,7 @@ const shapeDesc =
             <SegmentText parts={t.claim} />
           </p>
           <p class="cn__st d2">
-            <EvidenceState
-              state={v.state.claim}
-              label={v.state.claimLabel}
-              description={shapeDesc}
-            />
+            <EvidenceState state={t.claimState} label={t.claimLabel} description={shapeDesc} />
           </p>
         </div>
         <div class="cn__s d2">
@@ -249,9 +265,9 @@ const shapeDesc =
   .rastro .d3 {
     display: none;
   }
-  .rastro:has(#depth-2:checked) .d2,
-  .rastro:has(#depth-3:checked) .d2,
-  .rastro:has(#depth-3:checked) .d3 {
+  .rastro:has(input[value="2"]:checked) .d2,
+  .rastro:has(input[value="3"]:checked) .d2,
+  .rastro:has(input[value="3"]:checked) .d3 {
     display: var(--show, block);
   }
 
@@ -281,9 +297,9 @@ const shapeDesc =
     color: var(--ink);
   }
   /* control activo = verdigris (Charter §10: «elemento actualmente activo») */
-  .rastro:has(#depth-1:checked) label[for="depth-1"],
-  .rastro:has(#depth-2:checked) label[for="depth-2"],
-  .rastro:has(#depth-3:checked) label[for="depth-3"] {
+  .rastro:has(input[value="1"]:checked) label[for$="depth-1"],
+  .rastro:has(input[value="2"]:checked) label[for$="depth-2"],
+  .rastro:has(input[value="3"]:checked) label[for$="depth-3"] {
     color: var(--ink);
     border-bottom-color: var(--verd);
   }

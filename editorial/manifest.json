@@ -1,6 +1,16 @@
 {
   "files": [
     {
+      "bytes": 31951,
+      "path": "editorial/labor/audit/LAB-Q-0003.audit.yml",
+      "sha256": "f2691a9adf5d33307d74b96866e628eb59839c68697527c4533f2a012e8a1f67"
+    },
+    {
+      "bytes": 4145,
+      "path": "editorial/labor/audit/LAB-Q-0003.review.yml",
+      "sha256": "c0145c9c7b1780fcf2c709904b6994a8fa6049bcc15cb30bd0e64ecb8e878db3"
+    },
+    {
       "bytes": 23267,
       "path": "editorial/labor/audit/LAB-Q-0005.audit.yml",
       "sha256": "3e6e9df7ffdd2673c2d071b5b8073e3522c470f7b06e70e49d467f12ae99ef5f"
@@ -31,6 +41,11 @@
       "sha256": "79dda08a051fbd85f3ff5ec4db4d8055f70741d745a95fe977d6fd0b2604679b"
     },
     {
+      "bytes": 11437,
+      "path": "editorial/labor/findings/LAB-Q-0003.yml",
+      "sha256": "af88a3ad82bd99a2b67c3b37dc3f1e3bb2ae4da06596f91a5d5d1b6d06f28554"
+    },
+    {
       "bytes": 8318,
       "path": "editorial/labor/findings/LAB-Q-0005.yml",
       "sha256": "189c7ffefdc4cdfd6060d42b1871cd704bc78e53b0eb4c11228a467d708ce3c1"
@@ -46,6 +61,11 @@
       "sha256": "cbbc9e324e8011f82324b0d59b485267f33f8e713645bb892113ae2a186dfd37"
     },
     {
+      "bytes": 1629,
+      "path": "editorial/labor/limits/LAB-Q-0003.yml",
+      "sha256": "349155c7ec1c5223cf6eddadf6eea955a9db08007630244413c757cdf43f2ea9"
+    },
+    {
       "bytes": 962,
       "path": "editorial/labor/limits/LAB-Q-0005.yml",
       "sha256": "47c3726124aaef5da4d78c9f784714dc01ac0e16af5bcd721e4f6c6a166a370e"
@@ -59,6 +79,11 @@
       "bytes": 1827,
       "path": "editorial/labor/limits/LAB-Q-0013.yml",
       "sha256": "5b19b2cb6edab8486aed3cf4badc73949d5fe9f22d3462f11d3db6ff9550d475"
+    },
+    {
+      "bytes": 799,
+      "path": "editorial/labor/questions/LAB-Q-0003.yml",
+      "sha256": "e8381e0536e5c282c413ab7efd48da3fc5cad7b55994be138f0bbab690002ecb"
     },
     {
       "bytes": 839,
@@ -87,6 +112,6 @@
     }
   ],
   "schema": "aletheia-web/editorial-manifest/1",
-  "units": 130,
-  "units_pending_author_signoff": 127
+  "units": 174,
+  "units_pending_author_signoff": 170
 }

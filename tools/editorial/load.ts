@@ -108,12 +108,20 @@ export function loadEditorialFromTexts(
   for (const u of finding.does_not_mean) add(`does_not_mean.${u.id}`, u, "does_not_mean");
   for (const u of finding.would_need) add(`would_need.${u.id}`, u, "would_need");
   if (finding.disclosure !== undefined) add("disclosure", finding.disclosure, "disclosure");
-  if (finding.trail !== undefined) {
-    for (const [k, u] of Object.entries(finding.trail)) {
-      if (u === undefined) continue;
-      add(`trail.${k}`, u, "trail");
-    }
-  }
+  const addTrail = (prefix: string, tr: NonNullable<FindingT["trail"]>): void => {
+    add(`${prefix}.claim`, tr.claim, "trail");
+    add(`${prefix}.hypothesis`, tr.hypothesis, "trail");
+    add(`${prefix}.evidence`, tr.evidence, "trail");
+    if (tr.object_employment !== undefined)
+      add(`${prefix}.object_employment`, tr.object_employment, "trail");
+    if (tr.object_registration !== undefined)
+      add(`${prefix}.object_registration`, tr.object_registration, "trail");
+    if (tr.source !== undefined) add(`${prefix}.source`, tr.source, "trail");
+    for (const o of tr.objects ?? []) add(`${prefix}.objects.${o.id}`, o, "trail");
+  };
+  if (finding.trail !== undefined) addTrail("trail", finding.trail);
+  if (finding.trails !== undefined)
+    finding.trails.forEach((tr, i) => addTrail(`trails.${i}`, tr));
   // Razones de las limitaciones AUDIT_ONLY: se muestran en el nivel Auditoría, así que son texto público auditado.
   for (const d of limits.dispositions) {
     if (d.waiver_reason !== undefined) units.push({ string_id: `${cref}#limits.${d.limitation}.waiver`, kind: "limit_waiver", text: d.waiver_reason, maps_to: [d.limitation], section: "limits" });

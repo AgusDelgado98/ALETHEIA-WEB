@@ -22,6 +22,29 @@ export interface TextItem {
   parts: Part[];
 }
 
+export interface TrailView {
+  claimId: string;
+  claimState: string;
+  claimLabel: string;
+  sourceLabel: string;
+  claim: Part[];
+  hypothesis: Part[];
+  evidence: Part[];
+  objects: { id: string; parts: Part[] }[];
+  source: { rootId: string; publication: Part[]; linkUnresolved: boolean };
+  reasons: TextItem[];
+  ids: {
+    claim: string;
+    hypothesis: string;
+    evidence: string[];
+    roots: string[];
+    objects: string[];
+    ruling: string[];
+    episodes: string[];
+  };
+  auditOnly: { ownerId: string; text: Part[]; waiver: string }[];
+}
+
 export interface QuestionView {
   slug: string;
   moduleId: string;
@@ -46,24 +69,8 @@ export interface QuestionView {
   doesNotMean: TextItem[];
   wouldNeed: TextItem[];
   absenceText: string;
-  trail: {
-    claim: Part[];
-    hypothesis: Part[];
-    evidence: Part[];
-    objects: { id: string; parts: Part[] }[];
-    source: { rootId: string; publication: Part[]; linkUnresolved: boolean };
-    reasons: TextItem[];
-    ids: {
-      claim: string;
-      hypothesis: string;
-      evidence: string[];
-      roots: string[];
-      objects: string[];
-      ruling: string[];
-      episodes: string[];
-    };
-    auditOnly: { ownerId: string; text: Part[]; waiver: string }[];
-  } | null;
+  trail: TrailView | null;
+  trails: TrailView[];
   provenance: {
     moduleVersion: string;
     tag: string;
@@ -125,11 +132,6 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     return loadCanonicalView(root, qid, c, q, listedClaims, provenanceShell);
 
   const e: EditorialBundle = loadEditorial(root, qid);
-  if (q.claim_ids.length > 1)
-    throw new Error(
-      `${qid}: hay ${q.claim_ids.length} claims. La ficha editorial de M1 cubre 0 o 1; el resto usa la página canónica`,
-    );
-
   const segs = (text: string): Segment[] => parseSegments(text, c);
   const parts = (text: string): Part[] => fromSegments(segs(text));
   const item = (u: { id: string; text: string }): TextItem => ({ id: u.id, parts: parts(u.text) });
@@ -198,6 +200,7 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
       },
       claim: null,
       trail: null,
+      trails: [],
       provenance: {
         ...provenanceBase,
         forbidden: q.answerability.forbidden_inferences,
@@ -209,29 +212,16 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     };
   }
 
-  const claim = req(
-    c.claims.find((x) => x.id === q.claim_ids[0]),
-    `claim de ${qid}`,
-  );
-  const hyp = req(
-    c.hypotheses.find((x) => x.id === claim.hypothesis_id),
-    "hipótesis del claim",
-  );
-  const trail = req(e.finding.trail, `Rastro editorial de ${qid}`);
-  const cLabel = req(
-    e.states.claim_state_labels[claim.epistemic_state],
-    `etiqueta pública del estado ${claim.epistemic_state} (G-STA-06)`,
-  ).text;
-
+  const trailSpecs = e.finding.trails ?? (e.finding.trail !== undefined ? [e.finding.trail] : []);
+  if (trailSpecs.length !== q.claim_ids.length)
+    throw new Error(
+      `${qid}: hay ${trailSpecs.length} Rastros editoriales para ${q.claim_ids.length} claims`,
+    );
   const byId = (list: { id: string; text: string }[], id: string): { id: string; text: string } =>
     req(
       list.find((x) => x.id === id),
       `texto editorial ${id}`,
     );
-  const root7 = c["evidence-roots"].filter((r) => claim.root_ids.includes(r.id));
-  if (root7.length !== 1) throw new Error("M1 muestra una raíz de evidencia en el Rastro");
-  const rootPrimary = root7[0]!;
-
   const audit = e.limits.dispositions
     .filter((d) => d.disposition === "AUDIT_ONLY")
     .map((d) => {
@@ -247,71 +237,137 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
       };
     });
 
-  const cite = fillCite(ui("cite_template"), claim.id);
-  const ids = {
-    claim: claim.id,
-    hypothesis: hyp.id,
-    evidence: claim.evidence_ids,
-    roots: [...claim.root_ids, ...claim.referenced_root_ids, ...claim.deflator_root_ids],
-    objects: claim.object_ids,
-    ruling: claim.lab_gov,
-    episodes: c.episodes.filter((x) => x.claim_ids.includes(claim.id)).map((x) => x.id),
-  };
+  const trails: TrailView[] = q.claim_ids.map((cid, i) => {
+    const spec = req(trailSpecs[i], `Rastro editorial ${i} de ${qid}`);
+    const expectedRef = spec.claim_ref?.replace(/^labor\//, "");
+    if (expectedRef !== undefined && expectedRef !== cid)
+      throw new Error(`${qid}: el Rastro ${i} cita ${expectedRef} y el claim es ${cid}`);
+    const claim = req(
+      c.claims.find((x) => x.id === cid),
+      `claim ${cid}`,
+    );
+    const hyp = req(
+      c.hypotheses.find((x) => x.id === claim.hypothesis_id),
+      `hipótesis de ${cid}`,
+    );
+    const cLabel = req(
+      e.states.claim_state_labels[claim.epistemic_state],
+      `etiqueta pública del estado ${claim.epistemic_state} (G-STA-06)`,
+    ).text;
+    const roots = c["evidence-roots"].filter((r) => claim.root_ids.includes(r.id));
+    if (roots.length !== 1) throw new Error(`${cid}: el Rastro muestra una raíz de evidencia`);
+    const rootPrimary = roots[0]!;
+    const objectUnits =
+      spec.objects !== undefined && spec.objects.length > 0
+        ? spec.objects
+        : [
+            req(spec.object_employment, `objeto de empleo de ${cid}`),
+            req(spec.object_registration, `objeto de registro de ${cid}`),
+          ];
+    if (objectUnits.length !== claim.object_ids.length)
+      throw new Error(
+        `${cid}: el Rastro espera ${objectUnits.length} objetos y el claim declara ${claim.object_ids.length}`,
+      );
+    const cutIds = spec.blockers_at_cut ?? e.finding.blockers_at_cut;
+    return {
+      claimId: claim.id,
+      claimState: claim.epistemic_state,
+      claimLabel: cLabel,
+      sourceLabel: claim.source_label,
+      claim: parts(spec.claim.text),
+      hypothesis: parts(spec.hypothesis.text),
+      evidence: parts(spec.evidence.text),
+      objects: claim.object_ids.map((id, j) => ({
+        id,
+        parts: parts(objectUnits[j]!.text),
+      })),
+      source: {
+        rootId: rootPrimary.id,
+        publication:
+          spec.source !== undefined ? parts(spec.source.text) : markTokens(rootPrimary.publication),
+        linkUnresolved: rootPrimary.source_link_status === "UNRESOLVED",
+      },
+      reasons: cutIds.map((id) => item(byId(e.finding.can_say, id))),
+      ids: {
+        claim: claim.id,
+        hypothesis: hyp.id,
+        evidence: claim.evidence_ids,
+        roots: [...claim.root_ids, ...claim.referenced_root_ids, ...claim.deflator_root_ids],
+        objects: claim.object_ids,
+        ruling: claim.lab_gov,
+        episodes: c.episodes.filter((x) => x.claim_ids.includes(claim.id)).map((x) => x.id),
+      },
+      auditOnly: audit,
+    };
+  });
+
+  const primary = trails[0]!;
+  const fullClaims = q.claim_ids.map((id) =>
+    req(
+      c.claims.find((x) => x.id === id),
+      id,
+    ),
+  );
+  const hyps = [
+    ...new Set(fullClaims.map((cl) => cl.hypothesis_id).filter((id): id is string => id !== null)),
+  ];
+  const forbidden = [
+    ...q.answerability.forbidden_inferences,
+    ...fullClaims.flatMap((cl) => cl.answerability.forbidden_inferences),
+  ];
+  const entityIds = [
+    qid,
+    ...fullClaims.map((cl) => cl.id),
+    ...hyps,
+    ...fullClaims.flatMap((cl) => cl.evidence_ids),
+    ...fullClaims.flatMap((cl) => [
+      ...cl.root_ids,
+      ...cl.referenced_root_ids,
+      ...cl.deflator_root_ids,
+    ]),
+    ...fullClaims.flatMap((cl) => cl.object_ids),
+    ...fullClaims.flatMap((cl) => cl.lab_gov),
+    ...c.episodes
+      .filter((x) => fullClaims.some((cl) => x.claim_ids.includes(cl.id)))
+      .map((x) => x.id),
+    ...q.preserved_result_ids,
+    ...forbidden,
+  ];
+  const cite = fillCite(ui("cite_template"), fullClaims.map((cl) => cl.id).join(" "));
+  const disclosureRequired = fullClaims.some((cl) => {
+    if (cl.hypothesis_id === null) return false;
+    const h = req(
+      c.hypotheses.find((x) => x.id === cl.hypothesis_id),
+      cl.hypothesis_id,
+    );
+    return h.disclosure_required;
+  });
 
   return {
     ...shared,
     state: {
       question: q.resolution.value,
-      claim: claim.epistemic_state,
-      claimLabel: cLabel,
+      claim: trails.length === 1 ? primary.claimState : null,
+      claimLabel: trails.length === 1 ? primary.claimLabel : null,
       questionLabel: qLabel,
       absenceNotNegative: q.absent_vs_negative === "ABSENT_NOT_NEGATIVE",
     },
-    claim: { id: claim.id, source: claim.source_label, hypothesisId: hyp.id },
-    trail: {
-      claim: parts(trail.claim.text),
-      hypothesis: parts(trail.hypothesis.text),
-      evidence: parts(trail.evidence.text),
-      objects: (() => {
-        const objectUnits = [trail.object_employment, trail.object_registration];
-        if (claim.object_ids.length !== objectUnits.length)
-          throw new Error(
-            `${qid}: el Rastro espera ${objectUnits.length} objetos y el claim declara ${claim.object_ids.length}`,
-          );
-        return claim.object_ids.map((id, i) => ({
-          id,
-          parts: parts(objectUnits[i]!.text),
-        }));
-      })(),
-      source: {
-        rootId: rootPrimary.id,
-        publication:
-          trail.source !== undefined
-            ? parts(trail.source.text)
-            : markTokens(rootPrimary.publication),
-        linkUnresolved: rootPrimary.source_link_status === "UNRESOLVED",
-      },
-      reasons: e.finding.blockers_at_cut.map((id) => item(byId(e.finding.can_say, id))),
-      ids,
-      auditOnly: audit,
-    },
+    claim:
+      trails.length === 1
+        ? {
+            id: primary.claimId,
+            source: primary.sourceLabel,
+            hypothesisId: primary.ids.hypothesis,
+          }
+        : null,
+    trail: primary,
+    trails,
     provenance: {
       ...provenanceBase,
-      forbidden: claim.answerability.forbidden_inferences,
-      entityIds: [
-        qid,
-        ids.claim,
-        ids.hypothesis,
-        ...ids.evidence,
-        ...ids.roots,
-        ...ids.objects,
-        ...ids.ruling,
-        ...ids.episodes,
-        ...q.preserved_result_ids,
-        ...claim.answerability.forbidden_inferences,
-      ],
+      forbidden: [...new Set(forbidden)],
+      entityIds: [...new Set(entityIds)],
       cite: markTokens(cite),
-      disclosureRequired: hyp.disclosure_required,
+      disclosureRequired,
       disclosure: e.finding.disclosure !== undefined ? parts(e.finding.disclosure.text) : null,
     },
   };
@@ -412,6 +468,7 @@ function loadCanonicalView(
     wouldNeed: [],
     absenceText: site.states.fixed.absence_not_negative.text,
     trail: null,
+    trails: [],
     provenance: {
       ...provenanceShell,
       forbidden: [...new Set(forbidden)],
