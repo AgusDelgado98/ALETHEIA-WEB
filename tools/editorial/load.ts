@@ -43,6 +43,18 @@ export class EditorialError extends Error {}
 /** Pregunta que posee las cadenas compartidas de sitio (`states.yml`, `ui.yml`) en su auditoría. */
 export const SITE_STRINGS_OWNER = "LAB-Q-0013";
 
+export function loadSiteStrings(root: string): { states: StatesT; ui: UiT } {
+  const states = States.parse(
+    parse(readFileSync(join(root, "editorial", "site", "states.yml"), "utf8")),
+  );
+  const ui = Ui.parse(parse(readFileSync(join(root, "editorial", "site", "ui.yml"), "utf8")));
+  return { states, ui };
+}
+
+export function hasEditorialFinding(root: string, qid: string): boolean {
+  return existsSync(join(root, "editorial", "labor", "findings", `${qid}.yml`));
+}
+
 export function publishedEditorialIds(root: string): string[] {
   const dir = join(root, "editorial", "labor", "findings");
   if (!existsSync(dir)) return [];

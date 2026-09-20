@@ -76,6 +76,19 @@ const publishedQuestionIds = (ctx: GateContext): string[] =>
   uniq(editorialBundles(ctx).map((b) => b.finding.canonical_ref.replace(/^labor\//, "")));
 const bundleForQuestion = (ctx: GateContext, qid: string): EditorialBundle =>
   editorialBundles(ctx).find((b) => b.finding.canonical_ref === `labor/${qid}`) ?? ctx.editorial;
+/** Rutas que son páginas de pregunta (llevan `data-question-id`). */
+const questionPages = (ctx: GateContext): [string, string][] =>
+  [...ctx.html].filter(([, h]) => h.includes("data-question-id="));
+/** Fichas editoriales publicadas (Q-0013, Q-0011). Las páginas canónicas mínimas no copian esos bloques. */
+const editorialQuestionPages = (ctx: GateContext): [string, string][] => {
+  const pubs = new Set(publishedQuestionIds(ctx));
+  return questionPages(ctx).filter(([, html]) => {
+    const qid = tags(html).find((x) => x.attrs["data-question-id"] !== undefined)?.attrs[
+      "data-question-id"
+    ];
+    return qid !== undefined && pubs.has(qid);
+  });
+};
 const lintAll = (ctx: GateContext): ReturnType<typeof lintBundle> =>
   editorialBundles(ctx).flatMap((b) => lintBundle(b));
 const ENTITY_KINDS = Object.keys(ENTITY_FILES) as EntityFileName[];
@@ -671,14 +684,18 @@ const gSta04: Gate = {
               f.push(
                 `${route}: pregunta sin claim con data-claim-state ${t.attrs["data-claim-state"]}`,
               );
-          } else {
-            const cid = t.attrs["data-claim-id"];
-            const c = ctx.generated.claims.find((x) => x.id === cid);
-            if (c === undefined || t.attrs["data-claim-state"] !== c.epistemic_state)
-              f.push(
-                `${route}: estado de claim renderizado ${t.attrs["data-claim-state"] ?? "?"} != generado ${c?.epistemic_state ?? "?"}`,
-              );
-          }
+          } else if (q.claim_ids.length > 1 && t.attrs["data-claim-id"] !== undefined)
+            f.push(
+              `${route}: pregunta con ${q.claim_ids.length} claims no puede llevar un solo data-claim-id`,
+            );
+        }
+        const cid = t.attrs["data-claim-id"];
+        if (cid !== undefined) {
+          const c = ctx.generated.claims.find((x) => x.id === cid);
+          if (c === undefined || t.attrs["data-claim-state"] !== c.epistemic_state)
+            f.push(
+              `${route}: estado de claim renderizado ${t.attrs["data-claim-state"] ?? "?"} != generado ${c?.epistemic_state ?? "?"}`,
+            );
         }
         const s = t.attrs["data-state"];
         if (
@@ -687,6 +704,19 @@ const gSta04: Gate = {
           !ctx.generated.questions.some((q) => q.resolution.value === s)
         )
           f.push(`${route}: forma de estado ${s} sin código generado`);
+      }
+      const seen = new Set(
+        tags(html)
+          .map((x) => x.attrs["data-claim-id"])
+          .filter((id): id is string => id !== undefined),
+      );
+      for (const t of tags(html)) {
+        const qid = t.attrs["data-question-id"];
+        if (qid === undefined) continue;
+        const q = ctx.generated.questions.find((x) => x.id === qid);
+        if (q === undefined) continue;
+        for (const id of q.claim_ids)
+          if (!seen.has(id)) f.push(`${route}: falta data-claim-id ${id}`);
       }
     }
     return f.length === 0 && ctx.html.size === 0
@@ -765,7 +795,7 @@ const gSta07: Gate = {
         c.epistemic_state === "OBSERVED_IN_SOURCE" && c.claim_kind !== "STATISTICAL_MEASUREMENT",
     );
     const rendered = need.filter((c) =>
-      questionPages(ctx).some(([, h]) => h.includes(`data-claim-id="${c.id}"`)),
+      editorialQuestionPages(ctx).some(([, h]) => h.includes(`data-claim-id="${c.id}"`)),
     );
     if (need.length > 0 && rendered.length === 0)
       return na(
@@ -941,10 +971,6 @@ const gPrv06: Gate = {
 
 // ─────────────────────────────── G-LIM ───────────────────────────────
 
-/** Rutas que son páginas de pregunta (llevan `data-question-id`): allí aplican los gates de contenido de una ficha. */
-const questionPages = (ctx: GateContext): [string, string][] =>
-  [...ctx.html].filter(([, h]) => h.includes("data-question-id="));
-
 const publicTextIds = (finding: EditorialBundle["finding"]): Set<string> =>
   new Set([
     ...finding.can_say.map((u) => `can_say:${u.id}`),
@@ -969,7 +995,7 @@ const gLim01: Gate = {
         if (shown.length === 0) f.push(`${c.id}: sin límites públicos SHOWN`);
       }
     }
-    for (const [route, html] of questionPages(ctx)) {
+    for (const [route, html] of editorialQuestionPages(ctx)) {
       const text = visibleText(html);
       if (!text.includes(ctx.editorial.ui.strings["not_heading"]?.text ?? "\0"))
         f.push(`${route}: falta el bloque «Lo que esto NO significa»`);
@@ -1032,7 +1058,7 @@ const gLim03: Gate = {
             `${h.id}: exige divulgación de exposición previa (${h.prior_data_exposure}) y no hay texto editorial para mostrarla`,
           );
     }
-    for (const [route, html] of questionPages(ctx)) {
+    for (const [route, html] of editorialQuestionPages(ctx)) {
       const t = visibleText(html);
       const qid = tags(html).find((x) => x.attrs["data-question-id"] !== undefined)?.attrs[
         "data-question-id"
@@ -1306,8 +1332,8 @@ const gEdi08: Gate = {
       }
     hay.push(ctx.generated.manifest.pin.commit.slice(0, 7), ctx.generated.manifestSha256);
     hay.push(sha256Hex(readFileSync(join(ctx.root, "editorial", "manifest.json"))));
-    for (const qid of publishedQuestionIds(ctx))
-      hay.push(plainText(loadQuestionView(ctx.root, qid).provenance.cite));
+    for (const q of ctx.generated.questions)
+      hay.push(plainText(loadQuestionView(ctx.root, q.id).provenance.cite));
     const haystack = hay.join(" ").replace(/\s+/g, " ");
     const clean = (t: string): string => t.replace(/^[.,;:()«»"' ]+|[.,;:()«»"' ]+$/g, "");
     const explained = (node: string): boolean =>

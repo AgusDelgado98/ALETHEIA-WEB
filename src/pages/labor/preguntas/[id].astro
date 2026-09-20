@@ -12,7 +12,7 @@ import Base from "../../../layouts/Base.astro";
 import { plainText } from "../../../lib/render.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
-/** Una ruta por pregunta con editorial completa. Publicadas: Q-0013 (un claim) y Q-0011 (0 claims). */
+/** Una ruta por cada pregunta del corpus. Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
 export function getStaticPaths() {
   return availableQuestionIds(process.cwd()).map((id) => ({
     params: { id: questionSlug(id) },
@@ -22,6 +22,13 @@ export function getStaticPaths() {
 const { qid } = Astro.props;
 const v = loadQuestionView(process.cwd(), qid);
 const ui = v.ui;
+const hatch = new Set(["NOT_IDENTIFIABLE", "BLOCKED_BY_DESIGN", "OUTSIDE_LAB_A"]);
+const shapeOf = (state: string): string =>
+  state === "INSUFFICIENT_EVIDENCE"
+    ? ui("shape_insufficient")
+    : hatch.has(state)
+      ? ui("shape_not_identifiable")
+      : ui("layer_question");
 ---
 
 <Base
@@ -34,8 +41,8 @@ const ui = v.ui;
     class="page"
     data-question-id={v.id}
     data-question-resolution={v.state.question}
-    data-claim-id={v.claim?.id}
-    data-claim-state={v.state.claim}
+    data-claim-id={v.hasEditorial ? v.claim?.id : undefined}
+    data-claim-state={v.hasEditorial ? v.state.claim : undefined}
   >
     <div class="wrap">
       <QuestionHeader
@@ -46,95 +53,150 @@ const ui = v.ui;
         canonical={v.canonicalQuestion}
       />
 
-      <section class="answer" aria-labelledby="answer-h">
-        <h2 id="answer-h" class="answer__k">
-          {ui("answer_heading")}
-        </h2>
-        <p class="answer__t">
-          <SegmentText parts={v.title} />
-        </p>
-        <Frame
-          source={v.claim?.source}
-          labelSource={ui("frame_source")}
-          labelScope={ui("frame_scope")}
-        >
-          <dl class="layers">
-            <div>
-              <dt>{ui("layer_question")}</dt>
-              <dd>
-                {v.claim !== null ? (
-                  <EvidenceState
-                    state="INSUFFICIENT_EVIDENCE"
-                    label={v.state.questionLabel}
-                    description={ui("shape_insufficient")}
-                  />
-                ) : (
-                  <EvidenceState
-                    state="NOT_IDENTIFIABLE"
-                    label={v.state.questionLabel}
-                    description={ui("shape_not_identifiable")}
-                  />
-                )}
-              </dd>
-            </div>
-            {v.claim !== null && v.state.claimLabel !== null && (
+      {v.hasEditorial ? (
+        <section class="answer" aria-labelledby="answer-h">
+          <h2 id="answer-h" class="answer__k">
+            {ui("answer_heading")}
+          </h2>
+          <p class="answer__t">
+            <SegmentText parts={v.title} />
+          </p>
+          <Frame
+            source={v.claim?.source}
+            labelSource={ui("frame_source")}
+            labelScope={ui("frame_scope")}
+          >
+            <dl class="layers">
               <div>
-                <dt>
-                  {ui("layer_claim")}{" "}
-                  <span class="mono" data-num="id">
-                    {v.claim.id}
-                  </span>
-                </dt>
+                <dt>{ui("layer_question")}</dt>
+                <dd>
+                  {v.claim !== null ? (
+                    <EvidenceState
+                      state="INSUFFICIENT_EVIDENCE"
+                      label={v.state.questionLabel}
+                      description={ui("shape_insufficient")}
+                    />
+                  ) : (
+                    <EvidenceState
+                      state="NOT_IDENTIFIABLE"
+                      label={v.state.questionLabel}
+                      description={ui("shape_not_identifiable")}
+                    />
+                  )}
+                </dd>
+              </div>
+              {v.claim !== null && v.state.claimLabel !== null && (
+                <div>
+                  <dt>
+                    {ui("layer_claim")}{" "}
+                    <span class="mono" data-num="id">
+                      {v.claim.id}
+                    </span>
+                  </dt>
+                  <dd>
+                    <EvidenceState
+                      state="INSUFFICIENT_EVIDENCE"
+                      label={v.state.claimLabel}
+                      description={ui("shape_insufficient")}
+                    />
+                  </dd>
+                </div>
+              )}
+            </dl>
+            <span slot="scope">
+              <SegmentText parts={v.scope} />
+            </span>
+          </Frame>
+          {v.claim === null && <p class="answer__a">{ui("no_claim_trail")}</p>}
+          {v.state.absenceNotNegative && <p class="answer__a">{v.absenceText}</p>}
+          <p class="answer__i">
+            <SegmentText parts={v.intro} />
+          </p>
+        </section>
+      ) : (
+        <section class="answer" aria-labelledby="answer-h">
+          <h2 id="answer-h" class="answer__k">
+            {ui("answer_heading")}
+          </h2>
+          <p class="answer__t">
+            <SegmentText parts={v.title} />
+          </p>
+          <Frame
+            source={v.claims.length === 1 ? v.claims[0]!.source : undefined}
+            labelSource={ui("frame_source")}
+            labelScope={ui("frame_scope")}
+          >
+            <dl class="layers">
+              <div>
+                <dt>{ui("layer_question")}</dt>
                 <dd>
                   <EvidenceState
-                    state="INSUFFICIENT_EVIDENCE"
-                    label={v.state.claimLabel}
-                    description={ui("shape_insufficient")}
+                    state={v.state.question}
+                    label={v.state.questionLabel}
+                    description={shapeOf(v.state.question)}
                   />
                 </dd>
               </div>
-            )}
-          </dl>
-          <span slot="scope">
-            <SegmentText parts={v.scope} />
-          </span>
-        </Frame>
-        {v.claim === null && <p class="answer__a">{ui("no_claim_trail")}</p>}
-        {v.state.absenceNotNegative && <p class="answer__a">{v.absenceText}</p>}
-        <p class="answer__i">
-          <SegmentText parts={v.intro} />
-        </p>
-      </section>
+              {v.claims.map((cl) => (
+                <div data-claim-id={cl.id} data-claim-state={cl.state}>
+                  <dt>
+                    {ui("layer_claim")}{" "}
+                    <span class="mono" data-num="id">
+                      {cl.id}
+                    </span>
+                  </dt>
+                  <dd>
+                    <EvidenceState
+                      state={cl.state}
+                      label={cl.state}
+                      description={shapeOf(cl.state)}
+                    />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <span slot="scope">
+              <SegmentText parts={v.scope} />
+            </span>
+          </Frame>
+          {v.claims.length === 0 && <p class="answer__a">{ui("no_claim_trail")}</p>}
+          {v.state.absenceNotNegative && <p class="answer__a">{v.absenceText}</p>}
+        </section>
+      )}
 
-      <div class="lim">
-        <div class="lim__say">
-          <WhatWeCanSay heading={ui("say_heading")} items={v.canSay} />
+      {v.hasEditorial && (
+        <div class="lim">
+          <div class="lim__say">
+            <WhatWeCanSay heading={ui("say_heading")} items={v.canSay} />
+          </div>
+          <div class="lim__thread" aria-hidden="true">
+            <span class="a"></span>
+            <span class="gap"></span>
+            <span class="z"></span>
+          </div>
+          <div class="lim__no">
+            <WhatThisDoesNotMean heading={ui("not_heading")} items={v.doesNotMean} />
+          </div>
         </div>
-        <div class="lim__thread" aria-hidden="true">
-          <span class="a"></span>
-          <span class="gap"></span>
-          <span class="z"></span>
-        </div>
-        <div class="lim__no">
-          <WhatThisDoesNotMean heading={ui("not_heading")} items={v.doesNotMean} />
-        </div>
-      </div>
+      )}
 
-      <section class="need" aria-labelledby="need-h">
-        <h2 id="need-h" class="need__h">
-          {ui("need_heading")}
-        </h2>
-        <ul class="need__l">
-          {v.wouldNeed.map((it) => (
-            <li id={`need-${it.id}`}>
-              <Glyph kind="hypothesis" fill="ghost" size="1.125rem" />
-              <p>
-                <SegmentText parts={it.parts} />
-              </p>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {v.hasEditorial && (
+        <section class="need" aria-labelledby="need-h">
+          <h2 id="need-h" class="need__h">
+            {ui("need_heading")}
+          </h2>
+          <ul class="need__l">
+            {v.wouldNeed.map((it) => (
+              <li id={`need-${it.id}`}>
+                <Glyph kind="hypothesis" fill="ghost" size="1.125rem" />
+                <p>
+                  <SegmentText parts={it.parts} />
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
     {v.trail !== null && <EvidenceTrail v={v} />}
     <ProvenanceDetails v={v} />

@@ -18,7 +18,7 @@ import {
 import { lintText, findBannedKeys } from "../tools/editorial/lint.ts";
 import { loadGenerated } from "../tools/corpus/load.ts";
 import { ROOT } from "./helpers.ts";
-import { availableQuestionIds, loadQuestionView } from "../src/lib/view.ts";
+import { availableQuestionIds, loadQuestionView, questionSlug } from "../src/lib/view.ts";
 
 const corpus = loadGenerated(ROOT);
 const QID = "LAB-Q-0013";
@@ -173,8 +173,8 @@ describe("capa editorial de Q-0011 (0 claims)", () => {
 
 describe("vista de Q-0011", () => {
   it("carga 0 claims y NOT_IDENTIFIABLE sin inventar afirmación", () => {
-    expect(availableQuestionIds(ROOT)).toEqual(["LAB-Q-0011", "LAB-Q-0013"]);
     const v = loadQuestionView(ROOT, "LAB-Q-0011");
+    expect(v.hasEditorial).toBe(true);
     expect(v.claim).toBeNull();
     expect(v.trail).toBeNull();
     expect(v.state.question).toBe("NOT_IDENTIFIABLE");
@@ -182,5 +182,39 @@ describe("vista de Q-0011", () => {
     expect(v.state.questionLabel).toBe("No identificable con las fuentes conocidas");
     expect(plainText(v.provenance.cite)).not.toMatch(/LAB-CLM-/);
     expect(plainText(v.provenance.cite)).toMatch(/Sin afirmación/);
+  });
+});
+
+describe("páginas mínimas de las 18 preguntas LABOR", () => {
+  const ids = availableQuestionIds(ROOT);
+  const ZERO = ["LAB-Q-0006", "LAB-Q-0007", "LAB-Q-0011", "LAB-Q-0015", "LAB-Q-0017"];
+  it("genera las 18 rutas del slice", () => {
+    expect(ids).toHaveLength(18);
+    expect(ids.map(questionSlug)).toEqual(
+      Array.from({ length: 18 }, (_, i) => `q-${String(i + 1).padStart(4, "0")}`),
+    );
+  });
+  it("Q-0003 conserva 2 claims", () => {
+    const v = loadQuestionView(ROOT, "LAB-Q-0003");
+    expect(v.hasEditorial).toBe(false);
+    expect(v.claims.map((c) => c.id)).toEqual(["LAB-CLM-0002", "LAB-CLM-0004"]);
+    expect(v.trail).toBeNull();
+  });
+  it("las 5 preguntas sin claim cargan sin afirmación ni Rastro", () => {
+    for (const id of ZERO) {
+      const v = loadQuestionView(ROOT, id);
+      expect(v.claims, id).toEqual([]);
+      expect(v.claim, id).toBeNull();
+      expect(v.trail, id).toBeNull();
+    }
+  });
+  it("Q-0013 y Q-0011 conservan la ficha editorial", () => {
+    const a = loadQuestionView(ROOT, "LAB-Q-0013");
+    expect(a.hasEditorial).toBe(true);
+    expect(a.claim?.id).toBe("LAB-CLM-0011");
+    expect(a.trail).not.toBeNull();
+    const b = loadQuestionView(ROOT, "LAB-Q-0011");
+    expect(b.hasEditorial).toBe(true);
+    expect(b.state.question).toBe("NOT_IDENTIFIABLE");
   });
 });

@@ -1,9 +1,14 @@
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadGenerated, type GeneratedCorpus } from "../../tools/corpus/load.ts";
 import { sha256Hex } from "../../tools/corpus/util.ts";
 import { parseSegments, type Segment } from "../../tools/editorial/directives.ts";
-import { loadEditorial, type EditorialBundle } from "../../tools/editorial/load.ts";
+import {
+  loadEditorial,
+  loadSiteStrings,
+  hasEditorialFinding,
+  type EditorialBundle,
+} from "../../tools/editorial/load.ts";
 import { pendingSignoff } from "../../tools/editorial/audit.ts";
 import { limitationIdFromRef } from "../../tools/editorial/resolve.ts";
 import { fromSegments, markTokens, type Part } from "./render.ts";
@@ -23,6 +28,7 @@ export interface QuestionView {
   id: string;
   publicQuestion: string;
   canonicalQuestion: string;
+  hasEditorial: boolean;
   ui: (key: string) => string;
   state: {
     question: string;
@@ -32,6 +38,7 @@ export interface QuestionView {
     absenceNotNegative: boolean;
   };
   claim: { id: string; source: string; hypothesisId: string } | null;
+  claims: { id: string; state: string; source: string; kind: string }[];
   title: Part[];
   intro: Part[];
   scope: Part[];
@@ -79,10 +86,7 @@ export function questionSlug(id: string): string {
 }
 
 export function availableQuestionIds(root: string): string[] {
-  const c = loadGenerated(root);
-  return c.manifest.slice.question_ids.filter((id) =>
-    existsSync(join(root, "editorial", "labor", "findings", `${id}.yml`)),
-  );
+  return loadGenerated(root).manifest.slice.question_ids;
 }
 
 function req<T>(v: T | undefined | null, what: string): T {
@@ -93,15 +97,36 @@ function req<T>(v: T | undefined | null, what: string): T {
 
 export function loadQuestionView(root: string, qid: string): QuestionView {
   const c: GeneratedCorpus = loadGenerated(root);
-  const e: EditorialBundle = loadEditorial(root, qid);
-
   const q = req(
     c.questions.find((x) => x.id === qid),
     `pregunta ${qid}`,
   );
+  const editorialManifest = readFileSync(join(root, "editorial", "manifest.json"));
+  const provenanceShell = {
+    moduleVersion: c.manifest.version,
+    tag: c.manifest.pin.tag,
+    commit: c.manifest.pin.commit,
+    commitShort: c.manifest.pin.commit.slice(0, 7),
+    generatorVersion: c.manifest.generator_version,
+    manifestSha: c.manifestSha256,
+    editorialSha: sha256Hex(editorialManifest),
+    preserved: q.preserved_result_ids,
+  };
+  const listedClaims = q.claim_ids.map((id) => {
+    const cl = req(
+      c.claims.find((x) => x.id === id),
+      `claim ${id}`,
+    );
+    return { id: cl.id, state: cl.epistemic_state, source: cl.source_label, kind: cl.claim_kind };
+  });
+
+  if (!hasEditorialFinding(root, qid))
+    return loadCanonicalView(root, qid, c, q, listedClaims, provenanceShell);
+
+  const e: EditorialBundle = loadEditorial(root, qid);
   if (q.claim_ids.length > 1)
     throw new Error(
-      `${qid}: hay ${q.claim_ids.length} claims. La regla 0..N exige una plantilla multi-claim antes de publicarla`,
+      `${qid}: hay ${q.claim_ids.length} claims. La ficha editorial de M1 cubre 0 o 1; el resto usa la página canónica`,
     );
 
   const segs = (text: string): Segment[] => parseSegments(text, c);
@@ -112,7 +137,6 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     e.states.question_resolution_labels[q.resolution.value],
     `etiqueta pública de la resolución ${q.resolution.value} (G-STA-06)`,
   ).text;
-  const editorialManifest = readFileSync(join(root, "editorial", "manifest.json"));
   const pinCite = {
     question: e.question.public_question,
     version: c.manifest.version,
@@ -128,23 +152,14 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     if (claimId !== undefined) s = s.replace("{claim}", claimId);
     return s;
   };
-  const provenanceBase = {
-    moduleVersion: c.manifest.version,
-    tag: c.manifest.pin.tag,
-    commit: c.manifest.pin.commit,
-    commitShort: c.manifest.pin.commit.slice(0, 7),
-    generatorVersion: c.manifest.generator_version,
-    manifestSha: c.manifestSha256,
-    editorialSha: sha256Hex(editorialManifest),
-    preserved: q.preserved_result_ids,
-    pendingSignoff: pendingSignoff(e).length,
-  };
+  const provenanceBase = { ...provenanceShell, pendingSignoff: pendingSignoff(e).length };
   const shared = {
     slug: questionSlug(qid),
     moduleId: c.manifest.module_id,
     id: qid,
     publicQuestion: e.question.public_question,
     canonicalQuestion: q.canonical_text,
+    hasEditorial: true,
     ui,
     title: parts(e.finding.title.text),
     intro: parts(e.finding.intro.text),
@@ -153,17 +168,20 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     doesNotMean: e.finding.does_not_mean.map(item),
     wouldNeed: e.finding.would_need.map(item),
     absenceText: e.states.fixed.absence_not_negative.text,
+    claims: listedClaims,
   };
 
   if (q.claim_ids.length === 0) {
-    const hyp = req(
-      c.hypotheses.find((x) => x.id === q.hypothesis_ids[0]),
-      `hipótesis de ${qid}`,
-    );
+    const hyp = q.hypothesis_ids[0]
+      ? req(
+          c.hypotheses.find((x) => x.id === q.hypothesis_ids[0]),
+          `hipótesis de ${qid}`,
+        )
+      : null;
     const cite = fillCite(ui("cite_template_no_claim"));
     const entityIds = [
       qid,
-      hyp.id,
+      ...(hyp !== null ? [hyp.id] : []),
       ...q.object_ids,
       ...q.preserved_result_ids,
       ...q.answerability.forbidden_inferences,
@@ -184,7 +202,7 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
         forbidden: q.answerability.forbidden_inferences,
         entityIds,
         cite: markTokens(cite),
-        disclosureRequired: hyp.disclosure_required,
+        disclosureRequired: hyp?.disclosure_required ?? false,
       },
     };
   }
@@ -282,6 +300,112 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
       ],
       cite: markTokens(cite),
       disclosureRequired: hyp.disclosure_required,
+    },
+  };
+}
+
+type ProvenanceShell = {
+  moduleVersion: string;
+  tag: string;
+  commit: string;
+  commitShort: string;
+  generatorVersion: string;
+  manifestSha: string;
+  editorialSha: string;
+  preserved: string[];
+};
+
+function loadCanonicalView(
+  root: string,
+  qid: string,
+  c: GeneratedCorpus,
+  q: GeneratedCorpus["questions"][number],
+  listedClaims: QuestionView["claims"],
+  provenanceShell: ProvenanceShell,
+): QuestionView {
+  const site = loadSiteStrings(root);
+  const ui = (key: string): string => req(site.ui.strings[key], `cadena de interfaz «${key}»`).text;
+  const qLabel =
+    site.states.question_resolution_labels[q.resolution.value]?.text ?? q.resolution.value;
+  const hyp = q.hypothesis_ids[0]
+    ? req(
+        c.hypotheses.find((x) => x.id === q.hypothesis_ids[0]),
+        `hipótesis de ${qid}`,
+      )
+    : null;
+  const fillCite = (template: string, claimId?: string): string => {
+    let s = template
+      .replace("{question}", q.canonical_text)
+      .replace("{version}", c.manifest.version)
+      .replace("{tag}", c.manifest.pin.tag)
+      .replace("{commit}", c.manifest.pin.commit.slice(0, 7));
+    if (claimId !== undefined) s = s.replace("{claim}", claimId);
+    return s;
+  };
+  const cite =
+    listedClaims.length === 0
+      ? fillCite(ui("cite_template_no_claim"))
+      : fillCite(ui("cite_template"), listedClaims.map((x) => x.id).join(" "));
+  const forbidden = [
+    ...q.answerability.forbidden_inferences,
+    ...listedClaims.flatMap((cl) => {
+      const full = req(
+        c.claims.find((x) => x.id === cl.id),
+        cl.id,
+      );
+      return full.answerability.forbidden_inferences;
+    }),
+  ];
+  const entityIds = [
+    qid,
+    ...listedClaims.map((x) => x.id),
+    ...(hyp !== null ? [hyp.id] : []),
+    ...q.object_ids,
+    ...q.preserved_result_ids,
+    ...forbidden,
+  ];
+  return {
+    slug: questionSlug(qid),
+    moduleId: c.manifest.module_id,
+    id: qid,
+    publicQuestion: q.canonical_text,
+    canonicalQuestion: q.canonical_text,
+    hasEditorial: false,
+    ui,
+    state: {
+      question: q.resolution.value,
+      claim: listedClaims.length === 1 ? listedClaims[0]!.state : null,
+      claimLabel:
+        listedClaims.length === 1
+          ? (site.states.claim_state_labels[listedClaims[0]!.state]?.text ?? listedClaims[0]!.state)
+          : null,
+      questionLabel: qLabel,
+      absenceNotNegative: q.absent_vs_negative === "ABSENT_NOT_NEGATIVE",
+    },
+    claim:
+      listedClaims.length === 1
+        ? {
+            id: listedClaims[0]!.id,
+            source: listedClaims[0]!.source,
+            hypothesisId: hyp?.id ?? "",
+          }
+        : null,
+    claims: listedClaims,
+    title: markTokens(q.canonical_title),
+    intro: [],
+    scope: markTokens(q.canonical_title),
+    canSay: [],
+    doesNotMean: [],
+    wouldNeed: [],
+    absenceText: site.states.fixed.absence_not_negative.text,
+    trail: null,
+    provenance: {
+      ...provenanceShell,
+      forbidden: [...new Set(forbidden)],
+      entityIds: [...new Set(entityIds)],
+      cite: markTokens(cite),
+      disclosureRequired: hyp?.disclosure_required ?? false,
+      pendingSignoff: 0,
     },
   };
 }

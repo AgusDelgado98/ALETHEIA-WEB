@@ -8,6 +8,9 @@ import { cloneCtx, realContext, ROOT, ROUTE } from "./helpers.ts";
 
 const ctx = realContext();
 const hasHtml = ctx.html.has(ROUTE);
+const hasAllQuestionRoutes = Array.from({ length: 18 }, (_, i) =>
+  ctx.html.has(`/labor/preguntas/q-${String(i + 1).padStart(4, "0")}`),
+).every(Boolean);
 
 describe("gates CORE_BUILD sobre el estado real", () => {
   it("ninguno falla", () => {
@@ -44,6 +47,34 @@ describe("gates CORE_BUILD sobre el estado real", () => {
       expect(ids, required).toContain(required);
     }
   });
+});
+
+describe("18 rutas de pregunta LABOR", () => {
+  it.skipIf(!hasAllQuestionRoutes)(
+    "dist incluye /labor/preguntas/q-0001 … q-0018 y G-UX-02 pasa",
+    () => {
+      for (let i = 1; i <= 18; i++) {
+        const route = `/labor/preguntas/q-${String(i).padStart(4, "0")}`;
+        expect(ctx.html.has(route), route).toBe(true);
+      }
+      const ux = runGate("G-UX-02", ctx);
+      expect(ux.failures, ux.detail).toEqual([]);
+      expect(ux.status).toBe("PASS");
+    },
+  );
+  it.skipIf(!hasAllQuestionRoutes)(
+    "Q-0003 renderiza 2 claims; las 5 sin claim no inventan data-claim-id",
+    () => {
+      const html = ctx.html.get("/labor/preguntas/q-0003") ?? "";
+      expect(html).toContain('data-claim-id="LAB-CLM-0002"');
+      expect(html).toContain('data-claim-id="LAB-CLM-0004"');
+      for (const id of ["q-0006", "q-0007", "q-0011", "q-0015", "q-0017"]) {
+        const h = ctx.html.get(`/labor/preguntas/${id}`) ?? "";
+        expect(h.includes("data-question-id="), id).toBe(true);
+        expect(h.includes("data-claim-id="), id).toBe(false);
+      }
+    },
+  );
 });
 
 /** Un fixture defectuoso: debe hacer fallar TODOS los gates indicados. Si un gate no falla, no está implementado. */
