@@ -1,0 +1,122 @@
+---
+/**
+ * Formas del mapa (Charter §8, §20.4): geometría, relleno, textura y corte; nunca solo color.
+ * Observado: hilo sólido → ■ macizo. Refutado: ■ de borde discontinuo.
+ * Insuficiente: corte → punteado → ■ hueco. Documentales: sin ■.
+ */
+interface Props {
+  state: string;
+  label: string;
+  description: string;
+  patternId: string;
+}
+const { state, label, description, patternId } = Astro.props;
+---
+
+<span class="ms" data-state={state}>
+  {state === "OBSERVED_IN_SOURCE" && (
+    <svg class="ms__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <line class="thread" x1="2" y1="12" x2="140" y2="12"></line>
+      <rect class="sq sq--solid" x="146" y="5" width="14" height="14"></rect>
+    </svg>
+  )}
+  {state === "REFUTED_WITHIN_SCOPE" && (
+    <svg class="ms__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <line class="thread" x1="2" y1="12" x2="140" y2="12"></line>
+      <rect class="sq sq--dash" x="146" y="5" width="14" height="14"></rect>
+    </svg>
+  )}
+  {state === "INSUFFICIENT_EVIDENCE" && (
+    <svg class="ms__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <line class="thread" x1="2" y1="12" x2="58" y2="12"></line>
+      <path class="cut" d="M62 3v18M72 3v18"></path>
+      <line class="dots" x1="78" y1="12" x2="140" y2="12"></line>
+      <rect class="sq sq--hollow" x="146" y="5" width="14" height="14"></rect>
+    </svg>
+  )}
+  {state === "NOT_IDENTIFIABLE" && (
+    <svg class="ms__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <defs>
+        <pattern
+          id={patternId}
+          width="6"
+          height="6"
+          patternUnits="userSpaceOnUse"
+          patternTransform="rotate(45)"
+        >
+          <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1.4"></line>
+        </pattern>
+      </defs>
+      <rect class="hatch" x="2" y="4" width="164" height="16" fill={`url(#${patternId})`}></rect>
+    </svg>
+  )}
+  {state === "BLOCKED_BY_DESIGN" && (
+    <svg class="ms__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <line class="thread" x1="2" y1="12" x2="148" y2="12"></line>
+      <path class="cut" d="M154 4v16"></path>
+    </svg>
+  )}
+  {state === "OUTSIDE_LAB_A" && (
+    <svg class="ms__shape" viewBox="0 0 168 24" role="img" aria-label={description}>
+      <line class="dots" x1="2" y1="12" x2="140" y2="12"></line>
+      <polygon class="tri" points="153,5 167,5 160,19"></polygon>
+    </svg>
+  )}
+  <span class="ms__label">{label}</span>
+</span>
+
+<style>
+  .ms {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    max-width: 100%;
+  }
+  .ms__shape {
+    width: 10.5rem;
+    height: 1.5rem;
+    flex: none;
+    overflow: visible;
+    color: var(--ink);
+  }
+  .thread,
+  .cut {
+    stroke: currentColor;
+    stroke-width: 1.4;
+    fill: none;
+  }
+  .dots {
+    stroke: var(--graphite);
+    stroke-width: 1.4;
+    stroke-dasharray: 1.5 4;
+    stroke-linecap: butt;
+  }
+  .sq {
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+  .sq--solid {
+    fill: currentColor;
+  }
+  .sq--hollow {
+    fill: var(--sect-bg);
+  }
+  .sq--dash {
+    fill: var(--sect-bg);
+    stroke-dasharray: 2.4 2.2;
+  }
+  .hatch {
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+  .tri {
+    fill: var(--sect-bg);
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+  .ms__label {
+    font: 500 var(--fs-small) / 1.2 var(--sans);
+    color: var(--graphite);
+  }
+</style>

@@ -1,0 +1,231 @@
+---
+import Glyph from "../components/Glyph.astro";
+import MapState from "../components/MapState.astro";
+import Base from "../layouts/Base.astro";
+import { loadQuestionMap } from "../lib/map.ts";
+
+const map = loadQuestionMap(process.cwd());
+const ui = map.ui;
+const hatch = new Set(["NOT_IDENTIFIABLE"]);
+const shapeOf = (state: string): string =>
+  state === "INSUFFICIENT_EVIDENCE"
+    ? ui("shape_insufficient")
+    : hatch.has(state)
+      ? ui("shape_not_identifiable")
+      : state === "OBSERVED_IN_SOURCE"
+        ? ui("node_claim")
+        : state === "REFUTED_WITHIN_SCOPE"
+          ? ui("node_limit")
+          : state === "BLOCKED_BY_DESIGN"
+            ? ui("cut_title")
+            : state === "OUTSIDE_LAB_A"
+              ? ui("node_hypothesis")
+              : ui("layer_question");
+const claimFill = (state: string): "solid" | "hollow" | "ghost" =>
+  state === "OBSERVED_IN_SOURCE" ? "solid" : state === "REFUTED_WITHIN_SCOPE" ? "ghost" : "hollow";
+---
+
+<Base
+  title={`${ui("question_kicker")} · ${ui("brand_wordmark")}`}
+  description={ui("question_kicker")}
+  skip={ui("skip_link")}
+  wordmark={ui("brand_wordmark")}
+>
+  <div class="wrap map">
+    <header class="map__h">
+      <p class="map__k">{ui("question_kicker")}</p>
+      <h1 class="map__t">{ui("question_kicker")}</h1>
+    </header>
+    <div class="map__intro">
+      <p>{ui("legend_heading")}</p>
+      <p>{ui("node_claim")}</p>
+      <p>{ui("trail_legend_note")}</p>
+      <p>{ui("no_claim_trail")}</p>
+    </div>
+    <ol class="map__l">
+      {map.questions.map((q) => (
+        <li class="map__row" data-question-id={q.id} data-question-resolution={q.resolution}>
+          <details class="map__d" name="mapa">
+            <summary class="map__s">
+              <span class="map__q">{q.text}</span>
+              <span class="map__end">
+                <span class="map__thread" aria-hidden="true"></span>
+                {q.claims.length === 0 ? (
+                  <MapState
+                    state={q.resolution}
+                    label={q.resolutionLabel}
+                    description={shapeOf(q.resolution)}
+                    patternId={`map-hatch-${q.id}`}
+                  />
+                ) : (
+                  q.claims.map((cl) => (
+                    <span data-claim-id={cl.id} data-claim-state={cl.state}>
+                      <Glyph kind="claim" fill={claimFill(cl.state)} size="0.9rem" />
+                      <span class="sr-only">
+                        {ui("layer_claim")} <span data-num="id">{cl.id}</span> {cl.label}
+                      </span>
+                    </span>
+                  ))
+                )}
+              </span>
+            </summary>
+            <div class="map__p">
+              <p>
+                <a href={q.href}>
+                  {ui("question_kicker")}{" "}
+                  <span class="mono" data-num="id">
+                    {map.moduleId} / {q.id}
+                  </span>
+                </a>
+              </p>
+              <dl class="map__layers">
+                <div>
+                  <dt>{ui("layer_question")}</dt>
+                  <dd>
+                    <MapState
+                      state={q.resolution}
+                      label={q.resolutionLabel}
+                      description={shapeOf(q.resolution)}
+                      patternId={`map-hatch-open-${q.id}`}
+                    />
+                  </dd>
+                </div>
+                {q.claims.map((cl) => (
+                  <div data-claim-id={cl.id} data-claim-state={cl.state}>
+                    <dt>
+                      {ui("layer_claim")}{" "}
+                      <span class="mono" data-num="id">
+                        {cl.id}
+                      </span>
+                    </dt>
+                    <dd>
+                      <MapState
+                        state={cl.state}
+                        label={cl.label}
+                        description={shapeOf(cl.state)}
+                        patternId={`map-hatch-claim-${cl.id}`}
+                      />
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              {q.claims.length === 0 && <p class="map__zero">{ui("no_claim_trail")}</p>}
+            </div>
+          </details>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .map {
+    padding-bottom: var(--space-10);
+  }
+  .map__h {
+    padding-block: var(--space-8) var(--space-5);
+  }
+  .map__k {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .map__t {
+    margin-top: var(--space-4);
+    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.018em;
+    max-width: 12ch;
+  }
+  .map__intro {
+    font: 400 var(--fs-small) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+    margin-bottom: var(--space-7);
+    display: grid;
+    gap: var(--space-2);
+  }
+  .map__l {
+    border-top: var(--rule) solid var(--hair);
+  }
+  .map__row:nth-child(even) {
+    background: var(--paper-2);
+  }
+  .map__d {
+    border-bottom: var(--rule) solid var(--hair);
+  }
+  .map__s {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    list-style: none;
+  }
+  .map__s::-webkit-details-marker {
+    display: none;
+  }
+  .map__s:hover {
+    color: var(--verd-deep);
+  }
+  .map__q {
+    font: 300 var(--fs-serif-md) / var(--lh-serif) var(--serif);
+    letter-spacing: var(--tracking-serif);
+    max-width: 28ch;
+    text-wrap: balance;
+  }
+  .map__end {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    justify-content: flex-end;
+  }
+  .map__thread {
+    flex: 1;
+    min-width: 2rem;
+    height: 0;
+    border-top: var(--rule) solid var(--ink);
+  }
+  .map__end :global(.g) {
+    color: var(--ink);
+  }
+  .map__p {
+    display: grid;
+    gap: var(--space-5);
+    padding: 0 0 var(--space-7);
+    max-width: 46rem;
+  }
+  .map__p a {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .map__layers {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .map__layers > div {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .map__layers dt {
+    font: 400 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .map__layers dd {
+    margin: 0;
+  }
+  .map__zero {
+    font: italic 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+    max-width: var(--measure-serif);
+  }
+  @media (min-width: 64rem) {
+    .map__s {
+      grid-template-columns: minmax(0, 1fr) minmax(12rem, 22rem);
+      align-items: center;
+      column-gap: var(--space-6);
+    }
+    .map__end {
+      justify-content: flex-end;
+    }
+  }
+</style>

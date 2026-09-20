@@ -18,6 +18,7 @@ import {
 import { lintText, findBannedKeys } from "../tools/editorial/lint.ts";
 import { loadGenerated } from "../tools/corpus/load.ts";
 import { ROOT } from "./helpers.ts";
+import { loadQuestionMap } from "../src/lib/map.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../src/lib/view.ts";
 
 const corpus = loadGenerated(ROOT);
@@ -216,5 +217,30 @@ describe("páginas mínimas de las 18 preguntas LABOR", () => {
     const b = loadQuestionView(ROOT, "LAB-Q-0011");
     expect(b.hasEditorial).toBe(true);
     expect(b.state.question).toBe("NOT_IDENTIFIABLE");
+  });
+});
+
+describe("mapa de las 18 preguntas LABOR", () => {
+  const map = loadQuestionMap(ROOT);
+  const ZERO = ["LAB-Q-0006", "LAB-Q-0007", "LAB-Q-0011", "LAB-Q-0015", "LAB-Q-0017"];
+  it("incluye las 18 preguntas del slice", () => {
+    expect(map.questions).toHaveLength(18);
+    expect(map.questions.map((q) => q.id)).toEqual(availableQuestionIds(ROOT));
+  });
+  it("cada pregunta enlaza a su ficha", () => {
+    for (const q of map.questions) {
+      expect(q.href).toBe(`/labor/preguntas/${questionSlug(q.id)}`);
+    }
+  });
+  it("las 5 preguntas sin claim no inventan afirmación", () => {
+    for (const id of ZERO) {
+      expect(map.questions.find((q) => q.id === id)?.claims, id).toEqual([]);
+    }
+  });
+  it("Q-0003 refleja 2 claims", () => {
+    expect(map.questions.find((q) => q.id === "LAB-Q-0003")?.claims.map((c) => c.id)).toEqual([
+      "LAB-CLM-0002",
+      "LAB-CLM-0004",
+    ]);
   });
 });

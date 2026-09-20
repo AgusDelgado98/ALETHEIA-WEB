@@ -16,7 +16,7 @@ import { limitationIdFromRef } from "../../tools/editorial/resolve.ts";
 import type { EditorialBundle, EditorialUnit } from "../../tools/editorial/load.ts";
 import type { GateContext } from "./context.ts";
 import { plainText } from "../../src/lib/render.ts";
-import { loadQuestionView } from "../../src/lib/view.ts";
+import { loadQuestionView, questionSlug } from "../../src/lib/view.ts";
 import {
   humanAttributeValues,
   ids,
@@ -1416,7 +1416,36 @@ const gUx03: Gate = {
 const gUx04: Gate = {
   id: "G-UX-04",
   title: "Las 18 preguntas y 14 claims alcanzables desde el mapa; ningún enlace del mapa muerto",
-  run: () => na("el mapa de 18 preguntas no forma parte de M1 (fuera de alcance)"),
+  run(ctx) {
+    if (ctx.html.size === 0) return skip("sin dist/");
+    const map = ctx.html.get("/explorar");
+    if (map === undefined) return na("sin ruta /explorar");
+    const f: string[] = [];
+    for (const q of ctx.generated.questions) {
+      const href = `/labor/preguntas/${questionSlug(q.id)}`;
+      if (!map.includes(`data-question-id="${q.id}"`)) f.push(`mapa: falta pregunta ${q.id}`);
+      if (!map.includes(`href="${href}"`)) f.push(`mapa: falta enlace ${href}`);
+      if (!ctx.html.has(href)) f.push(`mapa: enlace muerto ${href}`);
+    }
+    for (const c of ctx.generated.claims) {
+      if (!map.includes(`data-claim-id="${c.id}"`)) f.push(`mapa: falta claim ${c.id}`);
+      if (!map.includes(`data-claim-state="${c.epistemic_state}"`))
+        f.push(`mapa: estado ausente o distinto para ${c.id}`);
+    }
+    for (const t of tags(map)) {
+      const href = t.attrs["href"];
+      if (t.name !== "a" || href === undefined) continue;
+      if (href.startsWith("/")) {
+        const path = href.split("#")[0] ?? "";
+        const key = path === "" ? "/" : path.replace(/\/$/, "") || "/";
+        if (!ctx.html.has(key)) f.push(`mapa: enlace ${href} sin página`);
+      }
+    }
+    return res(
+      f,
+      "18 preguntas y 14 claims alcanzables desde /explorar; ningún enlace del mapa muerto",
+    );
+  },
 };
 const gUx05: Gate = {
   id: "G-UX-05",

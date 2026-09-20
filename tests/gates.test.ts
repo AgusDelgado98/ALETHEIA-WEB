@@ -41,6 +41,7 @@ describe("gates CORE_BUILD sobre el estado real", () => {
       "G-EDI-01",
       "G-EDI-02",
       "G-UX-01",
+      "G-UX-04",
       "G-CNT-01",
       "M1-GOV-01",
     ]) {
@@ -73,6 +74,28 @@ describe("18 rutas de pregunta LABOR", () => {
         expect(h.includes("data-question-id="), id).toBe(true);
         expect(h.includes("data-claim-id="), id).toBe(false);
       }
+    },
+  );
+});
+
+describe("mapa /explorar", () => {
+  const MAP = "/explorar";
+  it.skipIf(!ctx.html.has(MAP))(
+    "18 preguntas, 18 enlaces válidos, 5 sin claim, Q-0003 con 2, sin undefined",
+    () => {
+      const html = ctx.html.get(MAP) ?? "";
+      expect(html).not.toMatch(/\bundefined\b/);
+      for (let i = 1; i <= 18; i++) {
+        const n = String(i).padStart(4, "0");
+        expect(html, n).toContain(`data-question-id="LAB-Q-${n}"`);
+        expect(html, n).toContain(`href="/labor/preguntas/q-${n}"`);
+      }
+      expect(html).toContain('data-claim-id="LAB-CLM-0002"');
+      expect(html).toContain('data-claim-id="LAB-CLM-0004"');
+      expect([...html.matchAll(/Sin claim: no hay Rastro de claim\./g)]).toHaveLength(6);
+      expect(runGate("G-UX-01", ctx).status).toBe("PASS");
+      expect(runGate("G-UX-02", ctx).status).toBe("PASS");
+      expect(runGate("G-UX-04", ctx).status).toBe("PASS");
     },
   );
 });
