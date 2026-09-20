@@ -1,0 +1,50 @@
+{
+ "measured_at": "2026-09-20T00:47:04.067Z",
+ "note": "cold: .next/.astro/dist/.vite caches removed before every run; wall-clock; machine not idle-controlled",
+ "results": {
+  "next-16.3.5": {
+   "cold_build_seconds": [
+    12.2,
+    12.6,
+    12.1
+   ],
+   "median_seconds": 12.2,
+   "output_files": 27,
+   "output_bytes": 678394,
+   "node": "v20.20.2"
+  },
+  "next-16.3.5-pages-router-runtimeJS-false": {
+   "cold_build_seconds": [
+    8.5,
+    8.6,
+    8.9
+   ],
+   "median_seconds": 8.6,
+   "output_files": 23,
+   "output_bytes": 479280,
+   "node": "v20.20.2"
+  },
+  "astro-5.18.2": {
+   "cold_build_seconds": [
+    19.8,
+    8.8,
+    7.4
+   ],
+   "median_seconds": 8.8,
+   "output_files": 6,
+   "output_bytes": 247964,
+   "node": "v20.20.2"
+  },
+  "astro-7.3.3": {
+   "cold_build_seconds": [
+    21.7,
+    4.4,
+    4.5
+   ],
+   "median_seconds": 4.5,
+   "output_files": 6,
+   "output_bytes": 245420,
+   "node": "22.23.2 (isolated npm package)"
+  }
+ }
+}

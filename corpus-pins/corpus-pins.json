@@ -1,0 +1,141 @@
+{
+  "schema": "aletheia-web/corpus-pins/1",
+  "created_on": "2026-09-19",
+  "purpose": "Fija la autoridad y la reproducibilidad de los corpus de investigación. M0 no copia el corpus: solo lo identifica. Un cambio de cualquier pin exige ADR.",
+  "authority_rule": "Autoridad = repo + tag + commit (+ tree/hash). Ningún backup, copia de trabajo ni build es fuente de verdad.",
+  "read_policy": "Solo lectura a través de objetos Git del tag; nunca del working tree.",
+  "pins": {
+    "v1": {
+      "repo_id": "ALETHEIA-V1",
+      "source_path": "C:\\Proyectos\\ALETHEIA",
+      "remote": null,
+      "branch": "main",
+      "freeze_tag": "aletheia-research-foundation-v1.0.0",
+      "tag_object": "0f6cfb709a0bd2a657bee4ee8637dc2ff666f751",
+      "commit": "2da6a2b59cf08ef23b0fc68dce394b46626b5f12",
+      "tree": "0593295537c1409f1d8e7fdbb7596a81ffdaabb0",
+      "registered_in_repo": {
+        "commit": false,
+        "tree": false,
+        "note": "Por diseño, V1 no escribe el SHA del commit de congelamiento en archivos versionados (reports/closeout/O-final-freeze.md: «se recupera de Git como el objeto al que apunta el tag»). El commit y el tree salen del tag; N commit 7ce31bae… sí está registrado como base del freeze."
+      },
+      "freeze_basis": {
+        "n_commit": "7ce31bae3f487a51fc40949dd08a7bf7ab22ccee",
+        "freeze_date": "2026-09-11",
+        "record": "reports/closeout/O-final-freeze.md"
+      },
+      "expected_metrics": {
+        "source_manifest_records": 22,
+        "retrieved_sources": 10,
+        "sources_without_raw_retrieval": 12,
+        "raw_source_trees": 10,
+        "standardized_source_trees": 7,
+        "statistical_object_vocabulary": 16,
+        "statistical_break_registry": 8,
+        "compatibility_matrix": 8,
+        "residual_issues": 36,
+        "resolved": 2,
+        "accepted_limitation": 26,
+        "registered_in": "reports/closeout/O-final-freeze.md (tabla «Canonical final metrics»)"
+      },
+      "verified": {
+        "source_manifest_records_observed": 22,
+        "retrieved_sources_observed": 10,
+        "verified_on": "2026-09-19",
+        "method": "git show <tag>:metadata/source_manifest/source-manifest.json; conteo directo (los demás valores de la tabla se toman del registro O-final-freeze.md sin recomputar)"
+      },
+      "key_files": [
+        {
+          "path": "metadata/source_manifest/source-manifest.json",
+          "git_blob": "2eb2e00ecc8aaf48dcda0e10c2387b7e7ba9ba55",
+          "sha256": "9fbfeb94b06cca13d5a7802174388ca9ceb577d330aea8d5f3b50505d00256fc",
+          "bytes": 54513
+        },
+        {
+          "path": "reports/closeout/O-final-freeze.md",
+          "git_blob": "de4c0af97896d0e74f2bb10edda48880b6676c9c",
+          "sha256": "7221a35626b6ac5e111c90db4519ec6b92f598246e0b33c92b7cf7bd01abd4b1",
+          "bytes": 3972
+        }
+      ],
+      "untracked_outside_freeze": [
+        {
+          "path": "ALETHEIA_FORENSIC_AUDIT_2026-09-17.md",
+          "in_git_freeze": false,
+          "note": "Archivo untracked de V1, referenciado por 9 archivos del tag de LABOR; fuera del freeze de Git. Recuperación: copia en el backup Supplemental."
+        }
+      ]
+    },
+    "labor": {
+      "repo_id": "ALETHEIA-LABOR",
+      "source_path": "C:\\Proyectos\\ALETHEIA-LABOR",
+      "remote": null,
+      "branch": "main",
+      "freeze_tag": "aletheia-labor-v1.0.0",
+      "tag_object": "43279191455e5ed64b9d9a2fe492ae14a701e344",
+      "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+      "tree": "6150649a97e41a028a6966b114df36edbb937619",
+      "registered_in_repo": {
+        "commit": false,
+        "tree": false,
+        "note": "El commit es el destino del tag; se fija aquí por primera vez para ALETHEIA Web."
+      },
+      "expected_counts": {
+        "questions": 18,
+        "claims": 14,
+        "hypotheses": 9,
+        "claim_states": {
+          "OBSERVED_IN_SOURCE": 10,
+          "REFUTED_WITHIN_SCOPE": 1,
+          "INSUFFICIENT_EVIDENCE": 3,
+          "ESTABLISHED": 0,
+          "CONVERGENT": 0,
+          "DIVERGENT": 0
+        }
+      },
+      "counts_observed_from_git_objects": {
+        "questions": 18,
+        "claims": 14,
+        "hypotheses": 9,
+        "claim_states": {
+          "OBSERVED_IN_SOURCE": 10,
+          "REFUTED_WITHIN_SCOPE": 1,
+          "INSUFFICIENT_EVIDENCE": 3,
+          "ESTABLISHED": 0,
+          "CONVERGENT": 0,
+          "DIVERGENT": 0
+        }
+      },
+      "counts_verified_on": "2026-09-19",
+      "counts_verification_method": "git show <tag>:metadata/{questions/question-ledger,claims/claim-ledger,hypotheses/hypothesis-registry}.json; conteo directo (STATE de cada claim)",
+      "questions_with_claims": 13,
+      "key_files": [
+        {
+          "path": "metadata/questions/question-ledger.json",
+          "git_blob": "d8786caa3c210fa01c49c354b76cf4e085ac47d2",
+          "sha256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e",
+          "bytes": 19356
+        },
+        {
+          "path": "metadata/claims/claim-ledger.json",
+          "git_blob": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+          "bytes": 59034
+        },
+        {
+          "path": "metadata/hypotheses/hypothesis-registry.json",
+          "git_blob": "c0a6202d146706d8ba3ed124d6b0726ec3531bd2",
+          "sha256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d",
+          "bytes": 11826
+        }
+      ]
+    }
+  },
+  "recovery_copy": {
+    "note": "Copia de recuperación (NO fuente de verdad), creada y verificada antes de WEB-1.",
+    "backup_id": "ALETHEIA-BACKUP-2026-09-19",
+    "destination": "Google Drive (H:\\Mi unidad\\ALETHEIA-BACKUP\\2026-09-19\\)",
+    "redundancy": "SINGLE_OFF_MACHINE_DESTINATION",
+    "manifest_sha256": "3fa8725c6db1796acc9c171e30c2c91ebfec50374979e94ebe5dec65b1112e7c"
+  }
+}

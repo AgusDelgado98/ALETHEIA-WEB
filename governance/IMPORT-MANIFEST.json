@@ -1,0 +1,112 @@
+{
+  "schema": "aletheia-web/governance-import/1",
+  "imported_on": "2026-09-19",
+  "status": "FROZEN",
+  "freeze": "WEB-0 v1.0 FROZEN (2026-09-19); OD-06 (hero) remains open by design. Design Charter v1.2 FROZEN.",
+  "source_root": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code",
+  "layout": "Mirrors the source layout (Charter one level above web-0/) so that `sha256sum -c SHA256SUMS.txt` from governance/web-0 works unmodified.",
+  "derivations": [],
+  "edits_to_copies": "NONE. Every file is byte-identical to its source (verified by SHA-256). Files are stored with -text in .gitattributes so line endings (CRLF) are preserved.",
+  "internal_path_note": "Internal references inside these documents point to the prototype layout (e.g. reconciliation/, web-0/). They were NOT rewritten.",
+  "files": [
+    {
+      "path": "governance/ALETHEIA-WEB-DESIGN-CHARTER.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\ALETHEIA-WEB-DESIGN-CHARTER.md",
+      "role": "Design Charter v1.2 (FROZEN)",
+      "status": "FROZEN",
+      "bytes": 26979,
+      "sha256_source": "67de249a1c8db7152dfc762845d1fe5911104c7b690aeb65a2086a4200d89e2b",
+      "sha256_repo_copy": "67de249a1c8db7152dfc762845d1fe5911104c7b690aeb65a2086a4200d89e2b",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/WEB-0-CHARTER.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/WEB-0-CHARTER.md",
+      "role": "WEB-0 charter",
+      "status": "FROZEN",
+      "bytes": 16184,
+      "sha256_source": "d031175e98f68cc6e0d833d1e770c037a2fa9cf7f8b56580d548951b71589782",
+      "sha256_repo_copy": "d031175e98f68cc6e0d833d1e770c037a2fa9cf7f8b56580d548951b71589782",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/WEB-0-DATA-CONTRACT.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/WEB-0-DATA-CONTRACT.md",
+      "role": "WEB-0 data contract",
+      "status": "FROZEN",
+      "bytes": 38730,
+      "sha256_source": "b9e0883891f326aeb834501350a8b3c17bf017e482b5be8484ff02f5df37be70",
+      "sha256_repo_copy": "b9e0883891f326aeb834501350a8b3c17bf017e482b5be8484ff02f5df37be70",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/WEB-0-EDITORIAL-CONTRACT.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/WEB-0-EDITORIAL-CONTRACT.md",
+      "role": "WEB-0 editorial contract",
+      "status": "FROZEN",
+      "bytes": 18662,
+      "sha256_source": "8b0e9e61e7504b73cf55077679feb954d2a196bca24609d40c3fdaf371f9b933",
+      "sha256_repo_copy": "8b0e9e61e7504b73cf55077679feb954d2a196bca24609d40c3fdaf371f9b933",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/WEB-0-ARCHITECTURE.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/WEB-0-ARCHITECTURE.md",
+      "role": "WEB-0 architecture",
+      "status": "FROZEN",
+      "bytes": 26791,
+      "sha256_source": "64f0dd6f9cea1107cbe7582d7fc04b4557842f6c9479f676dd53621c8df2804c",
+      "sha256_repo_copy": "64f0dd6f9cea1107cbe7582d7fc04b4557842f6c9479f676dd53621c8df2804c",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/WEB-0-MVP.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/WEB-0-MVP.md",
+      "role": "WEB-0 MVP",
+      "status": "FROZEN",
+      "bytes": 19894,
+      "sha256_source": "532285aaffde4ce0cf0f36fe82e9db9d3772e39f7c21231be0dfaa1b970d6d1c",
+      "sha256_repo_copy": "532285aaffde4ce0cf0f36fe82e9db9d3772e39f7c21231be0dfaa1b970d6d1c",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/WEB-0-INTEGRITY-GATES.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/WEB-0-INTEGRITY-GATES.md",
+      "role": "WEB-0 integrity gates",
+      "status": "FROZEN",
+      "bytes": 30098,
+      "sha256_source": "1c7b546b2b8771005ac9f286e7a38bf967f58f49f2bc94e1984bb81fe68c8f14",
+      "sha256_repo_copy": "1c7b546b2b8771005ac9f286e7a38bf967f58f49f2bc94e1984bb81fe68c8f14",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/WEB-0-DECISION-LOG.md",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/WEB-0-DECISION-LOG.md",
+      "role": "WEB-0 decision log",
+      "status": "FROZEN",
+      "bytes": 30789,
+      "sha256_source": "0ace73743f27c7cd3fa077b1f15e0049d8468745f8a447a4a4f0bf442949800e",
+      "sha256_repo_copy": "0ace73743f27c7cd3fa077b1f15e0049d8468745f8a447a4a4f0bf442949800e",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    },
+    {
+      "path": "governance/web-0/SHA256SUMS.txt",
+      "source_path": "C:\\Proyectos\\ALETHEIA-WEB-PROTOTYPE\\ALETHEIA-WEB-V2.1-for-Claude-Code\\web-0/SHA256SUMS.txt",
+      "role": "WEB-0 checksums (as issued at freeze)",
+      "status": "FROZEN",
+      "bytes": 712,
+      "sha256_source": "025cf6b88a3424382d8951939deccab2093dad787c203b0139428d801a07e64f",
+      "sha256_repo_copy": "025cf6b88a3424382d8951939deccab2093dad787c203b0139428d801a07e64f",
+      "identical_to_source": true,
+      "crlf_lines": 0
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+---
+import c from "../content.json";
+import RastroLevels from "./RastroLevels";
+interface Props { mode?: "static" | "react" | "vanilla" }
+const { mode = "static" } = Astro.props;
+const xs = c.rastro.map((_, i) => 45 + i * 143);
+---
+<header class="site-header wrap">
+  <span class="wordmark">{c.site.name}</span>
+  <span class="descriptor">{c.site.descriptor}</span>
+</header>
+<main class="wrap">
+  <p class="notice">{c.fixtureNotice}</p>
+  <article>
+    <p class="kicker">Pregunta · {c.question.id}</p>
+    <h1>{c.question.text}</h1>
+    <figure class="figure">
+      <p class="figure-num">{c.figure.value}</p>
+      <p class="figure-unit">{c.figure.unit}</p>
+      <figcaption>{c.figure.caption}</figcaption>
+      <div class="encuadre">
+        <dl>
+          {c.figure.encuadre.map(([k, v]) => (<div style="display:contents"><dt>{k}</dt><dd>{v}</dd></div>))}
+        </dl>
+      </div>
+    </figure>
+    <section aria-labelledby="h-yn">
+      <h2 id="h-yn">Lo que sí / Lo que no</h2>
+      <div class="yesno">
+        <div><h3>Lo que sí</h3><ul>{c.yes.map((t) => <li>{t}</li>)}</ul></div>
+        <div><h3>Lo que no</h3><ul>{c.no.map((t) => <li>{t}</li>)}</ul></div>
+      </div>
+    </section>
+    <section class="rastro" aria-labelledby="h-rt">
+      <h2 id="h-rt">Rastro</h2>
+      <svg viewBox="0 0 520 70" role="img" aria-labelledby="rt rd">
+        <title id="rt">Rastro de la afirmación</title>
+        <desc id="rd">{c.rastro.map((r) => `${r[0]}: ${r[1]}`).join(" → ")}</desc>
+        <line x1="45" y1="24" x2="474" y2="24" stroke="currentColor" stroke-width="1" />
+        {xs.map((x, i) => (
+          <g>
+            <circle cx={x} cy="24" r="6" fill={i === xs.length - 1 ? "#1f6f63" : "#f6f3ec"} stroke="currentColor" />
+            <text x={x} y="56" text-anchor="middle" font-size="12" fill="currentColor">{c.rastro[i][0]}</text>
+          </g>
+        ))}
+      </svg>
+      <ol>{c.rastro.map((r) => <li>{r[0]}: {r[1]}</li>)}</ol>
+      {mode === "react" && <RastroLevels client:load detail={c.rastroDetail} audit={c.rastroAudit} />}
+      {mode === "vanilla" && (
+        <div class="levels" id="levels">
+          <div role="group" aria-label="Profundidad del Rastro" hidden>
+            <button type="button" aria-pressed="true" data-l="resumen">Resumen</button>
+            <button type="button" aria-pressed="false" data-l="detalle">Detalle</button>
+            <button type="button" aria-pressed="false" data-l="auditoria">Auditoría</button>
+          </div>
+          <div class="level-panel" data-p="detalle">{c.rastroDetail.map((t) => <p>{t}</p>)}</div>
+          <div class="level-panel" data-p="auditoria">{c.rastroAudit.map((t) => <p>{t}</p>)}</div>
+        </div>
+        <script>
+          const root = document.getElementById("levels")!;
+          const group = root.querySelector<HTMLElement>("[role=group]")!;
+          const set = (l: string) => {
+            root.querySelectorAll<HTMLElement>("[data-p]").forEach((p) => (p.hidden = p.dataset.p !== l));
+            root.querySelectorAll<HTMLElement>("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.l === l)));
+          };
+          group.hidden = false;
+          group.addEventListener("click", (e) => { const l = (e.target as HTMLElement).dataset.l; if (l) set(l); });
+          set("resumen");
+        </script>
+      )}
+    </section>
+  </article>
+</main>
+<footer class="wrap">{c.resultLabel} · {c.figure.encuadre[3][1]}</footer>

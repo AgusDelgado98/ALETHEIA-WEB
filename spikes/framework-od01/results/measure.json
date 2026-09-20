@@ -1,0 +1,1523 @@
+{
+ "measured_at": "2026-09-20T00:39:01.440Z",
+ "method": {
+  "sizes": "static analysis of production output; gzip level 9 and brotli quality 11 computed with node:zlib; initial JS = <script src> (excluding nomodule legacy) + modulepreload + astro-island component/renderer URLs, plus static-import closure; dynamic import() excluded",
+  "browser": "Microsoft Edge headless via puppeteer-core; viewport 375x812 mobile; local server serving brotli; cache disabled; throttled profile = 150 ms RTT, 1.6 Mbps down, 4x CPU (Lighthouse-like mobile profile, emulated by CDP, NOT a Lighthouse run); 5 runs, median",
+  "transfer": "CDP encodedDataLength (bytes on the wire incl. headers) with brotli"
+ },
+ "targets": {
+  "next-16.3.5": {
+   "routes": {
+    "static": {
+     "route": "/",
+     "static_analysis": {
+      "html": {
+       "raw": 13796,
+       "gzip": 3577,
+       "brotli": 3045
+      },
+      "external_js": {
+       "files": 6,
+       "raw": 453414,
+       "gzip": 133528,
+       "brotli": 114187,
+       "list": [
+        {
+         "url": "/_next/static/chunks/41qfcvra0dvw4.js",
+         "raw": 182520,
+         "gzip": 48235,
+         "brotli": 40721,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/27t_qfc-3_lzs.js",
+         "raw": 229156,
+         "gzip": 71470,
+         "brotli": 61216,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/turbopack-204cpt9buc445.js",
+         "raw": 9688,
+         "gzip": 3838,
+         "brotli": 3426,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/3fntmmi971322.js",
+         "raw": 14377,
+         "gzip": 3653,
+         "brotli": 3266,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/1jn0kn31qj6rr.js",
+         "raw": 876,
+         "gzip": 471,
+         "brotli": 407,
+         "ownMarker": true
+        },
+        {
+         "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+         "raw": 16797,
+         "gzip": 5861,
+         "brotli": 5151,
+         "ownMarker": false
+        }
+       ]
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [
+       {
+        "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+        "raw": 112594,
+        "gzip": 39520,
+        "brotli": 35158
+       }
+      ],
+      "inline_js_bytes": {
+       "raw": 9716,
+       "gzip": 2633,
+       "brotli": 2268
+      },
+      "css_external": {
+       "files": 1,
+       "raw": 2335,
+       "gzip": 940,
+       "brotli": 781,
+       "list": [
+        {
+         "url": "/_next/static/chunks/01r2p1rtpcq54.css",
+         "raw": 2335,
+         "gzip": 940,
+         "brotli": 781
+        }
+       ]
+      },
+      "css_inline_bytes": {
+       "raw": 0,
+       "gzip": 20,
+       "brotli": 1
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 9
+     },
+     "no_js": {
+      "text_sha": "0e110ee23e435b8b",
+      "js_requests": 1,
+      "requests": 4,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "buttons_visible_hint": 0
+     },
+     "js_on_unthrottled": {
+      "requests": 8,
+      "transfer_total": 119786,
+      "transfer_js": 115516,
+      "js_requests": 6,
+      "transfer_css": 995,
+      "transfer_html": 3275,
+      "fcp_ms": 168,
+      "lcp_ms": 168,
+      "cls": 0,
+      "tbt_ms": 51,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "textLen": 1120,
+      "text_sha": "0e110ee23e435b8b",
+      "axe_violations": [],
+      "dom_signature": 2843
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 580,
+      "lcp_ms": 580,
+      "cls": 0,
+      "tbt_ms": 175,
+      "requests": 8,
+      "transfer_total": 119786,
+      "transfer_js": 115516,
+      "raw_fcp": [
+       604,
+       560,
+       580,
+       556,
+       612
+      ],
+      "raw_lcp": [
+       604,
+       560,
+       580,
+       556,
+       612
+      ],
+      "raw_tbt": [
+       217,
+       123,
+       175,
+       151,
+       188
+      ]
+     }
+    },
+    "interactive": {
+     "route": "/rastro",
+     "static_analysis": {
+      "html": {
+       "raw": 15250,
+       "gzip": 3883,
+       "brotli": 3315
+      },
+      "external_js": {
+       "files": 6,
+       "raw": 453414,
+       "gzip": 133528,
+       "brotli": 114187,
+       "list": [
+        {
+         "url": "/_next/static/chunks/41qfcvra0dvw4.js",
+         "raw": 182520,
+         "gzip": 48235,
+         "brotli": 40721,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/27t_qfc-3_lzs.js",
+         "raw": 229156,
+         "gzip": 71470,
+         "brotli": 61216,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/turbopack-204cpt9buc445.js",
+         "raw": 9688,
+         "gzip": 3838,
+         "brotli": 3426,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/3fntmmi971322.js",
+         "raw": 14377,
+         "gzip": 3653,
+         "brotli": 3266,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/1jn0kn31qj6rr.js",
+         "raw": 876,
+         "gzip": 471,
+         "brotli": 407,
+         "ownMarker": true
+        },
+        {
+         "url": "/_next/static/chunks/3l04zcqx63h3y.js",
+         "raw": 16797,
+         "gzip": 5861,
+         "brotli": 5151,
+         "ownMarker": false
+        }
+       ]
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [
+       {
+        "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+        "raw": 112594,
+        "gzip": 39520,
+        "brotli": 35158
+       }
+      ],
+      "inline_js_bytes": {
+       "raw": 10598,
+       "gzip": 2820,
+       "brotli": 2438
+      },
+      "css_external": {
+       "files": 1,
+       "raw": 2335,
+       "gzip": 940,
+       "brotli": 781,
+       "list": [
+        {
+         "url": "/_next/static/chunks/01r2p1rtpcq54.css",
+         "raw": 2335,
+         "gzip": 940,
+         "brotli": 781
+        }
+       ]
+      },
+      "css_inline_bytes": {
+       "raw": 0,
+       "gzip": 20,
+       "brotli": 1
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 9
+     },
+     "no_js": {
+      "text_sha": "03b8bca7da7aeaa9",
+      "js_requests": 1,
+      "requests": 3,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "buttons_visible_hint": 3
+     },
+     "js_on_unthrottled": {
+      "requests": 8,
+      "transfer_total": 120056,
+      "transfer_js": 115516,
+      "js_requests": 6,
+      "transfer_css": 995,
+      "transfer_html": 3545,
+      "fcp_ms": 124,
+      "lcp_ms": 124,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "textLen": 1144,
+      "text_sha": "ec434b63ff12ce57",
+      "axe_violations": [],
+      "interaction": {
+       "panels_visible_before_after_hydration": [
+        false,
+        false
+       ],
+       "first_tab_focus": "Resumen",
+       "after_tab_tab_enter": {
+        "panels": [
+         true,
+         false
+        ],
+        "pressed": [
+         "false",
+         "true",
+         "false"
+        ]
+       }
+      },
+      "dom_signature": 3259
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 600,
+      "lcp_ms": 600,
+      "cls": 0,
+      "tbt_ms": 172,
+      "requests": 8,
+      "transfer_total": 120056,
+      "transfer_js": 115516,
+      "raw_fcp": [
+       508,
+       600,
+       596,
+       616,
+       620
+      ],
+      "raw_lcp": [
+       508,
+       600,
+       596,
+       616,
+       620
+      ],
+      "raw_tbt": [
+       153,
+       154,
+       172,
+       188,
+       173
+      ]
+     }
+    }
+   }
+  },
+  "next-16.3.5-pages-router-runtimeJS-false": {
+   "routes": {
+    "static": {
+     "route": "/",
+     "static_analysis": {
+      "html": {
+       "raw": 3544,
+       "gzip": 1449,
+       "brotli": 1200
+      },
+      "external_js": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 0,
+       "gzip": 20,
+       "brotli": 1
+      },
+      "css_external": {
+       "files": 1,
+       "raw": 2335,
+       "gzip": 940,
+       "brotli": 781,
+       "list": [
+        {
+         "url": "/_next/static/chunks/01r2p1rtpcq54.css",
+         "raw": 2335,
+         "gzip": 940,
+         "brotli": 781
+        }
+       ]
+      },
+      "css_inline_bytes": {
+       "raw": 0,
+       "gzip": 20,
+       "brotli": 1
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 0
+     },
+     "no_js": {
+      "text_sha": "0e110ee23e435b8b",
+      "js_requests": 0,
+      "requests": 3,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "buttons_visible_hint": 0
+     },
+     "js_on_unthrottled": {
+      "requests": 2,
+      "transfer_total": 2425,
+      "transfer_js": 0,
+      "js_requests": 0,
+      "transfer_css": 995,
+      "transfer_html": 1430,
+      "fcp_ms": 88,
+      "lcp_ms": 88,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "textLen": 1120,
+      "text_sha": "0e110ee23e435b8b",
+      "axe_violations": [],
+      "dom_signature": 2775
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 628,
+      "lcp_ms": 628,
+      "cls": 0,
+      "tbt_ms": 0,
+      "requests": 2,
+      "transfer_total": 2425,
+      "transfer_js": 0,
+      "raw_fcp": [
+       620,
+       612,
+       632,
+       628,
+       648
+      ],
+      "raw_lcp": [
+       620,
+       612,
+       632,
+       628,
+       648
+      ],
+      "raw_tbt": [
+       0,
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "interactive": {
+     "route": "/rastro",
+     "static_analysis": {
+      "html": {
+       "raw": 4974,
+       "gzip": 1925,
+       "brotli": 1640
+      },
+      "external_js": {
+       "files": 8,
+       "raw": 395362,
+       "gzip": 123412,
+       "brotli": 105927,
+       "list": [
+        {
+         "url": "/_next/static/chunks/2l4-ufrtw_isb.js",
+         "raw": 14186,
+         "gzip": 5348,
+         "brotli": 4780,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/38lzkm_gapzrf.js",
+         "raw": 339454,
+         "gzip": 102031,
+         "brotli": 86817,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/turbopack-41nqjs712osq1.js",
+         "raw": 9692,
+         "gzip": 3840,
+         "brotli": 3425,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/chunks/27gm6i03l1c4l.js",
+         "raw": 21792,
+         "gzip": 8002,
+         "brotli": 7153,
+         "ownMarker": true
+        },
+        {
+         "url": "/_next/static/chunks/turbopack-3z11-y8j_1nrv.js",
+         "raw": 9658,
+         "gzip": 3826,
+         "brotli": 3418,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/XXuXY3Eog3QooDuxbQxGf/_buildManifest.js",
+         "raw": 408,
+         "gzip": 239,
+         "brotli": 219,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/XXuXY3Eog3QooDuxbQxGf/_ssgManifest.js",
+         "raw": 76,
+         "gzip": 60,
+         "brotli": 51,
+         "ownMarker": false
+        },
+        {
+         "url": "/_next/static/XXuXY3Eog3QooDuxbQxGf/_clientMiddlewareManifest.js",
+         "raw": 96,
+         "gzip": 66,
+         "brotli": 64,
+         "ownMarker": false
+        }
+       ]
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 161,
+       "gzip": 145,
+       "brotli": 119
+      },
+      "css_external": {
+       "files": 1,
+       "raw": 2335,
+       "gzip": 940,
+       "brotli": 781,
+       "list": [
+        {
+         "url": "/_next/static/chunks/01r2p1rtpcq54.css",
+         "raw": 2335,
+         "gzip": 940,
+         "brotli": 781
+        }
+       ]
+      },
+      "css_inline_bytes": {
+       "raw": 0,
+       "gzip": 20,
+       "brotli": 1
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 9
+     },
+     "no_js": {
+      "text_sha": "03b8bca7da7aeaa9",
+      "js_requests": 0,
+      "requests": 2,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "buttons_visible_hint": 3
+     },
+     "js_on_unthrottled": {
+      "requests": 10,
+      "transfer_total": 110561,
+      "transfer_js": 107696,
+      "js_requests": 8,
+      "transfer_css": 995,
+      "transfer_html": 1870,
+      "fcp_ms": 116,
+      "lcp_ms": 116,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "textLen": 1144,
+      "text_sha": "ec434b63ff12ce57",
+      "axe_violations": [],
+      "interaction": {
+       "panels_visible_before_after_hydration": [
+        false,
+        false
+       ],
+       "first_tab_focus": "Resumen",
+       "after_tab_tab_enter": {
+        "panels": [
+         true,
+         false
+        ],
+        "pressed": [
+         "false",
+         "true",
+         "false"
+        ]
+       }
+      },
+      "dom_signature": 3256
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 636,
+      "lcp_ms": 636,
+      "cls": 0,
+      "tbt_ms": 128,
+      "requests": 10,
+      "transfer_total": 110561,
+      "transfer_js": 107696,
+      "raw_fcp": [
+       608,
+       636,
+       644,
+       584,
+       680
+      ],
+      "raw_lcp": [
+       608,
+       636,
+       644,
+       584,
+       680
+      ],
+      "raw_tbt": [
+       151,
+       153,
+       86,
+       128,
+       115
+      ]
+     }
+    }
+   }
+  },
+  "astro-5.18.2": {
+   "routes": {
+    "static": {
+     "route": "/",
+     "static_analysis": {
+      "html": {
+       "raw": 5602,
+       "gzip": 2238,
+       "brotli": 1829
+      },
+      "external_js": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 0,
+       "gzip": 20,
+       "brotli": 1
+      },
+      "css_external": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "css_inline_bytes": {
+       "raw": 2334,
+       "gzip": 949,
+       "brotli": 779
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 0
+     },
+     "no_js": {
+      "text_sha": "0e110ee23e435b8b",
+      "js_requests": 0,
+      "requests": 2,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "buttons_visible_hint": 0
+     },
+     "js_on_unthrottled": {
+      "requests": 1,
+      "transfer_total": 2059,
+      "transfer_js": 0,
+      "js_requests": 0,
+      "transfer_css": 0,
+      "transfer_html": 2059,
+      "fcp_ms": 64,
+      "lcp_ms": 64,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "textLen": 1120,
+      "text_sha": "0e110ee23e435b8b",
+      "axe_violations": [],
+      "dom_signature": 2708
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 488,
+      "lcp_ms": 488,
+      "cls": 0,
+      "tbt_ms": 0,
+      "requests": 1,
+      "transfer_total": 2059,
+      "transfer_js": 0,
+      "raw_fcp": [
+       436,
+       496,
+       504,
+       488,
+       444
+      ],
+      "raw_lcp": [
+       436,
+       496,
+       504,
+       488,
+       444
+      ],
+      "raw_tbt": [
+       0,
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "interactive": {
+     "route": "/rastro",
+     "static_analysis": {
+      "html": {
+       "raw": 10502,
+       "gzip": 4116,
+       "brotli": 3513
+      },
+      "external_js": {
+       "files": 3,
+       "raw": 225200,
+       "gzip": 70899,
+       "brotli": 61360,
+       "list": [
+        {
+         "url": "/_astro/RastroLevels.hs1uSEfB.js",
+         "raw": 1433,
+         "gzip": 782,
+         "brotli": 669,
+         "ownMarker": true
+        },
+        {
+         "url": "/_astro/client.LGetASx6.js",
+         "raw": 215568,
+         "gzip": 66946,
+         "brotli": 57897,
+         "ownMarker": false
+        },
+        {
+         "url": "/_astro/index.-iFofLld.js",
+         "raw": 8199,
+         "gzip": 3171,
+         "brotli": 2794,
+         "ownMarker": false
+        }
+       ]
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 3593,
+       "gzip": 1475,
+       "brotli": 1273
+      },
+      "css_external": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "css_inline_bytes": {
+       "raw": 2394,
+       "gzip": 975,
+       "brotli": 805
+      },
+      "islands": 1,
+      "hydration_scripts_in_html": 2
+     },
+     "no_js": {
+      "text_sha": "03b8bca7da7aeaa9",
+      "js_requests": 0,
+      "requests": 1,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "buttons_visible_hint": 3
+     },
+     "js_on_unthrottled": {
+      "requests": 4,
+      "transfer_total": 65767,
+      "transfer_js": 62024,
+      "js_requests": 3,
+      "transfer_css": 0,
+      "transfer_html": 3743,
+      "fcp_ms": 64,
+      "lcp_ms": 64,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "textLen": 1144,
+      "text_sha": "ec434b63ff12ce57",
+      "axe_violations": [],
+      "interaction": {
+       "panels_visible_before_after_hydration": [
+        false,
+        false
+       ],
+       "first_tab_focus": "Resumen",
+       "after_tab_tab_enter": {
+        "panels": [
+         true,
+         false
+        ],
+        "pressed": [
+         "false",
+         "true",
+         "false"
+        ]
+       }
+      },
+      "dom_signature": 3733
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 476,
+      "lcp_ms": 476,
+      "cls": 0,
+      "tbt_ms": 49,
+      "requests": 4,
+      "transfer_total": 65767,
+      "transfer_js": 62024,
+      "raw_fcp": [
+       476,
+       492,
+       476,
+       444,
+       424
+      ],
+      "raw_lcp": [
+       476,
+       492,
+       476,
+       444,
+       424
+      ],
+      "raw_tbt": [
+       34,
+       70,
+       49,
+       37,
+       58
+      ]
+     }
+    },
+    "vanilla": {
+     "route": "/rastro-vanilla",
+     "static_analysis": {
+      "html": {
+       "raw": 6660,
+       "gzip": 2674,
+       "brotli": 2197
+      },
+      "external_js": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 340,
+       "gzip": 236,
+       "brotli": 185
+      },
+      "css_external": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "css_inline_bytes": {
+       "raw": 2334,
+       "gzip": 949,
+       "brotli": 779
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 1
+     },
+     "no_js": {
+      "text_sha": "03b8bca7da7aeaa9",
+      "js_requests": 0,
+      "requests": 1,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "buttons_visible_hint": 3
+     },
+     "js_on_unthrottled": {
+      "requests": 1,
+      "transfer_total": 2427,
+      "transfer_js": 0,
+      "js_requests": 0,
+      "transfer_css": 0,
+      "transfer_html": 2427,
+      "fcp_ms": 72,
+      "lcp_ms": 72,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "textLen": 1146,
+      "text_sha": "df5d8711699652eb",
+      "axe_violations": [],
+      "interaction": {
+       "panels_visible_before_after_hydration": [
+        false,
+        false
+       ],
+       "first_tab_focus": "Resumen",
+       "after_tab_tab_enter": {
+        "panels": [
+         true,
+         false
+        ],
+        "pressed": [
+         "false",
+         "true",
+         "false"
+        ]
+       }
+      },
+      "dom_signature": 3141
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 496,
+      "lcp_ms": 496,
+      "cls": 0,
+      "tbt_ms": 0,
+      "requests": 1,
+      "transfer_total": 2427,
+      "transfer_js": 0,
+      "raw_fcp": [
+       472,
+       468,
+       504,
+       496,
+       500
+      ],
+      "raw_lcp": [
+       472,
+       468,
+       504,
+       496,
+       500
+      ],
+      "raw_tbt": [
+       0,
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    }
+   }
+  },
+  "astro-7.3.3": {
+   "routes": {
+    "static": {
+     "route": "/",
+     "static_analysis": {
+      "html": {
+       "raw": 5546,
+       "gzip": 2213,
+       "brotli": 1811
+      },
+      "external_js": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 0,
+       "gzip": 20,
+       "brotli": 1
+      },
+      "css_external": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "css_inline_bytes": {
+       "raw": 2332,
+       "gzip": 942,
+       "brotli": 778
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 0
+     },
+     "no_js": {
+      "text_sha": "0e110ee23e435b8b",
+      "js_requests": 0,
+      "requests": 2,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "buttons_visible_hint": 0
+     },
+     "js_on_unthrottled": {
+      "requests": 1,
+      "transfer_total": 2041,
+      "transfer_js": 0,
+      "js_requests": 0,
+      "transfer_css": 0,
+      "transfer_html": 2041,
+      "fcp_ms": 64,
+      "lcp_ms": 64,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 0
+      },
+      "textLen": 1120,
+      "text_sha": "0e110ee23e435b8b",
+      "axe_violations": [],
+      "dom_signature": 2655
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 484,
+      "lcp_ms": 484,
+      "cls": 0,
+      "tbt_ms": 0,
+      "requests": 1,
+      "transfer_total": 2041,
+      "transfer_js": 0,
+      "raw_fcp": [
+       480,
+       532,
+       420,
+       500,
+       484
+      ],
+      "raw_lcp": [
+       480,
+       532,
+       420,
+       500,
+       484
+      ],
+      "raw_tbt": [
+       0,
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "interactive": {
+     "route": "/rastro",
+     "static_analysis": {
+      "html": {
+       "raw": 11366,
+       "gzip": 4462,
+       "brotli": 3808
+      },
+      "external_js": {
+       "files": 3,
+       "raw": 221925,
+       "gzip": 69287,
+       "brotli": 60020,
+       "list": [
+        {
+         "url": "/_astro/RastroLevels.CN-zAwg8.js",
+         "raw": 1104,
+         "gzip": 602,
+         "brotli": 540,
+         "ownMarker": true
+        },
+        {
+         "url": "/_astro/client.CLhIxG29.js",
+         "raw": 212922,
+         "gzip": 65675,
+         "brotli": 56785,
+         "ownMarker": false
+        },
+        {
+         "url": "/_astro/react.DJY1zw8Z.js",
+         "raw": 7899,
+         "gzip": 3010,
+         "brotli": 2695,
+         "ownMarker": false
+        }
+       ]
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 4511,
+       "gzip": 1834,
+       "brotli": 1583
+      },
+      "css_external": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "css_inline_bytes": {
+       "raw": 2392,
+       "gzip": 969,
+       "brotli": 801
+      },
+      "islands": 1,
+      "hydration_scripts_in_html": 2
+     },
+     "no_js": {
+      "text_sha": "03b8bca7da7aeaa9",
+      "js_requests": 0,
+      "requests": 1,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "buttons_visible_hint": 3
+     },
+     "js_on_unthrottled": {
+      "requests": 4,
+      "transfer_total": 64722,
+      "transfer_js": 60684,
+      "js_requests": 3,
+      "transfer_css": 0,
+      "transfer_html": 4038,
+      "fcp_ms": 72,
+      "lcp_ms": 72,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "textLen": 1144,
+      "text_sha": "ec434b63ff12ce57",
+      "axe_violations": [],
+      "interaction": {
+       "panels_visible_before_after_hydration": [
+        false,
+        false
+       ],
+       "first_tab_focus": "Resumen",
+       "after_tab_tab_enter": {
+        "panels": [
+         true,
+         false
+        ],
+        "pressed": [
+         "false",
+         "true",
+         "false"
+        ]
+       }
+      },
+      "dom_signature": 3682
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 468,
+      "lcp_ms": 468,
+      "cls": 0,
+      "tbt_ms": 61,
+      "requests": 4,
+      "transfer_total": 64722,
+      "transfer_js": 60684,
+      "raw_fcp": [
+       444,
+       548,
+       352,
+       468,
+       472
+      ],
+      "raw_lcp": [
+       444,
+       548,
+       352,
+       468,
+       472
+      ],
+      "raw_tbt": [
+       70,
+       70,
+       60,
+       49,
+       61
+      ]
+     }
+    },
+    "vanilla": {
+     "route": "/rastro-vanilla",
+     "static_analysis": {
+      "html": {
+       "raw": 6583,
+       "gzip": 2649,
+       "brotli": 2193
+      },
+      "external_js": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "external_js_legacy_nomodule_not_loaded_by_modern_browsers": [],
+      "inline_js_bytes": {
+       "raw": 336,
+       "gzip": 234,
+       "brotli": 183
+      },
+      "css_external": {
+       "files": 0,
+       "raw": 0,
+       "gzip": 0,
+       "brotli": 0,
+       "list": []
+      },
+      "css_inline_bytes": {
+       "raw": 2332,
+       "gzip": 942,
+       "brotli": 778
+      },
+      "islands": 0,
+      "hydration_scripts_in_html": 1
+     },
+     "no_js": {
+      "text_sha": "03b8bca7da7aeaa9",
+      "js_requests": 0,
+      "requests": 1,
+      "missing_needles": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "buttons_visible_hint": 3
+     },
+     "js_on_unthrottled": {
+      "requests": 1,
+      "transfer_total": 2423,
+      "transfer_js": 0,
+      "js_requests": 0,
+      "transfer_css": 0,
+      "transfer_html": 2423,
+      "fcp_ms": 632,
+      "lcp_ms": 632,
+      "cls": 0,
+      "tbt_ms": 0,
+      "missing_needles": [],
+      "console_issues": [],
+      "structure": {
+       "landmarks": [
+        1,
+        1,
+        1
+       ],
+       "h1": 1,
+       "h2": 2,
+       "svgWithRole": 1,
+       "lang": "es-AR",
+       "buttons": 3
+      },
+      "textLen": 1144,
+      "text_sha": "ec434b63ff12ce57",
+      "axe_violations": [],
+      "interaction": {
+       "panels_visible_before_after_hydration": [
+        false,
+        false
+       ],
+       "first_tab_focus": "Resumen",
+       "after_tab_tab_enter": {
+        "panels": [
+         true,
+         false
+        ],
+        "pressed": [
+         "false",
+         "true",
+         "false"
+        ]
+       }
+      },
+      "dom_signature": 3071
+     },
+     "js_on_throttled_median": {
+      "fcp_ms": 516,
+      "lcp_ms": 516,
+      "cls": 0,
+      "tbt_ms": 0,
+      "requests": 1,
+      "transfer_total": 2423,
+      "transfer_js": 0,
+      "raw_fcp": [
+       480,
+       544,
+       540,
+       516,
+       484
+      ],
+      "raw_lcp": [
+       480,
+       544,
+       540,
+       516,
+       484
+      ],
+      "raw_tbt": [
+       0,
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    }
+   }
+  }
+ }
+}

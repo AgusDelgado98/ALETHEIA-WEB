@@ -1,0 +1,9 @@
+dist/
+.astro/
+node_modules/
+package-lock.json
+governance/
+spikes/
+docs/
+corpus-pins/
+*.md

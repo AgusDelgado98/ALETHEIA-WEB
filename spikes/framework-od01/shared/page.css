@@ -1,0 +1,31 @@
+:root{--ink:#1b1a17;--paper:#f6f3ec;--mute:#5b574d;--hair:#cfc9ba;--verd:#1f6f63}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Georgia,"Times New Roman",serif}
+a{color:inherit}
+.wrap{max-width:46rem;margin:0 auto;padding:0 16px}
+.site-header{border-bottom:1px solid var(--hair);padding:14px 0;display:flex;gap:12px;align-items:baseline;font-family:system-ui,sans-serif;font-size:14px}
+.wordmark{letter-spacing:.18em;font-weight:600}
+.descriptor{color:var(--mute)}
+.notice{font:13px system-ui,sans-serif;color:var(--mute);border:1px dashed var(--hair);padding:6px 10px;margin:16px 0}
+.kicker{font:13px system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:28px 0 4px}
+h1{font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.25;margin:0 0 24px;font-weight:500}
+.figure{margin:0 0 28px}
+.figure-num{font-size:4.5rem;line-height:1;margin:0;color:var(--verd)}
+.figure-unit{font:15px system-ui,sans-serif;margin:0 0 6px}
+.figure figcaption{color:var(--mute);font-size:15px}
+.encuadre{font:14px system-ui,sans-serif;border-left:2px solid var(--verd);padding:2px 0 2px 12px;margin:14px 0 0}
+.encuadre dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:2px 14px}
+.encuadre dt{color:var(--mute)}.encuadre dd{margin:0}
+h2{font:600 13px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:32px 0 10px}
+.yesno{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){.yesno{grid-template-columns:1fr 1fr}}
+.yesno h3{font:600 15px system-ui,sans-serif;margin:0 0 6px}
+.yesno ul{margin:0;padding-left:1.1em}
+.rastro svg{width:100%;height:auto;max-width:520px;display:block}
+.rastro ol{padding-left:1.2em;font:15px system-ui,sans-serif}
+.levels button{font:14px system-ui,sans-serif;background:none;border:1px solid var(--hair);padding:6px 12px;min-height:32px;cursor:pointer}
+.levels button[aria-pressed=true]{border-color:var(--verd);box-shadow:inset 0 -2px 0 var(--verd)}
+.levels button:focus-visible{outline:2px solid var(--verd);outline-offset:2px}
+.level-panel{font:15px system-ui,sans-serif;margin:10px 0}
+footer{border-top:1px solid var(--hair);margin-top:40px;padding:16px 0;font:13px system-ui,sans-serif;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

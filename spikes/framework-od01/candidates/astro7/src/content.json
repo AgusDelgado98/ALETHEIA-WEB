@@ -1,0 +1,69 @@
+{
+  "site": {
+    "name": "ALETHEIA",
+    "descriptor": "Trabajo observable en Argentina"
+  },
+  "fixtureNotice": "Contenido de prueba del spike de framework. No es una página publicable.",
+  "question": {
+    "id": "LAB-Q-0004",
+    "text": "¿Cómo cambia la composición del trabajo observable en conjunto cuando a las fuentes de registro se les suma la encuesta de hogares (EPH)?"
+  },
+  "figure": {
+    "value": "32",
+    "unit": "aglomerados urbanos",
+    "caption": "Dominio de la EPH: la encuesta de hogares cubre 32 aglomerados urbanos, no todo el país.",
+    "encuadre": [
+      [
+        "Fuente",
+        "EPH (INDEC), sumada a fuentes de registro"
+      ],
+      [
+        "Alcance",
+        "Asalariados; una variable indirecta (descuento jubilatorio)"
+      ],
+      [
+        "Período",
+        "2025-Q1 y 2026-Q1"
+      ],
+      [
+        "Versión",
+        "aletheia-labor-v1.0.0"
+      ]
+    ]
+  },
+  "resultLabel": "Refutada dentro de su alcance",
+  "yes": [
+    "Refuta la hipótesis LAB-HYP-0003 dentro de su alcance: una variable indirecta, asalariados, dos trimestres y una raíz.",
+    "Deja registrado qué fuentes y qué período se usaron."
+  ],
+  "no": [
+    "No es un hallazgo sobre informalidad total ni sobre tendencias de largo plazo.",
+    "No incluye el empalme de los quiebres GOV-008 de la EPH."
+  ],
+  "rastro": [
+    [
+      "Pregunta",
+      "LAB-Q-0004"
+    ],
+    [
+      "Hipótesis",
+      "LAB-HYP-0003"
+    ],
+    [
+      "Afirmación",
+      "LAB-CLM-0005"
+    ],
+    [
+      "Estado",
+      "Refutada dentro de su alcance"
+    ]
+  ],
+  "rastroDetail": [
+    "Cada paso enlaza con su registro en el corpus congelado.",
+    "La refutación es de la hipótesis, no de la pregunta."
+  ],
+  "rastroAudit": [
+    "Fuente de verdad: aletheia-labor-v1.0.0, commit ca6a85e.",
+    "Registros: question-ledger, claim-ledger."
+  ]
+}
