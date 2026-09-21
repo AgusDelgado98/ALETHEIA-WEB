@@ -3,7 +3,7 @@ schema: aletheia-web/web-2-human-review/1
 status: PENDING
 project: ALETHEIA-WEB
 release: WEB-2
-reviewed_commit: d0b09518d428ae623a794cca0c33652f4775007a
+reviewed_commit: f4db08b9cfcc4cfbb67f21c93f2c3d6954eb4142
 production_url: https://aletheia-web-seven.vercel.app
 package_generated_at: 2026-09-21
 reviewer: ""
@@ -74,7 +74,7 @@ Esta plantilla no firma textos, no aprueba el release y no cierra OD-14.
 |---|---|
 | Project | ALETHEIA-WEB |
 | Release | WEB-2 |
-| Commit reviewed | `d0b09518d428ae623a794cca0c33652f4775007a` |
+| Commit reviewed | `f4db08b9cfcc4cfbb67f21c93f2c3d6954eb4142` |
 | Production URL reviewed | https://aletheia-web-seven.vercel.app |
 | Package generated at | 2026-09-21 |
 | Reviewer | _vacío_ |
