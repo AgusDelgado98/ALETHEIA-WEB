@@ -24,6 +24,7 @@
     "editorial:seal": "node tools/editorial/cli.ts seal",
     "editorial:build": "node tools/editorial/cli.ts build",
     "editorial:check": "node tools/editorial/cli.ts check",
+    "figures:audit": "node tools/figures/audit.ts",
     "fonts:sync": "node scripts/sync-fonts.ts",
     "fonts:check": "node scripts/sync-fonts.ts",
     "gates": "node scripts/gates/run.ts --require-html",
