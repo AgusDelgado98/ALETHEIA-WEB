@@ -19,15 +19,15 @@ describe("reconciliación editorial WEB-2R", () => {
     expect(inv.verdicts.total_units).toBe(419);
     expect(sum).toBe(419);
   });
-  it("18 public_question APPROVED; 401 PENDING_AUTHOR_REVIEW (incluye los 18 títulos cortos); 0 REVISED/REJECTED", () => {
+  it("18 public_question APPROVED; 18 títulos cortos APPROVED; 383 PENDING_AUTHOR_REVIEW; 0 REVISED/REJECTED", () => {
     expect(inv.verdicts.public_question.research_questions).toBe(18);
     expect(inv.verdicts.public_question.records).toBe(18);
     expect(inv.verdicts.public_question.APPROVED).toBe(18);
     expect(inv.verdicts.public_question.REVISED_AND_APPROVED).toBe(0);
     expect(inv.verdicts.public_question.PENDING_AUTHOR_REVIEW).toBe(0);
     expect(inv.verdicts.public_question.REJECTED).toBe(0);
-    expect(inv.verdicts.by_verdict.APPROVED).toBe(18);
-    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(401);
+    expect(inv.verdicts.by_verdict.APPROVED).toBe(36);
+    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(383);
     expect(inv.verdicts.by_verdict.REVISED_AND_APPROVED ?? 0).toBe(0);
     expect(inv.verdicts.by_verdict.REJECTED ?? 0).toBe(0);
   });

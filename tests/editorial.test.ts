@@ -115,7 +115,11 @@ describe("capa editorial de Q-0013", () => {
     const pendingLatest = bundle.units.filter(
       (u) => latest(u.string_id)?.verdict === "PENDING_AUTHOR_REVIEW",
     );
-    expect(pendingLatest.length).toBe(bundle.units.length - 14);
+    // 14 public_question + 18 títulos cortos de navegación (aprobados expresamente por la autoría, revisión 3).
+    const navApproved = bundle.units.filter((u) => u.section === "nav_title");
+    expect(navApproved).toHaveLength(18);
+    for (const u of navApproved) expect(latest(u.string_id)?.verdict, u.string_id).toBe("APPROVED");
+    expect(pendingLatest.length).toBe(bundle.units.length - 14 - 18);
   });
   it("cada frase de «sí / no / haría falta» cita contenido canónico que resuelve", () => {
     for (const u of bundle.units.filter((x) =>
@@ -154,7 +158,7 @@ describe("capa editorial de Q-0013", () => {
     b.review.revision = b.review.revision + 1;
     const sealed = seal(b, corpus);
     const recs = sealed.records.filter((r) => r.string_id === unit.string_id);
-    expect(recs.map((r) => r.revision)).toEqual([1, 2, 3]);
+    expect(recs.map((r) => r.revision)).toEqual([1, 2, 3, 4]);
   });
   it("sellar dos veces no cambia nada (idempotente)", () => {
     const again = seal(loadEditorial(ROOT, QID), corpus);

@@ -2,9 +2,9 @@
 # los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
 schema: aletheia-web/editorial-review/1
 canonical_ref: labor/LAB-Q-0013
-revision: 2
+revision: 3
 reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
-date: "2026-09-19"
+date: "2026-09-21"
 independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
 adversarial_review:
   - "Lectura a favor del efecto nulo: ¿alguien puede entender «no se puede medir» como «no hay efecto»? Se mitiga con el aviso fijo «Ausencia, no resultado negativo.» junto a la respuesta y con dnm-1; el título dice «no se puede medir», no «no tiene efecto»."
@@ -16,6 +16,7 @@ adversarial_review:
   - "Población y período: ningún texto agrega población distinta de la del claim ni un período propio; las únicas fechas salen de dos anclas con doble testigo."
   - "Fuerza de la evidencia: ningún texto usa verbos protegidos ni conectores causales (lint G-EDI-03 y G-EDI-04 sin hallazgos); el estado se lee solo de generated/."
   - "Limitación de registro de la pregunta («no se eligió episodio»): se conserva en el nivel Auditoría con su razón; no se oculta ni se contradice con el episodio elegido."
+  - "Títulos cortos de navegación (nav_title, revisión 3): 18 textos derivados de la pregunta pública, sin cifras, sin verbos protegidos y sin estado; la autoría los aprobó expresamente uno por uno y sin cambios. El resto de los textos sigue PENDING_AUTHOR_REVIEW."
 defaults:
   verdict: PENDING_AUTHOR_REVIEW
 overrides:
@@ -118,6 +119,114 @@ overrides:
     reviewer: "author (Design Charter v1.2, Enmienda 1.2, §20.7)"
     notes:
       - "Texto idéntico al aprobado en la reconciliación del prototipo; no se modificó."
+  "labor/LAB-Q-0001#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0002#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0003#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0004#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0005#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0006#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0007#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0008#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0009#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0010#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0011#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0012#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0013#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0014#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0015#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0016#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0017#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
+  "labor/LAB-Q-0018#nav_title":
+    verdict: APPROVED
+    reviewer: "author (Agustín Delgado, aprobación expresa, sesión de rediseño registro-folio)"
+    date: "2026-09-21"
+    notes:
+      - "Título corto de navegación aprobado por la autoría sin cambios; aprobación individual, no en bloque."
   "site#fixed.absence_not_negative":
     notes:
       - "Texto fijo del Editorial Contract §7.3.4 y del MVP §2.4 (H-4)."
