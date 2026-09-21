@@ -30,7 +30,9 @@
     "e2e": "node scripts/e2e/run.ts",
     "shots": "node scripts/e2e/shots.ts",
     "audit": "npm audit --audit-level=moderate",
-    "ci": "npm run typecheck && npm run lint && npm run format:check && npm run corpus:check && npm run editorial:check && npm run fonts:check && npm run build && npm run test && npm run gates",
+    "reviews:build": "node tools/reviews/cli.ts build",
+    "reviews:check": "node tools/reviews/cli.ts check",
+    "ci": "npm run typecheck && npm run lint && npm run format:check && npm run corpus:check && npm run editorial:check && npm run reviews:check && npm run fonts:check && npm run build && npm run test && npm run gates",
     "verify": "npm run ci && npm run e2e"
   },
   "dependencies": {

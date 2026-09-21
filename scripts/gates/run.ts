@@ -6,8 +6,9 @@ import { ALL_GATES } from "./gates.ts";
 
 /**
  * Ejecutor de gates CORE_BUILD y RELEASE. Cada gate emite `reports/gates/<id>.json`.
- * Un FAIL de un gate que bloquea CI termina con código 1. G-LEG-03 se registra y no
- * fabrica revisión legal: falla de forma explícita sin abortar la integridad técnica.
+ * Un FAIL de un gate que bloquea CI termina con código 1. Los gates humanos
+ * (G-OD-14, G-LEG-02, G-LEG-03) se registran con blocksCi: false: un FAIL/OPEN
+ * no fabrica revisión ni cierra el release.
  * Uso: node scripts/gates/run.ts [--require-html]
  */
 const root = resolve(import.meta.dirname, "..", "..");
@@ -36,7 +37,7 @@ for (const g of ALL_GATES) {
     };
   }
   const classification = g.classification ?? "CORE_BUILD";
-  const blocksCi = g.blocksCi !== false && g.id !== "G-LEG-03";
+  const blocksCi = g.blocksCi !== false;
   writeFileSync(
     join(out, `${g.id}.json`),
     canonicalJson({ id: g.id, title: g.title, classification, blocks_ci: blocksCi, ...r }),

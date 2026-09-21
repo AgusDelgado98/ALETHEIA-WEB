@@ -21,6 +21,7 @@ jobs:
       - run: npm run format:check
       - run: npm run corpus:check
       - run: npm run editorial:check
+      - run: npm run reviews:check
       - run: npm run fonts:check
       - run: npm run build
       - run: npm test

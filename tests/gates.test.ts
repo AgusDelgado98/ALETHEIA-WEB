@@ -52,12 +52,13 @@ describe("gates CORE_BUILD sobre el estado real", () => {
 
 describe("gates RELEASE", () => {
   it.skipIf(!hasHtml)(
-    "los técnicos no fallan; G-LEG-03 permanece FAIL/OPEN; G-PERF-02 puede SKIP",
+    "los técnicos no fallan; G-OD-14, G-LEG-02 y G-LEG-03 permanecen FAIL/OPEN; G-PERF-02 puede SKIP",
     () => {
+      const human = new Set(["G-OD-14", "G-LEG-02", "G-LEG-03"]);
       for (const g of RELEASE_GATES) {
         const r = g.run(ctx);
-        if (g.id === "G-LEG-03") {
-          expect(r.status, r.detail).toBe("FAIL");
+        if (human.has(g.id)) {
+          expect(r.status, `${g.id}: ${r.detail}`).toBe("FAIL");
           continue;
         }
         if (g.id === "G-PERF-02") {

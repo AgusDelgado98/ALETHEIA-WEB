@@ -19,6 +19,8 @@ import type { GateContext } from "./context.ts";
 import { plainText } from "../../src/lib/render.ts";
 import { SITE_ORIGIN } from "../../src/lib/origin.ts";
 import { contentPaths } from "../../src/lib/site.ts";
+import { buildInventory } from "../../tools/reviews/inventory.ts";
+import { evaluateHumanGates, type HumanGateResult } from "../../tools/reviews/status.ts";
 import { loadQuestionView, questionSlug } from "../../src/lib/view.ts";
 import {
   humanAttributeValues,
@@ -1927,26 +1929,33 @@ const gPerf04 = rel("G-PERF-04", "Fuentes autoalojadas, 0 imágenes raster, sin 
   if (!tokens.includes("font-display: swap")) f.push("design/tokens.css: falta font-display: swap");
   return res(f, `${fonts.length} woff2 (${fontBytes} B); 0 raster; 0 terceros; ≤ 2 preload`);
 });
+const humanOut = (r: HumanGateResult): Outcome =>
+  r.status === "PASS" ? ok(r.detail) : { status: "FAIL", detail: r.detail, failures: r.failures };
+
+const gOd14 = rel(
+  "G-OD-14",
+  "Revisor editorial independiente del autor (OD-14)",
+  (ctx) => {
+    const inv = buildInventory(ctx.root);
+    return humanOut(evaluateHumanGates(ctx.root, ctx.html.get("/sobre"), inv).od14);
+  },
+  { blocksCi: false },
+);
+const gLeg02 = rel(
+  "G-LEG-02",
+  "Atribuciones y licencias de cada Source mostrada en /sobre y en la cota",
+  (ctx) => {
+    const inv = buildInventory(ctx.root);
+    return humanOut(evaluateHumanGates(ctx.root, ctx.html.get("/sobre"), inv).leg02);
+  },
+  { blocksCi: false },
+);
 const gLeg03 = rel(
   "G-LEG-03",
   "Registro fechado de revisión legal de cada Source mostrada (OD-03)",
   (ctx) => {
-    const candidates = [
-      "editorial/legal/review.yml",
-      "editorial/legal/G-LEG-03.yml",
-      "docs/legal-review.md",
-    ];
-    const found = candidates.filter((p) => existsSync(join(ctx.root, p)));
-    if (found.length === 0)
-      return {
-        status: "FAIL" as const,
-        detail:
-          "OPEN: no hay registro fechado de revisión legal que cubra las Source mostradas y los derivados (OD-03). No se fabrica el registro.",
-        failures: [
-          "sin registro de revisión legal: G-LEG-03 permanece abierto y bloquea el release público formal",
-        ],
-      };
-    return ok(`registro legal presente: ${found.join(", ")}`);
+    const inv = buildInventory(ctx.root);
+    return humanOut(evaluateHumanGates(ctx.root, ctx.html.get("/sobre"), inv).leg03);
   },
   { blocksCi: false },
 );
@@ -2023,6 +2032,8 @@ export const RELEASE_GATES: Gate[] = [
   gPerf01,
   gPerf02,
   gPerf04,
+  gOd14,
+  gLeg02,
   gLeg03,
 ];
 

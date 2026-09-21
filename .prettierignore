@@ -16,3 +16,4 @@ tests/fixtures/
 design/fonts.lock.json
 public/
 *.md
+reviews/

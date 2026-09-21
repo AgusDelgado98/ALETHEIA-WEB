@@ -1,0 +1,26 @@
+{
+  "editorial_manifest_sha256": "be4f7411a21f2c1e3ea45d7dfacc5141131c745735dca1ac22e0609edb5dc8bd",
+  "inventory_sha256": "91e7a75772b05a86fd0143048c39b205b70492375d6318d24d4ccf39a5011bdf",
+  "materialized_source_ids": [
+    "FONT:IBM-Plex-Mono",
+    "FONT:Instrument-Sans",
+    "FONT:Newsreader",
+    "LAB-ROOT-0001",
+    "LAB-ROOT-0002",
+    "LAB-ROOT-0003",
+    "LAB-ROOT-0005",
+    "LAB-ROOT-0006",
+    "LAB-ROOT-0007",
+    "LABEL:OBSERVATORY_DESIGN",
+    "LABEL:PLATFORM_EVALUATION",
+    "LABEL:REGULATORY",
+    "LABEL:SOURCE_AVAILABILITY_REVIEW"
+  ],
+  "package_date": "2026-09-20",
+  "pending_set_hash": "b872709962fe96b2d1532e350fb1749af7ae3b23dabf4476324960ec18217a73",
+  "production_url": "https://aletheia-web-seven.vercel.app",
+  "release": "WEB-2",
+  "reviewed_commit": "c599a8c0b85a38aed19f5782fdfc4b46cac11ef5",
+  "schema": "aletheia-web/web-2-review-pin/1",
+  "web2_status": "TECHNICALLY COMPLETE / RELEASE BLOCKED"
+}
