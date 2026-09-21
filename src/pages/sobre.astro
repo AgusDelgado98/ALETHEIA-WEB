@@ -4,6 +4,9 @@ import { loadSite } from "../lib/site.ts";
 
 const site = loadSite(process.cwd());
 const ui = site.ui;
+// Identificadores de la licencia (no son prosa editorial): versión y URL oficial de CC BY-SA.
+const CC_BY_SA_VERSION = "4.0";
+const CC_BY_SA_URL = "https://creativecommons.org/licenses/by-sa/4.0/";
 ---
 
 <Base title={`${ui("about_heading")} · ${ui("brand_wordmark")}`} description={ui("about_what")}>
@@ -24,6 +27,19 @@ const ui = site.ui;
       <p>{ui("legal_governance")}</p>
       <p>{ui("legal_frozen")}</p>
       <p>{ui("legal_not_advice")}</p>
+    </section>
+    <section id="atribuciones" aria-labelledby="attrib-h">
+      <h2 id="attrib-h">{ui("attrib_heading")}</h2>
+      <p>
+        {ui("attrib_cgi_a")} <span data-num="id">{CC_BY_SA_VERSION}</span>
+        {" ("}
+        <a href={CC_BY_SA_URL} rel="noopener noreferrer">
+          <span data-num="id">{CC_BY_SA_URL}</span>
+        </a>
+        {ui("attrib_cgi_c")} <span data-num="id">{CC_BY_SA_VERSION}</span>
+        {ui("attrib_cgi_d")}
+      </p>
+      <p>{ui("attrib_others")}</p>
     </section>
   </div>
 </Base>

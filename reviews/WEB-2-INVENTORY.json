@@ -81,7 +81,7 @@
       "transformation": "glosa pública en español + Relation title / prohibited_inference / reason canónicos"
     }
   ],
-  "editorial_manifest_sha256": "e2c97017a47a4eaf079f0210624bb69a1c5e01a59eb179c7dc7f2eeac0b85ce4",
+  "editorial_manifest_sha256": "cacac378befd545a5e52f4ad89a3052997498dca80a23e7bb21f2e9e07407a7d",
   "package_date": "2026-09-21",
   "pending": [
     {
@@ -2640,6 +2640,66 @@
     },
     {
       "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.attrib_cgi_a",
+      "text_hash": "b741fae040ae40b0d932d79a1dbbdc4eb5a88d6998dccbc8b98d9909618b3b0d",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.attrib_cgi_c",
+      "text_hash": "932bed0c1692171e941d6fbf7d3de51dc9589408a8ebe0cb58eb255b584f40b6",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.attrib_cgi_d",
+      "text_hash": "091c1ae30f5fcd64c622cf7049664f1241343befe0f4cba34f490698592469e6",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.attrib_heading",
+      "text_hash": "1c0631badd7fe33da58f7db3765a1842262ae0a82bac44db33add20a9204516b",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.attrib_others",
+      "text_hash": "aabd4064b93608bc89251e662985b83ffad5a3802ebc9fab60684f3e09c4b056",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
       "family": "navigation",
       "kind": "ui_label",
       "pages": [
@@ -4285,10 +4345,10 @@
     "not_found": 3,
     "states": 7,
     "trail_ui": 43,
-    "ui_other": 1,
+    "ui_other": 6,
     "versions": 6
   },
-  "pending_set_hash": "028180742f9799763dbd425f15937ccf7386373ff8a25356b95d29073f8c07d4",
+  "pending_set_hash": "d221aa918eab745d199e39226c470f441d61349c04c07be61d5c3089531b2da8",
   "production_url": "https://aletheia-web-seven.vercel.app",
   "release": "WEB-2",
   "reviewed_commit": "1dbfbe78f2f7fc62a9dba49e70348574a75f8167",
@@ -4404,6 +4464,7 @@
       ],
       "original_url": null,
       "pages": [
+        "*",
         "/labor/preguntas/q-0003",
         "/labor/preguntas/q-0005",
         "/limites"
@@ -4872,7 +4933,7 @@
   "verdicts": {
     "by_verdict": {
       "APPROVED": 18,
-      "PENDING_AUTHOR_REVIEW": 345
+      "PENDING_AUTHOR_REVIEW": 350
     },
     "public_question": {
       "APPROVED": 18,
@@ -4883,7 +4944,7 @@
       "records": 18,
       "research_questions": 18
     },
-    "total_units": 363,
+    "total_units": 368,
     "unexplained_non_pending_non_fourteen": [
       {
         "canonical_hash": "156022ebca338254f4cb0de9767d1b1987cc9e0951779f2e09b6d4d9020c1819",

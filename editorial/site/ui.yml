@@ -128,6 +128,11 @@ strings:
   legal_governance: { id: ui-legal-governance, text: "Hay relaciones que exigen gobernanza y siguen sin resolver. Esta capa web no las resuelve." }
   legal_frozen: { id: ui-legal-frozen, text: "La investigación está cerrada. Este sitio es una presentación posterior, no un resultado nuevo." }
   legal_not_advice: { id: ui-legal-not-advice, text: "No es asesoramiento legal, laboral ni estadístico." }
+  attrib_heading: { id: ui-attrib-heading, text: "Atribuciones y licencias" }
+  attrib_cgi_a: { id: ui-attrib-cgi-a, text: "La Cuenta de generación del ingreso e insumo de mano de obra (CGI-IMO) es una publicación del Instituto Nacional de Estadística y Censos (INDEC), registrada en el corpus de ALETHEIA con licencia CC BY-SA" }
+  attrib_cgi_c: { id: ui-attrib-cgi-c, text: "). ALETHEIA-WEB no redistribuye los datos crudos de CGI-IMO: muestra el nombre de la publicación, su procedencia y texto editorial propio sobre resultados de ALETHEIA-LABOR. Ese texto es una presentación propia y no implica aval ni participación del INDEC. En la medida en que ALETHEIA-WEB publique material adaptado de CGI-IMO, ese material adaptado queda sujeto a CC BY-SA" }
+  attrib_cgi_d: { id: ui-attrib-cgi-d, text: ", incluida la condición ShareAlike." }
+  attrib_others: { id: ui-attrib-others, text: "Las demás fuentes mencionadas en este sitio no tienen licencia de redistribución registrada en el corpus. ALETHEIA-WEB no redistribuye sus datos crudos, no declara ni infiere una licencia o un permiso, y no implica aval de sus productores. Los nombres de publicación y de productor se muestran solo para identificar la procedencia. Cuando el corpus no registra un enlace verificable al publicador, el sitio lo indica." }
   versions_heading: { id: ui-versions-heading, text: "Versiones" }
   versions_lede: { id: ui-versions-lede, text: "El sitio presenta un corpus congelado. El commit y el tag de investigación no se modifican aquí." }
   versions_labor: { id: ui-versions-labor, text: "Módulo labor" }

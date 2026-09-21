@@ -2,18 +2,18 @@
 
 Este inventario **no aprueba** ningún texto. Verdicts intactos.
 
-- Total unidades editoriales: 363
-- `PENDING_AUTHOR_REVIEW`: 345
-- Hash del conjunto pendiente: `028180742f9799763dbd425f15937ccf7386373ff8a25356b95d29073f8c07d4`
-- Manifest editorial: `e2c97017a47a4eaf079f0210624bb69a1c5e01a59eb179c7dc7f2eeac0b85ce4`
+- Total unidades editoriales: 368
+- `PENDING_AUTHOR_REVIEW`: 350
+- Hash del conjunto pendiente: `d221aa918eab745d199e39226c470f441d61349c04c07be61d5c3089531b2da8`
+- Manifest editorial: `cacac378befd545a5e52f4ad89a3052997498dca80a23e7bb21f2e9e07407a7d`
 - Commit atado: `1dbfbe78f2f7fc62a9dba49e70348574a75f8167`
 
 ## Reconciliación de veredictos
 
-- `PENDING_AUTHOR_REVIEW`: 345
+- `PENDING_AUTHOR_REVIEW`: 350
 - `APPROVED`: 18
 
-Suma: 363 (debe ser 363).
+Suma: 368 (debe ser 368).
 
 ## public_question
 
@@ -49,7 +49,7 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `not_found` | 3 |
 | `states` | 7 |
 | `trail_ui` | 43 |
-| `ui_other` | 1 |
+| `ui_other` | 6 |
 | `versions` | 6 |
 
 ## Unidades pendientes
@@ -267,6 +267,11 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.about_privacy` | `0c811fc01396` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | about | /sobre |
 | `site#ui.about_what` | `e8c1dbf39907` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | about | /sobre |
 | `site#ui.answer_heading` | `f87612b89188` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
+| `site#ui.attrib_cgi_a` | `b741fae040ae` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.attrib_cgi_c` | `932bed0c1692` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.attrib_cgi_d` | `091c1ae30f5f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.attrib_heading` | `1c0631badd7f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.attrib_others` | `aabd4064b936` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.brand_wordmark` | `4b477a5b96c3` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | navigation | * |
 | `site#ui.canonical_cite` | `3afdba9b69b5` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.cite_template` | `27cbc355e51a` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |

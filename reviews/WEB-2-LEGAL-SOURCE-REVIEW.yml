@@ -1,55 +1,136 @@
 schema: aletheia-web/web-2-legal-review/1
-status: PENDING
+status: COMPLETED
 reviewed_commit: 1dbfbe78f2f7fc62a9dba49e70348574a75f8167
 production_url: https://aletheia-web-seven.vercel.app
 package_generated_at: 2026-09-21
 warning: Este documento vacío no satisface G-LEG-03.
-reviewer: ""
-review_date: ""
-signature: ""
-required_public_attribution_changes: ""
+reviewer: Agustín Delgado
+review_date: 2026-09-21
+signature: Agustín Delgado
+required_public_attribution_changes: >-
+  Agregar a /sobre (src/pages/sobre.astro, textos en editorial/site/ui.yml) una sección corta
+  titulada «Atribuciones y licencias» con este texto exacto:
+
+
+  Atribuciones y licencias
+
+  La Cuenta de generación del ingreso e insumo de mano de obra (CGI-IMO) es una publicación del
+  Instituto Nacional de Estadística y Censos (INDEC), registrada en el corpus de ALETHEIA con
+  licencia CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). ALETHEIA-WEB no
+  redistribuye los datos crudos de CGI-IMO: muestra el nombre de la publicación, su procedencia y
+  texto editorial propio sobre resultados de ALETHEIA-LABOR. Ese texto es una presentación propia y
+  no implica aval ni participación del INDEC. En la medida en que ALETHEIA-WEB publique material
+  adaptado de CGI-IMO, ese material adaptado queda sujeto a CC BY-SA 4.0, incluida la condición
+  ShareAlike.
+
+  Las demás fuentes mencionadas en este sitio no tienen licencia de redistribución registrada en el
+  corpus. ALETHEIA-WEB no redistribuye sus datos crudos, no declara ni infiere una licencia o un
+  permiso, y no implica aval de sus productores. Los nombres de publicación y de productor se
+  muestran solo para identificar la procedencia. Cuando el corpus no registra un enlace verificable
+  al publicador, el sitio lo indica.
+
+
+  Requisitos mecánicos de G-LEG-02 que el texto debe cumplir: contiene «INDEC», «CGI-IMO», «CC BY-SA
+  4.0» y la palabra «licencia»/«atribuciones»; el enlace oficial es
+  https://creativecommons.org/licenses/by-sa/4.0/. La cota no cambia en esta fase.
 cgi_cc_by_sa:
   root_id: LAB-ROOT-0002
-  attribution_to_indec: ""
-  cgi_imo_denomination: ""
-  cc_by_sa_4_0_reference: ""
-  license_link: ""
-  sharealike: ""
-  published_derivatives_nature: ""
-  sobre_changes_required: ""
+  attribution_to_indec: "Requerida y visible en /sobre: «Instituto Nacional de Estadística y Censos
+    (INDEC)» como productor de CGI-IMO. El sitio hoy no la muestra."
+  cgi_imo_denomination: "Requerida y visible: «Cuenta de generación del ingreso e insumo de mano de
+    obra (CGI-IMO)», tal como figura en el corpus (LAB-ROOT-0002). La cota muestra solo «CGI»; la
+    denominación completa va en /sobre."
+  cc_by_sa_4_0_reference: "Requerida y visible: «CC BY-SA 4.0», licencia registrada en provenance V1
+    indec_cgi (Data Contract §13.2, reviews/WEB-2-INVENTORY.json LAB-ROOT-0002)."
+  license_link: https://creativecommons.org/licenses/by-sa/4.0/
+  sharealike: "Incertidumbre registrada como condición: la documentación del repo no permite concluir
+    que ShareAlike no aplique. Se exige una aclaración en /sobre de que el material adaptado de
+    CGI-IMO, en la medida en que se publique, queda sujeto a CC BY-SA 4.0 incluida ShareAlike. Esta
+    revisión no determina el alcance exacto de ShareAlike sobre la prosa editorial propia; queda
+    como punto abierto de la persona revisora."
+  published_derivatives_nature: Nombre de la publicación y del productor, ID de raíz de evidencia
+    (LAB-ROOT-0002), etiqueta de fuente en la cota («CGI», «CGI+IPC») y prosa editorial propia en
+    q-0003, q-0005 y /limites sobre resultados de ALETHEIA-LABOR. No se redistribuyen datos crudos
+    (reproduces_raw=false; G-LEG-01) y WEB-2 no publica Figures numéricas del corpus (0 Figures;
+    G-FIG-04 N/A). El sitio no muestra hoy licencia, atribución a INDEC ni enlace al publicador
+    (original_url no registrado).
+  sobre_changes_required: Sí. Agregar la sección «Atribuciones y licencias» con el texto de
+    required_public_attribution_changes, incluyendo INDEC, CGI-IMO, CC BY-SA 4.0 y el enlace oficial
+    a la licencia. No se modifica /sobre en esta fase.
 items:
   - id: LAB-ROOT-0001
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED_WITH_CONDITIONS
+    attribution_required: Identificación visible de productor y publicación como procedencia. El corpus
+      no registra una licencia que fije términos de atribución; no se declara ninguno.
+    sharealike_applicable: "No determinable: licencia NOT_RECORDED; no se infiere que aplique ni que no aplique."
+    publisher_link_required: "Condicional: enlazar al publicador si existe una URL verificable en el
+      corpus o puede incorporarse legítimamente. Hoy original_url=null (link_status=UNRESOLVED); no
+      se inventan URLs."
+    conditions: "1) ALETHEIA-WEB no redistribuye archivos RAW de SIPA Trabajo Registrado (STEySS/SSS).
+      2) No inferir ni declarar una licencia que el corpus no registra (recorded_license permanece
+      NOT_RECORDED). 3) Identificar claramente productor y publicación cuando se muestre. 4) No
+      afirmar autorización o permiso inexistente ni aval del productor. 5) Enlazar al publicador
+      cuando exista una URL verificable en el corpus o pueda incorporarse legítimamente. 6) La
+      ausencia actual de original_url (link_status=UNRESOLVED) queda documentada; el sitio declara
+      «Enlace a la fuente original: no registrado en el corpus.» y no se inventan URLs."
+    notes: "Postura conservadora basada solo en evidencia registrada: WEB-2 muestra nombre de
+      publicación/productor e ID, sin datos crudos. No es una opinión legal sobre la licencia real
+      de la fuente."
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LAB-ROOT-0001: recorded_license=NOT_RECORDED,
+      reproduces_raw=false, original_url=null, link_status=UNRESOLVED; páginas q-0001, 0002, 0004,
+      0005, 0008, /limites); Data Contract §13.2; WEB-0 INV-16, OD-03/D-029, G-PRV-05, G-LEG-01;
+      editorial/site/ui.yml source_link_unresolved."
     signature: ""
   - id: LAB-ROOT-0002
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED_WITH_CONDITIONS
+    attribution_required: "Sí: atribución visible a INDEC, denominación CGI-IMO, referencia a CC BY-SA
+      4.0 y enlace oficial a la licencia (ver cgi_cc_by_sa)."
+    sharealike_applicable: "No descartado: la documentación del repo no permite concluir que no aplique
+      a material adaptado. Se registra como condición y se exige aclaración en /sobre."
+    publisher_link_required: "Enlace oficial a la licencia: sí
+      (https://creativecommons.org/licenses/by-sa/4.0/). Enlace al publicador: condicional; hoy
+      original_url=null (link_status=UNRESOLVED) y no se inventan URLs."
+    conditions: 1) Atribución visible a INDEC. 2) Denominación «Cuenta de generación del ingreso e
+      insumo de mano de obra (CGI-IMO)». 3) Referencia visible a CC BY-SA 4.0. 4) Enlace oficial a
+      la licencia (https://creativecommons.org/licenses/by-sa/4.0/). 5) Aclaración sobre ShareAlike
+      aplicable a material adaptado de CGI-IMO. 6) Aclarar que ALETHEIA-WEB no redistribuye el
+      dataset RAW y publica principalmente denominación de la fuente, procedencia y prosa editorial
+      propia. 7) No sugerir aval del INDEC. 8) Documentar la ausencia de original_url; no inventar
+      URLs. Sin estas condiciones cumplidas en /sobre, G-LEG-02 sigue OPEN.
+    notes: Es la única fuente con licencia registrada (CC BY-SA 4.0). La incertidumbre sobre el alcance
+      de ShareAlike se conserva como condición y no se resuelve aquí.
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LAB-ROOT-0002: recorded_license=CC BY-SA 4.0,
+      reproduces_raw=false, original_url=null; páginas q-0003, q-0005, /limites); Data Contract
+      §13.2 (provenance V1 indec_cgi); tools/reviews/constants.ts CGI_LICENSE, CGI_LICENSE_URL."
     signature: ""
   - id: LAB-ROOT-0003
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED_WITH_CONDITIONS
+    attribution_required: Identificación visible de productor y publicación como procedencia. El corpus
+      no registra una licencia que fije términos de atribución; no se declara ninguno.
+    sharealike_applicable: "No determinable: licencia NOT_RECORDED; no se infiere que aplique ni que no aplique."
+    publisher_link_required: "Condicional: enlazar al publicador si existe una URL verificable en el
+      corpus o puede incorporarse legítimamente. Hoy original_url=null (link_status=UNRESOLVED); no
+      se inventan URLs."
+    conditions: "1) ALETHEIA-WEB no redistribuye archivos RAW de la MLER (OEDE/STEySS). 2) No inferir ni
+      declarar una licencia que el corpus no registra (recorded_license permanece NOT_RECORDED). 3)
+      Identificar claramente productor y publicación cuando se muestre. 4) No afirmar autorización o
+      permiso inexistente ni aval del productor. 5) Enlazar al publicador cuando exista una URL
+      verificable en el corpus o pueda incorporarse legítimamente. 6) La ausencia actual de
+      original_url (link_status=UNRESOLVED) queda documentada; el sitio declara «Enlace a la fuente
+      original: no registrado en el corpus.» y no se inventan URLs."
+    notes: "Postura conservadora basada solo en evidencia registrada: WEB-2 muestra nombre de
+      publicación/productor e ID, sin datos crudos. No es una opinión legal sobre la licencia real
+      de la fuente."
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LAB-ROOT-0003: recorded_license=NOT_RECORDED,
+      reproduces_raw=false, original_url=null, link_status=UNRESOLVED; páginas q-0002, 0004, 0013,
+      /limites); Data Contract §13.2; WEB-0 INV-16, OD-03/D-029, G-PRV-05, G-LEG-01;
+      editorial/site/ui.yml source_link_unresolved."
     signature: ""
   - id: LAB-ROOT-0004
     review_date: ""
@@ -65,35 +146,77 @@ items:
   - id: LAB-ROOT-0005
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED_WITH_CONDITIONS
+    attribution_required: Identificación visible de productor y publicación como procedencia. El corpus
+      no registra una licencia que fije términos de atribución; no se declara ninguno.
+    sharealike_applicable: "No determinable: licencia NOT_RECORDED; no se infiere que aplique ni que no aplique."
+    publisher_link_required: "Condicional: enlazar al publicador si existe una URL verificable en el
+      corpus o puede incorporarse legítimamente. Hoy original_url=null (link_status=UNRESOLVED); no
+      se inventan URLs."
+    conditions: "1) ALETHEIA-WEB no redistribuye archivos RAW de los microdatos EPH (INDEC). 2) No
+      inferir ni declarar una licencia que el corpus no registra (recorded_license permanece
+      NOT_RECORDED). 3) Identificar claramente productor y publicación cuando se muestre. 4) No
+      afirmar autorización o permiso inexistente ni aval del productor. 5) Enlazar al publicador
+      cuando exista una URL verificable en el corpus o pueda incorporarse legítimamente. 6) La
+      ausencia actual de original_url (link_status=UNRESOLVED) queda documentada; el sitio declara
+      «Enlace a la fuente original: no registrado en el corpus.» y no se inventan URLs."
+    notes: "Postura conservadora basada solo en evidencia registrada: WEB-2 muestra nombre de
+      publicación/productor e ID, sin datos crudos. No es una opinión legal sobre la licencia real
+      de la fuente."
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LAB-ROOT-0005: recorded_license=NOT_RECORDED,
+      reproduces_raw=false, original_url=null, link_status=UNRESOLVED; páginas Home, /explorar,
+      /hallazgos, q-0003, 0004, 0005, 0010, /limites); Data Contract §13.2; WEB-0 INV-16,
+      OD-03/D-029, G-PRV-05, G-LEG-01; editorial/site/ui.yml source_link_unresolved."
     signature: ""
   - id: LAB-ROOT-0006
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED_WITH_CONDITIONS
+    attribution_required: Identificación visible de productor y publicación como procedencia. El corpus
+      no registra una licencia que fije términos de atribución; no se declara ninguno.
+    sharealike_applicable: "No determinable: licencia NOT_RECORDED; no se infiere que aplique ni que no aplique."
+    publisher_link_required: "Condicional: enlazar al publicador si existe una URL verificable en el
+      corpus o puede incorporarse legítimamente. Hoy original_url=null (link_status=UNRESOLVED); no
+      se inventan URLs."
+    conditions: "1) ALETHEIA-WEB no redistribuye archivos RAW de la serie IPC (INDEC). 2) No inferir ni
+      declarar una licencia que el corpus no registra (recorded_license permanece NOT_RECORDED). 3)
+      Identificar claramente productor y publicación cuando se muestre. 4) No afirmar autorización o
+      permiso inexistente ni aval del productor. 5) Enlazar al publicador cuando exista una URL
+      verificable en el corpus o pueda incorporarse legítimamente. 6) La ausencia actual de
+      original_url (link_status=UNRESOLVED) queda documentada; el sitio declara «Enlace a la fuente
+      original: no registrado en el corpus.» y no se inventan URLs."
+    notes: "Postura conservadora basada solo en evidencia registrada: WEB-2 muestra nombre de
+      publicación/productor e ID, sin datos crudos. No es una opinión legal sobre la licencia real
+      de la fuente."
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LAB-ROOT-0006: recorded_license=NOT_RECORDED,
+      reproduces_raw=false, original_url=null, link_status=UNRESOLVED; páginas q-0003, q-0005); Data
+      Contract §13.2; WEB-0 INV-16, OD-03/D-029, G-PRV-05, G-LEG-01; editorial/site/ui.yml
+      source_link_unresolved."
     signature: ""
   - id: LAB-ROOT-0007
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED_WITH_CONDITIONS
+    attribution_required: Identificación visible de productor y publicación como procedencia. El corpus
+      no registra una licencia que fije términos de atribución; no se declara ninguno.
+    sharealike_applicable: "No determinable: licencia NOT_RECORDED; no se infiere que aplique ni que no aplique."
+    publisher_link_required: "Condicional: enlazar al publicador si existe una URL verificable en el
+      corpus o puede incorporarse legítimamente. Hoy original_url=null (link_status=UNRESOLVED); no
+      se inventan URLs."
+    conditions: "1) ALETHEIA-WEB no redistribuye archivos RAW de el Boletín Anual de Seguridad Social
+      (ARCA). 2) No inferir ni declarar una licencia que el corpus no registra (recorded_license
+      permanece NOT_RECORDED). 3) Identificar claramente productor y publicación cuando se muestre.
+      4) No afirmar autorización o permiso inexistente ni aval del productor. 5) Enlazar al
+      publicador cuando exista una URL verificable en el corpus o pueda incorporarse legítimamente.
+      6) La ausencia actual de original_url (link_status=UNRESOLVED) queda documentada; el sitio
+      declara «Enlace a la fuente original: no registrado en el corpus.» y no se inventan URLs."
+    notes: "Postura conservadora basada solo en evidencia registrada: WEB-2 muestra nombre de
+      publicación/productor e ID, sin datos crudos. No es una opinión legal sobre la licencia real
+      de la fuente."
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LAB-ROOT-0007: recorded_license=NOT_RECORDED,
+      reproduces_raw=false, original_url=null, link_status=UNRESOLVED; páginas /explorar, q-0004,
+      0005, 0008, 0009, 0011, 0013, /limites); Data Contract §13.2; WEB-0 INV-16, OD-03/D-029,
+      G-PRV-05, G-LEG-01; editorial/site/ui.yml source_link_unresolved."
     signature: ""
   - id: LAB-SRC-0001
     review_date: ""
@@ -230,75 +353,126 @@ items:
   - id: LABEL:OBSERVATORY_DESIGN
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED
+    attribution_required: "No aplica: etiqueta de claim creada por ALETHEIA, no material de terceros."
+    sharealike_applicable: "No aplica: no hay material de terceros."
+    publisher_link_required: "No aplica: no es una Source externa ni tiene publicador."
+    conditions: Ninguna. No es una Evidence Source externa. Si una etiqueta pasara a presentarse como
+      fuente de terceros, requiere nueva revisión.
+    notes: "Vocabulario/etiqueta de ALETHEIA-LABOR (claim.source_label de LAB-CLM-0012), no material de
+      terceros ni Evidence Source externa. En el ledger congelado ROOT_IDS=[] (sin raíz de
+      evidencia). Se muestra en el Encuadre de q-0016. Basis del corpus: pre-mortem de un diseño no
+      construido, sin corpus."
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LABEL:OBSERVATORY_DESIGN: type=source_label,
+      «etiqueta de claim, no entidad Source», sin EvidenceRoot);
+      corpus-src/labor@ca6a85e/metadata/claims/claim-ledger.json (LAB-CLM-0012: ROOT_IDS=[]);
+      editorial/site/glosses.yml (glosa pública)."
     signature: ""
   - id: LABEL:PLATFORM_EVALUATION
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED
+    attribution_required: "No aplica: etiqueta de claim creada por ALETHEIA, no material de terceros."
+    sharealike_applicable: "No aplica: no hay material de terceros."
+    publisher_link_required: "No aplica: no es una Source externa ni tiene publicador."
+    conditions: Ninguna. No es una Evidence Source externa. Si una etiqueta pasara a presentarse como
+      fuente de terceros, requiere nueva revisión.
+    notes: Vocabulario/etiqueta de ALETHEIA-LABOR (claim.source_label de LAB-CLM-0013), no material de
+      terceros ni Evidence Source externa. En el ledger congelado ROOT_IDS=[] (sin raíz de
+      evidencia). Se muestra en el Encuadre de q-0014. La glosa pública aclara que no es una fuente
+      estadística.
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LABEL:PLATFORM_EVALUATION: type=source_label,
+      «etiqueta de claim, no entidad Source», sin EvidenceRoot);
+      corpus-src/labor@ca6a85e/metadata/claims/claim-ledger.json (LAB-CLM-0013: ROOT_IDS=[]);
+      editorial/site/glosses.yml (glosa pública)."
     signature: ""
   - id: LABEL:REGULATORY
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED
+    attribution_required: "No aplica: etiqueta de claim creada por ALETHEIA, no material de terceros."
+    sharealike_applicable: "No aplica: no hay material de terceros."
+    publisher_link_required: "No aplica: no es una Source externa ni tiene publicador."
+    conditions: Ninguna. No es una Evidence Source externa. Si una etiqueta pasara a presentarse como
+      fuente de terceros, requiere nueva revisión.
+    notes: Vocabulario/etiqueta de ALETHEIA-LABOR (claim.source_label de LAB-CLM-0009), no material de
+      terceros ni Evidence Source externa. En el ledger congelado ROOT_IDS=[] (sin raíz de
+      evidencia). Se muestra en el Encuadre de q-0012. La glosa pública aclara que no identifica una
+      fuente estadística y no enumera normas; las fuentes regulatorias LAB-SRC-0004–0011 no se
+      materializan públicamente.
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LABEL:REGULATORY: type=source_label, «etiqueta de
+      claim, no entidad Source», sin EvidenceRoot);
+      corpus-src/labor@ca6a85e/metadata/claims/claim-ledger.json (LAB-CLM-0009: ROOT_IDS=[]);
+      editorial/site/glosses.yml (glosa pública)."
     signature: ""
   - id: LABEL:SOURCE_AVAILABILITY_REVIEW
     review_date: ""
     reviewer: ""
-    decision: ""
-    attribution_required: ""
-    sharealike_applicable: ""
-    publisher_link_required: ""
-    conditions: ""
-    notes: ""
-    evidence_reference: ""
+    decision: CLEARED
+    attribution_required: "No aplica: etiqueta de claim creada por ALETHEIA, no material de terceros."
+    sharealike_applicable: "No aplica: no hay material de terceros."
+    publisher_link_required: "No aplica: no es una Source externa ni tiene publicador."
+    conditions: Ninguna. No es una Evidence Source externa. Si una etiqueta pasara a presentarse como
+      fuente de terceros, requiere nueva revisión.
+    notes: Vocabulario/etiqueta de ALETHEIA-LABOR (claim.source_label de LAB-CLM-0014), no material de
+      terceros ni Evidence Source externa. En el ledger congelado ROOT_IDS=[] (sin raíz de
+      evidencia). Se muestra en el Encuadre de q-0018. Revisión de disponibilidad de fuentes hecha
+      por el proyecto.
+    evidence_reference: "reviews/WEB-2-INVENTORY.json (LABEL:SOURCE_AVAILABILITY_REVIEW:
+      type=source_label, «etiqueta de claim, no entidad Source», sin EvidenceRoot);
+      corpus-src/labor@ca6a85e/metadata/claims/claim-ledger.json (LAB-CLM-0014: ROOT_IDS=[]);
+      editorial/site/glosses.yml (glosa pública)."
     signature: ""
 derived_types:
   - id: editorial_prose
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED_WITH_CONDITIONS
+    notes: Solo prosa propia y auditada de ALETHEIA (editorial/); no reproducir texto de las
+      publicaciones de terceros; conservar el scope y el estado epistémico de cada texto; el
+      material adaptado de CGI-IMO queda cubierto por la atribución y la aclaración de ShareAlike de
+      /sobre; un cambio de significado exige reauditoría (Editorial Contract §4.3). Esta revisión no
+      aprueba los textos PENDING_AUTHOR_REVIEW.
   - id: publication_names
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED_WITH_CONDITIONS
+    notes: Mostrar nombre de publicación y productor tal como los registra el corpus, o glosa atada por
+      maps_to, solo para identificar procedencia; no sugerir aval, afiliación ni permiso; CGI-IMO va
+      acompañado de atribución a INDEC y referencia a CC BY-SA 4.0 en /sobre; no inventar URLs
+      (original_url=null).
   - id: epistemic_status_labels
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED
+    notes: Vocabulario propio del proyecto (traducción de estados del ledger en
+      editorial/site/states.yml); no incorpora material de terceros.
   - id: structural_ui
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED
+    notes: Copy y estructura propios del sitio (editorial/site/ui.yml); no incorpora material de terceros.
   - id: disclaimers
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED
+    notes: Avisos propios del sitio (ui.yml legal_* y about_*), incluido «No es asesoramiento legal,
+      laboral ni estadístico.». La sección de atribuciones y licencias se cubre por G-LEG-02, no por
+      este tipo.
   - id: provenance_representations
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED_WITH_CONDITIONS
+    notes: IDs, tag, commit, hashes y pregunta canónica en inglés del corpus congelado ALETHEIA-LABOR
+      (material propio del proyecto); sin datos crudos de terceros; los nombres de publicaciones de
+      terceros que aparezcan se tratan como publication_names (mismas condiciones); no sugerir
+      licencias ni permisos que el corpus no registra.
   - id: numerical_figures
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED
+    notes: "WEB-2 no publica cifras numéricas del corpus: 0 Figures (G-FIG-04 N/A en la corrida de gates
+      sobre main). Si un release futuro publicara Figures, requiere nueva revisión."
   - id: typography_ofl
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED
+    notes: "Tipografías autoalojadas bajo OFL-1.1: IBM Plex Mono, Instrument Sans y Newsreader;
+      licencias versionadas en public/fonts/licenses/*-OFL.txt (website assets, no Source del
+      corpus)."
   - id: preserved_keep_text
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED_WITH_CONDITIONS
+    notes: "/limites: glosa en español y PreservedResult.must_not canónico del corpus congelado
+      (material propio del proyecto); no reproducir datos crudos ni texto extenso de terceros;
+      conservar el alcance de cada límite sin ampliarlo; los nombres de fuentes se tratan como
+      publication_names."
   - id: governance_required_text
-    clearance: PENDING
-    notes: ""
+    clearance: CLEARED_WITH_CONDITIONS
+    notes: "/limites: glosa en español y título/prohibited_inference/reason canónicos de las relaciones
+      GOVERNANCE_REQUIRED (material propio del proyecto); no presentar como resuelta ninguna
+      relación pendiente; los nombres de fuentes (p. ej. SRT, no materializada como raíz pública)
+      aparecen solo como denominación, sin implicar datos, licencia ni permiso."

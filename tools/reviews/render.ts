@@ -81,6 +81,8 @@ export function renderLegalMarkdown(review: LegalReviewT, inv: ReviewInventory):
     .map((d) => `| \`${d.id}\` | ${d.clearance} | ${d.notes === "" ? "_vacío_" : d.notes} |`)
     .join("\n");
   const cgi = inv.sources.find((s) => s.id === "LAB-ROOT-0002");
+  const done = review.status === "COMPLETED";
+  const cgiDecision = review.items.find((i) => i.id === "LAB-ROOT-0002")?.decision ?? "";
   return `# WEB-2 · revisión legal de Source (G-LEG-03)
 
 **Estado: \`${review.status}\`**
@@ -107,7 +109,7 @@ Decisiones admitidas por Source (nada preseleccionado):
 
 Contrato: atribuciones y licencias exigidas por cada Source mostrada, presentes en \`/sobre\` y en la cota.
 
-Estado actual: **OPEN**. \`/sobre\` no lista fuentes, no atribuye INDEC/CGI ni cita ${CGI_LICENSE}. La cota muestra \`source_label\`, no la licencia. **No se modifica \`/sobre\` en esta fase.**
+${done ? "El estado de G-LEG-02 lo determina el gate sobre el HTML de `/sobre` (`npm run gates`); el texto exigido por esta revisión figura abajo." : `Estado actual: **OPEN**. \`/sobre\` no lista fuentes, no atribuye INDEC/CGI ni cita ${CGI_LICENSE}. La cota muestra \`source_label\`, no la licencia. **No se modifica \`/sobre\` en esta fase.**`}
 
 ### Required public attribution changes
 
@@ -121,7 +123,7 @@ Publicación: ${cgi?.publication ?? "CGI-IMO"}
 Productor: ${cgi?.producer ?? "INDEC"}
 Licencia registrada: ${CGI_LICENSE} (${CGI_LICENSE_URL})
 
-Forzar decisión humana (YAML \`cgi_cc_by_sa\`, todo vacío):
+${done ? "Decisión humana registrada en el YAML `cgi_cc_by_sa`:" : "Forzar decisión humana (YAML `cgi_cc_by_sa`, todo vacío):"}
 
 * atribución a INDEC
 * denominación CGI-IMO
@@ -131,11 +133,11 @@ Forzar decisión humana (YAML \`cgi_cc_by_sa\`, todo vacío):
 * naturaleza de los derivados realmente publicados
 * cambios necesarios en \`/sobre\`
 
-No está CLEARED.
+${done ? `Decisión sobre LAB-ROOT-0002: ${cgiDecision === "" ? "_vacío_" : cgiDecision}.` : "No está CLEARED."}
 
 ## NOT_RECORDED
 
-Toda Source/Root materializada con \`recorded_license = NOT_RECORDED\` conserva exactamente ese estado. No se convierte en permitido, prohibido, dominio público, fair use ni redistribuible. La plantilla pide decisión humana por ítem.
+Toda Source/Root materializada con \`recorded_license = NOT_RECORDED\` conserva exactamente ese estado. No se convierte en permitido, prohibido, dominio público, fair use ni redistribuible. ${done ? "La decisión humana por ítem consta en el YAML." : "La plantilla pide decisión humana por ítem."}
 
 ## Inventario (decisión por ítem)
 
@@ -145,7 +147,7 @@ ${itemRows}
 
 ## Tipos de derivado
 
-G-LEG-03 exige decisión por tipo de derivado. Clearance actual: PENDING.
+G-LEG-03 exige decisión por tipo de derivado.${done ? " El clearance registrado consta en la tabla." : " Clearance actual: PENDING."}
 
 | Tipo | Clearance | Notas |
 |---|---|---|

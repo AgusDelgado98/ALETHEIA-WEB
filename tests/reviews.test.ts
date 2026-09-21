@@ -14,12 +14,12 @@ import { realContext, ROOT } from "./helpers.ts";
 const inv = buildInventory(ROOT);
 
 describe("reconciliación editorial WEB-2R", () => {
-  it("363 textos: la suma de veredictos es exacta", () => {
+  it("368 textos: la suma de veredictos es exacta", () => {
     const sum = Object.values(inv.verdicts.by_verdict).reduce((a, b) => a + b, 0);
-    expect(inv.verdicts.total_units).toBe(363);
-    expect(sum).toBe(363);
+    expect(inv.verdicts.total_units).toBe(368);
+    expect(sum).toBe(368);
   });
-  it("18 public_question APPROVED; 345 PENDING_AUTHOR_REVIEW; 0 REVISED/REJECTED", () => {
+  it("18 public_question APPROVED; 350 PENDING_AUTHOR_REVIEW; 0 REVISED/REJECTED", () => {
     expect(inv.verdicts.public_question.research_questions).toBe(18);
     expect(inv.verdicts.public_question.records).toBe(18);
     expect(inv.verdicts.public_question.APPROVED).toBe(18);
@@ -27,7 +27,7 @@ describe("reconciliación editorial WEB-2R", () => {
     expect(inv.verdicts.public_question.PENDING_AUTHOR_REVIEW).toBe(0);
     expect(inv.verdicts.public_question.REJECTED).toBe(0);
     expect(inv.verdicts.by_verdict.APPROVED).toBe(18);
-    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(345);
+    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(350);
     expect(inv.verdicts.by_verdict.REVISED_AND_APPROVED ?? 0).toBe(0);
     expect(inv.verdicts.by_verdict.REJECTED ?? 0).toBe(0);
   });
@@ -108,12 +108,19 @@ describe("G-LEG-03 plantilla PENDING", () => {
 });
 
 describe("G-LEG-02", () => {
-  it("/sobre actual no cumple atribuciones", () => {
-    const html = realContext().html.get("/sobre");
-    const r = evaluateLeg02(html ?? "<html><body>Sobre ALETHEIA aviso</body></html>", inv);
+  it("un /sobre sin atribuciones sigue OPEN", () => {
+    const r = evaluateLeg02("<html><body>Sobre ALETHEIA aviso</body></html>", inv);
     expect(r.status).toBe("OPEN");
     expect(r.failures.length).toBeGreaterThan(0);
   });
+  it.skipIf(realContext().html.get("/sobre") === undefined)(
+    "el /sobre actual presenta INDEC, CGI-IMO y CC BY-SA 4.0",
+    () => {
+      const r = evaluateLeg02(realContext().html.get("/sobre"), inv);
+      expect(r.failures).toEqual([]);
+      expect(r.status).toBe("PASS");
+    },
+  );
 });
 
 describe("drift y gates humanos", () => {
@@ -126,11 +133,12 @@ describe("drift y gates humanos", () => {
     expect(drift.editorial_manifest_changed).toBe(false);
     expect(drift.inventory_changed).toBe(false);
   });
-  it("ningún gate humano PENDING pasa", () => {
+  it("G-OD-14 PENDING no pasa; G-LEG-02 y G-LEG-03 cerrados sí", () => {
     const ctx = realContext();
-    for (const id of ["G-OD-14", "G-LEG-02", "G-LEG-03"]) {
+    expect(runGate("G-OD-14", ctx).status).toBe("FAIL");
+    for (const id of ["G-LEG-02", "G-LEG-03"]) {
       const r = runGate(id, ctx);
-      expect(r.status, `${id}: ${r.detail}`).toBe("FAIL");
+      expect(r.status, `${id}: ${r.detail} ${r.failures.join(" | ")}`).toBe("PASS");
     }
     expect(RELEASE_GATES.map((g) => g.id)).toEqual(
       expect.arrayContaining(["G-OD-14", "G-LEG-02", "G-LEG-03"]),

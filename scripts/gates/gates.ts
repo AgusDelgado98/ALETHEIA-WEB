@@ -19,6 +19,7 @@ import type { GateContext } from "./context.ts";
 import { plainText } from "../../src/lib/render.ts";
 import { SITE_ORIGIN } from "../../src/lib/origin.ts";
 import { contentPaths } from "../../src/lib/site.ts";
+import { CGI_LICENSE_URL } from "../../tools/reviews/constants.ts";
 import { buildInventory } from "../../tools/reviews/inventory.ts";
 import { evaluateHumanGates, type HumanGateResult } from "../../tools/reviews/status.ts";
 import { loadQuestionView, questionSlug } from "../../src/lib/view.ts";
@@ -913,6 +914,17 @@ const gPrv02: Gate = {
     );
   },
 };
+/**
+ * Excepción legal WEB-2 (G-LEG-02/G-LEG-03, revisión legal aprobada): la referencia obligatoria a la
+ * licencia CC BY-SA 4.0 en /sobre. Admite ÚNICAMENTE un <a href> en /sobre cuyo href sea EXACTAMENTE
+ * esta URL. Es una navegación iniciada por la persona lectora hacia la licencia; no autoriza scripts,
+ * imágenes, fuentes, fetches, analítica ni ningún otro recurso remoto, ni ninguna otra URL externa.
+ */
+export const LEGAL_LICENSE_URL = CGI_LICENSE_URL;
+export const LEGAL_LICENSE_ROUTE = "/sobre";
+export const isLegalLicenseLink = (route: string, tag: string, url: string): boolean =>
+  route === LEGAL_LICENSE_ROUTE && tag === "a" && url === LEGAL_LICENSE_URL;
+
 const gPrv03: Gate = {
   id: "G-PRV-03",
   title: "Sin URL ni vínculo raíz→fuente sin base en el corpus",
@@ -927,7 +939,11 @@ const gPrv03: Gate = {
     }
     for (const [route, html] of ctx.html)
       for (const t of tags(html))
-        if (t.name === "a" && /^https?:/i.test(t.attrs["href"] ?? ""))
+        if (
+          t.name === "a" &&
+          /^https?:/i.test(t.attrs["href"] ?? "") &&
+          !isLegalLicenseLink(route, t.name, t.attrs["href"] ?? "")
+        )
           f.push(
             `${route}: enlace externo ${t.attrs["href"] ?? ""} sin origen en un registro del corpus`,
           );
@@ -1370,6 +1386,7 @@ const gEdi08: Gate = {
     for (const [route, html] of ctx.html) {
       for (const node of textNodes(html)) {
         if (!/[\p{L}]{2,}/u.test(node)) continue;
+        if (route === LEGAL_LICENSE_ROUTE && node === LEGAL_LICENSE_URL) continue;
         if (!explained(node))
           f.push(`${route}: cadena sin origen auditado: «${node.slice(0, 70)}»`);
       }
@@ -1928,7 +1945,11 @@ const gPerf04 = rel("G-PERF-04", "Fuentes autoalojadas, 0 imágenes raster, sin 
     for (const t of tags(html)) {
       if (t.name === "img" || t.name === "picture") f.push(`${route}: imagen raster (B-IMG = 0)`);
       const url = t.attrs["href"] ?? t.attrs["src"] ?? "";
-      if (/^https?:\/\//i.test(url) && !url.startsWith(SITE_ORIGIN))
+      if (
+        /^https?:\/\//i.test(url) &&
+        !url.startsWith(SITE_ORIGIN) &&
+        !isLegalLicenseLink(route, t.name, url)
+      )
         f.push(`${route}: solicitud a tercero ${url}`);
     }
   }
