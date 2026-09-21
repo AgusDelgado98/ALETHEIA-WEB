@@ -20,8 +20,8 @@ export const REGIME_C_QUESTION_IDS = [
   "LAB-Q-0018",
 ] as const;
 
+/** Navegación principal (WEB3-D1). `/hallazgos` sale del nav pero la ruta se mantiene, enlazada desde /explorar. `/fuentes` entra en WEB3-D2. */
 export const NAV = [
-  { href: "/hallazgos", key: "nav_findings" },
   { href: "/explorar", key: "nav_explore" },
   { href: "/limites", key: "nav_limits" },
   { href: "/metodo", key: "nav_method" },

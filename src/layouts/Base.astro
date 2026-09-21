@@ -13,6 +13,8 @@ interface Props {
   ogType?: string;
   ogDescription?: string;
   robots?: string;
+  /** `false` oculta el corpus congelado (tag y commit) del pie: la Home no expone identificadores técnicos. */
+  pin?: boolean;
 }
 const site = loadSite(process.cwd());
 const ui = site.ui;
@@ -22,6 +24,7 @@ const wordmark = Astro.props.wordmark ?? ui("brand_wordmark");
 const ogType = Astro.props.ogType ?? "website";
 const ogDescription = Astro.props.ogDescription ?? description;
 const robots = Astro.props.robots;
+const showPin = Astro.props.pin ?? true;
 const current = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
 const path = current === "" ? "/" : current;
 const canonical = path === "/" ? SITE_ORIGIN : `${SITE_ORIGIN}${path}`;
@@ -70,7 +73,7 @@ const ogUrl = /[0-9]/.test(path) ? undefined : canonical;
     <main id="contenido" tabindex="-1">
       <slot />
     </main>
-    <SiteFooter ui={ui} tag={site.pin.tag} commitShort={site.pin.commitShort} />
+    <SiteFooter ui={ui} tag={site.pin.tag} commitShort={site.pin.commitShort} showPin={showPin} />
   </body>
 </html>
 

@@ -1,229 +1,214 @@
 ---
-import Glyph from "../components/Glyph.astro";
-import MapState from "../components/MapState.astro";
+import QuestionRow from "../components/QuestionRow.astro";
 import Base from "../layouts/Base.astro";
+import { REGIMES, regimeGloss, regimeLabel } from "../lib/explore.ts";
 import { loadQuestionMap } from "../lib/map.ts";
 
+/**
+ * /explorar (WEB3-D1): el centro del sitio. Las 18 preguntas se ven sin interacción, con su estado (forma +
+ * texto), su régimen, su profundidad editorial y su tipo de resultado. Agrupadas por régimen (un dato del corpus:
+ * no se inventan áreas temáticas). «Lectura completa» solo indica más desarrollo editorial, no más jerarquía.
+ *
+ * El filtro por estado es una mejora progresiva en CSS puro (`:has()`): todas las filas permanecen en el DOM, sin
+ * filtro se ven las 18 y, sin CSS o sin `:has()`, el control ni aparece.
+ */
 const map = loadQuestionMap(process.cwd());
 const ui = map.ui;
-const shapeOf = (state: string): string =>
-  state === "INSUFFICIENT_EVIDENCE"
-    ? ui("shape_insufficient")
-    : state === "NOT_IDENTIFIABLE"
-      ? ui("shape_not_identifiable")
-      : state === "OBSERVED_IN_SOURCE"
-        ? ui("shape_observed")
-        : state === "REFUTED_WITHIN_SCOPE"
-          ? ui("shape_refuted")
-          : state === "BLOCKED_BY_DESIGN"
-            ? ui("shape_blocked")
-            : state === "OUTSIDE_LAB_A"
-              ? ui("shape_open")
-              : ui("layer_question");
-const claimFill = (state: string): "solid" | "hollow" | "ghost" =>
-  state === "OBSERVED_IN_SOURCE" ? "solid" : state === "REFUTED_WITHIN_SCOPE" ? "ghost" : "hollow";
+const STATES = [
+  "OBSERVED_IN_SOURCE",
+  "REFUTED_WITHIN_SCOPE",
+  "INSUFFICIENT_EVIDENCE",
+  "NOT_IDENTIFIABLE",
+  "BLOCKED_BY_DESIGN",
+  "OUTSIDE_LAB_A",
+] as const;
+const stateOptions = STATES.flatMap((s) => {
+  const q = map.questions.find((x) => x.resolution === s);
+  return q === undefined ? [] : [{ state: s, label: q.resolutionLabel }];
+});
 ---
 
-<Base title={`${ui("map_heading")} · ${ui("brand_wordmark")}`} description={ui("map_lede")}>
-  <div class="wrap map">
-    <header class="map__h">
-      <p class="map__k">{ui("map_kicker")}</p>
-      <h1 class="map__t">{ui("map_heading")}</h1>
+<Base title={`${ui("explore_heading")} · ${ui("brand_wordmark")}`} description={ui("explore_lede")}>
+  <div class="wrap ex">
+    <header class="ex__h">
+      <h1>{ui("explore_heading")}</h1>
+      <p class="ex__l">{ui("explore_lede")}</p>
+      <p class="ex__n">{ui("explore_depth_note")}</p>
+      <p class="ex__full">
+        <a href="/hallazgos">{ui("explore_full_link")}</a>
+      </p>
     </header>
-    <div class="map__intro">
-      <p>{ui("map_lede")}</p>
-      <p>{ui("map_legend")}</p>
-      <p>{ui("regime_c_note")}</p>
-    </div>
-    <ol class="map__l">
-      {map.questions.map((q) => (
-        <li
-          class="map__row"
-          data-question-id={q.id}
-          data-question-resolution={q.resolution}
-          data-regime={q.regime}
-        >
-          <details class="map__d" name="mapa">
-            <summary class="map__s">
-              <span class="map__q">{q.text}</span>
-              <span class="map__end">
-                <span class="map__thread" aria-hidden="true"></span>
-                {q.claims.length === 0 ? (
-                  <MapState
-                    state={q.resolution}
-                    label={q.resolutionLabel}
-                    description={shapeOf(q.resolution)}
-                    patternId={`map-hatch-${q.id}`}
-                  />
-                ) : (
-                  q.claims.map((cl) => (
-                    <span data-claim-id={cl.id} data-claim-state={cl.state}>
-                      <Glyph kind="claim" fill={claimFill(cl.state)} size="0.9rem" />
-                      <span class="sr-only">
-                        {ui("layer_claim")} <span data-num="id">{cl.id}</span> {cl.label}
-                      </span>
-                    </span>
-                  ))
-                )}
-              </span>
-            </summary>
-            <div class="map__p">
-              <p>
-                <a href={q.href}>
-                  {ui("question_kicker")}{" "}
-                  <span class="mono" data-num="id">
-                    {map.moduleId} / {q.id}
-                  </span>
-                </a>
-              </p>
-              <dl class="map__layers">
-                <div>
-                  <dt>{ui("layer_question")}</dt>
-                  <dd>
-                    <MapState
-                      state={q.resolution}
-                      label={q.resolutionLabel}
-                      description={shapeOf(q.resolution)}
-                      patternId={`map-hatch-open-${q.id}`}
-                    />
-                  </dd>
-                </div>
-                {q.claims.map((cl) => (
-                  <div data-claim-id={cl.id} data-claim-state={cl.state}>
-                    <dt>
-                      {ui("layer_claim")}{" "}
-                      <span class="mono" data-num="id">
-                        {cl.id}
-                      </span>
-                    </dt>
-                    <dd>
-                      <MapState
-                        state={cl.state}
-                        label={cl.label}
-                        description={shapeOf(cl.state)}
-                        patternId={`map-hatch-claim-${cl.id}`}
-                      />
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-              {q.claims.length === 0 && <p class="map__zero">{ui("no_claim_trail")}</p>}
-            </div>
-          </details>
-        </li>
+
+    <div class="ex__body">
+      <input class="sr-only" type="radio" name="estado" id="f-all" checked />
+      {stateOptions.map((o) => (
+        <input class="sr-only" type="radio" name="estado" id={`f-${o.state}`} />
       ))}
-    </ol>
+      <fieldset class="ex__f">
+        <legend>{ui("explore_filter")}</legend>
+        <ul>
+          <li>
+            <label for="f-all">{ui("explore_filter_all")}</label>
+          </li>
+          {stateOptions.map((o) => (
+            <li>
+              <label for={`f-${o.state}`}>{o.label}</label>
+            </li>
+          ))}
+        </ul>
+      </fieldset>
+
+      {REGIMES.map((r) => {
+        const qs = map.questions.filter((q) => q.regime === r);
+        return (
+          <section class="grp" aria-labelledby={`reg-${r}`} data-regime-group={r}>
+            <h2 id={`reg-${r}`}>
+              {ui("map_regime")} <span>{r}</span>
+              <span aria-hidden="true"> · </span>
+              <span>{regimeLabel(ui, r)}</span>
+            </h2>
+            <p class="grp__g">{regimeGloss(ui, r)}</p>
+            <ol class="rows">
+              {qs.map((q) => (
+                <QuestionRow q={q} ui={ui} variant="explore" prefix="ex" />
+              ))}
+            </ol>
+          </section>
+        );
+      })}
+    </div>
   </div>
 </Base>
 
 <style>
-  .map {
-    padding-bottom: var(--space-10);
+  .ex {
+    padding-bottom: var(--space-9);
   }
-  .map__h {
-    padding-block: var(--space-8) var(--space-5);
+  .ex__h {
+    padding-block: var(--space-8) var(--space-6);
+    max-width: 44rem;
   }
-  .map__k {
-    font: 500 var(--fs-label) / 1.4 var(--sans);
-    color: var(--graphite);
-  }
-  .map__t {
-    margin-top: var(--space-4);
+  h1 {
     font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
     letter-spacing: -0.018em;
-    max-width: 12ch;
   }
-  .map__intro {
+  .ex__l {
+    margin-top: var(--space-4);
+    font: 300 var(--fs-serif-md) / var(--lh-serif) var(--serif);
+    letter-spacing: var(--tracking-serif);
+    max-width: 34ch;
+  }
+  .ex__n {
+    margin-top: var(--space-4);
     font: 400 var(--fs-small) / var(--lh-body) var(--sans);
     color: var(--graphite);
     max-width: var(--measure-prose);
-    margin-bottom: var(--space-7);
-    display: grid;
-    gap: var(--space-2);
   }
-  .map__l {
-    border-top: var(--rule) solid var(--hair);
+  .ex__full {
+    margin-top: var(--space-4);
   }
-  .map__row:nth-child(even) {
-    background: var(--paper-2);
-  }
-  .map__d {
-    border-bottom: var(--rule) solid var(--hair);
-  }
-  .map__s {
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-4);
-    padding: var(--space-5) 0;
-    list-style: none;
-  }
-  .map__s::-webkit-details-marker {
-    display: none;
-  }
-  .map__s:hover {
-    color: var(--verd-deep);
-  }
-  .map__q {
-    font: 300 var(--fs-serif-md) / var(--lh-serif) var(--serif);
-    letter-spacing: var(--tracking-serif);
-    max-width: 28ch;
-    text-wrap: balance;
-  }
-  .map__end {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-3);
-    justify-content: flex-end;
-  }
-  .map__thread {
-    flex: 1;
-    min-width: 2rem;
-    height: 0;
-    border-top: var(--rule) solid var(--ink);
-  }
-  .map__end :global(.g) {
-    color: var(--ink);
-  }
-  .map__p {
-    display: grid;
-    gap: var(--space-5);
-    padding: 0 0 var(--space-7);
-    max-width: 46rem;
-  }
-  .map__p a {
+  .ex__full a {
     font: 500 var(--fs-label) / 1.4 var(--sans);
-    text-decoration: underline;
     text-underline-offset: 0.2em;
   }
-  .map__layers {
-    display: grid;
-    gap: var(--space-5);
+  .grp {
+    padding-block: var(--space-7) 0;
   }
-  .map__layers > div {
-    display: grid;
-    gap: var(--space-2);
+  .grp h2 {
+    font: 300 var(--fs-serif-lg) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 30ch;
   }
-  .map__layers dt {
+  .grp__g {
+    margin-top: var(--space-3);
+    font: 400 var(--fs-small) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  .rows {
+    margin-top: var(--space-5);
+    border-top: var(--rule) solid var(--hair);
+  }
+
+  /* Filtro por estado: solo se muestra si el navegador soporta :has(); nunca oculta contenido por defecto. */
+  .ex__f {
+    display: none;
+    margin: 0 0 var(--space-4);
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+  .ex__f legend {
+    padding: 0;
     font: 400 var(--fs-label) / 1.4 var(--sans);
     color: var(--graphite);
   }
-  .map__layers dd {
-    margin: 0;
+  .ex__f ul {
+    margin-top: var(--space-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
   }
-  .map__zero {
-    font: italic 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
-    max-width: var(--measure-serif);
+  .ex__f label {
+    display: inline-block;
+    padding-block: var(--space-2);
+    border-bottom: var(--rule) solid var(--hair-2);
+    font: 500 var(--fs-small) / 1.3 var(--sans);
+    color: var(--graphite);
+    cursor: pointer;
   }
-  @media (min-width: 64rem) {
-    .map__s {
-      grid-template-columns: minmax(0, 1fr) minmax(12rem, 22rem);
-      align-items: center;
-      column-gap: var(--space-6);
+  @supports selector(:has(*)) {
+    .ex__f {
+      display: block;
     }
-    .map__end {
-      justify-content: flex-end;
+    .ex__body:has(#f-all:checked) label[for="f-all"],
+    .ex__body:has(#f-OBSERVED_IN_SOURCE:checked) label[for="f-OBSERVED_IN_SOURCE"],
+    .ex__body:has(#f-REFUTED_WITHIN_SCOPE:checked) label[for="f-REFUTED_WITHIN_SCOPE"],
+    .ex__body:has(#f-INSUFFICIENT_EVIDENCE:checked) label[for="f-INSUFFICIENT_EVIDENCE"],
+    .ex__body:has(#f-NOT_IDENTIFIABLE:checked) label[for="f-NOT_IDENTIFIABLE"],
+    .ex__body:has(#f-BLOCKED_BY_DESIGN:checked) label[for="f-BLOCKED_BY_DESIGN"],
+    .ex__body:has(#f-OUTSIDE_LAB_A:checked) label[for="f-OUTSIDE_LAB_A"] {
+      color: var(--ink);
+      font-weight: 600;
+      border-bottom: 3px solid var(--ink);
+    }
+    .ex__body:has(#f-all:focus-visible) label[for="f-all"],
+    .ex__body:has(#f-OBSERVED_IN_SOURCE:focus-visible) label[for="f-OBSERVED_IN_SOURCE"],
+    .ex__body:has(#f-REFUTED_WITHIN_SCOPE:focus-visible) label[for="f-REFUTED_WITHIN_SCOPE"],
+    .ex__body:has(#f-INSUFFICIENT_EVIDENCE:focus-visible) label[for="f-INSUFFICIENT_EVIDENCE"],
+    .ex__body:has(#f-NOT_IDENTIFIABLE:focus-visible) label[for="f-NOT_IDENTIFIABLE"],
+    .ex__body:has(#f-BLOCKED_BY_DESIGN:focus-visible) label[for="f-BLOCKED_BY_DESIGN"],
+    .ex__body:has(#f-OUTSIDE_LAB_A:focus-visible) label[for="f-OUTSIDE_LAB_A"] {
+      outline: var(--focus);
+      outline-offset: var(--focus-offset);
+    }
+    .ex__body:has(#f-OBSERVED_IN_SOURCE:checked)
+      :global(.row:not([data-question-resolution="OBSERVED_IN_SOURCE"])),
+    .ex__body:has(#f-REFUTED_WITHIN_SCOPE:checked)
+      :global(.row:not([data-question-resolution="REFUTED_WITHIN_SCOPE"])),
+    .ex__body:has(#f-INSUFFICIENT_EVIDENCE:checked)
+      :global(.row:not([data-question-resolution="INSUFFICIENT_EVIDENCE"])),
+    .ex__body:has(#f-NOT_IDENTIFIABLE:checked)
+      :global(.row:not([data-question-resolution="NOT_IDENTIFIABLE"])),
+    .ex__body:has(#f-BLOCKED_BY_DESIGN:checked)
+      :global(.row:not([data-question-resolution="BLOCKED_BY_DESIGN"])),
+    .ex__body:has(#f-OUTSIDE_LAB_A:checked)
+      :global(.row:not([data-question-resolution="OUTSIDE_LAB_A"])) {
+      display: none;
+    }
+    .ex__body:has(#f-OBSERVED_IN_SOURCE:checked)
+      .grp:not(:has(:global(.row[data-question-resolution="OBSERVED_IN_SOURCE"]))),
+    .ex__body:has(#f-REFUTED_WITHIN_SCOPE:checked)
+      .grp:not(:has(:global(.row[data-question-resolution="REFUTED_WITHIN_SCOPE"]))),
+    .ex__body:has(#f-INSUFFICIENT_EVIDENCE:checked)
+      .grp:not(:has(:global(.row[data-question-resolution="INSUFFICIENT_EVIDENCE"]))),
+    .ex__body:has(#f-NOT_IDENTIFIABLE:checked)
+      .grp:not(:has(:global(.row[data-question-resolution="NOT_IDENTIFIABLE"]))),
+    .ex__body:has(#f-BLOCKED_BY_DESIGN:checked)
+      .grp:not(:has(:global(.row[data-question-resolution="BLOCKED_BY_DESIGN"]))),
+    .ex__body:has(#f-OUTSIDE_LAB_A:checked)
+      .grp:not(:has(:global(.row[data-question-resolution="OUTSIDE_LAB_A"]))) {
+      display: none;
     }
   }
 </style>

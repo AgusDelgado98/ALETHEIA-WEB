@@ -199,7 +199,15 @@ const limit = v.doesNotMean[0];
                             <dd>
                               {f.objects.map((o) => (
                                 <span class="fig__o">
-                                  <span lang="en">{o.name}</span>{" "}
+                                  <span lang="en">
+                                    {o.name.split("_").map((seg, i, all) => (
+                                      <>
+                                        {seg}
+                                        {i < all.length - 1 && "_"}
+                                        <wbr />
+                                      </>
+                                    ))}
+                                  </span>{" "}
                                   <span class="mono" data-num="id">
                                     {o.id}
                                   </span>

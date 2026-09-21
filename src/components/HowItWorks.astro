@@ -1,0 +1,361 @@
+---
+import { figureCopy, figureView } from "../lib/figures.ts";
+import { stateShape } from "../lib/explore.ts";
+import { loadQuestionView } from "../lib/view.ts";
+import EvidenceState from "./EvidenceState.astro";
+import FigureValue from "./FigureValue.astro";
+import SegmentText from "./SegmentText.astro";
+/**
+ * «Cómo llegamos a un resultado» (WEB3-D1): un recorrido REAL de una pregunta, del planteo al límite, sin autoplay
+ * y sin JavaScript. Radios + hermanos (`input:checked ~ panel`): los pasos se eligen con teclado o toque.
+ * Fallback completo: sin CSS, o si el patrón no se aplica, los siete pasos se leen como una lista ordenada.
+ *
+ * Autoridad de dato: recibe el ID de la pregunta y los IDs de Figure. Cada cifra la renderiza `FigureValue`
+ * (falla el build si un ID no es una Figure ELIGIBLE de esa pregunta). Ningún valor se escribe aquí ni en editorial.
+ * Todo el texto sale de editorial ya auditado (Rastro, alcance, límites) y de `editorial/site/`.
+ */
+interface Props {
+  qid: string;
+  figureIds: string[];
+}
+const { qid, figureIds } = Astro.props;
+const root = process.cwd();
+const v = loadQuestionView(root, qid);
+const ui = v.ui;
+const t = v.trails[0];
+if (t === undefined || v.trails.length !== 1)
+  throw new Error(`HowItWorks: ${qid} necesita exactamente un Rastro de claim`);
+const figs = figureIds.map((id) => figureView(root, id));
+if (figs.length === 0) throw new Error("HowItWorks: sin Figures ELIGIBLE no hay modo Medición");
+for (const f of figs)
+  if (f.questionId !== qid || f.claimId !== t.claimId)
+    throw new Error(`HowItWorks: ${f.id} no pertenece a ${qid}/${t.claimId}`);
+const copy = figureCopy(root);
+const universe = v.canSay.find((x) => x.id === "cs-4");
+const limit = v.doesNotMean[0];
+if (universe === undefined || limit === undefined)
+  throw new Error(`HowItWorks: faltan el universo o el límite editoriales de ${qid}`);
+const steps = [
+  { key: "question", label: ui("question_kicker") },
+  { key: "source", label: ui("node_source") },
+  { key: "universe", label: ui("measure_step_universe") },
+  { key: "treatment", label: ui("measure_step_treatment") },
+  { key: "measure", label: ui("home_how_measure") },
+  { key: "result", label: ui("measure_step_result") },
+  { key: "limit", label: ui("node_limit") },
+] as const;
+---
+
+<section
+  id="como-llegamos"
+  class="hi"
+  aria-labelledby="hi-h"
+  data-figure-question={qid}
+  data-figure-claim={t.claimId}
+>
+  <div class="wrap">
+    <h2 id="hi-h" class="hi__h">
+      {ui("home_how_heading")}
+    </h2>
+    <p class="hi__lede">{ui("home_how_lede")}</p>
+
+    <fieldset class="hi__f">
+      <legend class="sr-only">{ui("home_how_steps")}</legend>
+      <ol class="hi__l">
+        {steps.map((s, i) => (
+          <li class="hi__s" data-step={s.key}>
+            <input
+              class="sr-only"
+              type="radio"
+              name="hi-step"
+              id={`hi-${s.key}`}
+              checked={i === 0}
+            />
+            <label for={`hi-${s.key}`}>
+              <span class="hi__n" aria-hidden="true" />
+              <span class="hi__t">{s.label}</span>
+            </label>
+            <div class="hi__p">
+              {s.key === "question" && <p class="hi__big">{v.publicQuestion}</p>}
+              {s.key === "source" && (
+                <p class="hi__x">
+                  <SegmentText parts={t.source.publication} />
+                </p>
+              )}
+              {s.key === "universe" && (
+                <p class="hi__x">
+                  <SegmentText parts={universe.parts} />
+                </p>
+              )}
+              {s.key === "treatment" && (
+                <p class="hi__x">
+                  <SegmentText parts={t.evidence} />
+                </p>
+              )}
+              {s.key === "measure" && (
+                <ul class="hi__metrics">
+                  {figs.map((f) => (
+                    <li>{f.label}</li>
+                  ))}
+                </ul>
+              )}
+              {s.key === "result" && (
+                <>
+                  <p class="hi__x">
+                    <SegmentText parts={t.claim} />
+                  </p>
+                  <p class="hi__st">
+                    <EvidenceState
+                      state={t.claimState}
+                      label={t.claimLabel}
+                      description={stateShape(ui, t.claimState)}
+                    />
+                  </p>
+                  <ul class="hi__figs">
+                    {figs.map((f) => (
+                      <li>
+                        <span class="hi__fl">{f.label}</span>
+                        <span class="hi__fv">
+                          <FigureValue id={f.id} />
+                        </span>
+                        <span class="hi__fp">
+                          <span data-num="date">{f.period.start}</span>
+                          {f.period.end !== f.period.start && (
+                            <>
+                              {" "}
+                              <span aria-hidden="true">→</span>{" "}
+                              <span data-num="date">{f.period.end}</span>
+                            </>
+                          )}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p class="hi__note">{copy.whyShown}</p>
+                </>
+              )}
+              {s.key === "limit" && (
+                <>
+                  <p class="hi__x">
+                    <SegmentText parts={limit.parts} />
+                  </p>
+                  <p class="hi__note">{copy.vsConclusion}</p>
+                </>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </fieldset>
+    <p class="hi__open">
+      <a href={`/labor/preguntas/${v.slug}`}>{ui("home_how_open")}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .hi {
+    padding-block: var(--space-8);
+    border-top: var(--rule) solid var(--hair);
+    scroll-margin-top: var(--space-5);
+  }
+  .hi__h {
+    font: 300 var(--fs-serif-xl) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 22ch;
+  }
+  .hi__lede {
+    margin-top: var(--space-4);
+    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  .hi__f {
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+  .hi__l {
+    counter-reset: hi;
+    display: grid;
+    gap: 0;
+  }
+  .hi__s {
+    display: grid;
+    position: relative;
+  }
+  .hi__s > label {
+    counter-increment: hi;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+    border-top: var(--rule) solid var(--hair-2);
+    cursor: pointer;
+    font: 500 var(--fs-small) / 1.3 var(--sans);
+    color: var(--graphite);
+  }
+  .hi__n {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: var(--rule) solid var(--ink);
+    border-radius: 50%;
+    font: 400 var(--fs-mono) / 1 var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    transition:
+      background-color var(--dur-fast) var(--ease),
+      color var(--dur-fast) var(--ease);
+  }
+  .hi__n::before {
+    content: counter(hi);
+  }
+  .hi__s > input:checked + label {
+    color: var(--ink);
+    font-weight: 600;
+    border-top: 3px solid var(--ink);
+  }
+  .hi__s > input:checked + label .hi__n {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .hi__s > input:focus-visible + label {
+    outline: var(--focus);
+    outline-offset: var(--focus-offset);
+  }
+  .hi__s > label:hover .hi__t {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .hi__p {
+    display: none;
+    padding: var(--space-4) 0 var(--space-5) calc(1.5rem + var(--space-3));
+    max-width: 52rem;
+  }
+  .hi__s > input:checked ~ .hi__p {
+    display: block;
+  }
+  .hi__big {
+    font: 300 var(--fs-serif-lg) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 30ch;
+    text-wrap: balance;
+  }
+  .hi__x {
+    font: 400 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+    max-width: 44ch;
+  }
+  .hi__metrics {
+    display: grid;
+    gap: var(--space-3);
+    font: 400 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+    max-width: 44ch;
+  }
+  .hi__st {
+    margin-top: var(--space-4);
+  }
+  .hi__figs {
+    margin-top: var(--space-4);
+    border-top: var(--rule) solid var(--hair);
+    max-width: 44rem;
+  }
+  .hi__figs > li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    padding-block: var(--space-3);
+    border-bottom: var(--rule) solid var(--hair);
+    align-items: baseline;
+  }
+  .hi__fl {
+    grid-column: 1;
+    font: 400 var(--fs-small) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+  }
+  .hi__fv {
+    grid-column: 2;
+    grid-row: 1;
+    font: 300 var(--fs-serif-md) / var(--lh-tight) var(--serif);
+    letter-spacing: var(--tracking-serif);
+  }
+  .hi__fp {
+    grid-column: 1;
+    font: 400 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .hi__note {
+    margin-top: var(--space-4);
+    font: italic 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+    max-width: var(--measure-serif);
+  }
+  .hi__open {
+    margin-top: var(--space-6);
+  }
+  .hi__open a {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    text-underline-offset: 0.2em;
+  }
+
+  /* Escritorio: el recorrido es HORIZONTAL. Cada <li> desaparece del árbol visual (display: contents): las
+     etiquetas forman la fila superior y el panel del paso activo ocupa la fila inferior. */
+  @media (min-width: 64rem) {
+    .hi__l {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      column-gap: var(--space-4);
+      align-items: start;
+    }
+    .hi__s {
+      display: contents;
+    }
+    .hi__s > label {
+      grid-row: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+      padding-top: var(--space-3);
+    }
+    .hi__s:nth-child(1) > label {
+      grid-column: 1;
+    }
+    .hi__s:nth-child(2) > label {
+      grid-column: 2;
+    }
+    .hi__s:nth-child(3) > label {
+      grid-column: 3;
+    }
+    .hi__s:nth-child(4) > label {
+      grid-column: 4;
+    }
+    .hi__s:nth-child(5) > label {
+      grid-column: 5;
+    }
+    .hi__s:nth-child(6) > label {
+      grid-column: 6;
+    }
+    .hi__s:nth-child(7) > label {
+      grid-column: 7;
+    }
+    .hi__p {
+      grid-row: 2;
+      grid-column: 1 / -1;
+      padding: var(--space-6) 0 0;
+    }
+  }
+
+  /* Mejora progresiva: los pasos ya recorridos oscurecen su hilo (además del peso y la forma del paso activo). */
+  @supports selector(:has(*)) {
+    .hi__l:has(.hi__s:nth-child(2) > input:checked) .hi__s:nth-child(-n + 2) > label,
+    .hi__l:has(.hi__s:nth-child(3) > input:checked) .hi__s:nth-child(-n + 3) > label,
+    .hi__l:has(.hi__s:nth-child(4) > input:checked) .hi__s:nth-child(-n + 4) > label,
+    .hi__l:has(.hi__s:nth-child(5) > input:checked) .hi__s:nth-child(-n + 5) > label,
+    .hi__l:has(.hi__s:nth-child(6) > input:checked) .hi__s:nth-child(-n + 6) > label,
+    .hi__l:has(.hi__s:nth-child(7) > input:checked) .hi__s:nth-child(-n + 7) > label {
+      border-top-color: var(--ink);
+    }
+  }
+</style>

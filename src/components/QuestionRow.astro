@@ -1,0 +1,124 @@
+---
+import MapState from "./MapState.astro";
+import { depthLabel, readingLabel, regimeLabel, stateShape } from "../lib/explore.ts";
+import type { MapQuestion } from "../lib/map.ts";
+/**
+ * Una fila del índice de preguntas (Home y /explorar). Índice tipográfico, no una tarjeta: la pregunta primero,
+ * su estado inmediatamente visible (forma + texto, nunca solo color) y los metadatos debajo. El ID queda
+ * subordinado. Sin JavaScript y sin hover: todo se ve y se alcanza con teclado.
+ *
+ * `variant="home"` usa `data-index-question` (la Home NO es una página de pregunta); `variant="explore"` usa
+ * `data-question-id` y expone cada afirmación (`data-claim-id`, `data-claim-state`) para G-UX-04.
+ */
+interface Props {
+  q: MapQuestion;
+  ui: (key: string) => string;
+  variant: "home" | "explore";
+  prefix: string;
+}
+const { q, ui, variant, prefix } = Astro.props;
+const explore = variant === "explore";
+const idAttr = explore ? { "data-question-id": q.id } : { "data-index-question": q.id };
+---
+
+<li
+  class="row"
+  {...idAttr}
+  data-question-resolution={q.resolution}
+  data-regime={q.regime}
+  data-depth={q.hasEditorial ? "full" : "minimal"}
+>
+  <h3 class="row__q">
+    <a href={q.href}>{q.text}</a>
+  </h3>
+  <p class="row__st">
+    <MapState
+      state={q.resolution}
+      label={q.resolutionLabel}
+      description={stateShape(ui, q.resolution)}
+      patternId={`${prefix}-hatch-${q.id}`}
+    />
+    {explore &&
+      q.claims.map((cl) => (
+        <span class="row__cl" data-claim-id={cl.id} data-claim-state={cl.state}>
+          <span class="sr-only">
+            {ui("layer_claim")} <span data-num="id">{cl.id}</span> {cl.label}
+          </span>
+        </span>
+      ))}
+  </p>
+  <ul class="row__m">
+    <li>
+      {ui("map_regime")} <span>{q.regime}</span>
+      <span aria-hidden="true"> · </span>
+      <span>{regimeLabel(ui, q.regime)}</span>
+    </li>
+    <li>{depthLabel(ui, q)}</li>
+    {explore && <li>{readingLabel(ui, q)}</li>}
+    {explore && q.claims.length === 0 && <li>{ui("no_claim_trail")}</li>}
+    {explore && (
+      <li>
+        <span class="mono" data-num="id">
+          {q.id}
+        </span>
+      </li>
+    )}
+  </ul>
+</li>
+
+<style>
+  .row {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-5);
+    border-bottom: var(--rule) solid var(--hair);
+  }
+  .row__q {
+    font: 300 var(--fs-serif-md) / var(--lh-serif) var(--serif);
+    letter-spacing: var(--tracking-serif);
+    max-width: 34ch;
+    text-wrap: balance;
+  }
+  .row__q a {
+    text-decoration: none;
+  }
+  .row__q a:hover {
+    color: var(--verd-deep);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .row__st {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    color: var(--ink);
+  }
+  .row__cl {
+    display: inline-flex;
+    color: var(--ink);
+  }
+  .row__m {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    font: 400 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  @media (min-width: 64rem) {
+    .row {
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+      column-gap: var(--space-6);
+      align-items: start;
+    }
+    .row__q,
+    .row__m {
+      grid-column: 1;
+    }
+    .row__st {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+    }
+  }
+</style>

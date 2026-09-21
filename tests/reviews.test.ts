@@ -14,14 +14,14 @@ import { realContext, ROOT } from "./helpers.ts";
 const inv = buildInventory(ROOT);
 
 describe("reconciliación editorial WEB-2R", () => {
-  // WEB-3 agrega 31 textos públicos nuevos (23 etiquetas de interfaz + 8 de editorial/site/figures.yml), todos
-  // PENDING_AUTHOR_REVIEW: 363 + 31 = 394 y 345 + 31 = 376. Las 18 public_question siguen APPROVED.
-  it("394 textos: la suma de veredictos es exacta", () => {
+  // WEB-3 agrega 67 textos públicos nuevos (F2-F5: 23 de interfaz + 8 de editorial/site/figures.yml; D1: 36 de
+  // Home y /explorar), todos PENDING_AUTHOR_REVIEW: 363 + 67 = 430 y 345 + 67 = 412. Las 18 public_question siguen APPROVED.
+  it("430 textos: la suma de veredictos es exacta", () => {
     const sum = Object.values(inv.verdicts.by_verdict).reduce((a, b) => a + b, 0);
-    expect(inv.verdicts.total_units).toBe(394);
-    expect(sum).toBe(394);
+    expect(inv.verdicts.total_units).toBe(430);
+    expect(sum).toBe(430);
   });
-  it("18 public_question APPROVED; 376 PENDING_AUTHOR_REVIEW; 0 REVISED/REJECTED", () => {
+  it("18 public_question APPROVED; 412 PENDING_AUTHOR_REVIEW; 0 REVISED/REJECTED", () => {
     expect(inv.verdicts.public_question.research_questions).toBe(18);
     expect(inv.verdicts.public_question.records).toBe(18);
     expect(inv.verdicts.public_question.APPROVED).toBe(18);
@@ -29,7 +29,7 @@ describe("reconciliación editorial WEB-2R", () => {
     expect(inv.verdicts.public_question.PENDING_AUTHOR_REVIEW).toBe(0);
     expect(inv.verdicts.public_question.REJECTED).toBe(0);
     expect(inv.verdicts.by_verdict.APPROVED).toBe(18);
-    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(376);
+    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(412);
     expect(inv.verdicts.by_verdict.REVISED_AND_APPROVED ?? 0).toBe(0);
     expect(inv.verdicts.by_verdict.REJECTED ?? 0).toBe(0);
   });

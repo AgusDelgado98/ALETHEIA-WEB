@@ -167,3 +167,39 @@ strings:
   fig_quote: { id: ui-fig-quote, text: "Fragmento registrado" }
   fig_id: { id: ui-fig-id, text: "Identificador de la cifra" }
   fig_exact: { id: ui-fig-exact, text: "Valor registrado" }
+  home_hero_lede: { id: ui-home-hero-lede, text: "Investigación independiente basada en fuentes públicas y trazabilidad explícita." }
+  home_hero_note: { id: ui-home-hero-note, text: "ALETHEIA no busca establecer una verdad absoluta ni representa a un partido, a una universidad ni a los organismos que producen las fuentes. Muestra resultados dentro de un alcance definido, y también sus límites y su incertidumbre." }
+  home_cta_explore: { id: ui-home-cta-explore, text: "Explorar la investigación" }
+  home_cta_how: { id: ui-home-cta-how, text: "Ver cómo llegamos a un resultado" }
+  home_explore_heading: { id: ui-home-explore-heading, text: "Qué se puede explorar" }
+  home_explore_lede: { id: ui-home-explore-lede, text: "Estas preguntas tienen lectura completa. El estado forma parte del resultado." }
+  home_explore_all: { id: ui-home-explore-all, text: "Ver todas las preguntas" }
+  home_how_heading: { id: ui-home-how-heading, text: "Cómo llegamos a un resultado" }
+  home_how_lede: { id: ui-home-how-lede, text: "Un ejemplo real, de la pregunta al límite. Elegí un paso para verlo." }
+  home_how_steps: { id: ui-home-how-steps, text: "Pasos del recorrido" }
+  home_how_measure: { id: ui-home-how-measure, text: "Medición" }
+  home_how_open: { id: ui-home-how-open, text: "Abrir la ficha completa de esta pregunta" }
+  home_about_heading: { id: ui-home-about-heading, text: "Qué clase de proyecto es" }
+  home_is_heading: { id: ui-home-is-heading, text: "Qué es" }
+  home_is_text: { id: ui-home-is-text, text: "Un proyecto independiente de investigación y trazabilidad." }
+  home_isnot_heading: { id: ui-home-isnot-heading, text: "Qué no es" }
+  home_isnot_text: { id: ui-home-isnot-text, text: "No es una autoridad política, una institución académica ni un organismo estadístico. No es asesoramiento profesional ni una verdad absoluta." }
+  home_state_heading: { id: ui-home-state-heading, text: "Estado del proyecto" }
+  home_state_text: { id: ui-home-state-text, text: "La investigación está cerrada y esta web es una presentación posterior. Todavía no tuvo una revisión externa independiente. Los límites y las incertidumbres siguen a la vista." }
+  home_close_limits: { id: ui-home-close-limits, text: "Qué no sabemos, qué permanece abierto y qué no debe inferirse." }
+  home_close_method: { id: ui-home-close-method, text: "Cómo se leen los estados y cómo se sigue cada resultado hasta su origen." }
+  explore_heading: { id: ui-explore-heading, text: "Explorar la investigación" }
+  explore_lede: { id: ui-explore-lede, text: "No todas las preguntas llegaron al mismo tipo de respuesta. El estado forma parte del resultado." }
+  explore_full_link: { id: ui-explore-full-link, text: "Ver preguntas con lectura completa" }
+  explore_filter: { id: ui-explore-filter, text: "Ver por estado" }
+  explore_filter_all: { id: ui-explore-filter-all, text: "Todas" }
+  explore_depth_note: { id: ui-explore-depth-note, text: "«Lectura completa» significa que la pregunta tiene un desarrollo editorial mayor. No indica un resultado más importante." }
+  depth_full: { id: ui-depth-full, text: "Lectura completa" }
+  read_measurement: { id: ui-read-measurement, text: "Medición" }
+  read_documentary: { id: ui-read-documentary, text: "Resultado documental" }
+  regime_a_label: { id: ui-regime-a-label, text: "Fuentes estadísticas y de registro" }
+  regime_a_gloss: { id: ui-regime-a-gloss, text: "Preguntas trabajadas con fuentes estadísticas y de registro admitidas, y con la encuesta de hogares, dentro del alcance propio de cada fuente." }
+  regime_b_label: { id: ui-regime-b-label, text: "Registro tributario y regulación" }
+  regime_b_gloss: { id: ui-regime-b-gloss, text: "Preguntas sobre categorías de registro tributario, normas y posibles indicadores de dependencia económica. Una categoría de registro no equivale, por sí sola, a una relación laboral real." }
+  regime_c_label: { id: ui-regime-c-label, text: "Avisos de empleo" }
+  regime_c_gloss: { id: ui-regime-c-gloss, text: "Preguntas sobre avisos de empleo publicados. Este régimen no llegó a producir datos empíricos: quedó en diseño y en evaluación de fuentes." }

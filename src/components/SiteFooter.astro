@@ -3,21 +3,24 @@ interface Props {
   ui: (key: string) => string;
   tag: string;
   commitShort: string;
+  showPin?: boolean;
 }
-const { ui, tag, commitShort } = Astro.props;
+const { ui, tag, commitShort, showPin = true } = Astro.props;
 ---
 
 <footer class="foot">
   <div class="wrap foot__bar">
-    <p>
-      {ui("footer_frozen")}
-      <span class="mono" data-num="hash">
-        {tag}
-      </span>
-      <span class="mono" data-num="hash">
-        {commitShort}
-      </span>
-    </p>
+    {showPin && (
+      <p>
+        {ui("footer_frozen")}
+        <span class="mono" data-num="hash">
+          {tag}
+        </span>
+        <span class="mono" data-num="hash">
+          {commitShort}
+        </span>
+      </p>
+    )}
     <p>
       <a href="/versiones">{ui("footer_versions")}</a>
       <span aria-hidden="true"> · </span>

@@ -188,8 +188,19 @@ export function scanNumerals(route: string, html: string, ctx: GateContext): Num
         );
         continue;
       }
-      const inQuestion = el.ancestors.some((a) => a.attrs["data-question-id"] === fig.question_id);
-      const inClaim = el.ancestors.some((a) => a.attrs["data-claim-id"] === fig.claim_id);
+      // El contexto lo declara la página de la pregunta (`data-question-id`/`data-claim-id`) o, en la Home, el
+      // recorrido que muestra esa pregunta (`data-figure-question`/`data-figure-claim`). En ambos casos DEBE
+      // coincidir con la pregunta y el claim que autorizan la Figure: el contexto no autoriza nada por sí solo.
+      const inQuestion = el.ancestors.some(
+        (a) =>
+          a.attrs["data-question-id"] === fig.question_id ||
+          a.attrs["data-figure-question"] === fig.question_id,
+      );
+      const inClaim = el.ancestors.some(
+        (a) =>
+          a.attrs["data-claim-id"] === fig.claim_id ||
+          a.attrs["data-figure-claim"] === fig.claim_id,
+      );
       if (!inQuestion || !inClaim) {
         failures.push(
           `${where} ${id} aparece fuera de la pregunta ${fig.question_id} o del claim ${fig.claim_id} que la autoriza`,

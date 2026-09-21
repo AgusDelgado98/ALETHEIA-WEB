@@ -38,22 +38,24 @@ describe("WEB-1 arquitectura pública", () => {
   );
 
   it.skipIf(!ctx.html.has("/"))(
-    "Home muestra 5 destacadas y 13 restantes; las 18 preguntas",
+    "Home muestra exactamente las 5 destacadas; /explorar tiene las 18; /hallazgos solo las 5",
     () => {
       const home = ctx.html.get("/") ?? "";
       const hall = ctx.html.get("/hallazgos") ?? "";
+      const map = ctx.html.get("/explorar") ?? "";
       expect(home).toContain('data-featured="true"');
-      expect(home).toContain('data-remaining="true"');
-      for (const id of FEATURED_QUESTION_IDS) {
-        expect(home, id).toContain(`data-index-question="${id}"`);
+      const onHome = [...home.matchAll(/data-index-question="([^"]+)"/g)].map((m) => m[1]);
+      expect(onHome).toEqual([...FEATURED_QUESTION_IDS]);
+      for (const id of FEATURED_QUESTION_IDS)
         expect(hall, id).toContain(`data-index-question="${id}"`);
-      }
       const remaining = ctx.generated.questions.filter((q) => !FEATURED.has(q.id));
       expect(remaining).toHaveLength(13);
       for (const q of remaining) {
-        expect(home, q.id).toContain(`data-index-question="${q.id}"`);
+        expect(home.includes(`data-index-question="${q.id}"`), q.id).toBe(false);
         expect(hall.includes(`data-index-question="${q.id}"`), q.id).toBe(false);
       }
+      for (const q of ctx.generated.questions)
+        expect(map, q.id).toContain(`data-question-id="${q.id}"`);
     },
   );
 
@@ -87,8 +89,10 @@ describe("WEB-1 arquitectura pública", () => {
     expect(sobre).toContain("No es asesoramiento legal");
     expect(ver).toContain(ctx.generated.manifest.pin.tag);
     expect(ver).toContain(ctx.generated.manifest.pin.commit);
-    expect(home).toContain(ctx.generated.manifest.pin.commit);
-    expect(home).toContain("CLOSED / FROZEN");
+    expect(ver).toContain("CLOSED / FROZEN");
+    // WEB3-D1: el commit y el cierre técnico viven en /versiones, no en la Home
+    expect(home.includes(ctx.generated.manifest.pin.commit)).toBe(false);
+    expect(home.includes("CLOSED / FROZEN")).toBe(false);
   });
 
   it.skipIf(!ctx.html.has("/"))(
