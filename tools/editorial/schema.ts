@@ -104,6 +104,8 @@ export const Glosses = z.strictObject({
       source: Unit.optional(),
     }),
   ),
+  /** Título corto de navegación de cada pregunta (Registro). No reemplaza la pregunta pública ni el título de la ficha. */
+  nav_titles: z.record(z.string(), Unit),
   governance: z.record(
     z.string(),
     z.strictObject({

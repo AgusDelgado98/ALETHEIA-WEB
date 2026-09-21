@@ -1,15 +1,11 @@
+import { loadGlosses } from "../../tools/editorial/load.ts";
 import { CGI_LICENSE, CGI_ROOT_ID } from "../../tools/reviews/constants.ts";
 import { loadQuestionMap } from "./map.ts";
-import { plainText } from "./render.ts";
-import { loadQuestionView } from "./view.ts";
 
 /**
- * Datos del Registro (índice de las 18 preguntas). Todo se DERIVA de lo que el pipeline ya expone: estado de
- * generated/, título corto = el título ya auditado de la ficha (`finding.title` o glosa pública). No crea texto editorial.
+ * Datos del Registro (índice de las 18 preguntas). El estado sale de generated/; el título corto de navegación es el
+ * texto editorial `nav_titles` de editorial/site/glosses.yml (auditado como el resto; PENDING_AUTHOR_REVIEW).
  */
-
-/** Preguntas ya migradas al shell Registro + Folio (páginas propias, fuera de [id].astro): solo el prototipo Q-0003. */
-export const MIGRATED_QUESTION_IDS: readonly string[] = ["LAB-Q-0003"];
 
 /** Los seis estados del Registro, en orden de leyenda. `code`/`name` son claves de cadenas de interfaz. */
 export const STATES = [
@@ -58,13 +54,16 @@ export interface Registro {
 export function loadRegistro(root: string): Registro {
   const map = loadQuestionMap(root);
   const ui = map.ui;
+  const navTitles = loadGlosses(root).nav_titles;
   const rows: RegistroRow[] = map.questions.map((q) => {
     const meta = STATES.find((s) => s.state === q.resolution);
+    const nav = navTitles[q.id];
+    if (nav === undefined) throw new Error(`Falta el título corto de navegación de ${q.id}`);
     return {
       id: q.id,
       shortId: q.id.replace(/^LAB-Q-/, ""),
       href: q.href,
-      title: plainText(loadQuestionView(root, q.id).title),
+      title: nav.text,
       state: q.resolution,
       stateLabel: q.resolutionLabel,
       code: meta === undefined ? q.resolution : ui(meta.code),

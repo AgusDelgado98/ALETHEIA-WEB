@@ -20,14 +20,6 @@ export const REGIME_C_QUESTION_IDS = [
   "LAB-Q-0018",
 ] as const;
 
-export const NAV = [
-  { href: "/hallazgos", key: "nav_findings" },
-  { href: "/explorar", key: "nav_explore" },
-  { href: "/limites", key: "nav_limits" },
-  { href: "/metodo", key: "nav_method" },
-  { href: "/sobre", key: "nav_about" },
-] as const;
-
 export type UiFn = (key: string) => string;
 
 function req<T>(v: T | undefined | null, what: string): T {

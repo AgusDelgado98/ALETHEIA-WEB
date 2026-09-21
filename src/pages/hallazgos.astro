@@ -1,50 +1,63 @@
 ---
-import QuestionEntry from "../components/QuestionEntry.astro";
-import Base from "../layouts/Base.astro";
-import { loadSite } from "../lib/site.ts";
+import DocPanel from "../components/DocPanel.astro";
+import Registro from "../components/Registro.astro";
+import StateMark from "../components/StateMark.astro";
+import Shell from "../layouts/Shell.astro";
+import { loadRegistro } from "../lib/registro.ts";
+import { isDocumentaryObserved, loadSite } from "../lib/site.ts";
 
+/** Hallazgos: las cinco fichas con lectura completa. El régimen C no entra; sigue en Explorar y en Límites. */
 const site = loadSite(process.cwd());
+const registro = loadRegistro(process.cwd());
 const ui = site.ui;
 ---
 
-<Base
+<Shell
   title={`${ui("findings_heading")} · ${ui("brand_wordmark")}`}
   description={ui("findings_lede")}
+  view="doc"
 >
-  <div class="wrap page">
-    <header class="ph">
-      <p class="k">{ui("featured_kicker")}</p>
-      <h1>{ui("findings_heading")}</h1>
-      <p>{ui("findings_lede")}</p>
-    </header>
-    <div data-featured="true">
+  <Registro slot="registro" registro={registro} current={null} />
+  <DocPanel
+    ui={ui}
+    heading={ui("findings_heading")}
+    kicker={ui("featured_kicker")}
+    lede={ui("findings_lede")}
+  >
+    <ol class="mapl" data-featured="true">
       {site.featured.map((q) => (
-        <QuestionEntry q={q} kicker={ui("featured_kicker")} ui={ui} />
+        <li
+          data-finding-question={q.id}
+          data-question-resolution={q.resolution}
+          data-regime={q.regime}
+        >
+          <span class="mono" data-num="id">
+            {q.id.replace(/^LAB-Q-/, "")}
+          </span>
+          <a class="mapl__q" href={q.href}>
+            {q.text}
+          </a>
+          <span class="mapl__st">
+            <span class="mapl__row">
+              <StateMark state={q.resolution} uid={`find-${q.id}`} />
+              <span class="sr-only">{ui("layer_question")}: </span>
+              <span>{q.resolutionLabel}</span>
+            </span>
+            {q.claims.map((cl) => (
+              <span class="mapl__row" data-claim-id={cl.id} data-claim-state={cl.state}>
+                <StateMark state={cl.state} uid={`find-${cl.id}`} />
+                <span class="mono" data-num="id">
+                  {cl.id}
+                </span>
+                <span>{cl.label}</span>
+                {isDocumentaryObserved(cl.kind, cl.state) && (
+                  <span class="mapl__q2">{ui("qualifier_documentary")}</span>
+                )}
+              </span>
+            ))}
+          </span>
+        </li>
       ))}
-    </div>
-  </div>
-</Base>
-
-<style>
-  .page {
-    padding-bottom: var(--space-10);
-  }
-  .ph {
-    padding-block: var(--space-8) var(--space-6);
-    max-width: var(--measure-prose);
-  }
-  .k {
-    font: 500 var(--fs-label) / 1.4 var(--sans);
-    color: var(--graphite);
-  }
-  h1 {
-    margin-top: var(--space-4);
-    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
-    letter-spacing: -0.018em;
-  }
-  .ph p:last-child {
-    margin-top: var(--space-5);
-    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
-    color: var(--graphite);
-  }
-</style>
+    </ol>
+  </DocPanel>
+</Shell>

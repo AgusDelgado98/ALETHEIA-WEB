@@ -1,47 +1,24 @@
 ---
-import Base from "../layouts/Base.astro";
-import { loadSite } from "../lib/site.ts";
+import DocPanel from "../components/DocPanel.astro";
+import Registro from "../components/Registro.astro";
+import Shell from "../layouts/Shell.astro";
+import { loadRegistro } from "../lib/registro.ts";
+import { loadUi } from "../lib/site.ts";
 
-const site = loadSite(process.cwd());
-const ui = site.ui;
+const ui = loadUi(process.cwd());
+const registro = loadRegistro(process.cwd());
 ---
 
-<Base
+<Shell
   title={`${ui("not_found_heading")} · ${ui("brand_wordmark")}`}
   description={ui("not_found_lede")}
   robots="noindex"
+  view="doc"
 >
-  <div class="wrap page">
-    <header class="ph">
-      <h1>{ui("not_found_heading")}</h1>
-      <p>{ui("not_found_lede")}</p>
-      <p>
-        <a href="/">{ui("not_found_home")}</a>
-      </p>
-    </header>
-  </div>
-</Base>
-
-<style>
-  .page {
-    padding-bottom: var(--space-10);
-  }
-  .ph {
-    padding-block: var(--space-8) var(--space-6);
-    max-width: var(--measure-prose);
-  }
-  h1 {
-    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
-    letter-spacing: -0.018em;
-  }
-  .ph p {
-    margin-top: var(--space-5);
-    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
-    color: var(--graphite);
-    max-width: var(--measure-prose);
-  }
-  a {
-    font: 500 var(--fs-label) / 1.4 var(--sans);
-    text-underline-offset: 0.2em;
-  }
-</style>
+  <Registro slot="registro" registro={registro} current={null} />
+  <DocPanel ui={ui} heading={ui("not_found_heading")} lede={ui("not_found_lede")} bare>
+    <p class="doc__p">
+      <a href="/">{ui("not_found_home")}</a>
+    </p>
+  </DocPanel>
+</Shell>

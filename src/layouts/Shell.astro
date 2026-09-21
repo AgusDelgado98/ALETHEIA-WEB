@@ -9,17 +9,19 @@ import Head from "./Head.astro";
 /**
  * Shell REGISTRO + FOLIO (prototipo). Cuadrícula de viewport en escritorio (≥ 64 rem y ≥ 34 rem de alto);
  * por debajo degrada a documento normal: Registro → Folio. Sin JavaScript.
- * `view="registro"` (Registro + carátula) o `view="folio"` (Registro + Folio de una pregunta).
+ * `view="registro"` (Registro + carátula), `view="folio"` (Registro + Folio de una pregunta) o `view="doc"`
+ * (Registro + panel de documento: Explorar, Hallazgos, Límites, Método, Versiones, Sobre).
  */
 interface Props {
   title: string;
   description: string;
   ogDescription?: string;
-  view: "registro" | "folio";
+  robots?: string;
+  view: "registro" | "folio" | "doc";
 }
 const site = loadSite(process.cwd());
 const ui = site.ui;
-const { title, description, ogDescription, view } = Astro.props;
+const { title, description, ogDescription, robots, view } = Astro.props;
 ---
 
 <!doctype html>
@@ -29,6 +31,7 @@ const { title, description, ogDescription, view } = Astro.props;
     description={description}
     siteName={ui("brand_wordmark")}
     ogDescription={ogDescription}
+    robots={robots}
   />
   <body class="shell" data-view={view}>
     <a class="skip" href="#contenido">

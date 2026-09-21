@@ -1,6 +1,6 @@
 # Design Freeze · REGISTRO + FOLIO
 
-**Estado:** dirección visual congelada por decisión del autor. **Alcance de este documento:** registrar el conflicto con el Design Charter v1.2 y el estado del prototipo. Este rediseño es una **nueva dirección visual deliberada**, no una desviación silenciosa.
+**Estado:** dirección visual congelada por decisión del autor. **Alcance de este documento:** registrar el conflicto con el Design Charter v1.2 y el estado del rediseño (prototipo aprobado visualmente, migración completa). Este rediseño es una **nueva dirección visual deliberada**, no una desviación silenciosa.
 
 `governance/ALETHEIA-WEB-DESIGN-CHARTER.md` (v1.2, FROZEN, INV-14) **no se modifica** en este paso. Hasta que se apruebe una enmienda, este documento es la referencia del rediseño y el Charter sigue vigente para todo lo que este documento no reemplaza.
 
@@ -19,7 +19,7 @@ ALETHEIA se siente como **abrir un archivo de investigación**: el **Registro** 
 | Estructura por filetes de 1 px; sin sombras, gradientes, colores nuevos, fotos ni ilustraciones decorativas | §3.3, §14 |
 | Dos capas de estado (pregunta / afirmación) que nunca se mezclan | §20.3 |
 | Accesibilidad como restricción (foco visible, `prefers-reduced-motion`, no depender del color) | §13, §15 |
-| El contenido se lee sin JavaScript (INV-13): el prototipo tiene 0 JS | Architecture §4 |
+| El contenido se lee sin JavaScript (INV-13): el sitio tiene 0 JS | Architecture §4 |
 | Copy y contenido científico: ninguna palabra editorial se cambia | Editorial Contract |
 
 ## Qué se reemplaza y por qué
@@ -31,49 +31,49 @@ ALETHEIA se siente como **abrir un archivo de investigación**: el **Registro** 
 | §11.2 «Preguntas como puertas» (la pregunta grande, sola, en serif de 46 px) | Preguntas como filas tipadas de una línea; pregunta de 20–22 px en el Folio | La pregunta a 46 px ocupaba ~255 px y dejaba el estado a ~500 px de distancia. El estado debe estar pegado a la pregunta. |
 | §4 La Apertura y §18.1 el hero de la Home | Carátula mínima en el Folio cuando no hay pregunta seleccionada | La Home deja de ser una landing; la primera pantalla ya es la herramienta. |
 | §11.4 Mapa de preguntas como página larga | El Registro (índice persistente) | Ídem: escaneable de un vistazo. |
-| Navegación Hallazgos · Explorar · Límites · Método · Sobre | Registro · Límites · Documentos (Método, Versiones, Sobre) | Hallazgos y Explorar se integran en el Registro. **Solo el header cambia en este prototipo**; las páginas viejas siguen existiendo. |
+| Navegación Hallazgos · Explorar · Límites · Método · Sobre | Registro · Límites · Documentos (Método, Versiones, Sobre) | Hallazgos y Explorar se integran en el Registro: siguen existiendo como vistas del Registro (mismas URLs). |
 
-## Alcance del prototipo (esta rama)
+## Alcance de la migración (rama `redesign/registro-folio`)
 
-- Nuevo shell global (`Shell`, `ShellBar`, `StatusBar`), `Registro`, `Caratula`, `Folio`, `TrailRow` y `StateMark`.
-- `/` → Registro + carátula. `/labor/preguntas/q-0003` → Registro + Folio de Q-0003 (URL canónica sin cambios).
-- Las otras 17 preguntas, `/limites`, `/metodo`, `/versiones`, `/sobre`, `/hallazgos` y `/explorar` **siguen con la UI anterior** para poder comparar los dos lenguajes.
-- Responsive: escritorio (≥ 64 rem de ancho y ≥ 34 rem de alto) usa la grilla de `100dvh`; por debajo degrada a documento normal Registro → Folio. No hay `overflow:hidden` global.
-- Cadenas nuevas de interfaz (códigos de estado `OBS/REF/INS/NID/BLQ/ABI`, etiquetas del shell y de las vistas): están en `editorial/site/ui.yml`, selladas como `PENDING_AUTHOR_REVIEW`. No se aprobó nada.
-- Títulos cortos del Registro: son los títulos ya auditados de cada ficha (`finding.title` o glosa pública); no se creó texto editorial.
+- Un solo shell (`Shell`, `ShellBar`, `StatusBar`) con `Registro`, `Caratula`, `Folio`, `DocPanel`, `TrailRow` y `StateMark`. La UI anterior (`Base`, `SiteNav`, `SiteFooter`, `QuestionEntry`, `QuestionHeader`, `EvidenceTrail`, `ProvenanceDetails`, `WhatWeCanSay`, `WhatThisDoesNotMean`, `Frame`) se eliminó: no queda ninguna página con el lenguaje viejo.
+- `/` → Registro + carátula. Las **18** preguntas (`/labor/preguntas/q-0001` … `q-0018`, URLs sin cambios) → Registro + Folio con la pregunta seleccionada y los seis estados (OBS, REF, INS, NID, BLQ, ABI).
+- `/explorar`, `/hallazgos`, `/limites`, `/metodo`, `/versiones`, `/sobre` y `/404` → Registro persistente + panel de documento (`DocPanel`): barra de documentos con enlaces reales, cabecera compacta y un único scroll interno. Ningún texto se cambió; solo la presentación.
+- Navegación superior: **Registro** (Home, las 18 preguntas, Explorar y Hallazgos), **Límites** y **Documentos** (→ `/metodo`; Método, Versiones y Sobre se alcanzan desde la barra de documentos).
+- Escritorio (≥ 64 rem de ancho y ≥ 34 rem de alto): grilla de `100dvh`, sin scroll global; el scroll vive en el Folio o en el panel de documento. Móvil: Registro → Folio, documento normal.
+- 0 JavaScript: las cuatro vistas del Folio son radios + labels.
 
-## Impacto conocido en tests y gates (no se relajó nada)
+### Folio de las fichas mínimas (13 preguntas sin lectura completa)
 
-- **Gates:** todos los técnicos pasan. G-OD-14 sigue abierto (falta la revisión independiente). G-LEG-03 aparece como `REVIEW INVALIDATED BY DRIFT` porque cambió material sujeto a revisión (`src/`, `editorial/`); el pin de WEB-2 **no se actualiza** en esta rama.
-- **Tests que codifican el estado de WEB-2 (pin/recuentos):** `tests/reviews.test.ts` (recuentos 368/350 y pin) y el chequeo de gates de release en `tests/gates.test.ts` fallan por diseño en esta rama, por el mismo motivo.
-- **Tests que codifican el DOM de la Home vieja:** `tests/web1.test.ts` — «Home muestra 5 destacadas y 13 restantes» exige `data-featured` / `data-remaining` en `/`, y «aviso legal visible; cierre congelado en versiones» exige el commit completo y «CLOSED / FROZEN» en `/`. La Home nueva no tiene esas secciones (el commit abreviado y «Corpus congelado» están en la barra de estado). Se ajustarán cuando se apruebe el prototipo, no antes.
+El corpus no tiene texto editorial largo para ellas y **no se inventó ninguno**. El Folio muestra únicamente lo que ya es público y auditado:
 
-## Ronda de refinamiento (única, antes de la aprobación visual)
+- cabecera: ID, régimen, «Ficha mínima», resolución, pregunta pública, título público (glosa) y el título canónico en inglés como cita;
+- **Lectura:** resolución de la pregunta (y «Ausencia, no resultado negativo» cuando corresponde);
+- **Evidencia:** cada claim con su estado y su fuente (con la glosa de fuente si existe), o «Sin claim: no hay Rastro de claim.»;
+- **Límites:** los resultados preservados y las relaciones de gobernanza que tocan a esa pregunta, con enlace a `/limites`; si no hay ninguno, el texto general de Límites;
+- **Procedencia:** igual que las fichas completas (la fila «Raíz de evidencia» se omite si el corpus no la expone para la ficha).
 
-- **Lectura completa:** ya no se marca con peso 500. Las cinco filas (`data-tier="A"`) tienen el mismo peso y color que las demás y llevan un segundo filete fino de 1 px en el margen izquierdo de la fila. La leyenda del Registro lo explica como «lectura completa» (cadena `key_full_reading`, `PENDING_AUTHOR_REVIEW`). No es un estado epistemológico ni una jerarquía de evidencia. Para lectores de pantalla, esas filas anuncian «lectura completa».
-- **Códigos de estado:** se conservan `OBS/REF/INS/NID/BLQ/ABI`. La leyenda completa (glifo + código + denominación) sigue visible dentro del Registro; la altura de fila ahora es continua (22–30 px según el alto del viewport) para que entren 18 filas y la leyenda completa sin scroll propio desde ~650 px de alto.
-- **Folio en pantallas bajas:** cabecera compacta (ID + régimen + estado en una línea; alcance con la etiqueta en línea; cota estrictamente horizontal; pestañas compactas) y **un único scroll interno del Folio** (las pestañas quedan fijas arriba). A 1366×650 la zona útil de la vista activa pasó de ~180 px a ~236 px. Sin scroll global en 1366×650, 1366×768 ni 1920×1080.
-- **Títulos truncados:** se permiten en el prototipo (una línea con puntos suspensivos). Reporte, sin aprobar nada: `REGISTRO-TITLES-REPORT.md`.
-- **Documentos:** sigue apuntando a `/metodo` (UI vieja) a propósito. **Período:** no se agregó a la cota; sigue dentro de Alcance.
+Consecuencia visible y deliberada: esas vistas son cortas. No se rellenan.
+
+### Títulos cortos de navegación
+
+Los 18 títulos del Registro son texto editorial nuevo (`nav_titles` en `editorial/site/glosses.yml`), derivado de la pregunta pública, de una línea y sin truncamiento a 1366 px. Están sellados como `PENDING_AUTHOR_REVIEW`: **su aprobación es una decisión humana** (ver `REGISTRO-TITLES-REPORT.md`). La pregunta completa y el título de la ficha no se modificaron.
+
+## Ronda de refinamiento previa a la aprobación visual
+
+- **Lectura completa:** no se marca con peso; las cinco filas llevan un segundo filete fino de 1 px en el margen izquierdo, explicado en la leyenda del Registro como «lectura completa» (cadena `key_full_reading`, `PENDING_AUTHOR_REVIEW`). No es un estado epistemológico ni una jerarquía de evidencia. Los lectores de pantalla anuncian «lectura completa» en esas filas.
+- **Códigos de estado:** se conservan `OBS/REF/INS/NID/BLQ/ABI`; la leyenda completa (glifo + código + denominación) sigue visible en el Registro. La altura de fila es continua (22–30 px) para que entren 18 filas y la leyenda sin scroll propio desde ~650 px de alto.
+- **Folio en pantallas bajas:** cabecera compacta, cota horizontal y un único scroll interno del Folio (pestañas fijas). A 1366×650, la zona útil de la vista activa de Q-0003 pasó de ~180 a ~236 px.
+- **Documentos:** «Documentos» apunta a `/metodo`. **Período:** no se agregó a la cota; sigue dentro de Alcance.
 - Límite conocido: por debajo de ~630 px de alto el Registro deja de entrar completo y su lista scrollea (fila mínima de 22 px).
 
-## Incompatibilidades esperadas del prototipo (siete fallos de tests, no se relajó ningún gate)
+## Estado de tests y gates
 
-1. `tests/gates.test.ts` — «los técnicos no fallan; solo G-OD-14 permanece FAIL/OPEN…» (G-LEG-03 invalidado por drift del pin).
-2. `tests/reviews.test.ts` — «el pin está atado al commit WEB-2 y los hashes coinciden».
-3. `tests/reviews.test.ts` — «G-OD-14 PENDING no pasa; G-LEG-02 y G-LEG-03 cerrados sí».
-4. `tests/reviews.test.ts` — «18 public_question APPROVED; 350 PENDING_AUTHOR_REVIEW…» (recuentos de WEB-2).
-5. `tests/reviews.test.ts` — «368 textos: la suma de veredictos es exacta».
-6. `tests/web1.test.ts` — «Home muestra 5 destacadas y 13 restantes…» (`data-featured`/`data-remaining`).
-7. `tests/web1.test.ts` — «aviso legal visible; cierre congelado en versiones» (commit completo y «CLOSED / FROZEN» en `/`).
-
-Se resuelven al aprobar el prototipo (adaptar Home tests, actualizar pin de revisión), no antes.
+- Los tests que codificaban el DOM viejo (`data-featured`, `data-remaining`, commit completo y «CLOSED / FROZEN» en la Home) se **actualizaron** al DOM nuevo; no se restauró la UI anterior ni se relajó ningún gate. `scripts/e2e/run.ts` se reescribió para el shell nuevo (axe en cada vista, teclado, sin JS, reflow, un solo scroll interno).
+- El material de revisión cambió (`src/`, `editorial/`): el paquete de revisión se **re-fijó con el mecanismo canónico** (`tools/reviews`, `npm run reviews:build`) sobre el nuevo commit técnico. **G-OD-14 sigue abierto** (falta la revisión humana independiente); no se falsificó ninguna revisión humana ni legal.
 
 ## Decisiones visuales que requieren revisión humana
 
 1. Marca de «lectura completa» (segundo filete en el margen): ¿alcanza y es suficientemente discreta?
-2. Códigos de estado de tres letras (`OBS`, `REF`, …) junto a la marca: ¿son legibles sin la leyenda?
-3. Altura útil del Folio a 1366×650 (~236 px con un único scroll interno): ¿suficiente?
-4. Los títulos largos de las cinco fichas destacadas se truncan con puntos suspensivos en el Registro.
-5. «Documentos» apunta por ahora a `/metodo` (la UI vieja).
-6. La cota no muestra período porque el corpus no lo expone como dato estructurado: sigue dentro del texto de Alcance.
+2. Códigos de estado de tres letras (`OBS`, `REF`, …): ¿son legibles con la leyenda visible?
+3. Las vistas de las fichas mínimas son cortas por diseño: ¿se acepta o se prefiere una vista única?
+4. Aprobación de los 18 títulos cortos de navegación (`PENDING_AUTHOR_REVIEW`).

@@ -182,6 +182,9 @@ export function loadEditorialFromTexts(
       addGloss(`labor/${glossQid}#public_title`, g.title, "public_title");
       if (g.source !== undefined) addGloss(`labor/${glossQid}#source_gloss`, g.source, "source_gloss");
     }
+    for (const [navQid, u] of Object.entries(glosses.nav_titles)) {
+      addGloss(`labor/${navQid}#nav_title`, u, "nav_title");
+    }
     for (const [id, g] of Object.entries(glosses.governance)) {
       addGloss(`labor/${id}#public_title`, g.title, "limits_gloss");
       addGloss(`labor/${id}#public_inference`, g.inference, "limits_gloss");

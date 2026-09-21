@@ -1,6 +1,7 @@
 ---
-import { splitFirstSentence } from "../lib/render.ts";
+import { markAllNumerals, plainText, splitFirstSentence } from "../lib/render.ts";
 import { licenseOfRoot } from "../lib/registro.ts";
+import type { GovernanceItem, PreservedItem } from "../lib/site.ts";
 import type { QuestionView } from "../lib/view.ts";
 import Glyph from "./Glyph.astro";
 import MapState from "./MapState.astro";
@@ -11,13 +12,19 @@ import TrailRow from "./TrailRow.astro";
  * El Folio: expediente de la pregunta seleccionada. Primer nivel (sin scroll en un viewport razonable): ID, régimen,
  * estado, pregunta completa, respuesta, alcance y cota. Segundo nivel en cuatro vistas (Lectura · Evidencia · Límites ·
  * Procedencia) con radios + labels: 0 JavaScript. Todos los paneles están siempre en el HTML.
+ * Sirve a las 18 preguntas. Las fichas con lectura completa (`v.hasEditorial`) muestran su texto editorial; las fichas
+ * mínimas muestran lo que el corpus expone (resolución, afirmaciones, fuente, límites preservados y procedencia) sin
+ * inventar prosa: dónde no hay texto, no hay relleno.
  */
 interface Props {
   v: QuestionView;
   regime: string;
   shapeOf: (state: string) => string;
+  /** Resultados preservados y relaciones de gobernanza que tocan a esta pregunta (fichas mínimas). */
+  preserved: PreservedItem[];
+  governance: GovernanceItem[];
 }
-const { v, regime, shapeOf } = Astro.props;
+const { v, regime, shapeOf, preserved, governance } = Astro.props;
 const ui = v.ui;
 const p = v.provenance;
 
@@ -27,10 +34,15 @@ const notShown = v.doesNotMean.slice(0, PREVIEW_NOT);
 const notMore = v.doesNotMean.length - notShown.length;
 const needShown = v.wouldNeed.slice(0, PREVIEW_NEED);
 const needMore = v.wouldNeed.length - needShown.length;
-const limitsN = v.doesNotMean.length + v.wouldNeed.length;
+const minimal = !v.hasEditorial;
+const limitsN = minimal
+  ? preserved.length + governance.length
+  : v.doesNotMean.length + v.wouldNeed.length;
+const showScope = !minimal || plainText(v.scope) !== plainText(v.title);
 
 const sources = [...new Set(v.claims.map((c) => c.source))];
 const roots = p.entityIds.filter((x) => x.startsWith("LAB-ROOT-"));
+const note = v.claims.length === 1 ? v.sourceGloss : null;
 const licenses = roots.map((r) => ({ root: r, license: licenseOfRoot(r) }));
 const hasCgi = licenses.some((l) => l.license !== null);
 const split = (lic: string): { name: string; version: string } => {
@@ -58,6 +70,7 @@ const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
       <span>
         {ui("map_regime")} <span>{regime}</span>
       </span>
+      {minimal && <span>{ui("minimal_kicker")}</span>}
       <MapState
         state={v.state.question}
         label={v.state.questionLabel}
@@ -73,12 +86,24 @@ const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
       <SegmentText parts={v.title} />
     </p>
     <div class="cota">
-      <div class="cota__scope">
-        <h2>{ui("frame_scope")}</h2>
-        <p>
-          <SegmentText parts={v.scope} />
-        </p>
-      </div>
+      {showScope && (
+        <div class="cota__scope">
+          <h2>{ui("frame_scope")}</h2>
+          <p>
+            <SegmentText parts={v.scope} />
+          </p>
+        </div>
+      )}
+      {minimal && (
+        <div class="cota__scope">
+          <h2>{ui("canonical_cite")}</h2>
+          <p class="cota__cite">
+            <q lang="en" data-canonical-cite="true">
+              <SegmentText parts={markAllNumerals(v.canonicalTitle)} />
+            </q>
+          </p>
+        </div>
+      )}
       <dl class="cota__meta">
         <div class="cota__c">
           <dt>{ui("layer_claim")}</dt>
@@ -116,6 +141,7 @@ const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
                   <span>{src}</span>
                 </>
               ))}
+              {note !== null && <span class="src-note">{note}</span>}
             </dd>
           </div>
         )}
@@ -175,7 +201,19 @@ const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
           </p>
         )}
         {v.state.absenceNotNegative && <p class="lede">{v.absenceText}</p>}
-        <div class="cols">
+        {minimal && (
+          <div class="layer">
+            <h2 class="h">{ui("layer_question")}</h2>
+            <MapState
+              state={v.state.question}
+              label={v.state.questionLabel}
+              description={shapeOf(v.state.question)}
+              patternId={`lect-hatch-${v.id}`}
+            />
+            {v.claims.length === 0 && <p class="lede">{ui("no_claim_trail")}</p>}
+          </div>
+        )}
+        <div class="cols" hidden={minimal ? true : undefined}>
           <div>
             {v.canSay.length > 0 && (
               <section class="block" aria-labelledby="say-h">
@@ -253,7 +291,28 @@ const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
       </section>
 
       <section class="panel" id="p-evidencia" aria-label={ui("tab_evidence")}>
-        {v.trails.length === 0 ? (
+        {minimal && v.claims.length > 0 ? (
+          v.claims.map((cl) => (
+            <div class="layer" data-claim-id={cl.id} data-claim-state={cl.state}>
+              <h2 class="h">
+                {ui("layer_claim")}{" "}
+                <span class="mono" data-num="id">
+                  {cl.id}
+                </span>
+              </h2>
+              <MapState
+                state={cl.state}
+                label={cl.label}
+                description={shapeOf(cl.state)}
+                patternId={`ev-hatch-${cl.id}`}
+              />
+              <p class="layer__src">
+                {ui("frame_source")} <span class="mono">{cl.source}</span>
+                {note !== null && <span class="src-note">{note}</span>}
+              </p>
+            </div>
+          ))
+        ) : v.trails.length === 0 ? (
           <p class="lede">{ui("no_claim_trail")}</p>
         ) : (
           v.trails.map((t) => <TrailRow v={v} t={t} multi={v.trails.length > 1} />)
@@ -261,7 +320,64 @@ const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
       </section>
 
       <section class="panel" id="p-limites" aria-label={ui("tab_limits")}>
-        <div class="cols">
+        {minimal && (
+          <div class="cols">
+            <div>
+              {preserved.length > 0 && (
+                <section class="block" aria-labelledby="keep-h">
+                  <h2 class="h" id="keep-h">
+                    {ui("limits_keep_heading")}
+                  </h2>
+                  <ul class="list">
+                    {preserved.map((k) => (
+                      <li data-keep-id={k.id}>
+                        <Glyph kind="limit" size="0.8rem" />
+                        <p>
+                          <SegmentText parts={k.mustNotPublic} />{" "}
+                          <a class="r" href={`/limites#${k.id}`}>
+                            <span class="mono" data-num="id">
+                              {k.id}
+                            </span>
+                          </a>
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
+            <div>
+              {governance.length > 0 && (
+                <section class="block" aria-labelledby="gov-h">
+                  <h2 class="h" id="gov-h">
+                    {ui("limits_gr_heading")}
+                  </h2>
+                  <ul class="list">
+                    {governance.map((g) => (
+                      <li data-relation-id={g.id}>
+                        <Glyph kind="limit" size="0.8rem" />
+                        <p>
+                          <SegmentText parts={g.titlePublic} />{" "}
+                          <a class="r" href={`/limites#${g.id}`}>
+                            <span class="mono" data-num="id">
+                              {g.id}
+                            </span>
+                          </a>
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
+          </div>
+        )}
+        {minimal && limitsN === 0 && (
+          <p class="lede">
+            {ui("limits_lede")} <a href="/limites">{ui("nav_limits")}</a>
+          </p>
+        )}
+        <div class="cols" hidden={minimal ? true : undefined}>
           <div>
             {v.doesNotMean.length > 0 && (
               <section class="block" aria-labelledby="not-full-h">
@@ -368,17 +484,19 @@ const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
               <span data-num="hash">{p.editorialSha}</span>
             </dd>
           </div>
-          <div>
-            <dt>{ui("prov_root")}</dt>
-            <dd>
-              <span class="ids mono">
-                {roots.map((r) => (
-                  <span data-num="id">{r}</span>
-                ))}
-              </span>
-              {unresolved.length > 0 && <span>{ui("source_link_unresolved")}</span>}
-            </dd>
-          </div>
+          {roots.length > 0 && (
+            <div>
+              <dt>{ui("prov_root")}</dt>
+              <dd>
+                <span class="ids mono">
+                  {roots.map((r) => (
+                    <span data-num="id">{r}</span>
+                  ))}
+                </span>
+                {unresolved.length > 0 && <span>{ui("source_link_unresolved")}</span>}
+              </dd>
+            </div>
+          )}
           <div>
             <dt>{ui("prov_ids")}</dt>
             <dd class="mono ids">

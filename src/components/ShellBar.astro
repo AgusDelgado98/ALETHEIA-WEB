@@ -6,7 +6,14 @@ interface Props {
 }
 const { ui, tag } = Astro.props;
 const path = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
-const inRegistro = path === "/" || path === "" || path.startsWith("/labor/preguntas/");
+const inRegistro =
+  path === "/" ||
+  path === "" ||
+  path.startsWith("/labor/preguntas/") ||
+  path === "/explorar" ||
+  path === "/hallazgos";
+const inLimits = path === "/limites";
+const inDocs = path === "/metodo" || path === "/versiones" || path === "/sobre";
 ---
 
 <header class="bar">
@@ -17,8 +24,12 @@ const inRegistro = path === "/" || path === "" || path.startsWith("/labor/pregun
     <a href="/" aria-current={inRegistro ? "page" : undefined}>
       {ui("nav_registry")}
     </a>
-    <a href="/limites">{ui("nav_limits")}</a>
-    <a href="/metodo">{ui("nav_docs")}</a>
+    <a href="/limites" aria-current={inLimits ? "page" : undefined}>
+      {ui("nav_limits")}
+    </a>
+    <a href="/metodo" aria-current={inDocs ? "page" : undefined}>
+      {ui("nav_docs")}
+    </a>
   </nav>
   <span class="bar__ver mono" data-num="hash">
     {tag}

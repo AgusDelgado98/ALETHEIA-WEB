@@ -1,0 +1,48 @@
+---
+/**
+ * Panel de documento del shell Registro + Folio: las páginas que no son una pregunta (Explorar, Hallazgos, Límites, Método,
+ * Versiones, Sobre, 404) usan el mismo lenguaje que el Folio: cabecera compacta, una sola barra de navegación entre
+ * documentos (enlaces reales, 0 JavaScript) y UN scroll interno. Sin héroe, sin tarjetas.
+ */
+interface Props {
+  ui: (key: string) => string;
+  heading: string;
+  lede?: string | undefined;
+  kicker?: string | undefined;
+  /** Sin barra de documentos (404). */
+  bare?: boolean;
+}
+const { ui, heading, lede, kicker, bare = false } = Astro.props;
+const path = Astro.url.pathname
+  .replace(/\/index\.html$/, "/")
+  .replace(/\.html$/, "")
+  .replace(/\/$/, "");
+const DOCS = [
+  { href: "/explorar", key: "nav_explore" },
+  { href: "/hallazgos", key: "nav_findings" },
+  { href: "/limites", key: "nav_limits" },
+  { href: "/metodo", key: "nav_method" },
+  { href: "/versiones", key: "footer_versions" },
+  { href: "/sobre", key: "nav_about" },
+] as const;
+---
+
+<article class="doc" aria-labelledby="doc-h">
+  {!bare && (
+    <nav class="docnav" aria-label={ui("nav_docs")}>
+      {DOCS.map((d) => (
+        <a href={d.href} aria-current={path === d.href ? "page" : undefined}>
+          {ui(d.key)}
+        </a>
+      ))}
+    </nav>
+  )}
+  <div class="doc__body">
+    <header class="doc__head">
+      {kicker !== undefined && <p class="doc__k">{kicker}</p>}
+      <h1 id="doc-h">{heading}</h1>
+      {lede !== undefined && <p class="doc__lede">{lede}</p>}
+    </header>
+    <slot />
+  </div>
+</article>

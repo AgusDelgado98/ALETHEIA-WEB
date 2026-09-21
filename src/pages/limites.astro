@@ -1,23 +1,29 @@
 ---
 import CanonicalCite from "../components/CanonicalCite.astro";
+import DocPanel from "../components/DocPanel.astro";
+import Registro from "../components/Registro.astro";
 import SegmentText from "../components/SegmentText.astro";
-import Base from "../layouts/Base.astro";
+import Shell from "../layouts/Shell.astro";
+import { loadRegistro } from "../lib/registro.ts";
 import { loadSite } from "../lib/site.ts";
 
 const site = loadSite(process.cwd());
+const registro = loadRegistro(process.cwd());
 const ui = site.ui;
 ---
 
-<Base title={`${ui("limits_heading")} · ${ui("brand_wordmark")}`} description={ui("limits_lede")}>
-  <div class="wrap page">
-    <header class="ph">
-      <h1>{ui("limits_heading")}</h1>
-      <p>{ui("limits_lede")}</p>
-    </header>
-
-    <section aria-labelledby="gr-h">
-      <h2 id="gr-h">{ui("limits_gr_heading")}</h2>
-      <p>{ui("limits_gr_intro")}</p>
+<Shell
+  title={`${ui("limits_heading")} · ${ui("brand_wordmark")}`}
+  description={ui("limits_lede")}
+  view="doc"
+>
+  <Registro slot="registro" registro={registro} current={null} />
+  <DocPanel ui={ui} heading={ui("limits_heading")} lede={ui("limits_lede")}>
+    <section class="doc__sec" aria-labelledby="gr-h">
+      <h2 class="doc__h" id="gr-h">
+        {ui("limits_gr_heading")}
+      </h2>
+      <p class="doc__p">{ui("limits_gr_intro")}</p>
       <ol class="rows">
         {site.governance.map((g) => (
           <li id={g.id} data-relation-id={g.id} data-relation-category="GOVERNANCE_REQUIRED">
@@ -46,10 +52,12 @@ const ui = site.ui;
       </ol>
     </section>
 
-    <section aria-labelledby="keep-h">
-      <h2 id="keep-h">{ui("limits_keep_heading")}</h2>
-      <p>{ui("limits_keep_intro")}</p>
-      <p class="note">{ui("regime_c_note")}</p>
+    <section class="doc__sec" aria-labelledby="keep-h">
+      <h2 class="doc__h" id="keep-h">
+        {ui("limits_keep_heading")}
+      </h2>
+      <p class="doc__p">{ui("limits_keep_intro")}</p>
+      <p class="doc__p doc__p--note">{ui("regime_c_note")}</p>
       <ol class="rows">
         {site.preserved.map((k) => (
           <li
@@ -86,71 +94,5 @@ const ui = site.ui;
         ))}
       </ol>
     </section>
-  </div>
-</Base>
-
-<style>
-  .page {
-    padding-bottom: var(--space-10);
-  }
-  .ph,
-  section > p {
-    max-width: var(--measure-prose);
-  }
-  .ph {
-    padding-block: var(--space-8) var(--space-6);
-  }
-  h1 {
-    font: 300 var(--fs-question) / var(--lh-tight) var(--serif);
-    letter-spacing: -0.018em;
-  }
-  .ph p,
-  section > p {
-    margin-top: var(--space-5);
-    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
-    color: var(--graphite);
-  }
-  section {
-    padding-block: var(--space-8);
-    border-top: var(--rule) solid var(--hair);
-  }
-  h2 {
-    font: 300 var(--fs-serif-xl) / var(--lh-tight) var(--serif);
-    letter-spacing: -0.014em;
-    max-width: 22ch;
-  }
-  h3 {
-    font: 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
-    max-width: 46ch;
-  }
-  .rows {
-    margin-top: var(--space-7);
-    border-top: var(--rule) solid var(--hair);
-  }
-  .rows > li {
-    display: grid;
-    gap: var(--space-3);
-    padding-block: var(--space-6);
-    border-bottom: var(--rule) solid var(--hair);
-    max-width: 46rem;
-  }
-  .idrow {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    font: 500 var(--fs-label) / 1.4 var(--sans);
-    color: var(--graphite);
-  }
-  .lbl {
-    font: 500 var(--fs-label) / 1.4 var(--sans);
-    color: var(--graphite);
-  }
-  a {
-    font: 500 var(--fs-label) / 1.4 var(--sans);
-    text-underline-offset: 0.2em;
-  }
-  .note {
-    font: italic 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif) !important;
-    color: var(--ink) !important;
-  }
-</style>
+  </DocPanel>
+</Shell>

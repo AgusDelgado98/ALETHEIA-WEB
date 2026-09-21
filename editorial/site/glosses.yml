@@ -240,3 +240,79 @@ preserved:
       id: gloss-keep015-must-not
       text: "No completar por inferencia; no convertir en evidencia de ausencia ni de presencia de un derecho, una protección o una cobertura."
       maps_to: ["labor/KEEP-015#must_not"]
+
+# Títulos cortos de navegación del Registro (una línea, sin cifras ni verbos de causa). Derivan de la pregunta pública; no
+# la reemplazan ni cambian su estado. PENDING_AUTHOR_REVIEW: su aprobación es una decisión humana posterior.
+nav_titles:
+  LAB-Q-0001:
+    id: nav-q0001
+    text: "Composición del empleo registrado"
+    maps_to: ["labor/LAB-Q-0001#canonical_title"]
+  LAB-Q-0002:
+    id: nav-q0002
+    text: "Personas, puestos y relaciones por fuente"
+    maps_to: ["labor/LAB-Q-0002#canonical_title"]
+  LAB-Q-0003:
+    id: nav-q0003
+    text: "Horas, puestos y masa salarial"
+    maps_to: ["labor/LAB-Q-0003#canonical_title"]
+  LAB-Q-0004:
+    id: nav-q0004
+    text: "Composición con la encuesta de hogares"
+    maps_to: ["labor/LAB-Q-0004#canonical_title"]
+  LAB-Q-0005:
+    id: nav-q0005
+    text: "Ingreso laboral nominal y real"
+    maps_to: ["labor/LAB-Q-0005#canonical_title"]
+  LAB-Q-0006:
+    id: nav-q0006
+    text: "Registros administrativos y encuestas"
+    maps_to: ["labor/LAB-Q-0006#canonical_title"]
+  LAB-Q-0007:
+    id: nav-q0007
+    text: "Política de formalización y empleo registrado"
+    maps_to: ["labor/LAB-Q-0007#canonical_title"]
+  LAB-Q-0008:
+    id: nav-q0008
+    text: "Categorías de registro tributario"
+    maps_to: ["labor/LAB-Q-0008#canonical_title"]
+  LAB-Q-0009:
+    id: nav-q0009
+    text: "Registros fiscales e independencia económica"
+    maps_to: ["labor/LAB-Q-0009#canonical_title"]
+  LAB-Q-0010:
+    id: nav-q0010
+    text: "Proxies de dependencia económica"
+    maps_to: ["labor/LAB-Q-0010#canonical_title"]
+  LAB-Q-0011:
+    id: nav-q0011
+    text: "Independiente o dependiente encubierto"
+    maps_to: ["labor/LAB-Q-0011#canonical_title"]
+  LAB-Q-0012:
+    id: nav-q0012
+    text: "Protecciones y obligaciones por modalidad"
+    maps_to: ["labor/LAB-Q-0012#canonical_title"]
+  LAB-Q-0013:
+    id: nav-q0013
+    text: "Umbrales del Monotributo"
+    maps_to: ["labor/LAB-Q-0013#canonical_title"]
+  LAB-Q-0014:
+    id: nav-q0014
+    text: "Dimensiones del proceso de selección"
+    maps_to: ["labor/LAB-Q-0014#canonical_title"]
+  LAB-Q-0015:
+    id: nav-q0015
+    text: "Uso de IA en la contratación"
+    maps_to: ["labor/LAB-Q-0015#canonical_title"]
+  LAB-Q-0016:
+    id: nav-q0016
+    text: "Sesgos de un observatorio de avisos"
+    maps_to: ["labor/LAB-Q-0016#canonical_title"]
+  LAB-Q-0017:
+    id: nav-q0017
+    text: "Ghosting a candidatos"
+    maps_to: ["labor/LAB-Q-0017#canonical_title"]
+  LAB-Q-0018:
+    id: nav-q0018
+    text: "Avisos publicados y contrataciones reales"
+    maps_to: ["labor/LAB-Q-0018#canonical_title"]

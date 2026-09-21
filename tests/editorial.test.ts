@@ -128,6 +128,7 @@ describe("capa editorial de Q-0013", () => {
         "scope",
         "trail",
         "public_title",
+        "nav_title",
         "limits_gloss",
         "source_gloss",
       ].includes(x.section),

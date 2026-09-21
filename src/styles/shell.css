@@ -247,7 +247,7 @@
 .carat__s {
   margin-top: var(--space-2);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
   gap: var(--space-1) var(--space-5);
 }
 .carat__s li {
@@ -273,6 +273,7 @@
 
 /* Folio ────────────────────────────────────────────────────────────── */
 .folio {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto minmax(0, 1fr);
@@ -664,7 +665,8 @@
     display: none;
   }
   /* Un único scroll interno: todo el Folio (cabecera, pestañas y vista) se desplaza junto; las pestañas quedan fijas. */
-  .folio {
+  .folio,
+  .doc {
     display: block;
     overflow-y: auto;
   }
@@ -692,7 +694,8 @@
   .registro__list {
     overflow: visible;
   }
-  .shell[data-view="folio"] .registro {
+  .shell[data-view="folio"] .registro,
+  .shell[data-view="doc"] .registro {
     display: none;
   }
   .shell[data-view="registro"] .folio-wrap {
@@ -724,11 +727,24 @@
   }
   .folio__head,
   .tabbar,
-  .panels {
+  .panels,
+  .docnav,
+  .doc__body {
     padding-inline: var(--space-4);
   }
+  .doc__dl > div {
+    grid-template-columns: 1fr;
+  }
+  .registro__key ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+  }
+  .registro__key li {
+    white-space: normal;
+  }
   .tabbar {
-    gap: var(--space-4);
+    flex-wrap: wrap;
+    gap: 0 var(--space-4);
   }
   .prov > div {
     grid-template-columns: 1fr;
@@ -736,4 +752,220 @@
   .carat {
     padding: var(--space-4);
   }
+}
+
+/* Fichas mínimas: capas de resolución/afirmación y cita canónica dentro del Folio */
+.layer + .layer,
+.layer + .cols {
+  margin-top: var(--space-4);
+}
+.layer__src {
+  margin-top: var(--space-2);
+  font: 400 var(--fs-small) / 1.5 var(--sans);
+  color: var(--graphite);
+}
+.cota__cite q {
+  font-style: italic;
+  quotes: "«" "»" "‹" "›";
+}
+.cota__c .src-note {
+  margin-left: var(--space-2);
+  font-family: var(--sans);
+  color: var(--graphite);
+}
+.cols[hidden] {
+  display: none;
+}
+
+/* ── Documentos (Explorar, Hallazgos, Límites, Método, Versiones, Sobre, 404): mismo lenguaje que el Folio ───────── */
+.doc {
+  position: relative; /* contiene a los .sr-only (absolutos) dentro del scroll interno */
+  min-width: 0;
+  min-height: 0;
+}
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-5);
+  padding-inline: var(--space-5);
+  border-bottom: var(--rule) solid var(--hair);
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.docnav a {
+  padding: var(--space-1) 0;
+  font: 500 var(--fs-label) / 1.4 var(--sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--graphite);
+  border-bottom: 2px solid transparent;
+}
+.docnav a:hover {
+  color: var(--verd-deep);
+}
+.docnav a[aria-current="page"] {
+  color: var(--verd-deep);
+  border-bottom-color: var(--verd);
+}
+.doc__body {
+  padding: var(--space-4) var(--space-5) var(--space-6);
+  max-width: 64rem;
+}
+.doc__k {
+  font: 500 var(--fs-mono) / 1.4 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+.doc__head h1 {
+  font: 300 var(--fs-serif-md) / 1.2 var(--serif);
+  letter-spacing: var(--tracking-serif);
+}
+.doc__lede {
+  margin-top: var(--space-2);
+  font: 400 var(--fs-small) / 1.5 var(--sans);
+  color: var(--graphite);
+  max-width: 78ch;
+}
+.doc__notes {
+  margin-top: var(--space-2);
+  display: grid;
+  gap: var(--space-1);
+  font: 400 var(--fs-small) / 1.5 var(--sans);
+  color: var(--graphite);
+  max-width: 78ch;
+}
+.doc__sec {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: var(--rule) solid var(--hair);
+}
+.doc__head + .doc__sec {
+  margin-top: var(--space-3);
+}
+.doc__h {
+  font: 500 var(--fs-mono) / 1.5 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+.doc__p {
+  margin-top: var(--space-2);
+  font: 400 var(--fs-small) / 1.5 var(--sans);
+  max-width: 78ch;
+}
+.doc__p--note {
+  font: italic 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+}
+.doc__dl {
+  margin-top: var(--space-2);
+  display: grid;
+  font: 400 var(--fs-small) / 1.5 var(--sans);
+}
+.doc__dl > div {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  column-gap: var(--space-4);
+  padding-block: var(--space-1);
+  border-top: var(--rule) solid var(--hair);
+}
+.doc__dl dt {
+  color: var(--graphite);
+}
+.doc__dl dd {
+  overflow-wrap: anywhere;
+}
+
+/* Lista tipada de preguntas (Explorar y Hallazgos): ID · pregunta completa · resolución y afirmaciones */
+.mapl {
+  margin-top: var(--space-2);
+  border-top: var(--rule) solid var(--hair);
+}
+.mapl > li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+  padding-block: var(--space-2);
+  border-bottom: var(--rule) solid var(--hair);
+  font: 400 var(--fs-small) / 1.4 var(--sans);
+}
+.mapl .mono {
+  color: var(--graphite);
+}
+.mapl__q {
+  color: var(--ink);
+  text-decoration: none;
+}
+.mapl__q:hover {
+  color: var(--verd-deep);
+  text-decoration: underline;
+}
+.mapl__st {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  font-size: var(--fs-label);
+}
+.mapl__row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.mapl__zero,
+.mapl__q2 {
+  color: var(--graphite);
+}
+
+/* Límites: filas de relaciones y resultados preservados */
+.rows {
+  margin-top: var(--space-2);
+  border-top: var(--rule) solid var(--hair);
+}
+.rows > li {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-bottom: var(--rule) solid var(--hair);
+  font: 400 var(--fs-small) / 1.5 var(--sans);
+  max-width: 78ch;
+}
+.rows h3 {
+  font: 400 var(--fs-serif-sm) / 1.25 var(--serif);
+  letter-spacing: var(--tracking-serif);
+}
+.idrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font: 500 var(--fs-label) / 1.4 var(--sans);
+  color: var(--graphite);
+}
+.lbl {
+  margin-top: var(--space-1);
+  font: 500 var(--fs-mono) / 1.5 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+.rows a {
+  font: 500 var(--fs-label) / 1.4 var(--sans);
+  text-underline-offset: 0.2em;
+}
+
+/* Método: estados */
+.stl {
+  margin-top: var(--space-2);
+  display: grid;
+  gap: var(--space-1);
+  font: 400 var(--fs-small) / 1.5 var(--sans);
+}
+.stl li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }

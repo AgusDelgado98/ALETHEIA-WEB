@@ -139,7 +139,12 @@ function git(root: string, args: string[]): string | null {
 }
 
 export function yamlPathForUnit(u: EditorialUnit): string {
-  if (u.section === "public_title" || u.section === "limits_gloss" || u.section === "source_gloss")
+  if (
+    u.section === "public_title" ||
+    u.section === "nav_title" ||
+    u.section === "limits_gloss" ||
+    u.section === "source_gloss"
+  )
     return "editorial/site/glosses.yml";
   if (u.string_id.startsWith("site#states.") || u.string_id === "site#fixed.absence_not_negative")
     return "editorial/site/states.yml";
@@ -157,6 +162,7 @@ export function familyOf(u: EditorialUnit): EditorialFamily {
   if (u.kind === "state_label") return "states";
   if (u.kind === "fixed_text") return "disclaimers";
   if (u.kind === "finding_text") {
+    if (u.section === "nav_title") return "navigation";
     if (u.section === "trail") return "finding_trail";
     if (u.section === "disclosure") return "finding_disclosure";
     if (u.section === "can_say") return "finding_can_say";
@@ -193,6 +199,7 @@ export function familyOf(u: EditorialUnit): EditorialFamily {
 }
 
 export function pagesForUnit(u: EditorialUnit): string[] {
+  if (u.section === "nav_title") return ["*"];
   const q = /^labor\/(LAB-Q-[0-9]{4})#/.exec(u.string_id)?.[1];
   if (q !== undefined) {
     const pages = [questionPath(q)];

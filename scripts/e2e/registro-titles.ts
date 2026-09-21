@@ -31,22 +31,19 @@ try {
   );
   const line = (r: (typeof rows)[number]): string => {
     const n = r.id.replace("LAB-Q-", "");
-    const src =
-      r.tier === "A"
-        ? `\`editorial/labor/findings/${r.id}.yml\` → \`labor/${r.id}#finding.title\` (auditoría)`
-        : `\`editorial/site/glosses.yml\` → \`gloss-q${n}-title\` (auditoría \`labor/${r.id}#public_title\`)`;
+    const src = `\`editorial/site/glosses.yml\` → \`nav_titles.${r.id}\` (\`nav-q${n}\`; auditoría \`labor/${r.id}#nav_title\`)`;
     return `| ${r.id} | ${r.title} | ${r.truncated ? `Sí (${r.visibleW} de ${r.fullW} px)` : "No"} | ${[...r.title].length} | ${src} |`;
   };
   const cut = rows.filter((r) => r.truncated).length;
-  const md = `# Registro · títulos cortos (reporte, 1366 px)
+  const md = `# Registro · títulos cortos de navegación (reporte, 1366 px)
 
 Reporte generado por \`scripts/e2e/registro-titles.ts\` sobre la Home construida, a 1366×768 (el Registro mide igual a 1366×650).
-**No aprueba ni cambia ningún texto.** Todos los títulos están \`PENDING_AUTHOR_REVIEW\`; su aprobación es una decisión humana posterior.
-Los títulos son los ya existentes en el corpus editorial (título de la ficha para las cinco con lectura completa, glosa pública para las demás); no se inventó ninguno.
+Son textos editoriales nuevos (\`nav_titles\`), derivados de la pregunta pública de cada ficha: no la reemplazan ni cambian su estado.
+**Todos están \`PENDING_AUTHOR_REVIEW\`; su aprobación es una decisión humana.** Ninguno usa cifras, verbos de causa ni el estado.
 
 **${cut} de ${rows.length} se truncan** con puntos suspensivos en el Registro a 1366 px.
 
-| ID | Título corto actual | ¿Truncado a 1366? | Longitud (caracteres) | Fuente editorial |
+| ID | Título corto de navegación | ¿Truncado a 1366? | Longitud (caracteres) | Fuente editorial |
 |---|---|---|---|---|
 ${rows.map(line).join("\n")}
 `;

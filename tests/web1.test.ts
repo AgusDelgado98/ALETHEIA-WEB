@@ -38,21 +38,21 @@ describe("WEB-1 arquitectura pública", () => {
   );
 
   it.skipIf(!ctx.html.has("/"))(
-    "Home muestra 5 destacadas y 13 restantes; las 18 preguntas",
+    "el Registro de la Home lista las 18 (5 con lectura completa, 13 mínimas); Hallazgos solo las 5",
     () => {
       const home = ctx.html.get("/") ?? "";
       const hall = ctx.html.get("/hallazgos") ?? "";
-      expect(home).toContain('data-featured="true"');
-      expect(home).toContain('data-remaining="true"');
+      const tier = (id: string): string | undefined =>
+        new RegExp(`data-index-question="${id}"[^>]*data-tier="([AB])"`).exec(home)?.[1];
       for (const id of FEATURED_QUESTION_IDS) {
-        expect(home, id).toContain(`data-index-question="${id}"`);
-        expect(hall, id).toContain(`data-index-question="${id}"`);
+        expect(tier(id), id).toBe("A");
+        expect(hall, id).toContain(`data-finding-question="${id}"`);
       }
       const remaining = ctx.generated.questions.filter((q) => !FEATURED.has(q.id));
       expect(remaining).toHaveLength(13);
       for (const q of remaining) {
-        expect(home, q.id).toContain(`data-index-question="${q.id}"`);
-        expect(hall.includes(`data-index-question="${q.id}"`), q.id).toBe(false);
+        expect(tier(q.id), q.id).toBe("B");
+        expect(hall.includes(`data-finding-question="${q.id}"`), q.id).toBe(false);
       }
     },
   );
@@ -62,7 +62,7 @@ describe("WEB-1 arquitectura pública", () => {
     const map = ctx.html.get("/explorar") ?? "";
     const lim = ctx.html.get("/limites") ?? "";
     for (const id of REGIME_C_QUESTION_IDS) {
-      expect(hall.includes(`data-index-question="${id}"`), id).toBe(false);
+      expect(hall.includes(`data-finding-question="${id}"`), id).toBe(false);
       expect(map, id).toContain(`data-question-id="${id}"`);
       expect(map, id).toContain('data-regime="C"');
     }
@@ -87,8 +87,10 @@ describe("WEB-1 arquitectura pública", () => {
     expect(sobre).toContain("No es asesoramiento legal");
     expect(ver).toContain(ctx.generated.manifest.pin.tag);
     expect(ver).toContain(ctx.generated.manifest.pin.commit);
-    expect(home).toContain(ctx.generated.manifest.pin.commit);
-    expect(home).toContain("CLOSED / FROZEN");
+    expect(ver).toContain("CLOSED / FROZEN");
+    // La Home ya no es una landing: el corte congelado vive en la barra de estado (tag y commit abreviado).
+    expect(home).toContain(ctx.generated.manifest.pin.commit.slice(0, 7));
+    expect(home).toContain("Corpus congelado");
   });
 
   it.skipIf(!ctx.html.has("/"))(
