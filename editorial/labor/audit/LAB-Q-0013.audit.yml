@@ -3371,6 +3371,25 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.back_registry
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 890086b16b4804070e738d2cd6b4966022becf5cd90d372afa97bc9f70b551c2
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.brand_wordmark
     kind: ui_label
     canonical_refs: []
@@ -3428,6 +3447,63 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.carat_pick
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 89acbb9e64de6b22bf1059cd34f2bd32735416ecfd04d9d8ca4b345fb2df61af
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.carat_states
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 95028633024344baccce402f6f353774bc2a5b527833e763c8380639aafc3b40
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.carat_unit
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 2fdd66f291baf46b4f4d1794d0ba28e7b21476d7bb900c64f04b3565025d234f
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.cite_template
     kind: ui_label
     canonical_refs: []
@@ -4264,6 +4340,44 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.folio_label
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 8edf7ac3306af82f4ed06d9122163fcccba96ee8c39122fa304266729855fd84
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.folio_views
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 6673a1f45bb0b69afec74456f5db08226b4a0bc4307d925df7afb86e201c6438
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.footer_frozen
     kind: ui_label
     canonical_refs: []
@@ -4326,6 +4440,25 @@ records:
     canonical_refs: []
     canonical_hash: null
     text_hash: 0299c38fd9e11cf9d9a279104bc8d0c4a2fd5e90d1f3f2bd118ff80339b49042
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.frame_license
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 3fbec424ab7c03c26b4668fa04f119f448a17c21a34c24be397cbeff5cf46c09
     revision: 2
     dimensions:
       semantics: PASS
@@ -5556,6 +5689,25 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.license_not_recorded
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 6ef41464c2ea1314e5dfd8d6e46640734b9b31a8faf2b6fa1f1621ddf7e5545b
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.limits_gr_heading
     kind: ui_label
     canonical_refs: []
@@ -6354,6 +6506,25 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.more_in_limits
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: cc33a84bb1dcb78b9561468455d008b40ea939027fbd979145513550419f7de5
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.nav_about
     kind: ui_label
     canonical_refs: []
@@ -6378,6 +6549,25 @@ records:
     canonical_refs: []
     canonical_hash: null
     text_hash: 97a0fa0947ad8f6a4eb914e30802aaf96fac1b5aa8571f0d7d37fea7c32b8dc6
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.nav_docs
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 22a3ce5a16598a27559c4669a29c121eebeeac6000252a4a136b4a32bbf1ee8b
     revision: 2
     dimensions:
       semantics: PASS
@@ -6568,6 +6758,25 @@ records:
     canonical_refs: []
     canonical_hash: null
     text_hash: 8ca33ca374295e160c229ff764486126c507af1dde03fc2d4e84f6ffe7a1cf68
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.nav_registry
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 890086b16b4804070e738d2cd6b4966022becf5cd90d372afa97bc9f70b551c2
     revision: 2
     dimensions:
       semantics: PASS
@@ -7437,6 +7646,25 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.prov_root
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: cbaa49628c9bb78537a67d658abfb9ebf7a25bf15db24a2d92c7e23d450667ad
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.prov_tag
     kind: ui_label
     canonical_refs: []
@@ -7651,6 +7879,44 @@ records:
     canonical_refs: []
     canonical_hash: null
     text_hash: 321a21f5694627a49af2fcc31370b89573a7528b197156cbddff9efb2df7c06b
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.registry_key
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 21425c3e411a49e9cdda2bd2213f54da8fc8fedd18c05b84386f2510f13f08db
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.registry_label
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 07ac8580fe1cb35c52cd25445cce3785a75a02751c86d8bf4dc4423bd8961358
     revision: 2
     dimensions:
       semantics: PASS
@@ -8045,6 +8311,329 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.status_web
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 4703d8d6b344c7e5e48ee7e6d46fc6c826bde981ff0c5fb603689adfa77e9e5e
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stc_blocked
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: e1ea91e4f4d008785a4f90e2aef0ca1e4f4bcac007cf9f52cbe0674126167d5d
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stc_insufficient
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 2e04f6bb390c4082c97a57b6c3e60715b7452fc644d37ca7a21f90d180a76794
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stc_not_identifiable
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: ee7f54dd5833aff1b92fbdc5478ebe6ceaf7009d2f5e5f0ce79af1066d340311
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stc_observed
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: f4726ecd396f63e284acd1984093a78fbdfe82cf24a2b290627b0248471e1a2e
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stc_open
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 45b14de1a664aabfc059e8dfa1d5bc59f7f7ca474f019f70e7ca77c51aaafd33
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stc_refuted
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 4943e8f40e898cf65a89387defce6ac48c7f3701870945d3d33757aee614ea2b
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stn_blocked
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 01ba3733a0297068f77687fed1b4509be96238d2760ef4e4e3367808f89b1705
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stn_insufficient
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 8e5bebf47fa00f3c2f74d88c89c2a6a455d273910387f16a4518250f51c5075f
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stn_not_identifiable
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: a5c74b901cb2fdd32908841bbd3429fc191d55caba19d830b6476bf186d4285c
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stn_observed
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: ff74a29e71f14e9f617c53c62a745ed3bb3a4d1d3509c3f4251766134c41fe87
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stn_open
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 9f2da425b2909c2657dc822d5e17e337085828e32f8c73937932e2be05e878b1
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.stn_refuted
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 709c8fbd02abcd3294352db12ea893f4a759b3a89834a5f28a5a052f0842d820
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.tab_evidence
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: d3fb82e539b4c15d3acaecb48f29c8e4d53c97145446e9af39724d61137d59aa
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.tab_limits
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: a5d90b084b1d94b84bd9a7efd9271f26727add67c4aeb47476e79f102f3c6fa9
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.tab_prov
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 5424e3b7d47b6823c88a9a8588918913701e7a1bf15c7ec5c86d8d9eee308707
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.tab_read
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: e6d04dc0062798b5f7d4cbe2eeb65de7986f3e776f15093b1f3c6b88c85f4a1a
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.trail_direction
     kind: ui_label
     canonical_refs: []
@@ -8069,6 +8658,25 @@ records:
     canonical_refs: []
     canonical_hash: null
     text_hash: edfef5b701814c6fb80c85104b77199d1f827be314b3881ce75ee8aa97550e39
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
+  - string_id: site#ui.trail_direction_h
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 195349e5e5332fe3953be07feeb065fdd76f254bd0cca19ea2ab7b9de8117534
     revision: 2
     dimensions:
       semantics: PASS

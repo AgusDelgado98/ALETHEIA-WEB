@@ -1,0 +1,30 @@
+---
+/**
+ * Barra de estado persistente: corpus congelado, separación entre investigación y presentación web, y acceso a
+ * atribuciones y licencias. Es parte del instrumento, no un footer de columnas.
+ */
+interface Props {
+  ui: (key: string) => string;
+  tag: string;
+  commitShort: string;
+}
+const { ui, tag, commitShort } = Astro.props;
+---
+
+<footer class="status">
+  <p>
+    <span>{ui("footer_frozen")}</span>
+    <span class="mono" data-num="hash">
+      {tag}
+    </span>
+    <span class="mono" data-num="hash">
+      {commitShort}
+    </span>
+  </p>
+  <p>{ui("status_web")}</p>
+  <p class="status__end">
+    <a href="/versiones">{ui("footer_versions")}</a>
+    <span aria-hidden="true">·</span>
+    <a href="/sobre#atribuciones">{ui("attrib_heading")}</a>
+  </p>
+</footer>

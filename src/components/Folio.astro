@@ -1,0 +1,424 @@
+---
+import { splitFirstSentence } from "../lib/render.ts";
+import { licenseOfRoot } from "../lib/registro.ts";
+import type { QuestionView } from "../lib/view.ts";
+import Glyph from "./Glyph.astro";
+import MapState from "./MapState.astro";
+import SegmentText from "./SegmentText.astro";
+import StateMark from "./StateMark.astro";
+import TrailRow from "./TrailRow.astro";
+/**
+ * El Folio: expediente de la pregunta seleccionada. Primer nivel (sin scroll en un viewport razonable): ID, régimen,
+ * estado, pregunta completa, respuesta, alcance y cota. Segundo nivel en cuatro vistas (Lectura · Evidencia · Límites ·
+ * Procedencia) con radios + labels: 0 JavaScript. Todos los paneles están siempre en el HTML.
+ */
+interface Props {
+  v: QuestionView;
+  regime: string;
+  shapeOf: (state: string) => string;
+}
+const { v, regime, shapeOf } = Astro.props;
+const ui = v.ui;
+const p = v.provenance;
+
+const PREVIEW_NOT = 4;
+const PREVIEW_NEED = 2;
+const notShown = v.doesNotMean.slice(0, PREVIEW_NOT);
+const notMore = v.doesNotMean.length - notShown.length;
+const needShown = v.wouldNeed.slice(0, PREVIEW_NEED);
+const needMore = v.wouldNeed.length - needShown.length;
+const limitsN = v.doesNotMean.length + v.wouldNeed.length;
+
+const sources = [...new Set(v.claims.map((c) => c.source))];
+const roots = p.entityIds.filter((x) => x.startsWith("LAB-ROOT-"));
+const licenses = roots.map((r) => ({ root: r, license: licenseOfRoot(r) }));
+const hasCgi = licenses.some((l) => l.license !== null);
+const split = (lic: string): { name: string; version: string } => {
+  const i = lic.lastIndexOf(" ");
+  return { name: lic.slice(0, i), version: lic.slice(i + 1) };
+};
+const unresolved = v.trails.filter((t) => t.source.linkUnresolved);
+---
+
+<article
+  class="folio"
+  aria-label={ui("folio_label")}
+  data-question-id={v.id}
+  data-question-resolution={v.state.question}
+  data-claim-id={v.hasEditorial && v.claim !== null ? v.claim.id : undefined}
+  data-claim-state={v.hasEditorial && v.state.claim !== null ? v.state.claim : undefined}
+>
+  <header class="folio__head">
+    <a class="back" href="/">
+      <span aria-hidden="true">←</span>
+      {ui("back_registry")}
+    </a>
+    <p class="folio__meta">
+      <span data-num="id">{v.id}</span>
+      <span>
+        {ui("map_regime")} <span>{regime}</span>
+      </span>
+      <MapState
+        state={v.state.question}
+        label={v.state.questionLabel}
+        description={shapeOf(v.state.question)}
+        patternId={`folio-hatch-${v.id}`}
+      />
+    </p>
+    <h1 class="folio__q" data-canonical={v.canonicalQuestion}>
+      {v.publicQuestion}
+    </h1>
+    <p class="folio__ans">
+      <span class="k">{ui("answer_heading")}</span>
+      <SegmentText parts={v.title} />
+    </p>
+    <div class="cota">
+      <div class="cota__scope">
+        <h2>{ui("frame_scope")}</h2>
+        <p>
+          <SegmentText parts={v.scope} />
+        </p>
+      </div>
+      <dl class="cota__meta">
+        <div class="cota__c">
+          <dt>{ui("layer_claim")}</dt>
+          <dd>
+            {v.claims.length === 0 ? (
+              ui("no_claim_trail")
+            ) : (
+              <ul>
+                {v.claims.map((cl) => (
+                  <li data-claim-id={cl.id} data-claim-state={cl.state}>
+                    <StateMark state={cl.state} uid={cl.id} />
+                    <span class="mono" data-num="id">
+                      {cl.id}
+                    </span>
+                    <span>{cl.label}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </dd>
+        </div>
+        {sources.length > 0 && (
+          <div class="cota__c">
+            <dt>
+              <Glyph kind="source" size="0.65rem" /> {ui("frame_source")}
+            </dt>
+            <dd class="mono">
+              {sources.map((src, i) => (
+                <>
+                  {i > 0 && (
+                    <span class="sep" aria-hidden="true">
+                      ·
+                    </span>
+                  )}
+                  <span>{src}</span>
+                </>
+              ))}
+            </dd>
+          </div>
+        )}
+        {licenses.length > 0 && (
+          <div class="cota__c">
+            <dt>{ui("frame_license")}</dt>
+            <dd>
+              <ul>
+                {licenses.map((l) => (
+                  <li>
+                    <span class="mono" data-num="id">
+                      {l.root}
+                    </span>
+                    {l.license === null ? (
+                      <span>{ui("license_not_recorded")}</span>
+                    ) : (
+                      <span>
+                        {split(l.license).name}{" "}
+                        <span data-num="id">{split(l.license).version}</span>
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              {hasCgi && <a href="/sobre#atribuciones">{ui("attrib_heading")}</a>}
+            </dd>
+          </div>
+        )}
+      </dl>
+    </div>
+  </header>
+
+  <div class="views" role="radiogroup" aria-label={ui("folio_views")}>
+    <input type="radio" name="folio-vista" id="v-lectura" checked />
+    <input type="radio" name="folio-vista" id="v-evidencia" />
+    <input type="radio" name="folio-vista" id="v-limites" />
+    <input type="radio" name="folio-vista" id="v-prov" />
+    <div class="tabbar">
+      <label for="v-lectura">{ui("tab_read")}</label>
+      <label for="v-evidencia">{ui("tab_evidence")}</label>
+      <label for="v-limites">
+        {ui("tab_limits")}
+        {limitsN > 0 && (
+          <span class="n" data-num="count">
+            {limitsN}
+          </span>
+        )}
+      </label>
+      <label for="v-prov">{ui("tab_prov")}</label>
+    </div>
+
+    <div class="panels">
+      <section class="panel" id="p-lectura" aria-label={ui("tab_read")}>
+        {v.intro.length > 0 && (
+          <p class="lede">
+            <SegmentText parts={v.intro} />
+          </p>
+        )}
+        {v.state.absenceNotNegative && <p class="lede">{v.absenceText}</p>}
+        <div class="cols">
+          <div>
+            {v.canSay.length > 0 && (
+              <section class="block" aria-labelledby="say-h">
+                <h2 class="h" id="say-h">
+                  {ui("say_heading")}
+                </h2>
+                <ul class="list list--say">
+                  {v.canSay.map((it) => (
+                    <li id={`say-${it.id}`}>
+                      <SegmentText parts={it.parts} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
+          <div>
+            {notShown.length > 0 && (
+              <section class="block" aria-labelledby="not-h">
+                <h2 class="h" id="not-h">
+                  {ui("not_heading")}
+                </h2>
+                <ul class="list">
+                  {notShown.map((it) => {
+                    const s = splitFirstSentence(it.parts);
+                    return (
+                      <li>
+                        <Glyph kind="limit" size="0.8rem" />
+                        <p>
+                          <SegmentText parts={s.main} />
+                          {s.reason.length > 0 && (
+                            <>
+                              {" "}
+                              <span class="r">
+                                <SegmentText parts={s.reason} />
+                              </span>
+                            </>
+                          )}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ul>
+                {notMore > 0 && (
+                  <label class="more" for="v-limites">
+                    +<span data-num="count">{notMore}</span> {ui("more_in_limits")}
+                  </label>
+                )}
+              </section>
+            )}
+            {needShown.length > 0 && (
+              <section class="block" aria-labelledby="need-h">
+                <h2 class="h" id="need-h">
+                  {ui("need_heading")}
+                </h2>
+                <ul class="list">
+                  {needShown.map((it) => (
+                    <li>
+                      <Glyph kind="hypothesis" fill="ghost" size="0.8rem" />
+                      <p>
+                        <SegmentText parts={it.parts} />
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+                {needMore > 0 && (
+                  <label class="more" for="v-limites">
+                    +<span data-num="count">{needMore}</span> {ui("more_in_limits")}
+                  </label>
+                )}
+              </section>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="p-evidencia" aria-label={ui("tab_evidence")}>
+        {v.trails.length === 0 ? (
+          <p class="lede">{ui("no_claim_trail")}</p>
+        ) : (
+          v.trails.map((t) => <TrailRow v={v} t={t} multi={v.trails.length > 1} />)
+        )}
+      </section>
+
+      <section class="panel" id="p-limites" aria-label={ui("tab_limits")}>
+        <div class="cols">
+          <div>
+            {v.doesNotMean.length > 0 && (
+              <section class="block" aria-labelledby="not-full-h">
+                <h2 class="h" id="not-full-h">
+                  {ui("not_heading")}
+                </h2>
+                <ul class="list">
+                  {v.doesNotMean.map((it) => {
+                    const s = splitFirstSentence(it.parts);
+                    return (
+                      <li id={`not-${it.id}`}>
+                        <Glyph kind="limit" size="0.8rem" />
+                        <p>
+                          <SegmentText parts={s.main} />
+                          {s.reason.length > 0 && (
+                            <>
+                              {" "}
+                              <span class="r">
+                                <SegmentText parts={s.reason} />
+                              </span>
+                            </>
+                          )}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            )}
+          </div>
+          <div>
+            {v.wouldNeed.length > 0 && (
+              <section class="block" aria-labelledby="need-full-h">
+                <h2 class="h" id="need-full-h">
+                  {ui("need_heading")}
+                </h2>
+                <ul class="list">
+                  {v.wouldNeed.map((it) => (
+                    <li id={`need-${it.id}`}>
+                      <Glyph kind="hypothesis" fill="ghost" size="0.8rem" />
+                      <p>
+                        <SegmentText parts={it.parts} />
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+            {v.trails.some((t) => t.auditOnly.length > 0) && (
+              <section class="block" aria-labelledby="audit-h">
+                <h2 class="h" id="audit-h">
+                  {ui("prov_limits_audit")}
+                </h2>
+                <ul class="list">
+                  {v.trails.flatMap((t) =>
+                    t.auditOnly.map((a) => (
+                      <li>
+                        <Glyph kind="limit" size="0.8rem" />
+                        <p>
+                          <span class="mono" data-num="id">
+                            {a.ownerId}
+                          </span>{" "}
+                          <SegmentText parts={a.text} />
+                        </p>
+                      </li>
+                    )),
+                  )}
+                </ul>
+              </section>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="p-prov" aria-label={ui("tab_prov")}>
+        <dl class="prov">
+          <div>
+            <dt>{ui("prov_module")}</dt>
+            <dd class="mono">
+              {v.moduleId} <span data-num="version">{p.moduleVersion}</span>
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_tag")}</dt>
+            <dd class="mono">
+              <span data-num="hash">{p.tag}</span>
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_commit")}</dt>
+            <dd class="mono">
+              <span data-num="hash">{p.commit}</span>
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_manifest")}</dt>
+            <dd class="mono">
+              <span data-num="hash">{p.manifestSha}</span>
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_editorial")}</dt>
+            <dd class="mono">
+              <span data-num="hash">{p.editorialSha}</span>
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_root")}</dt>
+            <dd>
+              <span class="ids mono">
+                {roots.map((r) => (
+                  <span data-num="id">{r}</span>
+                ))}
+              </span>
+              {unresolved.length > 0 && <span>{ui("source_link_unresolved")}</span>}
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_ids")}</dt>
+            <dd class="mono ids">
+              {p.entityIds.map((x) => (
+                <span data-num="id">{x}</span>
+              ))}
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_canonical_question")}</dt>
+            <dd lang="en">{v.canonicalQuestion}</dd>
+          </div>
+          <div>
+            <dt>{ui("prov_disclosure")}</dt>
+            <dd>
+              {p.disclosure !== null ? (
+                <SegmentText parts={p.disclosure} />
+              ) : p.disclosureRequired ? (
+                ""
+              ) : (
+                ui("prov_disclosure_none")
+              )}
+            </dd>
+          </div>
+          <div>
+            <dt>{ui("prov_cite")}</dt>
+            <dd>
+              <SegmentText parts={p.cite} />
+            </dd>
+          </div>
+          {p.pendingSignoff > 0 && (
+            <div>
+              <dt>{ui("prov_pending_signoff")}</dt>
+              <dd class="mono">
+                <span data-num="count">{p.pendingSignoff}</span>
+              </dd>
+            </div>
+          )}
+        </dl>
+      </section>
+    </div>
+  </div>
+</article>

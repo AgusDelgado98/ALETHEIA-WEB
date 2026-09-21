@@ -11,15 +11,18 @@ import WhatThisDoesNotMean from "../../../components/WhatThisDoesNotMean.astro";
 import WhatWeCanSay from "../../../components/WhatWeCanSay.astro";
 import Base from "../../../layouts/Base.astro";
 import { markAllNumerals, plainText } from "../../../lib/render.ts";
+import { MIGRATED_QUESTION_IDS } from "../../../lib/registro.ts";
 import { isDocumentaryObserved } from "../../../lib/site.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
 /** Una ruta por cada pregunta del corpus. Q-0003, Q-0004, Q-0005, Q-0013 y Q-0011 conservan ficha editorial; el resto es canónico mínimo. */
 export function getStaticPaths() {
-  return availableQuestionIds(process.cwd()).map((id) => ({
-    params: { id: questionSlug(id) },
-    props: { qid: id },
-  }));
+  return availableQuestionIds(process.cwd())
+    .filter((id) => !MIGRATED_QUESTION_IDS.includes(id))
+    .map((id) => ({
+      params: { id: questionSlug(id) },
+      props: { qid: id },
+    }));
 }
 const { qid } = Astro.props;
 const v = loadQuestionView(process.cwd(), qid);

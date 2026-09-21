@@ -1,0 +1,57 @@
+---
+import { SITE_ORIGIN } from "../lib/origin.ts";
+/**
+ * <head> compartido por Base (UI editorial) y Shell (Registro + Folio): metadatos, canónica y precarga de fuentes.
+ * Solo texto y enlaces internos: sin scripts ni recursos de terceros (G-PERF-04, G-UX-05).
+ */
+interface Props {
+  title: string;
+  description: string;
+  siteName: string;
+  ogType?: string | undefined;
+  ogDescription?: string | undefined;
+  robots?: string | undefined;
+}
+const { title, description, siteName } = Astro.props;
+const ogType = Astro.props.ogType ?? "website";
+const ogDescription = Astro.props.ogDescription ?? description;
+const robots = Astro.props.robots;
+const current = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
+const path = current === "" ? "/" : current;
+const canonical = path === "/" ? SITE_ORIGIN : `${SITE_ORIGIN}${path}`;
+const ogUrl = /[0-9]/.test(path) ? undefined : canonical;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {robots !== undefined && <meta name="robots" content={robots} />}
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={ogDescription} />
+  {ogUrl !== undefined && <meta property="og:url" content={ogUrl} />}
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content={siteName} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={ogDescription} />
+  <link
+    rel="preload"
+    href="/fonts/newsreader-latin-wght.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/instrument-sans-latin-wght.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <slot />
+</head>

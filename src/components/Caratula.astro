@@ -1,0 +1,33 @@
+---
+import { shapeKey, STATES, type Registro } from "../lib/registro.ts";
+import StateMark from "./StateMark.astro";
+/**
+ * Carátula del Folio cuando no hay pregunta seleccionada: qué es ALETHEIA, cuál es la unidad, cómo leer los estados
+ * y que el corpus está cerrado y la web es una presentación posterior. Sin hero, sin cifras, sin CTA.
+ */
+interface Props {
+  registro: Registro;
+}
+const { registro } = Astro.props;
+const ui = registro.ui;
+const labels = new Map(registro.groups.flatMap((g) => g.rows).map((r) => [r.state, r.stateLabel]));
+---
+
+<section class="carat" aria-labelledby="carat-h">
+  <h1 id="carat-h">{ui("about_what")}</h1>
+  <p class="carat__p">{ui("carat_unit")}</p>
+  <h2 class="carat__k">{ui("carat_states")}</h2>
+  <ul class="carat__s">
+    {STATES.map((s) => (
+      <li>
+        <StateMark state={s.state} uid={`carat-${s.state}`} />
+        <span class="mono">{ui(s.code)}</span>
+        <span>{labels.get(s.state)}</span>
+        <span class="sr-only">{ui(shapeKey(s.state))}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="carat__f">{ui("method_observed")}</p>
+  <p class="carat__f">{ui("home_closure_lede")}</p>
+  <p class="carat__pick">{ui("carat_pick")}</p>
+</section>

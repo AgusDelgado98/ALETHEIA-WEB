@@ -1,0 +1,70 @@
+---
+import { shapeKey, STATES, type Registro } from "../lib/registro.ts";
+import StateMark from "./StateMark.astro";
+/**
+ * El Registro: las 18 preguntas como filas tipadas de una línea (marca de estado + código + ID + título corto).
+ * El estado va PEGADO a la pregunta. Sin tarjetas, cajas ni sombras. Cada fila es un enlace real a la URL canónica
+ * de la pregunta (navegación HTML normal). `current` marca la fila abierta con una regla fina y un tinte sutil.
+ */
+interface Props {
+  registro: Registro;
+  current: string | null;
+}
+const { registro, current } = Astro.props;
+const ui = registro.ui;
+---
+
+<nav class="registro" aria-labelledby="registro-h">
+  <div class="registro__head">
+    <h2 id="registro-h">{ui("nav_registry")}</h2>
+    <p>
+      {ui("count_questions")} <span data-num="count">{registro.count}</span>
+    </p>
+  </div>
+  <div class="registro__list">
+    {registro.groups.map((g) => (
+      <section class="reg" aria-labelledby={`reg-${g.regime}`}>
+        <h3 class="reg__reg" id={`reg-${g.regime}`}>
+          {ui("map_regime")} <span>{g.regime}</span>
+        </h3>
+        <ol>
+          {g.rows.map((r) => (
+            <li>
+              <a
+                class="row"
+                href={r.href}
+                aria-current={current === r.id ? "page" : undefined}
+                data-index-question={r.id}
+                data-question-resolution={r.state}
+                data-regime={r.regime}
+                data-tier={r.hasEditorial ? "A" : "B"}
+              >
+                <StateMark state={r.state} uid={r.shortId} />
+                <span class="row__code">
+                  <span class="sr-only">{r.stateLabel}. </span>
+                  <span aria-hidden="true">{r.code}</span>
+                </span>
+                <span class="row__id" data-num="id">
+                  {r.shortId}
+                </span>
+                <span class="row__t">{r.title}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+  <div class="registro__key">
+    <ul aria-label={ui("registry_key")}>
+      {STATES.map((s) => (
+        <li>
+          <StateMark state={s.state} uid={`key-${s.state}`} />
+          <span class="mono">{ui(s.code)}</span>
+          <span>{ui(s.name)}</span>
+          <span class="sr-only">{ui(shapeKey(s.state))}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

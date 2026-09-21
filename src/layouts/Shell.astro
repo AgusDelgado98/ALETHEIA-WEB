@@ -1,0 +1,75 @@
+---
+import "../../design/tokens.css";
+import "../styles/global.css";
+import "../styles/shell.css";
+import ShellBar from "../components/ShellBar.astro";
+import StatusBar from "../components/StatusBar.astro";
+import { loadSite } from "../lib/site.ts";
+import Head from "./Head.astro";
+/**
+ * Shell REGISTRO + FOLIO (prototipo). Cuadrícula de viewport en escritorio (≥ 64 rem y ≥ 34 rem de alto);
+ * por debajo degrada a documento normal: Registro → Folio. Sin JavaScript.
+ * `view="registro"` (Registro + carátula) o `view="folio"` (Registro + Folio de una pregunta).
+ */
+interface Props {
+  title: string;
+  description: string;
+  ogDescription?: string;
+  view: "registro" | "folio";
+}
+const site = loadSite(process.cwd());
+const ui = site.ui;
+const { title, description, ogDescription, view } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <Head
+    title={title}
+    description={description}
+    siteName={ui("brand_wordmark")}
+    ogDescription={ogDescription}
+  />
+  <body class="shell" data-view={view}>
+    <a class="skip" href="#contenido">
+      {ui("skip_link")}
+    </a>
+    <ShellBar ui={ui} tag={site.pin.tag} />
+    <div class="stage">
+      <slot name="registro" />
+      <main id="contenido" class="folio-wrap" tabindex="-1">
+        <slot />
+      </main>
+    </div>
+    <StatusBar ui={ui} tag={site.pin.tag} commitShort={site.pin.commitShort} />
+  </body>
+</html>
+
+<style is:global>
+  /* Wordmark (Charter §12), igual que en Base */
+  .wordmark {
+    position: relative;
+    display: inline-block;
+    font: 500 1.0625rem / 1 var(--serif);
+    letter-spacing: var(--tracking-wordmark);
+    padding-right: 0.24em;
+    color: var(--ink);
+  }
+  .wordmark::after {
+    content: "";
+    position: absolute;
+    left: -3px;
+    right: -1px;
+    top: calc(50% - 0.27em);
+    height: max(1.5px, 0.09em);
+    background: var(--paper);
+  }
+  main:focus {
+    outline: none;
+  }
+  .folio-wrap {
+    display: grid;
+    min-height: 0;
+    min-width: 0;
+  }
+</style>

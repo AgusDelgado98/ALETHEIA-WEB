@@ -149,3 +149,35 @@ strings:
   not_found_heading: { id: ui-not-found-heading, text: "Página no encontrada" }
   not_found_lede: { id: ui-not-found-lede, text: "Esta dirección no corresponde a ninguna página publicada de este sitio." }
   not_found_home: { id: ui-not-found-home, text: "Volver al inicio" }
+  nav_registry: { id: ui-nav-registry, text: "Registro" }
+  nav_docs: { id: ui-nav-docs, text: "Documentos" }
+  registry_label: { id: ui-registry-label, text: "Registro de preguntas de investigación" }
+  registry_key: { id: ui-registry-key, text: "Estados" }
+  status_web: { id: ui-status-web, text: "Presentación web posterior" }
+  stc_observed: { id: ui-stc-observed, text: "OBS" }
+  stc_refuted: { id: ui-stc-refuted, text: "REF" }
+  stc_insufficient: { id: ui-stc-insufficient, text: "INS" }
+  stc_not_identifiable: { id: ui-stc-not-identifiable, text: "NID" }
+  stc_blocked: { id: ui-stc-blocked, text: "BLQ" }
+  stc_open: { id: ui-stc-open, text: "ABI" }
+  stn_observed: { id: ui-stn-observed, text: "observado" }
+  stn_refuted: { id: ui-stn-refuted, text: "refutado" }
+  stn_insufficient: { id: ui-stn-insufficient, text: "insuficiente" }
+  stn_not_identifiable: { id: ui-stn-not-identifiable, text: "no identificable" }
+  stn_blocked: { id: ui-stn-blocked, text: "bloqueada" }
+  stn_open: { id: ui-stn-open, text: "abierta" }
+  carat_unit: { id: ui-carat-unit, text: "La unidad de ALETHEIA es la pregunta de investigación. Cada una lleva su estado epistemológico, su fuente y sus límites." }
+  carat_states: { id: ui-carat-states, text: "Cómo leer los estados" }
+  carat_pick: { id: ui-carat-pick, text: "Elegí una pregunta del Registro para abrir su folio." }
+  folio_label: { id: ui-folio-label, text: "Folio de la pregunta" }
+  folio_views: { id: ui-folio-views, text: "Vista del folio" }
+  tab_read: { id: ui-tab-read, text: "Lectura" }
+  tab_evidence: { id: ui-tab-evidence, text: "Evidencia" }
+  tab_limits: { id: ui-tab-limits, text: "Límites" }
+  tab_prov: { id: ui-tab-prov, text: "Procedencia" }
+  more_in_limits: { id: ui-more-in-limits, text: "más en Límites" }
+  frame_license: { id: ui-frame-license, text: "Licencia" }
+  license_not_recorded: { id: ui-license-not-recorded, text: "no registrada en el corpus" }
+  trail_direction_h: { id: ui-trail-direction-h, text: "Del origen a la respuesta" }
+  prov_root: { id: ui-prov-root, text: "Raíz de evidencia" }
+  back_registry: { id: ui-back-registry, text: "Registro" }

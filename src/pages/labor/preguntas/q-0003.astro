@@ -1,0 +1,34 @@
+---
+import Folio from "../../../components/Folio.astro";
+import Registro from "../../../components/Registro.astro";
+import Shell from "../../../layouts/Shell.astro";
+import { loadRegistro, shapeKey } from "../../../lib/registro.ts";
+import { plainText } from "../../../lib/render.ts";
+import { isDocumentaryObserved } from "../../../lib/site.ts";
+import { loadQuestionView } from "../../../lib/view.ts";
+
+/**
+ * Prototipo del rediseño: Q-0003 con el shell Registro + Folio. Las demás 17 preguntas siguen con la UI anterior
+ * ([id].astro) hasta la aprobación visual. La URL canónica no cambia.
+ */
+const QID = "LAB-Q-0003";
+const registro = loadRegistro(process.cwd());
+const v = loadQuestionView(process.cwd(), QID);
+const ui = v.ui;
+const regime = registro.groups.find((g) => g.rows.some((r) => r.id === QID))?.regime ?? "";
+const shapeOf = (state: string): string => ui(shapeKey(state));
+---
+
+<Shell
+  title={`${v.publicQuestion} · ${ui("brand_wordmark")}`}
+  description={plainText(v.title)}
+  ogDescription={`${v.state.questionLabel}. ${
+    v.claims.some((cl) => isDocumentaryObserved(cl.kind, cl.state))
+      ? ui("qualifier_documentary")
+      : ui("legal_states")
+  }`}
+  view="folio"
+>
+  <Registro slot="registro" registro={registro} current={QID} />
+  <Folio v={v} regime={regime} shapeOf={shapeOf} />
+</Shell>

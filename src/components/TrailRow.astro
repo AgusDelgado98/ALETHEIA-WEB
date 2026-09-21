@@ -1,0 +1,144 @@
+---
+import type { QuestionView, TrailView } from "../lib/view.ts";
+import EvidenceState from "./EvidenceState.astro";
+import Glyph from "./Glyph.astro";
+import SegmentText from "./SegmentText.astro";
+/**
+ * El Rastro en HORIZONTAL (Charter §11.3, presentación transformada): del origen a la respuesta,
+ * Fuente → Objeto → Evidencia → (Corte) → Hipótesis → Afirmación. Mismos datos y mismos glifos que EvidenceTrail;
+ * lo no alcanzado (hipótesis y afirmación cuando el claim no está sostenido) va punteado o hueco.
+ */
+interface Props {
+  v: QuestionView;
+  t: TrailView;
+  multi: boolean;
+}
+const { v, t, multi } = Astro.props;
+const ui = v.ui;
+const observed = t.claimState === "OBSERVED_IN_SOURCE";
+const refuted = t.claimState === "REFUTED_WITHIN_SCOPE";
+const held = observed || refuted;
+const showCut = t.reasons.length > 0;
+const hid = `trace-${t.claimId}`;
+const shapeDesc =
+  t.claimState === "INSUFFICIENT_EVIDENCE"
+    ? ui("shape_insufficient")
+    : observed
+      ? ui("shape_observed")
+      : refuted
+        ? ui("shape_refuted")
+        : ui("layer_question");
+---
+
+<section
+  class="trace"
+  aria-labelledby={hid}
+  data-state={t.claimState}
+  data-claim-id={t.claimId}
+  data-claim-state={t.claimState}
+>
+  <div class="trace__h">
+    <h2 id={hid}>
+      {ui("trail_heading")}
+      {multi && (
+        <>
+          {" "}
+          <span class="mono" data-num="id">
+            {t.claimId}
+          </span>
+        </>
+      )}
+    </h2>
+    <p class="trace__dir">{ui("trail_direction_h")}</p>
+    <EvidenceState state={t.claimState} label={t.claimLabel} description={shapeDesc} />
+  </div>
+  <ol class="chain">
+    <li class="node">
+      <div class="node__g">
+        <Glyph kind="source" size="1.1rem" /> {ui("node_source")}
+      </div>
+      <p>
+        <SegmentText parts={t.source.publication} />
+      </p>
+      {t.source.linkUnresolved && <p class="trace__note">{ui("source_link_unresolved")}</p>}
+      <span class="ids">
+        <span data-num="id">{t.source.rootId}</span>
+      </span>
+    </li>
+    <li class="node">
+      <div class="node__g">
+        <Glyph kind="object" size="1.1rem" /> {ui("node_object")}
+      </div>
+      {t.objects.map((o) => (
+        <p>
+          <SegmentText parts={o.parts} />
+        </p>
+      ))}
+      <span class="ids">
+        {t.objects.map((o) => (
+          <span data-num="id">{o.id} </span>
+        ))}
+      </span>
+    </li>
+    <li class="node">
+      <div class="node__g">
+        <Glyph kind="evidence" size="1.1rem" /> {ui("node_evidence")}
+      </div>
+      <p>
+        <SegmentText parts={t.evidence} />
+      </p>
+      <span class="ids">
+        {t.ids.evidence.map((id) => (
+          <span data-num="id">{id} </span>
+        ))}
+      </span>
+    </li>
+    {showCut && (
+      <li class="node node--cut" data-node="cut">
+        <div class="node__g">
+          <Glyph kind="limit" size="1.1rem" /> {ui("cut_label")}
+        </div>
+        <p>{ui("cut_title")}</p>
+        <p class="trace__note">
+          {ui("cut_above")} {ui("cut_below")}
+        </p>
+        <ul class="trace__note">
+          {t.reasons.map((r) => (
+            <li>
+              <SegmentText parts={r.parts} />
+            </li>
+          ))}
+        </ul>
+      </li>
+    )}
+    <li class:list={["node", { "node--ghost": !held }]}>
+      <div class="node__g">
+        <Glyph kind="hypothesis" fill={held ? "solid" : "ghost"} size="1.1rem" />{" "}
+        {ui("node_hypothesis")}
+      </div>
+      <p>
+        <SegmentText parts={t.hypothesis} />
+      </p>
+      <span class="ids">
+        <span data-num="id">{t.ids.hypothesis}</span>
+      </span>
+    </li>
+    <li class:list={["node", { "node--ghost": !held }]}>
+      <div class="node__g">
+        <Glyph
+          kind="claim"
+          fill={observed ? "solid" : refuted ? "ghost" : "hollow"}
+          size="1.1rem"
+        />{" "}
+        {ui("node_claim")}
+      </div>
+      <p>
+        <SegmentText parts={t.claim} />
+      </p>
+      <span class="ids">
+        <span data-num="id">{t.ids.claim}</span>
+      </span>
+    </li>
+  </ol>
+  {v.state.absenceNotNegative && <p class="trace__note">{v.absenceText}</p>}
+</section>

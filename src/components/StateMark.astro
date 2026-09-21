@@ -1,0 +1,64 @@
+---
+/**
+ * Marca de estado COMPACTA (Registro, leyenda y cota). Misma gramática que MapState/EvidenceState (Charter §8, §20.4):
+ * hilo, cuadrado, corte, punteado y rayado; nunca solo color. Es decorativa: el estado siempre va acompañado de texto.
+ * Los trazos se definen en src/styles/shell.css (.mk).
+ */
+interface Props {
+  state: string;
+  uid: string;
+}
+const { state, uid } = Astro.props;
+const hid = `mk-hatch-${uid}`;
+---
+
+<svg class="mk" viewBox="0 0 36 12" aria-hidden="true" focusable="false" data-state={state}>
+  {state === "OBSERVED_IN_SOURCE" && (
+    <>
+      <line class="th" x1="0" y1="6" x2="25" y2="6" />
+      <rect class="sq sq--solid" x="26" y="1" width="10" height="10" />
+    </>
+  )}
+  {state === "REFUTED_WITHIN_SCOPE" && (
+    <>
+      <line class="th" x1="0" y1="6" x2="25" y2="6" />
+      <rect class="sq sq--dash" x="26" y="1" width="10" height="10" />
+    </>
+  )}
+  {state === "INSUFFICIENT_EVIDENCE" && (
+    <>
+      <line class="th" x1="0" y1="6" x2="8" y2="6" />
+      <path class="cut" d="M11 1v10M15 1v10" />
+      <line class="dots" x1="18" y1="6" x2="25" y2="6" />
+      <rect class="sq" x="26" y="1" width="10" height="10" />
+    </>
+  )}
+  {state === "NOT_IDENTIFIABLE" && (
+    <>
+      <defs>
+        <pattern
+          id={hid}
+          width="4"
+          height="4"
+          patternUnits="userSpaceOnUse"
+          patternTransform="rotate(45)"
+        >
+          <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="1.1" />
+        </pattern>
+      </defs>
+      <rect class="hatch" x="0.5" y="1.5" width="35" height="9" fill={`url(#${hid})`} />
+    </>
+  )}
+  {state === "BLOCKED_BY_DESIGN" && (
+    <>
+      <line class="th" x1="0" y1="6" x2="31" y2="6" />
+      <path class="cut" d="M34 1v10" />
+    </>
+  )}
+  {state === "OUTSIDE_LAB_A" && (
+    <>
+      <line class="dots" x1="0" y1="6" x2="26" y2="6" />
+      <polygon class="tri" points="27,1 36,1 31.5,11" />
+    </>
+  )}
+</svg>

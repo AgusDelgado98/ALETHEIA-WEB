@@ -1,0 +1,26 @@
+---
+/** Header compacto del shell: marca, tres modos de navegación y referencia discreta de versión. Sin CTA ni buscador. */
+interface Props {
+  ui: (key: string) => string;
+  tag: string;
+}
+const { ui, tag } = Astro.props;
+const path = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
+const inRegistro = path === "/" || path === "" || path.startsWith("/labor/preguntas/");
+---
+
+<header class="bar">
+  <a class="wordmark" href="/">
+    {ui("brand_wordmark")}
+  </a>
+  <nav class="bar__nav" aria-label={ui("nav_label")}>
+    <a href="/" aria-current={inRegistro ? "page" : undefined}>
+      {ui("nav_registry")}
+    </a>
+    <a href="/limites">{ui("nav_limits")}</a>
+    <a href="/metodo">{ui("nav_docs")}</a>
+  </nav>
+  <span class="bar__ver mono" data-num="hash">
+    {tag}
+  </span>
+</header>

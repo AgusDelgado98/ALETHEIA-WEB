@@ -1,9 +1,9 @@
 ---
 import "../../design/tokens.css";
 import "../styles/global.css";
+import Head from "./Head.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
-import { SITE_ORIGIN } from "../lib/origin.ts";
 import { loadSite } from "../lib/site.ts";
 interface Props {
   title: string;
@@ -19,49 +19,20 @@ const ui = site.ui;
 const { title, description } = Astro.props;
 const skip = Astro.props.skip ?? ui("skip_link");
 const wordmark = Astro.props.wordmark ?? ui("brand_wordmark");
-const ogType = Astro.props.ogType ?? "website";
-const ogDescription = Astro.props.ogDescription ?? description;
-const robots = Astro.props.robots;
+const { ogType, ogDescription, robots } = Astro.props;
 const current = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
-const path = current === "" ? "/" : current;
-const canonical = path === "/" ? SITE_ORIGIN : `${SITE_ORIGIN}${path}`;
-const ogUrl = /[0-9]/.test(path) ? undefined : canonical;
 ---
 
 <!doctype html>
 <html lang="es-AR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    {robots !== undefined && <meta name="robots" content={robots} />}
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content={ogType} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={ogDescription} />
-    {ogUrl !== undefined && <meta property="og:url" content={ogUrl} />}
-    <meta property="og:locale" content="es_AR" />
-    <meta property="og:site_name" content={ui("brand_wordmark")} />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={ogDescription} />
-    <link
-      rel="preload"
-      href="/fonts/newsreader-latin-wght.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/instrument-sans-latin-wght.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-  </head>
+  <Head
+    title={title}
+    description={description}
+    siteName={ui("brand_wordmark")}
+    ogType={ogType}
+    ogDescription={ogDescription}
+    robots={robots}
+  />
   <body>
     <a class="skip" href="#contenido">
       {skip}
