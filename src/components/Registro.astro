@@ -3,7 +3,8 @@ import { shapeKey, STATES, type Registro } from "../lib/registro.ts";
 import StateMark from "./StateMark.astro";
 /**
  * El Registro: las 18 preguntas como filas tipadas de una línea (marca de estado + código + ID + título corto).
- * El estado va PEGADO a la pregunta. Sin tarjetas, cajas ni sombras. Cada fila es un enlace real a la URL canónica
+ * El estado va PEGADO a la pregunta. Sin tarjetas, cajas ni sombras. Las fichas con lectura completa (`data-tier="A"`)
+ * llevan un segundo filete fino en el margen izquierdo de la fila; no cambia el peso ni el color del texto. Cada fila es un enlace real a la URL canónica
  * de la pregunta (navegación HTML normal). `current` marca la fila abierta con una regla fina y un tinte sutil.
  */
 interface Props {
@@ -41,7 +42,9 @@ const ui = registro.ui;
               >
                 <StateMark state={r.state} uid={r.shortId} />
                 <span class="row__code">
-                  <span class="sr-only">{r.stateLabel}. </span>
+                  <span class="sr-only">
+                    {r.stateLabel}. {r.hasEditorial ? `${ui("key_full_reading")}. ` : ""}
+                  </span>
                   <span aria-hidden="true">{r.code}</span>
                 </span>
                 <span class="row__id" data-num="id">
@@ -66,5 +69,9 @@ const ui = registro.ui;
         </li>
       ))}
     </ul>
+    <p class="registro__read">
+      <span class="keyrule" aria-hidden="true"></span>
+      <span>{ui("key_full_reading")}</span>
+    </p>
   </div>
 </nav>

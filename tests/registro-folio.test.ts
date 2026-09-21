@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadRegistro, MIGRATED_QUESTION_IDS, STATES } from "../src/lib/registro.ts";
 import { realContext, ROOT } from "./helpers.ts";
@@ -37,6 +39,14 @@ describe.skipIf(home === undefined || q3 === undefined)("shell en el HTML constr
     expect(h).toContain('class="carat"');
     expect(h).not.toContain("data-question-id=");
     expect(h).not.toContain("<script");
+  });
+  it("lectura completa: cinco filas marcadas, leyenda visible y ningún énfasis por peso", () => {
+    const h = home ?? "";
+    expect((h.match(/data-tier="A"/g) ?? []).length).toBe(5);
+    expect(h).toContain('class="registro__read"');
+    expect(h).toContain("lectura completa");
+    const css = readFileSync(join(ROOT, "src", "styles", "shell.css"), "utf8");
+    expect(css).not.toMatch(/data-tier="A"]s+.row__t/);
   });
   it("Q-0003 renderiza el mismo Registro con la fila 0003 seleccionada y el Folio abierto", () => {
     const h = q3 ?? "";

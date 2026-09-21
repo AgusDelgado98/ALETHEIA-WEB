@@ -181,3 +181,4 @@ strings:
   trail_direction_h: { id: ui-trail-direction-h, text: "Del origen a la respuesta" }
   prov_root: { id: ui-prov-root, text: "Raíz de evidencia" }
   back_registry: { id: ui-back-registry, text: "Registro" }
+  key_full_reading: { id: ui-key-full-reading, text: "lectura completa" }

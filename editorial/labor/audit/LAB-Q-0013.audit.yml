@@ -5347,6 +5347,25 @@ records:
     date: 2026-09-19
     verdict: PENDING_AUTHOR_REVIEW
     notes: []
+  - string_id: site#ui.key_full_reading
+    kind: ui_label
+    canonical_refs: []
+    canonical_hash: null
+    text_hash: 9d32e3a78ae7d0c00e309267cbe3f0d0de03c16281059d9e94ce73ea61f0f616
+    revision: 2
+    dimensions:
+      semantics: PASS
+      causality: PASS
+      population: PASS
+      period: PASS
+      measurement_type: PASS
+      evidence_strength: PASS
+    figures_ok: true
+    state_unchanged: true
+    reviewer: Claude (agente de redacción, sesión WEB-1/M1)
+    date: 2026-09-19
+    verdict: PENDING_AUTHOR_REVIEW
+    notes: []
   - string_id: site#ui.layer_claim
     kind: ui_label
     canonical_refs: []

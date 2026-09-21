@@ -4,7 +4,8 @@ import { chromium } from "playwright-core";
 import { serveDist } from "./serve.ts";
 
 /**
- * Capturas y medición de scroll del prototipo Registro + Folio.
+ * Capturas y medición de scroll del prototipo Registro + Folio (un único scroll interno: el del Folio; el Registro no scrollea
+ * cuando entra completo). «usefulH» = alto visible de la vista activa bajo las pestañas, con el Folio en scrollTop 0.
  * Uso: node scripts/e2e/registro-shots.ts [carpeta de salida]  (por defecto docs/redesign/shots)
  */
 const root = resolve(import.meta.dirname, "..", "..");
@@ -41,17 +42,36 @@ try {
           Math.round(document.querySelector(s)?.getBoundingClientRect().height ?? -1);
         const de = document.documentElement;
         const list = document.querySelector<HTMLElement>(".registro__list");
-        const panels = document.querySelector<HTMLElement>(".panels");
+        const folio = document.querySelector<HTMLElement>(".folio");
+        const tabbar = document.querySelector<HTMLElement>(".tabbar");
+        const key = document.querySelector<HTMLElement>(".registro__key");
         const q = document.querySelector<HTMLElement>(".folio__q");
+        const scrollers = [...document.querySelectorAll<HTMLElement>("body *")]
+          .filter(
+            (el) =>
+              /(auto|scroll)/.test(getComputedStyle(el).overflowY) &&
+              el.scrollHeight > el.clientHeight + 1,
+          )
+          .map((el) => `${el.className}:+${el.scrollHeight - el.clientHeight}`);
         const lh = q === null ? 0 : parseFloat(getComputedStyle(q).lineHeight);
         return {
           docScrollH: de.scrollHeight,
           viewportH: window.innerHeight,
           globalScroll: de.scrollHeight > window.innerHeight + 1,
           registroOverflowPx: list === null ? null : list.scrollHeight - list.clientHeight,
-          panelsOverflowPx: panels === null ? null : panels.scrollHeight - panels.clientHeight,
-          panelsVisibleH: panels === null ? null : Math.round(panels.clientHeight),
+          folioScrollPx: folio === null ? null : folio.scrollHeight - folio.clientHeight,
+          usefulH:
+            folio === null || tabbar === null
+              ? null
+              : Math.round(
+                  folio.clientHeight -
+                    (tabbar.getBoundingClientRect().bottom - folio.getBoundingClientRect().top),
+                ),
+          internalScrollers: scrollers,
+          keyVisible:
+            key === null ? null : key.getBoundingClientRect().bottom <= window.innerHeight,
           folioHeadH: h(".folio__head"),
+          tabbarH: h(".tabbar"),
           questionH: h(".folio__q"),
           questionLines: q === null ? null : Math.round(q.getBoundingClientRect().height / lh),
           rowH: h(".row"),
@@ -70,10 +90,10 @@ try {
         await page.locator(`.tabbar label[for=${id}]`).click();
         await page.screenshot({ path: join(out, `q-0003-${name}-${vp.name}.png`) });
         const ov = await page.evaluate(() => {
-          const p = document.querySelector<HTMLElement>(".panels");
+          const p = document.querySelector<HTMLElement>(".folio");
           return p === null ? null : p.scrollHeight - p.clientHeight;
         });
-        console.log(`${vp.name} q-0003 ${name} panelOverflowPx=${String(ov)}`);
+        console.log(`${vp.name} q-0003 ${name} folioScrollPx=${String(ov)}`);
       }
     }
     await ctx.close();

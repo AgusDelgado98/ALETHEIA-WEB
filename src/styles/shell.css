@@ -8,22 +8,14 @@
   --bar-h: 2.5rem; /* 40 px */
   --status-h: 1.625rem; /* 26 px */
   --registro-w: clamp(25rem, 36vw, 35rem); /* 400–560 px */
-  --row-h: 1.5rem; /* 24 px: entra el Registro completo en ~650 px útiles */
+  /* Alto de fila continuo: 18 filas + cabeceras + leyenda completa (estados y lectura completa) sin scroll propio
+     desde ~600 px de alto; se estira hasta 30 px en pantallas altas. */
+  --row-h: clamp(1.375rem, calc((100dvh - 15rem) / 18), 1.875rem);
   --tint: color-mix(in srgb, var(--ink) 3.5%, var(--paper-2));
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: var(--bar-h) minmax(0, 1fr) auto;
   min-height: 100dvh;
-}
-@media (min-height: 44rem) {
-  .shell {
-    --row-h: 1.75rem;
-  }
-}
-@media (min-height: 56rem) {
-  .shell {
-    --row-h: 1.875rem;
-  }
 }
 
 /* ── Header ───────────────────────────────────────────────────────────── */
@@ -112,6 +104,7 @@
   padding-top: var(--space-1);
 }
 .row {
+  position: relative;
   display: grid;
   grid-template-columns: 2.25rem 1.75rem 2rem minmax(0, 1fr);
   align-items: center;
@@ -143,8 +136,19 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.row[data-tier="A"] .row__t {
-  font-weight: 500;
+/* Lectura completa: un segundo filete fino de 1 px en el margen izquierdo de la fila (junto al filete de selección).
+   Marca estructural, no epistémica: mismo peso, mismo color de texto, ninguna forma de estado. */
+.row[data-tier="A"]::before,
+.keyrule {
+  content: "";
+  width: 1px;
+  background: var(--graphite);
+}
+.row[data-tier="A"]::before {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
 }
 .registro__key {
   border-top: var(--rule) solid var(--hair);
@@ -165,6 +169,18 @@
 }
 .registro__key .mono {
   color: var(--graphite);
+}
+.registro__read {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: 2px;
+  font: 400 var(--fs-mono) / 1.5 var(--sans);
+}
+.keyrule {
+  display: inline-block;
+  height: 0.8rem;
+  margin-inline: 5px 4px;
 }
 
 /* Marca de estado compacta (misma gramática que MapState: hilo, cuadrado, corte, punteado, rayado) */
@@ -274,73 +290,96 @@
   text-decoration: none;
 }
 .folio__head {
-  padding: var(--space-3) var(--space-5) var(--space-3);
+  padding: var(--space-2) var(--space-5) var(--space-2);
   border-bottom: var(--rule) solid var(--hair);
 }
+/* Primer nivel compacto: ID + régimen + estado en una línea; pregunta (≤ 2 líneas), respuesta y alcance pegados. */
 .folio__meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-1) var(--space-4);
+  gap: 0 var(--space-4);
   color: var(--graphite);
-  font: 400 var(--fs-mono) / 1.6 var(--mono);
+  font: 400 var(--fs-mono) / 1.5 var(--mono);
 }
 .folio__q {
-  margin-top: var(--space-1);
-  font: 400 var(--fs-serif-sm) / 1.25 var(--serif);
+  margin-top: 2px;
+  font: 400 var(--fs-serif-sm) / 1.22 var(--serif);
   letter-spacing: var(--tracking-serif);
   text-wrap: pretty;
 }
 .folio__ans {
-  margin-top: var(--space-2);
-  font: 500 var(--fs-sans-lg) / 1.4 var(--sans);
+  margin-top: var(--space-1);
+  font: 500 var(--fs-base) / 1.35 var(--sans);
+  text-wrap: pretty;
 }
 .folio__ans .k {
   display: inline;
   margin-right: var(--space-2);
-  font: 500 var(--fs-mono) / 1.5 var(--sans);
+  font: 500 var(--fs-mono) / 1.4 var(--sans);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--graphite);
 }
 .cota {
   margin-top: var(--space-2);
-  padding-top: var(--space-2);
+  padding-top: var(--space-1);
   border-top: var(--rule) solid var(--hair);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-2) var(--space-5);
+  gap: var(--space-1);
 }
+/* Alcance: etiqueta y texto en el mismo párrafo (sin línea de título aparte) */
 .cota__scope h2,
 .cota__c dt {
-  font: 500 var(--fs-mono) / 1.5 var(--sans);
+  font: 500 var(--fs-mono) / 1.4 var(--sans);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--graphite);
 }
+.cota__scope h2,
 .cota__scope p {
-  font: 400 var(--fs-label) / 1.45 var(--sans);
+  display: inline;
+}
+.cota__scope h2 {
+  margin-right: var(--space-2);
+}
+.cota__scope p {
+  font: 400 var(--fs-label) / 1.38 var(--sans);
   color: var(--ink);
 }
+/* Cota estrictamente horizontal: cada grupo es «ETIQUETA valor · valor» en una línea que fluye */
 .cota__meta {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-1) var(--space-5);
-  align-content: start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-4);
   padding-top: var(--space-1);
   border-top: var(--rule) solid var(--hair);
 }
+.cota__c {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-2);
+}
 .cota__c dd {
-  font: 400 var(--fs-label) / 1.5 var(--sans);
+  font: 400 var(--fs-label) / 1.4 var(--sans);
+}
+.cota__c dd:has(> ul) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-3);
 }
 .cota__c ul {
-  display: grid;
-  gap: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-3);
 }
 .cota__c li {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 0 var(--space-2);
 }
 .cota__c .mono {
@@ -369,9 +408,13 @@
   gap: var(--space-5);
   padding-inline: var(--space-5);
   border-bottom: var(--rule) solid var(--hair);
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .tabbar label {
-  padding: var(--space-2) 0;
+  padding: var(--space-1) 0;
   font: 500 var(--fs-label) / 1.4 var(--sans);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -387,9 +430,7 @@
   margin-left: var(--space-1);
 }
 .panels {
-  min-height: 0;
-  overflow-y: auto;
-  padding: var(--space-4) var(--space-5) var(--space-5);
+  padding: var(--space-3) var(--space-5) var(--space-5);
 }
 .panel {
   display: none;
@@ -616,14 +657,19 @@
   .stage {
     grid-template-columns: var(--registro-w) minmax(0, 1fr);
   }
-  .cota__meta {
-    grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.7fr) minmax(0, 1.4fr);
-  }
   .cols {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
   .back {
     display: none;
+  }
+  /* Un único scroll interno: todo el Folio (cabecera, pestañas y vista) se desplaza junto; las pestañas quedan fijas. */
+  .folio {
+    display: block;
+    overflow-y: auto;
+  }
+  .views {
+    display: block;
   }
 }
 
@@ -683,13 +729,6 @@
   }
   .tabbar {
     gap: var(--space-4);
-    position: sticky;
-    top: 0;
-    background: var(--paper);
-    z-index: 1;
-  }
-  .panels {
-    overflow: visible;
   }
   .prov > div {
     grid-template-columns: 1fr;
