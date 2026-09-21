@@ -56,7 +56,7 @@ Consecuencia visible y deliberada: esas vistas son cortas. No se rellenan.
 
 ### Títulos cortos de navegación
 
-Los 18 títulos del Registro son texto editorial nuevo (`nav_titles` en `editorial/site/glosses.yml`), derivado de la pregunta pública, de una línea y sin truncamiento a 1366 px. Están sellados como `PENDING_AUTHOR_REVIEW`: **su aprobación es una decisión humana** (ver `REGISTRO-TITLES-REPORT.md`). La pregunta completa y el título de la ficha no se modificaron.
+Los 18 títulos del Registro son texto editorial nuevo (`nav_titles` en `editorial/site/glosses.yml`), derivado de la pregunta pública, de una línea y sin truncamiento a 1366 px. Están **`APPROVED`**: la autoría los aprobó expresamente, uno por uno y sin cambios (revisión 3 de `editorial/labor/audit/LAB-Q-0013.review.yml`, 2026-09-21); ver `REGISTRO-TITLES-REPORT.md`. La pregunta completa y el título de la ficha no se modificaron.
 
 ## Ronda de refinamiento previa a la aprobación visual
 
@@ -76,4 +76,3 @@ Los 18 títulos del Registro son texto editorial nuevo (`nav_titles` en `editori
 1. Marca de «lectura completa» (segundo filete en el margen): ¿alcanza y es suficientemente discreta?
 2. Códigos de estado de tres letras (`OBS`, `REF`, …): ¿son legibles con la leyenda visible?
 3. Las vistas de las fichas mínimas son cortas por diseño: ¿se acepta o se prefiere una vista única?
-4. Aprobación de los 18 títulos cortos de navegación (`PENDING_AUTHOR_REVIEW`).

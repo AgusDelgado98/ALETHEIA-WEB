@@ -81,7 +81,7 @@
       "transformation": "glosa pública en español + Relation title / prohibited_inference / reason canónicos"
     }
   ],
-  "editorial_manifest_sha256": "fcd1d33b865218193864f9237e998a58fd41d733d4337c96249a43b9b54d837e",
+  "editorial_manifest_sha256": "a5695459efaeb9e2f15c3026b91456004f57db11a1ff168dc2be4534cddfcbeb",
   "package_date": "2026-09-21",
   "pending": [
     {
@@ -266,18 +266,6 @@
     },
     {
       "canonical_hash": "a05f89dfbb41b12609bc684b84589ad60537a69a22747c8f205c996b1a676e40",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0001#nav_title",
-      "text_hash": "f229e93fd84bce3818847061ec35f913a364c57f0935548d331b0e46cebe0260",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "a05f89dfbb41b12609bc684b84589ad60537a69a22747c8f205c996b1a676e40",
       "family": "finding_structure",
       "kind": "finding_text",
       "pages": [
@@ -286,18 +274,6 @@
       "source_yaml": "editorial/site/glosses.yml",
       "string_id": "labor/LAB-Q-0001#public_title",
       "text_hash": "026b0bcc712f91e12e117ed21c0690699b9043be9a1c6763d2292dba742f2fd4",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "7b8e6d21278cd060c437305c437a9c0899c2f88904a69e1fccf6393038b24303",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0002#nav_title",
-      "text_hash": "e893b9a26dd469641601a2dcded7a6e7e2910de1a5fd13e838d56ea1beff4035",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -829,18 +805,6 @@
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
-      "canonical_hash": "4e1b101935d1994aab1bd6404ba4010003061894307f035b67dc298d0a472000",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0003#nav_title",
-      "text_hash": "35db928e2a5269858cb26bf59c482d7ec8a510207aa915de4317fcf86ce5e7a8",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
       "canonical_hash": "9ad910c0c8d87084f533619157942a6e471fb0c05c7090c2a975a1d662dc3f71",
       "family": "finding_can_say",
       "kind": "finding_text",
@@ -1261,18 +1225,6 @@
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
-      "canonical_hash": "da7b7eac7cdd907e73e021b1d971e67f17dbd63622cef3cc16464b46f9ffd756",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0004#nav_title",
-      "text_hash": "a6ba3ed10d334d23dcd6a15f2ca5242c286489a6ecaeec7ada4a9e397d01cb4f",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
       "canonical_hash": "b686bb2f4115b676ac11781413c9b6f9a7810c10117e260315ab19e4f9fb60fa",
       "family": "finding_can_say",
       "kind": "finding_text",
@@ -1645,30 +1597,6 @@
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
-      "canonical_hash": "6fe8156df9a6cefef1eeeabc8b7fe46d662280ee960164af7c3508198bc2d088",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0005#nav_title",
-      "text_hash": "d914cd404230cbdc3de09d07f9d2eed077d74e59807448ccfbcb4667206835ab",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "ccf196af369e5196219e977ac110c885b8a0f5513a49455da3eff3e14b5e56ca",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0006#nav_title",
-      "text_hash": "9b23bf1b09224d29b9f4ce84a86c9187f02aa715fac1fa4d2199d6cd05d4bfa5",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
       "canonical_hash": "ccf196af369e5196219e977ac110c885b8a0f5513a49455da3eff3e14b5e56ca",
       "family": "finding_structure",
       "kind": "finding_text",
@@ -1678,18 +1606,6 @@
       "source_yaml": "editorial/site/glosses.yml",
       "string_id": "labor/LAB-Q-0006#public_title",
       "text_hash": "5a078e7813447226955929fc32cba379ffb25b663d4b69cb6c3ab3685cffbd29",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "4155724efb7648555a083724e212f90f2332808b5d496f886f70275635b219f8",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0007#nav_title",
-      "text_hash": "bf091976dd88ceb1f747f7aded6fc865d20a9f50c981853100f53588c236cd3f",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -1706,18 +1622,6 @@
     },
     {
       "canonical_hash": "7fe05c97a1c5206eccfec129edd071bfde82a7731c7ebac35fd15a36abb46bf7",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0008#nav_title",
-      "text_hash": "df12ccfa2a1e8cff23bf1a9b231a34ff6aa2722e56a4b37d35cd09c49f11dcfc",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "7fe05c97a1c5206eccfec129edd071bfde82a7731c7ebac35fd15a36abb46bf7",
       "family": "finding_structure",
       "kind": "finding_text",
       "pages": [
@@ -1730,18 +1634,6 @@
     },
     {
       "canonical_hash": "3aafd1446b8e6572883b45095ab0e60caede27f6a9f92ff2f41d4ac47d5cf6b4",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0009#nav_title",
-      "text_hash": "d9bf490dd678ac6637109103236772308bca30b9a05354f2465094e280aefbd2",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "3aafd1446b8e6572883b45095ab0e60caede27f6a9f92ff2f41d4ac47d5cf6b4",
       "family": "finding_structure",
       "kind": "finding_text",
       "pages": [
@@ -1750,18 +1642,6 @@
       "source_yaml": "editorial/site/glosses.yml",
       "string_id": "labor/LAB-Q-0009#public_title",
       "text_hash": "b512cd803d2f2e4b52e83b43179192c419040475298e00f88532a1eb58262e31",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "c9386bf061332eb0cc85bb0d57c6098768bc0ef7290685a3649adcf0356c0236",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0010#nav_title",
-      "text_hash": "63ad74dd9b7dcb7cd189e517a66394353d9d0656c3cff29450d4fa7b519819ae",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -1906,30 +1786,6 @@
       "source_yaml": "editorial/labor/findings/LAB-Q-0011.yml",
       "string_id": "labor/LAB-Q-0011#finding.would_need.wn-2",
       "text_hash": "761a1207e8e1377b1f054b225c5f00bf98f33e412377405807c2196f23a0867b",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "caa367c595d16db539ebbf3918a7253b011176775794af297e4b8ab2567f7c88",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0011#nav_title",
-      "text_hash": "1c960438fea55d48380e96a8a8c205b7630e7e27cbc05096688a02f1ad502b10",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "b00c58633c3787a38ab457b8e7f00e52ce63297664f3bf2f0c70bb4e5aa069ae",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0012#nav_title",
-      "text_hash": "1cf03777acb208239ff1a843e358073d65e65ebf975d612bf0e36ec66d3111bb",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -2281,30 +2137,6 @@
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
-      "canonical_hash": "0391bbb4a0fd5692824d5dc04e22556fa3965ada8743194d81d3e5550f27a785",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0013#nav_title",
-      "text_hash": "0f2bf158b0e6a95551be144417737dce2235b28476d1b81b2f147286e3e155fd",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "2239caf579faae8ec79d62f3efa55aab51709ed31aecdb056bce18e6380f128e",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0014#nav_title",
-      "text_hash": "d8f1caee1223dc4ba09288c57334912daa0751f620448a2017b76eaac611c8da",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
       "canonical_hash": "2239caf579faae8ec79d62f3efa55aab51709ed31aecdb056bce18e6380f128e",
       "family": "finding_structure",
       "kind": "finding_text",
@@ -2330,18 +2162,6 @@
     },
     {
       "canonical_hash": "4b30ca6bf134babcf3a468969aabb510540236d0b4905470539bc9c137833e35",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0015#nav_title",
-      "text_hash": "ef48ddd5e2ee4c038e49d54c15c93334c19e9cd3d5dc29d43c545b5abaa6f225",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "4b30ca6bf134babcf3a468969aabb510540236d0b4905470539bc9c137833e35",
       "family": "finding_structure",
       "kind": "finding_text",
       "pages": [
@@ -2350,18 +2170,6 @@
       "source_yaml": "editorial/site/glosses.yml",
       "string_id": "labor/LAB-Q-0015#public_title",
       "text_hash": "3591ca1a120fbd59674e4ff6f2eb7184671571a589b232f2123917de8c97bacd",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "1117a1b2fc444b9c523430d5ae953fc71665febf0a451e018622708a8a210743",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0016#nav_title",
-      "text_hash": "c542f3ee3264f2ff4606433bcf6598d7eb9d35ee6e7c2d45acacb79ac090ef73",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -2390,18 +2198,6 @@
     },
     {
       "canonical_hash": "9fa559618a3673979f85d159cda43d9dc949a285a8cbfe82167a9a335e2fe303",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0017#nav_title",
-      "text_hash": "d40b813cf52e8715ef72e901bea3b817b1a1fe88f672644691677043bb84d2fb",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "9fa559618a3673979f85d159cda43d9dc949a285a8cbfe82167a9a335e2fe303",
       "family": "finding_structure",
       "kind": "finding_text",
       "pages": [
@@ -2410,18 +2206,6 @@
       "source_yaml": "editorial/site/glosses.yml",
       "string_id": "labor/LAB-Q-0017#public_title",
       "text_hash": "e956a782c1b8890c4c3c085dc0c41d5ed57a7b07bb6c596b2352ca41daaeb926",
-      "verdict": "PENDING_AUTHOR_REVIEW"
-    },
-    {
-      "canonical_hash": "bd582c93553f40562d6497b9b9f0b4266137c3ecd67d1f0cd22701ddbcbdb5cb",
-      "family": "navigation",
-      "kind": "finding_text",
-      "pages": [
-        "*"
-      ],
-      "source_yaml": "editorial/site/glosses.yml",
-      "string_id": "labor/LAB-Q-0018#nav_title",
-      "text_hash": "63ca6c8a0b32b3ecf68c46782130063dd92c68fa616e991ed4fca438ee696fd9",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -4953,17 +4737,17 @@
     "limits": 2,
     "limits_page": 44,
     "methodology": 25,
-    "navigation": 31,
+    "navigation": 13,
     "not_found": 3,
     "states": 7,
     "trail_ui": 45,
     "ui_other": 34,
     "versions": 6
   },
-  "pending_set_hash": "9af6d9835ed31d2e3128b3b50ea58ef94bbeb579bbccbb71b6f87a3e90630864",
+  "pending_set_hash": "afd3b49fc6a7cfc9512079a02cf7b29d1ae435943d2e001fefebdf21a24f675b",
   "production_url": "https://aletheia-web-seven.vercel.app",
   "release": "WEB-2",
-  "reviewed_commit": "f4db08b9cfcc4cfbb67f21c93f2c3d6954eb4142",
+  "reviewed_commit": "19a3da05d385749c833ca6f49d53e6a1c1a2dad4",
   "schema": "aletheia-web/web-2-review-inventory/1",
   "sources": [
     {
@@ -5544,8 +5328,8 @@
   ],
   "verdicts": {
     "by_verdict": {
-      "APPROVED": 18,
-      "PENDING_AUTHOR_REVIEW": 401
+      "APPROVED": 36,
+      "PENDING_AUTHOR_REVIEW": 383
     },
     "public_question": {
       "APPROVED": 18,

@@ -11,8 +11,8 @@ El mecanismo ya existente es `editorial/labor/audit/*.review.yml`:
 
 Una aprobación colectiva futura solo es válida si conserva:
 
-* lista exacta de `string_id` (las 401 pendientes, o un subconjunto por familia);
-* `text_hash` y `canonical_hash` de cada una (hash de conjunto actual: `9af6d9835ed31d2e3128b3b50ea58ef94bbeb579bbccbb71b6f87a3e90630864`);
+* lista exacta de `string_id` (las 383 pendientes, o un subconjunto por familia);
+* `text_hash` y `canonical_hash` de cada una (hash de conjunto actual: `afd3b49fc6a7cfc9512079a02cf7b29d1ae435943d2e001fefebdf21a24f675b`);
 * reviewer / author reales;
 * fecha ISO;
 * verdict `APPROVED` o `REVISED_AND_APPROVED`;

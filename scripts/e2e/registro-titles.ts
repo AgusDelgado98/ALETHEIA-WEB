@@ -39,7 +39,7 @@ try {
 
 Reporte generado por \`scripts/e2e/registro-titles.ts\` sobre la Home construida, a 1366×768 (el Registro mide igual a 1366×650).
 Son textos editoriales nuevos (\`nav_titles\`), derivados de la pregunta pública de cada ficha: no la reemplazan ni cambian su estado.
-**Todos están \`PENDING_AUTHOR_REVIEW\`; su aprobación es una decisión humana.** Ninguno usa cifras, verbos de causa ni el estado.
+**Los 18 están \`APPROVED\` por la autoría (aprobación expresa, sin cambios; revisión 3, 2026-09-21).** Ninguno usa cifras, verbos de causa ni el estado.
 
 **${cut} de ${rows.length} se truncan** con puntos suspensivos en el Registro a 1366 px.
 
