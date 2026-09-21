@@ -6,10 +6,11 @@ import { serveDist } from "./serve.ts";
 /**
  * Recorre TODAS las rutas del shell Registro + Folio y mide, por viewport de escritorio: scroll global (debe ser 0),
  * áreas con scroll interno, altura útil bajo las pestañas del Folio y desborde horizontal. Opcionalmente guarda capturas.
- * Uso: node scripts/e2e/registro-audit.ts [carpeta de capturas]
+ * Uso: node scripts/e2e/registro-audit.ts [carpeta de capturas] [viewport, p. ej. 1366x768]
  */
 const root = resolve(import.meta.dirname, "..", "..");
 const out = process.argv[2] === undefined ? null : resolve(process.argv[2]);
+const only = process.argv[3];
 const EDGE =
   process.env["EDGE_PATH"] ?? "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe";
 const VIEWPORTS = [
@@ -31,14 +32,14 @@ const ROUTES = [
   "/metodo",
   "/versiones",
   "/sobre",
-  "/no-existe",
+  "/404",
 ];
 if (out !== null) mkdirSync(out, { recursive: true });
 const { server, origin } = await serveDist(join(root, "dist"));
 const browser = await chromium.launch({ executablePath: EDGE, headless: true });
 let bad = 0;
 try {
-  for (const vp of VIEWPORTS) {
+  for (const vp of VIEWPORTS.filter((v) => only === undefined || v.name === only)) {
     const ctx = await browser.newContext({
       viewport: { width: vp.width, height: vp.height },
       deviceScaleFactor: 1,
