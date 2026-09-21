@@ -307,7 +307,7 @@ export function emptyHumanSkeleton(): HumanReviewT {
     release: "WEB-2",
     reviewed_commit: WEB2_REVIEWED_COMMIT,
     production_url: WEB2_PRODUCTION_URL,
-    package_generated_at: "2026-09-20",
+    package_generated_at: "2026-09-21",
     reviewer: "",
     relationship_to_project: "",
     author_name: "",

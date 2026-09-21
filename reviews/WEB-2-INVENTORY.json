@@ -70,7 +70,7 @@
       "id": "preserved_keep_text",
       "known_license": "PENDING",
       "origin": "generated corpus",
-      "transformation": "PreservedResult.must_not verbatim (inglés)"
+      "transformation": "glosa pública en español + PreservedResult.must_not canónico (inglés)"
     },
     {
       "clearance": "PENDING",
@@ -78,12 +78,216 @@
       "id": "governance_required_text",
       "known_license": "PENDING",
       "origin": "generated corpus",
-      "transformation": "Relation title / prohibited_inference / reason verbatim"
+      "transformation": "glosa pública en español + Relation title / prohibited_inference / reason canónicos"
     }
   ],
-  "editorial_manifest_sha256": "be4f7411a21f2c1e3ea45d7dfacc5141131c745735dca1ac22e0609edb5dc8bd",
-  "package_date": "2026-09-20",
+  "editorial_manifest_sha256": "e2c97017a47a4eaf079f0210624bb69a1c5e01a59eb179c7dc7f2eeac0b85ce4",
+  "package_date": "2026-09-21",
   "pending": [
+    {
+      "canonical_hash": "d31eb058ab945e1b43fba9d4a7dbec4109a04fa9f306d6ec8f3dcbc3f30cd09a",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-001#public_must_not",
+      "text_hash": "b1b79c237f4bf6b51daddb5ff00776227f9572413cd97f8283fb90fa14b1e96a",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "13082d82d6925d0101cc9c991b60ff712eca068d26f23d6e4d94161c255d3349",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-002#public_must_not",
+      "text_hash": "3f1e191c10fc129896ad217b6cf0461387a4251560a0fce52ba6926be38ca486",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "90d8dda9a88fd85221e3294047f7c9b119bbc145443de95b20f64f632441bd18",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-003#public_must_not",
+      "text_hash": "69a8e37ac83779dba84d8c5b06cc4dd6695e74fbe6f80aebd593ae12f971f233",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "dacf9dbd5ae29cec7ddf90f922c26e7fe76791d673fd6b0f223d42f644c30ba2",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-004#public_must_not",
+      "text_hash": "c314a6361c76e15f4782274c0abf0cf6e327f389c7b3ba9a4780369627e3aab4",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "6102944feb86193fa25d81503f77b19fea792518f118673892478076fca3c326",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-005#public_must_not",
+      "text_hash": "46b0259855fd7919d9e347538110de64a822fea77efde47b8702fe4772e7eb17",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "8ad3f749bc4b9ed4520434fa389b69bbf84dc39d3d00534339c7887a290645a5",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-006#public_must_not",
+      "text_hash": "b84da126dc237e095750ca981dd4205285413d375b218bcbda91b2c4b5115531",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "5bc3cffb522f63bb414b0ecd7765cc86bf523242e2f19b200a9208fec0e90441",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-007#public_must_not",
+      "text_hash": "26d96d8baffacbfda5c989aa9d2452f202c1b889d05ca34540098d1d3f7184a9",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "1a14ae601044326ed646fb28a575c78e2331327897b2a7b0890e1aad94ad53a5",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-008#public_must_not",
+      "text_hash": "e6ad017a2242579ec87f5bb312a990350bc3b590205906fc5ea94c3761586393",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "97ca6e4c8ca939e30673ae00fbe1115706e1d733f0c75614dc36a872b1aaf3ce",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-009#public_must_not",
+      "text_hash": "8fb9047fed3d7df24607b2966d7c1e72187fdc9e63dc767fff1aa8abe7f52b9c",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "0fbd771b26c8c35b9ae744524851eb9f77b32ebe268b252e585d7c10cc7e42c0",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-010#public_must_not",
+      "text_hash": "407a55ade52b8b1e0d7d3f0b5fc503d9b11868ecbdc73755bcf6b45c02cce410",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "62a8717b2440f45443d43ee58027d2d6d4706c02bd2663115d9c1bf36459f632",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-011#public_must_not",
+      "text_hash": "2195fd69fa7270d9238261287121f6bd0e7eaa09912a42e2f63a183940355e4d",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "5b35fecc0318f3ac93c4ca54453b6ae92000a933b729fbd220804285ddd58446",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-012#public_must_not",
+      "text_hash": "2195fd69fa7270d9238261287121f6bd0e7eaa09912a42e2f63a183940355e4d",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "fac44cb312c790de59813ed0db4476c1c9cf228fd4c416bd752b5aa663470eec",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-013#public_must_not",
+      "text_hash": "2195fd69fa7270d9238261287121f6bd0e7eaa09912a42e2f63a183940355e4d",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "86f9b59d67093f8e0c15ef47216ca1f96708c23cecee6cfbe2f1740355e0438d",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-014#public_must_not",
+      "text_hash": "2195fd69fa7270d9238261287121f6bd0e7eaa09912a42e2f63a183940355e4d",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "224b63dcc6d3f2c397f4005a0eba1f7541a5257e64f9adccde71383384bc5ce8",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/KEEP-015#public_must_not",
+      "text_hash": "2195fd69fa7270d9238261287121f6bd0e7eaa09912a42e2f63a183940355e4d",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "a05f89dfbb41b12609bc684b84589ad60537a69a22747c8f205c996b1a676e40",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0001"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0001#public_title",
+      "text_hash": "026b0bcc712f91e12e117ed21c0690699b9043be9a1c6763d2292dba742f2fd4",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "7b8e6d21278cd060c437305c437a9c0899c2f88904a69e1fccf6393038b24303",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0002"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0002#public_title",
+      "text_hash": "9ee5aa3385c5b4b288092a7fd1939726f8dc1b09eb5cff5a8874cde428075cca",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
     {
       "canonical_hash": "7d056a097860a38e95c9b102383256ccd1335a3cdced7517bef93e934e9decdb",
       "family": "finding_can_say",
@@ -1393,6 +1597,66 @@
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
+      "canonical_hash": "ccf196af369e5196219e977ac110c885b8a0f5513a49455da3eff3e14b5e56ca",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0006"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0006#public_title",
+      "text_hash": "5a078e7813447226955929fc32cba379ffb25b663d4b69cb6c3ab3685cffbd29",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "4155724efb7648555a083724e212f90f2332808b5d496f886f70275635b219f8",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0007"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0007#public_title",
+      "text_hash": "722c5ce96a903d68822d31f907681a7eb994dbcabd2ce223e76f091b14cb3bda",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "7fe05c97a1c5206eccfec129edd071bfde82a7731c7ebac35fd15a36abb46bf7",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0008"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0008#public_title",
+      "text_hash": "9983ce3164a9d9dea06558ea7053f03e7a8e5c1344c971e31cf818a9ea79dc79",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "3aafd1446b8e6572883b45095ab0e60caede27f6a9f92ff2f41d4ac47d5cf6b4",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0009"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0009#public_title",
+      "text_hash": "b512cd803d2f2e4b52e83b43179192c419040475298e00f88532a1eb58262e31",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "c9386bf061332eb0cc85bb0d57c6098768bc0ef7290685a3649adcf0356c0236",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0010"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0010#public_title",
+      "text_hash": "a7dee75b5cf5b904cbb6d9624d3bc567bf9362ff775add07871d77492b71eaab",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
       "canonical_hash": "5140e9b1c1adf93b59d2852abaf432ceaa8a4e19859ea3348d89d0e58ce0663c",
       "family": "finding_can_say",
       "kind": "finding_text",
@@ -1522,6 +1786,30 @@
       "source_yaml": "editorial/labor/findings/LAB-Q-0011.yml",
       "string_id": "labor/LAB-Q-0011#finding.would_need.wn-2",
       "text_hash": "761a1207e8e1377b1f054b225c5f00bf98f33e412377405807c2196f23a0867b",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "b00c58633c3787a38ab457b8e7f00e52ce63297664f3bf2f0c70bb4e5aa069ae",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0012"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0012#public_title",
+      "text_hash": "22abfc49392f42d7446f316813c7690a22b8136db676fe9d81585525b203a2ef",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "8763435550e380a297a1f765f49988d771c3667060ed2e3958c5bfa8ae12e604",
+      "family": "trail_ui",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0012"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0012#source_gloss",
+      "text_hash": "ae86c88be04fc3abccc366b6bf2f42b44943e04c9c8b9430a8286714d3de6490",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -1849,6 +2137,318 @@
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
+      "canonical_hash": "2239caf579faae8ec79d62f3efa55aab51709ed31aecdb056bce18e6380f128e",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0014"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0014#public_title",
+      "text_hash": "1c9b36404eebd6b5370937d6b8ca827664e1a70bac5173032dc2b5979d7e9669",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "ccebb65c379fe8d8ea7a12ca344f6daafaa596cc73d61a8a3be246659f55dce3",
+      "family": "trail_ui",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0014"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0014#source_gloss",
+      "text_hash": "ab4edf14585883811cdd35aadd25ee23448be28c62c6bfe9f7d16748d3def455",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "4b30ca6bf134babcf3a468969aabb510540236d0b4905470539bc9c137833e35",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0015"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0015#public_title",
+      "text_hash": "3591ca1a120fbd59674e4ff6f2eb7184671571a589b232f2123917de8c97bacd",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "1117a1b2fc444b9c523430d5ae953fc71665febf0a451e018622708a8a210743",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0016"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0016#public_title",
+      "text_hash": "e72771e40008b085148f1cf4092cf0c28edec3cf0f1101662e45c775aca6ddfc",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "4c974971ad540cb3c262c344dc9746dc0eae6d0263d87a5736b9bda91b6c90b5",
+      "family": "trail_ui",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0016"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0016#source_gloss",
+      "text_hash": "644d464537a9b15e473e42e5e6bb83395d13fed3b83f628fe5a1d1bdbd65d348",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "9fa559618a3673979f85d159cda43d9dc949a285a8cbfe82167a9a335e2fe303",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0017"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0017#public_title",
+      "text_hash": "e956a782c1b8890c4c3c085dc0c41d5ed57a7b07bb6c596b2352ca41daaeb926",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "bd582c93553f40562d6497b9b9f0b4266137c3ecd67d1f0cd22701ddbcbdb5cb",
+      "family": "finding_structure",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0018"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0018#public_title",
+      "text_hash": "0e560ca214c7f610c08453da00d9b3b2ad5a502dd00a3ab470d269e54df40c0f",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "c26a5f63fb2ba5e10fde335e794cc93aa22523dc5f07f20b8eb86c5cb8cd3cdf",
+      "family": "trail_ui",
+      "kind": "finding_text",
+      "pages": [
+        "/labor/preguntas/q-0018"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/LAB-Q-0018#source_gloss",
+      "text_hash": "298457aea6e64bcc32c0f5e42592522e43ae03338c259b1a8b9ef6b3a79f6d50",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "d5b017fa4347ceaf40207ebe9ce67c44b7854482d27e2366bb43651f56962b41",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-001#public_inference",
+      "text_hash": "3823a19edf772127adedc2fbcf6ba4c683232aee55e2cfbaca6065728be8c08d",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "1a9439267a615df57ae9e9a7734287566d4412fa1330c2f8fae4a73d2b10a734",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-001#public_reason",
+      "text_hash": "84b6ef5ac5181e68792972269f3c725b3ba0b8f299815a621ef7fa8a95dcfaea",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "9421cf114e85e6f9776f2823881a9233be00545eb8ca1d3e72969fc25b2a9a95",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-001#public_title",
+      "text_hash": "db0c46b37f4d3203583c8c020009a005df8af5452083eca4fbd1dd621f18f101",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "81343deb77893f87dd87302bf40ddc7cc67110e260b048aad7907d70474db995",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-002#public_inference",
+      "text_hash": "dbc77dc33c8b0219d1869c3c165cb0828a2c54eb4446f564d82c5cfa15ad6e92",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "f69436a15ff1130af5e10f241a714c2400f30862e65268825d24a6998515c95e",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-002#public_reason",
+      "text_hash": "343f6b6e84bed8d7aeeee3d988ce09e68d7af1cd6d722208454511aca8fe0705",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "443c19a1fecceb2d041340f40fdd069dd0c5a904bb38710b1d5a4e9668771e01",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-002#public_title",
+      "text_hash": "9aeb9c45ef3be6b15f0d33d4593c9369a6bd5d34bc160852d8f306e9f380657e",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "79c29418e6ea5078d4825a56cb71df0eebfbd31ce00d09058b278425251bb072",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-003#public_inference",
+      "text_hash": "6e2d306331ad3a34d3b0d5c44d5416cfa7e0b290e250dcda5565f337df2531a8",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "cb5a306a64e6d0b96a46d1e5625d9c2365a4a2368b8a50300abdbfaf31bfa21c",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-003#public_reason",
+      "text_hash": "fa2cd5ba49ea61528a58385bee59cc1a9b58534afe7786fa0b4814e79eda87e4",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "3fe9896cecb5c1585c3e84448d3c747dab3d0a48993f824070d56a0fae53aa70",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-003#public_title",
+      "text_hash": "9c447772695308621260d512f19cd6064b24a8edb80177183205ab6443c7d6f2",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "7ee7f4f0748205ae29bd1257610b9534a1296499f0b5b8e4e1f662ac46305786",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-004#public_inference",
+      "text_hash": "246b193fb7f6e0ec856714e5067ebff4566e2955ad736798619167a855dcac85",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "60f2dd22760ba1d83fb5f85a3cc3e9af106af2eba10560782f0b4d3b856249c4",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-004#public_reason",
+      "text_hash": "3a88af109e711bccbb0373e38df9c1f948c7d186c4741c3a4ccd1714d7ddf35f",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "57003f2f85b02fa6e228340d94a8a55df718ae16fc34b55d8468b216ab358c68",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-004#public_title",
+      "text_hash": "56bfe6a0812499f716f9c00f5e50ef253ca660b60b3df71d2fe94d2a0f0d388e",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "48c6b2c521ca0cc292da1a49c760523b36789cbbba64aee60b68346632e599e6",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-005#public_inference",
+      "text_hash": "1348ebb6f4801cb8a3828c2f960bdd3bd31910932a07af23c1838a8a0c494f9e",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "522d6f0e62a6f8f33f9fba57123f536f252816c7dbfafcde8b8f3beb98dff720",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-005#public_reason",
+      "text_hash": "e547c3b5f5916b05d522bee77c9e5cc28dd0fff117fe0da703b1e7983eef73df",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "4aaf34b467f003c2a2bdc1747a795797d98214974153f7f5ad1f4f1899f7daba",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-005#public_title",
+      "text_hash": "12a7e19bcde531c3db31d50652790d2feb708b9a91c2fc2e21a0bc6104e1b252",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "d64c1a8b4bbfbab62cd1e08d584fbb8c4ad4a43dcacaccdd2f6ba2ff4771c4ed",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-006#public_inference",
+      "text_hash": "a062e33711838dc2439f7bfbb4bd0ae6633da3cb5f21b56403b04e61235a977b",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "9de45b61a1158363f91ad35bd60be7d40503cccbbaf30f9bd800b17d97002866",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-006#public_reason",
+      "text_hash": "da699f4fcf90ec671cd34be57d0fcdda985b05fc4f07497d8c86d3c06cc32d58",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": "9cc4f69b17a6c46ce8d2ad0909e34b8a7d4820d4f349842398810774d7021a4b",
+      "family": "limits_page",
+      "kind": "finding_text",
+      "pages": [
+        "/limites"
+      ],
+      "source_yaml": "editorial/site/glosses.yml",
+      "string_id": "labor/REL-GR-006#public_title",
+      "text_hash": "e82843b8f7960ee05d9efe132c255a3714e0c8d5d8a1191bff61994af752acbb",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
       "canonical_hash": "9d58d6370e7734bbd608c1a91edd703fccf8ae6d62133d9b238cbb2c7249746d",
       "family": "disclaimers",
       "kind": "fixed_text",
@@ -2048,6 +2648,18 @@
       "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.brand_wordmark",
       "text_hash": "4b477a5b96c34d1635e818835dd186000b288d7ef0613013d47a03f60b5f2d73",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.canonical_cite",
+      "text_hash": "3afdba9b69b5a0e9977ce8c456204b83be4d2ce89267948a12aa265fefe155da",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -3661,24 +4273,25 @@
     "finding_can_say": 31,
     "finding_disclosure": 3,
     "finding_does_not_mean": 48,
-    "finding_structure": 15,
+    "finding_structure": 28,
     "finding_trail": 32,
     "finding_would_need": 16,
     "findings_index": 4,
     "home": 17,
     "limits": 2,
-    "limits_page": 11,
+    "limits_page": 44,
     "methodology": 24,
     "navigation": 11,
     "not_found": 3,
     "states": 7,
-    "trail_ui": 39,
+    "trail_ui": 43,
+    "ui_other": 1,
     "versions": 6
   },
-  "pending_set_hash": "b872709962fe96b2d1532e350fb1749af7ae3b23dabf4476324960ec18217a73",
+  "pending_set_hash": "028180742f9799763dbd425f15937ccf7386373ff8a25356b95d29073f8c07d4",
   "production_url": "https://aletheia-web-seven.vercel.app",
   "release": "WEB-2",
-  "reviewed_commit": "c599a8c0b85a38aed19f5782fdfc4b46cac11ef5",
+  "reviewed_commit": "1dbfbe78f2f7fc62a9dba49e70348574a75f8167",
   "schema": "aletheia-web/web-2-review-inventory/1",
   "sources": [
     {
@@ -4259,7 +4872,7 @@
   "verdicts": {
     "by_verdict": {
       "APPROVED": 18,
-      "PENDING_AUTHOR_REVIEW": 294
+      "PENDING_AUTHOR_REVIEW": 345
     },
     "public_question": {
       "APPROVED": 18,
@@ -4270,7 +4883,7 @@
       "records": 18,
       "research_questions": 18
     },
-    "total_units": 312,
+    "total_units": 363,
     "unexplained_non_pending_non_fourteen": [
       {
         "canonical_hash": "156022ebca338254f4cb0de9767d1b1987cc9e0951779f2e09b6d4d9020c1819",

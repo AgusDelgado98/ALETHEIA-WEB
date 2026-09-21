@@ -1,8 +1,8 @@
 schema: aletheia-web/web-2-legal-review/1
 status: PENDING
-reviewed_commit: c599a8c0b85a38aed19f5782fdfc4b46cac11ef5
+reviewed_commit: 1dbfbe78f2f7fc62a9dba49e70348574a75f8167
 production_url: https://aletheia-web-seven.vercel.app
-package_generated_at: 2026-09-20
+package_generated_at: 2026-09-21
 warning: Este documento vacío no satisface G-LEG-03.
 reviewer: ""
 review_date: ""

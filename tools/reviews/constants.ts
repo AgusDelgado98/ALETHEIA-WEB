@@ -1,7 +1,7 @@
 /** Commit técnico de WEB-2 al que se ata este paquete de revisión humana. */
-export const WEB2_REVIEWED_COMMIT = "c599a8c0b85a38aed19f5782fdfc4b46cac11ef5";
+export const WEB2_REVIEWED_COMMIT = "1dbfbe78f2f7fc62a9dba49e70348574a75f8167";
 export const WEB2_PRODUCTION_URL = "https://aletheia-web-seven.vercel.app";
-export const WEB2_PACKAGE_DATE = "2026-09-20";
+export const WEB2_PACKAGE_DATE = "2026-09-21";
 export const WEB2_RELEASE_LABEL = "WEB-2";
 export const WEB2_STATUS = "TECHNICALLY COMPLETE / RELEASE BLOCKED";
 

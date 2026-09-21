@@ -6,9 +6,9 @@
 
 No emitir opinión legal automática. Este archivo humano acompaña `reviews/WEB-2-LEGAL-SOURCE-REVIEW.yml`, que es el registro máquina. Completar el YAML; no basta con leer este Markdown.
 
-- Commit: `c599a8c0b85a38aed19f5782fdfc4b46cac11ef5`
+- Commit: `1dbfbe78f2f7fc62a9dba49e70348574a75f8167`
 - Production URL: https://aletheia-web-seven.vercel.app
-- Package date: 2026-09-20
+- Package date: 2026-09-21
 - Reviewer: _vacío_
 - Review date: _vacío_
 - Signature: _vacío_

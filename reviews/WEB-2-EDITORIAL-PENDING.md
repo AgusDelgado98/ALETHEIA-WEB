@@ -2,18 +2,18 @@
 
 Este inventario **no aprueba** ningún texto. Verdicts intactos.
 
-- Total unidades editoriales: 312
-- `PENDING_AUTHOR_REVIEW`: 294
-- Hash del conjunto pendiente: `b872709962fe96b2d1532e350fb1749af7ae3b23dabf4476324960ec18217a73`
-- Manifest editorial: `be4f7411a21f2c1e3ea45d7dfacc5141131c745735dca1ac22e0609edb5dc8bd`
-- Commit atado: `c599a8c0b85a38aed19f5782fdfc4b46cac11ef5`
+- Total unidades editoriales: 363
+- `PENDING_AUTHOR_REVIEW`: 345
+- Hash del conjunto pendiente: `028180742f9799763dbd425f15937ccf7386373ff8a25356b95d29073f8c07d4`
+- Manifest editorial: `e2c97017a47a4eaf079f0210624bb69a1c5e01a59eb179c7dc7f2eeac0b85ce4`
+- Commit atado: `1dbfbe78f2f7fc62a9dba49e70348574a75f8167`
 
 ## Reconciliación de veredictos
 
+- `PENDING_AUTHOR_REVIEW`: 345
 - `APPROVED`: 18
-- `PENDING_AUTHOR_REVIEW`: 294
 
-Suma: 312 (debe ser 312).
+Suma: 363 (debe ser 363).
 
 ## public_question
 
@@ -37,24 +37,42 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `finding_can_say` | 31 |
 | `finding_disclosure` | 3 |
 | `finding_does_not_mean` | 48 |
-| `finding_structure` | 15 |
+| `finding_structure` | 28 |
 | `finding_trail` | 32 |
 | `finding_would_need` | 16 |
 | `findings_index` | 4 |
 | `home` | 17 |
 | `limits` | 2 |
-| `limits_page` | 11 |
+| `limits_page` | 44 |
 | `methodology` | 24 |
 | `navigation` | 11 |
 | `not_found` | 3 |
 | `states` | 7 |
-| `trail_ui` | 39 |
+| `trail_ui` | 43 |
+| `ui_other` | 1 |
 | `versions` | 6 |
 
 ## Unidades pendientes
 
 | string_id | text_hash | canonical_hash | verdict | YAML | familia | páginas |
 |---|---|---|---|---|---|---|
+| `labor/KEEP-001#public_must_not` | `b1b79c237f4b` | `d31eb058ab94` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-002#public_must_not` | `3f1e191c10fc` | `13082d82d692` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-003#public_must_not` | `69a8e37ac837` | `90d8dda9a88f` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-004#public_must_not` | `c314a6361c76` | `dacf9dbd5ae2` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-005#public_must_not` | `46b0259855fd` | `6102944feb86` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-006#public_must_not` | `b84da126dc23` | `8ad3f749bc4b` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-007#public_must_not` | `26d96d8baffa` | `5bc3cffb522f` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-008#public_must_not` | `e6ad017a2242` | `1a14ae601044` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-009#public_must_not` | `8fb9047fed3d` | `97ca6e4c8ca9` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-010#public_must_not` | `407a55ade52b` | `0fbd771b26c8` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-011#public_must_not` | `2195fd69fa72` | `62a8717b2440` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-012#public_must_not` | `2195fd69fa72` | `5b35fecc0318` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-013#public_must_not` | `2195fd69fa72` | `fac44cb312c7` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-014#public_must_not` | `2195fd69fa72` | `86f9b59d6709` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/KEEP-015#public_must_not` | `2195fd69fa72` | `224b63dcc6d3` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/LAB-Q-0001#public_title` | `026b0bcc712f` | `a05f89dfbb41` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0001 |
+| `labor/LAB-Q-0002#public_title` | `9ee5aa3385c5` | `7b8e6d21278c` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0002 |
 | `labor/LAB-Q-0003#finding.can_say.cs-1` | `8d896bab08fd` | `7d056a097860` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0003.yml` | finding_can_say | /labor/preguntas/q-0003 |
 | `labor/LAB-Q-0003#finding.can_say.cs-2` | `6aa3c0162a62` | `73362b16d235` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0003.yml` | finding_can_say | /labor/preguntas/q-0003 |
 | `labor/LAB-Q-0003#finding.can_say.cs-3` | `b7a0122a2433` | `f599f1bea0b9` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0003.yml` | finding_can_say | /labor/preguntas/q-0003 |
@@ -164,6 +182,11 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `labor/LAB-Q-0005#finding.would_need.wn-1` | `22d3003bad78` | `2855a0193916` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0005.yml` | finding_would_need | /labor/preguntas/q-0005 |
 | `labor/LAB-Q-0005#finding.would_need.wn-2` | `3a9dd01ae485` | `2855a0193916` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0005.yml` | finding_would_need | /labor/preguntas/q-0005 |
 | `labor/LAB-Q-0005#finding.would_need.wn-3` | `eb5888d1cc2c` | `2855a0193916` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0005.yml` | finding_would_need | /labor/preguntas/q-0005 |
+| `labor/LAB-Q-0006#public_title` | `5a078e781344` | `ccf196af369e` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0006 |
+| `labor/LAB-Q-0007#public_title` | `722c5ce96a90` | `4155724efb76` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0007 |
+| `labor/LAB-Q-0008#public_title` | `9983ce3164a9` | `7fe05c97a1c5` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0008 |
+| `labor/LAB-Q-0009#public_title` | `b512cd803d2f` | `3aafd1446b8e` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0009 |
+| `labor/LAB-Q-0010#public_title` | `a7dee75b5cf5` | `c9386bf06133` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0010 |
 | `labor/LAB-Q-0011#finding.can_say.cs-1` | `7ec8c7f3ab7a` | `5140e9b1c1ad` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0011.yml` | finding_can_say | /labor/preguntas/q-0011 |
 | `labor/LAB-Q-0011#finding.can_say.cs-2` | `7b412044b53f` | `fddf08b5de53` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0011.yml` | finding_can_say | /labor/preguntas/q-0011 |
 | `labor/LAB-Q-0011#finding.can_say.cs-3` | `19106a6df903` | `eab290029b3c` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0011.yml` | finding_can_say | /labor/preguntas/q-0011 |
@@ -175,6 +198,8 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `labor/LAB-Q-0011#finding.title` | `79f573e85640` | `5140e9b1c1ad` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0011.yml` | finding_structure | /labor/preguntas/q-0011 |
 | `labor/LAB-Q-0011#finding.would_need.wn-1` | `247c01c60b6c` | `45e4fdb258d9` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0011.yml` | finding_would_need | /labor/preguntas/q-0011 |
 | `labor/LAB-Q-0011#finding.would_need.wn-2` | `761a1207e8e1` | `51fa4b81644b` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0011.yml` | finding_would_need | /labor/preguntas/q-0011 |
+| `labor/LAB-Q-0012#public_title` | `22abfc49392f` | `b00c58633c37` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0012 |
+| `labor/LAB-Q-0012#source_gloss` | `ae86c88be04f` | `8763435550e3` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | trail_ui | /labor/preguntas/q-0012 |
 | `labor/LAB-Q-0013#finding.can_say.cs-1` | `8c19e2099ec0` | `bc4f01c84767` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0013.yml` | finding_can_say | /labor/preguntas/q-0013 |
 | `labor/LAB-Q-0013#finding.can_say.cs-2` | `cb647825d9de` | `8251feeccddf` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0013.yml` | finding_can_say | /labor/preguntas/q-0013 |
 | `labor/LAB-Q-0013#finding.can_say.cs-3` | `b83645b87c68` | `5eabce8d6988` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0013.yml` | finding_can_say | /labor/preguntas/q-0013 |
@@ -202,6 +227,32 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `labor/LAB-Q-0013#finding.would_need.wn-5` | `6afc54e8a0bc` | `e800897a63ea` | PENDING_AUTHOR_REVIEW | `editorial/labor/findings/LAB-Q-0013.yml` | finding_would_need | /labor/preguntas/q-0013 |
 | `labor/LAB-Q-0013#limits.labor/LAB-CLM-0011#limitation:4.waiver` | `541a1727851e` | `756a78e59c5f` | PENDING_AUTHOR_REVIEW | `editorial/labor/limits/LAB-Q-0013.yml` | limits | /labor/preguntas/q-0013 |
 | `labor/LAB-Q-0013#limits.labor/LAB-Q-0013#limitation:1.waiver` | `dd2a53ec9e42` | `725c3df5acbf` | PENDING_AUTHOR_REVIEW | `editorial/labor/limits/LAB-Q-0013.yml` | limits | /labor/preguntas/q-0013 |
+| `labor/LAB-Q-0014#public_title` | `1c9b36404eeb` | `2239caf579fa` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0014 |
+| `labor/LAB-Q-0014#source_gloss` | `ab4edf145858` | `ccebb65c379f` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | trail_ui | /labor/preguntas/q-0014 |
+| `labor/LAB-Q-0015#public_title` | `3591ca1a120f` | `4b30ca6bf134` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0015 |
+| `labor/LAB-Q-0016#public_title` | `e72771e40008` | `1117a1b2fc44` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0016 |
+| `labor/LAB-Q-0016#source_gloss` | `644d464537a9` | `4c974971ad54` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | trail_ui | /labor/preguntas/q-0016 |
+| `labor/LAB-Q-0017#public_title` | `e956a782c1b8` | `9fa559618a36` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0017 |
+| `labor/LAB-Q-0018#public_title` | `0e560ca214c7` | `bd582c93553f` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | finding_structure | /labor/preguntas/q-0018 |
+| `labor/LAB-Q-0018#source_gloss` | `298457aea6e6` | `c26a5f63fb2b` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | trail_ui | /labor/preguntas/q-0018 |
+| `labor/REL-GR-001#public_inference` | `3823a19edf77` | `d5b017fa4347` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-001#public_reason` | `84b6ef5ac518` | `1a9439267a61` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-001#public_title` | `db0c46b37f4d` | `9421cf114e85` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-002#public_inference` | `dbc77dc33c8b` | `81343deb7789` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-002#public_reason` | `343f6b6e84be` | `f69436a15ff1` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-002#public_title` | `9aeb9c45ef3b` | `443c19a1fecc` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-003#public_inference` | `6e2d306331ad` | `79c29418e6ea` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-003#public_reason` | `fa2cd5ba49ea` | `cb5a306a64e6` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-003#public_title` | `9c4477726953` | `3fe9896cecb5` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-004#public_inference` | `246b193fb7f6` | `7ee7f4f07482` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-004#public_reason` | `3a88af109e71` | `60f2dd22760b` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-004#public_title` | `56bfe6a08124` | `57003f2f85b0` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-005#public_inference` | `1348ebb6f480` | `48c6b2c521ca` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-005#public_reason` | `e547c3b5f591` | `522d6f0e62a6` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-005#public_title` | `12a7e19bcde5` | `4aaf34b467f0` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-006#public_inference` | `a062e3371183` | `d64c1a8b4bbf` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-006#public_reason` | `da699f4fcf90` | `9de45b61a115` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
+| `labor/REL-GR-006#public_title` | `e82843b8f796` | `9cc4f69b17a6` | PENDING_AUTHOR_REVIEW | `editorial/site/glosses.yml` | limits_page | /limites |
 | `site#fixed.absence_not_negative` | `95355312e0ae` | `9d58d6370e77` | PENDING_AUTHOR_REVIEW | `editorial/site/states.yml` | disclaimers | / /sobre |
 | `site#states.claim.INSUFFICIENT_EVIDENCE` | `0a96e09a7c0a` | `9b96497636aa` | PENDING_AUTHOR_REVIEW | `editorial/site/states.yml` | states | / /explorar /metodo /labor/preguntas/* |
 | `site#states.claim.OBSERVED_IN_SOURCE` | `f725142e1e7f` | `9d47db2e31da` | PENDING_AUTHOR_REVIEW | `editorial/site/states.yml` | states | / /explorar /metodo /labor/preguntas/* |
@@ -217,6 +268,7 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.about_what` | `e8c1dbf39907` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | about | /sobre |
 | `site#ui.answer_heading` | `f87612b89188` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.brand_wordmark` | `4b477a5b96c3` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | navigation | * |
+| `site#ui.canonical_cite` | `3afdba9b69b5` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.cite_template` | `27cbc355e51a` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.cite_template_no_claim` | `22b54bc8e1b6` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.count_claims` | `78b61dcefd43` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | counts | / /explorar |
