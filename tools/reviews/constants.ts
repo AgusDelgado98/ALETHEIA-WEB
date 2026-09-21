@@ -3,7 +3,7 @@ export const WEB2_REVIEWED_COMMIT = "1dbfbe78f2f7fc62a9dba49e70348574a75f8167";
 export const WEB2_PRODUCTION_URL = "https://aletheia-web-seven.vercel.app";
 export const WEB2_PACKAGE_DATE = "2026-09-21";
 export const WEB2_RELEASE_LABEL = "WEB-2";
-export const WEB2_STATUS = "TECHNICALLY COMPLETE / RELEASE BLOCKED";
+export const WEB2_STATUS = "TECHNICALLY COMPLETE / HUMAN RELEASE GATE ONLY";
 
 export const HUMAN_REVIEW_MD = "reviews/WEB-2-HUMAN-REVIEW.md";
 export const LEGAL_REVIEW_MD = "reviews/WEB-2-LEGAL-SOURCE-REVIEW.md";
