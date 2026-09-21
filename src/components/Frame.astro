@@ -7,12 +7,13 @@ import Glyph from "./Glyph.astro";
  */
 interface Props {
   source?: string | undefined;
+  sourceNote?: string | undefined;
   labelSource: string;
   labelScope: string;
   labelPeriod?: string;
   period?: string;
 }
-const { source, labelSource, labelScope, labelPeriod, period } = Astro.props;
+const { source, sourceNote, labelSource, labelScope, labelPeriod, period } = Astro.props;
 ---
 
 <div class="frame">
@@ -29,7 +30,10 @@ const { source, labelSource, labelScope, labelPeriod, period } = Astro.props;
         <dt>
           <Glyph kind="source" size="0.65rem" /> {labelSource}
         </dt>
-        <dd class="mono">{source}</dd>
+        <dd>
+          <span class="mono">{source}</span>
+          {sourceNote !== undefined && <p class="src-note">{sourceNote}</p>}
+        </dd>
       </div>
     )}
     <div class="dim__e">
@@ -119,5 +123,11 @@ const { source, labelSource, labelScope, labelPeriod, period } = Astro.props;
   }
   .dim__s dd {
     color: var(--ink);
+  }
+  .src-note {
+    margin-top: var(--space-2);
+    font: 400 var(--fs-label) / 1.45 var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
   }
 </style>

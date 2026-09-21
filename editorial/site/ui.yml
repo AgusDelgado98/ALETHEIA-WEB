@@ -109,6 +109,7 @@ strings:
   limits_keep_intro: { id: ui-limits-keep-intro, text: "Ausencias y resultados que deben sobrevivir, incluidos los del régimen C." }
   limits_unresolved: { id: ui-limits-unresolved, text: "Sin resolver" }
   limits_must_not: { id: ui-limits-must-not, text: "Lo que no se afirma" }
+  canonical_cite: { id: ui-canonical-cite, text: "Texto canónico" }
   limits_inference: { id: ui-limits-inference, text: "Inferencia que exigiría gobernanza" }
   method_heading: { id: ui-method-heading, text: "Método" }
   method_lede: { id: ui-method-lede, text: "Las palabras públicas se atan a un corpus congelado. Los estados se leen del ledger, no se reescriben aquí." }

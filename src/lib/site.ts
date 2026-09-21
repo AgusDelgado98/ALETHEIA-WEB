@@ -1,7 +1,7 @@
 import { loadGenerated } from "../../tools/corpus/load.ts";
-import { loadSiteStrings } from "../../tools/editorial/load.ts";
+import { loadGlosses, loadSiteStrings } from "../../tools/editorial/load.ts";
 import { documentaryLabel, loadQuestionMap, type MapQuestion, type QuestionMap } from "./map.ts";
-import { markAllNumerals, type Part } from "./render.ts";
+import { markAllNumerals, markTokens, type Part } from "./render.ts";
 
 /** WEB-0 D-014 / MVP §2.2: las cinco fichas destacadas. El régimen C no entra. */
 export const FEATURED_QUESTION_IDS = [
@@ -72,8 +72,11 @@ export interface GovernanceItem {
   id: string;
   title: string;
   titleParts: Part[];
+  titlePublic: Part[];
   inference: Part[];
+  inferencePublic: Part[];
   reason: Part[];
+  reasonPublic: Part[];
   claimIds: string[];
 }
 
@@ -84,6 +87,7 @@ export interface PreservedItem {
   questionId: string;
   href: string;
   mustNot: Part[];
+  mustNotPublic: Part[];
 }
 
 export interface SiteView {
@@ -113,6 +117,7 @@ export function loadSite(root: string): SiteView {
   const remaining = map.questions.filter((q) => !featuredSet.has(q.id));
   const gr = c.relations.filter((r) => r.category === "GOVERNANCE_REQUIRED");
   const site = loadSiteStrings(root);
+  const glosses = loadGlosses(root);
   const claimLabel = (state: string): string =>
     site.states.claim_state_labels[state]?.text ?? documentaryLabel(ui, state, state);
   const qLabel = (state: string): string =>
@@ -143,22 +148,32 @@ export function loadSite(root: string): SiteView {
     ],
     claimStates,
     questionResolutions,
-    governance: gr.map((r) => ({
-      id: r.id,
-      title: r.title,
-      titleParts: markAllNumerals(r.title),
-      inference: markAllNumerals(r.prohibited_inference),
-      reason: markAllNumerals(r.reason),
-      claimIds: r.claim_ids,
-    })),
-    preserved: c["preserved-results"].map((k) => ({
-      id: k.id,
-      category: k.category,
-      regime: k.regime,
-      questionId: k.question_id,
-      href: `/labor/preguntas/${k.question_id.replace(/^LAB-/, "").toLowerCase()}`,
-      mustNot: markAllNumerals(k.must_not),
-    })),
+    governance: gr.map((r) => {
+      const g = req(glosses.governance[r.id], `glosa pública de ${r.id}`);
+      return {
+        id: r.id,
+        title: r.title,
+        titleParts: markAllNumerals(r.title),
+        titlePublic: markTokens(g.title.text),
+        inference: markAllNumerals(r.prohibited_inference),
+        inferencePublic: markTokens(g.inference.text),
+        reason: markAllNumerals(r.reason),
+        reasonPublic: markTokens(g.reason.text),
+        claimIds: r.claim_ids,
+      };
+    }),
+    preserved: c["preserved-results"].map((k) => {
+      const g = req(glosses.preserved[k.id], `glosa pública de ${k.id}`);
+      return {
+        id: k.id,
+        category: k.category,
+        regime: k.regime,
+        questionId: k.question_id,
+        href: `/labor/preguntas/${k.question_id.replace(/^LAB-/, "").toLowerCase()}`,
+        mustNot: markAllNumerals(k.must_not),
+        mustNotPublic: markTokens(g.must_not.text),
+      };
+    }),
     pin: {
       tag: c.manifest.pin.tag,
       commit: c.manifest.pin.commit,

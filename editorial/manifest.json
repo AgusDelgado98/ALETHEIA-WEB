@@ -41,14 +41,14 @@
       "sha256": "e478fd94a976eea0ff1640435da069b809bfe2904ada9a3577118635191df958"
     },
     {
-      "bytes": 220237,
+      "bytes": 253100,
       "path": "editorial/labor/audit/LAB-Q-0013.audit.yml",
-      "sha256": "0f79868d6cc0cd3d8bbaee3b54ea558f445583682d986304802758b3149f5c59"
+      "sha256": "e9f4ab51faa3fff643f137a30581a065ed1c37be4a69768472b7a2abcb9fc150"
     },
     {
-      "bytes": 7708,
+      "bytes": 7911,
       "path": "editorial/labor/audit/LAB-Q-0013.review.yml",
-      "sha256": "47bce423c38b408ea61917e56fa0db8ec2f09e35223a20c94af98f67608d3683"
+      "sha256": "31293f79e787382e1f638cfaa65b80694846cf97a1586264d1d1f41a693bd43e"
     },
     {
       "bytes": 11437,
@@ -191,17 +191,22 @@
       "sha256": "3799c81f2096809de33c7193ce6d21c4adb1ec0fb74d16df96e56b1a91829381"
     },
     {
+      "bytes": 12461,
+      "path": "editorial/site/glosses.yml",
+      "sha256": "6c3bc3cd09bcb934762545a2a396125f1e7b24a3080985e768a21ee47ac30897"
+    },
+    {
       "bytes": 1260,
       "path": "editorial/site/states.yml",
       "sha256": "9e8b41f66e1a5bac5ead709f91eafa764ef81123bff049fa074c1e8ee0441cf5"
     },
     {
-      "bytes": 13354,
+      "bytes": 13423,
       "path": "editorial/site/ui.yml",
-      "sha256": "3958bd6b8b9c851cb2763e7ab6b03282b68eedf3d81eea97474faaa434a05023"
+      "sha256": "925e7f3c3c00bc5d268b63d8e6e26516d08c78b5e4dd7c7d5d2802e1975efbbf"
     }
   ],
   "schema": "aletheia-web/editorial-manifest/1",
-  "units": 312,
-  "units_pending_author_signoff": 294
+  "units": 363,
+  "units_pending_author_signoff": 345
 }

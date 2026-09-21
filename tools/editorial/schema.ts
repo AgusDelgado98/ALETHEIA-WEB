@@ -93,6 +93,34 @@ export const Ui = z.strictObject({
 });
 export type UiT = z.infer<typeof Ui>;
 
+/** Glosas públicas en español: no sustituyen el canónico inglés; lo citan. */
+export const Glosses = z.strictObject({
+  schema: z.literal("aletheia-web/editorial-glosses/1"),
+  revision: rev,
+  questions: z.record(
+    z.string(),
+    z.strictObject({
+      title: Unit,
+      source: Unit.optional(),
+    }),
+  ),
+  governance: z.record(
+    z.string(),
+    z.strictObject({
+      title: Unit,
+      inference: Unit,
+      reason: Unit,
+    }),
+  ),
+  preserved: z.record(
+    z.string(),
+    z.strictObject({
+      must_not: Unit,
+    }),
+  ),
+});
+export type GlossesT = z.infer<typeof Glosses>;
+
 // ───────────────────────── auditoría (§4.1) ─────────────────────────
 
 export const AUDIT_DIMENSIONS = ["semantics", "causality", "population", "period", "measurement_type", "evidence_strength"] as const;

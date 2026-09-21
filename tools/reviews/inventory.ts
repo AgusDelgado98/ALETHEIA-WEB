@@ -139,6 +139,8 @@ function git(root: string, args: string[]): string | null {
 }
 
 export function yamlPathForUnit(u: EditorialUnit): string {
+  if (u.section === "public_title" || u.section === "limits_gloss" || u.section === "source_gloss")
+    return "editorial/site/glosses.yml";
   if (u.string_id.startsWith("site#states.") || u.string_id === "site#fixed.absence_not_negative")
     return "editorial/site/states.yml";
   if (u.string_id.startsWith("site#ui.")) return "editorial/site/ui.yml";
@@ -160,6 +162,8 @@ export function familyOf(u: EditorialUnit): EditorialFamily {
     if (u.section === "can_say") return "finding_can_say";
     if (u.section === "does_not_mean") return "finding_does_not_mean";
     if (u.section === "would_need") return "finding_would_need";
+    if (u.section === "limits_gloss") return "limits_page";
+    if (u.section === "source_gloss") return "trail_ui";
     return "finding_structure";
   }
   const key = u.string_id.replace(/^site#ui\./, "");
@@ -625,7 +629,7 @@ export function buildInventory(root: string): ReviewInventory {
     {
       id: "preserved_keep_text",
       origin: "generated corpus",
-      transformation: "PreservedResult.must_not verbatim (inglés)",
+      transformation: "glosa pública en español + PreservedResult.must_not canónico (inglés)",
       exposure: "/limites",
       known_license: "PENDING",
       clearance: "PENDING",
@@ -633,7 +637,7 @@ export function buildInventory(root: string): ReviewInventory {
     {
       id: "governance_required_text",
       origin: "generated corpus",
-      transformation: "Relation title / prohibited_inference / reason verbatim",
+      transformation: "glosa pública en español + Relation title / prohibited_inference / reason canónicos",
       exposure: "/limites",
       known_license: "PENDING",
       clearance: "PENDING",

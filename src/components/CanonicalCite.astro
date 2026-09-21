@@ -1,0 +1,33 @@
+---
+import SegmentText from "./SegmentText.astro";
+import type { Part } from "../lib/render.ts";
+/**
+ * Cita el texto canónico inglés sin convertirlo en evidencia nueva.
+ * La glosa pública va aparte; este bloque solo conserva provenance.
+ */
+interface Props {
+  label: string;
+  parts: readonly Part[];
+}
+const { label, parts } = Astro.props;
+---
+
+<p class="canon">
+  <span>{label}:</span>{" "}
+  <q lang="en" data-canonical-cite="true">
+    <SegmentText parts={parts} />
+  </q>
+</p>
+
+<style>
+  .canon {
+    margin-top: var(--space-3);
+    font: 400 var(--fs-label) / 1.45 var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  q {
+    font-style: italic;
+    quotes: "«" "»" "‹" "›";
+  }
+</style>

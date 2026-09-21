@@ -1,0 +1,242 @@
+# Glosas públicas en español (WEB-2R). No reemplazan el corpus inglés.
+# Cada unidad cita el campo canónico; el inglés sigue visible en la interfaz.
+# PENDING_AUTHOR_REVIEW: no firman OD-14 ni aprueban los textos ya pendientes.
+schema: aletheia-web/editorial-glosses/1
+revision: 1
+questions:
+  LAB-Q-0001:
+    title:
+      id: gloss-q0001-title
+      text: "Composición del empleo registrado según categoría observable"
+      maps_to: ["labor/LAB-Q-0001#canonical_title"]
+  LAB-Q-0002:
+    title:
+      id: gloss-q0002-title
+      text: "Divergencia entre fuentes sobre personas, puestos y relaciones"
+      maps_to: ["labor/LAB-Q-0002#canonical_title"]
+  LAB-Q-0006:
+    title:
+      id: gloss-q0006-title
+      text: "Divergencia entre fuentes administrativas y encuestas de hogares"
+      maps_to: ["labor/LAB-Q-0006#canonical_title"]
+  LAB-Q-0007:
+    title:
+      id: gloss-q0007-title
+      text: "Si una política de formalización afecta de modo causal la participación del empleo registrado"
+      maps_to: ["labor/LAB-Q-0007#canonical_title"]
+  LAB-Q-0008:
+    title:
+      id: gloss-q0008-title
+      text: "Cambio en la distribución de registros fiscales relevantes"
+      maps_to: ["labor/LAB-Q-0008#canonical_title"]
+  LAB-Q-0009:
+    title:
+      id: gloss-q0009-title
+      text: "Lo que sí y lo que no se puede inferir sobre independencia económica a partir de registros fiscales"
+      maps_to: ["labor/LAB-Q-0009#canonical_title"]
+  LAB-Q-0010:
+    title:
+      id: gloss-q0010-title
+      text: "Proxies observables de dependencia económica"
+      maps_to: ["labor/LAB-Q-0010#canonical_title"]
+  LAB-Q-0012:
+    title:
+      id: gloss-q0012-title
+      text: "Distribución de protecciones y obligaciones entre modalidades observables"
+      maps_to: ["labor/LAB-Q-0012#canonical_title"]
+    source:
+      id: gloss-q0012-source
+      text: "En términos públicos: etiqueta de mapeo regulatorio del claim. No identifica una fuente estadística y no enumera normas."
+      maps_to: ["labor/LAB-CLM-0009#source_label"]
+  LAB-Q-0014:
+    title:
+      id: gloss-q0014-title
+      text: "Qué dimensiones del proceso de selección son observables con fuentes públicas"
+      maps_to: ["labor/LAB-Q-0014#canonical_title"]
+    source:
+      id: gloss-q0014-source
+      text: "En términos públicos: evaluación de plataformas (etiqueta del claim; no es una fuente estadística)."
+      maps_to: ["labor/LAB-CLM-0013#source_label"]
+  LAB-Q-0015:
+    title:
+      id: gloss-q0015-title
+      text: "Si se puede estimar la prevalencia de IA en la contratación por categoría de taxonomía"
+      maps_to: ["labor/LAB-Q-0015#canonical_title"]
+  LAB-Q-0016:
+    title:
+      id: gloss-q0016-title
+      text: "Qué sesgos tendría un futuro observatorio de avisos de empleo"
+      maps_to: ["labor/LAB-Q-0016#canonical_title"]
+    source:
+      id: gloss-q0016-source
+      text: "En términos públicos: diseño de observatorio (etiqueta del claim; no es una medición publicada)."
+      maps_to: ["labor/LAB-CLM-0012#source_label"]
+  LAB-Q-0017:
+    title:
+      id: gloss-q0017-title
+      text: "Si el ghosting a escala poblacional puede medirse"
+      maps_to: ["labor/LAB-Q-0017#canonical_title"]
+  LAB-Q-0018:
+    title:
+      id: gloss-q0018-title
+      text: "Divergencia entre describir avisos y describir resultados reales de contratación"
+      maps_to: ["labor/LAB-Q-0018#canonical_title"]
+    source:
+      id: gloss-q0018-source
+      text: "En términos públicos: revisión de disponibilidad de fuentes (etiqueta del claim; no es un recuento de contrataciones)."
+      maps_to: ["labor/LAB-CLM-0014#source_label"]
+governance:
+  REL-GR-001:
+    title:
+      id: gloss-gr001-title
+      text: "Gobernanza requerida: composición SIPA y mediciones ARCA Monotributo como un mismo fenómeno"
+      maps_to: ["labor/REL-GR-001#title"]
+    inference:
+      id: gloss-gr001-inference
+      text: "Tomar la composición por modalidad SIPA (régimen A) y las mediciones de registro de Monotributo ARCA (régimen B) como evidencia sobre un mismo fenómeno."
+      maps_to: ["labor/REL-GR-001#prohibited_inference"]
+    reason:
+      id: gloss-gr001-reason
+      text: "La regla del Charter citada en el texto canónico: la relación entre sus objetos no está gobernada más allá del uso interno al claim de REL-AUTH-001."
+      maps_to: ["labor/REL-GR-001#reason"]
+  REL-GR-002:
+    title:
+      id: gloss-gr002-title
+      text: "Gobernanza requerida: mediciones derivadas de EPH relacionadas con claims de empleo registrado (incluida administrativa versus encuesta)"
+      maps_to: ["labor/REL-GR-002#title"]
+    inference:
+      id: gloss-gr002-inference
+      text: "Relacionar mediciones derivadas de EPH (proxy de empleo no registrado, ingreso, y el campo de proxy citado en el texto canónico) con claims de empleo registrado de SIPA/ARCA, incluida cualquier comparación administrativa versus encuesta."
+      maps_to: ["labor/REL-GR-002#prohibited_inference"]
+    reason:
+      id: gloss-gr002-reason
+      text: "Ningún dictamen gobierna la relación entre EPH y los objetos administrativos; LAB-Q-0006 tampoco tiene una métrica preregistrada."
+      maps_to: ["labor/REL-GR-002#reason"]
+  REL-GR-003:
+    title:
+      id: gloss-gr003-title
+      text: "Gobernanza requerida: objetos del régimen C relacionados con objetos de empleo o registro de los regímenes A/B"
+      maps_to: ["labor/REL-GR-003#title"]
+    inference:
+      id: gloss-gr003-inference
+      text: "Relacionar objetos del régimen C (LAB-OBJ-0019 a LAB-OBJ-0024) con objetos de empleo o registro de los regímenes A y B (por ejemplo LAB-OBJ-0003, LAB-OBJ-0016)."
+      maps_to: ["labor/REL-GR-003#prohibited_inference"]
+    reason:
+      id: gloss-gr003-reason
+      text: "Ningún dictamen gobierna una relación de objetos C hacia A/B, y el régimen C no tiene datos."
+      maps_to: ["labor/REL-GR-003#reason"]
+  REL-GR-004:
+    title:
+      id: gloss-gr004-title
+      text: "Gobernanza requerida: un patrón entre regímenes de ausencia de datos de flujo o de evento de contratación"
+      maps_to: ["labor/REL-GR-004#title"]
+    inference:
+      id: gloss-gr004-inference
+      text: "Afirmar un patrón entre regímenes —por ejemplo una ausencia reiterada de datos de flujo, de transición o de evento de contratación— como hallazgo sintetizado, y no como hechos yuxtapuestos."
+      maps_to: ["labor/REL-GR-004#prohibited_inference"]
+    reason:
+      id: gloss-gr004-reason
+      text: "Enunciar un patrón relaciona las ausencias; la regla citada en el texto canónico exige gobernanza primero."
+      maps_to: ["labor/REL-GR-004#reason"]
+  REL-GR-005:
+    title:
+      id: gloss-gr005-title
+      text: "Gobernanza requerida: reutilización de raíces entre regímenes más allá de LAB-GOV-SIPA-SUBSTITUTION-0001"
+      maps_to: ["labor/REL-GR-005#title"]
+    inference:
+      id: gloss-gr005-inference
+      text: "Contar una raíz usada en un régimen (LAB-ROOT-0001 SIPA, LAB-ROOT-0005 EPH) hacia un claim de otro régimen más allá de lo que ya autoriza LAB-GOV-SIPA-SUBSTITUTION-0001."
+      maps_to: ["labor/REL-GR-005#prohibited_inference"]
+    reason:
+      id: gloss-gr005-reason
+      text: "La reutilización de raíces entre regímenes está gobernada solo para SIPA en LAB-CLM-0007; la Root Counting Rule, por defecto, es la misma raíz y el mismo recuento."
+      maps_to: ["labor/REL-GR-005#reason"]
+  REL-GR-006:
+    title:
+      id: gloss-gr006-title
+      text: "Gobernanza requerida: comparar períodos o magnitudes entre claims con ventanas o productos distintos"
+      maps_to: ["labor/REL-GR-006#title"]
+    inference:
+      id: gloss-gr006-inference
+      text: "Cualquier enunciado que compare períodos o magnitudes entre claims con ventanas o productos distintos."
+      maps_to: ["labor/REL-GR-006#prohibited_inference"]
+    reason:
+      id: gloss-gr006-reason
+      text: "Las ventanas de comparabilidad y las rupturas citadas en el texto canónico exigen tratamiento gobernado."
+      maps_to: ["labor/REL-GR-006#reason"]
+preserved:
+  KEEP-001:
+    must_not:
+      id: gloss-keep001-must-not
+      text: "En términos públicos: no generalizar fuera de los límites de trimestre, asalariados y aglomerados urbanos de EPH que fija el texto canónico; no presentar como hallazgo sobre la informalidad total ni como estabilidad del mercado laboral; no subir de rango ni invertir el resultado por inferencia entre regímenes."
+      maps_to: ["labor/KEEP-001#must_not"]
+  KEEP-002:
+    must_not:
+      id: gloss-keep002-must-not
+      text: "No suavizar, omitir ni convertir en un hallazgo negativo o positivo; el resultado es ausencia de evidencia dentro del alcance evaluado. No informar un efecto causal de los cambios de umbral del Monotributo en ningún sentido."
+      maps_to: ["labor/KEEP-002#must_not"]
+  KEEP-003:
+    must_not:
+      id: gloss-keep003-must-not
+      text: "No suavizar, omitir ni convertir en un hallazgo negativo o positivo; el resultado es ausencia de evidencia dentro del alcance evaluado. No reformularlo como «no existe fuente»; la conclusión está acotada a los criterios evaluados. No leer como hallazgo sobre procesos de reclutamiento o selección."
+      maps_to: ["labor/KEEP-003#must_not"]
+  KEEP-004:
+    must_not:
+      id: gloss-keep004-must-not
+      text: "No suavizar, omitir ni convertir en un hallazgo negativo o positivo; el resultado es ausencia de evidencia dentro del alcance evaluado. No subir a NOT_IDENTIFIABLE; no medir ni implicar una divergencia avisos-versus-contrataciones; no tratar stocks de empleo como contrataciones."
+      maps_to: ["labor/KEEP-004#must_not"]
+  KEEP-005:
+    must_not:
+      id: gloss-keep005-must-not
+      text: "No inferir contractorization ni dependencia económica a partir de categorías de registro ni del proxy no validado citado en el texto canónico; no descartar por falta de un registro de claim."
+      maps_to: ["labor/KEEP-005#must_not"]
+  KEEP-006:
+    must_not:
+      id: gloss-keep006-must-not
+      text: "No describir como un resultado negativo de búsqueda ni como evidencia sobre el uso de IA en la contratación; el silencio de los avisos sobre IA no significa que no se haya usado IA."
+      maps_to: ["labor/KEEP-006#must_not"]
+  KEEP-007:
+    must_not:
+      id: gloss-keep007-must-not
+      text: "No estimar ni implicar prevalencia de ghosting a partir de ninguna fuente; no usar datos de avisos como proxy."
+      maps_to: ["labor/KEEP-007#must_not"]
+  KEEP-008:
+    must_not:
+      id: gloss-keep008-must-not
+      text: "No responder esta pregunta yuxtaponiendo claims SIPA/CGI/MLER con claims EPH; no inventar una métrica dentro de LAB-S."
+      maps_to: ["labor/KEEP-008#must_not"]
+  KEEP-009:
+    must_not:
+      id: gloss-keep009-must-not
+      text: "No atribuir causas a ningún cambio observado de composición o participación; no tratar ningún claim descriptivo como causal."
+      maps_to: ["labor/KEEP-009#must_not"]
+  KEEP-010:
+    must_not:
+      id: gloss-keep010-must-not
+      text: "No presentar el episodio elegido como evidencia de un efecto; no informar ninguna estimación causal."
+      maps_to: ["labor/KEEP-010#must_not"]
+  KEEP-011:
+    must_not:
+      id: gloss-keep011-must-not
+      text: "No completar por inferencia; no convertir en evidencia de ausencia ni de presencia de un derecho, una protección o una cobertura."
+      maps_to: ["labor/KEEP-011#must_not"]
+  KEEP-012:
+    must_not:
+      id: gloss-keep012-must-not
+      text: "No completar por inferencia; no convertir en evidencia de ausencia ni de presencia de un derecho, una protección o una cobertura."
+      maps_to: ["labor/KEEP-012#must_not"]
+  KEEP-013:
+    must_not:
+      id: gloss-keep013-must-not
+      text: "No completar por inferencia; no convertir en evidencia de ausencia ni de presencia de un derecho, una protección o una cobertura."
+      maps_to: ["labor/KEEP-013#must_not"]
+  KEEP-014:
+    must_not:
+      id: gloss-keep014-must-not
+      text: "No completar por inferencia; no convertir en evidencia de ausencia ni de presencia de un derecho, una protección o una cobertura."
+      maps_to: ["labor/KEEP-014#must_not"]
+  KEEP-015:
+    must_not:
+      id: gloss-keep015-must-not
+      text: "No completar por inferencia; no convertir en evidencia de ausencia ni de presencia de un derecho, una protección o una cobertura."
+      maps_to: ["labor/KEEP-015#must_not"]

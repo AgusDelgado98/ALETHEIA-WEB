@@ -119,9 +119,18 @@ describe("capa editorial de Q-0013", () => {
   });
   it("cada frase de «sí / no / haría falta» cita contenido canónico que resuelve", () => {
     for (const u of bundle.units.filter((x) =>
-      ["can_say", "does_not_mean", "would_need", "intro", "title", "scope", "trail"].includes(
-        x.section,
-      ),
+      [
+        "can_say",
+        "does_not_mean",
+        "would_need",
+        "intro",
+        "title",
+        "scope",
+        "trail",
+        "public_title",
+        "limits_gloss",
+        "source_gloss",
+      ].includes(x.section),
     )) {
       expect(u.maps_to.length, u.string_id).toBeGreaterThan(0);
       expect(unitHashes(u, corpus).unresolved, u.string_id).toEqual([]);

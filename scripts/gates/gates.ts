@@ -1300,6 +1300,13 @@ const gEdi05: Gate = {
           continue;
         }
         if (rel.category === "PROHIBITED" || rel.category === "GOVERNANCE_REQUIRED") {
+          if (u.section === "limits_gloss" && rel.category === "GOVERNANCE_REQUIRED") {
+            if (!["title", "prohibited_inference", "reason"].includes(m[2] ?? ""))
+              f.push(
+                `${u.string_id}: ${rel.id} en límites solo cita title, prohibited_inference o reason`,
+              );
+            continue;
+          }
           if (m[2] !== "prohibited_inference")
             f.push(
               `${u.string_id}: ${rel.id} (${rel.category}) solo puede citarse por prohibited_inference`,

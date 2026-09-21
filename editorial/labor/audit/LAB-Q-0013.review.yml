@@ -8,6 +8,7 @@ date: "2026-09-19"
 independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."
 adversarial_review:
   - "Lectura a favor del efecto nulo: ¿alguien puede entender «no se puede medir» como «no hay efecto»? Se mitiga con el aviso fijo «Ausencia, no resultado negativo.» junto a la respuesta y con dnm-1; el título dice «no se puede medir», no «no tiene efecto»."
+  - "WEB-2R glosas públicas: las fichas mínimas y /limites muestran español de presentación; el canónico inglés permanece citado. Las glosas nuevas quedan PENDING_AUTHOR_REVIEW y no firman OD-14."
   - "Lectura a favor del efecto existente: dnm-2 declara que tampoco se informa un efecto, ni en un sentido ni en otro ni de ningún tamaño (KEEP-002 y el alcance del claim)."
   - "Stock vs. flujo: cs-3, dnm-3 y wn-1 nunca leen una diferencia de cuentas como movimiento de personas (REL-PR-006, REL-CONF-003)."
   - "Registro vs. empleo: dnm-4 conserva la distinción registro fiscal / relación de empleo y no infiere dependencia ni subordinación (REL-CONF-002, REL-PR-005)."

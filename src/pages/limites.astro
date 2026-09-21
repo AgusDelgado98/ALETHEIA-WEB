@@ -1,4 +1,5 @@
 ---
+import CanonicalCite from "../components/CanonicalCite.astro";
 import SegmentText from "../components/SegmentText.astro";
 import Base from "../layouts/Base.astro";
 import { loadSite } from "../lib/site.ts";
@@ -26,17 +27,20 @@ const ui = site.ui;
               </span>
               <span>{ui("limits_unresolved")}</span>
             </p>
-            <h3 lang="en">
-              <SegmentText parts={g.titleParts} />
+            <h3>
+              <SegmentText parts={g.titlePublic} />
             </h3>
+            <CanonicalCite label={ui("canonical_cite")} parts={g.titleParts} />
             <p class="lbl">{ui("limits_inference")}</p>
-            <p lang="en">
-              <SegmentText parts={g.inference} />
+            <p>
+              <SegmentText parts={g.inferencePublic} />
             </p>
+            <CanonicalCite label={ui("canonical_cite")} parts={g.inference} />
             <p class="lbl">{ui("limits_must_not")}</p>
-            <p lang="en">
-              <SegmentText parts={g.reason} />
+            <p>
+              <SegmentText parts={g.reasonPublic} />
             </p>
+            <CanonicalCite label={ui("canonical_cite")} parts={g.reason} />
           </li>
         ))}
       </ol>
@@ -74,9 +78,10 @@ const ui = site.ui;
               </a>
             </p>
             <p class="lbl">{ui("limits_must_not")}</p>
-            <p lang="en">
-              <SegmentText parts={k.mustNot} />
+            <p>
+              <SegmentText parts={k.mustNotPublic} />
             </p>
+            <CanonicalCite label={ui("canonical_cite")} parts={k.mustNot} />
           </li>
         ))}
       </ol>

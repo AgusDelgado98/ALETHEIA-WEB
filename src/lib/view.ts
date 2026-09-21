@@ -5,6 +5,7 @@ import { sha256Hex } from "../../tools/corpus/util.ts";
 import { parseSegments, type Segment } from "../../tools/editorial/directives.ts";
 import {
   loadEditorial,
+  loadGlosses,
   loadSiteStrings,
   hasEditorialFinding,
   type EditorialBundle,
@@ -54,6 +55,8 @@ export interface QuestionView {
   id: string;
   publicQuestion: string;
   canonicalQuestion: string;
+  canonicalTitle: string;
+  sourceGloss: string | null;
   hasEditorial: boolean;
   ui: (key: string) => string;
   state: {
@@ -168,6 +171,8 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     id: qid,
     publicQuestion: e.question.public_question,
     canonicalQuestion: q.canonical_text,
+    canonicalTitle: q.canonical_title,
+    sourceGloss: null,
     hasEditorial: true,
     ui,
     title: parts(e.finding.title.text),
@@ -399,6 +404,10 @@ function loadCanonicalView(
   provenanceShell: ProvenanceShell,
 ): QuestionView {
   const site = loadSiteStrings(root);
+  const glosses = loadGlosses(root);
+  const publicTitle = req(glosses.questions[qid]?.title, `glosa pública de ${qid}`);
+  const sourceGloss =
+    listedClaims.length === 1 ? (glosses.questions[qid]?.source?.text ?? null) : null;
   const ui = (key: string): string => req(site.ui.strings[key], `cadena de interfaz «${key}»`).text;
   const qLabel = documentaryLabel(
     ui,
@@ -449,6 +458,8 @@ function loadCanonicalView(
     id: qid,
     publicQuestion,
     canonicalQuestion: q.canonical_text,
+    canonicalTitle: q.canonical_title,
+    sourceGloss,
     hasEditorial: false,
     ui,
     state: {
@@ -470,9 +481,9 @@ function loadCanonicalView(
           }
         : null,
     claims: listedClaims,
-    title: markTokens(q.canonical_title),
+    title: markTokens(publicTitle.text),
     intro: [],
-    scope: markTokens(q.canonical_title),
+    scope: markTokens(publicTitle.text),
     canSay: [],
     doesNotMean: [],
     wouldNeed: [],

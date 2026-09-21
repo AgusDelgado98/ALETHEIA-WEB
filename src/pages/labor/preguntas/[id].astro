@@ -1,4 +1,5 @@
 ---
+import CanonicalCite from "../../../components/CanonicalCite.astro";
 import EvidenceState from "../../../components/EvidenceState.astro";
 import EvidenceTrail from "../../../components/EvidenceTrail.astro";
 import Frame from "../../../components/Frame.astro";
@@ -9,7 +10,7 @@ import SegmentText from "../../../components/SegmentText.astro";
 import WhatThisDoesNotMean from "../../../components/WhatThisDoesNotMean.astro";
 import WhatWeCanSay from "../../../components/WhatWeCanSay.astro";
 import Base from "../../../layouts/Base.astro";
-import { plainText } from "../../../lib/render.ts";
+import { markAllNumerals, plainText } from "../../../lib/render.ts";
 import { isDocumentaryObserved } from "../../../lib/site.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
@@ -128,8 +129,10 @@ const shapeOf = (state: string): string =>
           <p class="answer__t">
             <SegmentText parts={v.title} />
           </p>
+          <CanonicalCite label={ui("canonical_cite")} parts={markAllNumerals(v.canonicalTitle)} />
           <Frame
             source={v.claims.length === 1 ? v.claims[0]!.source : undefined}
+            sourceNote={v.sourceGloss ?? undefined}
             labelSource={ui("frame_source")}
             labelScope={ui("frame_scope")}
           >

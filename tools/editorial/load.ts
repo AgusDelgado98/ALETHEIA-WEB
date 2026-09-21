@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
-import { AuditFile, Finding, Limits, QuestionEditorial, Review, States, Ui, type AuditFileT, type FindingT, type LimitsT, type ReviewT, type StatesT, type UiT } from "./schema.ts";
+import { AuditFile, Finding, Glosses, Limits, QuestionEditorial, Review, States, Ui, type AuditFileT, type FindingT, type GlossesT, type LimitsT, type ReviewT, type StatesT, type UiT } from "./schema.ts";
 import { findBannedKeys } from "./lint.ts";
 
 export type UnitKind = "public_question" | "finding_text" | "limit_waiver" | "state_label" | "fixed_text" | "ui_label";
@@ -36,6 +36,7 @@ const ROOT_FILES = (qid: string) => ({
   audit: `editorial/labor/audit/${qid}.audit.yml`,
   states: "editorial/site/states.yml",
   ui: "editorial/site/ui.yml",
+  glosses: "editorial/site/glosses.yml",
 });
 
 export class EditorialError extends Error {}
@@ -49,6 +50,34 @@ export function loadSiteStrings(root: string): { states: StatesT; ui: UiT } {
   );
   const ui = Ui.parse(parse(readFileSync(join(root, "editorial", "site", "ui.yml"), "utf8")));
   return { states, ui };
+}
+
+const GLOSSES_PATH = "editorial/site/glosses.yml";
+
+/** Preguntas mínimas que exigen glosa pública de `canonical_title`. */
+export const MINIMAL_GLOSS_QUESTION_IDS = [
+  "LAB-Q-0001",
+  "LAB-Q-0002",
+  "LAB-Q-0006",
+  "LAB-Q-0007",
+  "LAB-Q-0008",
+  "LAB-Q-0009",
+  "LAB-Q-0010",
+  "LAB-Q-0012",
+  "LAB-Q-0014",
+  "LAB-Q-0015",
+  "LAB-Q-0016",
+  "LAB-Q-0017",
+  "LAB-Q-0018",
+] as const;
+
+export function loadGlosses(root: string): GlossesT {
+  const g = Glosses.parse(parse(readFileSync(join(root, GLOSSES_PATH), "utf8")));
+  for (const id of MINIMAL_GLOSS_QUESTION_IDS) {
+    if (g.questions[id] === undefined)
+      throw new EditorialError(`falta glosa pública de ${id} en ${GLOSSES_PATH}`);
+  }
+  return g;
 }
 
 export function hasEditorialFinding(root: string, qid: string): boolean {
@@ -80,7 +109,8 @@ export function loadEditorialFromTexts(
 
   // G-STA-04: ningún registro editorial de entidad contiene un campo de estado
   const banned: string[] = [];
-  for (const path of [p.question, p.finding, p.limits]) banned.push(...findBannedKeys(doc(path)).map((k) => `${path} ${k}`));
+  for (const path of [p.question, p.finding, p.limits, p.glosses])
+    banned.push(...findBannedKeys(doc(path)).map((k) => `${path} ${k}`));
   if (banned.length > 0) throw new EditorialError(`G-STA-04: campo de estado en editorial: ${banned.join(", ")}`);
 
   const question = QuestionEditorial.parse(doc(p.question));
@@ -143,6 +173,22 @@ export function loadEditorialFromTexts(
         maps_to: [`${extra.canonical_ref}#canonical_text`],
         section: "question",
       });
+    }
+    const glosses = Glosses.parse(doc(p.glosses));
+    const addGloss = (sid: string, u: { text: string; maps_to: string[] }, section: string): void => {
+      units.push({ string_id: sid, kind: "finding_text", text: u.text, maps_to: u.maps_to, section });
+    };
+    for (const [glossQid, g] of Object.entries(glosses.questions)) {
+      addGloss(`labor/${glossQid}#public_title`, g.title, "public_title");
+      if (g.source !== undefined) addGloss(`labor/${glossQid}#source_gloss`, g.source, "source_gloss");
+    }
+    for (const [id, g] of Object.entries(glosses.governance)) {
+      addGloss(`labor/${id}#public_title`, g.title, "limits_gloss");
+      addGloss(`labor/${id}#public_inference`, g.inference, "limits_gloss");
+      addGloss(`labor/${id}#public_reason`, g.reason, "limits_gloss");
+    }
+    for (const [id, g] of Object.entries(glosses.preserved)) {
+      addGloss(`labor/${id}#public_must_not`, g.must_not, "limits_gloss");
     }
   }
 
