@@ -83,10 +83,10 @@ Hoy `data-num="count"` es un cajón de sastre: mezcla conteos derivados del mani
 | **Cifra de investigación** | `data-figure="<figure_id>"` | Figure publicada bajo Data Contract §9 | Autorizada solo por el artefacto generado (D6). **Único** elemento que puede contener `%` o `pp` |
 | **Interfaz** | `data-num="ui"` | Numeral estrictamente de interfaz cuando esté permitido (p. ej. ordinal de un paso) | Entero. Nunca `%`, `pp`, decimal ni signo. Preferir `counter()` de CSS, que no entra al HTML |
 | **Conteo autorizado** | `data-num="count"` | Conteo de interfaz derivado del manifest (p. ej. «18 preguntas») | Solo conteos autorizados. Entero |
-| **Identificador** | `data-num="id"` | `LAB-CLM-0006`, versiones (`v1.0.0`) | Patrón cerrado (`TOKEN`). Absorbe el tipo actual `version` |
+| **Identificador** | `data-num="id"` | `LAB-CLM-0006`, versiones (`v1.0.0`) | Patrón cerrado (`TOKEN`). Absorbe los tipos anteriores `version` y `table` (nombres de cuadro) |
 | **Fecha / período** | `data-num="date"` | `2026-Q1`, `2025-08-01` | Resuelve a un ancla con doble testigo. Reemplaza el tipo actual `anchor` |
 | **Hash** | `data-num="hash"` | `ca6a85e…` | Hex de longitud fija |
-| **Canónico** | `data-num="canon"` | Numeral dentro de texto canónico citado (`lang="en"`), incl. nombres de cuadro (`Cuadro 1`). Absorbe el tipo actual `table` | Solo dentro de un `CanonicalCite`. **No habilita** reutilizar una cifra canónica como Figure: una Figure necesita su propio contrato |
+| **Canónico** | `data-num="canon"` | Numeral dentro de texto canónico citado (`lang="en"`). Reemplaza el uso de `count` en `markAllNumerals` | Solo dentro de un `CanonicalCite` (`q[data-canonical-cite]`) y verbatim en el corpus generado. **No habilita** reutilizar una cifra canónica como Figure: una Figure necesita su propio contrato |
 
 ### D6 · `data-figure` no es una vía de escape
 
@@ -194,3 +194,10 @@ Ningún modo escribe una cifra a mano. El resto de la ficha referencia Figures p
 5. **Los reportes JSON del tag quedan fuera del pin.**
 6. **Orden de implementación:** F1 contrato y generador → F2 Q-0005 → F3 Q-0004 → F4 `HowWeMeasured` (Evidence Chain y Figure / Measurement) → F5 tests y gates negativos. Solo después se integran las Figures al rediseño de Home y fichas. Primero autoridad de dato, después representación.
 7. **Regla visual.** Una Figure no es un KPI: sin número enorme, sin tile, sin verde/rojo, sin delta promocional, sin contador animado. Sí: cifra contextualizada, unidad, período, significado, origen, vínculo con el método y su límite asociado. La pregunta visual no es «¿qué tan grande es este número?» sino «¿qué representa y cómo sabemos que podemos mostrarlo?».
+
+## 10. Implementación (WEB3-F1 a F5)
+
+- **F1** (`8c112bd`): contrato, generador y gates de datos.
+- **F2/F3/F4:** `FigureValue.astro` (única vía para mostrar una cifra; recibe un ID y falla el build si no es una Figure `ELIGIBLE`), `HowWeMeasured.astro` (modos Evidence Chain y Figure / Measurement) y `src/lib/figures.ts`. Los rótulos y los dos textos fijos del bloque viven en `editorial/site/figures.yml` (8 unidades) y la interfaz en `ui.yml` (23 cadenas), todas `PENDING_AUTHOR_REVIEW`.
+- **F5:** `scripts/gates/numerals.ts` valida el marcado numérico del HTML contra el artefacto generado. `G-FIG-03`, `G-FIG-04`, `G-FIG-05` y `G-LIM-04` operan sobre el HTML real. Tests negativos en `tests/figures-html.test.ts`; navegador en `npm run e2e:figures`.
+- **Aclaración de D5:** `Cuadro N` se marca `id` (nombre de cuadro), no `canon`; `canon` queda para los numerales de citas canónicas.

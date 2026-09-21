@@ -4,9 +4,13 @@ import type { Segment } from "../../tools/editorial/directives.ts";
  * Partes renderizables. Todo token numérico visible es una parte con `kind` (id, ancla, cantidad, hash,
  * versión…): así el escaneo de G-FIG-03 puede distinguir un identificador de una cifra tipeada.
  */
-export type Part =
-  | { t: "text"; v: string }
-  | { t: "num"; kind: "id" | "anchor" | "count" | "hash" | "version" | "table"; v: string };
+export type NumeralKind = "id" | "date" | "count" | "hash" | "canon" | "ui";
+
+/**
+ * `data-figure` (cifra de investigación) NO es una clase de `Part`: solo la emite `FigureValue`, a partir de una
+ * Figure ELIGIBLE del artefacto generado (ADR-WEB3-01 D5/D6).
+ */
+export type Part = { t: "text"; v: string } | { t: "num"; kind: NumeralKind; v: string };
 
 const TOKEN =
   /aletheia-[a-z]+(?:-[a-z]+)*-v[0-9]+\.[0-9]+\.[0-9]+|LAB-[A-Z0-9]+(?:-[A-Z0-9]+)*-[0-9]{3,4}|EP-[0-9]{4}-[A-Z]{3,}|REL-[A-Z]+-[0-9]{3}|KEEP-[0-9]{3}|Cuadro [0-9]+|v[0-9]+\.[0-9]+\.[0-9]+|(?<=commit )[0-9a-f]{7,40}/g;
@@ -21,13 +25,7 @@ export function markTokens(text: string): Part[] {
     const v = m[0];
     out.push({
       t: "num",
-      kind: v.startsWith("Cuadro")
-        ? "table"
-        : /^(?:aletheia-.*-)?v[0-9]+\.[0-9]+\.[0-9]+$/.test(v)
-          ? "version"
-          : /^[0-9a-f]{7,40}$/.test(v)
-            ? "hash"
-            : "id",
+      kind: /^[0-9a-f]{7,40}$/.test(v) ? "hash" : "id",
       v,
     });
     last = i + v.length;
@@ -36,7 +34,10 @@ export function markTokens(text: string): Part[] {
   return out;
 }
 
-/** Cifras sueltas de un texto canónico (p. ej. KEEP must_not) para G-FIG-03. */
+/**
+ * Numerales de un texto canónico citado (`data-num="canon"`). NO son Figures y no habilitan ninguna cifra de
+ * investigación: solo pueden aparecer dentro de una cita canónica (`CanonicalCite`, `lang="en"`).
+ */
 export function markAllNumerals(text: string): Part[] {
   const out: Part[] = [];
   for (const p of markTokens(text)) {
@@ -48,7 +49,7 @@ export function markAllNumerals(text: string): Part[] {
     for (const m of p.v.matchAll(/\S*[0-9]\S*/g)) {
       const i = m.index ?? 0;
       if (i > last) out.push({ t: "text", v: p.v.slice(last, i) });
-      out.push({ t: "num", kind: "count", v: m[0] });
+      out.push({ t: "num", kind: "canon", v: m[0] });
       last = i + m[0].length;
     }
     if (last < p.v.length) out.push({ t: "text", v: p.v.slice(last) });
@@ -61,7 +62,7 @@ export function fromSegments(segments: readonly Segment[]): Part[] {
   return segments.flatMap((s): Part[] => {
     if (s.t === "text") return [{ t: "text", v: s.v }];
     if (s.t === "id") return [{ t: "num", kind: "id", v: s.v }];
-    if (s.t === "anchor") return [{ t: "num", kind: "anchor", v: s.v }];
+    if (s.t === "anchor") return [{ t: "num", kind: "date", v: s.v }];
     return [{ t: "num", kind: "count", v: s.v }];
   });
 }

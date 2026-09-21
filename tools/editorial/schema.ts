@@ -179,3 +179,12 @@ export const Review = z.strictObject({
   ),
 });
 export type ReviewT = z.infer<typeof Review>;
+
+/** Rótulos públicos de las Figures y textos fijos del bloque «Cómo llegamos» (ADR-WEB3-01). Sin cifras ni estados. */
+export const FigureCopy = z.strictObject({
+  schema: z.literal("aletheia-web/editorial-figures/1"),
+  revision: rev,
+  labels: z.record(z.string().regex(/^fig\.LAB-CLM-[0-9]{4}\.[a-z0-9_]+$/), Unit),
+  fixed: z.strictObject({ measure_vs_conclusion: Unit, why_shown: Unit }),
+});
+export type FigureCopyT = z.infer<typeof FigureCopy>;

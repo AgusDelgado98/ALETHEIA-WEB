@@ -4,6 +4,7 @@ import EvidenceState from "../../../components/EvidenceState.astro";
 import EvidenceTrail from "../../../components/EvidenceTrail.astro";
 import Frame from "../../../components/Frame.astro";
 import Glyph from "../../../components/Glyph.astro";
+import HowWeMeasured from "../../../components/HowWeMeasured.astro";
 import ProvenanceDetails from "../../../components/ProvenanceDetails.astro";
 import QuestionHeader from "../../../components/QuestionHeader.astro";
 import SegmentText from "../../../components/SegmentText.astro";
@@ -189,7 +190,9 @@ const shapeOf = (state: string): string =>
           </div>
         </div>
       )}
-
+    </div>
+    {v.hasEditorial && v.trails.length > 0 && <HowWeMeasured v={v} />}
+    <div class="wrap">
       {v.hasEditorial && (
         <section class="need" aria-labelledby="need-h">
           <h2 id="need-h" class="need__h">

@@ -1,0 +1,454 @@
+---
+import type { QuestionView, TrailView } from "../lib/view.ts";
+import { figureCopy } from "../lib/figures.ts";
+import CanonicalCite from "./CanonicalCite.astro";
+import EvidenceState from "./EvidenceState.astro";
+import FigureValue from "./FigureValue.astro";
+import Glyph from "./Glyph.astro";
+import SegmentText from "./SegmentText.astro";
+/**
+ * «Cómo llegamos»: la explicación humana POSTERIOR al resultado (Charter §9, §11.1, §17; ADR-WEB3-01 §6).
+ * Dos modos dentro del mismo sistema, por afirmación:
+ *  - Evidence Chain: fuente → universo → tratamiento → hipótesis → resultado → límite. Siempre disponible.
+ *  - Figure / Measurement: solo si el claim tiene Figures ELIGIBLE. Muestra cada cifra con su unidad, período,
+ *    objeto, evidencia y testigos. Una cifra NO es un KPI: no hay número enorme, tile, color ni animación.
+ * Ningún número se escribe aquí: cada cifra la renderiza `FigureValue` a partir de un ID de Figure ELIGIBLE.
+ */
+interface Props {
+  v: QuestionView;
+}
+const { v } = Astro.props;
+const ui = v.ui;
+const copy = figureCopy(process.cwd());
+const shapeOf = (state: string): string =>
+  state === "INSUFFICIENT_EVIDENCE"
+    ? ui("shape_insufficient")
+    : state === "OBSERVED_IN_SOURCE"
+      ? ui("shape_observed")
+      : state === "REFUTED_WITHIN_SCOPE"
+        ? ui("shape_refuted")
+        : ui("layer_question");
+const unitLabel = (u: string): string =>
+  u === "pct" ? ui("fig_unit_pct") : u === "pp" ? ui("fig_unit_pp") : u;
+const termsLabel = (t: string): string => (t === "NOMINAL" ? ui("fig_nominal") : ui("fig_real"));
+const figuresOf = (t: TrailView) => v.figures.filter((f) => f.claimId === t.claimId);
+const multi = v.trails.length > 1;
+const limit = v.doesNotMean[0];
+---
+
+<section class="how" aria-labelledby="how-h" data-measure="how">
+  <div class="wrap">
+    <h2 id="how-h" class="how__h">
+      {ui("measure_heading")}
+    </h2>
+    <p class="how__lede">{ui("measure_lede")}</p>
+
+    {v.trails.map((t) => {
+      const figs = figuresOf(t);
+      const mode = figs.length > 0 ? "figure" : "chain";
+      return (
+        <div
+          class="how__c"
+          data-measure-mode={mode}
+          data-claim-id={t.claimId}
+          data-claim-state={t.claimState}
+        >
+          <h3 class="how__m">
+            {mode === "figure" ? ui("measure_figures_heading") : ui("measure_chain_heading")}
+            {multi && (
+              <>
+                {" "}
+                <span class="mono" data-num="id">
+                  {t.claimId}
+                </span>
+              </>
+            )}
+          </h3>
+
+          {mode === "figure" && (
+            <div class="how__s">
+              <p class="how__sk">{ui("layer_claim")}</p>
+              <EvidenceState
+                state={t.claimState}
+                label={t.claimLabel}
+                description={shapeOf(t.claimState)}
+              />
+              <p class="how__vs">{copy.vsConclusion}</p>
+            </div>
+          )}
+
+          <ol class="how__l">
+            <li>
+              <span class="how__g">
+                <Glyph kind="source" size="1.125rem" />
+              </span>
+              <div>
+                <h4 class="how__k">{ui("node_source")}</h4>
+                <p>
+                  <SegmentText parts={t.source.publication} />{" "}
+                  <span class="mono" data-num="id">
+                    {t.source.rootId}
+                  </span>
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="how__g">
+                <Glyph kind="object" size="1.125rem" />
+              </span>
+              <div>
+                <h4 class="how__k">{ui("measure_step_universe")}</h4>
+                <p>
+                  <SegmentText parts={v.scope} />
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="how__g">
+                <Glyph kind="evidence" size="1.125rem" />
+              </span>
+              <div>
+                <h4 class="how__k">{ui("measure_step_treatment")}</h4>
+                <p>
+                  <SegmentText parts={t.evidence} />{" "}
+                  {t.ids.evidence.map((id) => (
+                    <span class="mono" data-num="id">
+                      {id}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="how__g">
+                <Glyph kind="hypothesis" fill="ghost" size="1.125rem" />
+              </span>
+              <div>
+                {mode === "figure" ? (
+                  <>
+                    <h4 class="how__k">{ui("measure_step_metric")}</h4>
+                    <ul class="how__metrics">
+                      {figs.map((f) => (
+                        <li>{f.label}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <h4 class="how__k">{ui("node_hypothesis")}</h4>
+                    <p>
+                      <SegmentText parts={t.hypothesis} />
+                    </p>
+                  </>
+                )}
+              </div>
+            </li>
+            <li>
+              <span class="how__g">
+                <Glyph
+                  kind="claim"
+                  fill={
+                    t.claimState === "OBSERVED_IN_SOURCE"
+                      ? "solid"
+                      : t.claimState === "REFUTED_WITHIN_SCOPE"
+                        ? "ghost"
+                        : "hollow"
+                  }
+                  size="1.125rem"
+                />
+              </span>
+              <div>
+                <h4 class="how__k">{ui("measure_step_result")}</h4>
+                <p>
+                  <SegmentText parts={t.claim} />
+                </p>
+                {mode === "figure" && (
+                  <div class="how__f">
+                    {figs.map((f) => (
+                      <article class="fig" data-fig-block={f.id}>
+                        <p class="fig__l">{f.label}</p>
+                        <p class="fig__v">
+                          <FigureValue id={f.id} />
+                        </p>
+                        <dl class="fig__m">
+                          <div>
+                            <dt>{ui("fig_unit")}</dt>
+                            <dd>{unitLabel(f.unit)}</dd>
+                          </div>
+                          <div>
+                            <dt>{ui("frame_period")}</dt>
+                            <dd>
+                              <span data-num="date">{f.period.start}</span>
+                              {f.period.end !== f.period.start && (
+                                <>
+                                  {" "}
+                                  <span aria-hidden="true">→</span>{" "}
+                                  <span data-num="date">{f.period.end}</span>
+                                </>
+                              )}
+                            </dd>
+                          </div>
+                          {f.nominalReal !== "NA" && (
+                            <div>
+                              <dt>{ui("fig_terms")}</dt>
+                              <dd>{termsLabel(f.nominalReal)}</dd>
+                            </div>
+                          )}
+                          <div>
+                            <dt>{ui("fig_object")}</dt>
+                            <dd>
+                              {f.objects.map((o) => (
+                                <span class="fig__o">
+                                  <span lang="en">{o.name}</span>{" "}
+                                  <span class="mono" data-num="id">
+                                    {o.id}
+                                  </span>
+                                </span>
+                              ))}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>{ui("frame_source")}</dt>
+                            <dd>
+                              {f.rootIds.map((r) => (
+                                <span class="mono" data-num="id">
+                                  {r}
+                                </span>
+                              ))}{" "}
+                              <span class="mono" data-num="id">
+                                {f.evidenceId}
+                              </span>
+                            </dd>
+                          </div>
+                        </dl>
+                        <details class="fig__w">
+                          <summary>{ui("fig_witnesses")}</summary>
+                          <div class="fig__wb">
+                            <p>{copy.whyShown}</p>
+                            {f.witnesses.map((w) => (
+                              <div class="fig__wi" data-witness={w.role}>
+                                <h5>
+                                  {w.role === "CLAIM"
+                                    ? ui("fig_witness_claim")
+                                    : ui("fig_witness_evidence")}
+                                </h5>
+                                <p class="fig__wm">
+                                  <span class="mono" data-num="id">
+                                    {w.entityId}
+                                  </span>
+                                  <span aria-hidden="true"> · </span>
+                                  <span>{ui("fig_field")}:</span>{" "}
+                                  <span class="mono">{w.field}</span>
+                                </p>
+                                <CanonicalCite label={ui("fig_quote")} parts={w.anchor} />
+                              </div>
+                            ))}
+                            <p class="fig__wm">
+                              {ui("fig_id")}:{" "}
+                              <span class="mono" data-num="id">
+                                {f.id}
+                              </span>
+                            </p>
+                          </div>
+                        </details>
+                      </article>
+                    ))}
+                    <p class="how__n">{ui("measure_chain_note")}</p>
+                  </div>
+                )}
+              </div>
+            </li>
+            {limit !== undefined && (
+              <li>
+                <span class="how__g">
+                  <Glyph kind="limit" size="1.125rem" />
+                </span>
+                <div>
+                  <h4 class="how__k">{ui("node_limit")}</h4>
+                  <p>
+                    <SegmentText parts={limit.parts} />
+                  </p>
+                </div>
+              </li>
+            )}
+          </ol>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .how {
+    padding-bottom: var(--space-9);
+  }
+  .how__h {
+    font: 300 var(--fs-serif-xl) / var(--lh-tight) var(--serif);
+    letter-spacing: -0.014em;
+    max-width: 22ch;
+  }
+  .how__lede {
+    margin-top: var(--space-4);
+    font: 400 var(--fs-sans-lg) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  .how__c {
+    margin-top: var(--space-7);
+    max-width: 52rem;
+  }
+  .how__m {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .how__s {
+    margin-top: var(--space-4);
+    padding-block: var(--space-4);
+    border-block: var(--rule) solid var(--ink);
+    display: grid;
+    gap: var(--space-3);
+  }
+  .how__sk {
+    font: 400 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .how__vs {
+    font: italic 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+    max-width: var(--measure-serif);
+  }
+  .how__l {
+    margin-top: var(--space-5);
+    display: grid;
+    gap: var(--space-5);
+  }
+  .how__l > li {
+    display: grid;
+    grid-template-columns: 1.125rem minmax(0, 1fr);
+    column-gap: var(--space-4);
+    align-items: start;
+  }
+  .how__g {
+    margin-top: 0.2em;
+    color: var(--ink);
+  }
+  .how__k {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    color: var(--graphite);
+  }
+  .how__l p,
+  .how__metrics li {
+    margin-top: var(--space-2);
+    font: 400 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+    max-width: 48ch;
+  }
+  .how__metrics {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .how__f {
+    margin-top: var(--space-5);
+    border-top: var(--rule) solid var(--hair);
+  }
+  .fig {
+    padding-block: var(--space-5);
+    border-bottom: var(--rule) solid var(--hair);
+    display: grid;
+    gap: var(--space-3);
+  }
+  .how__l .fig__l {
+    margin: 0;
+    font: 400 var(--fs-small) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: 52ch;
+  }
+  .how__l .fig__v {
+    margin: 0;
+    font: 300 var(--fs-serif-md) / var(--lh-tight) var(--serif);
+    letter-spacing: var(--tracking-serif);
+  }
+  .fig__m {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .fig__m > div {
+    display: grid;
+    grid-template-columns: minmax(6rem, 9rem) minmax(0, 1fr);
+    column-gap: var(--space-4);
+    align-items: baseline;
+    font: 400 var(--fs-small) / var(--lh-body) var(--sans);
+  }
+  .fig__m dt {
+    color: var(--graphite);
+  }
+  .fig__m dd {
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+  }
+  .fig__o {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-2);
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .fig__w > summary {
+    cursor: pointer;
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    width: fit-content;
+  }
+  .fig__w > summary:hover {
+    color: var(--verd-deep);
+  }
+  .fig__wb {
+    margin-top: var(--space-3);
+    display: grid;
+    gap: var(--space-4);
+    max-width: 46rem;
+  }
+  .how__l .fig__wb p {
+    margin: 0;
+    font: 400 var(--fs-small) / var(--lh-body) var(--sans);
+    color: var(--graphite);
+    max-width: var(--measure-prose);
+  }
+  .fig__wi h5 {
+    font: 500 var(--fs-label) / 1.4 var(--sans);
+  }
+  .how__l .fig__wi .fig__wm {
+    margin-top: var(--space-1);
+  }
+  .how__l .how__n {
+    margin-top: var(--space-4);
+    font: italic 300 var(--fs-serif-sm) / var(--lh-serif) var(--serif);
+  }
+  @media (min-width: 48rem) {
+    .fig {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      column-gap: var(--space-6);
+      align-items: start;
+    }
+    .fig .fig__l {
+      grid-column: 1;
+    }
+    .fig .fig__v {
+      grid-column: 1;
+    }
+    .fig .fig__m,
+    .fig .fig__w {
+      grid-column: 2;
+    }
+    .fig .fig__m {
+      grid-row: 1 / span 2;
+    }
+    .fig .fig__w {
+      grid-row: 3;
+    }
+  }
+</style>

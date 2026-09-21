@@ -10,7 +10,7 @@ const { parts } = Astro.props;
 {parts.map((p) =>
   p.t === "text" ? (
     p.v
-  ) : p.kind === "anchor" || p.kind === "count" || p.kind === "table" ? (
+  ) : p.kind === "date" || p.kind === "count" || p.kind === "canon" || p.kind === "ui" ? (
     <span data-num={p.kind}>{p.v}</span>
   ) : (
     <span class="mono" data-num={p.kind}>

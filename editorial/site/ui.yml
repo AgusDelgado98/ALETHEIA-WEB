@@ -144,3 +144,26 @@ strings:
   not_found_heading: { id: ui-not-found-heading, text: "Página no encontrada" }
   not_found_lede: { id: ui-not-found-lede, text: "Esta dirección no corresponde a ninguna página publicada de este sitio." }
   not_found_home: { id: ui-not-found-home, text: "Volver al inicio" }
+  measure_heading: { id: ui-measure-heading, text: "Cómo llegamos" }
+  measure_lede: { id: ui-measure-lede, text: "De dónde sale lo que se muestra, en el orden en que se obtuvo." }
+  measure_figures_heading: { id: ui-measure-figures-heading, text: "Cifras registradas" }
+  measure_chain_heading: { id: ui-measure-chain-heading, text: "Cadena de evidencia" }
+  measure_chain_note: { id: ui-measure-chain-note, text: "Los valores intermedios del cálculo no se muestran como cifras: el corpus los registra en un solo lugar." }
+  measure_step_universe: { id: ui-measure-step-universe, text: "Universo" }
+  measure_step_treatment: { id: ui-measure-step-treatment, text: "Tratamiento" }
+  measure_step_metric: { id: ui-measure-step-metric, text: "Métrica" }
+  measure_step_result: { id: ui-measure-step-result, text: "Resultado registrado" }
+  fig_unit: { id: ui-fig-unit, text: "Unidad" }
+  fig_unit_pct: { id: ui-fig-unit-pct, text: "porcentaje" }
+  fig_unit_pp: { id: ui-fig-unit-pp, text: "puntos porcentuales" }
+  fig_terms: { id: ui-fig-terms, text: "Términos" }
+  fig_nominal: { id: ui-fig-nominal, text: "Nominal" }
+  fig_real: { id: ui-fig-real, text: "Real" }
+  fig_object: { id: ui-fig-object, text: "Qué se mide" }
+  fig_witnesses: { id: ui-fig-witnesses, text: "Cómo sabemos que podemos mostrar esta cifra" }
+  fig_witness_claim: { id: ui-fig-witness-claim, text: "Testigo: la afirmación" }
+  fig_witness_evidence: { id: ui-fig-witness-evidence, text: "Testigo: la evidencia" }
+  fig_field: { id: ui-fig-field, text: "Campo registrado" }
+  fig_quote: { id: ui-fig-quote, text: "Fragmento registrado" }
+  fig_id: { id: ui-fig-id, text: "Identificador de la cifra" }
+  fig_exact: { id: ui-fig-exact, text: "Valor registrado" }

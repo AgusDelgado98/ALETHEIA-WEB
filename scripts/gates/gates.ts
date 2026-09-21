@@ -10,6 +10,7 @@ import {
   validateSchemas,
 } from "../../tools/corpus/generate.ts";
 import { formatFigureValue } from "../../tools/corpus/figures.ts";
+import { scanNumerals } from "./numerals.ts";
 import { entityIndex } from "../../tools/corpus/load.ts";
 import { sha256Hex, short8 } from "../../tools/corpus/util.ts";
 import { parseSegments, plain } from "../../tools/editorial/directives.ts";
@@ -23,15 +24,7 @@ import { contentPaths } from "../../src/lib/site.ts";
 import { buildInventory } from "../../tools/reviews/inventory.ts";
 import { evaluateHumanGates, type HumanGateResult } from "../../tools/reviews/status.ts";
 import { loadQuestionView, questionSlug } from "../../src/lib/view.ts";
-import {
-  humanAttributeValues,
-  ids,
-  stripAllowedNumerals,
-  stripCode,
-  tags,
-  textNodes,
-  visibleText,
-} from "./html.ts";
+import { humanAttributeValues, ids, stripCode, tags, textNodes, visibleText } from "./html.ts";
 
 export type Status = "PASS" | "FAIL" | "NA" | "SKIP";
 export interface Outcome {
@@ -1107,10 +1100,29 @@ const gLim03: Gate = {
 const gLim04: Gate = {
   id: "G-LIM-04",
   title: "Límite junto al dato: cada Figure tiene el bloque de límites en su sección",
-  run: (ctx) =>
-    ctx.generated.claims.every((c) => c.figure_ids.length === 0)
-      ? na("0 Figures en el corte: no hay dato numérico al que pegar el límite")
-      : skip("con Figures se verifica el DOM"),
+  run(ctx) {
+    if (ctx.generated.figures.length === 0)
+      return na("0 Figures en el corte: no hay dato numérico al que pegar el límite");
+    if (ctx.html.size === 0) return skip("sin dist/");
+    const f: string[] = [];
+    const limitLabel = ctx.editorial.ui.strings["node_limit"]?.text ?? "\0";
+    for (const claimId of new Set(ctx.generated.figures.map((x) => x.claim_id))) {
+      const fig = ctx.generated.figures.find((x) => x.claim_id === claimId)!;
+      const html = ctx.html.get(`/labor/preguntas/${questionSlug(fig.question_id)}`) ?? "";
+      const start = html.indexOf(`data-measure-mode="figure" data-claim-id="${claimId}"`);
+      if (start < 0) {
+        f.push(`${claimId}: sin bloque «Cómo llegamos» en modo Figure`);
+        continue;
+      }
+      const end = html.indexOf("</section>", start);
+      const section = html.slice(start, end < 0 ? undefined : end);
+      if (!section.includes(`>${limitLabel}<`))
+        f.push(`${claimId}: el bloque de sus Figures no muestra el límite junto al dato`);
+      if (!section.includes('data-state="'))
+        f.push(`${claimId}: el bloque de sus Figures no muestra el estado de la afirmación`);
+    }
+    return res(f, "cada claim con Figures muestra su límite y su estado en el mismo bloque");
+  },
 };
 const gLim05: Gate = {
   id: "G-LIM-05",
@@ -1206,26 +1218,73 @@ const gFig03: Gate = {
   run(ctx) {
     if (ctx.html.size === 0) return skip("sin dist/");
     const f: string[] = [];
+    let nFigures = 0;
     for (const [route, html] of ctx.html) {
-      const text = visibleText(stripAllowedNumerals(html));
+      // Los elementos numéricos VÁLIDOS (clase cerrada; Figure autorizada por el artefacto generado) se retiran;
+      // los inválidos se reportan y permanecen, así que sus cifras también fallan el escaneo de abajo.
+      const sc = scanNumerals(route, html, ctx);
+      f.push(...sc.failures);
+      nFigures += sc.figures.length;
+      const text = visibleText(sc.stripped);
       for (const m of text.matchAll(/\S*[0-9]\S*/g))
         f.push(`${route}: cifra fuera de un elemento permitido: «${m[0]}»`);
-      for (const a of humanAttributeValues(stripAllowedNumerals(html)))
+      for (const a of humanAttributeValues(sc.stripped))
         if (/[0-9]/.test(a.value)) f.push(`${route}: cifra en ${a.tag}[${a.attr}]: «${a.value}»`);
     }
     return res(
       f,
-      `${ctx.html.size} rutas: cada token numérico es un ID, versión, hash, ancla o cantidad derivada`,
+      `${ctx.html.size} rutas: cada numeral es de una clase cerrada (id, date, hash, ui, count, canon) o una de las ${nFigures} Figures ELIGIBLE renderizadas, autorizadas por el artefacto generado`,
     );
   },
 };
 const gFig04: Gate = {
   id: "G-FIG-04",
   title: "Toda Figure exhibe fuente y período y tiene alternativa en tabla",
-  run: (ctx) =>
-    ctx.generated.claims.every((c) => c.figure_ids.length === 0)
-      ? na("0 Figures")
-      : skip("con Figures se verifica el DOM"),
+  run(ctx) {
+    if (ctx.generated.figures.length === 0) return na("0 Figures");
+    if (ctx.html.size === 0) return skip("sin dist/");
+    const f: string[] = [];
+    const ui = (k: string): string => ctx.editorial.ui.strings[k]?.text ?? "\0";
+    for (const fig of ctx.generated.figures) {
+      const route = `/labor/preguntas/${questionSlug(fig.question_id)}`;
+      const html = ctx.html.get(route);
+      if (html === undefined) {
+        f.push(`${fig.id}: la página ${route} no existe`);
+        continue;
+      }
+      const at = html.indexOf(`data-fig-block="${fig.id}"`);
+      if (at < 0) {
+        f.push(`${fig.id}: no se exhibe con su bloque en ${route}`);
+        continue;
+      }
+      const next = html.indexOf('data-fig-block="', at + 10);
+      const block = html.slice(at, next < 0 ? at + 12000 : next);
+      const need = (ok: boolean, what: string): void => {
+        if (!ok) f.push(`${fig.id}: el bloque no exhibe ${what}`);
+      };
+      need(block.includes(`data-figure="${fig.id}"`), "la cifra");
+      need(
+        new RegExp(`data-num="date"[^>]*>${fig.period.start}<`).test(block),
+        "el período (Encuadre)",
+      );
+      for (const r of fig.root_ids) need(block.includes(`>${r}<`), `la fuente ${r} (Encuadre)`);
+      need(block.includes(`>${fig.evidence_id}<`), "la evidencia");
+      need(
+        block.includes(`>${ui(fig.unit === "pct" ? "fig_unit_pct" : "fig_unit_pp")}<`),
+        "la unidad",
+      );
+      need(block.includes("<dl"), "los campos como lista de términos (alternativa textual)");
+      need(block.includes("<details"), "los testigos y la procedencia");
+      need(
+        block.includes('data-witness="CLAIM"') && block.includes('data-witness="EVIDENCE"'),
+        "los dos testigos",
+      );
+    }
+    return res(
+      f,
+      `${ctx.generated.figures.length} Figures exhibidas con fuente, período, unidad, evidencia, testigos y descripción textual`,
+    );
+  },
 };
 const NO_ARITHMETIC =
   /%|por ciento|\bpuntaje\b|\branking\b|\b[ií]ndice\b|\bpromedio\b|\bmayor que\b|\bmenor que\b|\bel doble\b/i;
@@ -1238,10 +1297,16 @@ const gFig05: Gate = {
     for (const u of allUnits(ctx))
       if (NO_ARITHMETIC.test(u.text))
         f.push(`${u.string_id}: expresión aritmética o de composición`);
+    // G-FIG-05 sigue siendo restrictivo por defecto. Solo se excluyen de su prohibición los elementos `data-figure`
+    // autorizados por el artefacto generado (ADR-WEB3-01 D6) y los numerales canónicos válidos citados en inglés
+    // (`data-num="canon"`, verbatim del corpus): ninguno de los dos es una afirmación de la capa web.
     for (const [route, html] of ctx.html)
-      if (NO_ARITHMETIC.test(visibleText(html)))
+      if (NO_ARITHMETIC.test(visibleText(scanNumerals(route, html, ctx).stripped)))
         f.push(`${route}: expresión aritmética o de composición en el HTML`);
-    return res(f, "ningún porcentaje, razón, puntaje ni índice; no hay Figures DERIVED");
+    return res(
+      f,
+      "ningún porcentaje, razón, puntaje ni índice fuera de una Figure ELIGIBLE; no hay Figures DERIVED",
+    );
   },
 };
 const gFig06: Gate = {
@@ -1392,6 +1457,8 @@ const gEdi08: Gate = {
     for (const t of ctx.generatedFiles.values())
       hay.push(...(t.match(/"((?:[^"\\]|\\.)*)"/g) ?? []).map((s) => JSON.parse(s) as string));
     for (const a of ctx.generated.anchors) hay.push(String(a.value_raw));
+    // el texto de una Figure es función pura del artefacto generado (formatFigureValue)
+    for (const x of ctx.generated.figures) hay.push(formatFigureValue(x).replace(/\s/g, " "));
     for (const u of allUnits(ctx))
       for (const m of u.text.matchAll(/\{\{(?:anchor):([^}|]+)\}\}/g)) {
         const a = ctx.generated.anchors.find((x) => x.id === m[1]);

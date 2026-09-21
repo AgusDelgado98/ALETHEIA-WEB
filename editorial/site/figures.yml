@@ -1,0 +1,55 @@
+# Rótulos públicos de las Figures (ADR-WEB3-01) y textos fijos del bloque «Cómo llegamos».
+# Cada texto es lenguaje público y NO es fuente de hechos: ningún literal numérico ni estado; las cifras llegan
+# solo desde generated/labor/figures.json. PENDING_AUTHOR_REVIEW hasta la firma de la autoría.
+schema: aletheia-web/editorial-figures/1
+revision: 1
+labels:
+  fig.LAB-CLM-0006.nominal_growth:
+    id: label-clm-0006-nominal-growth
+    text: "Crecimiento nominal de la media ponderada del ingreso laboral informado"
+    maps_to:
+      - labor/LAB-EVD-0010#metric
+      - labor/LAB-CLM-0006#canonical_text
+  fig.LAB-CLM-0006.real_growth:
+    id: label-clm-0006-real-growth
+    text: "Crecimiento real de esa media, descontada con el deflactor admitido"
+    maps_to:
+      - labor/LAB-EVD-0010#metric
+      - labor/LAB-CLM-0006#canonical_text
+  fig.LAB-CLM-0006.gap:
+    id: label-clm-0006-gap
+    text: "Diferencia registrada entre el crecimiento nominal y el real"
+    maps_to:
+      - labor/LAB-EVD-0010#metric
+      - labor/LAB-CLM-0006#canonical_text
+  fig.LAB-CLM-0005.share_2025_q1:
+    id: label-clm-0005-share-2025-q1
+    text: "Proporción ponderada de personas asalariadas sin descuento jubilatorio informado, al comienzo de la comparación"
+    maps_to:
+      - labor/LAB-EVD-0009#metric
+      - labor/LAB-CLM-0005#canonical_text
+  fig.LAB-CLM-0005.share_2026_q1:
+    id: label-clm-0005-share-2026-q1
+    text: "Proporción ponderada de personas asalariadas sin descuento jubilatorio informado, al final de la comparación"
+    maps_to:
+      - labor/LAB-EVD-0009#metric
+      - labor/LAB-CLM-0005#canonical_text
+  fig.LAB-CLM-0005.shift:
+    id: label-clm-0005-shift
+    text: "Desplazamiento registrado de esa proporción entre ambos trimestres"
+    maps_to:
+      - labor/LAB-EVD-0009#metric
+      - labor/LAB-CLM-0005#canonical_text
+fixed:
+  measure_vs_conclusion:
+    id: fixed-measure-vs-conclusion
+    text: "Una cifra registrada es una medición, no una conclusión general. Lo que se puede concluir lo dicen el estado de la afirmación y su alcance."
+    maps_to:
+      - labor/LAB-CLM-0005#scope_statement
+      - labor/LAB-CLM-0006#scope_statement
+  why_shown:
+    id: fixed-why-shown
+    text: "Esta cifra figura con el mismo valor en el texto de la afirmación y en el resultado de una evidencia vigente del corpus. No se calculó ni se redondeó aquí."
+    maps_to:
+      - labor/LAB-CLM-0005#canonical_text
+      - labor/LAB-CLM-0006#canonical_text

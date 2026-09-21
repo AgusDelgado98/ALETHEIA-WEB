@@ -41,9 +41,9 @@
       "sha256": "e478fd94a976eea0ff1640435da069b809bfe2904ada9a3577118635191df958"
     },
     {
-      "bytes": 253100,
+      "bytes": 271148,
       "path": "editorial/labor/audit/LAB-Q-0013.audit.yml",
-      "sha256": "e9f4ab51faa3fff643f137a30581a065ed1c37be4a69768472b7a2abcb9fc150"
+      "sha256": "49b5905d938e377c5b43a1c43f71b2651da2f716f41ac7d764210b68fe6b7b26"
     },
     {
       "bytes": 7911,
@@ -191,6 +191,11 @@
       "sha256": "3799c81f2096809de33c7193ce6d21c4adb1ec0fb74d16df96e56b1a91829381"
     },
     {
+      "bytes": 2484,
+      "path": "editorial/site/figures.yml",
+      "sha256": "cb595c2e698a98426becabf2e1c523d454a8576f9171e97239b7b23b5c1def5d"
+    },
+    {
       "bytes": 12461,
       "path": "editorial/site/glosses.yml",
       "sha256": "6c3bc3cd09bcb934762545a2a396125f1e7b24a3080985e768a21ee47ac30897"
@@ -201,12 +206,12 @@
       "sha256": "9e8b41f66e1a5bac5ead709f91eafa764ef81123bff049fa074c1e8ee0441cf5"
     },
     {
-      "bytes": 13423,
+      "bytes": 15163,
       "path": "editorial/site/ui.yml",
-      "sha256": "925e7f3c3c00bc5d268b63d8e6e26516d08c78b5e4dd7c7d5d2802e1975efbbf"
+      "sha256": "6e223dbcbc8bd8e6e306c2735957979880b641a6cb07e8c3fde131e557078cab"
     }
   ],
   "schema": "aletheia-web/editorial-manifest/1",
-  "units": 363,
-  "units_pending_author_signoff": 345
+  "units": 394,
+  "units_pending_author_signoff": 376
 }

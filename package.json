@@ -29,6 +29,7 @@
     "fonts:check": "node scripts/sync-fonts.ts",
     "gates": "node scripts/gates/run.ts --require-html",
     "e2e": "node scripts/e2e/run.ts",
+    "e2e:figures": "node scripts/e2e/figures.ts",
     "shots": "node scripts/e2e/shots.ts",
     "audit": "npm audit --audit-level=moderate",
     "reviews:build": "node tools/reviews/cli.ts build",

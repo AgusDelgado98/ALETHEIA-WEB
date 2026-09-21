@@ -1,0 +1,24 @@
+---
+import { figureView } from "../lib/figures.ts";
+/**
+ * Única vía para mostrar una cifra de investigación (ADR-WEB3-01 D6). Recibe un ID, no un texto: lo resuelve contra
+ * el artefacto generado y falla el build si no es una Figure ELIGIBLE. El texto sale de `formatFigureValue`,
+ * nunca de un literal. Los gates vuelven a validar el HTML resultante de forma independiente.
+ */
+interface Props {
+  id: string;
+}
+const f = figureView(process.cwd(), Astro.props.id);
+---
+
+<span class="fig-value" data-figure={f.id}>
+  {f.text}
+</span>
+
+<style>
+  .fig-value {
+    font-family: var(--serif);
+    font-variant-numeric: lining-nums tabular-nums;
+    white-space: nowrap;
+  }
+</style>

@@ -12,6 +12,7 @@ import {
 } from "../../tools/editorial/load.ts";
 import { pendingSignoff } from "../../tools/editorial/audit.ts";
 import { limitationIdFromRef } from "../../tools/editorial/resolve.ts";
+import { figureViewsForQuestion, type FigureView } from "./figures.ts";
 import { fromSegments, markTokens, type Part } from "./render.ts";
 import { documentaryLabel, publicQuestionText } from "./map.ts";
 import { questionSlug } from "./slug.ts";
@@ -74,6 +75,8 @@ export interface QuestionView {
   canSay: TextItem[];
   doesNotMean: TextItem[];
   wouldNeed: TextItem[];
+  /** Figures ELIGIBLE de esta pregunta (ADR-WEB3-01). Vacío si no hay ninguna habilitada. */
+  figures: FigureView[];
   absenceText: string;
   trail: TrailView | null;
   trails: TrailView[];
@@ -181,6 +184,7 @@ export function loadQuestionView(root: string, qid: string): QuestionView {
     canSay: e.finding.can_say.map(item),
     doesNotMean: e.finding.does_not_mean.map(item),
     wouldNeed: e.finding.would_need.map(item),
+    figures: figureViewsForQuestion(root, qid),
     absenceText: e.states.fixed.absence_not_negative.text,
     claims: listedClaims,
   };
@@ -487,6 +491,7 @@ function loadCanonicalView(
     canSay: [],
     doesNotMean: [],
     wouldNeed: [],
+    figures: figureViewsForQuestion(root, qid),
     absenceText: site.states.fixed.absence_not_negative.text,
     trail: null,
     trails: [],

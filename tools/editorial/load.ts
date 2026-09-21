@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
-import { AuditFile, Finding, Glosses, Limits, QuestionEditorial, Review, States, Ui, type AuditFileT, type FindingT, type GlossesT, type LimitsT, type ReviewT, type StatesT, type UiT } from "./schema.ts";
+import { AuditFile, Finding, FigureCopy, Glosses, Limits, QuestionEditorial, Review, States, Ui, type AuditFileT, type FigureCopyT, type FindingT, type GlossesT, type LimitsT, type ReviewT, type StatesT, type UiT } from "./schema.ts";
 import { findBannedKeys } from "./lint.ts";
 
 export type UnitKind = "public_question" | "finding_text" | "limit_waiver" | "state_label" | "fixed_text" | "ui_label";
@@ -21,6 +21,8 @@ export interface EditorialBundle {
   limits: LimitsT;
   states: StatesT;
   ui: UiT;
+  /** Rótulos públicos de las Figures (ADR-WEB3-01). `null` si el árbol de textos no lo trae. */
+  figures: FigureCopyT | null;
   review: ReviewT;
   audit: AuditFileT | null;
   /** Archivos editoriales crudos (ruta relativa → texto), para el manifest editorial. */
@@ -37,6 +39,7 @@ const ROOT_FILES = (qid: string) => ({
   states: "editorial/site/states.yml",
   ui: "editorial/site/ui.yml",
   glosses: "editorial/site/glosses.yml",
+  figures: "editorial/site/figures.yml",
 });
 
 export class EditorialError extends Error {}
@@ -80,6 +83,10 @@ export function loadGlosses(root: string): GlossesT {
   return g;
 }
 
+export function loadFigureCopy(root: string): FigureCopyT {
+  return FigureCopy.parse(parse(readFileSync(join(root, "editorial", "site", "figures.yml"), "utf8")));
+}
+
 export function hasEditorialFinding(root: string, qid: string): boolean {
   return existsSync(join(root, "editorial", "labor", "findings", `${qid}.yml`));
 }
@@ -118,6 +125,8 @@ export function loadEditorialFromTexts(
   const limits = Limits.parse(doc(p.limits));
   const states = States.parse(doc("editorial/site/states.yml"));
   const ui = Ui.parse(doc("editorial/site/ui.yml"));
+  const figuresText = texts[p.figures];
+  const figures = figuresText === undefined ? null : FigureCopy.parse(parse(figuresText));
   const review = Review.parse(doc(p.review));
   const auditText = texts[p.audit];
   const audit = auditText === undefined ? null : AuditFile.parse(parse(auditText));
@@ -174,6 +183,10 @@ export function loadEditorialFromTexts(
         section: "question",
       });
     }
+    if (figures !== null) {
+      for (const [fid, u] of Object.entries(figures.labels)) units.push({ string_id: `site#figures.label.${fid}`, kind: "finding_text", text: u.text, maps_to: u.maps_to, section: "figures" });
+      for (const [k, u] of Object.entries(figures.fixed)) units.push({ string_id: `site#figures.fixed.${k}`, kind: "fixed_text", text: u.text, maps_to: u.maps_to, section: "figures" });
+    }
     const glosses = Glosses.parse(doc(p.glosses));
     const addGloss = (sid: string, u: { text: string; maps_to: string[] }, section: string): void => {
       units.push({ string_id: sid, kind: "finding_text", text: u.text, maps_to: u.maps_to, section });
@@ -192,7 +205,7 @@ export function loadEditorialFromTexts(
     }
   }
 
-  return { question, finding, limits, states, ui, review, audit, files, units };
+  return { question, finding, limits, states, ui, figures, review, audit, files, units };
 }
 
 export function editorialPaths(qid: string): string[] {

@@ -122,12 +122,19 @@ Total mínimo (Q-0005 + Q-0008): **6.749 B** en 2 archivos. Los cuatro: **16.149
 - **Deriva del formato de redondeo.** Mitigación: regla 4 y test que reproduce cada ancla.
 - **Ampliar el pin** puede leerse como «cambiar el freeze». No lo es: cambia lo que se consume, no lo que está congelado.
 
-## 11. Decisiones que la autoría debe tomar
+## 11. Decisiones ya tomadas por la autoría (2026-09-21)
 
-1. ¿Se aprueba estudiar la Vía S para **Q-0005**, o se prefiere dejar los insumos en `Evidence Chain` de forma permanente?
-2. ¿Se acepta que «valor estructurado + ancla de texto» cuente como doble testigo (§6.5), aunque sea distinto de «claim + evidencia»?
-3. ¿Se admite el **redondeo declarado** de §6.4 acotado a Vía S, o se exige que el formato jamás cambie los decimales del reporte?
-4. ¿Se pinea también `eph-hyp0003-…` (Q-0004: numerador y denominador ponderados)?
-5. ¿Se difiere `arca-sipa-hyp0005-execution.json` a la segunda ola, junto con la ficha editorial de Q-0008?
+1. **«Valor estructurado + ancla de texto» NO cuenta todavía como el doble testigo de ADR-WEB3-01.** La regla 5 de §6 queda como propuesta a decidir, no como regla vigente.
+2. **WEB-3 no redondea los insumos de Q-0005 para publicarlos.** La regla 4 de §6 (redondeo declarado) no se aplica desde WEB-3.
+3. **`−14,75 %` de `CLM-0004` sigue rechazado bajo ADR-WEB3-01**, aunque el reporte estructurado lo confirme.
+4. La Vía S puede definir más adelante una **nueva autoridad estructurada**, pero no reinterpreta retroactivamente ADR-WEB3-01.
+5. **Ningún reporte JSON entra al pin todavía.** Este ADR permanece PROPUESTO.
+
+## 12. Decisiones que siguen abiertas
+
+1. ¿Se aprueba estudiar la Vía S para Q-0005, o los insumos quedan de forma permanente en `Evidence Chain`?
+2. ¿Se define una autoridad estructurada nueva y separada (con su propio contrato y estado), sin tocar ADR-WEB3-01?
+3. ¿Se pinea también `eph-hyp0003-…` (Q-0004)?
+4. ¿Se difiere `arca-sipa-hyp0005-execution.json` a la segunda ola, junto con la ficha editorial de Q-0008?
 
 Hasta esas respuestas: **ningún reporte entra al pin.**
