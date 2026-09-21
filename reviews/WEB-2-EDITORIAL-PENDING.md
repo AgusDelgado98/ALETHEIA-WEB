@@ -6,7 +6,7 @@ Este inventario **no aprueba** ningún texto. Verdicts intactos.
 - `PENDING_AUTHOR_REVIEW`: 350
 - Hash del conjunto pendiente: `d221aa918eab745d199e39226c470f441d61349c04c07be61d5c3089531b2da8`
 - Manifest editorial: `cacac378befd545a5e52f4ad89a3052997498dca80a23e7bb21f2e9e07407a7d`
-- Commit atado: `1dbfbe78f2f7fc62a9dba49e70348574a75f8167`
+- Commit atado: `d0b09518d428ae623a794cca0c33652f4775007a`
 
 ## Reconciliación de veredictos
 
