@@ -9,6 +9,7 @@ import {
   generatorSourceSha256,
   validateSchemas,
 } from "../../tools/corpus/generate.ts";
+import { formatFigureValue } from "../../tools/corpus/figures.ts";
 import { entityIndex } from "../../tools/corpus/load.ts";
 import { sha256Hex, short8 } from "../../tools/corpus/util.ts";
 import { parseSegments, plain } from "../../tools/editorial/directives.ts";
@@ -350,10 +351,12 @@ const gSch02: Gate = {
         f.push(`${b.id}: id derivado no coincide`);
     for (const a of ctx.generated.anchors)
       if (a.id !== `anc.${a.claim_id}.${a.key}`) f.push(`${a.id}: id derivado no coincide`);
+    for (const x of ctx.generated.figures)
+      if (x.id !== `fig.${x.claim_id}.${x.key}`) f.push(`${x.id}: id derivado no coincide`);
     for (const e of allEntities(ctx)) {
       if (e["global_id"] !== `labor/${String(e["id"])}`)
         f.push(`${String(e["id"])}: global_id incoherente`);
-      const derived = ["limitations", "blockers", "anchors"].some((k) =>
+      const derived = ["limitations", "blockers", "anchors", "figures"].some((k) =>
         (ctx.generated[k as EntityFileName] as unknown as { id: string }[]).some(
           (x) => x.id === e["id"],
         ),
@@ -392,6 +395,7 @@ const gCnt01: Gate = {
       limitations: { claim: lim("claim"), question: lim("question"), evidence: lim("evidence") },
       blockers: g.blockers.length,
       anchors: g.anchors.length,
+      figures: g.figures.length,
       relations: g.relations.length,
       preserved_results: g["preserved-results"].length,
     };
@@ -480,6 +484,13 @@ const gRef01: Gate = {
       need(b.id, [b.witness.evidence_id], "evidence");
     }
     for (const a of g.anchors) need(a.id, [a.claim_id], "claims");
+    for (const x of g.figures) {
+      need(x.id, [x.claim_id], "claims");
+      need(x.id, [x.question_id], "questions");
+      need(x.id, [x.evidence_id], "evidence");
+      need(x.id, x.object_ids, "statistical-objects");
+      need(x.id, x.root_ids, "evidence-roots");
+    }
     for (const k of g["preserved-results"]) {
       need(k.id, [k.question_id], "questions");
       need(k.id, [k.claim_id], "claims");
@@ -903,7 +914,7 @@ const gPrv02: Gate = {
       }
     };
     for (const e of allEntities(ctx)) scan(e, "$", String(e["id"]));
-    for (const a of ctx.generated.anchors)
+    for (const a of [...ctx.generated.anchors, ...ctx.generated.figures])
       for (const w of a.witnesses)
         if (!ctx.pin.files.some((x) => x.path === w.source_path && x.blob_sha === w.blob_sha))
           f.push(`${a.id}: blob_sha de un testigo no proviene del pin`);
@@ -1137,13 +1148,45 @@ const gLim05: Gate = {
 const gFig01: Gate = {
   id: "G-FIG-01",
   title: "Toda Figure resuelve a un origen del corpus; su formato reproduce el ancla textual",
-  run: (ctx) =>
-    res(
-      ctx.generated.claims
-        .filter((c) => c.figure_ids.length > 0)
-        .map((c) => `${c.id}: declara Figures sin origen`),
-      "0 Figures: el corpus de este corte no trae una cifra estructurada adecuada y no se fabrica ninguna",
-    ),
+  run(ctx) {
+    const f: string[] = [];
+    const replaced = new Set(ctx.contract.claim_supersessions.map((s) => s.replaced_evidence_id));
+    for (const c of ctx.generated.claims) {
+      const actual = ctx.generated.figures
+        .filter((x) => x.claim_id === c.id)
+        .map((x) => x.id)
+        .sort();
+      if (!eq([...c.figure_ids].sort(), actual))
+        f.push(`${c.id}: figure_ids no coincide con las Figures generadas`);
+    }
+    for (const x of ctx.generated.figures) {
+      const [a, b] = x.witnesses;
+      if (x.status !== "ELIGIBLE") f.push(`${x.id}: solo se materializan las ELIGIBLE`);
+      if (a === undefined || b === undefined) {
+        f.push(`${x.id}: faltan testigos`);
+        continue;
+      }
+      if (a.role !== "CLAIM" || a.entity !== `labor/${x.claim_id}`)
+        f.push(`${x.id}: el testigo A no es el claim`);
+      if (b.role !== "EVIDENCE" || b.entity !== `labor/${x.evidence_id}`)
+        f.push(`${x.id}: el testigo B no es la evidencia declarada`);
+      if (replaced.has(x.evidence_id))
+        f.push(`${x.id}: ${x.evidence_id} fue reemplazada: no es un testigo vigente`);
+      const magnitude = x.value_raw.replace(/^[+-]/, "");
+      for (const w of x.witnesses)
+        if (!w.text_anchor.includes(magnitude))
+          f.push(`${x.id}: el testigo ${w.role} no contiene el valor registrado ${magnitude}`);
+      if ((magnitude.split(".")[1] ?? "").length !== x.display.decimals)
+        f.push(`${x.id}: display.decimals no reproduce los decimales registrados`);
+      const shown = formatFigureValue(x).replace(/[^0-9,]/g, "");
+      if (shown !== magnitude.replace(".", ","))
+        f.push(`${x.id}: el formato («${shown}») no reproduce el ancla textual («${magnitude}»)`);
+    }
+    return res(
+      f,
+      `${ctx.generated.figures.length} Figures ELIGIBLE: cada una con dos testigos vigentes (claim y evidencia) y formato que reproduce el ancla textual`,
+    );
+  },
 };
 const gFig02: Gate = {
   id: "G-FIG-02",
@@ -1205,12 +1248,12 @@ const gFig06: Gate = {
   id: "G-FIG-06",
   title: "Toda cifra de solo texto tiene doble testigo",
   run(ctx) {
-    const f = ctx.generated.anchors
+    const f = [...ctx.generated.anchors, ...ctx.generated.figures]
       .filter((a) => a.witnesses.length < 2 || new Set(a.witnesses.map((w) => w.entity)).size < 2)
       .map((a) => `${a.id}: menos de 2 testigos independientes`);
     return res(
       f,
-      `${ctx.generated.anchors.length} anclas de período/fecha, cada una con 2 testigos en registros distintos del corpus`,
+      `${ctx.generated.anchors.length} anclas de período/fecha y ${ctx.generated.figures.length} Figures, cada una con 2 testigos en registros distintos del corpus`,
     );
   },
 };

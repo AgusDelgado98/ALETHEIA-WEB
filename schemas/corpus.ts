@@ -27,6 +27,7 @@ export const ID_PATTERNS = {
   limitation: /^lim\.[A-Z0-9-]+\.[0-9a-f]{8}$/,
   blocker: /^blk\.LAB-CLM-[0-9]{4}\.[0-9]+\.[0-9a-f]{8}$/,
   anchor: /^anc\.LAB-CLM-[0-9]{4}\.[a-z0-9_]+$/,
+  figure: /^fig\.LAB-CLM-[0-9]{4}\.[a-z0-9_]+$/,
 } as const;
 
 // ───────────────────────── vocabularios ─────────────────────────
@@ -204,8 +205,8 @@ export const Claim = z.strictObject({
   shared_coverage_bias: nonEmpty.nullable(),
   /** Texto tal cual (`"ARCA"`, `"EPH+IPC"`): NO es una clave de join. */
   source_label: nonEmpty,
-  /** Sin cifras estructuradas en este corte: `figure_ids` debe estar vacío (no se inventan Figures). */
-  figure_ids: z.array(nonEmpty).max(0),
+  /** Solo Figures `ELIGIBLE` (ADR-WEB3-01). Vacío si el claim no tiene ninguna habilitada. */
+  figure_ids: z.array(z.string().regex(ID_PATTERNS.figure)),
   blocker_ids: z.array(z.string().regex(ID_PATTERNS.blocker)),
   answerability: Answerability,
 });
@@ -355,6 +356,57 @@ export const Anchor = z.strictObject({
 });
 export type AnchorT = z.infer<typeof Anchor>;
 
+export const FIGURE_STATUSES = ["ELIGIBLE", "PENDING_REVIEW", "REJECTED"] as const;
+
+/**
+ * Figure (Data Contract §9, ADR-WEB3-01): una cantidad registrada en el corpus con DOBLE TESTIGO compatible (claim +
+ * evidencia vigente). Solo se materializan las `ELIGIBLE`. Ningún valor se calcula ni se redondea: `value_raw` es la
+ * cadena tal como figura en los dos testigos.
+ */
+export const Figure = z.strictObject({
+  id: z.string().regex(ID_PATTERNS.figure),
+  ...base,
+  key: z.string().regex(/^[a-z0-9_]+$/),
+  claim_id: z.string().regex(ID_PATTERNS.claim),
+  question_id: z.string().regex(ID_PATTERNS.question),
+  evidence_id: z.string().regex(ID_PATTERNS.evidence),
+  status: z.literal("ELIGIBLE"),
+  metric_key: z.string().regex(/^[a-z0-9_]+$/),
+  object_ids: z.array(z.string().regex(ID_PATTERNS.object)).min(1),
+  root_ids: z.array(z.string().regex(ID_PATTERNS.root)).min(1),
+  unit: z.enum(["pct", "pp", "count"]),
+  sign: z.enum(["+", "-", "none"]),
+  /** Cadena registrada con su signo explícito, sin unidad (p. ej. `+35.48`). */
+  value_raw: z.string().regex(/^[+-]?[0-9]+(\.[0-9]+)?$/),
+  period: z.strictObject({
+    start: nonEmpty,
+    end: nonEmpty,
+    granularity: z.enum(["month", "quarter", "year", "date"]),
+  }),
+  nominal_real: z.enum(["NOMINAL", "REAL", "NA"]),
+  stock_flow: z.enum(["STOCK", "FLOW", "NA"]),
+  display: z.strictObject({
+    decimals: z.number().int().min(0).max(4),
+    locale: z.literal("es-AR"),
+    sign: z.enum(["explicit", "none"]),
+  }),
+  witnesses: z
+    .array(
+      z.strictObject({
+        role: z.enum(["CLAIM", "EVIDENCE"]),
+        entity: nonEmpty,
+        source_path: nonEmpty,
+        blob_sha: hex40,
+        field: nonEmpty,
+        pointer: z.string().startsWith("/"),
+        pattern: nonEmpty,
+        text_anchor: nonEmpty,
+      }),
+    )
+    .length(2),
+});
+export type FigureT = z.infer<typeof Figure>;
+
 export const Episode = z.strictObject({
   id: z.string().regex(ID_PATTERNS.episode),
   ...base,
@@ -428,6 +480,7 @@ export const ENTITY_FILES = {
   limitations: Limitation,
   blockers: Blocker,
   anchors: Anchor,
+  figures: Figure,
   episodes: Episode,
   "governance-rulings": GovernanceRuling,
   relations: Relation,

@@ -83,6 +83,7 @@ const ENTITY_LABEL: Record<EntityFileName, string> = {
   limitations: "Limitation",
   blockers: "Blocker",
   anchors: "Anchor",
+  figures: "Figure",
   episodes: "Episode",
   "governance-rulings": "GovernanceRuling",
   relations: "Relation",

@@ -9,6 +9,73 @@ const witness = z.strictObject({
   regex: z.string().min(1),
 });
 
+/**
+ * Testigo de una Figure (ADR-WEB3-01 D1/D7). `pattern` es una expresión regular con grupos con nombre:
+ * `value` (obligatorio), `sign` o `verb` (opcionales) y, si atestigua el período, `start` (y `end`).
+ * `period_pattern` atestigua el período por separado (en `period_field`, por defecto el mismo campo).
+ */
+const figureWitness = z.strictObject({
+  source: z.enum(["claim", "evidence"]),
+  id: z.string().min(1),
+  field: z.enum(["CLAIM_TEXT", "RESULT"]),
+  pattern: z.string().min(1),
+  period_field: z.enum(["CLAIM_TEXT", "RESULT", "METRIC"]).optional(),
+  period_pattern: z.string().min(1).optional(),
+});
+
+const figureBase = {
+  key: z.string().regex(/^[a-z0-9_]+$/),
+  claim_id: z.string().regex(/^LAB-CLM-[0-9]{4}$/),
+  question_id: z.string().regex(/^LAB-Q-[0-9]{4}$/),
+  value_text: z.string().regex(/^[0-9]+(\.[0-9]+)?$/),
+  unit: z.enum(["pct", "pp", "count"]),
+};
+
+/** `ELIGIBLE` y `PENDING_REVIEW`: se verifican en el build. Solo `ELIGIBLE` se materializa. */
+const verifiedFigureSpec = z.strictObject({
+  ...figureBase,
+  status: z.enum(["ELIGIBLE", "PENDING_REVIEW"]),
+  sign: z.enum(["+", "-", "none"]),
+  metric_key: z.string().regex(/^[a-z0-9_]+$/),
+  object_ids: z.array(z.string().regex(/^LAB-OBJ-[0-9]{4}$/)).min(1),
+  period: z.strictObject({
+    start: z.string().min(1),
+    end: z.string().min(1),
+    granularity: z.enum(["month", "quarter", "year", "date"]),
+  }),
+  /** `CONTAINED`: un testigo da el período con menos granularidad (p. ej. el año del mes). Nunca `ELIGIBLE`. */
+  period_compat: z.enum(["EXACT", "CONTAINED"]),
+  /** `POSITIONAL`: el testigo asocia la cifra a su objeto/período solo por orden en la frase. Nunca `ELIGIBLE`. */
+  pairing: z.enum(["EXPLICIT", "POSITIONAL"]),
+  nominal_real: z.enum(["NOMINAL", "REAL", "NA"]),
+  stock_flow: z.enum(["STOCK", "FLOW", "NA"]),
+  display: z.strictObject({
+    decimals: z.number().int().min(0).max(4),
+    sign: z.enum(["explicit", "none"]),
+  }),
+  witness_a: figureWitness,
+  witness_b: figureWitness,
+  review_note: z.string().min(1).optional(),
+});
+
+/** `REJECTED`: decisión registrada de no publicar. Sin testigos: nunca se extrae ni se materializa. */
+const rejectedFigureSpec = z.strictObject({
+  ...figureBase,
+  status: z.literal("REJECTED"),
+  reason: z.enum([
+    "SINGLE_WITNESS",
+    "RANGE_OR_APPROXIMATE",
+    "DIFFERENT_CONTEXT",
+    "SUPERSEDED_EVIDENCE",
+  ]),
+  note: z.string().min(1),
+});
+
+export const FigureSpec = z.union([verifiedFigureSpec, rejectedFigureSpec]);
+export type FigureSpecT = z.infer<typeof FigureSpec>;
+export type VerifiedFigureSpecT = z.infer<typeof verifiedFigureSpec>;
+export type FigureWitnessSpecT = z.infer<typeof figureWitness>;
+
 /** Contrato de módulo (`modules/<módulo>.contract.json`, Data Contract §7.12). Lo revisa una persona. */
 export const ModuleContract = z.strictObject({
   schema: z.literal("aletheia-web/module-contract/1"),
@@ -65,6 +132,7 @@ export const ModuleContract = z.strictObject({
     }),
     blockers: z.number(),
     anchors: z.number(),
+    figures: z.number(),
     relations: z.number(),
     preserved_results: z.number(),
   }),
@@ -97,6 +165,7 @@ export const ModuleContract = z.strictObject({
       witnesses: z.array(witness).min(2),
     }),
   ),
+  figure_specs: z.array(FigureSpec),
   claim_supersessions: z.array(
     z.strictObject({
       claim_id: z.string(),

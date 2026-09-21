@@ -1,5 +1,5 @@
 {
-  "contract_sha256": "81fca5c4651e6229672277a1b363072adabc92dcf51f55d1786de21201409fc1",
+  "contract_sha256": "94a50c68c6c5b899cf68515764e99c742a01bfa816edf9ee39503813eb8d6cda",
   "entity_counts": {
     "anchors": 2,
     "blockers": 3,
@@ -7,6 +7,7 @@
     "episodes": 1,
     "evidence": 25,
     "evidence-roots": 7,
+    "figures": 6,
     "governance-rulings": 7,
     "hypotheses": 9,
     "limitations": 210,
@@ -27,9 +28,9 @@
       "sha256": "0e0b36604297f9c72e0768258fb76b012f4c83169109988fceece6a804c1673c"
     },
     {
-      "bytes": 73386,
+      "bytes": 73631,
       "path": "claims.json",
-      "sha256": "e6bdf59ea3ac6a0dc4c63245cfe9325e6724f4e24af480e31eb73e98fc7ffe65"
+      "sha256": "8bb69026ed6ad58e951b877b2a04c5f09ae84be94ed51297e233f19e814c81e7"
     },
     {
       "bytes": 1222,
@@ -45,6 +46,11 @@
       "bytes": 93249,
       "path": "evidence.json",
       "sha256": "aaf98f0ea7edc369be36371a246e2155377ece9046a8072fc339e1d1a833de55"
+    },
+    {
+      "bytes": 13791,
+      "path": "figures.json",
+      "sha256": "14c9c015e6a4252ea84f97efe054bdcb65d16edb3b4de199424810f67ecbeaa9"
     },
     {
       "bytes": 33562,
@@ -82,7 +88,7 @@
       "sha256": "d8fbf816e93719ed8e38c8548e60bb0d3b7af51951c4f1cab4c050ceef8d58f0"
     }
   ],
-  "generator_source_sha256": "98391fd8e3d1a26754efd4bcd236f66516afe02fb38ccd3c2d17b6bb6c0f7836",
+  "generator_source_sha256": "fcc645bb3bf79911c8d9fe161c73fb4002185a03597fd867a914ccf2455c25b0",
   "generator_version": "1.0.0",
   "invariants": {
     "CONVERGENT": 0,

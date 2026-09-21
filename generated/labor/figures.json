@@ -1,0 +1,408 @@
+{
+  "entity": "Figure",
+  "items": [
+    {
+      "claim_id": "LAB-CLM-0005",
+      "display": {
+        "decimals": 2,
+        "locale": "es-AR",
+        "sign": "none"
+      },
+      "evidence_id": "LAB-EVD-0009",
+      "global_id": "labor/fig.LAB-CLM-0005.share_2025_q1",
+      "id": "fig.LAB-CLM-0005.share_2025_q1",
+      "id_origin": "DERIVED",
+      "key": "share_2025_q1",
+      "metric_key": "unregistered_share",
+      "nominal_real": "NA",
+      "object_ids": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007"
+      ],
+      "period": {
+        "end": "2025-Q1",
+        "granularity": "quarter",
+        "start": "2025-Q1"
+      },
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0005",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/4/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0004",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "sign": "none",
+      "status": "ELIGIBLE",
+      "stock_flow": "NA",
+      "unit": "pct",
+      "value_raw": "36.29",
+      "witnesses": [
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0005",
+          "field": "CLAIM_TEXT",
+          "pattern": "moved from (?<value>36\\.29)% in (?<start>2025-Q1) to",
+          "pointer": "/4/CLAIM_TEXT",
+          "role": "CLAIM",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "moved from 36.29% in 2025-Q1 to"
+        },
+        {
+          "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+          "entity": "labor/LAB-EVD-0009",
+          "field": "RESULT",
+          "pattern": "(?<start>2025-Q1): [0-9,]+ wage/salary earners \\(unweighted\\), weighted unregistered share (?<value>36\\.29)%",
+          "pointer": "/8/RESULT",
+          "role": "EVIDENCE",
+          "source_path": "metadata/evidence/evidence-registry.json",
+          "text_anchor": "2025-Q1: 14,627 wage/salary earners (unweighted), weighted unregistered share 36.29%"
+        }
+      ]
+    },
+    {
+      "claim_id": "LAB-CLM-0005",
+      "display": {
+        "decimals": 2,
+        "locale": "es-AR",
+        "sign": "none"
+      },
+      "evidence_id": "LAB-EVD-0009",
+      "global_id": "labor/fig.LAB-CLM-0005.share_2026_q1",
+      "id": "fig.LAB-CLM-0005.share_2026_q1",
+      "id_origin": "DERIVED",
+      "key": "share_2026_q1",
+      "metric_key": "unregistered_share",
+      "nominal_real": "NA",
+      "object_ids": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007"
+      ],
+      "period": {
+        "end": "2026-Q1",
+        "granularity": "quarter",
+        "start": "2026-Q1"
+      },
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0005",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/4/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0004",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "sign": "none",
+      "status": "ELIGIBLE",
+      "stock_flow": "NA",
+      "unit": "pct",
+      "value_raw": "37.90",
+      "witnesses": [
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0005",
+          "field": "CLAIM_TEXT",
+          "pattern": "to (?<value>37\\.90)% in (?<start>2026-Q1), a shift of",
+          "pointer": "/4/CLAIM_TEXT",
+          "role": "CLAIM",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "to 37.90% in 2026-Q1, a shift of"
+        },
+        {
+          "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+          "entity": "labor/LAB-EVD-0009",
+          "field": "RESULT",
+          "pattern": "(?<start>2026-Q1): [0-9,]+ wage/salary earners \\(unweighted\\), weighted unregistered share (?<value>37\\.90)%",
+          "pointer": "/8/RESULT",
+          "role": "EVIDENCE",
+          "source_path": "metadata/evidence/evidence-registry.json",
+          "text_anchor": "2026-Q1: 13,938 wage/salary earners (unweighted), weighted unregistered share 37.90%"
+        }
+      ]
+    },
+    {
+      "claim_id": "LAB-CLM-0005",
+      "display": {
+        "decimals": 2,
+        "locale": "es-AR",
+        "sign": "explicit"
+      },
+      "evidence_id": "LAB-EVD-0009",
+      "global_id": "labor/fig.LAB-CLM-0005.shift",
+      "id": "fig.LAB-CLM-0005.shift",
+      "id_origin": "DERIVED",
+      "key": "shift",
+      "metric_key": "unregistered_share_shift",
+      "nominal_real": "NA",
+      "object_ids": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007"
+      ],
+      "period": {
+        "end": "2026-Q1",
+        "granularity": "quarter",
+        "start": "2025-Q1"
+      },
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0005",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/4/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0004",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "sign": "+",
+      "status": "ELIGIBLE",
+      "stock_flow": "NA",
+      "unit": "pp",
+      "value_raw": "+1.61",
+      "witnesses": [
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0005",
+          "field": "CLAIM_TEXT",
+          "pattern": "a shift of (?<sign>\\+)(?<value>1\\.61) percentage points",
+          "pointer": "/4/CLAIM_TEXT",
+          "role": "CLAIM",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "a shift of +1.61 percentage points"
+        },
+        {
+          "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+          "entity": "labor/LAB-EVD-0009",
+          "field": "RESULT",
+          "pattern": "Shift: (?<sign>\\+)(?<value>1\\.61) percentage points",
+          "pointer": "/8/RESULT",
+          "role": "EVIDENCE",
+          "source_path": "metadata/evidence/evidence-registry.json",
+          "text_anchor": "Shift: +1.61 percentage points"
+        }
+      ]
+    },
+    {
+      "claim_id": "LAB-CLM-0006",
+      "display": {
+        "decimals": 2,
+        "locale": "es-AR",
+        "sign": "none"
+      },
+      "evidence_id": "LAB-EVD-0010",
+      "global_id": "labor/fig.LAB-CLM-0006.gap",
+      "id": "fig.LAB-CLM-0006.gap",
+      "id_origin": "DERIVED",
+      "key": "gap",
+      "metric_key": "nominal_real_gap",
+      "nominal_real": "NA",
+      "object_ids": [
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0025"
+      ],
+      "period": {
+        "end": "2026-Q1",
+        "granularity": "quarter",
+        "start": "2025-Q1"
+      },
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0006",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/5/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0005",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "sign": "none",
+      "status": "ELIGIBLE",
+      "stock_flow": "NA",
+      "unit": "pp",
+      "value_raw": "33.38",
+      "witnesses": [
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0006",
+          "field": "CLAIM_TEXT",
+          "pattern": "a gap of (?<value>33\\.38) percentage points",
+          "pointer": "/5/CLAIM_TEXT",
+          "role": "CLAIM",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "a gap of 33.38 percentage points"
+        },
+        {
+          "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+          "entity": "labor/LAB-EVD-0010",
+          "field": "RESULT",
+          "pattern": "Gap between nominal and real growth: (?<value>33\\.38) percentage points",
+          "pointer": "/9/RESULT",
+          "role": "EVIDENCE",
+          "source_path": "metadata/evidence/evidence-registry.json",
+          "text_anchor": "Gap between nominal and real growth: 33.38 percentage points"
+        }
+      ]
+    },
+    {
+      "claim_id": "LAB-CLM-0006",
+      "display": {
+        "decimals": 2,
+        "locale": "es-AR",
+        "sign": "explicit"
+      },
+      "evidence_id": "LAB-EVD-0010",
+      "global_id": "labor/fig.LAB-CLM-0006.nominal_growth",
+      "id": "fig.LAB-CLM-0006.nominal_growth",
+      "id_origin": "DERIVED",
+      "key": "nominal_growth",
+      "metric_key": "nominal_growth",
+      "nominal_real": "NOMINAL",
+      "object_ids": [
+        "LAB-OBJ-0009"
+      ],
+      "period": {
+        "end": "2026-Q1",
+        "granularity": "quarter",
+        "start": "2025-Q1"
+      },
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0006",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/5/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0005",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "sign": "+",
+      "status": "ELIGIBLE",
+      "stock_flow": "NA",
+      "unit": "pct",
+      "value_raw": "+35.48",
+      "witnesses": [
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0006",
+          "field": "CLAIM_TEXT",
+          "pattern": "\\(P21\\) (?<verb>grew) (?<value>35\\.48)% in nominal terms",
+          "pointer": "/5/CLAIM_TEXT",
+          "role": "CLAIM",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "(P21) grew 35.48% in nominal terms"
+        },
+        {
+          "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+          "entity": "labor/LAB-EVD-0010",
+          "field": "RESULT",
+          "pattern": "nominal growth (?<sign>[+-])(?<value>35\\.48)%",
+          "pointer": "/9/RESULT",
+          "role": "EVIDENCE",
+          "source_path": "metadata/evidence/evidence-registry.json",
+          "text_anchor": "nominal growth +35.48%"
+        }
+      ]
+    },
+    {
+      "claim_id": "LAB-CLM-0006",
+      "display": {
+        "decimals": 2,
+        "locale": "es-AR",
+        "sign": "explicit"
+      },
+      "evidence_id": "LAB-EVD-0010",
+      "global_id": "labor/fig.LAB-CLM-0006.real_growth",
+      "id": "fig.LAB-CLM-0006.real_growth",
+      "id_origin": "DERIVED",
+      "key": "real_growth",
+      "metric_key": "real_growth",
+      "nominal_real": "REAL",
+      "object_ids": [
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0025"
+      ],
+      "period": {
+        "end": "2026-Q1",
+        "granularity": "quarter",
+        "start": "2025-Q1"
+      },
+      "provenance": {
+        "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+        "commit": "ca6a85e12b05df28e73e60ac406c90ad16352ed3",
+        "extracted_sha256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5",
+        "generator_version": "1.0.0",
+        "recorded_hashes": [],
+        "source_id": "LAB-CLM-0006",
+        "source_path": "metadata/claims/claim-ledger.json",
+        "source_pointer": "/5/CLAIM_TEXT",
+        "source_repo": "ALETHEIA-LABOR",
+        "tag": "aletheia-labor-v1.0.0"
+      },
+      "question_id": "LAB-Q-0005",
+      "root_ids": [
+        "LAB-ROOT-0005"
+      ],
+      "sign": "+",
+      "status": "ELIGIBLE",
+      "stock_flow": "NA",
+      "unit": "pct",
+      "value_raw": "+2.10",
+      "witnesses": [
+        {
+          "blob_sha": "04e8c4ac900df244b848921b2d86b8b88a93be22",
+          "entity": "labor/LAB-CLM-0006",
+          "field": "CLAIM_TEXT",
+          "pattern": "but only (?<value>2\\.10)% once deflated by the admitted national IPC",
+          "pointer": "/5/CLAIM_TEXT",
+          "role": "CLAIM",
+          "source_path": "metadata/claims/claim-ledger.json",
+          "text_anchor": "but only 2.10% once deflated by the admitted national IPC"
+        },
+        {
+          "blob_sha": "7f09a2e0ae1573c01bd4d61afd8f2fbdd0be0a90",
+          "entity": "labor/LAB-EVD-0010",
+          "field": "RESULT",
+          "pattern": "real growth (?<sign>[+-])(?<value>2\\.10)%",
+          "pointer": "/9/RESULT",
+          "role": "EVIDENCE",
+          "source_path": "metadata/evidence/evidence-registry.json",
+          "text_anchor": "real growth +2.10%"
+        }
+      ]
+    }
+  ],
+  "module_id": "labor",
+  "schema_version": "1.0.0"
+}

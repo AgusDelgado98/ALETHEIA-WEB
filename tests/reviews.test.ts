@@ -117,14 +117,14 @@ describe("G-LEG-02", () => {
 });
 
 describe("drift y gates humanos", () => {
-  it("el pin está atado al commit WEB-2 y los hashes coinciden", () => {
+  it("el pin sigue atado al commit WEB-2 revisado", () => {
     const pin = readPin(ROOT);
     expect(pin).not.toBeNull();
     const drift = detectDrift(ROOT, pin!);
     expect(drift.reviewed_commit).toBe(WEB2_REVIEWED_COMMIT);
-    expect(drift.invalidated).toBe(false);
-    expect(drift.editorial_manifest_changed).toBe(false);
-    expect(drift.inventory_changed).toBe(false);
+    // En `web-3` el material de WEB-2 cambia a propósito (ADR-WEB3-01): la deriva DEBE detectarse. El pin de `main`
+    // no se toca; se re-emite al mergear WEB-3, no antes. (`main` conserva la aserción `invalidated === false`.)
+    expect(drift.invalidated).toBe(true);
   });
   it("ningún gate humano PENDING pasa", () => {
     const ctx = realContext();

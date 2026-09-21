@@ -365,7 +365,11 @@
       "evidence_ids": [
         "LAB-EVD-0009"
       ],
-      "figure_ids": [],
+      "figure_ids": [
+        "fig.LAB-CLM-0005.share_2025_q1",
+        "fig.LAB-CLM-0005.share_2026_q1",
+        "fig.LAB-CLM-0005.shift"
+      ],
       "global_id": "labor/LAB-CLM-0005",
       "hypothesis_id": "LAB-HYP-0003",
       "id": "LAB-CLM-0005",
@@ -447,7 +451,11 @@
       "evidence_ids": [
         "LAB-EVD-0010"
       ],
-      "figure_ids": [],
+      "figure_ids": [
+        "fig.LAB-CLM-0006.gap",
+        "fig.LAB-CLM-0006.nominal_growth",
+        "fig.LAB-CLM-0006.real_growth"
+      ],
       "global_id": "labor/LAB-CLM-0006",
       "hypothesis_id": "LAB-HYP-0004",
       "id": "LAB-CLM-0006",

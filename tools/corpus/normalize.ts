@@ -7,6 +7,7 @@ import type {
   EpisodeT,
   EvidenceRootT,
   EvidenceT,
+  FigureT,
   GovernanceRulingT,
   HypothesisT,
   LimitationT,
@@ -23,6 +24,7 @@ import {
 } from "../../schemas/corpus.ts";
 import type { ModuleContractT } from "./contract.ts";
 import { srcDir } from "./extract.ts";
+import { buildFigures } from "./figures.ts";
 import type { Pin } from "./pin.ts";
 import { sha256Hex, short8 } from "./util.ts";
 
@@ -39,6 +41,7 @@ export interface NormalizedCorpus {
   limitations: LimitationT[];
   blockers: BlockerT[];
   anchors: AnchorT[];
+  figures: FigureT[];
   episodes: EpisodeT[];
   "governance-rulings": GovernanceRulingT[];
   relations: RelationT[];
@@ -310,6 +313,7 @@ export function normalize(args: {
     limitations: [],
     blockers: [],
     anchors: [],
+    figures: [],
     episodes: [],
     "governance-rulings": [],
     relations: [],
@@ -1076,6 +1080,27 @@ export function normalize(args: {
       reason: str(rr.r, "REASON", rid),
     });
   }
+
+  // ── Figures (Data Contract §9, ADR-WEB3-01): solo las ELIGIBLE, con doble testigo verificado ──
+  out.figures = buildFigures({
+    specs: contract.figure_specs,
+    claims: out.claims,
+    evidence: out.evidence,
+    claimsRaw: claims,
+    evidenceRaw: evidence,
+    replaced: new Set(contract.claim_supersessions.map((s) => s.replaced_evidence_id)),
+    claimsPath: PATHS.claims,
+    evidencePath: PATHS.evidence,
+    blobOf: (path) => {
+      const f = pin.files.find((x) => x.path === path);
+      if (f === undefined) throw new Error(`figures: ${path} no está en el pin`);
+      return f.blob_sha;
+    },
+    prov,
+    gid,
+  });
+  for (const claim of out.claims)
+    claim.figure_ids = out.figures.filter((f) => f.claim_id === claim.id).map((f) => f.id);
 
   // Orden explícito de todo (Data Contract §4.2.6)
   for (const key of Object.keys(out) as (keyof NormalizedCorpus)[]) {

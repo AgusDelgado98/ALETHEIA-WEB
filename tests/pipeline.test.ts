@@ -293,8 +293,12 @@ describe("esquemas: Question → 0..N Claims y estados separados", () => {
     expect(q["ledger_status"]).toBe("NOT_YET_OPERATIONAL");
     expect((q["resolution"] as { value: string }).value).toBe("INSUFFICIENT_EVIDENCE");
   });
-  it("no se inventa una Figure sin cifra estructurada", () => {
-    for (const c of generated("claims.json").items) expect(c["figure_ids"]).toEqual([]);
+  it("solo los claims de la primera ola (ADR-WEB3-01) declaran Figures; el resto no se inventa", () => {
+    const withFigures = generated("claims.json")
+      .items.filter((c) => (c["figure_ids"] as string[]).length > 0)
+      .map((c) => c["id"])
+      .sort();
+    expect(withFigures).toEqual(["LAB-CLM-0005", "LAB-CLM-0006"]);
   });
   it("cada entidad rechaza campos desconocidos", () => {
     expect(Question.safeParse({ ...q, invento: true }).success).toBe(false);
