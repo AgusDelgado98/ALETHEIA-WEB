@@ -28,6 +28,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-reports/
+/reports/
 
 .vercel

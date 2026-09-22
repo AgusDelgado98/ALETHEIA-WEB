@@ -1,0 +1,2217 @@
+{
+  "PHASE": "LAB-S2",
+  "TITLE": "Cross-regime relation register",
+  "AS_OF_HEAD": "bb82345b2a19977fb6ad5c82ce3ef278d822a769",
+  "PURPOSE": "Documents how the results of Regimes A, B, and C may coexist without creating any new inference: which relations already exist under a ruling, which items may only be placed side by side, which relations need a ruling that does not exist, and which are prohibited. Restates and organizes the S0 rules; it creates no authority.",
+  "NOT_A_FINDING": "This register is documentation. It adds no evidence, authorizes no relation, and does not raise the force of any claim.",
+  "CATEGORIES": {
+    "AUTHORIZED_EXISTING_RELATION": "A relation already authorized in the ledgers before LAB-S (a LAB-GOV ruling or a pre-registered hypothesis), valid only inside its own claim and scope. Called AUTHORIZED_PRE_EXISTING in the S0 registry.",
+    "JUXTAPOSITION_ONLY": "Items may be placed adjacent, each with its own state, scope, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency.",
+    "GOVERNANCE_REQUIRED": "Would need an explicit LAB-GOV ruling (Charter section 19 rule 3) before being asserted. Marked only; no ruling is created here.",
+    "PROHIBITED": "Not to be asserted or implied by LAB-S in any form."
+  },
+  "DECLARATIONS": {
+    "NEW_RELATIONS_AUTHORIZED": 0,
+    "NEW_LAB_GOV_RULINGS": 0,
+    "NEW_CLAIMS": 0,
+    "NEW_EVIDENCE_RECORDS": 0,
+    "GOVERNANCE_REQUIRED_RESOLVED": 0,
+    "GOVERNANCE_REQUIRED_PRESERVED": 6,
+    "NEW_ESTABLISHED_WITHIN_SCOPE": 0,
+    "NEW_CONVERGENT": 0,
+    "NEW_DIVERGENT": 0,
+    "EPISTEMIC_UPGRADES": 0,
+    "SINGLE_SYSTEMIC_NARRATIVE": false,
+    "S0_MODIFIED": false,
+    "S1_MODIFIED": false,
+    "LEDGERS_MODIFIED": false,
+    "CLOSEOUTS_MODIFIED": false
+  },
+  "COUNTS_BY_CATEGORY": {
+    "AUTHORIZED_EXISTING_RELATION": 3,
+    "GOVERNANCE_REQUIRED": 6,
+    "JUXTAPOSITION_ONLY": 7,
+    "PROHIBITED": 18
+  },
+  "AUTHORIZED_NEW_RELATIONS": [],
+  "RULES_APPLIED": "reports/lab_s/LAB-S0-synthesis-rules.json (DEC-001 to DEC-006, AUTH, JX, PR, GR); synthesis gate rules 1 to 6; the LAB-GOV rulings already in the registry.",
+  "PROVENANCE": {
+    "S0_ARTIFACTS": [
+      {
+        "FILE": "reports/lab_s/LAB-S0-inventory.json",
+        "SHA256": "9ddc210bd965728269f97c6238b75ac201891f4147d74d2cf701e20a4e446bb8"
+      },
+      {
+        "FILE": "reports/lab_s/LAB-S0-synthesis-rules.json",
+        "SHA256": "1c06a5bc5f07620f55f6922e327849517129a9e4d77fc52e56e649548a919d95"
+      },
+      {
+        "FILE": "reports/lab_s/LAB-S0-preserved-results.json",
+        "SHA256": "dc8129f275950d3e7276066aef2940572d820227a482fc767b3c5b6b52374a3a"
+      },
+      {
+        "FILE": "reports/lab_s/LAB-S0-report.md",
+        "SHA256": "633ca7623e7bf0fa7de9baedef1fbc37fc619a20f1f5ec589861de21bfaa8b08"
+      }
+    ],
+    "S1_ARTIFACTS": [
+      {
+        "FILE": "reports/lab_s/LAB-S1-synthesis.json",
+        "SHA256": "d57f01845fd196046a42268984b0f2cd0e718764877178f2c16580ece2e34120"
+      },
+      {
+        "FILE": "reports/lab_s/LAB-S1-regime-a-synthesis.md",
+        "SHA256": "c12176612a0d773510ba3135c00870b9b58facb73ae397476323d7d257b1a03f"
+      },
+      {
+        "FILE": "reports/lab_s/LAB-S1-regime-b-synthesis.md",
+        "SHA256": "ed5a0fc720c55fb66b980366fd719f2d50859d4c3f8db4043ef31a6025f66981"
+      },
+      {
+        "FILE": "reports/lab_s/LAB-S1-regime-c-synthesis.md",
+        "SHA256": "d126184eaf13af041b70c4d34106adbd7a85ba6ec213cc0ed8f63cf481fc2d42"
+      }
+    ],
+    "CLOSEOUT_REPORTS": [
+      {
+        "FILE": "reports/lab_a/LAB-A-closeout.md",
+        "SHA256": "6d2bf327f14f011fabd774f837c523cf8e1d47ead90eca7c0dfd19b1cb6e1086"
+      },
+      {
+        "FILE": "reports/regime_a/REGIME-A-closeout.md",
+        "SHA256": "c2d76457e9e830a3f0e2e3cbd5e550c10a947ef743c075afb4e7b4039cafb087"
+      },
+      {
+        "FILE": "reports/regime_a/REGIME-A-findings.md",
+        "SHA256": "1c06ed8b60675cd5d52460d4e35ab2a7ccc7732e204a022d1702593286d7002f"
+      },
+      {
+        "FILE": "reports/regime_b/REGIME-B-closeout.md",
+        "SHA256": "53db5b69aeaae6da7028c2d83bdbbcd7b3c89cf8f502f0ea55bbedaa204328e5"
+      },
+      {
+        "FILE": "reports/regime_c/REGIME-C-closeout.md",
+        "SHA256": "3488603a674b1966fa132e32acdddc11a88d27035512523c085be9ee16233f5b"
+      }
+    ],
+    "LEDGER_FILES": [
+      {
+        "FILE": "metadata/questions/question-ledger.json",
+        "SHA256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e"
+      },
+      {
+        "FILE": "metadata/claims/claim-ledger.json",
+        "SHA256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5"
+      },
+      {
+        "FILE": "metadata/hypotheses/hypothesis-registry.json",
+        "SHA256": "7aca843c2a646fa2d44bfcbe95bb09958f6b0f44e1a0b13d762b4a3dc9bf899d"
+      },
+      {
+        "FILE": "metadata/governance/lab-gov-registry.json",
+        "SHA256": "a1a683298bdfe29de26a4fddf54ef46b37c0991d2c96da6fed138934f3c2a535"
+      },
+      {
+        "FILE": "metadata/lineage/evidence-root-registry.json",
+        "SHA256": "1ae8dfea425c706fc9a20141f68715484ebb37557ed0257d7efa2a8cf8ca2da2"
+      },
+      {
+        "FILE": "metadata/objects/object-ledger.json",
+        "SHA256": "44cd20a8d9feb8e76045a38a91bc83b5cb9d13b26820ddadd1609c8f90bb9064"
+      }
+    ]
+  },
+  "RELATIONS": [
+    {
+      "RELATION_ID": "REL-AUTH-001",
+      "CATEGORY": "AUTHORIZED_EXISTING_RELATION",
+      "TITLE": "SIPA and ARCA inside LAB-CLM-0007 (Monotributo share)",
+      "S0_REF": "AUTH-001",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0007"
+      ],
+      "CONTEXT_CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0003"
+      ],
+      "QUESTION_IDS": [
+        "LAB-Q-0008"
+      ],
+      "HYPOTHESIS_IDS": [
+        "LAB-HYP-0005"
+      ],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007",
+        "LAB-ROOT-0001"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME_ROOT_USE_INSIDE_ONE_CLAIM",
+      "RULE_OR_RULING": {
+        "TYPE": "LAB_GOV_RULING",
+        "REFERENCES": [
+          "LAB-GOV-SIPA-SUBSTITUTION-0001"
+        ],
+        "NOTE": "Authorizes SIPA's three dependent modalities as a LAB-analytical-only denominator component for LAB-HYP-0005's 'formal dependent registration' term."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NON_INDEPENDENT_AT_CLAIM_LEVEL",
+        "BASIS": "Ruling section F and LAB-CLM-0007's LINEAGE_INDEPENDENCE: same underlying SUSS/ARCA declaration stream. The lineage registry lists LAB-ROOT-0007 and LAB-ROOT-0001 each as INDEPENDENT in its own right; that does not override the ruling or the claim.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "The computation recorded in LAB-CLM-0007, exactly as written and inside that claim: the Monotributo share of ARCA Monotributista counts plus SIPA's ASALARIADO_PRIVADO, ASALARIADO_PUBLICO, and CASAS_PARTICULARES modalities as a LAB-analytical denominator component, with the Mixtos overlap, the GOV-005 caveat, and the cross-sectional limits disclosed. The SIPA side is a denominator component, never SIPA's own TOTAL.",
+      "PROHIBITED_INFERENCE": "Treating SIPA and ARCA as two independent Evidence Roots; CONVERGENT or ESTABLISHED_WITHIN_SCOPE for LAB-CLM-0007; reading agreement with any SIPA-only claim as corroboration; using the substitution outside LAB-CLM-0007; merging LAB-OBJ-0016, LAB-OBJ-0006, and LAB-OBJ-0013, which remain distinct ledger objects.",
+      "REASON": "The ruling governs this one use and states, in its section F, that using SIPA directly removes a republication circularity but does not make SIPA and ARCA independent of each other for Root Counting: both trace to the same SUSS/ARCA declaration stream, so no CONVERGENT claim is or could be authorized. It is the only cross-regime reuse of a root that the ledgers govern.",
+      "PRESERVED_IN_S1": [
+        "RB-1"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-001",
+        "REL-PR-002",
+        "REL-GR-001",
+        "REL-GR-005"
+      ],
+      "ROOT_ORIGIN_NOTE": "LAB-ROOT-0001 (SIPA) was admitted for Regime A and carries LAB-CLM-0001 and LAB-CLM-0003; here it is used inside a Regime B claim. The context claims are listed only to locate the root and are not part of the authorized relation.",
+      "NOT_CONVERGENT": true
+    },
+    {
+      "RELATION_ID": "REL-AUTH-002",
+      "CATEGORY": "AUTHORIZED_EXISTING_RELATION",
+      "TITLE": "SIPA and MLER inside LAB-CLM-0003",
+      "S0_REF": "AUTH-003",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0003"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0002"
+      ],
+      "HYPOTHESIS_IDS": [
+        "LAB-HYP-0007"
+      ],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0003"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0003"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "WITHIN_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "PRE_REGISTERED_HYPOTHESIS",
+        "REFERENCES": [
+          "LAB-HYP-0007",
+          "GOV-006",
+          "GOV-010"
+        ],
+        "NOTE": "The pre-registered SIPA versus MLER comparison; no LAB-GOV ruling governs it. GOV-006 and GOV-010 are V1 rulings cited by the claim."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "DOWNSTREAM_PROXY",
+        "BASIS": "Lineage registry: LAB-ROOT-0003 (MLER) is DOWNSTREAM_PROXY of LAB-ROOT-0001 (SIPA), documented in V1's P1 audit; it does not increment the Root Counting Rule.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "The comparison of SIPA-derived and MLER-derived counts within their 2012-01 to 2021-12 overlap recorded in LAB-CLM-0003, inside that claim, with MLER named as a downstream proxy of SIPA.",
+      "PROHIBITED_INFERENCE": "Reading MLER's closeness to SIPA as corroboration or as a second independent root; extending the comparison past 2021-12; using MLER's EMPLOYER or JOB fields (unrealized, GOV-006); reading the person-count sub-finding as passing or failing LAB-HYP-0007 (no numeric tolerance was pre-registered).",
+      "REASON": "MLER is documented as constructed from the same SIPA/ARCA employer-declaration stream, so agreement between the two is expected by construction and only one root counts.",
+      "PRESERVED_IN_S1": [
+        "RA-4"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-PR-002"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-AUTH-003",
+      "CATEGORY": "AUTHORIZED_EXISTING_RELATION",
+      "TITLE": "CGI and EPH nominal versus real, with IPC as deflator only",
+      "S0_REF": "AUTH-002",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0004",
+        "LAB-CLM-0006"
+      ],
+      "CONTEXT_CLAIM_IDS": [
+        "LAB-CLM-0002"
+      ],
+      "QUESTION_IDS": [
+        "LAB-Q-0003",
+        "LAB-Q-0005"
+      ],
+      "HYPOTHESIS_IDS": [
+        "LAB-HYP-0002",
+        "LAB-HYP-0004"
+      ],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0009"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [
+        "LAB-ROOT-0006"
+      ],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "WITHIN_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "LAB_GOV_RULING_AND_MEASUREMENT_CHAIN",
+        "REFERENCES": [
+          "LAB-GOV-IPC-0001",
+          "DEFLATOR_ROOT_ID (evidence.schema.json, added at LAB-A3)"
+        ],
+        "NOTE": "LAB-GOV-IPC-0001 admits IPC as a deflator input; the deflator-root field keeps it out of the root count."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_A_ROOT_DEFLATOR",
+        "BASIS": "LAB-ROOT-0006 (IPC) is used only as DEFLATOR_ROOT_ID in LAB-CLM-0004 and LAB-CLM-0006 and appears in no claim's ROOT_IDS.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "Deflating a nominal series by the national IPC (base Dec-2016=100) inside the claim, and reporting nominal and real figures as separate, labelled values: LAB-CLM-0002 records nominal CGI growth, LAB-CLM-0004 records real CGI wage-bill growth, and LAB-CLM-0006 records nominal and real EPH labour income. NOMINAL != REAL.",
+      "PROHIBITED_INFERENCE": "Reading a nominal figure as real or the reverse; counting IPC as an Evidence Root or as corroboration; comparing CGI wage-bill magnitudes with EPH labour-income magnitudes; extending the real CGI window beyond 2018-Q1 to 2026-Q1.",
+      "REASON": "IPC was admitted strictly as a deflator input, and a deflator root is recorded separately (DEFLATOR_ROOT_ID) and never counted toward the Root Counting Rule. Nominal and real are different measures of the same series and are kept apart.",
+      "PRESERVED_IN_S1": [
+        "RA-2",
+        "RA-3",
+        "RA-6"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-006",
+        "REL-PR-012"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-JX-001",
+      "CATEGORY": "JUXTAPOSITION_ONLY",
+      "TITLE": "SIPA composition (LAB-CLM-0001) beside the Monotributo share (LAB-CLM-0007)",
+      "S0_REF": "JX-001",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "No LAB-GOV ruling or pre-registration relates these items; the S0 default (juxtaposition only) applies."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NON_INDEPENDENT",
+        "BASIS": "S0 pairwise register and LAB-CLM-0007 LINEAGE_INDEPENDENCE: shared SUSS/ARCA declaration stream.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that both records draw on the same SUSS/ARCA declaration stream, and that they use different denominators, universes, and windows.",
+      "PROHIBITED_INFERENCE": "Reading the fact that both records report a larger Monotributo weight as mutual support, agreement, or convergence; merging them into one statement or trend; computing a difference or ratio between them; counting them as two Evidence Roots.",
+      "REASON": "Same underlying declaration stream; registry classes alone would count two INDEPENDENT roots for LAB-CLM-0007, which its own record and the ruling deny.",
+      "PRESERVED_IN_S1": [
+        "RA-1",
+        "RB-1"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-AUTH-001",
+        "REL-PR-002",
+        "REL-GR-001"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-JX-002",
+      "CATEGORY": "JUXTAPOSITION_ONLY",
+      "TITLE": "EPH results beside administrative results (Q-0006 stays unanswered)",
+      "S0_REF": "JX-002",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0001",
+        "LAB-CLM-0003"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0006"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0003"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0005",
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0003"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "WITHIN_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "No LAB-GOV ruling or pre-registration relates these items; the S0 default (juxtaposition only) applies."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "VERIFIED_INDEPENDENT_COLLECTION",
+        "BASIS": "Source-admission plan: EPH's collection instrument is independent of SIPA, CGI, and MLER, verified at LAB-A2. Independence of collection does not create a comparison relation.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. EPH results cover two quarters in 32 urban agglomerates; SIPA and MLER results cover registered universes and other windows. Coexistence only.",
+      "PROHIBITED_INFERENCE": "Any statement that they agree or diverge; using EPH's PP07H results to validate or invalidate SIPA counts, or the reverse; answering LAB-Q-0006 (BLOCKED_BY_DESIGN, no pre-registered metric) by direct or indirect comparison; reading independence of collection as license to compare.",
+      "REASON": "LAB-Q-0006 asks precisely for this comparison and was never executed; comparing existing claims would answer it without a metric.",
+      "PRESERVED_IN_S1": [
+        "RA-1",
+        "RA-4",
+        "RA-5",
+        "RA-6"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-PR-004",
+        "REL-GR-002"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-JX-003",
+      "CATEGORY": "JUXTAPOSITION_ONLY",
+      "TITLE": "ARCA formal category (LAB-CLM-0008) beside the EPH proxy PP05F (LAB-CLM-0010)",
+      "S0_REF": "JX-003",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0008",
+        "LAB-CLM-0010"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0009",
+        "LAB-Q-0010",
+        "LAB-Q-0011"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0018",
+        "LAB-OBJ-0017"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "WITHIN_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "No LAB-GOV ruling or pre-registration relates these items; the S0 default (juxtaposition only) applies."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_ASSESSED",
+        "BASIS": "The ARCA root (LAB-ROOT-0007) and the EPH root (LAB-ROOT-0005) are not paired in the S0 pairwise register; not assessed in the inventoried records.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that PP05F is an unvalidated candidate proxy and that the formal category is not economic dependence.",
+      "PROHIBITED_INFERENCE": "Using PP05F together with ARCA registration to infer dependence; presenting PP05F as validated or governed; answering LAB-Q-0011.",
+      "REASON": "Placing them together invites an economic-dependence inference the ledgers do not support.",
+      "PRESERVED_IN_S1": [
+        "RB-2",
+        "RB-4"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-PR-005",
+        "REL-CONF-002",
+        "REL-GR-002"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-JX-004",
+      "CATEGORY": "JUXTAPOSITION_ONLY",
+      "TITLE": "Absent flow data (LAB-CLM-0011) beside absent HIRE-event source (LAB-CLM-0014)",
+      "S0_REF": "JX-004",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "No LAB-GOV ruling or pre-registration relates these items; the S0 default (juxtaposition only) applies."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE_NO_SHARED_ROOT",
+        "BASIS": "LAB-CLM-0014 rests on no Evidence Root; the two claims share no root.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. Two separately established absences: registration-flow data absent (LAB-CLM-0011) and no HIRE-event source (LAB-CLM-0014), each with its own basis and scope.",
+      "PROHIBITED_INFERENCE": "Stating a shared cause, or a pattern of missing flow data, as a synthesized finding; treating one absence as evidence for the other.",
+      "REASON": "Stating a pattern would relate the two absences, which rule 3 of the synthesis gate reserves for governance (GR-004).",
+      "PRESERVED_IN_S1": [
+        "RB-5",
+        "RC-3"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-GR-004",
+        "REL-CONF-003",
+        "REL-PR-006"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-JX-005",
+      "CATEGORY": "JUXTAPOSITION_ONLY",
+      "TITLE": "Regime C limits beside Regime A and B results",
+      "S0_REF": "JX-005",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011"
+      ],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "No LAB-GOV ruling or pre-registration relates these items; the S0 default (juxtaposition only) applies."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE_NO_ROOT",
+        "BASIS": "Regime C's three claims have empty ROOT_IDS.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that Regime C contributes design, governance, and source-availability results and no data, no Evidence Root, and no posting.",
+      "PROHIBITED_INFERENCE": "Any empirical relation; using Regime C's design pre-mortem, source-availability findings, or NOT_IDENTIFIABLE questions to strengthen, weaken, explain, or qualify the force of any Regime A or B claim; reading Regime C's absences as findings about labour-market conditions.",
+      "REASON": "Regime C has no data; rule 2 of the synthesis gate forbids weak Regime C evidence from raising the force of any other regime's claim.",
+      "PRESERVED_IN_S1": [
+        "RC-1",
+        "RC-2",
+        "RC-3"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-PR-003",
+        "REL-GR-003",
+        "REL-CONF-001"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-JX-006",
+      "CATEGORY": "JUXTAPOSITION_ONLY",
+      "TITLE": "Nominal and real growth figures from CGI and EPH",
+      "S0_REF": "JX-006",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0002",
+        "LAB-CLM-0004",
+        "LAB-CLM-0006"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0009"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [
+        "LAB-ROOT-0006"
+      ],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "WITHIN_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "No LAB-GOV ruling or pre-registration relates these items; the S0 default (juxtaposition only) applies."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_ASSESSED",
+        "BASIS": "CGI (LAB-ROOT-0002) and EPH (LAB-ROOT-0005) are not paired in the S0 pairwise register; IPC is a deflator only.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. Each figure stays labelled nominal or real and within its own claim.",
+      "PROHIBITED_INFERENCE": "Comparing nominal and real figures, or figures from different products, as if on one scale; ranking or averaging them.",
+      "REASON": "Different products and objects (aggregate wage bill versus individual labour income); NOMINAL != REAL.",
+      "PRESERVED_IN_S1": [
+        "RA-2",
+        "RA-3",
+        "RA-6"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-AUTH-003",
+        "REL-PR-012",
+        "REL-GR-006"
+      ]
+    },
+    {
+      "RELATION_ID": "REL-JX-007",
+      "CATEGORY": "JUXTAPOSITION_ONLY",
+      "TITLE": "One EPH root beneath results of Regimes A and B",
+      "S0_REF": null,
+      "ADDED_AT_S2": true,
+      "CLAIM_IDS": [
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0010"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "No LAB-GOV ruling or pre-registration relates these items; the S0 default (juxtaposition only) applies."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "SAME_ROOT",
+        "BASIS": "All three claims cite LAB-ROOT-0005 in their ROOT_IDS.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "Coexistence only: the items may appear in the same document, each with its own state, scope, window, limitations, and provenance, with no shared axis, derived metric, or connective language implying support, explanation, or consistency. State that these results rest on the same EPH root (LAB-ROOT-0005) and that it counts once wherever it is used.",
+      "PROHIBITED_INFERENCE": "Counting the EPH root twice or presenting the Regime A and Regime B EPH results as two independent roots; using the EPH-based results of one regime as support for the other.",
+      "REASON": "Same PRIMARY_PRODUCER, COLLECTION_INSTRUMENT, and FRAME_POPULATION means the same root by default (Root Counting Rule); no ruling governs cross-regime EPH reuse (GR-005).",
+      "PRESERVED_IN_S1": [
+        "RA-5",
+        "RA-6",
+        "RB-4"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-GR-005",
+        "REL-PR-002"
+      ],
+      "ADDED_AT_S2_NOTE": "Derived from ROOT_IDS in the claim ledger; asserts no relation and authorizes nothing."
+    },
+    {
+      "RELATION_ID": "REL-GR-001",
+      "CATEGORY": "GOVERNANCE_REQUIRED",
+      "TITLE": "Governance required: SIPA composition and ARCA Monotributo measures as one phenomenon",
+      "S0_REF": "GR-001",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_APPLICABLE_RULING_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "The existing rulings were checked and none resolves this relation; see EXISTING_RULINGS_CONSIDERED."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NON_INDEPENDENT_AT_CLAIM_LEVEL",
+        "BASIS": "Shared SUSS/ARCA declaration stream (see REL-AUTH-001).",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "PROHIBITED_INFERENCE": "SIPA modality composition (Regime A) and ARCA Monotributo registration measures (Regime B) as evidence about one phenomenon.",
+      "REASON": "Charter section 19 rule 3: the relation between their objects is not governed beyond AUTH-001's claim-internal use.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-001",
+        "REL-AUTH-001"
+      ],
+      "STATUS": "GOVERNANCE_REQUIRED",
+      "RULING_CREATED": false,
+      "RESOLVED_BY_EXISTING_RULING": false,
+      "WOULD_ASSERT": "SIPA modality composition (Regime A) and ARCA Monotributo registration measures (Regime B) as evidence about one phenomenon.",
+      "EXISTING_RULINGS_CONSIDERED": [
+        {
+          "RULING_ID": "LAB-GOV-SIPA-SUBSTITUTION-0001",
+          "DOMAIN": "Admissibility of SIPA (LAB-ROOT-0001) as a substitute source for LAB-HYP-0005's excluded 'formal dependent registration' term",
+          "WHY_NOT_APPLICABLE": "Governs only the claim-internal use of SIPA's dependent modalities inside LAB-CLM-0007 and denies independence and CONVERGENT; it does not relate SIPA composition to ARCA Monotributo as one phenomenon."
+        }
+      ]
+    },
+    {
+      "RELATION_ID": "REL-GR-002",
+      "CATEGORY": "GOVERNANCE_REQUIRED",
+      "TITLE": "Governance required: EPH-derived measures related to registered-employment claims (including administrative versus survey)",
+      "S0_REF": "GR-002",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0010"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_APPLICABLE_RULING_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "The existing rulings were checked and none resolves this relation; see EXISTING_RULINGS_CONSIDERED."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "VERIFIED_INDEPENDENT_COLLECTION_FOR_EPH_VS_SIPA_CGI_MLER",
+        "BASIS": "Source-admission plan (LAB-A2); ARCA versus EPH not assessed. Independence of collection does not authorize a relation.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "PROHIBITED_INFERENCE": "EPH-derived measures (unregistered-employment proxy, income, PP05F) related to registered-employment claims from SIPA/ARCA, including any administrative-vs-survey comparison.",
+      "REASON": "No ruling governs the relation between EPH and administrative objects; LAB-Q-0006 also lacks a pre-registered metric.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-002",
+        "REL-JX-003",
+        "REL-PR-004"
+      ],
+      "STATUS": "GOVERNANCE_REQUIRED",
+      "RULING_CREATED": false,
+      "RESOLVED_BY_EXISTING_RULING": false,
+      "WOULD_ASSERT": "EPH-derived measures (unregistered-employment proxy, income, PP05F) related to registered-employment claims from SIPA/ARCA, including any administrative-vs-survey comparison.",
+      "EXISTING_RULINGS_CONSIDERED": [
+        {
+          "RULING_ID": "LAB-GOV-EPH-0001",
+          "DOMAIN": "EPH release-format admission and inherited break governance",
+          "WHY_NOT_APPLICABLE": "Governs EPH release format and inherited break windows within EPH; it does not relate EPH to administrative sources."
+        },
+        {
+          "RULING_ID": "LAB-GOV-IPC-0001",
+          "DOMAIN": "IPC release admission, base-period scope, and inherited break governance",
+          "WHY_NOT_APPLICABLE": "Admits IPC as a deflator input; it does not relate EPH to administrative sources."
+        }
+      ]
+    },
+    {
+      "RELATION_ID": "REL-GR-003",
+      "CATEGORY": "GOVERNANCE_REQUIRED",
+      "TITLE": "Governance required: Regime C objects related to Regime A/B employment or registration objects",
+      "S0_REF": "GR-003",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_APPLICABLE_RULING_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "The existing rulings were checked and none resolves this relation; see EXISTING_RULINGS_CONSIDERED."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE_NO_ROOT",
+        "BASIS": "Regime C has no Evidence Root.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "PROHIBITED_INFERENCE": "Regime C objects (LAB-OBJ-0019 to LAB-OBJ-0024) related to employment or registration objects of Regimes A and B (for example LAB-OBJ-0003, LAB-OBJ-0016).",
+      "REASON": "No ruling governs any C-to-A/B object relation, and Regime C has no data.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-005",
+        "REL-PR-003",
+        "REL-CONF-001"
+      ],
+      "STATUS": "GOVERNANCE_REQUIRED",
+      "RULING_CREATED": false,
+      "RESOLVED_BY_EXISTING_RULING": false,
+      "WOULD_ASSERT": "Regime C objects (LAB-OBJ-0019 to LAB-OBJ-0024) related to employment or registration objects of Regimes A and B (for example LAB-OBJ-0003, LAB-OBJ-0016).",
+      "EXISTING_RULINGS_CONSIDERED": [
+        {
+          "RULING_ID": "LAB-GOV-Q0014-PLATFORM-SELECTION-0001",
+          "DOMAIN": "Candidate platform evaluation and source selection for the Job Posting Observatory MVP (LAB-Q-0014)",
+          "WHY_NOT_APPLICABLE": "Records that no candidate platform was admitted; it relates no Regime C object to any Regime A or B object."
+        },
+        {
+          "RULING_ID": "LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001",
+          "DOMAIN": "Second and final bounded round of candidate platform evaluation for the Job Posting Observatory MVP (LAB-Q-0014)",
+          "WHY_NOT_APPLICABLE": "Same, for the second bounded round."
+        }
+      ]
+    },
+    {
+      "RELATION_ID": "REL-GR-004",
+      "CATEGORY": "GOVERNANCE_REQUIRED",
+      "TITLE": "Governance required: A cross-regime pattern of absent flow or hiring-event data",
+      "S0_REF": "GR-004",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_APPLICABLE_RULING_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "The existing rulings were checked and none resolves this relation; see EXISTING_RULINGS_CONSIDERED."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE_NO_SHARED_ROOT",
+        "BASIS": "The two claims share no root.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "PROHIBITED_INFERENCE": "A cross-regime pattern such as a recurrent absence of flow, transition, or hiring-event data, stated as a synthesized finding rather than as two juxtaposed facts.",
+      "REASON": "Stating a pattern relates the two absences; rule 3 requires governance first (see JX-004).",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-004",
+        "REL-CONF-003"
+      ],
+      "STATUS": "GOVERNANCE_REQUIRED",
+      "RULING_CREATED": false,
+      "RESOLVED_BY_EXISTING_RULING": false,
+      "WOULD_ASSERT": "A cross-regime pattern such as a recurrent absence of flow, transition, or hiring-event data, stated as a synthesized finding rather than as two juxtaposed facts.",
+      "EXISTING_RULINGS_CONSIDERED": [
+        {
+          "RULING_ID": "LAB-GOV-Q0013-EPISODE-SELECTION-0001",
+          "DOMAIN": "Selection and governance of a Monotributo threshold-change episode for LAB-HYP-0006's regression-discontinuity-in-time design",
+          "WHY_NOT_APPLICABLE": "Selects a threshold episode for LAB-HYP-0006; it says nothing about Regime C or about a cross-regime pattern of absent flow data."
+        },
+        {
+          "RULING_ID": "LAB-GOV-Q0014-PLATFORM-SELECTION-ROUND2-0001",
+          "DOMAIN": "Second and final bounded round of candidate platform evaluation for the Job Posting Observatory MVP (LAB-Q-0014)",
+          "WHY_NOT_APPLICABLE": "Concerns source availability for postings only."
+        }
+      ]
+    },
+    {
+      "RELATION_ID": "REL-GR-005",
+      "CATEGORY": "GOVERNANCE_REQUIRED",
+      "TITLE": "Governance required: Root reuse across regimes beyond LAB-GOV-SIPA-SUBSTITUTION-0001",
+      "S0_REF": "GR-005",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0007",
+        "LAB-CLM-0010"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007",
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_APPLICABLE_RULING_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "The existing rulings were checked and none resolves this relation; see EXISTING_RULINGS_CONSIDERED."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "SAME_ROOT_OR_NON_INDEPENDENT",
+        "BASIS": "SIPA and ARCA are non-independent at claim level; the EPH root is the same root wherever used.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": false
+      },
+      "PERMITTED_COMPARISON": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "PROHIBITED_INFERENCE": "Counting a root used in one regime (LAB-ROOT-0001 SIPA, LAB-ROOT-0005 EPH) toward a claim of another regime beyond what LAB-GOV-SIPA-SUBSTITUTION-0001 already authorizes.",
+      "REASON": "Cross-regime root reuse is governed only for SIPA in LAB-CLM-0007; the Root Counting Rule default is same root, same count.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-007",
+        "REL-AUTH-001",
+        "REL-PR-002"
+      ],
+      "STATUS": "GOVERNANCE_REQUIRED",
+      "RULING_CREATED": false,
+      "RESOLVED_BY_EXISTING_RULING": false,
+      "WOULD_ASSERT": "Counting a root used in one regime (LAB-ROOT-0001 SIPA, LAB-ROOT-0005 EPH) toward a claim of another regime beyond what LAB-GOV-SIPA-SUBSTITUTION-0001 already authorizes.",
+      "EXISTING_RULINGS_CONSIDERED": [
+        {
+          "RULING_ID": "LAB-GOV-SIPA-SUBSTITUTION-0001",
+          "DOMAIN": "Admissibility of SIPA (LAB-ROOT-0001) as a substitute source for LAB-HYP-0005's excluded 'formal dependent registration' term",
+          "WHY_NOT_APPLICABLE": "Authorizes SIPA's reuse only inside LAB-CLM-0007; nothing governs EPH reuse across regimes or any further reuse of SIPA."
+        }
+      ]
+    },
+    {
+      "RELATION_ID": "REL-GR-006",
+      "CATEGORY": "GOVERNANCE_REQUIRED",
+      "TITLE": "Governance required: Comparing periods or magnitudes across claims with different windows or products",
+      "S0_REF": "GR-006",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "NONE_APPLICABLE_RULING_EXISTS",
+        "REFERENCES": [],
+        "NOTE": "The existing rulings were checked and none resolves this relation; see EXISTING_RULINGS_CONSIDERED."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_ASSESSED",
+        "BASIS": "Cross-claim comparability across windows and products is not assessed.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None asserted. Until a ruling exists, only the JUXTAPOSITION_ONLY entries that list these claims apply.",
+      "PROHIBITED_INFERENCE": "Any statement comparing periods or magnitudes across claims with different windows or products.",
+      "REASON": "Comparability windows and GOV-008 breaks require governed treatment (PR-012).",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": [
+        "REL-JX-006",
+        "REL-PR-012"
+      ],
+      "STATUS": "GOVERNANCE_REQUIRED",
+      "RULING_CREATED": false,
+      "RESOLVED_BY_EXISTING_RULING": false,
+      "WOULD_ASSERT": "Any statement comparing periods or magnitudes across claims with different windows or products.",
+      "EXISTING_RULINGS_CONSIDERED": [
+        {
+          "RULING_ID": "LAB-GOV-EPH-0001",
+          "DOMAIN": "EPH release-format admission and inherited break governance",
+          "WHY_NOT_APPLICABLE": "Defines comparability windows within EPH only."
+        },
+        {
+          "RULING_ID": "LAB-GOV-IPC-0001",
+          "DOMAIN": "IPC release admission, base-period scope, and inherited break governance",
+          "WHY_NOT_APPLICABLE": "Defines the IPC comparability window only."
+        }
+      ]
+    },
+    {
+      "RELATION_ID": "REL-PR-001",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Upgrade any claim's epistemic state by aggregation (for example OBSERVED_IN_SOURCE to CONVERGENT or ESTABLISHED_WITHIN_S",
+      "S0_REF": "PR-001",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011",
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0018",
+        "LAB-OBJ-0026",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0003",
+        "LAB-ROOT-0005",
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Charter section 19 rule 1; Amendments A and C",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-001"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "Applies to every claim: each stays at its recorded state.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Upgrade any claim's epistemic state by aggregation (for example OBSERVED_IN_SOURCE to CONVERGENT or ESTABLISHED_WITHIN_SCOPE).",
+      "REASON": "Charter section 19 rule 1; Amendments A and C. Applies to every claim: each stays at its recorded state.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-002",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Treat non-independent roots (SIPA, ARCA, MLER, SRT share a declaration stream; CGI vs SIPA untested) as corroboration",
+      "S0_REF": "PR-002",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0007",
+        "LAB-CLM-0010"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0018"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0003",
+        "LAB-ROOT-0007",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Root Counting Rule; Amendment A",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-002"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NON_INDEPENDENT_OR_UNVERIFIED",
+        "BASIS": "SIPA, ARCA, MLER, and SRT share a declaration stream; CGI versus SIPA is untested; the EPH root is one root.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Treat non-independent roots (SIPA, ARCA, MLER, SRT share a declaration stream; CGI vs SIPA untested) as corroboration.",
+      "REASON": "Root Counting Rule; Amendment A. SIPA, ARCA, MLER, and SRT share a declaration stream; CGI versus SIPA is untested; the EPH root is one root.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-003",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Use Regime C to strengthen, explain, or qualify the force of any Regime A or B claim",
+      "S0_REF": "PR-003",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Charter section 19 rule 2",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-003"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE_NO_ROOT",
+        "BASIS": "Regime C has no data and no root.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Use Regime C to strengthen, explain, or qualify the force of any Regime A or B claim.",
+      "REASON": "Charter section 19 rule 2. Regime C has no data and no root.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-004",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Answer LAB-Q-0006 (administrative vs survey divergence) by comparing existing claims",
+      "S0_REF": "PR-004",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0003",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0006"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0025"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0003",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "LAB-Q-0006 is BLOCKED_BY_DESIGN; no pre-registered metric",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-004"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "No pre-registered metric exists for the administrative-versus-survey question.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Answer LAB-Q-0006 (administrative vs survey divergence) by comparing existing claims.",
+      "REASON": "LAB-Q-0006 is BLOCKED_BY_DESIGN; no pre-registered metric. No pre-registered metric exists for the administrative-versus-survey question.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-005",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Infer economic dependence, subordination, or contractorization from registration shares, legal categories, or PP05F",
+      "S0_REF": "PR-005",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0011"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0018",
+        "LAB-OBJ-0026",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0003"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007",
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Regime B prohibited conflations; LAB-CLM-0008, LAB-CLM-0010",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-005"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "Registration and PP05F do not observe economic dependence.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Infer economic dependence, subordination, or contractorization from registration shares, legal categories, or PP05F.",
+      "REASON": "Regime B prohibited conflations; LAB-CLM-0008, LAB-CLM-0010. Registration and PP05F do not observe economic dependence.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-006",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Treat stocks as flows or transitions, or employment stocks as hiring events",
+      "S0_REF": "PR-006",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007",
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "STOCK != FLOW; HIRE != EMPLOYMENT_RELATIONSHIP; LAB-CLM-0011, LAB-CLM-0014",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-006"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "Dated levels or shares are not transitions; employment stocks are not hiring events.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Treat stocks as flows or transitions, or employment stocks as hiring events.",
+      "REASON": "STOCK != FLOW; HIRE != EMPLOYMENT_RELATIONSHIP; LAB-CLM-0011, LAB-CLM-0014. Dated levels or shares are not transitions; employment stocks are not hiring events.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-007",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Treat postings as vacancies or hires, or the Observatory pre-mortem as a measurement",
+      "S0_REF": "PR-007",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0018"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "POSTING != VACANCY != HIRE; LAB-CLM-0012",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-007"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "The Observatory never observes vacancies or hires; its pre-mortem measures nothing.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Treat postings as vacancies or hires, or the Observatory pre-mortem as a measurement.",
+      "REASON": "POSTING != VACANCY != HIRE; LAB-CLM-0012. The Observatory never observes vacancies or hires; its pre-mortem measures nothing.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-008",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Report an absence (no source, not identifiable, blocked) as a negative finding, or a negative finding as an absence",
+      "S0_REF": "PR-008",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0011",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0006",
+        "LAB-Q-0007",
+        "LAB-Q-0011",
+        "LAB-Q-0015",
+        "LAB-Q-0017"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "ABSENT_VS_NEGATIVE (publication-contract.md)",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-008"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "Absences are recorded as absent, not negative; only LAB-CLM-0005 is a negative result, within its scope.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Report an absence (no source, not identifiable, blocked) as a negative finding, or a negative finding as an absence.",
+      "REASON": "ABSENT_VS_NEGATIVE (publication-contract.md). Absences are recorded as absent, not negative; only LAB-CLM-0005 is a negative result, within its scope.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-009",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Generalize LAB-CLM-0005 beyond two quarters, wage earners, and 32 urban agglomerates",
+      "S0_REF": "PR-009",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0005"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0004"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0007"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "LAB-CLM-0005 SCOPE_STATEMENT",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-009"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "One proxy, one sub-population, one two-quarter window, one root.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Generalize LAB-CLM-0005 beyond two quarters, wage earners, and 32 urban agglomerates.",
+      "REASON": "LAB-CLM-0005 SCOPE_STATEMENT. One proxy, one sub-population, one two-quarter window, one root.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-010",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Produce any cross-regime composite: average, score, ranking, index, vote, or overall strength",
+      "S0_REF": "PR-010",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006",
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0010",
+        "LAB-CLM-0011",
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0018",
+        "LAB-OBJ-0026",
+        "LAB-OBJ-0017",
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0021",
+        "LAB-OBJ-0023",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0003",
+        "LAB-ROOT-0005",
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Charter section 19 rules 1, 5, 6; DEC-005",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-010"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "No composite, score, average, ranking, or vote across claims or regimes.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Produce any cross-regime composite: average, score, ranking, index, vote, or overall strength.",
+      "REASON": "Charter section 19 rules 1, 5, 6; DEC-005. No composite, score, average, ranking, or vote across claims or regimes.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-011",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Present the pre-registration of DIRECT or INDIRECT PRIOR_DATA_EXPOSURE hypotheses as anti-cherry-picking evidence, or om",
+      "S0_REF": "PR-011",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0003",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Charter section 6; Amendment E",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-011"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "LAB-HYP-0001 and LAB-HYP-0007 carry DIRECT exposure; LAB-HYP-0002, 0003, and 0004 carry INDIRECT exposure.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Present the pre-registration of DIRECT or INDIRECT PRIOR_DATA_EXPOSURE hypotheses as anti-cherry-picking evidence, or omit the disclosure.",
+      "REASON": "Charter section 6; Amendment E. LAB-HYP-0001 and LAB-HYP-0007 carry DIRECT exposure; LAB-HYP-0002, 0003, and 0004 carry INDIRECT exposure.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-012",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Mix nominal and real values across claims, or compare figures across windows or products without a governed comparabilit",
+      "S0_REF": "PR-012",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "NOMINAL != REAL; GOV-008; LAB-GOV-EPH-0001, LAB-GOV-IPC-0001",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-012"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "Windows and products differ; GOV-008 breaks remain unbridged.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Mix nominal and real values across claims, or compare figures across windows or products without a governed comparability window.",
+      "REASON": "NOMINAL != REAL; GOV-008; LAB-GOV-EPH-0001, LAB-GOV-IPC-0001. Windows and products differ; GOV-008 breaks remain unbridged.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-013",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Present any Regime A source or claim as covering the whole Argentine labour market",
+      "S0_REF": "PR-013",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0002",
+        "LAB-CLM-0003",
+        "LAB-CLM-0004",
+        "LAB-CLM-0005",
+        "LAB-CLM-0006"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0002",
+        "LAB-OBJ-0011",
+        "LAB-OBJ-0012",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0025",
+        "LAB-OBJ-0007",
+        "LAB-OBJ-0009"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0002",
+        "LAB-ROOT-0003",
+        "LAB-ROOT-0005"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Charter section 3 (Regime A); SCOPE_COVERAGE_ADEQUACY of every claim",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-013"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "Every Regime A claim keeps its own documented universe.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Present any Regime A source or claim as covering the whole Argentine labour market.",
+      "REASON": "Charter section 3 (Regime A); SCOPE_COVERAGE_ADEQUACY of every claim. Every Regime A claim keeps its own documented universe.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-014",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Create a new claim, evidence record, source, object, hypothesis, lifecycle state, or LAB-GOV ruling in LAB-S",
+      "S0_REF": "PR-014",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [],
+      "ROOT_IDS": [],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "DEC-001, DEC-002; Charter section 7",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-014"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "A rule about LAB-S itself: no new record of any kind.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Create a new claim, evidence record, source, object, hypothesis, lifecycle state, or LAB-GOV ruling in LAB-S.",
+      "REASON": "DEC-001, DEC-002; Charter section 7. A rule about LAB-S itself: no new record of any kind.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-PR-015",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "Resolve a divergence between sources by vote or smoothing; any future DIVERGENT result must be shown as-is",
+      "S0_REF": "PR-015",
+      "ADDED_AT_S2": false,
+      "CLAIM_IDS": [],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [],
+      "ROOT_IDS": [],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_AND_S0_RULE",
+        "REFERENCES": [
+          "Amendment H",
+          "reports/lab_s/LAB-S0-synthesis-rules.json#PR-015"
+        ],
+        "NOTE": "Restates a Charter or code rule frozen at S0; it creates no new authority."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "No DIVERGENT result exists; any future one must be shown as recorded.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: this relation is not permitted in any form.",
+      "PROHIBITED_INFERENCE": "Resolve a divergence between sources by vote or smoothing; any future DIVERGENT result must be shown as-is.",
+      "REASON": "Amendment H. No DIVERGENT result exists; any future one must be shown as recorded.",
+      "PRESERVED_IN_S1": [],
+      "RELATED_RELATION_IDS": []
+    },
+    {
+      "RELATION_ID": "REL-CONF-001",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "POSTING != VACANCY != HIRE",
+      "S0_REF": null,
+      "ADDED_AT_S2": true,
+      "CLAIM_IDS": [
+        "LAB-CLM-0012",
+        "LAB-CLM-0013",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0018"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022",
+        "LAB-OBJ-0003"
+      ],
+      "ROOT_IDS": [],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "WITHIN_REGIME_WITH_CROSS_REGIME_OBJECT_GUARD",
+      "RULE_OR_RULING": {
+        "TYPE": "OBJECT_LEDGER_IS_NOT_AND_S0_CONFLATION",
+        "REFERENCES": [
+          "metadata/objects/object-ledger.json#LAB-OBJ-0019",
+          "#LAB-OBJ-0020",
+          "#LAB-OBJ-0022"
+        ],
+        "NOTE": "Regime C prohibited conflations include POSTING != JOB and APPLICATION != HIRE."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE_NO_ROOT",
+        "BASIS": "Regime C rests on no Evidence Root.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: the three objects are used only under their own definitions (LAB-OBJ-0019 JOB_POSTING, LAB-OBJ-0020 VACANCY, LAB-OBJ-0022 HIRE) and in the claims that record them.",
+      "PROHIBITED_INFERENCE": "Treating a posting as a vacancy or a hire; inferring hiring or staffing need from postings; inferring a hire from an employment stock (LAB-OBJ-0003 is a stock, HIRE is the transition event); reading the Observatory pre-mortem as a measurement.",
+      "REASON": "The object ledger defines each as distinct through IS_NOT; LAB-CLM-0014 preserved the distinction and measured no divergence.",
+      "PRESERVED_IN_S1": [
+        "RC-1",
+        "RC-3"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-PR-007",
+        "REL-PR-006",
+        "REL-CONF-003"
+      ],
+      "ADDED_AT_S2_NOTE": "Expands a conflation rule already frozen at S0 (PROHIBITED_CONFLATIONS); authorizes nothing."
+    },
+    {
+      "RELATION_ID": "REL-CONF-002",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "TAX_REGISTRATION != EMPLOYMENT_RELATIONSHIP",
+      "S0_REF": null,
+      "ADDED_AT_S2": true,
+      "CLAIM_IDS": [
+        "LAB-CLM-0007",
+        "LAB-CLM-0008",
+        "LAB-CLM-0009",
+        "LAB-CLM-0011",
+        "LAB-CLM-0003"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0011"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0026"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0007",
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0003"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B"
+      ],
+      "SCOPE_OF_RELATION": "WITHIN_REGIME_B_WITH_CROSS_REGIME_OBJECT_GUARD",
+      "RULE_OR_RULING": {
+        "TYPE": "REGIME_B_PROHIBITED_CONFLATION",
+        "REFERENCES": [
+          "src/aletheia_labor/regimes.py (Regime B)",
+          "metadata/objects/object-ledger.json#LAB-OBJ-0003",
+          "#LAB-OBJ-0005",
+          "#LAB-OBJ-0016"
+        ],
+        "NOTE": "Regime B prohibited conflations, applied at S0."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "A conflation guard, not a root relation; MLER (employment relationships) versus ARCA (registrations) is not assessed for independence.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: tax and contribution registration counts (LAB-OBJ-0005 TAX_REGISTRATION, LAB-OBJ-0016 MONOTRIBUTO_REGISTRATION, LAB-OBJ-0026 AUTONOMOS_REGISTRATION) and employment-relationship counts (LAB-OBJ-0003 EMPLOYMENT_RELATIONSHIP) are each used only under their own definitions and in their own claims.",
+      "PROHIBITED_INFERENCE": "Reading registration counts or shares as employment relationships, contractor status, or economic dependence; reading employment-relationship counts as registration categories; equating a Regime A employment-relationship record with a Regime B registration record; MONOTRIBUTO != CONTRACTOR; LEGAL_FORM != ECONOMIC_RELATIONSHIP.",
+      "REASON": "Regime B's frozen prohibitions; LAB-CLM-0008 records that ARCA supports only the formal category; LAB-CLM-0009 records regulatory status only.",
+      "PRESERVED_IN_S1": [
+        "RB-1",
+        "RB-2",
+        "RB-3"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-PR-005",
+        "REL-JX-003"
+      ],
+      "ADDED_AT_S2_NOTE": "Expands a conflation rule already frozen at S0 (PROHIBITED_CONFLATIONS); authorizes nothing."
+    },
+    {
+      "RELATION_ID": "REL-CONF-003",
+      "CATEGORY": "PROHIBITED",
+      "TITLE": "STOCK != FLOW",
+      "S0_REF": null,
+      "ADDED_AT_S2": true,
+      "CLAIM_IDS": [
+        "LAB-CLM-0001",
+        "LAB-CLM-0007",
+        "LAB-CLM-0011",
+        "LAB-CLM-0014"
+      ],
+      "CONTEXT_CLAIM_IDS": [],
+      "QUESTION_IDS": [
+        "LAB-Q-0013"
+      ],
+      "HYPOTHESIS_IDS": [],
+      "OBJECT_IDS": [
+        "LAB-OBJ-0001",
+        "LAB-OBJ-0006",
+        "LAB-OBJ-0013",
+        "LAB-OBJ-0005",
+        "LAB-OBJ-0015",
+        "LAB-OBJ-0016",
+        "LAB-OBJ-0003",
+        "LAB-OBJ-0019",
+        "LAB-OBJ-0020",
+        "LAB-OBJ-0022"
+      ],
+      "ROOT_IDS": [
+        "LAB-ROOT-0001",
+        "LAB-ROOT-0007"
+      ],
+      "DEFLATOR_ROOT_IDS": [],
+      "REGIMES": [
+        "A",
+        "B",
+        "C"
+      ],
+      "SCOPE_OF_RELATION": "CROSS_REGIME",
+      "RULE_OR_RULING": {
+        "TYPE": "CHARTER_LAB_A3_RULE_AND_CLAIM_RECORDS",
+        "REFERENCES": [
+          "docs/LAB-0-RESEARCH-CHARTER-v0.3.md#LAB-A3",
+          "LAB-CLM-0007",
+          "LAB-CLM-0011",
+          "LAB-CLM-0014"
+        ],
+        "NOTE": "Applies across all three regimes without relating them."
+      },
+      "INDEPENDENCE": {
+        "STATUS": "NOT_APPLICABLE",
+        "BASIS": "A conflation guard, not a root relation.",
+        "COUNTS_AS_SECOND_INDEPENDENT_ROOT": null
+      },
+      "PERMITTED_COMPARISON": "None: each level or share is described as a level or share at its dates; the absence of flow or transition data is stated as an absence (LAB-CLM-0011, LAB-CLM-0014).",
+      "PROHIBITED_INFERENCE": "Reading a change between dated levels or shares as transitions or flows (for example the Monotributo share change as movement of persons); deriving hires or transitions from stock differences; treating an employment stock as a hiring event.",
+      "REASON": "Regime A's LAB-A3 rule; LAB-CLM-0007 is cross-sectional with no individual tracked; LAB-CLM-0011 is blocked because ARCA data is stock while the metric needs a flow rate; LAB-CLM-0014 preserved that a stock is not a HIRE event.",
+      "PRESERVED_IN_S1": [
+        "RB-1",
+        "RB-5",
+        "RC-3"
+      ],
+      "RELATED_RELATION_IDS": [
+        "REL-PR-006",
+        "REL-JX-004",
+        "REL-CONF-001"
+      ],
+      "ADDED_AT_S2_NOTE": "Expands a conflation rule already frozen at S0 (PROHIBITED_CONFLATIONS); authorizes nothing."
+    }
+  ],
+  "CONFLATIONS_REGISTER": {
+    "SOURCE": "reports/lab_s/LAB-S0-synthesis-rules.json#PROHIBITED_CONFLATIONS (verbatim)",
+    "REGIME_A": [
+      "SALARY != LABOR_INCOME",
+      "WAGE_BILL != INDIVIDUAL_SALARY",
+      "NOMINAL != REAL",
+      "STOCK != FLOW",
+      "PERSON != JOB",
+      "REGIME_A_UNIVERSE != ALL_ARGENTINE_WORK"
+    ],
+    "REGIME_B": [
+      "MONOTRIBUTO != CONTRACTOR",
+      "TAX_REGISTRATION != EMPLOYMENT_RELATIONSHIP",
+      "LEGAL_FORM != ECONOMIC_RELATIONSHIP",
+      "PERSON != JOB",
+      "EMPLOYER != JOB"
+    ],
+    "REGIME_C": [
+      "POSTING != JOB",
+      "APPLICATION != HIRE",
+      "PLATFORM != LABOUR_MARKET",
+      "POSTING != VACANCY != HIRE"
+    ],
+    "CROSS_REGIME": [
+      "EVIDENCE_OF_ONE_REGIME != AUTHORIZATION_OF_INFERENCE_IN_ANOTHER (Charter section 3, Regime C note)"
+    ],
+    "DETAILED_ENTRIES": {
+      "POSTING != VACANCY != HIRE": "REL-CONF-001",
+      "TAX_REGISTRATION != EMPLOYMENT_RELATIONSHIP": "REL-CONF-002",
+      "STOCK != FLOW": "REL-CONF-003",
+      "NOMINAL != REAL": "REL-AUTH-003",
+      "MONOTRIBUTO != CONTRACTOR": "REL-CONF-002",
+      "LEGAL_FORM != ECONOMIC_RELATIONSHIP": "REL-CONF-002"
+    }
+  },
+  "S0_COVERAGE": {
+    "AUTH": {
+      "REL-AUTH-001": "AUTH-001",
+      "REL-AUTH-002": "AUTH-003",
+      "REL-AUTH-003": "AUTH-002"
+    },
+    "JX": {
+      "REL-JX-001": "JX-001",
+      "REL-JX-002": "JX-002",
+      "REL-JX-003": "JX-003",
+      "REL-JX-004": "JX-004",
+      "REL-JX-005": "JX-005",
+      "REL-JX-006": "JX-006"
+    },
+    "PR": {
+      "REL-PR-001": "PR-001",
+      "REL-PR-002": "PR-002",
+      "REL-PR-003": "PR-003",
+      "REL-PR-004": "PR-004",
+      "REL-PR-005": "PR-005",
+      "REL-PR-006": "PR-006",
+      "REL-PR-007": "PR-007",
+      "REL-PR-008": "PR-008",
+      "REL-PR-009": "PR-009",
+      "REL-PR-010": "PR-010",
+      "REL-PR-011": "PR-011",
+      "REL-PR-012": "PR-012",
+      "REL-PR-013": "PR-013",
+      "REL-PR-014": "PR-014",
+      "REL-PR-015": "PR-015"
+    },
+    "GR": {
+      "REL-GR-001": "GR-001",
+      "REL-GR-002": "GR-002",
+      "REL-GR-003": "GR-003",
+      "REL-GR-004": "GR-004",
+      "REL-GR-005": "GR-005",
+      "REL-GR-006": "GR-006"
+    },
+    "ADDED_AT_S2": [
+      "REL-JX-007",
+      "REL-CONF-001",
+      "REL-CONF-002",
+      "REL-CONF-003"
+    ]
+  }
+}

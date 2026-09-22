@@ -1,0 +1,80 @@
+{
+  "PHASE": "LAB-B4",
+  "PURPOSE": "Identify and document candidate Monotributo threshold-change episodes for LAB-HYP-0006, using already-admitted sources first, and rule on episode selection. Does NOT compute any causal effect, adjudicate LAB-HYP-0006, or close LAB-Q-0013 empirically.",
+  "RETRIEVAL_DATE": "2026-09-18",
+  "CANONICAL_RECONSTRUCTION": {
+    "LAB_Q_0013": {
+      "TEXT": "Does a change in Monotributo tax-category thresholds have a causal effect on the observed shift between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION?",
+      "CLASS": "CAUSAL",
+      "STATUS": "NOT_YET_OPERATIONAL",
+      "CAUSAL_IDENTIFICATION_STATUS": "CANDIDATE_DESIGN",
+      "IDENTIFICATION_REQUIREMENTS": ["ARCA admission", "A documented threshold-change event with a plausible discontinuity design"]
+    },
+    "LAB_HYP_0006": {
+      "TREATMENT": "A Monotributo tax-category threshold change (a specific, dated episode)",
+      "OUTCOME": "Rate of transition between EMPLOYMENT_RELATIONSHIP (LAB-OBJ-0003) and MONOTRIBUTO_REGISTRATION (LAB-OBJ-0016)",
+      "POPULATION": "Persons near a Monotributo tax-category threshold",
+      "PERIOD": "Around a to-be-selected threshold-change episode",
+      "METRIC": "Discontinuity in the rate of transition between EMPLOYMENT_RELATIONSHIP and MONOTRIBUTO_REGISTRATION around the threshold-change date",
+      "OPERATIONAL_DEFINITION": "Candidate regression-discontinuity-style design around a specific, not-yet-selected threshold-change event; not implemented",
+      "EXPECTED_OBSERVATION": "A detectable discontinuity in transition rates coincident with the threshold change",
+      "FAILURE_CONDITION": "No detectable discontinuity around the threshold-change date",
+      "CANDIDATE_SOURCES": ["ARCA"],
+      "CAUSAL_DESIGN": "Regression-discontinuity-in-time around a specific policy date"
+    }
+  },
+  "CANDIDATE_EPISODES": [
+    {
+      "EPISODE_ID": "EP-2021-REFORM",
+      "DATE": "2021-01-01 (effective), law sanctioned 2021-04-08, published B.O. 2021-04-21, retroactive to 2021-01-01",
+      "NORM": "Ley 27.618, Regimen de Sostenimiento e Inclusion Fiscal para Pequenos Contribuyentes",
+      "SOURCE": "LAB-SRC-0006 (Ley 24.977, texto actualizado, incorporates Ley 27.618)",
+      "THRESHOLD_CHANGE": "Special one-off recategorization plus an update (~35.31%) to category tables, later left without effect for Jan-Jun 2021 (values reverted to Dec-2020 levels for that window), per subsequent regulation",
+      "CATEGORIES_AFFECTED": "All (A through K)",
+      "VIGENCIA": "Contested / multi-stage: retroactive to 2021-01-01, then partially reversed for Jan-Jun 2021, settling only from mid-2021",
+      "DATA_AVAILABILITY_PRE_POST": "NONE -- LABOR has admitted no 2021 ARCA vintage at all (LAB-B1 admitted only Dec-2016, 2020, 2025)",
+      "SIMULTANEOUS_CONFOUNDS": "Severe: retroactive application, a documented later reversal for part of the window, overlapping Decreto 337/2021 and other pandemic-era fiscal relief measures",
+      "VERDICT": "REJECTED -- both contaminated (multiple overlapping, partially-reversed changes) and unsupported by any admitted ARCA data"
+    },
+    {
+      "EPISODE_ID": "EP-2020-ROUTINE",
+      "DATE": "2020-01-01 (effective)",
+      "NORM": "Art. 52 of Ley 24.977's Anexo (as introduced by Ley 27.346), annual index-based update",
+      "SOURCE": "LAB-SRC-0006; historical pattern confirmed via LAB-SRC-0014 (only one category-table period, 'Enero a diciembre 2020', covers the entire year)",
+      "THRESHOLD_CHANGE": "Annual update (~51% per contemporaneous reporting) effective 2020-01-01, tied to SIPA's pension-mobility index; not independently re-verified to primary-source precision this phase (see LIMITATIONS)",
+      "CATEGORIES_AFFECTED": "All (A through K)",
+      "VIGENCIA": "2020-01-01 through 2020-12-31, unbroken (confirmed via LAB-SRC-0014: no intra-year table change in 2020)",
+      "DATA_AVAILABILITY_PRE_POST": "POST only: LAB-ROOT-0007's admitted 'boletin-seg-soc-2020.xls' begins exactly at 2020-01, the treatment month itself; no admitted month immediately before it (nearest admitted prior vintage is Dec-2016, four years earlier) -- no usable PRE window within admitted data",
+      "SIMULTANEOUS_CONFOUNDS": "None specifically identified this phase, but not exhaustively checked",
+      "VERDICT": "REJECTED for this phase -- treatment date coincides with the first admitted month of the file; no admitted pre-period exists to detect a discontinuity against"
+    },
+    {
+      "EPISODE_ID": "EP-2025-FEB",
+      "DATE": "2025-02-01 (effective)",
+      "NORM": "Art. 52 of Ley 24.977's Anexo, as amended -- semi-annual IPC-indexed update, first application of fiscal year 2025",
+      "SOURCE": "LAB-SRC-0014, LAB-SRC-0015",
+      "THRESHOLD_CHANGE": "Update from the 'Agosto 2024-Enero 2025' table to the 'Febrero-Julio 2025' table (exact pre-period figures not admitted -- 2024 ARCA data was never retrieved)",
+      "CATEGORIES_AFFECTED": "All (A through K)",
+      "VIGENCIA": "2025-02-01 through 2025-07-31",
+      "DATA_AVAILABILITY_PRE_POST": "POST only within LAB-ROOT-0007's admitted 2025 vintage (Feb-Dec 2025, 11 months); PRE window within the SAME admitted file is only January 2025 (1 month) -- thin and asymmetric",
+      "SIMULTANEOUS_CONFOUNDS": "None specifically identified this phase",
+      "VERDICT": "REJECTED as primary candidate -- valid in principle but a markedly thinner, more asymmetric pre-period than EP-2025-AUG within the same admitted file"
+    },
+    {
+      "EPISODE_ID": "EP-2025-AUG",
+      "DATE": "2025-08-01 (effective)",
+      "NORM": "Art. 52 of Ley 24.977's Anexo, as amended -- semi-annual IPC-indexed update, second application of fiscal year 2025",
+      "SOURCE": "LAB-SRC-0012 (pre-period table), LAB-SRC-0013 (post-period table), LAB-SRC-0015 (mechanism/timing confirmation)",
+      "THRESHOLD_CHANGE": "Categoria A: ARS 7,813,063.45 (vigente 2025-02-01/2025-07-31) -> ARS 8,992,597.87 (vigente 2025-08-01/2026-01-31), +15.10%. Categoria B: ARS 11,447,046.44 -> ARS 13,175,201.52, +15.10%. Uniform percentage across categories (a mechanical IPC-indexation, not a category-targeted policy change).",
+      "CATEGORIES_AFFECTED": "All (A through K), uniformly",
+      "VIGENCIA": "2025-08-01 through 2026-01-31",
+      "DATA_AVAILABILITY_PRE_POST": "PRE: 2025-01 through 2025-07 (7 months) already admitted within LAB-ROOT-0007's 'boletin-seg-soc-2025-12.xlsx'. POST: 2025-08 through 2025-12 (5 months) already admitted, same file. Both sides already admitted; no new ARCA retrieval needed for the treatment-timing/stock side.",
+      "SIMULTANEOUS_CONFOUNDS": "Mechanical, formula-driven, uniform-percentage index update (lower manipulation/targeting risk than a discretionary reform); the concurrent 'recategorizacion' administrative process (contributors reassigned to new categories) is a mechanical relabeling, not itself a transition into/out of Monotributo, but not exhaustively ruled out as a measurement artifact at the sub-category level. General macroeconomic conditions around August 2025 not specifically checked for other simultaneous labour-market policy changes.",
+      "VERDICT": "SELECTED as the best available treatment-timing candidate -- see RULING"
+    }
+  ],
+  "MISSING_OFFICIAL_SOURCES_IF_ANY_IS_NEEDED": [
+    "For EP-2021-REFORM: an admitted ARCA Boletin Anual de Seguridad Social vintage covering 2021 (would need a targeted LAB-B1-style admission of the relevant monthly file, if one exists in ARCA's archive) -- not pursued this phase given the episode's own contamination",
+    "For EP-2020-ROUTINE: an admitted ARCA vintage covering December 2019 (to supply a genuine pre-period month) -- not pursued this phase given EP-2025-AUG already satisfies the pre/post requirement with zero new retrieval"
+  ]
+}

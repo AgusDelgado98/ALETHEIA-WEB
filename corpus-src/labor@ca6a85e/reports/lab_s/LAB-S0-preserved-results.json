@@ -1,0 +1,446 @@
+{
+  "PHASE": "LAB-S0",
+  "TITLE": "Register of results that must survive synthesis",
+  "AS_OF_HEAD": "5d54a583fcc7ecd9b77ec5740746d435b83673e1",
+  "PURPOSE": "Explicit list of weak, refuted, terminal, blocked, and open results that S1-S3 must carry forward verbatim in substance and may not smooth, omit, or upgrade. Charter section 19 rule 4 and synthesis_gate.STATES_THAT_MUST_SURVIVE_SYNTHESIS.",
+  "PROVENANCE": {
+    "FILES": [
+      {
+        "FILE": "metadata/claims/claim-ledger.json",
+        "SHA256": "509d4869bcccf424d9eb27e73869c09e647e962bdb05e71e3a2e7a5d691e1ca5"
+      },
+      {
+        "FILE": "metadata/questions/question-ledger.json",
+        "SHA256": "074f63965a16e852ce4518db13477b7f85a197c84d9a198233e7091f8c53f11e"
+      },
+      {
+        "FILE": "reports/lab_b3/LAB-B3-governed-mapping.json",
+        "SHA256": "767ccf014b3a0cb540240ef6389a5c66c07b9da2d5a8a04642fb3393476ecf65"
+      },
+      {
+        "FILE": "reports/lab_b3_1/LAB-B3.1-q0012-result.json",
+        "SHA256": "3b2c355c932312d834627a9a56cd4113557073eca1047319f25824a3b8cb6d5c"
+      },
+      {
+        "FILE": "reports/lab_a/LAB-A-closeout.md",
+        "SHA256": "6d2bf327f14f011fabd774f837c523cf8e1d47ead90eca7c0dfd19b1cb6e1086"
+      },
+      {
+        "FILE": "reports/regime_a/REGIME-A-closeout.md",
+        "SHA256": "c2d76457e9e830a3f0e2e3cbd5e550c10a947ef743c075afb4e7b4039cafb087"
+      },
+      {
+        "FILE": "reports/regime_a/REGIME-A-findings.md",
+        "SHA256": "1c06ed8b60675cd5d52460d4e35ab2a7ccc7732e204a022d1702593286d7002f"
+      },
+      {
+        "FILE": "reports/regime_b/REGIME-B-closeout.md",
+        "SHA256": "53db5b69aeaae6da7028c2d83bdbbcd7b3c89cf8f502f0ea55bbedaa204328e5"
+      },
+      {
+        "FILE": "reports/regime_c/REGIME-C-closeout.md",
+        "SHA256": "3488603a674b1966fa132e32acdddc11a88d27035512523c085be9ee16233f5b"
+      }
+    ]
+  },
+  "SURVIVAL_RULE": "Every entry below must appear in any S1-S3 output with its own status, scope, and limitations. Absence of a claim record does not remove an entry: NOT_IDENTIFIABLE and BLOCKED_BY_DESIGN results live in the question ledger and regime closeouts.",
+  "COUNTS_BY_CATEGORY": {
+    "BLOCKED_BY_DESIGN": 1,
+    "INSUFFICIENT_EVIDENCE": 3,
+    "NOT_IDENTIFIABLE": 3,
+    "OPEN_CAUSAL_QUESTION": 2,
+    "OPEN_NOT_RESOLVED_CELL": 5,
+    "REFUTED_WITHIN_SCOPE": 1
+  },
+  "PRESERVED_RESULTS": [
+    {
+      "PRESERVE_ID": "KEEP-001",
+      "CATEGORY": "REFUTED_WITHIN_SCOPE",
+      "REGIME": "A",
+      "QUESTION_ID": "LAB-Q-0004",
+      "CLAIM_ID": "LAB-CLM-0005",
+      "HYPOTHESIS_ID": "LAB-HYP-0003",
+      "STATUS_VALUE": "REFUTED_WITHIN_SCOPE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "The weighted share of EPH wage/salary earners without a reported pension-fund deduction moved from 36.29% (2025-Q1) to 37.90% (2026-Q1), +1.61 percentage points, within LAB-HYP-0003's 5-point threshold: its FAILURE_CONDITION is met on this two-quarter, single-root test.",
+      "MUST_NOT": "Do not generalize beyond two quarters, wage earners, or EPH's 32 urban agglomerates; do not present as a finding about total informality or as stability of the labour market; do not upgrade or reverse by cross-regime inference.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0005",
+        "reports/regime_a/REGIME-A-closeout.md"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": "A demonstrated error in this session's own EPH retrieval/hash (LAB-A2/LAB-A2.1), a demonstrated error in the PONDERA-weighted computation, or a future quarter showing the shift crossing the 5-percentage-point threshold when added to this two-point series."
+    },
+    {
+      "PRESERVE_ID": "KEEP-002",
+      "CATEGORY": "INSUFFICIENT_EVIDENCE",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0013",
+      "CLAIM_ID": "LAB-CLM-0011",
+      "HYPOTHESIS_ID": "LAB-HYP-0006",
+      "STATUS_VALUE": "INSUFFICIENT_EVIDENCE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "LAB-HYP-0006's pre-registered design is not computable from admitted or plausibly admissible sources: (1) ARCA data is stock, not flow; (2) the only EMPLOYMENT_RELATIONSHIP source (MLER) ends 2021-12; (3) no source links a person across tax-registration and employment records. No causal effect was computed and no proxy was substituted.",
+      "MUST_NOT": "Do not soften, omit, or convert into a negative finding or a positive finding; the result is absence of evidence within the evaluated scope. Do not report a causal effect of Monotributo threshold changes in either direction.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0011",
+        "reports/regime_b/REGIME-B-closeout.md",
+        "reports/lab_b4/LAB-B4-closeout.md"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": "Discovery and governed admission of a genuinely new official source with individual-level or flow/transition data linking tax registration to employment status, covering a period overlapping an admissible episode -- not pursued or expected based on this project's own repeated prior investigation."
+    },
+    {
+      "PRESERVE_ID": "KEEP-003",
+      "CATEGORY": "INSUFFICIENT_EVIDENCE",
+      "REGIME": "C",
+      "QUESTION_ID": "LAB-Q-0014",
+      "CLAIM_ID": "LAB-CLM-0013",
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "INSUFFICIENT_EVIDENCE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "No admissible Job Posting Observatory source was identified within the scope and criteria evaluated across two bounded rounds (eight candidates plus one ownership-check bundle). Zero postings were captured.",
+      "MUST_NOT": "Do not soften, omit, or convert into a negative finding or a positive finding; the result is absence of evidence within the evaluated scope. Do not restate as 'no source exists'; the conclusion is scoped to the evaluated criteria. Do not read as a finding about recruitment or selection processes.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0013",
+        "reports/lab_c1/LAB-C1-platform-evaluation.json",
+        "reports/lab_c1_1/LAB-C1.1-platform-evaluation.json"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": "Discovery and governed evaluation of a genuinely new candidate not considered in LAB-C1 or LAB-C1.1 (e.g. a sector-specific Argentine board, an employer-side ATS with a public research feed, or a future official open dataset of individual job postings), or a material change in an already-evaluated candidate's own Terms of Service, robots.txt, or API offering (e.g. a private board publishing a public research-scoped API, or the Cartelera Publica moving its convocatorias to a non-PDF, robots.txt-permitted format) -- none of which is pursued or expected by this claim."
+    },
+    {
+      "PRESERVE_ID": "KEEP-004",
+      "CATEGORY": "INSUFFICIENT_EVIDENCE",
+      "REGIME": "C",
+      "QUESTION_ID": "LAB-Q-0018",
+      "CLAIM_ID": "LAB-CLM-0014",
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "INSUFFICIENT_EVIDENCE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "There is not sufficient evidence, within the sources and scope evaluated, to compare postings with real hiring outcomes: no admissible postings corpus, no admitted HIRE-event source, and no validated linkage. Deliberately not NOT_IDENTIFIABLE.",
+      "MUST_NOT": "Do not soften, omit, or convert into a negative finding or a positive finding; the result is absence of evidence within the evaluated scope. Do not upgrade to NOT_IDENTIFIABLE; do not measure or imply a postings-versus-hires divergence; do not treat employment stocks as hires.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0014"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": "Governed admission of an admissible JOB_POSTING corpus together with an independent source of HIRE events (transition or flow data, not employment stocks) and a validated linkage or taxonomy connecting them -- none of which is pursued or expected by this claim, and each of which would require its own separately authorized admission."
+    },
+    {
+      "PRESERVE_ID": "KEEP-005",
+      "CATEGORY": "NOT_IDENTIFIABLE",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0011",
+      "CLAIM_ID": null,
+      "HYPOTHESIS_ID": "LAB-HYP-0009",
+      "STATUS_VALUE": "NOT_IDENTIFIABLE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS",
+      "WHAT_IS_PRESERVED": "Distinguishing real independent provision from disguised dependent employment is terminally NOT_IDENTIFIABLE: no admitted or plausibly admissible source carries ground-truth dependence labels. No claim exists; the outcome lives in the question ledger.",
+      "MUST_NOT": "Do not infer contractorization or economic dependence from registration categories or from the unvalidated PP05F proxy; do not drop for lack of a claim record.",
+      "SOURCE_REFS": [
+        "metadata/questions/question-ledger.json#LAB-Q-0011",
+        "reports/regime_b/REGIME-B-closeout.md"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null
+    },
+    {
+      "PRESERVE_ID": "KEEP-006",
+      "CATEGORY": "NOT_IDENTIFIABLE",
+      "REGIME": "C",
+      "QUESTION_ID": "LAB-Q-0015",
+      "CLAIM_ID": null,
+      "HYPOTHESIS_ID": "LAB-HYP-0008",
+      "STATUS_VALUE": "NOT_IDENTIFIABLE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS",
+      "WHAT_IS_PRESERVED": "AI-in-hiring prevalence by taxonomy category is NOT_IDENTIFIABLE by design (a designed terminal state). No search for an AI-disclosure mechanism was ever conducted; LAB-C2 was disposed without execution. No claim exists.",
+      "MUST_NOT": "Do not describe as a negative search result or as evidence about AI use in hiring; posting silence about AI does not mean AI was not used.",
+      "SOURCE_REFS": [
+        "metadata/questions/question-ledger.json#LAB-Q-0015",
+        "reports/regime_c/REGIME-C-closeout.md"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null
+    },
+    {
+      "PRESERVE_ID": "KEEP-007",
+      "CATEGORY": "NOT_IDENTIFIABLE",
+      "REGIME": "C",
+      "QUESTION_ID": "LAB-Q-0017",
+      "CLAIM_ID": null,
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "NOT_IDENTIFIABLE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE_RECORDED_AS_QUESTION_LEDGER_STATUS",
+      "WHAT_IS_PRESERVED": "Population-level ghosting is NOT_IDENTIFIABLE: it is observable only from the candidate side and no representative candidate-side sampling frame is known. No claim exists.",
+      "MUST_NOT": "Do not estimate or imply ghosting prevalence from any source; do not use postings data as a proxy.",
+      "SOURCE_REFS": [
+        "metadata/questions/question-ledger.json#LAB-Q-0017",
+        "reports/regime_c/REGIME-C-closeout.md"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null
+    },
+    {
+      "PRESERVE_ID": "KEEP-008",
+      "CATEGORY": "BLOCKED_BY_DESIGN",
+      "REGIME": "A",
+      "QUESTION_ID": "LAB-Q-0006",
+      "CLAIM_ID": null,
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "BLOCKED_BY_DESIGN",
+      "STATUS_VOCABULARY": "DOCUMENTED_REGIME_A_CLOSEOUT_LABEL_NOT_A_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "Divergence between administrative sources and household surveys was never executed: no METRIC, EXPECTED_OBSERVATION, or FAILURE_CONDITION was ever pre-registered, and inventing one afterwards was refused. A design gap, not a data gap.",
+      "MUST_NOT": "Do not answer this question by juxtaposing SIPA/CGI/MLER claims with EPH claims; do not invent a metric inside LAB-S.",
+      "SOURCE_REFS": [
+        "reports/regime_a/REGIME-A-closeout.md",
+        "reports/regime_a/REGIME-A-findings.md"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null
+    },
+    {
+      "PRESERVE_ID": "KEEP-009",
+      "CATEGORY": "OPEN_CAUSAL_QUESTION",
+      "REGIME": "A",
+      "QUESTION_ID": "LAB-Q-0007",
+      "CLAIM_ID": null,
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "OUTSIDE_LAB_A",
+      "STATUS_VOCABULARY": "DOCUMENTED_REGIME_A_CLOSEOUT_LABEL_NOT_A_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "Whether formalization policy causally affects the registered-employment share was never executed: it is CAUSAL, CAUSAL_IDENTIFICATION_STATUS is NO_DESIGN, and it was outside Regime A's remit. No claim exists.",
+      "MUST_NOT": "Do not attribute causes to any observed change in composition or share; do not treat any descriptive claim as causal.",
+      "SOURCE_REFS": [
+        "metadata/questions/question-ledger.json#LAB-Q-0007",
+        "reports/regime_a/REGIME-A-closeout.md"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null
+    },
+    {
+      "PRESERVE_ID": "KEEP-010",
+      "CATEGORY": "OPEN_CAUSAL_QUESTION",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0013",
+      "CLAIM_ID": "LAB-CLM-0011",
+      "HYPOTHESIS_ID": "LAB-HYP-0006",
+      "STATUS_VALUE": "INSUFFICIENT_EVIDENCE",
+      "STATUS_VOCABULARY": "CLAIM_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "The causal question on Monotributo threshold changes stays open: CAUSAL_IDENTIFICATION_STATUS is CANDIDATE_DESIGN, an episode (EP-2025-AUG, 2025-08-01) was selected under LAB-GOV-Q0013-EPISODE-SELECTION-0001, and no causal effect was ever computed. See KEEP-002.",
+      "MUST_NOT": "Do not present the selected episode as evidence of an effect; do not report any causal estimate.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0011",
+        "metadata/governance/lab-gov-registry.json#LAB-GOV-Q0013-EPISODE-SELECTION-0001"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null
+    },
+    {
+      "PRESERVE_ID": "KEEP-011",
+      "CATEGORY": "OPEN_NOT_RESOLVED_CELL",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0012",
+      "CLAIM_ID": "LAB-CLM-0009",
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "OPEN_NOT_RESOLVED",
+      "STATUS_VOCABULARY": "LAB-B3_MAPPING_STATUS_VOCABULARY_NOT_A_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "Mapping cell MONOTRIBUTO_REGISTRATION/DERECHOS_PROTECCIONES_LABORALES: No se encontro en el texto de la Ley 24.977 revisado ninguna disposicion que establezca indemnizacion, vacaciones pagas u otras protecciones de tipo LCT. Esto es una observacion de AUSENCIA en el texto revisado, no una prueba exhaustiva y definitiva de que ninguna norma complementaria pudiera otorgar alguna proteccion especifica en algun supuesto -- se deja explicitamente abierto, no se completa por inferencia.",
+      "MUST_NOT": "Do not complete by inference; do not convert into evidence of absence or of the presence of a right, protection, or coverage.",
+      "SOURCE_REFS": [
+        "reports/lab_b3/LAB-B3-governed-mapping.json#CATEGORIES/MONOTRIBUTO_REGISTRATION/DERECHOS_PROTECCIONES_LABORALES",
+        "reports/lab_b3_1/LAB-B3.1-q0012-result.json"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null,
+      "CELL_PATH": "MONOTRIBUTO_REGISTRATION/DERECHOS_PROTECCIONES_LABORALES",
+      "CELL_SOURCES": [
+        "LAB-SRC-0006"
+      ]
+    },
+    {
+      "PRESERVE_ID": "KEEP-012",
+      "CATEGORY": "OPEN_NOT_RESOLVED_CELL",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0012",
+      "CLAIM_ID": "LAB-CLM-0009",
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "OPEN_NOT_RESOLVED",
+      "STATUS_VOCABULARY": "LAB-B3_MAPPING_STATUS_VOCABULARY_NOT_A_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "Mapping cell MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/ART: No se identifico en esta fase una fuente primaria que establezca la situacion de cobertura ART para monotributistas de forma especifica (posible incorporacion solo por decreto del Poder Ejecutivo, per Ley 24.557, pero sin una cita directa localizada para el caso Monotributo especificamente).",
+      "MUST_NOT": "Do not complete by inference; do not convert into evidence of absence or of the presence of a right, protection, or coverage.",
+      "SOURCE_REFS": [
+        "reports/lab_b3/LAB-B3-governed-mapping.json#CATEGORIES/MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/ART",
+        "reports/lab_b3_1/LAB-B3.1-q0012-result.json"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null,
+      "CELL_PATH": "MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/ART",
+      "CELL_SOURCES": [
+        "LAB-SRC-0008"
+      ]
+    },
+    {
+      "PRESERVE_ID": "KEEP-013",
+      "CATEGORY": "OPEN_NOT_RESOLVED_CELL",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0012",
+      "CLAIM_ID": "LAB-CLM-0009",
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "OPEN_NOT_RESOLVED",
+      "STATUS_VOCABULARY": "LAB-B3_MAPPING_STATUS_VOCABULARY_NOT_A_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "Mapping cell MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/SEGURO_DE_DESEMPLEO: Sin fuente primaria localizada esta fase.",
+      "MUST_NOT": "Do not complete by inference; do not convert into evidence of absence or of the presence of a right, protection, or coverage.",
+      "SOURCE_REFS": [
+        "reports/lab_b3/LAB-B3-governed-mapping.json#CATEGORIES/MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/SEGURO_DE_DESEMPLEO",
+        "reports/lab_b3_1/LAB-B3.1-q0012-result.json"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null,
+      "CELL_PATH": "MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/SEGURO_DE_DESEMPLEO",
+      "CELL_SOURCES": []
+    },
+    {
+      "PRESERVE_ID": "KEEP-014",
+      "CATEGORY": "OPEN_NOT_RESOLVED_CELL",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0012",
+      "CLAIM_ID": "LAB-CLM-0009",
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "OPEN_NOT_RESOLVED",
+      "STATUS_VOCABULARY": "LAB-B3_MAPPING_STATUS_VOCABULARY_NOT_A_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "Mapping cell MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/ASIGNACIONES_FAMILIARES: La Ley 24.714 (texto original consultado) no menciona monotributistas ni establece su inclusion. Se hallaron durante la investigacion multiples notas de prensa (ambito.com, cronista.com, iprofesional.com) que describen algun tipo de acceso parcial, por categoria, via SUAF/ANSES -- explicitamente NO admisibles como evidencia regulatoria primaria por esta fase (instruccion de esta sesion). No se localizo la norma o resolucion oficial especifica que establece esa extension. Se deja explicitamente abierto: ni se afirma ni se descarta.",
+      "MUST_NOT": "Do not complete by inference; do not convert into evidence of absence or of the presence of a right, protection, or coverage.",
+      "SOURCE_REFS": [
+        "reports/lab_b3/LAB-B3-governed-mapping.json#CATEGORIES/MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/ASIGNACIONES_FAMILIARES",
+        "reports/lab_b3_1/LAB-B3.1-q0012-result.json"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null,
+      "CELL_PATH": "MONOTRIBUTO_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/ASIGNACIONES_FAMILIARES",
+      "CELL_SOURCES": []
+    },
+    {
+      "PRESERVE_ID": "KEEP-015",
+      "CATEGORY": "OPEN_NOT_RESOLVED_CELL",
+      "REGIME": "B",
+      "QUESTION_ID": "LAB-Q-0012",
+      "CLAIM_ID": "LAB-CLM-0009",
+      "HYPOTHESIS_ID": null,
+      "STATUS_VALUE": "OPEN_NOT_RESOLVED",
+      "STATUS_VOCABULARY": "LAB-B3_MAPPING_STATUS_VOCABULARY_NOT_A_LIFECYCLE_STATE",
+      "WHAT_IS_PRESERVED": "Mapping cell AUTONOMOS_REGISTRATION/DERECHOS_PROTECCIONES_LABORALES: Ninguna fuente revisada esta fase establece protecciones de tipo LCT para autonomos; esto es consistente con el ambito de aplicacion de la LCT (relacion de dependencia unicamente), pero no se cito una clausula de exclusion textual expresa dirigida especificamente a autonomos mas alla de la propia definicion de ambito de la LCT. Se deja abierto para no inferir mas alla de lo que el ambito de aplicacion ya establece.",
+      "MUST_NOT": "Do not complete by inference; do not convert into evidence of absence or of the presence of a right, protection, or coverage.",
+      "SOURCE_REFS": [
+        "reports/lab_b3/LAB-B3-governed-mapping.json#CATEGORIES/AUTONOMOS_REGISTRATION/DERECHOS_PROTECCIONES_LABORALES",
+        "reports/lab_b3_1/LAB-B3.1-q0012-result.json"
+      ],
+      "WHAT_WOULD_UNSEAT_THIS": null,
+      "CELL_PATH": "AUTONOMOS_REGISTRATION/DERECHOS_PROTECCIONES_LABORALES",
+      "CELL_SOURCES": [
+        "LAB-SRC-0004"
+      ]
+    }
+  ],
+  "ADJACENT_PARTIALLY_ESTABLISHED_CELLS": [
+    {
+      "CELL_PATH": "TRABAJADOR_REGISTRADO_DEPENDIENTE/DERECHOS_PROTECCIONES_LABORALES",
+      "STATUS": "PARTIALLY_ESTABLISHED",
+      "FINDING": "Regulados por la LCT (Ley 20.744) como marco general (indemnizacion, vacaciones, SAC, licencias, jornada, etc.). La existencia y vigencia del regimen esta confirmada; el catalogo articulo-por-articulo de cada beneficio especifico y su monto NO fue relevado exhaustivamente esta fase.",
+      "SOURCES": [
+        "LAB-SRC-0004"
+      ],
+      "MUST_NOT": "Do not present as fully established."
+    },
+    {
+      "CELL_PATH": "TRABAJADOR_REGISTRADO_DEPENDIENTE/COBERTURA_SEGURIDAD_SOCIAL/SEGURO_DE_DESEMPLEO",
+      "STATUS": "PARTIALLY_ESTABLISHED",
+      "FINDING": "La Ley 24.714 (Art. 1) lista a los beneficiarios del seguro de desempleo dentro del subsistema contributivo, y la prestacion por desempleo esta definida en terminos de 'cese del contrato de trabajo' -- estructuralmente ligada a haber tenido una relacion de dependencia. No se localizo, en esta fase, una clausula de exclusion textual explicita para no-dependientes dentro de la norma que regula la prestacion en si (Ley 24.013); se documenta como fuertemente implicado por el diseno de la norma, no como cita textual de exclusion directa.",
+      "SOURCES": [
+        "LAB-SRC-0009"
+      ],
+      "MUST_NOT": "Do not present as fully established."
+    },
+    {
+      "CELL_PATH": "AUTONOMOS_REGISTRATION/COBERTURA_SEGURIDAD_SOCIAL/OBRA_SOCIAL",
+      "STATUS": "PARTIALLY_ESTABLISHED",
+      "FINDING": "Ley 23.660 Art. 8 NO incluye a los autonomos (regimen general, distinto de Monotributo) en la lista de beneficiarios OBLIGATORIOS de obra social. No se investigo en esta fase el mecanismo de afiliacion voluntaria o privada que un autonomo pudiera usar fuera de esta ley -- queda fuera de alcance.",
+      "SOURCES": [
+        "LAB-SRC-0005"
+      ],
+      "MUST_NOT": "Do not present as fully established."
+    }
+  ],
+  "OTHER_OPEN_LIMITS": [
+    {
+      "LIMIT_ID": "LIMIT-001",
+      "REGIME": "A",
+      "WHAT_IS_PRESERVED": "GOV-008's seven inherited breaks (five EPH, two IPC) remain RULED, NOT_HOMOGENEOUS, NO-BRIDGE/ACCEPTED_LIMITATION; no bridge was built anywhere.",
+      "MUST_NOT": "Do not splice series across a break or present reconstructed series as homogeneous.",
+      "SOURCE_REFS": [
+        "reports/regime_a/REGIME-A-findings.md",
+        "metadata/governance/lab-gov-registry.json#LAB-GOV-EPH-0001"
+      ]
+    },
+    {
+      "LIMIT_ID": "LIMIT-002",
+      "REGIME": "A",
+      "WHAT_IS_PRESERVED": "LAB-HYP-0007's FAILURE_CONDITION never specified a numeric tolerance (flagged since LAB-A, unresolved).",
+      "MUST_NOT": "Do not resolve by choosing a favorable tolerance.",
+      "SOURCE_REFS": [
+        "reports/regime_a/REGIME-A-findings.md"
+      ]
+    },
+    {
+      "LIMIT_ID": "LIMIT-003",
+      "REGIME": "B",
+      "WHAT_IS_PRESERVED": "PP05F (EPH single- vs multiple-client status) is an unvalidated candidate proxy; no LAB-GOV ruling has assessed it (LAB-CLM-0010).",
+      "MUST_NOT": "Do not use PP05F as a governed economic-dependence proxy.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0010",
+        "reports/regime_b/REGIME-B-closeout.md"
+      ]
+    },
+    {
+      "LIMIT_ID": "LIMIT-004",
+      "REGIME": "A/B",
+      "WHAT_IS_PRESERVED": "SIPA and ARCA share one underlying SUSS/ARCA declaration stream: LAB-CLM-0007's two cited roots are not independent for counting, and MLER is a DOWNSTREAM_PROXY of SIPA.",
+      "MUST_NOT": "Do not count these as corroborating roots or read agreement between them as convergence.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0007",
+        "metadata/claims/claim-ledger.json#LAB-CLM-0003",
+        "metadata/governance/lab-gov-registry.json#LAB-GOV-SIPA-SUBSTITUTION-0001"
+      ]
+    },
+    {
+      "LIMIT_ID": "LIMIT-005",
+      "REGIME": "A",
+      "WHAT_IS_PRESERVED": "CGI's independence relative to SIPA was never tested and remains UNVERIFIED.",
+      "MUST_NOT": "Do not assert CGI and SIPA are either independent or non-independent.",
+      "SOURCE_REFS": [
+        "reports/lab_a/LAB-A-closeout.md",
+        "metadata/lineage/evidence-root-registry.json#LAB-ROOT-0002"
+      ]
+    },
+    {
+      "LIMIT_ID": "LIMIT-006",
+      "REGIME": "B",
+      "WHAT_IS_PRESERVED": "MLER's admitted period ends 2021-12 and its EMPLOYER/JOB fields are unrealized (GOV-006); no admitted source shares a person-level identifier with another.",
+      "MUST_NOT": "Do not extend employment-relationship evidence past 2021-12 or link individuals across sources.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0011",
+        "metadata/claims/claim-ledger.json#LAB-CLM-0003"
+      ]
+    },
+    {
+      "LIMIT_ID": "LIMIT-007",
+      "REGIME": "C",
+      "WHAT_IS_PRESERVED": "The Job Posting Observatory was designed and governed but never built; it remains NEW_CANDIDATE in the source-admission plan, and the AI Hiring Disclosure Source is NOT_YET_ASSESSED.",
+      "MUST_NOT": "Do not describe any Regime C claim as resting on data.",
+      "SOURCE_REFS": [
+        "metadata/sources/source-admission-plan.json",
+        "reports/regime_c/REGIME-C-closeout.md"
+      ]
+    },
+    {
+      "LIMIT_ID": "LIMIT-008",
+      "REGIME": "C",
+      "WHAT_IS_PRESERVED": "A postings corpus would carry eight structural biases and could not resolve the posting-versus-hiring divergence by design (LAB-CLM-0012, a design-stage pre-mortem with no measurement).",
+      "MUST_NOT": "Do not use LAB-CLM-0012 as evidence about actual bias magnitude or about labour-market conditions.",
+      "SOURCE_REFS": [
+        "metadata/claims/claim-ledger.json#LAB-CLM-0012",
+        "reports/lab_c0/LAB-C0-q0016-bias-premortem.json"
+      ]
+    }
+  ],
+  "CAUSAL_QUESTIONS_IN_LEDGER": [
+    "LAB-Q-0007",
+    "LAB-Q-0013"
+  ],
+  "CAUSAL_CLAIMS_MADE": [],
+  "CAUSAL_NOTE": "No claim in the ledger asserts a causal effect. LAB-S must not produce one."
+}
