@@ -12,8 +12,9 @@ interface Props {
   v: QuestionView;
   t: TrailView;
   multi: boolean;
+  showIds?: boolean;
 }
-const { v, t, multi } = Astro.props;
+const { v, t, multi, showIds = true } = Astro.props;
 const ui = v.ui;
 const observed = t.claimState === "OBSERVED_IN_SOURCE";
 const refuted = t.claimState === "REFUTED_WITHIN_SCOPE";
@@ -40,7 +41,7 @@ const shapeDesc =
   <div class="trace__h">
     <h2 id={hid}>
       {ui("trail_heading")}
-      {multi && (
+      {multi && showIds && (
         <>
           {" "}
           <span class="mono" data-num="id">
@@ -61,9 +62,11 @@ const shapeDesc =
         <SegmentText parts={t.source.publication} />
       </p>
       {t.source.linkUnresolved && <p class="trace__note">{ui("source_link_unresolved")}</p>}
-      <span class="ids">
-        <span data-num="id">{t.source.rootId}</span>
-      </span>
+      {showIds && (
+        <span class="ids">
+          <span data-num="id">{t.source.rootId}</span>
+        </span>
+      )}
     </li>
     <li class="node">
       <div class="node__g">
@@ -74,11 +77,13 @@ const shapeDesc =
           <SegmentText parts={o.parts} />
         </p>
       ))}
-      <span class="ids">
-        {t.objects.map((o) => (
-          <span data-num="id">{o.id} </span>
-        ))}
-      </span>
+      {showIds && (
+        <span class="ids">
+          {t.objects.map((o) => (
+            <span data-num="id">{o.id} </span>
+          ))}
+        </span>
+      )}
     </li>
     <li class="node">
       <div class="node__g">
@@ -87,11 +92,13 @@ const shapeDesc =
       <p>
         <SegmentText parts={t.evidence} />
       </p>
-      <span class="ids">
-        {t.ids.evidence.map((id) => (
-          <span data-num="id">{id} </span>
-        ))}
-      </span>
+      {showIds && (
+        <span class="ids">
+          {t.ids.evidence.map((id) => (
+            <span data-num="id">{id} </span>
+          ))}
+        </span>
+      )}
     </li>
     {showCut && (
       <li class="node node--cut" data-node="cut">
@@ -119,9 +126,11 @@ const shapeDesc =
       <p>
         <SegmentText parts={t.hypothesis} />
       </p>
-      <span class="ids">
-        <span data-num="id">{t.ids.hypothesis}</span>
-      </span>
+      {showIds && (
+        <span class="ids">
+          <span data-num="id">{t.ids.hypothesis}</span>
+        </span>
+      )}
     </li>
     <li class:list={["node", { "node--ghost": !held }]}>
       <div class="node__g">
@@ -135,9 +144,11 @@ const shapeDesc =
       <p>
         <SegmentText parts={t.claim} />
       </p>
-      <span class="ids">
-        <span data-num="id">{t.ids.claim}</span>
-      </span>
+      {showIds && (
+        <span class="ids">
+          <span data-num="id">{t.ids.claim}</span>
+        </span>
+      )}
     </li>
   </ol>
   {v.state.absenceNotNegative && <p class="trace__note">{v.absenceText}</p>}

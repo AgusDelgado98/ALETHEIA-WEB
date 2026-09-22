@@ -3,13 +3,21 @@ import type { Part } from "../lib/render.ts";
 /** Renderiza partes de texto. Todo token numérico va marcado con `data-num` (G-FIG-03): nunca una cifra suelta. */
 interface Props {
   parts: readonly Part[];
+  idAliases?: Readonly<Record<string, string>>;
 }
-const { parts } = Astro.props;
+const { parts, idAliases = {} } = Astro.props;
 ---
 
 {parts.map((p) =>
   p.t === "text" ? (
     p.v
+  ) : p.kind === "id" && Object.hasOwn(idAliases, p.v) ? (
+    <>
+      <span class="layer-id" data-num="id" aria-hidden="true">
+        {p.v}
+      </span>
+      <span>{idAliases[p.v]}</span>
+    </>
   ) : p.kind === "anchor" || p.kind === "count" || p.kind === "table" ? (
     <span data-num={p.kind}>{p.v}</span>
   ) : (

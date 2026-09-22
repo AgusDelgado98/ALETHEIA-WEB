@@ -82,3 +82,25 @@ a:focus-visible {
   max-width: 100rem;
   margin-inline: auto;
 }
+/* Wordmark (Charter §12): compartido por todos los layouts (Shell y Focus) */
+.wordmark {
+  position: relative;
+  display: inline-block;
+  font: 500 1.0625rem / 1 var(--serif);
+  letter-spacing: var(--tracking-wordmark);
+  padding-right: 0.24em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.wordmark::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -1px;
+  top: calc(50% - 0.27em);
+  height: max(1.5px, 0.09em);
+  background: var(--paper);
+}
+main:focus {
+  outline: none;
+}

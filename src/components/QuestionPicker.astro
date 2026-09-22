@@ -1,0 +1,61 @@
+---
+import { PICKER_TOGGLE_ID, type Registro } from "../lib/registro.ts";
+import StateMark from "./StateMark.astro";
+/**
+ * Selector de las 18 preguntas: overlay 0 JavaScript (checkbox + label). El disparador vive en la página que lo
+ * usa (Home, cabecera de la pregunta) como `<label for={PICKER_TOGGLE_ID}>`; cualquier label con ese `for` lo abre
+ * o lo cierra. Cada fila muestra únicamente número, título corto y el estado de forma discreta (Charter §8, §20.4):
+ * sin leyenda, sin IDs de claim ni de raíz, sin código de tres letras.
+ */
+interface Props {
+  registro: Registro;
+  current: string | null;
+}
+const { registro, current } = Astro.props;
+const ui = registro.ui;
+---
+
+<div class="picker-mount">
+  <input type="checkbox" id={PICKER_TOGGLE_ID} class="picker-toggle sr-only" />
+  <div class="picker">
+    <label for={PICKER_TOGGLE_ID} class="picker__backdrop" aria-hidden="true"></label>
+    <div class="picker__panel" role="dialog" aria-modal="true" aria-labelledby="picker-h">
+      <div class="picker__head">
+        <h2 id="picker-h">{ui("picker_heading")}</h2>
+        <label for={PICKER_TOGGLE_ID} class="picker__close">
+          <span aria-hidden="true">✕</span>
+          <span class="sr-only">{ui("picker_close")}</span>
+        </label>
+      </div>
+      <div class="picker__list">
+        {registro.groups.map((g) => (
+          <section aria-labelledby={`pk-reg-${g.regime}`}>
+            <h3 id={`pk-reg-${g.regime}`}>
+              {ui("map_regime")} <span>{g.regime}</span>
+            </h3>
+            <ol>
+              {g.rows.map((r) => (
+                <li>
+                  <a
+                    href={r.href}
+                    aria-current={current === r.id ? "page" : undefined}
+                    data-index-question={r.id}
+                    data-question-resolution={r.state}
+                    data-regime={r.regime}
+                  >
+                    <span class="mono" data-num="id">
+                      {r.shortId}
+                    </span>
+                    <span class="pk__t">{r.title}</span>
+                    <StateMark state={r.state} uid={`pk-${r.id}`} />
+                    <span class="sr-only">{r.stateLabel}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

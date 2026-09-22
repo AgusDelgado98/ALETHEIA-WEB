@@ -1,0 +1,52 @@
+---
+import QuestionPicker from "../components/QuestionPicker.astro";
+import Focus from "../layouts/Focus.astro";
+import { loadRegistro, PICKER_TOGGLE_ID } from "../lib/registro.ts";
+
+const registro = loadRegistro(process.cwd());
+const ui = registro.ui;
+---
+
+<Focus
+  title={`${ui("closure_title")} · ${ui("brand_wordmark")}`}
+  description={ui("closure_summary")}
+>
+  <section class="closure">
+    <p class="closure__k">{ui("closure_kicker")}</p>
+    <span class="closure__rule" aria-hidden="true"></span>
+    <h1>{ui("closure_title")}</h1>
+    <p class="closure__summary">{ui("closure_summary")}</p>
+    <p class="closure__note">{ui("closure_note")}</p>
+    <div class="closure__actions">
+      <label for={PICKER_TOGGLE_ID} class="btn btn--primary">
+        <span>{ui("closure_explore")}</span>
+        <span aria-hidden="true">→</span>
+      </label>
+      <a class="btn btn--outline" href="/metodo">
+        <span>{ui("closure_method")}</span>
+        <span aria-hidden="true">→</span>
+      </a>
+      <a class="btn btn--outline" href="/versiones">
+        <span>{ui("closure_sources")}</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <dl class="closure__facts">
+      <div>
+        <dt>
+          <span data-num="derived-question-count">{registro.count}</span>
+        </dt>
+        <dd>{ui("closure_questions")}</dd>
+      </div>
+      <div>
+        <dt aria-hidden="true">∞</dt>
+        <dd>{ui("closure_corpus")}</dd>
+      </div>
+      <div>
+        <dt aria-hidden="true">◎</dt>
+        <dd>{ui("closure_public_sources")}</dd>
+      </div>
+    </dl>
+  </section>
+  <QuestionPicker slot="picker" registro={registro} current={null} />
+</Focus>

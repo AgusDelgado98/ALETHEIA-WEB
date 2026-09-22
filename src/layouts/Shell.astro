@@ -49,27 +49,7 @@ const { title, description, ogDescription, robots, view } = Astro.props;
 </html>
 
 <style is:global>
-  /* Wordmark (Charter §12), igual que en Base */
-  .wordmark {
-    position: relative;
-    display: inline-block;
-    font: 500 1.0625rem / 1 var(--serif);
-    letter-spacing: var(--tracking-wordmark);
-    padding-right: 0.24em;
-    color: var(--ink);
-  }
-  .wordmark::after {
-    content: "";
-    position: absolute;
-    left: -3px;
-    right: -1px;
-    top: calc(50% - 0.27em);
-    height: max(1.5px, 0.09em);
-    background: var(--paper);
-  }
-  main:focus {
-    outline: none;
-  }
+  /* El wordmark y `main:focus` son compartidos: viven en src/styles/global.css */
   .folio-wrap {
     display: grid;
     min-height: 0;

@@ -14,12 +14,12 @@ import { realContext, ROOT } from "./helpers.ts";
 const inv = buildInventory(ROOT);
 
 describe("reconciliación editorial WEB-2R", () => {
-  it("419 textos: la suma de veredictos es exacta", () => {
+  it("463 textos: la suma de veredictos es exacta", () => {
     const sum = Object.values(inv.verdicts.by_verdict).reduce((a, b) => a + b, 0);
-    expect(inv.verdicts.total_units).toBe(419);
-    expect(sum).toBe(419);
+    expect(inv.verdicts.total_units).toBe(463);
+    expect(sum).toBe(463);
   });
-  it("18 public_question APPROVED; 18 títulos cortos APPROVED; 383 PENDING_AUTHOR_REVIEW; 0 REVISED/REJECTED", () => {
+  it("18 public_question APPROVED; 18 títulos cortos APPROVED; 427 PENDING_AUTHOR_REVIEW; 0 REVISED/REJECTED", () => {
     expect(inv.verdicts.public_question.research_questions).toBe(18);
     expect(inv.verdicts.public_question.records).toBe(18);
     expect(inv.verdicts.public_question.APPROVED).toBe(18);
@@ -27,7 +27,7 @@ describe("reconciliación editorial WEB-2R", () => {
     expect(inv.verdicts.public_question.PENDING_AUTHOR_REVIEW).toBe(0);
     expect(inv.verdicts.public_question.REJECTED).toBe(0);
     expect(inv.verdicts.by_verdict.APPROVED).toBe(36);
-    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(383);
+    expect(inv.verdicts.by_verdict.PENDING_AUTHOR_REVIEW).toBe(427);
     expect(inv.verdicts.by_verdict.REVISED_AND_APPROVED ?? 0).toBe(0);
     expect(inv.verdicts.by_verdict.REJECTED ?? 0).toBe(0);
   });
@@ -124,22 +124,20 @@ describe("G-LEG-02", () => {
 });
 
 describe("drift y gates humanos", () => {
-  it("el pin está atado al commit WEB-2 y los hashes coinciden", () => {
+  it("el pin previo queda invalidado por este rediseño aún no aprobado", () => {
     const pin = readPin(ROOT);
     expect(pin).not.toBeNull();
     const drift = detectDrift(ROOT, pin!);
     expect(drift.reviewed_commit).toBe(WEB2_REVIEWED_COMMIT);
-    expect(drift.invalidated).toBe(false);
-    expect(drift.editorial_manifest_changed).toBe(false);
-    expect(drift.inventory_changed).toBe(false);
+    expect(drift.invalidated).toBe(true);
+    expect(drift.editorial_manifest_changed).toBe(true);
+    expect(drift.inventory_changed).toBe(true);
   });
-  it("G-OD-14 PENDING no pasa; G-LEG-02 y G-LEG-03 cerrados sí", () => {
+  it("G-OD-14 sigue pendiente; G-LEG-02 pasa y G-LEG-03 queda invalidado por drift", () => {
     const ctx = realContext();
     expect(runGate("G-OD-14", ctx).status).toBe("FAIL");
-    for (const id of ["G-LEG-02", "G-LEG-03"]) {
-      const r = runGate(id, ctx);
-      expect(r.status, `${id}: ${r.detail} ${r.failures.join(" | ")}`).toBe("PASS");
-    }
+    expect(runGate("G-LEG-02", ctx).status).toBe("PASS");
+    expect(runGate("G-LEG-03", ctx).status).toBe("FAIL");
     expect(RELEASE_GATES.map((g) => g.id)).toEqual(
       expect.arrayContaining(["G-OD-14", "G-LEG-02", "G-LEG-03"]),
     );

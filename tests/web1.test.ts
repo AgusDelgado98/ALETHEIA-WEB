@@ -37,23 +37,18 @@ describe("WEB-1 arquitectura pública", () => {
     },
   );
 
-  it.skipIf(!ctx.html.has("/"))(
-    "el Registro de la Home lista las 18 (5 con lectura completa, 13 mínimas); Hallazgos solo las 5",
+  // La Home (ONE QUESTION AT A TIME) ya no lista las 18 preguntas ni marca lectura completa/mínima: esa
+  // distinción de datos se prueba en tests/registro-folio.test.ts. Hallazgos, sin cambios, sigue con la UI vieja.
+  it.skipIf(!ctx.html.has("/hallazgos"))(
+    "Hallazgos lista solo las 5 destacadas, ninguna de las 13 restantes",
     () => {
-      const home = ctx.html.get("/") ?? "";
       const hall = ctx.html.get("/hallazgos") ?? "";
-      const tier = (id: string): string | undefined =>
-        new RegExp(`data-index-question="${id}"[^>]*data-tier="([AB])"`).exec(home)?.[1];
-      for (const id of FEATURED_QUESTION_IDS) {
-        expect(tier(id), id).toBe("A");
+      for (const id of FEATURED_QUESTION_IDS)
         expect(hall, id).toContain(`data-finding-question="${id}"`);
-      }
       const remaining = ctx.generated.questions.filter((q) => !FEATURED.has(q.id));
       expect(remaining).toHaveLength(13);
-      for (const q of remaining) {
-        expect(tier(q.id), q.id).toBe("B");
+      for (const q of remaining)
         expect(hall.includes(`data-finding-question="${q.id}"`), q.id).toBe(false);
-      }
     },
   );
 
@@ -88,15 +83,19 @@ describe("WEB-1 arquitectura pública", () => {
     expect(ver).toContain(ctx.generated.manifest.pin.tag);
     expect(ver).toContain(ctx.generated.manifest.pin.commit);
     expect(ver).toContain("CLOSED / FROZEN");
-    // La Home ya no es una landing: el corte congelado vive en la barra de estado (tag y commit abreviado).
-    expect(home).toContain(ctx.generated.manifest.pin.commit.slice(0, 7));
-    expect(home).toContain("Corpus congelado");
+    // La entrada narrativa reserva los IDs técnicos para Procedencia.
+    expect(home).not.toContain(ctx.generated.manifest.pin.commit.slice(0, 7));
+    expect(home).toContain("corpus cerrado");
+    expect(home).toContain("La verdad depende del alcance de la evidencia");
   });
 
   it.skipIf(!ctx.html.has("/"))(
-    "estados epistemológicos en Home y Método, sin semáforo valorativo",
+    "estados epistemológicos en Método, sin semáforo valorativo; la Home (entrada) no los expone",
     () => {
       const home = ctx.html.get("/") ?? "";
+      // ONE QUESTION AT A TIME: la entrada no muestra leyenda de estados; el selector (oculto hasta que se
+      // abre) sí lleva la marca de cada pregunta, así que la prueba mira solo lo que queda fuera de él.
+      const homeOutsidePicker = home.split('<div class="picker-mount">')[0] ?? home;
       const met = ctx.html.get("/metodo") ?? "";
       for (const code of [
         "OBSERVED_IN_SOURCE",
@@ -104,8 +103,8 @@ describe("WEB-1 arquitectura pública", () => {
         "INSUFFICIENT_EVIDENCE",
         "NOT_IDENTIFIABLE",
       ]) {
-        expect(home, code).toContain(`data-state="${code}"`);
         expect(met, code).toContain(`data-state="${code}"`);
+        expect(homeOutsidePicker, code).not.toContain(`data-state="${code}"`);
       }
       expect(home.toLowerCase()).not.toMatch(/semáforo|semaforo|kpi|dashboard/);
       expect(met).toContain("No equivale a verdad confirmada");

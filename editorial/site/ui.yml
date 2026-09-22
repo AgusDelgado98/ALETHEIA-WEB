@@ -44,6 +44,8 @@ strings:
   prov_editorial: { id: ui-prov-editorial, text: "Manifest editorial" }
   prov_ids: { id: ui-prov-ids, text: "Identificadores" }
   prov_limits_audit: { id: ui-prov-limits-audit, text: "Limitaciones que se conservan en el nivel Auditoría" }
+  prov_limit_texts: { id: ui-prov-limit-texts, text: "Texto íntegro de límites" }
+  prov_limit_texts_open: { id: ui-prov-limit-texts-open, text: "Abrir transcripción auditada" }
   prov_canonical_question: { id: ui-prov-canonical-question, text: "Pregunta canónica (texto del corpus, sin traducir)" }
   prov_disclosure: { id: ui-prov-disclosure, text: "Exposición previa a los datos" }
   prov_disclosure_none: { id: ui-prov-disclosure-none, text: "Ninguna registrada: la hipótesis no exige divulgación." }
@@ -56,6 +58,7 @@ strings:
   shape_refuted: { id: ui-shape-refuted, text: "Forma del estado: hilo sólido y cuadrado de borde discontinuo." }
   shape_not_identifiable: { id: ui-shape-not-identifiable, text: "Forma del estado: zona rayada, sin cuadrado." }
   no_claim_trail: { id: ui-no-claim-trail, text: "Sin claim: no hay Rastro de claim." }
+  no_editorial_trail: { id: ui-no-editorial-trail, text: "No hay un Rastro editorial adicional registrado para esta pregunta." }
   trail_legend_note: { id: ui-trail-legend-note, text: "Cada glifo va acompañado de su nombre." }
   nav_findings: { id: ui-nav-findings, text: "Hallazgos" }
   nav_explore: { id: ui-nav-explore, text: "Explorar" }
@@ -182,3 +185,44 @@ strings:
   prov_root: { id: ui-prov-root, text: "Raíz de evidencia" }
   back_registry: { id: ui-back-registry, text: "Registro" }
   key_full_reading: { id: ui-key-full-reading, text: "lectura completa" }
+  home_explore_cta: { id: ui-home-explore-cta, text: "Explorar preguntas" }
+  home_kicker_guided: { id: ui-home-kicker-guided, text: "Evidencia · Contexto · Perspectiva argentina" }
+  home_identity: { id: ui-home-identity, text: "Investigación guiada por evidencia sobre el trabajo en Argentina." }
+  home_presentation: { id: ui-home-presentation, text: "Analicé fuentes públicas para distinguir qué puede sostenerse, qué no y qué todavía no puede responderse." }
+  home_principle: { id: ui-home-principle, text: "Mi principio es simple: decir solo lo que la evidencia permite sostener." }
+  home_start_cta: { id: ui-home-start-cta, text: "Comenzar" }
+  home_choose_cta: { id: ui-home-choose-cta, text: "Elegir otra pregunta" }
+  home_corpus_closed: { id: ui-home-corpus-closed, text: "corpus cerrado" }
+  home_traceable: { id: ui-home-traceable, text: "trazabilidad verificable" }
+  focus_footer_motto: { id: ui-focus-footer-motto, text: "La verdad depende del alcance de la evidencia." }
+  home_secondary_heading: { id: ui-home-secondary-heading, text: "También" }
+  picker_heading: { id: ui-picker-heading, text: "Elegir una pregunta" }
+  picker_close: { id: ui-picker-close, text: "Cerrar" }
+  single_change_question: { id: ui-single-change-question, text: "Cambiar pregunta" }
+  tab_summary: { id: ui-tab-summary, text: "Resumen" }
+  tab_answer: { id: ui-tab-answer, text: "Respuesta" }
+  single_progress_prefix: { id: ui-single-progress-prefix, text: "Pregunta" }
+  single_progress_of: { id: ui-single-progress-of, text: "de" }
+  single_prev: { id: ui-single-prev, text: "Pregunta anterior" }
+  single_next: { id: ui-single-next, text: "Pregunta siguiente" }
+  single_journey_nav: { id: ui-single-journey-nav, text: "Continuar el recorrido" }
+  single_answer_supported: { id: ui-single-answer-supported, text: "Esto es lo que la evidencia me permite decir." }
+  single_answer_insufficient: { id: ui-single-answer-insufficient, text: "La evidencia no alcanza para responder esta pregunta." }
+  single_selected_episode: { id: ui-single-selected-episode, text: "episodio seleccionado" }
+  single_referenced_claim: { id: ui-single-referenced-claim, text: "analizado" }
+  single_related_question: { id: ui-single-related-question, text: "relacionada" }
+  single_view_development: { id: ui-single-view-development, text: "Ver desarrollo completo" }
+  single_close_development: { id: ui-single-close-development, text: "Cerrar desarrollo" }
+  single_no_development: { id: ui-single-no-development, text: "No hay un desarrollo editorial adicional registrado para esta pregunta." }
+  single_no_limits: { id: ui-single-no-limits, text: "No hay un desarrollo editorial adicional de límites registrado para esta pregunta." }
+  back_to_research: { id: ui-back-to-research, text: "Volver a la investigación" }
+  closure_kicker: { id: ui-closure-kicker, text: "Una conversación más informada para una Argentina más clara" }
+  closure_title: { id: ui-closure-title, text: "Esto es lo que pude sostener." }
+  closure_summary: { id: ui-closure-summary, text: "Recorrí las preguntas del corpus: algunas pudieron sostenerse dentro de su alcance, en otras la evidencia no alcanzó y otras quedaron abiertas." }
+  closure_note: { id: ui-closure-note, text: "Cuando la evidencia no alcanzó, lo indiqué. Cuando hubo trazabilidad suficiente, la mostré." }
+  closure_explore: { id: ui-closure-explore, text: "Volver a explorar preguntas" }
+  closure_method: { id: ui-closure-method, text: "Revisar metodología" }
+  closure_sources: { id: ui-closure-sources, text: "Abrir fuentes y procedencia" }
+  closure_questions: { id: ui-closure-questions, text: "preguntas recorridas" }
+  closure_corpus: { id: ui-closure-corpus, text: "corpus cerrado" }
+  closure_public_sources: { id: ui-closure-public-sources, text: "fuentes públicas admitidas" }

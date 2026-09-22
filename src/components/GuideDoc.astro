@@ -1,0 +1,22 @@
+---
+interface Props {
+  ui: (key: string) => string;
+  heading: string;
+  lede: string;
+}
+
+const { ui, heading, lede } = Astro.props;
+---
+
+<article class="guide-doc" aria-labelledby="guide-doc-heading">
+  <div class="guide-doc__inner">
+    <a class="guide-doc__back" href="/">
+      <span aria-hidden="true">←</span> {ui("back_to_research")}
+    </a>
+    <header class="guide-doc__head">
+      <h1 id="guide-doc-heading">{heading}</h1>
+      <p class="guide-doc__lede">{lede}</p>
+    </header>
+    <slot />
+  </div>
+</article>

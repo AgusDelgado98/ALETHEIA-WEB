@@ -7,6 +7,15 @@ import { loadQuestionMap } from "./map.ts";
  * texto editorial `nav_titles` de editorial/site/glosses.yml (auditado como el resto; PENDING_AUTHOR_REVIEW).
  */
 
+/** Las 18 preguntas usan la experiencia guiada; el Registro anterior ya no se monta en sus rutas. */
+export const SINGLE_QUESTION_IDS: readonly string[] = Array.from(
+  { length: 18 },
+  (_, i) => `LAB-Q-${String(i + 1).padStart(4, "0")}`,
+);
+
+/** id del checkbox que abre/cierra el selector de preguntas (overlay 0 JS): compartido por disparador y overlay. */
+export const PICKER_TOGGLE_ID = "picker-toggle";
+
 /** Los seis estados del Registro, en orden de leyenda. `code`/`name` son claves de cadenas de interfaz. */
 export const STATES = [
   { state: "OBSERVED_IN_SOURCE", code: "stc_observed", name: "stn_observed" },

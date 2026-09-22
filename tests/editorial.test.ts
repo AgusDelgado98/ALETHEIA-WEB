@@ -158,7 +158,9 @@ describe("capa editorial de Q-0013", () => {
     b.review.revision = b.review.revision + 1;
     const sealed = seal(b, corpus);
     const recs = sealed.records.filter((r) => r.string_id === unit.string_id);
-    expect(recs.map((r) => r.revision)).toEqual([1, 2, 3, 4]);
+    expect(recs.map((r) => r.revision)).toEqual(
+      Array.from({ length: b.review.revision }, (_, i) => i + 1),
+    );
   });
   it("sellar dos veces no cambia nada (idempotente)", () => {
     const again = seal(loadEditorial(ROOT, QID), corpus);

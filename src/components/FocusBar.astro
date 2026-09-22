@@ -1,0 +1,25 @@
+---
+/**
+ * Cabecera editorial común: marca, navegación general y la acción contextual de la pantalla, cuando existe.
+ */
+interface Props {
+  ui: (key: string) => string;
+  contextual?: boolean;
+}
+const { ui, contextual = false } = Astro.props;
+---
+
+<header class:list={["fbar", { "fbar--context": contextual }]}>
+  <a class="wordmark" href="/">
+    {ui("brand_wordmark")}
+  </a>
+  <div class="fbar__right">
+    <nav class="fbar__nav" aria-label={ui("nav_label")}>
+      <a href="/metodo">{ui("nav_method")}</a>
+      <a href="/sobre">{ui("nav_about")}</a>
+    </nav>
+    <div class="fbar__actions">
+      <slot />
+    </div>
+  </div>
+</header>

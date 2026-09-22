@@ -1,19 +1,36 @@
 ---
-import Caratula from "../components/Caratula.astro";
-import Registro from "../components/Registro.astro";
-import Shell from "../layouts/Shell.astro";
-import { loadRegistro } from "../lib/registro.ts";
+import QuestionPicker from "../components/QuestionPicker.astro";
+import Focus from "../layouts/Focus.astro";
+import { loadRegistro, PICKER_TOGGLE_ID } from "../lib/registro.ts";
 
-/** `/` → Registro + carátula del Folio (sin pregunta seleccionada). */
+/**
+ * Home del recorrido guiado. ALETHEIA se presenta y lleva directamente al primer caso de revisión (Q-0003).
+ * El selector existe, pero no aparece hasta que la persona lo pide: nunca vuelca las 18 preguntas en la entrada.
+ */
 const registro = loadRegistro(process.cwd());
 const ui = registro.ui;
 ---
 
-<Shell
-  title={`${ui("brand_wordmark")} · ${ui("home_kicker")}`}
-  description={ui("home_lede")}
-  view="registro"
->
-  <Registro slot="registro" registro={registro} current={null} />
-  <Caratula registro={registro} />
-</Shell>
+<Focus title={`${ui("brand_wordmark")} · ${ui("home_kicker")}`} description={ui("home_lede")}>
+  <section class="hero">
+    <p class="hero__k">{ui("home_kicker_guided")}</p>
+    <h1 class="hero__brand">{ui("brand_wordmark")}</h1>
+    <span class="hero__rule" aria-hidden="true"></span>
+    <h2 class="hero__t">{ui("home_identity")}</h2>
+    <p class="hero__p">{ui("home_presentation")}</p>
+    <p class="hero__principle">{ui("home_principle")}</p>
+    <a href="/labor/preguntas/q-0003" class="btn btn--primary">
+      <span>{ui("home_start_cta")}</span>
+      <span aria-hidden="true">→</span>
+    </a>
+    <p class="hero__n">
+      <span data-num="count">{registro.count}</span> {ui("count_questions")}
+      <span aria-hidden="true">·</span> {ui("home_corpus_closed")}
+      <span aria-hidden="true">·</span> {ui("home_traceable")}
+    </p>
+    <label for={PICKER_TOGGLE_ID} class="hero__choose">
+      {ui("home_choose_cta")}
+    </label>
+  </section>
+  <QuestionPicker slot="picker" registro={registro} current={null} />
+</Focus>

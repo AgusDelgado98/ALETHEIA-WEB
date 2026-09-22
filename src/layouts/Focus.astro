@@ -1,0 +1,48 @@
+---
+import "../../design/tokens.css";
+import "../styles/global.css";
+import "../styles/focus.css";
+import FocusBar from "../components/FocusBar.astro";
+import { loadSite } from "../lib/site.ts";
+import Head from "./Head.astro";
+/**
+ * Layout ONE QUESTION AT A TIME: sin panel lateral persistente con las 18 preguntas. La entrada (`/`) y una pregunta
+ * (`/labor/preguntas/q-0003`, primer paso de la migración) comparten este layout. El selector de preguntas es un
+ * overlay (checkbox + label, 0 JavaScript) que cualquiera de las dos páginas puede montar vía el slot `picker`.
+ */
+interface Props {
+  title: string;
+  description: string;
+  ogDescription?: string;
+}
+const site = loadSite(process.cwd());
+const ui = site.ui;
+const { title, description, ogDescription } = Astro.props;
+const contextual = Astro.slots.has("bar");
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <Head
+    title={title}
+    description={description}
+    siteName={ui("brand_wordmark")}
+    ogDescription={ogDescription}
+  />
+  <body class="focus">
+    <a class="skip" href="#contenido">
+      {ui("skip_link")}
+    </a>
+    <FocusBar ui={ui} contextual={contextual}>
+      <slot name="bar" />
+    </FocusBar>
+    <main id="contenido" class="focus-main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="ffoot">
+      <span aria-hidden="true"></span>
+      <p>{ui("focus_footer_motto")}</p>
+    </footer>
+    <slot name="picker" />
+  </body>
+</html>

@@ -2,7 +2,7 @@
 # los hashes (canonical_hash, text_hash) los calcula `npm run editorial:seal`. El registro resultante es solo de agregado.
 schema: aletheia-web/editorial-review/1
 canonical_ref: labor/LAB-Q-0013
-revision: 3
+revision: 4
 reviewer: "Claude (agente de redacción, sesión WEB-1/M1)"
 date: "2026-09-21"
 independence_declaration: "El revisor coincide con quien redactó (Editorial Contract §4.4): se cumple (a) auditoría mecánica completa por gates, (b) revisión adversarial documentada más abajo y (c) esta declaración. La autoría humana NO firmó todavía estos textos: por eso su veredicto es PENDING_AUTHOR_REVIEW y el reporte de M1 lo informa. La única excepción es public_question, aprobada por la autoría en el Design Charter v1.2 (Enmienda 1.2)."

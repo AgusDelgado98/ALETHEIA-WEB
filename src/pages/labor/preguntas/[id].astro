@@ -1,44 +1,50 @@
 ---
-import Folio from "../../../components/Folio.astro";
-import Registro from "../../../components/Registro.astro";
-import Shell from "../../../layouts/Shell.astro";
-import { loadRegistro, shapeKey } from "../../../lib/registro.ts";
+import QuestionPicker from "../../../components/QuestionPicker.astro";
+import SingleFolio from "../../../components/SingleFolio.astro";
+import Focus from "../../../layouts/Focus.astro";
+import { loadRegistro, PICKER_TOGGLE_ID, shapeKey } from "../../../lib/registro.ts";
 import { plainText } from "../../../lib/render.ts";
-import { isDocumentaryObserved, loadSite } from "../../../lib/site.ts";
+import { isDocumentaryObserved } from "../../../lib/site.ts";
 import { availableQuestionIds, loadQuestionView, questionSlug } from "../../../lib/view.ts";
 
-/**
- * Una ruta por cada pregunta del corpus (URL canónica sin cambios): el shell Registro + Folio con la pregunta
- * seleccionada. Las cinco fichas con lectura completa muestran su texto editorial; el resto, lo que el corpus expone.
- */
+/** Las 18 preguntas comparten la experiencia guiada; una ficha mínima muestra solo lo registrado. */
 export function getStaticPaths() {
   return availableQuestionIds(process.cwd()).map((id) => ({
     params: { id: questionSlug(id) },
     props: { qid: id },
   }));
 }
+
 const { qid } = Astro.props;
 const registro = loadRegistro(process.cwd());
+const rows = registro.groups.flatMap((group) => group.rows);
+const index = rows.findIndex((row) => row.id === qid);
 const v = loadQuestionView(process.cwd(), qid);
-const site = loadSite(process.cwd());
 const ui = v.ui;
-const regime = registro.groups.find((g) => g.rows.some((r) => r.id === qid))?.regime ?? "";
 const shapeOf = (state: string): string => ui(shapeKey(state));
-const claimIds = new Set(v.claims.map((cl) => cl.id));
-const preserved = site.preserved.filter((k) => k.questionId === qid);
-const governance = site.governance.filter((g) => g.claimIds.some((id) => claimIds.has(id)));
+const prevHref = index === 0 ? "/" : (rows[index - 1]?.href ?? "/");
+const nextHref = index === rows.length - 1 ? "/cierre" : (rows[index + 1]?.href ?? "/cierre");
 ---
 
-<Shell
+<Focus
   title={`${v.publicQuestion} · ${ui("brand_wordmark")}`}
   description={plainText(v.title)}
   ogDescription={`${v.state.questionLabel}. ${
-    v.claims.some((cl) => isDocumentaryObserved(cl.kind, cl.state))
+    v.claims.some((claim) => isDocumentaryObserved(claim.kind, claim.state))
       ? ui("qualifier_documentary")
       : ui("legal_states")
   }`}
-  view="folio"
 >
-  <Registro slot="registro" registro={registro} current={qid} />
-  <Folio v={v} regime={regime} shapeOf={shapeOf} preserved={preserved} governance={governance} />
-</Shell>
+  <label slot="bar" for={PICKER_TOGGLE_ID} class="btn btn--ghost">
+    {ui("single_change_question")}
+  </label>
+  <SingleFolio
+    v={v}
+    shapeOf={shapeOf}
+    index={index + 1}
+    total={rows.length}
+    prevHref={prevHref}
+    nextHref={nextHref}
+  />
+  <QuestionPicker slot="picker" registro={registro} current={qid} />
+</Focus>

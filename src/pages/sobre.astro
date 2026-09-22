@@ -1,25 +1,17 @@
 ---
-import DocPanel from "../components/DocPanel.astro";
-import Registro from "../components/Registro.astro";
-import Shell from "../layouts/Shell.astro";
-import { loadRegistro } from "../lib/registro.ts";
+import GuideDoc from "../components/GuideDoc.astro";
+import Focus from "../layouts/Focus.astro";
 import { loadSite } from "../lib/site.ts";
 
 const site = loadSite(process.cwd());
-const registro = loadRegistro(process.cwd());
 const ui = site.ui;
 // Identificadores de la licencia (no son prosa editorial): versión y URL oficial de CC BY-SA.
 const CC_BY_SA_VERSION = "4.0";
 const CC_BY_SA_URL = "https://creativecommons.org/licenses/by-sa/4.0/";
 ---
 
-<Shell
-  title={`${ui("about_heading")} · ${ui("brand_wordmark")}`}
-  description={ui("about_what")}
-  view="doc"
->
-  <Registro slot="registro" registro={registro} current={null} />
-  <DocPanel ui={ui} heading={ui("about_heading")} lede={ui("about_what")}>
+<Focus title={`${ui("about_heading")} · ${ui("brand_wordmark")}`} description={ui("about_what")}>
+  <GuideDoc ui={ui} heading={ui("about_heading")} lede={ui("about_what")}>
     <section class="doc__sec">
       <p class="doc__p">{ui("about_independence")}</p>
       <p class="doc__p">{ui("about_a11y")}</p>
@@ -50,5 +42,5 @@ const CC_BY_SA_URL = "https://creativecommons.org/licenses/by-sa/4.0/";
       </p>
       <p class="doc__p">{ui("attrib_others")}</p>
     </section>
-  </DocPanel>
-</Shell>
+  </GuideDoc>
+</Focus>

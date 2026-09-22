@@ -1,22 +1,17 @@
 ---
-import DocPanel from "../components/DocPanel.astro";
-import Registro from "../components/Registro.astro";
-import Shell from "../layouts/Shell.astro";
-import { loadRegistro } from "../lib/registro.ts";
+import GuideDoc from "../components/GuideDoc.astro";
+import Focus from "../layouts/Focus.astro";
 import { loadSite } from "../lib/site.ts";
 
 const site = loadSite(process.cwd());
-const registro = loadRegistro(process.cwd());
 const ui = site.ui;
 ---
 
-<Shell
+<Focus
   title={`${ui("versions_heading")} · ${ui("brand_wordmark")}`}
   description={ui("versions_lede")}
-  view="doc"
 >
-  <Registro slot="registro" registro={registro} current={null} />
-  <DocPanel ui={ui} heading={ui("versions_heading")} lede={ui("versions_lede")}>
+  <GuideDoc ui={ui} heading={ui("versions_heading")} lede={ui("versions_lede")}>
     <section class="doc__sec">
       <h2 class="doc__h">{ui("versions_labor")}</h2>
       <p class="doc__p">{ui("versions_closed")}</p>
@@ -46,5 +41,5 @@ const ui = site.ui;
       <p class="doc__p">{ui("versions_closed")}</p>
       <p class="doc__p">{ui("versions_web")}</p>
     </section>
-  </DocPanel>
-</Shell>
+  </GuideDoc>
+</Focus>
