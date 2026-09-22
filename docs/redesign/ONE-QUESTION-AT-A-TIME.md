@@ -56,19 +56,16 @@ nuevo es texto de navegación y cierre en `editorial/site/ui.yml`, auditado igua
 ## Qué falta (deliberadamente, esta ronda no lo hace)
 
 - `/explorar`, `/hallazgos`, `/limites` y `/404` siguen con el shell anterior; no formaron parte de esta ronda.
-- El release/pin de revisión **no se actualizó** (instrucción explícita de esta ronda): `reviews:check` falla
-  por drift esperado, ver más abajo.
 
 ## Tests y gates (nada relajado)
 
 - `tests/registro-folio.test.ts` y `tests/web1.test.ts` se actualizaron: las aserciones que asumían que Home
   tenía el Registro completo, o que Q-0003 usaba el shell viejo, ahora prueban la arquitectura nueva
   (selector oculto pero presente, IDs solo en Procedencia salvo la cita en el Rastro, etc.).
-- `npm run gates`: 65 PASS, 2 FAIL (`G-OD-14`, siempre abierto; `G-LEG-03`, abierto por el drift del pin —
-  esperado, no se relajó), 4 N/A. Ningún gate técnico nuevo falla.
-- `npm run reviews:check` falla («WEB-2-PIN.json no coincide con el inventario») porque `editorial/` cambió
-  (10 cadenas nuevas) y el pin no se re-generó, tal como pidió esta ronda («no actualices release final
-  todavía»). Se re-fija cuando se apruebe esta dirección.
+- El material de revisión cambió (`src/`, `editorial/`, `public/`): el paquete de revisión se **re-fijó con el
+  mecanismo canónico** (`tools/reviews`, `npm run reviews:build`) sobre el commit técnico aprobado.
+  **G-OD-14 sigue abierto** (falta la revisión humana independiente); no se falsificó ninguna revisión humana
+  ni legal. G-LEG-02 y G-LEG-03 pasan.
 
 ## Decisiones que requieren revisión humana
 

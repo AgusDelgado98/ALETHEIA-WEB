@@ -1,6 +1,6 @@
 {
-  "editorial_manifest_sha256": "a5695459efaeb9e2f15c3026b91456004f57db11a1ff168dc2be4534cddfcbeb",
-  "inventory_sha256": "2748bbc852fc24e8123a2f378530d9eb85c0e0f93dc8b8c71a4fcb537165b1af",
+  "editorial_manifest_sha256": "f9f917f5878f566e679deec21d9bd5829ffad69e5b27a5cdffafc91c87a389dd",
+  "inventory_sha256": "d1dac8e1dbd50d39ff54c9e9a5f451ba4632ba05291e8aeb3329fa37329c9ef3",
   "materialized_source_ids": [
     "FONT:IBM-Plex-Mono",
     "FONT:Instrument-Sans",
@@ -17,10 +17,10 @@
     "LABEL:SOURCE_AVAILABILITY_REVIEW"
   ],
   "package_date": "2026-09-21",
-  "pending_set_hash": "afd3b49fc6a7cfc9512079a02cf7b29d1ae435943d2e001fefebdf21a24f675b",
+  "pending_set_hash": "f9a2b9c1e8dd9f5aea72b6250933deb9271811256df1e486344904541ae75396",
   "production_url": "https://aletheia-web-seven.vercel.app",
   "release": "WEB-2",
-  "reviewed_commit": "19a3da05d385749c833ca6f49d53e6a1c1a2dad4",
+  "reviewed_commit": "21f3c94b7faf0c74955fcf313562eb125753a450",
   "schema": "aletheia-web/web-2-review-pin/1",
   "web2_status": "TECHNICALLY COMPLETE / FINAL INDEPENDENT HUMAN REVIEW PENDING"
 }

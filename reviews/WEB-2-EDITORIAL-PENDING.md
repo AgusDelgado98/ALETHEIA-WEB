@@ -2,18 +2,18 @@
 
 Este inventario **no aprueba** ningún texto. Verdicts intactos.
 
-- Total unidades editoriales: 419
-- `PENDING_AUTHOR_REVIEW`: 383
-- Hash del conjunto pendiente: `afd3b49fc6a7cfc9512079a02cf7b29d1ae435943d2e001fefebdf21a24f675b`
-- Manifest editorial: `a5695459efaeb9e2f15c3026b91456004f57db11a1ff168dc2be4534cddfcbeb`
-- Commit atado: `19a3da05d385749c833ca6f49d53e6a1c1a2dad4`
+- Total unidades editoriales: 463
+- `PENDING_AUTHOR_REVIEW`: 427
+- Hash del conjunto pendiente: `f9a2b9c1e8dd9f5aea72b6250933deb9271811256df1e486344904541ae75396`
+- Manifest editorial: `f9f917f5878f566e679deec21d9bd5829ffad69e5b27a5cdffafc91c87a389dd`
+- Commit atado: `21f3c94b7faf0c74955fcf313562eb125753a450`
 
 ## Reconciliación de veredictos
 
-- `PENDING_AUTHOR_REVIEW`: 383
+- `PENDING_AUTHOR_REVIEW`: 427
 - `APPROVED`: 36
 
-Suma: 419 (debe ser 419).
+Suma: 463 (debe ser 463).
 
 ## public_question
 
@@ -41,15 +41,15 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `finding_trail` | 32 |
 | `finding_would_need` | 16 |
 | `findings_index` | 4 |
-| `home` | 17 |
+| `home` | 27 |
 | `limits` | 2 |
 | `limits_page` | 44 |
-| `methodology` | 25 |
+| `methodology` | 27 |
 | `navigation` | 13 |
 | `not_found` | 3 |
 | `states` | 7 |
 | `trail_ui` | 45 |
-| `ui_other` | 34 |
+| `ui_other` | 66 |
 | `versions` | 6 |
 
 ## Unidades pendientes
@@ -273,6 +273,7 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.attrib_heading` | `1c0631badd7f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.attrib_others` | `aabd4064b936` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.back_registry` | `890086b16b48` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.back_to_research` | `ffd38d9df157` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.brand_wordmark` | `4b477a5b96c3` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | navigation | * |
 | `site#ui.canonical_cite` | `3afdba9b69b5` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.carat_pick` | `89acbb9e64de` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
@@ -280,6 +281,16 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.carat_unit` | `2fdd66f291ba` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.cite_template` | `27cbc355e51a` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.cite_template_no_claim` | `22b54bc8e1b6` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
+| `site#ui.closure_corpus` | `e84ede6bbb19` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_explore` | `2abed4b820f6` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_kicker` | `96bc320fc97f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_method` | `4c6bf5ba12d6` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_note` | `89c6810e74c0` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_public_sources` | `48dfe576973f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_questions` | `22652719416f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_sources` | `e671846ad089` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_summary` | `4b98ed57c08d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.closure_title` | `554a496320e0` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.count_claims` | `78b61dcefd43` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | counts | / /explorar |
 | `site#ui.count_governance` | `edc33866fe8d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | counts | / /explorar |
 | `site#ui.count_hypotheses` | `37a22a16db55` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | counts | / /explorar |
@@ -300,6 +311,7 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.featured_kicker` | `cf71cb22ff6c` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | findings_index | /hallazgos / |
 | `site#ui.findings_heading` | `14311fa4669b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | findings_index | /hallazgos / |
 | `site#ui.findings_lede` | `2cb305b46804` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | findings_index | /hallazgos / |
+| `site#ui.focus_footer_motto` | `1ac2aebcb456` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.folio_label` | `8edf7ac3306a` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.folio_views` | `6673a1f45bb0` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.footer_frozen` | `285230b80886` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | navigation | * |
@@ -308,15 +320,20 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.frame_period` | `162459d223dc` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.frame_scope` | `477f2a69f25f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.frame_source` | `382897b636f3` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
+| `site#ui.home_choose_cta` | `cf7e5c15bc92` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_closure_heading` | `1b1e5f510ab2` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_closure_lede` | `46950ef1fc2d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_corpus_closed` | `e84ede6bbb19` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_cta_findings` | `16adb78b92f5` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_cta_questions` | `95f60b88d44b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_explore_cta` | `01cccb9625c0` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_featured_heading` | `14311fa4669b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_featured_lede` | `03f23feb7fc7` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_governance_heading` | `9bd25a23dba6` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_governance_lede` | `71f6f35ed47a` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_identity` | `87accfcafe8d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_kicker` | `16b4b2e88dc9` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_kicker_guided` | `ac42798ef935` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_lede` | `2a884142ddc5` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_legal_heading` | `3e1da4770578` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | disclaimers | / /sobre |
 | `site#ui.home_limits_lede` | `b4c3a69ee476` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
@@ -324,10 +341,15 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.home_method_lede` | `263bd7ff87da` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.home_overview_heading` | `477f2a69f25f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_overview_lede` | `6bcea70e8f91` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_presentation` | `93c4e498521f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_principle` | `c0ff7775bb54` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_remaining_heading` | `b0c02f5ad26c` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_remaining_lede` | `cc10577da8fa` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_secondary_heading` | `dc09ca88921b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_start_cta` | `eb0fe8860be4` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_status_heading` | `d19d45639db0` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.home_status_lede` | `b2fb5ee3d92b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
+| `site#ui.home_traceable` | `e2bf3156fda3` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | home | / |
 | `site#ui.key_full_reading` | `9d32e3a78ae7` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.layer_claim` | `bd3566126ab6` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.layer_question` | `7b17546c021c` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
@@ -371,6 +393,7 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.nav_registry` | `890086b16b48` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | navigation | * |
 | `site#ui.need_heading` | `de8da43cdfe2` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.no_claim_trail` | `954a89685542` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
+| `site#ui.no_editorial_trail` | `09bd9409436d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.node_claim` | `15b6c97bf1f1` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.node_evidence` | `d3fb82e539b4` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.node_hypothesis` | `37a22a16db55` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
@@ -382,6 +405,8 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.not_found_lede` | `bb2e87f074e3` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | not_found | /404 |
 | `site#ui.not_heading` | `bd11e830fbb3` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.open_question` | `efe3e9d4d095` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | navigation | * |
+| `site#ui.picker_close` | `aeccae342e4b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.picker_heading` | `b3d3156b0a4f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.prov_canonical_question` | `d2c6899b0632` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.prov_cite` | `128b1255235c` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.prov_commit` | `82a9c46ffa47` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
@@ -389,6 +414,8 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.prov_disclosure_none` | `8ab10eb99d8b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.prov_editorial` | `1d30405d3f5d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.prov_ids` | `13de7ae7ca36` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
+| `site#ui.prov_limit_texts` | `77eaf69da859` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
+| `site#ui.prov_limit_texts_open` | `c1f2dcd8e91a` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.prov_limits_audit` | `3282b797fdc2` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.prov_manifest` | `bab6c937864d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
 | `site#ui.prov_module` | `813e68c50d4d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | methodology | /metodo |
@@ -410,6 +437,21 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.shape_observed` | `ba19f897e410` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.shape_open` | `ae65e4e0622d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.shape_refuted` | `88cf409a5dfe` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
+| `site#ui.single_answer_insufficient` | `a00fbccd4706` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_answer_supported` | `d058cf3deecd` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_change_question` | `e7527549bcaf` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_close_development` | `767eba0f23ce` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_journey_nav` | `7eaf93177820` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_next` | `5c3cc07f9101` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_no_development` | `bb3939e631ae` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_no_limits` | `f91d13839252` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_prev` | `d95c7c4f6870` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_progress_of` | `959a45d44e6f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_progress_prefix` | `afe75b7047af` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_referenced_claim` | `4dcd9c0b3f63` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_related_question` | `736731a6a81f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_selected_episode` | `7eed711d6e2f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.single_view_development` | `2629ac342c4c` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.skip_link` | `bb2b678a305d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | navigation | * |
 | `site#ui.source_link_unresolved` | `8313be0150a7` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.status_web` | `4703d8d6b344` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
@@ -425,10 +467,12 @@ Las 4 `public_question` que no estaban en el recuento «14» son las de las otra
 | `site#ui.stn_observed` | `ff74a29e71f1` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.stn_open` | `9f2da425b290` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.stn_refuted` | `709c8fbd02ab` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.tab_answer` | `eda96518d54f` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.tab_evidence` | `d3fb82e539b4` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.tab_limits` | `a5d90b084b1d` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.tab_prov` | `5424e3b7d47b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.tab_read` | `e6d04dc00627` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
+| `site#ui.tab_summary` | `ed7bdc67c84b` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | ui_other | * |
 | `site#ui.trail_direction` | `edfef5b70181` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.trail_direction_h` | `195349e5e533` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |
 | `site#ui.trail_heading` | `8a43dbb29922` | `null` | PENDING_AUTHOR_REVIEW | `editorial/site/ui.yml` | trail_ui | /labor/preguntas/* |

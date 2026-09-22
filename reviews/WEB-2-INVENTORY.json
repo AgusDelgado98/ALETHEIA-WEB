@@ -81,7 +81,7 @@
       "transformation": "glosa pública en español + Relation title / prohibited_inference / reason canónicos"
     }
   ],
-  "editorial_manifest_sha256": "a5695459efaeb9e2f15c3026b91456004f57db11a1ff168dc2be4534cddfcbeb",
+  "editorial_manifest_sha256": "f9f917f5878f566e679deec21d9bd5829ffad69e5b27a5cdffafc91c87a389dd",
   "package_date": "2026-09-21",
   "pending": [
     {
@@ -2712,6 +2712,18 @@
     },
     {
       "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.back_to_research",
+      "text_hash": "ffd38d9df157bdc952b08db106eb2c4c4eaf2df307b87eab523b22d79f440107",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
       "family": "navigation",
       "kind": "ui_label",
       "pages": [
@@ -2792,6 +2804,126 @@
       "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.cite_template_no_claim",
       "text_hash": "22b54bc8e1b6fdb5b44e37fb48e8ae46abacac916ddd5ef7fa60e92646363c18",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_corpus",
+      "text_hash": "e84ede6bbb196807dae2c2b5d5a676ac5532c2c5d631008e34c6235ea20c1c51",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_explore",
+      "text_hash": "2abed4b820f6f972d1b52237bb1aeff5800cce80d37dfb71b2693bd8d10122f7",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_kicker",
+      "text_hash": "96bc320fc97f143ddb875967f4b9b1ec1ee40cb74160429275d165ec05316579",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_method",
+      "text_hash": "4c6bf5ba12d65088347c1de3059bb7396c92007559748ac496c485cf979eb4d8",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_note",
+      "text_hash": "89c6810e74c03972138a4fbeecb0b728562d0c6d564ff6ea3ea588316a75b4dc",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_public_sources",
+      "text_hash": "48dfe576973faa0751a4c4287b223cc4ac6af15184da2b9fba42da936a60d188",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_questions",
+      "text_hash": "22652719416f9c07d5d931c798add691ffcebefa2911271e88e31b99f15e689f",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_sources",
+      "text_hash": "e671846ad089dc40f1a227f65a94cd43fd11c31da99e94d9823ac601ce8f3df6",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_summary",
+      "text_hash": "4b98ed57c08d199cd0dadef0f8aa0fd5e4f73473db5466c8ae04bbe389cf19f3",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.closure_title",
+      "text_hash": "554a496320e0a32f02f7efb90ea73120b186a073e9367244967de499b85f08b1",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -3051,6 +3183,18 @@
         "*"
       ],
       "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.focus_footer_motto",
+      "text_hash": "1ac2aebcb4564d03d3670e86f1b0fbb55c33eb459f846c607ca471346e987d1c",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.folio_label",
       "text_hash": "8edf7ac3306af82f4ed06d9122163fcccba96ee8c39122fa304266729855fd84",
       "verdict": "PENDING_AUTHOR_REVIEW"
@@ -3147,6 +3291,18 @@
         "/"
       ],
       "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_choose_cta",
+      "text_hash": "cf7e5c15bc92acade800c4f01d4aa49f3d9e454065b901c9a678658bba2a2cac",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.home_closure_heading",
       "text_hash": "1b1e5f510ab2db9f69c408048f05ffda088c7d244324a05290a2dc8711221287",
       "verdict": "PENDING_AUTHOR_REVIEW"
@@ -3171,6 +3327,18 @@
         "/"
       ],
       "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_corpus_closed",
+      "text_hash": "e84ede6bbb196807dae2c2b5d5a676ac5532c2c5d631008e34c6235ea20c1c51",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.home_cta_findings",
       "text_hash": "16adb78b92f5795a571a09d2840a83c7b01c141f491860dac136d3528ba28dd8",
       "verdict": "PENDING_AUTHOR_REVIEW"
@@ -3185,6 +3353,18 @@
       "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.home_cta_questions",
       "text_hash": "95f60b88d44b529db55f19c326454bc9c7c38def4c27f5e35c48f5d4cd062ddc",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_explore_cta",
+      "text_hash": "01cccb9625c067a1bf996638592a88ba4b891ecff088d716c7ffb8d1219485af",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -3243,8 +3423,32 @@
         "/"
       ],
       "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_identity",
+      "text_hash": "87accfcafe8d106959162f811488b6fee553262dbf310d7e8d14f505ab1493d5",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.home_kicker",
       "text_hash": "16b4b2e88dc9a65d63bbce42b8fed8c40f407a93ac1c8a7f693e832a0e5cdf90",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_kicker_guided",
+      "text_hash": "ac42798ef935fce4155f5b40c6748d261d277bb13e34e1302afe7e8825fa5d5e",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -3340,6 +3544,30 @@
         "/"
       ],
       "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_presentation",
+      "text_hash": "93c4e498521f70cedabf2196aa33d48672a156d1607b964ea6e644db9cff0846",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_principle",
+      "text_hash": "c0ff7775bb5405d7d1d75479187351651a4b6e4d9117ff02f94e6e741cf262fe",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.home_remaining_heading",
       "text_hash": "b0c02f5ad26c041eb02f8fef091e8c2fedd906b336ad102172925a79936cff04",
       "verdict": "PENDING_AUTHOR_REVIEW"
@@ -3364,6 +3592,30 @@
         "/"
       ],
       "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_secondary_heading",
+      "text_hash": "dc09ca88921b5bebc24deb59845786f5aaad7fb596c0f6211ba43daee91ecb90",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_start_cta",
+      "text_hash": "eb0fe8860be4e8e2288c200c13591033ae836eaf98256be8e6288ec89462745a",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.home_status_heading",
       "text_hash": "d19d45639db084a40c7a51c1ae3fda63cabe600cd8c0ad0d96b9368626d262c3",
       "verdict": "PENDING_AUTHOR_REVIEW"
@@ -3378,6 +3630,18 @@
       "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.home_status_lede",
       "text_hash": "b2fb5ee3d92b517d08d40e0ce713a0bfb99187ca75385fd171510747791bc739",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "home",
+      "kind": "ui_label",
+      "pages": [
+        "/"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.home_traceable",
+      "text_hash": "e2bf3156fda334db1e4de681e87d1de22bb5945140d96270af48162b8e34ef62",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -3905,6 +4169,18 @@
     },
     {
       "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.no_editorial_trail",
+      "text_hash": "09bd9409436d2d8a354e0aa3ef2bf0ba708e023aaeea54cb201abbec4f604bc9",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
       "family": "trail_ui",
       "kind": "ui_label",
       "pages": [
@@ -4037,6 +4313,30 @@
     },
     {
       "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.picker_close",
+      "text_hash": "aeccae342e4bd0a70ded84675569da91c5efb3894e35929cafd851cda763a6aa",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.picker_heading",
+      "text_hash": "b3d3156b0a4fdcba8d28a22b345284d3391f3b3c091b3741dfa6d60fa25d4459",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
       "family": "methodology",
       "kind": "ui_label",
       "pages": [
@@ -4117,6 +4417,30 @@
       "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.prov_ids",
       "text_hash": "13de7ae7ca368d26da18182f24441b0fdf0ac126ed9d48e2de76370a53141d31",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "methodology",
+      "kind": "ui_label",
+      "pages": [
+        "/metodo"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.prov_limit_texts",
+      "text_hash": "77eaf69da859e9a2ae4d7dbee132391cb0aa0f093d4038dc78250c44db176544",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "methodology",
+      "kind": "ui_label",
+      "pages": [
+        "/metodo"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.prov_limit_texts_open",
+      "text_hash": "c1f2dcd8e91ae81e36454e13029b9997def1c0c51b255abfc29d162a21aa12db",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -4374,6 +4698,186 @@
     },
     {
       "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_answer_insufficient",
+      "text_hash": "a00fbccd4706a6830ca64d0730746ada6ab533b46faa5a6ffdc57ca19113d940",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_answer_supported",
+      "text_hash": "d058cf3deecd1fe61439b92c36ce5611f48edd28e34237a2a54621d7e765e36e",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_change_question",
+      "text_hash": "e7527549bcaf5f4c21d231de28e9d388b605bdd55055da3e552f4764c20fddbe",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_close_development",
+      "text_hash": "767eba0f23ce1c2570f185fb196193a02aca363ea226d111abb02cdcabd239ed",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_journey_nav",
+      "text_hash": "7eaf931778203009d91cd3eff530cfd1f48e19bea266d314a6fdd4b2c83fa520",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_next",
+      "text_hash": "5c3cc07f9101fe70a90e8a43e5aeba42735f568a43b793f66bc5abeb7235f1e1",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_no_development",
+      "text_hash": "bb3939e631ae1d6dea93bfd4d8bfb233c251201a4c69daaf4643a776c27c9a1a",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_no_limits",
+      "text_hash": "f91d13839252f6a730cd2b3dad18d506991b7c875bf0efaa89132ecf7f2607f5",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_prev",
+      "text_hash": "d95c7c4f6870819297416b37c8df47a588bb831dec749670d1acc7945f611866",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_progress_of",
+      "text_hash": "959a45d44e6fcf58361ed004681556fe50129f2109e817dec098c00c9e5d2578",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_progress_prefix",
+      "text_hash": "afe75b7047aff63fc0333f10e763aeeb655f8dc02b211eada92b8d307972486f",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_referenced_claim",
+      "text_hash": "4dcd9c0b3f632f323f3606d773322ce535ffe6e58373eb433cd40619413cbaff",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_related_question",
+      "text_hash": "736731a6a81f29ce199e2ce6e0170b0ea6327551cd827d824ded9e797a27d15c",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_selected_episode",
+      "text_hash": "7eed711d6e2f72a955d68ce15d932809841f92ccd1e69ce7f93b8a167be2e6c6",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.single_view_development",
+      "text_hash": "2629ac342c4c397edbc6874d945f3d2d7e41bfd0ee5a5bba7fbee11f498d1cb9",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
       "family": "navigation",
       "kind": "ui_label",
       "pages": [
@@ -4560,6 +5064,18 @@
         "*"
       ],
       "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.tab_answer",
+      "text_hash": "eda96518d54f845d891b4c3e0a4bc399e123fdaa48013810d6587b0db9499815",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.tab_evidence",
       "text_hash": "d3fb82e539b4c15d3acaecb48f29c8e4d53c97145446e9af39724d61137d59aa",
       "verdict": "PENDING_AUTHOR_REVIEW"
@@ -4598,6 +5114,18 @@
       "source_yaml": "editorial/site/ui.yml",
       "string_id": "site#ui.tab_read",
       "text_hash": "e6d04dc0062798b5f7d4cbe2eeb65de7986f3e776f15093b1f3c6b88c85f4a1a",
+      "verdict": "PENDING_AUTHOR_REVIEW"
+    },
+    {
+      "canonical_hash": null,
+      "family": "ui_other",
+      "kind": "ui_label",
+      "pages": [
+        "*"
+      ],
+      "source_yaml": "editorial/site/ui.yml",
+      "string_id": "site#ui.tab_summary",
+      "text_hash": "ed7bdc67c84b3ed6bbef57fc8e22855e9c63e2b248cbec541c015edeb57fccfa",
       "verdict": "PENDING_AUTHOR_REVIEW"
     },
     {
@@ -4733,21 +5261,21 @@
     "finding_trail": 32,
     "finding_would_need": 16,
     "findings_index": 4,
-    "home": 17,
+    "home": 27,
     "limits": 2,
     "limits_page": 44,
-    "methodology": 25,
+    "methodology": 27,
     "navigation": 13,
     "not_found": 3,
     "states": 7,
     "trail_ui": 45,
-    "ui_other": 34,
+    "ui_other": 66,
     "versions": 6
   },
-  "pending_set_hash": "afd3b49fc6a7cfc9512079a02cf7b29d1ae435943d2e001fefebdf21a24f675b",
+  "pending_set_hash": "f9a2b9c1e8dd9f5aea72b6250933deb9271811256df1e486344904541ae75396",
   "production_url": "https://aletheia-web-seven.vercel.app",
   "release": "WEB-2",
-  "reviewed_commit": "19a3da05d385749c833ca6f49d53e6a1c1a2dad4",
+  "reviewed_commit": "21f3c94b7faf0c74955fcf313562eb125753a450",
   "schema": "aletheia-web/web-2-review-inventory/1",
   "sources": [
     {
@@ -5329,7 +5857,7 @@
   "verdicts": {
     "by_verdict": {
       "APPROVED": 36,
-      "PENDING_AUTHOR_REVIEW": 383
+      "PENDING_AUTHOR_REVIEW": 427
     },
     "public_question": {
       "APPROVED": 18,
@@ -5340,7 +5868,7 @@
       "records": 18,
       "research_questions": 18
     },
-    "total_units": 419,
+    "total_units": 463,
     "unexplained_non_pending_non_fourteen": [
       {
         "canonical_hash": "156022ebca338254f4cb0de9767d1b1987cc9e0951779f2e09b6d4d9020c1819",

@@ -124,20 +124,22 @@ describe("G-LEG-02", () => {
 });
 
 describe("drift y gates humanos", () => {
-  it("el pin previo queda invalidado por este rediseño aún no aprobado", () => {
+  it("el pin está atado al commit técnico aprobado y los hashes coinciden", () => {
     const pin = readPin(ROOT);
     expect(pin).not.toBeNull();
     const drift = detectDrift(ROOT, pin!);
     expect(drift.reviewed_commit).toBe(WEB2_REVIEWED_COMMIT);
-    expect(drift.invalidated).toBe(true);
-    expect(drift.editorial_manifest_changed).toBe(true);
-    expect(drift.inventory_changed).toBe(true);
+    expect(drift.invalidated).toBe(false);
+    expect(drift.editorial_manifest_changed).toBe(false);
+    expect(drift.inventory_changed).toBe(false);
   });
-  it("G-OD-14 sigue pendiente; G-LEG-02 pasa y G-LEG-03 queda invalidado por drift", () => {
+  it("G-OD-14 PENDING no pasa; G-LEG-02 y G-LEG-03 cerrados sí", () => {
     const ctx = realContext();
     expect(runGate("G-OD-14", ctx).status).toBe("FAIL");
-    expect(runGate("G-LEG-02", ctx).status).toBe("PASS");
-    expect(runGate("G-LEG-03", ctx).status).toBe("FAIL");
+    for (const id of ["G-LEG-02", "G-LEG-03"]) {
+      const r = runGate(id, ctx);
+      expect(r.status, `${id}: ${r.detail} ${r.failures.join(" | ")}`).toBe("PASS");
+    }
     expect(RELEASE_GATES.map((g) => g.id)).toEqual(
       expect.arrayContaining(["G-OD-14", "G-LEG-02", "G-LEG-03"]),
     );
